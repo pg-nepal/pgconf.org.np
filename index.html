@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="app.css">
+  <title>PgConf Nepal 2023</title>
+</head>
+
+<body>
+  <header class="header" id="header"> 
+    <nav class="navbar">
+      <div class="nav2">
+        <div class="nav-head-sec">
+          <button type="button" aria-label="Hamburger" class="nav-toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo" onclick="window.location='index.html';" id="logo">
+            <img class="logo-img" src="./images/np-pug-logo.png" alt="Logo">
+            <div class="logo-text">
+              <span>PGConference Nepal - 2023</span>
+            </div>
+          </div>
+
+        </div>
+        <ul class="nav-menu" id="nav-menu">
+          <li>
+            <button type="button" id="close-btn" aria-label="Close" class="hidden">
+              <i class="fas fa-times"></i>
+            </button>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item active">Home</a>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item">About</a>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item">Schedule</a>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item">Speakers</a>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item">Sponsor</a>
+          </li>
+          <li class="nav-lis">
+            <a href="index.html" class="nav-item">News</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <div class="hero">
+      <div class="hero-text">
+        <h2>Hello! PostgreSQL lovers</h2>
+        <h1>2<sup>nd</sup> PostgreSQL Conference Nepal, 2023</h1>
+        <p class="hero-text-par">
+          Welcome to the second PostgreSQL Conference happening on 18-19 May 2023 in Nepal. 
+          After the successful organization of the first-ever PostgreSQL Conference Nepal in May 4-5, 2018, 
+          we are excited to announce this years conference.
+          In the previous conference, we had quite a few exciting talks from internationally 
+          renowned and prominent personalities from the PostgreSQL community as well as from many local speakers.
+          <br>
+          We hope to continue the trend for this year and have similar support 
+          from the international community as well as locally
+        </p>
+        <div class="event-info">
+          <div class="schedule-text">
+            <h2 id="start-date">2023 May, 18(Thu) ~ 19(Fri)</h2>
+            <h3>@Dhulikhel, Nepal</h3>
+          </div>
+
+          <table class="date-con">
+            <tr>
+              <td id="date-con-title" colspan="4">Countdown to your event</td>
+            </tr>
+            <tr>
+              <td>Days</td>
+              <td>Hours</td>
+              <td>Minutes</td>
+              <td>Seconds</td>
+            </tr>
+            <tr>
+              <td id="days">115</td>
+              <td id="hours">13</td>
+              <td id="minutes">2</td>
+              <td id="seconds">42</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="logo">
+        <img class="logo-img" src="./images/np-pug-logo.png" alt="np-pug-logo">
+        <div class="logo-text footer-logo-text">
+          <span>pgconf.2023</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-text">
+      <p>The conference is organized by Nepal PostgreSQL user group (NP-PUG).</p>
+    </div>
+  </footer>
+  <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+  <script src="./js/featured.js"></script>
+</body>
+</html>
