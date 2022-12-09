@@ -1,0 +1,8 @@
+{% extends "base_inner.html" %}
+{% block title%}/Schedule{% endblock %}
+{% block page_title%} Schedule <h3>talks and workshop sessions</h3>{% endblock %}
+{% block main_content %}
+
+Schedule will be published soon.
+<div style="min-height:500px;"></div>
+{% endblock %}
