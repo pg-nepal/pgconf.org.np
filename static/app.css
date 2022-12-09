@@ -35,6 +35,11 @@ ul {
   list-style-type: none;
 }
 
+.ul-list {
+  list-style-type:disc !important;
+  padding-left: 40px;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -241,7 +246,7 @@ p {
       rgba(210, 234, 247, 0.8),
       rgba(255, 255, 255, 0.9)
     ),
-    url(./images/everest-nepal.jpg) center/cover no-repeat;
+    url(/static/images/everest-nepal.jpg) center/cover no-repeat;
   padding-top: 2rem;
 }
 
@@ -256,7 +261,7 @@ p {
 
 /* stylelint-disable */
 .hero-text h1 {
-  background-image: url(./images/orange-globe.png);
+  background-image: url(/static/images/orange-globe.png);
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
@@ -316,7 +321,7 @@ p {
   padding: 0.5rem 1rem;
   border: 1px solid #6db943;
   border-radius: 44%;
-  background: url(./images/logo.jpg) center/cover no-repeat;
+  background: url(/static/images/logo.jpg) center/cover no-repeat;
   position: fixed;
   left: 75%;
   bottom: 10%;
@@ -334,7 +339,7 @@ p {
 }
 
 .programs {
-  background-image: url(./images/diamond.jpg);
+  background-image: url(/static/images/diamond.jpg);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -440,7 +445,7 @@ p {
   border: 0.25rem solid var(--carmine-pink);
   top: -1.4rem;
   right: 3.4rem;
-  background: url(./images/checkered.png);
+  background: url(/static/images/checkered.png);
   background-color: rgb(0, 0, 0, 0.1);
   -webkit-border-radius: 8px;
   -moz-border-radius: 8px;
@@ -911,6 +916,12 @@ p {
     margin: 0 auto;
     margin-top: 10%;
   }
+  .hero-text-header{
+    width: 70%;
+    margin: 0 auto;
+    margin-top: 2% !important;
+    color: var(--darker-grey) !important;
+  }
 
   .hero-text h1 {
     font-family: sans-serif;
@@ -1262,6 +1273,25 @@ p {
   .about-foot1 {
     color: white;
   }
+
+
+
+  .col_left {
+    float: left;
+    width: 70%;
+  }
+.col_right {
+    float: left;
+    width: 30%;
+  }
+
+  /* Clear floats after the columns */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
 }
 
 @media (min-width: 982px) {
@@ -1269,3 +1299,4 @@ p {
     padding: 5rem;
   }
 }
+

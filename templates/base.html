@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="static/app.css">
+  <title>PgConf Nepal 2023 {% block title%}{% endblock %}</title>
+</head>
+
+<body>
+  <header class="header" id="header"> 
+    <nav class="navbar">
+      <div class="nav2">
+        <div class="nav-head-sec">
+          <button type="button" aria-label="Hamburger" class="nav-toggle" id="nav-toggle">
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="logo"id="logo">
+            <a href="/"> <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo"></a>
+                <div class="logo-text">
+                    <a href="/"> <span>PGConference Nepal - 2023</span></a>  
+                </div>
+                  
+          </div>
+        </div>
+        {% include "_menu.html" %}
+      </div>
+    </nav>
+  </header>
+  <main>
+    {% block main %} {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-logo">
+      <div class="logo">
+        <img class="logo-img" src="/static/images/np-pug-logo.png" alt="np-pug-logo">
+        <div class="logo-text footer-logo-text">
+          <span>pgconf.2023</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-text">
+      <p>The conference is organized by Nepal PostgreSQL user group (NP-PUG).</p>
+    </div>
+  </footer>
+  <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+  <script src="/static/js/featured.js"></script>
+  {% block scripts%}{% endblock %}
+
+</body>
+</html>

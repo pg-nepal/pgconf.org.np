@@ -1,1 +1,4 @@
 .ignore
+venv
+.pyc
+__pycache__
