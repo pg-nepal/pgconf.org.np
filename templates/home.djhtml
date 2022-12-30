@@ -20,7 +20,7 @@
             </p>
             <div class="event-info">
                 <div class="schedule-text">
-                    <h2 id="start-date">2023 May, 18(Thu) ~ 19(Fri)</h2>
+                    <h2 id="start-date">{{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}</h2>
                     <h3>@ Kathmandu University, Dhulikhel, Nepal</h3>
                 </div>
 
