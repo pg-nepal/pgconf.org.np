@@ -6,7 +6,7 @@ app = flask.Flask(__name__)
 @app.route('/')
 def render_home():
     return flask.render_template(
-        'home.html'
+        'home.djhtml',
     )
 
 
