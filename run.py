@@ -25,7 +25,7 @@ def render_home():
 @app.route('/<page>')
 def render_page(page):
     return flask.render_template(
-        page + '.html'
+        page + '.djhtml'
     )
 
 
