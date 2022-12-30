@@ -1,6 +1,18 @@
+#!venv/bin/python
+
+import datetime as dt
+
 import flask
 
+eventOn = dt.datetime(2023, 5, 11)
+eventTo = dt.datetime(2023, 5, 12)
+
 app = flask.Flask(__name__)
+
+app.jinja_env.globals.update({
+    'eventOn' : eventOn,
+    'eventTo' : eventTo,
+})
 
 
 @app.route('/')
