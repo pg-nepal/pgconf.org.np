@@ -6,7 +6,7 @@
 
 {% block main_content %}
     <p>
-        Welcome to the second PostgreSQL Conference happening on 18-19 May 2023 in Kathmandu University,
+        Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Kathmandu University,
         Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference Nepal
         in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference, we had
         quite a few exciting talks from internationally renowned and prominent personalities from the PostgreSQL
