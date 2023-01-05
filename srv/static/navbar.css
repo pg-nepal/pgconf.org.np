@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body{
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+  }
+  header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0px;
+    background-color: #fff;
+  }
+  .top-header{
+      width: 80%;
+      padding: 10px 150px;
+      max-width: 1440px;
+  }
+  .logoo{
+      width: 80%;
+  }
+   .top-header .logoo {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    gap: 0.5rem;
+
+    padding: 0;
+    background: transparent;
+    cursor: pointer;
+  }
+
+  .logo-img {
+    height: 2.5rem;
+    width: 8rem;
+    padding-left: 0.5rem;
+  }
+
+  .logoo span {
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+  .container {
+    width: 80%;
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+  .header-area {
+    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.5)),
+    url(https://images.unsplash.com/photo-1528353518104-dbd48bee7bc4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80);
+    background-position: center center;
+    background-size: cover;
+  }
+  /* default css end */
+
+  /* navbar regular css start */
+  .navbar-area {
+    background: #fff;
+
+  }
+
+  .site-navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #AFBFC4;
+    border-radius: 20px;
+    margin-bottom: 5px;
+
+  }
+  a.site-logo {
+    font-size: 26px;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: #fff;
+    text-decoration: none;
+  }
+  .site-navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+
+
+  }
+  .site-navbar ul li{
+    padding: 0px 5px;
+  }
+  .site-navbar ul li a {
+    color: #000;
+    padding: 20px;
+    display: block;
+    text-decoration: none;
+    text-transform: uppercase;
+  }
+  .site-navbar ul li a:hover {
+    background: rgba(255,255,255,.1);
+  }
+  /* navbar regular css end */
+
+
+  /* nav-toggler css start */
+  .nav-toggler {
+    border: 3px solid #fff;
+    padding: 5px;
+    background-color: transparent;
+    cursor: pointer;
+    height: 39px;
+    display: none;
+  }
+  .nav-toggler span,
+  .nav-toggler span:before,
+  .nav-toggler span:after {
+    width: 28px;
+    height: 3px;
+    background-color: #336791;
+    display: block;
+    transition: .3s;
+  }
+  .nav-toggler span:before {
+    content: '';
+    transform: translateY(-9px);
+  }
+  .nav-toggler span:after {
+    content: '';
+    transform: translateY(6px);
+  }
+  .nav-toggler.toggler-open span {
+    background-color: transparent;
+  }
+  .nav-toggler.toggler-open span:before {
+    transform: translateY(0px) rotate(45deg);
+  }
+  .nav-toggler.toggler-open span:after {
+    transform: translateY(-3px) rotate(-45deg);
+  }
+  /* nav-toggler css start */
+
+
+  /* intro-area css start */
+  /* mobile breakpoint start */
+  @media screen and (max-width: 767px) {
+
+    .container {
+      max-width: 720px;
+      width: 100%;
+    }
+    /* navbar css for mobile start */
+    .nav-toggler{
+      display: block;
+    }
+
+    .site-navbar {
+        min-height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 0px;
+        margin-bottom: none;
+
+      }
+    .site-navbar ul {
+      position: absolute;
+      width: 100%;
+      height: calc(100vh - 60px);
+      left: 0;
+      top: 60px;
+      flex-direction: column;
+      align-items: center;
+
+      background-color: rgba(0,0,0,.75);
+      max-height: 0;
+      overflow: hidden;
+      transition: .3s;
+    }
+    .site-navbar ul li {
+      width: 100%;
+      text-align: center;
+    }
+    .site-navbar ul li a {
+
+      color: #fff;
+    }
+    .site-navbar ul li a:hover {
+      background-color: rgba(255,255,255,.1);
+    }
+    .site-navbar ul.open {
+      max-height: 100vh;
+      overflow: visible;
+    }
+    @media screen and (max-width: 467px) {
+      .top-header {
+        width: 80%;
+        padding: 0px 80px;
+        margin-top: 5px;
+        max-width: 1440px;
+      }
+      .logo-img {
+        height: 2.5rem;
+        width: 8rem;
+        padding-left: 0rem;
+      }
+
+      .logoo span {
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+    }
