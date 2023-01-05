@@ -1,8 +1,14 @@
 {% extends "base_inner.html" %}
 {% block title%}/Schedule{% endblock %}
-{% block page_title%} Schedule <h3>talks and workshop sessions</h3>{% endblock %}
 {% block main_content %}
-
+<div class="HEADER" style="margin-top:10%">
+     {% block page_title%} Schedule <h3>talks and workshop sessions</h3>{% endblock %}
+</div>
+<div class="schedule grid-container">
+<div class="grid-item left-part">
 Schedule will be published soon.
 <div style="min-height:500px;"></div>
+</div>
+{% include 'right_menubar.html' %}
+</div>
 {% endblock %}
