@@ -1,29 +1,28 @@
-const navToggle = document.getElementById('nav-toggle');
-const navLinks = document.querySelector('.nav-menu');
-const scrollLinks = document.querySelectorAll('.nav-item');
-const closeBtn = document.getElementById('close-btn');
+  // define all UI variable
+  const navToggler = document.querySelector('.nav-toggler');
+  const navMenu = document.querySelector('.site-navbar ul');
+  const navLinks = document.querySelectorAll('.site-navbar a');
 
-navToggle.addEventListener('click', () => {
-  navLinks.classList.add('show-links');
-  closeBtn.classList.remove('hidden');
-});
+  // load all event listners
+  allEventListners();
 
-function removeActive() {
-  scrollLinks.forEach((link) => {
-    link.classList.remove('active');
-  });
-}
+  // functions of all event listners
+  function allEventListners() {
+    // toggler icon click event
+    navToggler.addEventListener('click', togglerClick);
+    // nav links click event
+    navLinks.forEach( elem => elem.addEventListener('click', navLinkClick));
+  }
 
-scrollLinks.forEach((link) => {
-  link.addEventListener('click', (e) => {
-    navLinks.classList.remove('show-links');
-    removeActive();
-    e.target.classList.add('active');
-  });
-});
+  // togglerClick function
+  function togglerClick() {
+    navToggler.classList.toggle('toggler-open');
+    navMenu.classList.toggle('open');
+  }
 
-closeBtn.addEventListener('click', () => {
-  navLinks.classList.remove('show-links');
-  closeBtn.classList.add('hidden');
-});
-
+  // navLinkClick function
+  function navLinkClick() {
+    if(navMenu.classList.contains('open')) {
+      navToggler.click();
+    }
+  }
