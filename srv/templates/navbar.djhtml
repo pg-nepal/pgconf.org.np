@@ -1,0 +1,53 @@
+<div class="top-header">
+    <div class="logoo">
+            <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+            <div class="logo-text">
+              <span>PGConference Nepal - 2023</span>
+            </div>
+    </div>
+</div>
+<div class="header-area">
+    <!-- site-navbar start -->
+    <div class="navbar-area">
+      <div class="container">
+        <nav class="site-navbar">
+
+          <ul class="nav-menu" id="nav-menu">
+            <li class="nav-lis">
+                <a href="/" class="nav-item">Home</a>
+            </li>
+            <li class="nav-lis">
+                <a href="/about" class="nav-item">About</a>
+            </li>
+            <li class="nav-lis">
+              <a href="/venue" class="nav-item">Venue</a>
+            </li>
+            <li class="nav-lis">
+              <a href="/registration" class="nav-item">Registration</a>
+            </li>
+            <li class="nav-lis">
+                <a href="/call_for_proposal" class="nav-item">Call for Proposal</a>
+            </li>
+            <li class="nav-lis">
+              <a href="/pre_conf" class="nav-item">Training</a>
+          </li>
+            <li class="nav-lis">
+                <a href="/schedule" class="nav-item">Schedule</a>
+            </li>
+            <li class="nav-lis">
+                <a href="/speakers/all" class="nav-item">Speakers</a>
+            </li>
+            <li class="nav-lis">
+                <a href="/sponsor" class="nav-item">Sponsor</a>
+            </li>
+        </ul>
+
+          <!-- nav-toggler for mobile version only -->
+          <button class="nav-toggler">
+            <span></span>
+          </button>
+        </nav>
+      </div>
+    </div><!-- navbar-area end -->
+  </div>
+ 
