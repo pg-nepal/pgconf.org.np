@@ -6,7 +6,8 @@
   <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
 
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
@@ -16,27 +17,13 @@
 </head>
 
 <body>
-  <header class="header" id="header"> 
-    <nav class="navbar">
-      <div class="nav2">
-        <div class="nav-head-sec">
-          <button type="button" aria-label="Hamburger" class="nav-toggle" id="nav-toggle">
-            <i class="fas fa-bars"></i>
-          </button>
-          <div class="logo"id="logo">
-            <a href="/"> <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo"></a>
-                <div class="logo-text">
-                    <a href="/"> <span>PGConference Nepal - 2023</span></a>  
-                </div>
-                  
-          </div>
-        </div>
-        {% include "_menu.html" %}
-      </div>
-    </nav>
+  <header>
+    {% include 'navbar.html' %}
   </header>
   <main>
-    {% block main %} {% endblock %}
+    {% block main %}
+
+    {% endblock %}
   </main>
 
   <footer class="footer">
