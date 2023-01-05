@@ -4,6 +4,7 @@
 
 
 {% block main %}
+
     <div class="hero">
         <div class="hero-text">
             <h2>Hello! PostgreSQL lovers</h2>
@@ -16,7 +17,7 @@
                 renowned and prominent personalities from the PostgreSQL community as well as from many local speakers.
                 <br>
                 We hope to continue the trend for this year and have similar support
-                from the international community as well as locally
+                from the international community as well as locally.
             </p>
             <div class="event-info">
                 <div class="schedule-text">
@@ -44,6 +45,7 @@
             </div>
         </div>
     </div>
+
 {% endblock %}
 
 
