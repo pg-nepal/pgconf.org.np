@@ -1,10 +1,12 @@
 {% extends "base_inner.html" %}
-
 {% block title%}/About{% endblock %}
-
+{% block main_content %}
+<div class="HEADER" style="margin-top:10%">
 {% block page_title%} About <h3>organizing committee/talks selection committee</h3>{% endblock %}
 
-{% block main_content %}
+</div>
+<div class="about grid-container">
+    <div class="grid-item left-part">
     <p>
         Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Kathmandu University,
         Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference Nepal
@@ -46,6 +48,7 @@
         </ol>
     </div>
 
+
     <h3>Talks selection committee:</h3>
     <div style="padding-left: 20px;">
         <ol>
@@ -56,4 +59,7 @@
             <li>Rupak Raj Ghimire</li>
         </ol>
     </div>
+    </div>
+    {% include 'right_menubar.html' %}
+</div>
 {% endblock %}
