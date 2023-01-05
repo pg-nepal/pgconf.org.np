@@ -1,15 +1,22 @@
 {% extends "base_inner.html" %}
 {% block title%}/Speakers{% endblock %}
-{% block page_title%}Speakers <h3>talks and workshop sessions</h3>{% endblock %}
 {% block main_content %}
-<h3>Keynotes</h3>
-List will be published soon.
+<div class="HEADER" style="margin-top:10%">
+    {% block page_title%}Speakers <h3>talks and workshop sessions</h3>{% endblock %}
+</div>
+<div class=" speaker grid-container">
+    <div class="grid-item left-part">
+        <h3>Keynotes</h3>
+        List will be published soon.
 
-<h3>Talks</h3>
-List will be published soon.
+        <h3>Talks</h3>
+        List will be published soon.
 
-<h3>Workshops</h3>
-List will be published soon.
+        <h3>Workshops</h3>
+        List will be published soon.
 
-<div style="min-height:300px;"></div>
+        <div style="min-height:300px;"></div>
+    </div>
+    {% include 'right_menubar.html' %}
+</div>
 {% endblock %}
