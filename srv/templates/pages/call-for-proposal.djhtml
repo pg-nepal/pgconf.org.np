@@ -1,0 +1,53 @@
+{% extends 'base_inner.html' %}
+
+{% block title%}/Call for Proposals{% endblock %}
+
+{% block page_title%}
+    Call for Proposals <br>
+    <small>Talks and Workshop sessions</small>
+{% endblock %}
+
+
+{% block main_content %}
+    PostgreSQL Conference Nepal 2023 will be held on {{eventOn.strftime('%b %d')}}-{{eventTo.strftime('%d')}} in Kathmandu University,
+    Dhulikhel, Nepal. It will cover topics for PostgreSQL users, developers and contributors, as well as decision and policy makers.
+
+    We are now accepting proposals for talks in English.
+    Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
+    <br>
+    <br>
+    <div class="section_header_small">Conference Topics</div>
+    Suggested topic areas include but are not limited to:
+    <ul class="ul-list">
+        <li>Developing applications for PostgreSQL</li>
+        <li>Administering large scale PostgreSQL installations</li>
+        <li>Case studies and/or success stories of PostgreSQL deployments</li>
+        <li>PostgreSQL tools and utilities</li>
+        <li>PostgreSQL hacking</li>
+        <li>Community & user groups</li>
+        <li>Tuning the server</li>
+        <li>Migrating from other systems</li>
+        <li>Scaling/replication</li>
+        <li>Benchmarking & hardware</li>
+        <li>PostgreSQL related products</li>
+    </ul>
+
+    <br><br>
+    Similarly, we are also accepting proposals for workshops. The workshop will be 3.5 hrs and will be run on the second day of the conference in parallel.
+    {# The submission deadline is February 28 March 6, 2020. Selected speakers/presenters will be notified by March 15 March 20, 2020. #}
+    <br><br>
+
+    The proposals will be considered by committee, and we will produce a schedule closer to the conference date.
+    We look forward to hearing from you, and seeing you in Nepal in May, 2023
+    <br>
+    <br>
+    <div class="section_header_small"> Submit proposal</div>
+    Please submit the talk proposal using  <a href="https://conference.pgconf.org.np/conf-2023/cfp" class="button3" target="_blank">Submit a proposal</a>.
+    <br>
+    <br>
+
+    For any problem please write us to : info@pgconf.org.np
+    <br>
+    <br>
+    {% include 'keydates.html' %}
+{% endblock %}
