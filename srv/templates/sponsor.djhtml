@@ -3,13 +3,10 @@
 
 {% block page_title%}
     Call for Sponsor<br>
-    <small></small>
+    <small>let's contribute to grow the community</small>
 {% endblock %}
 
 {% block main_content %}
-<div class="grid-container">
-
-    <div class="grid-item left-part">
     <p>
         We invite proposals for sponsorships for the event PGCONF Nepal 2023. Benefits and prices of sponsorships are as mentioned below:
 
@@ -76,12 +73,6 @@
 
         <br><br>
     </p>
-    </div>
-    {% include 'right_menubar.html' %}
-</div>
-</div>
-<!-- <div class="col_right">
-    <h2>Sponsors</h2>
-</div> -->
+    
 
 {% endblock %}

@@ -8,9 +8,6 @@
 
 {% block main_content %}
 
-
-<div class="callforproposal grid-container">
-    <div class="grid-item left-part">
     PostgreSQL Conference Nepal 2023 will be held on {{eventOn.strftime('%b %d')}}-{{eventTo.strftime('%d')}} in Kathmandu University,
     Dhulikhel, Nepal. It will cover topics for PostgreSQL users, developers and contributors, as well as decision and policy makers.
 
@@ -39,7 +36,5 @@
 
     The proposals will be considered by committee, and we will produce a schedule closer to the conference date.
     We look forward to hearing from you, and seeing you in Nepal in May, 2023
-    </div>
-    {% include 'right_menubar.html' %}
-    </div>
+
 {% endblock %}
