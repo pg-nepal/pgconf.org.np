@@ -1,9 +1,12 @@
 {% extends "base_inner.html" %}
 {% block title%}/Sponsor{% endblock %}
+
+{% block page_title%}
+    Call for Sponsor<br>
+    <small></small>
+{% endblock %}
+
 {% block main_content %}
-<div class="HEADER" style="margin-top:15%">
-    {% block page_title%}Call for Sponsor{% endblock %}
-</div>
 <div class="grid-container">
 
     <div class="grid-item left-part">

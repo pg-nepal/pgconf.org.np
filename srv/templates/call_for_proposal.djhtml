@@ -1,9 +1,14 @@
 {% extends 'base_inner.html' %}
 {% block title%}/Call for Proposals{% endblock %}
+
+{% block page_title%}
+    Call for Proposals <br>
+    <small>Talks and Workshop sessions</small>
+{% endblock %}
+
 {% block main_content %}
-<div class="HEADER" style="margin-top:10%">
-    {% block page_title%} Call for Proposals <h3>Talks and Workshop sessions</h3>{% endblock %}
-</div>
+
+
 <div class="callforproposal grid-container">
     <div class="grid-item left-part">
     PostgreSQL Conference Nepal 2023 will be held on {{eventOn.strftime('%b %d')}}-{{eventTo.strftime('%d')}} in Kathmandu University,
