@@ -5,7 +5,14 @@
         <div class="hero-text hero-text-header">
             <h3>{% block page_title%}{% endblock %}</h3>
             <div class="hero-text-par">
-                {% block main_content %}{% endblock %}
+                <div class="grid-container">
+                    <div class="grid-item left-part" style="min-height:500px;">
+                        {% block main_content %}{% endblock %}
+                    </div>
+                    <div class="grid-item right-menu">
+                        {% include 'right_menubar.html' %}
+                    </div>
+                </div>
             </div>
         </div>
     </div>

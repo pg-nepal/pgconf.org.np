@@ -7,62 +7,57 @@ About
 <small>organizing committee/talks selection committee</small>
 {% endblock %}
 
-{% block main_content %}
-<div class="about grid-container">
-    <div class="grid-item left-part">
-        <p>
-            Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Kathmandu University,
-            Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference Nepal
-            in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference, we had
-            quite a few exciting talks from internationally renowned and prominent personalities from the PostgreSQL
-            community as well as from many local speakers. We hope to continue the trend for this year and have
-            similar support from the international community as well as locally.
-            <br>
-            <br>
-            With the increased globalization trends in
-            recent years, Nepal has continued to be one of the major attractions not just because of its rich natural
-            beauty but also because of the fact that it contributes significantly to the global software development
-            ecosystem through our talented pool of Nepali computer professionals. In this context, Open Source
-            applications and solutions like PostgreSQL have a lot of prospects in the overall development and prosperity
-            of Nepal.
-            <br>
-            One of the goals of PostgreSQL conferences in Nepal is to add momentum to the current use and
-            adoption of PostgreSQL as a first choice of the database, fuel the advocacy and awareness about the use
-            and benefits among policymakers and implementation agencies in the government, private and the public.
-            This conference is an opportunity to bring together local and international experts, novices, enthusiasts and
-            the like to discuss technical, non-technical, social and other issues on PostgreSQL thus helping to build a
-            strong PostgreSQL community in Nepal which will not only be capable to solve the local technical
-            problems locally but provide an international platform to the community members.
-        </p>
+{% block main_content %} 
+    <p>
+        Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Kathmandu University,
+        Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference Nepal
+        in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference, we had
+        quite a few exciting talks from internationally renowned and prominent personalities from the PostgreSQL
+        community as well as from many local speakers. We hope to continue the trend for this year and have
+        similar support from the international community as well as locally.
+        <br>
+        <br>
+        With the increased globalization trends in
+        recent years, Nepal has continued to be one of the major attractions not just because of its rich natural
+        beauty but also because of the fact that it contributes significantly to the global software development
+        ecosystem through our talented pool of Nepali computer professionals. In this context, Open Source
+        applications and solutions like PostgreSQL have a lot of prospects in the overall development and prosperity
+        of Nepal.
+        <br>
+        One of the goals of PostgreSQL conferences in Nepal is to add momentum to the current use and
+        adoption of PostgreSQL as a first choice of the database, fuel the advocacy and awareness about the use
+        and benefits among policymakers and implementation agencies in the government, private and the public.
+        This conference is an opportunity to bring together local and international experts, novices, enthusiasts and
+        the like to discuss technical, non-technical, social and other issues on PostgreSQL thus helping to build a
+        strong PostgreSQL community in Nepal which will not only be capable to solve the local technical
+        problems locally but provide an international platform to the community members.
+    </p>
 
 
-        <h3>Organizing committee:</h3>
-        <div style="padding-left: 20px;">
-            <ol>
-                <li>Dr. Oleg Bartunov - Postgres Professional, Russia</li>
-                <li>Mr. Andreas Scherbaum - European PostgreSQL</li>
-                <li>Dr. Bal Krishna Bal - Kathmandu University</li>
-                <li>Mr. Hempal Shrestha - Civil Society and Open Source Activist</li>
-                <li>Dr. Sushil Shrestha - Kathmandu University</li>
-                <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd.</li>
-                <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd.</li>
-                <li>Mr. Chandan Gupta - RainLocal Inc.</li>
-                <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
-            </ol>
-        </div>
-
-
-        <h3>Talks selection committee:</h3>
-        <div style="padding-left: 20px;">
-            <ol>
-                <li>Dr. Oleg Bartunov</li>
-                <li>Mr. Andreas Scherbaum</li>
-                <li>Dr. Bal Krishna Bal</li>
-                <li>Hempal Shrestha</li>
-                <li>Rupak Raj Ghimire</li>
-            </ol>
-        </div>
+    <h3>Organizing committee:</h3>
+    <div style="padding-left: 20px;">
+        <ol>
+            <li>Dr. Oleg Bartunov - Postgres Professional, Russia</li>
+            <li>Mr. Andreas Scherbaum - European PostgreSQL</li>
+            <li>Dr. Bal Krishna Bal - Kathmandu University</li>
+            <li>Mr. Hempal Shrestha - Civil Society and Open Source Activist</li>
+            <li>Dr. Sushil Shrestha - Kathmandu University</li>
+            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd.</li>
+            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd.</li>
+            <li>Mr. Chandan Gupta - RainLocal Inc.</li>
+            <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
+        </ol>
     </div>
-    {% include 'right_menubar.html' %}
-</div>
+
+
+    <h3>Talks selection committee:</h3>
+    <div style="padding-left: 20px;">
+        <ol>
+            <li>Dr. Oleg Bartunov</li>
+            <li>Mr. Andreas Scherbaum</li>
+            <li>Dr. Bal Krishna Bal</li>
+            <li>Hempal Shrestha</li>
+            <li>Rupak Raj Ghimire</li>
+        </ol>
+    </div>
 {% endblock %}

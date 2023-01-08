@@ -8,12 +8,7 @@
 
 {% block main_content %}
 
+     Schedule will be published soon.
 
-<div class="schedule grid-container">
-<div class="grid-item left-part">
-Schedule will be published soon.
-<div style="min-height:500px;"></div>
-</div>
-{% include 'right_menubar.html' %}
-</div>
+
 {% endblock %}
