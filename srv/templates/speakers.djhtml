@@ -9,12 +9,18 @@ Speakers<br>
 {% block main_content %}
 
     <h3>Keynotes</h3>
-    List will be published soon.
+    <p class="hero-text-par">
+        List will be published soon.
+    </p>
 
     <h3>Talks</h3>
-    List will be published soon.
+    <p class="hero-text-par">
+        List will be published soon.
+    </p>
 
     <h3>Workshops</h3>
-    List will be published soon.
+    <p class="hero-text-par">
+        List will be published soon.
+    </p>
 
 {% endblock %}
