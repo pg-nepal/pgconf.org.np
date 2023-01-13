@@ -7,12 +7,12 @@
 {% endblock %}
 
 {% block main_content %}
-    <p>
+    <p class="hero-text-par">
         We invite proposals for sponsorships for the event PGCONF Nepal 2023. Benefits and prices of sponsorships are as mentioned below:
 
         <h3>Platinum Sponsorship </h3>
         <b>Benefits:</b>
-        <ul class="ul-list">
+        <ul class="ul-list hero-text-par">
             <li>Permission for the Business to use the following endorsement: “Platinum Partner of PostgreSQL Conference Nepal 2023” on the Business' website or in any promotional materials or press releases that the Business sees fit.</li>
             <li>Prominent inclusion of the Business' logo and a link to the Business' website on the official conference website (the logo to be provided by Business).</li>
             <li>The Business' logo printed on the official PostgreSQL Conference Nepal 2023 attendees t-shirts and certificates (the logo to be provided by Business).</li>

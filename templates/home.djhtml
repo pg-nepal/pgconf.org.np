@@ -2,23 +2,22 @@
 
 {% block title%}/Home{% endblock %}
 
-
 {% block main %}
-
-    <div class="hero">
-        <div class="hero-text">
+    <div class="banner-container">
+        <div class="banner">
             <h2>Hello! PostgreSQL lovers</h2>
-            <h1>2<sup>nd</sup> PostgreSQL Conference Nepal, 2023</h1>
-            <p class="hero-text-par">
-                Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Nepal.
-                After the successful organization of the first-ever PostgreSQL Conference Nepal in May 4-5, 2018,
-                we are excited to announce this years conference.
-                In the previous conference, we had quite a few exciting talks from internationally
-                renowned and prominent personalities from the PostgreSQL community as well as from many local speakers.
-                <br>
-                We hope to continue the trend for this year and have similar support
-                from the international community as well as locally.
-            </p>
+            <h1>2 <sup style="font-size: 2.5rem;">nd</sup> PostgreSQL Conference Nepal, 2023</h1> 
+            
+                <div class="banner-text">
+                    Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Nepal.
+                    After the successful organization of the first-ever PostgreSQL Conference Nepal in May 4-5, 2018,
+                    we are excited to announce this years conference.
+                    In the previous conference, we had quite a few exciting talks from internationally
+                    renowned and prominent personalities from the PostgreSQL community as well as from many local speakers.
+                    <br>
+                    We hope to continue the trend for this year and have similar support
+                    from the international community as well as locally.
+                </div> 
             <div class="event-info">
                 <div class="schedule-text">
                     <h2 id="start-date">{{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}</h2>
@@ -45,7 +44,37 @@
             </div>
         </div>
     </div>
+    <div class="hero">
+        <div class="hero-text"> 
+            <div class="grid-container">
+                <div class="grid-item left-part">
 
+                    <div class="section_header">
+                        Pre-Conference Workshop
+                    </div>
+                    <div class="section_text">
+                        <a href="/pre_conf">
+                            <img src="/static/images/Intro to PG15-banner.png">
+                        </a>
+                        <b>About Training</b><br>
+                        Date: May 9-10, 2023<br>
+                        Venue: Kathmandu University, Dhulikhel, Kathmandu<br>
+                        Training Lead: Egor Rogov<br>
+                        <br>
+                        For registration and other details please <a href="/pre_conf">check here</a>
+                    </div>
+
+
+                    
+                    
+                </div>
+                <div class="grid-item right-menu">
+                    {% include 'right_menubar_home.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    
 {% endblock %}
 
 
