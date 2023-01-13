@@ -1,0 +1,75 @@
+{% extends "base_inner.html" %}
+{% block title%}/Pre-Conference Training{% endblock %}
+
+{% block page_title%}
+Pre-Conference Training<br>
+<small>getting started with PostgreSQL 15</small>
+{% endblock %}
+
+{% block main_content %}
+    <img src="/static/images/Intro to PG15-banner.png">
+    <div class="section_header_small">About Training</div>
+    <b>About Training</b><br>
+    Date: May 9-10, 2023<br>
+    Venue: Kathmandu University, Dhulikhel, Kathmandu<br>
+    Training Lead: Egor Rogov<br><br>
+
+    <div class="section_header_small">About Training Leads</div>
+    The training is led by Egor Rogov, the author of “PostgreSQL Internals” book 
+    and co-author of “Postgres: The First Experience” booklet.
+    Egor graduated from Computer Science Faculty of Lomonosov Moscow State University 
+    and has more than 15 years of Database Management Systems experience as an application 
+    developer and project manager. Since 2015 Egor works on 
+    educational programs in Postgres Professional company.
+    <br><br> 
+    
+    <div class="section_header_small">Training Contents</div>
+    Pre-conference event is an introductory training course. 
+    It is aimed at novice DBAs (but also should be helpful for application 
+    developers to better understand what's going on at the database side). 
+    <br><br>
+    Prerequisites for the course are basic understanding of SQL 
+    (nothing fancier than two-table joins) and some acquaintance with Linux 
+    (basic command like ls/cd/sudo).
+    <br><br>
+    The course covers basics of PostgreSQL architecture 
+    (things like MVCC, vacuum, buffer cache, WAL), 
+    installation and managing the server, using psql, 
+    data organization from both logical and physical points of view, 
+    and an overview of access control, backups, and replication.
+    <br><br>
+    The course is organized in several lessons. 
+    Each lesson consists of 20..60 mins of theory followed by 20..30 mins of practical assignment. 
+    <br>
+    For practical exercises students should use laptops with the course virtual machine installed. 
+    <br>
+    Minimum requirements: 64-bit host operating system and 1GB of spare operating memory for the VM.
+
+    <br><br>
+    <div class="section_header_small">Agenda</div>
+    <pre>
+    Day 1
+        Basic Toolkit
+            01. Overview: Installation and Management, psql
+        Architecture
+            02. General Overview
+            03. Isolation and Multiversion Concurrency Control
+            04. Vacuum
+            05. Buffer Cache and Logging
+        Data Organization
+            06. Logical Layout
+    Day 2
+        Data Organization (continued)
+            06. Physical Layout
+        Administration Tasks
+            07. Monitoring
+        Access Control
+            09. Access Control Overview
+        Backup and Replication
+            10. Backup and Restore Overview
+            11. Replication Overview
+    </pre>
+
+    <div class="section_header_small">Registration</div>
+    
+{% endblock %}
