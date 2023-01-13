@@ -1,5 +1,5 @@
 :root {
-  --font-family: lato, 'sans-serif';
+  --font-family: 'sans-serif';
   --transition: all 0.3s linear;
   --spacing: 0.25rem;
   --radius: 0.5rem;
@@ -21,6 +21,7 @@
   padding: 0;
   box-sizing: border-box;
   scroll-behavior: smooth;
+  font-size: 1rem;
 }
 
 body {
@@ -28,11 +29,27 @@ body {
   background: var(--white);
   color: var(--lighter-grey);
   line-height: 1.5;
-  font-size: 0.875rem;
+  font-size: 1rem;
+  /* background:
+    linear-gradient(
+      rgba(210, 234, 100, 0.2),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url(/static/images/everest-nepal.jpg) center/cover no-repeat; */
 }
 
 ul {
   list-style-type: none;
+}
+
+li {
+  padding: 5px;
+  line-height: 1.5;
+}
+
+oi {
+  padding-top: 5px;
+  line-height: 1.5;
 }
 
 .ul-list {
@@ -269,10 +286,12 @@ background-color: #C5DBEE;
 }
 .left-part{
   grid-column: 1/2;
-  padding: 10px;
   float: left;
   text-align: left;
   background-color: #fff !important;
+}
+.grid-text{
+  padding: 10px;
 }
 .right-menu{
   grid-column: 2/3;
@@ -304,17 +323,9 @@ background-color: #C5DBEE;
   display: flex;
   padding: 0 1rem;
   margin-bottom: 0;
-  background:
-    linear-gradient(
-      rgba(210, 234, 100, 0.2),
-      rgba(255, 255, 255, 0.9)
-    ),
-    url(/static/images/everest-nepal.jpg) center/cover no-repeat;
-
 }
 
 .hero-text {
-
   background-color:  transparent !important;
 }
 
@@ -324,8 +335,7 @@ background-color: #C5DBEE;
 }
 
 /* stylelint-disable */
-.hero-text h1 {
-  background-image: url(/static/images/orange-globe.png);
+.hero-text h1 { 
   background-size: cover;
   background-position: center;
   -webkit-background-clip: text;
@@ -342,10 +352,6 @@ background-color: #C5DBEE;
   border-right: none;
   border-top: none;
   background: transparent !important;
-  font-size: 17px;
-  letter-spacing: 0.5px;
-
-
 }
 
 #start-date {
@@ -921,14 +927,14 @@ background-color: #C5DBEE;
   }
 
   body {
-    font-size: 1.2rem;
+    font-size: 0.875rem;
   }
 
   h4,
   h3,
   h2,
   h1 {
-    line-height: 1;
+    line-height: 1.5;
   }
 }
 
@@ -982,10 +988,10 @@ background-color: #C5DBEE;
   .hero-text {
     width: 70%;
     margin: 0 auto;
-    margin-top: 15%;
+    /* margin-top: 15%; */
   }
   .hero-text-header{
-    width: 70%;
+    /* width: 70%; */
     margin: 0 auto;
     color: var(--darker-grey) !important;
   }
@@ -1426,3 +1432,77 @@ background-color: #C5DBEE;
   }
 }
 
+.banner{
+  width: 70%;
+  margin: 0 auto;
+  padding-top: 75px;
+}
+.banner-container{
+  width: 100%;
+  margin: 0 auto;
+  background:
+    linear-gradient(
+      rgba(210, 234, 100, 0.2),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url(/static/images/everest-nepal.jpg) center/cover no-repeat;
+}
+.banner-text{
+  background: #617d9839;
+  border: 1px solid #3367911f;
+  padding: 10px;
+  font-size: 1.2rem;
+  text-align: justify;
+  line-height: 2.2rem;
+}
+
+.banner h2 { 
+  color: #102a42;
+}
+
+.banner h1 { 
+  background-size: cover;
+  background-position: center;
+  -webkit-background-clip: text;
+  background-clip: text;
+  margin-top: 1rem;
+  color: #346791;
+}
+
+.main_background{
+  background:
+    linear-gradient(
+      rgba(210, 234, 100, 0.2),
+      rgba(255, 255, 255, 0.9)
+    ),
+    url(/static/images/everest-nepal.jpg) center/cover no-repeat;
+}
+
+
+.section_header{
+  font-size: 1.75rem;
+  background-color: #336791;
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.section_header_small{
+  font-size: 1.25rem;
+  background-color: #336791;
+  color: #fff;
+  padding: 5px;
+  border-radius: 6px;
+  margin-bottom: 5px;
+}
+
+.section_text{
+  text-align: justify;
+}
+
+
+.hero-text a{
+  text-decoration: underline;
+  color: blue;
+}
