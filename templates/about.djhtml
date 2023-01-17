@@ -9,6 +9,7 @@ About
 
 {% block main_content %} 
     <p class="hero-text-par">
+    <div class="section_header_small">Welcome</div>
         Welcome to the second PostgreSQL Conference happening on {{eventOn.strftime('%d')}}-{{eventTo.strftime('%d %b %Y')}} in Kathmandu University,
         Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference Nepal
         in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference, we had
@@ -34,7 +35,7 @@ About
     </p>
 
 
-    <h3>Organizing committee:</h3>
+    <div class="section_header_small">Organizing committee</div>
     <div style="padding-left: 20px;">
         <ol>
             <li>Dr. Oleg Bartunov - Postgres Professional, Russia</li>
@@ -50,7 +51,7 @@ About
     </div>
 
 
-    <h3>Talks selection committee:</h3>
+    <div class="section_header_small">Talks selection committee</div>
     <div style="padding-left: 20px;">
         <ol>
             <li>Dr. Oleg Bartunov</li>

@@ -991,9 +991,14 @@ background-color: #C5DBEE;
     /* margin-top: 15%; */
   }
   .hero-text-header{
-    /* width: 70%; */
+    width: 100%;
+    /* margin: 0 auto;
+    color: var(--darker-grey) !important; */
     margin: 0 auto;
-    color: var(--darker-grey) !important;
+    color: #000 !important;
+    background: #a7bdcf4a;
+    border-radius: 5px;
+    padding-left: 10px;
   }
 
   .hero-text h1 {
@@ -1341,7 +1346,7 @@ background-color: #C5DBEE;
   }
 
   .footer {
-    background-color: #AFBFC4;
+    background-color: #3367916e;
   }
 
   .about-foot {
@@ -1492,7 +1497,7 @@ background-color: #C5DBEE;
   font-size: 1.25rem;
   background-color: #336791;
   color: #fff;
-  padding: 5px;
+  padding: 5px 10px;
   border-radius: 6px;
   margin-bottom: 5px;
 }
