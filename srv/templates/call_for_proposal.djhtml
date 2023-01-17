@@ -13,7 +13,9 @@
 
     We are now accepting proposals for talks in English.
     Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
-    <br><br>
+    <br>
+    <br>
+    <div class="section_header_small">Conference Topics</div>
     Suggested topic areas include but are not limited to:
     <ul class="ul-list">
         <li>Developing applications for PostgreSQL</li>

@@ -9,8 +9,7 @@
 {% block main_content %}
     <p class="hero-text-par">
         We invite proposals for sponsorships for the event PGCONF Nepal 2023. Benefits and prices of sponsorships are as mentioned below:
-
-        <h3>Platinum Sponsorship </h3>
+        <div class="section_header_small">Platinum Sponsorship</div>
         <b>Benefits:</b>
         <ul class="ul-list hero-text-par">
             <li>Permission for the Business to use the following endorsement: “Platinum Partner of PostgreSQL Conference Nepal 2023” on the Business' website or in any promotional materials or press releases that the Business sees fit.</li>
@@ -27,10 +26,9 @@
         <br>
         <br>
 
-        <hr>
 
 
-        <h3>Gold Sponsorship</h3>
+        <div class="section_header_small">Gold Sponsorship</div>
         <b>Benefits:</b>
         <ul class="ul-list">
             <li>Permission for the Business to use the following endorsement: “Gold Partner of PostgreSQL Conference Nepal 2023” on the Business' website or in any promotional materials or press releases that the Business sees fit.</li>
@@ -47,8 +45,7 @@
         Up to two gold sponsors may be accepted, on a first come, first served basis
         <br><br>
 
-        <hr>
-        <h3>Silver Sponsorship</h3>
+        <div class="section_header_small">Silver Sponsorship</div>
         <b>Benefits:</b>
         <ul class="ul-list">
             <li>Permission for the Business to use the following endorsement: “Silver Partner of PostgreSQL Conference Nepal 2023” on the Business' website or in any promotional materials or press releases that the Business sees fit.</li>
@@ -61,7 +58,7 @@
 
         <hr>
 
-        <h3>Bronze Sponsorship</h3>
+        <div class="section_header_small">Bronze Sponsorship</div>
         <b>Benefits:</b>
         <ul class="ul-list">
             <li>Permission for the Business to use the following endorsement: “Bronze Partner of PostgreSQL Conference Nepal 2023” on the Business' website or in any promotional materials or press releases that the Business sees fit.</li>
