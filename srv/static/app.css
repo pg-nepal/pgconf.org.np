@@ -1511,3 +1511,11 @@ background-color: #C5DBEE;
   text-decoration: underline;
   color: blue;
 }
+
+
+.img-responsive{
+  display:block;
+  width: 100%;
+  max-width:100%;
+  height:auto
+ }
