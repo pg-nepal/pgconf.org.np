@@ -54,7 +54,7 @@
                     </div>
                     <div class="section_text">
                         <a href="/pre_conf">
-                            <img src="/static/images/Intro to PG15-banner.png">
+                            <img src="/static/images/Intro to PG15-banner.png" class="img-responsive">
                         </a>
                         <br>
                         <b>About Training</b><br>
