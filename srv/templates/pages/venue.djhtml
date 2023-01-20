@@ -1,0 +1,76 @@
+{% extends "base_inner.html" %}
+{% block title%}/Venue{% endblock %}
+
+{% block page_title%}
+Venue
+{% endblock %}
+
+{% block main_content %}
+    <p class="hero-text-par">
+        Like previous year, 2023 Conference will be held in 
+        <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a>, Dhulikhel, Nepal.
+        <br>
+        <div class="section_header_small">Kathmandu University</div>
+
+        Dhulikhel is a small town located in the Kavrepalanchok District of Nepal, 
+        about 30 kilometers southeast of Kathmandu. 
+        It is known for its beautiful views of the Himalayan mountain range and its rich cultural heritage. 
+        There are several guesthouses and hotels in Dhulikhel where you can stay, 
+        as well as many places to eat and shop. The town is also a popular starting point for 
+        trekking and hiking in the surrounding hills.
+        <br><br>
+        Kathmandu University (KU) is located in the Dhulikhel area, about 30 kilometers 
+        southeast of Kathmandu city. It is the third oldest university in Nepal and one 
+        of the most prestigious institutions of higher education in the country. 
+        The main campus of the university is located in Dhulikhel and it offers 
+        undergraduate and graduate programs in various disciplines 
+        such as Engineering, Management, Medicine, Science, and Humanities.
+
+
+
+
+        <img src="/static/images/Kathmandu_University.jpg" class="img-responsive">
+        <br><br>
+        <div class="section_header_small">Visa</div>
+        For visa related details please refer <a href="https://www.immigration.gov.np/" target="_blank">Department of Immigration</a> 
+        and <a href="https://tia.immigration.gov.np/page/on-arrival-tourist-visa" target="_blank">Immigration Office, Tribhuvan International Airport</a>.
+
+        <br><br>
+
+        <div class="section_header_small">Travel</div>
+        <b>Airport:</b><br>
+        <a href="" target="_blank">Tribhuwan International Airport</a> is the only international airport 
+        located in Kathmandu.
+        <br>
+
+        <a href="https://www.google.com/maps/dir/Tribhuvan+International+Airport+(KTM),+Ring+Rd,+Kathmandu+44600/Kathmandu+University,+Kathmandu+University,+Dhulikhel/@27.6521762,85.4740708,13z/data=!4m13!4m12!1m5!1m1!1s0x39eb1a266b342bc5:0x73bbfa829a89af1b!2m2!1d85.3592231!2d27.6980899!1m5!1m1!1s0x39eb092082d99e3b:0xe509dafa47685dba!2m2!1d85.5386417!2d27.6195482?hl=en" target="_blank">
+            <img src="/static/images/tia-ku.png" class="img-responsive" />
+        </a>
+        <br>
+        There are several ways to reach Kathmandu University (KU) from Tribhuwan International Airport (TIA) 
+        in Kathmandu.
+        <br><br>
+        <b>By Taxi:</b>
+            Taxis are readily available outside the airport terminal. 
+            You can hire a taxi for the entire journey to KU, 
+            which will take around 1 hour and 30 minutes depending on the traffic. 
+            The fare for the taxi ride will vary depending on the type of vehicle and the time of day.
+        <br><br>
+        <b>By Bus:</b>
+            There are several bus routes that connect TIA to Dhulikhel, 
+            where KU is located. From the airport, you can take a bus to Kathmandu 
+            and then take another bus or a microbus to Dhulikhel. 
+            The journey by bus will take around 2 hours.
+        <br><br>
+        <b>By Private Car:</b>
+            You can also hire a private car to take you directly from the airport to KU. 
+            This option is more convenient and comfortable 
+            but it will be more expensive than taking a taxi or a bus.
+        <br><br>
+        
+        
+    </p>
+
+    {% include "hotels.html" %}
+
+    {% endblock %}

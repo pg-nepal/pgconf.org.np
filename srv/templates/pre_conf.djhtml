@@ -7,7 +7,7 @@ Pre-Conference Training<br>
 {% endblock %}
 
 {% block main_content %}
-    <img src="/static/images/Intro to PG15-banner.png">
+    <img src="/static/images/Intro to PG15-banner.png" class="img-responsive">
     <div class="section_header_small">About Training</div>
     <b>About Training</b><br>
     Date: May 9-10, 2023<br>
