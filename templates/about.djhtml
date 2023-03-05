@@ -32,6 +32,11 @@ About
         the like to discuss technical, non-technical, social and other issues on PostgreSQL thus helping to build a
         strong PostgreSQL community in Nepal which will not only be capable to solve the local technical
         problems locally but provide an international platform to the community members.
+
+        <br>
+        <br>
+        Please check our <a href="/code_of_conduct">Code of conduct</a>.
+
     </p>
 
 
@@ -60,5 +65,17 @@ About
             <li>Hempal Shrestha</li>
             <li>Rupak Raj Ghimire</li>
         </ol>
+    </div>
+
+    <div class="section_header_small">Financial Disclosure</div>
+    <div>
+        Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal.
+        It is hereby stipulated that the expenses associated with the conference shall be 
+        covered by our sponsors, and any surplus funds shall be allocated towards 
+        financing another conference.
+        <br>
+        The financial statement shall be included into the 
+        conference completion report and the report 
+        will be shared to all the sponsors.
     </div>
 {% endblock %}

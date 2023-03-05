@@ -1,0 +1,21 @@
+{% extends "base_inner.html" %}
+{% block title%}/Code of Conduct{% endblock %}
+
+{% block page_title%}
+Code of Conduct<br>
+<!-- <small>talks and workshop sessions</small> -->
+{% endblock %}
+
+{% block main_content %} 
+    <p class="hero-text-par">
+
+The conference (pgConf Nepal) is dedicated to providing a harassment-free experience for everyone.
+<br>
+We do not tolerate harassment of all participants in any form. Participants violating these rules may be sanctioned or expelled from the conference without a refund at the discretion of the conference organizers.Harassment includes offensive verbal comments related to gender, sexual orientation, disability, physical appearance, body size, race, religion. Participants asked to stop any harassing behavior are expected to comply immediately.
+<br><br>
+If a participant engages in harassing behavior, the conference organizers may take any action they deem appropriate, including ejection from the conference with no refund. If you feel that you are being harassed, notice that someone else is being harassed, or have any other concerns, please contact a Organizing Committee immediately.
+<br><br>
+This conference is a public, technical and non-profit conference. During this conference, any public keynote and any presentation expressing one's political opinions or views with connection to the conference itself are strictly discouraged.
+    </p>
+
+{% endblock %}
