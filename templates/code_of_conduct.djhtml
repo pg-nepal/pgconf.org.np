@@ -8,8 +8,12 @@ Code of Conduct<br>
 
 {% block main_content %} 
     <p class="hero-text-par">
+    The PostgreSQL code of conduct has been adopted by the Conference (PgConf Nepal).
+    <br>
+    <br>
+    Learn more about <a href="https://www.postgresql.org/about/policies/coc/" target="_blank"> PostgreSQL Code of Conduct</a>
 
-The conference (pgConf Nepal) is dedicated to providing a harassment-free experience for everyone.
+{# The conference (pgConf Nepal) is dedicated to providing a harassment-free experience for everyone.
 <br>
 We do not tolerate harassment of all participants in any form. Participants violating these rules may be sanctioned or expelled from the conference without a refund at the discretion of the conference organizers.Harassment includes offensive verbal comments related to gender, sexual orientation, disability, physical appearance, body size, race, religion. Participants asked to stop any harassing behavior are expected to comply immediately.
 <br><br>
@@ -17,5 +21,6 @@ If a participant engages in harassing behavior, the conference organizers may ta
 <br><br>
 This conference is a public, technical and non-profit conference. During this conference, any public keynote and any presentation expressing one's political opinions or views with connection to the conference itself are strictly discouraged.
     </p>
+#}
 
 {% endblock %}
