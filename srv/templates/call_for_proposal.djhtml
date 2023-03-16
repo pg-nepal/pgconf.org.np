@@ -41,10 +41,12 @@
     <br>
     <br>
     <div class="section_header_small"> Submit proposal</div>
-        Please submit the talk proposal using  <a href="https://conference.pgconf.org.np/conf-2023/cfp" class="button3" target="_blank">Submit a proposal</a>.
-        <br>
-        <br>
+    Please submit the talk proposal using  <a href="https://conference.pgconf.org.np/conf-2023/cfp" class="button3" target="_blank">Submit a proposal</a>.
+    <br>
+    <br>
 
-        For any problem please write us to : info@pgconf.org.np
-
+    For any problem please write us to : info@pgconf.org.np
+    <br>
+    <br>
+    {% include 'keydates.html' %}
 {% endblock %}
