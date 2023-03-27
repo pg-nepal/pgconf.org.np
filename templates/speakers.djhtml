@@ -8,17 +8,28 @@ Speakers<br>
 
 {% block main_content %}
 
-    <h3>Keynotes</h3>
+    <div class="section_header_small">Keynotes</div>
+    {# {keynotes} #}
+    {% for talk in keynotes %}
+        <div class="each-speaker">
+            <div class="speaker-img">
+                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
+            </div>
+            <div class="speaker-text">
+                <h3>{{talk.title}}</h3>
+                <span class="italic">{{talk.speaker}}</span>
+                <div class="underline-small"></div>
+                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
+            </div>
+        </div>
+    {% endfor %}
+
+
+    <div class="section_header_small">Talks</div>
     <p class="hero-text-par">
         List will be published soon.
     </p>
-
-    <h3>Talks</h3>
-    <p class="hero-text-par">
-        List will be published soon.
-    </p>
-
-    <h3>Workshops</h3>
+    <div class="section_header_small">Workshop</div>
     <p class="hero-text-par">
         List will be published soon.
     </p>
