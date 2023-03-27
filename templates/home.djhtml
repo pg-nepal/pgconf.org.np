@@ -72,6 +72,10 @@
                     <div class="section_header_small">Contact Organizers</div>
                         Reachout to the organizers using email : info@pgconf.org.np <br><br>
                     {% include 'keydates.html' %}
+                    <br>
+                    <br>
+
+                    {% include 'sponsor_list.html' %}
                 </div>
                 <div class="grid-item right-menu">
                     {% include 'right_menubar_home.html' %}
