@@ -1,0 +1,30 @@
+{% extends "base_inner.html" %}
+{% block title%}/Speakers{% endblock %}
+
+{% block page_title%}
+Speakers<br>
+<small>talks and workshop sessions</small>
+{% endblock %}
+
+{% block main_content %}
+
+<div class="section_header_small">{{talk.type }} by {{talk.speaker}}</div> 
+    <div class="each-speaker">
+        <div class="speaker-img">
+            <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
+        </div>
+        <div class="speaker-text">
+            <h3>{{talk.title}}</h3>
+            <span class="italic">{{talk.speaker}}</span>
+            <div class="underline-small"></div>
+
+            <b>Abstract: </b><br>
+            <p class="speaker-text-p">{{talk.abstract}}</p>
+            <br>
+            <br>
+            <b>About Speaker: </b><br>
+            <p class="speaker-text-p">{{talk.long_bio}}</p>
+        </div>
+    </div> 
+
+{% endblock %}
