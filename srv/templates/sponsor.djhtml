@@ -7,6 +7,13 @@
 {% endblock %}
 
 {% block main_content %}
+
+{% include 'sponsor_list.html' %}
+<br>
+<br>
+<br>
+<div class="section_header">Support Event</div>
+
     <p class="hero-text-par">
         We invite proposals for sponsorships for the event PGCONF Nepal 2023. Benefits and prices of sponsorships are as mentioned below:
         <div class="section_header_small">Platinum Sponsorship</div>
