@@ -76,7 +76,24 @@
                     <br>
 
                     {% include 'sponsor_list.html' %}
-                </div>
+
+
+                    <div class="section_header">Hospitality Partner</div> 
+                        <center> 
+                            <a href="https://www.himalayadrishyaresort.com/" target = "_blank">
+                                <img src="/static/hospitality_drisya.jpg" width="150" />
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#" target = "_blank">
+                                <img src="/static/hospitality_princess.jpg" width="150" />
+                            </a>
+                            &nbsp;&nbsp;&nbsp;
+                            <a href="#" target = "_blank">
+                                <img src="/static/hospitality_echo.jpg" width="150" />
+                            </a>
+                        </center> 
+                    </div>
+
                 <div class="grid-item right-menu">
                     {% include 'right_menubar_home.html' %}
                     
