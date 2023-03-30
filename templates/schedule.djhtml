@@ -8,8 +8,14 @@
 
 {% block main_content %}
 
-<p class="hero-text-par">
-     Schedule will be published soon.
-</p>
+    <div class="section_header_small">Training Schedule</div>
+     <p class="hero-text-par">
+          <a href="/static/EventDay-Planning - Training.pdf" target="_blank">
+               <img src="/static/event-training.png" width="800" />
+          </a>
+     </p>
+
+     <div class="section_header_small">Conference Schedule</div>
+     <h3>will be published soon</h3>
 
 {% endblock %}
