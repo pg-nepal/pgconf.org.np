@@ -71,4 +71,6 @@ Venue
         
     </p>
 
+    {% include "hotels.html" %}
+
     {% endblock %}
