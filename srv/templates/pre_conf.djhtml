@@ -71,5 +71,34 @@ Pre-Conference Training<br>
     </pre>
 
     <div class="section_header_small">Registration</div>
-    
+    <h3>Registration is now open !!! </h3>
+
+
+<b>Training cost</b><br>
+    Regular: NRs 10,000.00 (NRs. Ten Thousands only)
+<br>
+<br>
+Discount: Students can apply for the student discount as well. 
+There will be NRs 2000 waive on the registration charge for the student (limited seats are available).
+<br>
+<br>
+
+<b>The cost includes</b>
+<ul class="ul-list hero-text-par">
+    <li>2 Days PostgreSQL training session by an industry expert</li>
+    <li>Travel from Kathmandu pick up point to training venue</li>
+    <li>Light Breakfast, Lunch, Tea, Coffee and Water</li>
+    <li>Training Kit</li>
+    <li>Hands on notes and training materials</li>
+    <li>T-shirt with PostgreSQL logo etc.</li>
+</ul>
+
+<b>Note: The bank account details for the payment will be shared separately on the email provided by participant.</b>
+<br>
+<br>
+Fill the registation forms : 
+<a href="https://forms.gle/SRG7JNkp9aWBnFPJ7" class="button3" target="_blank">
+    Register for Training
+</a> 
+
 {% endblock %}
