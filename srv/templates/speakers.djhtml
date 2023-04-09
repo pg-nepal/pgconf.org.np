@@ -26,12 +26,33 @@ Speakers<br>
 
 
     <div class="section_header_small">Talks</div>
-    <p class="hero-text-par">
-        List will be published soon.
-    </p>
+    {% for talk in talks %}
+        <div class="each-speaker">
+            <div class="speaker-img">
+                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
+            </div>
+            <div class="speaker-text">
+                <h3>{{talk.title}}</h3>
+                <span class="italic">{{talk.speaker}}</span>
+                <div class="underline-small"></div>
+                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
+            </div>
+        </div>
+        {% endfor %} 
     <div class="section_header_small">Workshop</div>
-    <p class="hero-text-par">
-        List will be published soon.
-    </p>
+
+    {% for talk in workshops %}
+        <div class="each-speaker">
+            <div class="speaker-img">
+                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
+            </div>
+            <div class="speaker-text">
+                <h3>{{talk.title}}</h3>
+                <span class="italic">{{talk.speaker}}</span>
+                <div class="underline-small"></div>
+                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
+            </div>
+        </div>
+    {% endfor %} 
 
 {% endblock %}
