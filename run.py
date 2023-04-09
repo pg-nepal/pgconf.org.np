@@ -50,7 +50,7 @@ def render_speaker_page_slug(slug):
     for talk in talks_list:
         if talk['slug'] != slug: continue
         selected_talk = talk
-
+    print(selected_talk)
     return flask.render_template(
         'speakers_indivisual.djhtml', 
         talk     = selected_talk
@@ -58,4 +58,4 @@ def render_speaker_page_slug(slug):
 
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(host="0.0.0.0",port=5000, debug = True)
