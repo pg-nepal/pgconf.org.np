@@ -243,6 +243,45 @@ talks = [
                             data when needed at same reaping the benefits of relational data storage.
                         """
     },
+    {
+        'type'    : 'Talk',
+        'slug'    : 'sandip',
+        'image'   : 'sandip.jpg',
+        'speaker' : 'Sandip Basnet',
+        'title'   : 'Database in a Microservice with PostgreSQL',
+        'long_bio'  : """
+                           Sandip is a dedicated software engineer who has spent the last 5 years designing 
+                           and building scalable and robust backend solutions. His expertise in JavaScript ecosystem,  
+                           combined with his knowledge of databases, makes him a versatile backend developer 
+                           who is comfortable working with a range of technologies. He believes in identifying issues 
+                           and finding creative solutions that deliver tangible results.
+                            <br>
+                            Beyond his work as a backend developer, Sandip has a passion for exploring the outdoors. 
+                            He enjoys traveling to the mountains and going on bike rides to explore the beautiful 
+                            scenery around him. His love for adventure and exploring new places has taught him valuable 
+                            skills such as adaptability, problem-solving, and teamwork.
+ 
+                        """,
+        'abstract'  : """
+                            
+                            Microservices architecture has gained significant popularity in recent years for its ability to 
+                            break down software into smaller, more manageable components. In the database realm, microservices 
+                            offer several advantages, including the ability to scale and manage data more efficiently 
+                            and to reduce downtime during upgrades and maintenance.
+                            <br>
+                            On the talk we'll discuss on  the overview of microservices architecture and 
+                            its benefits in the context of database management , 
+                            Practices for designing and implementing a microservices-based database architecture such as
+                            multi-schema databases, shared-nothing architectures, and event-driven architectures etc.
+                            <br><br>
+                            The talk will help  the developers, architects, and database administrators who are interested in exploring 
+                            new approaches to database management in a microservices environment using PostgreSQL.
+                            <br>
+                            The session will provide practical guidance and real-world examples for implementing 
+                            a microservices-based database architecture, as well as opportunities for discussion and questions from the audience.
+
+                        """
+    },
      {
         'type'    : 'Talk',
         'slug'    : 'krishna_talk',
@@ -314,8 +353,8 @@ talks = [
                     """
     },
     {
-        'type'    : 'Keynote',
-        'slug'    : 'keynote_1',
+        'type'    : 'Talk',
+        'slug'    : 'talk_oleg',
         'image'   : 'oleg.jpg',
         'speaker' : 'Oleg Bartunov',
         'title'   : 'SQL/JSON in PostgreSQL 16',
