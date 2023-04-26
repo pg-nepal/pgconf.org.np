@@ -1545,3 +1545,20 @@ a.button3:hover{
         margin:0.2em auto;
     }
 } 
+
+
+.highlight_text{
+  padding:0.3em 1.2em;
+  margin:0 0.3em 0.3em 0;
+  /* border-radius:0.5em; */
+  box-sizing: border-box;
+  font-family:'Roboto',sans-serif;
+  font-weight:500;
+  font-size: large;
+  color:#102a42;
+  /* background-color:rgb(71, 78, 3); */
+  border-bottom: 1px solid #102a42;
+  text-align:center;
+  transition: all 0.2s;
+  width: 300px;
+}
