@@ -49,9 +49,15 @@
             <div class="grid-container">
                 <div class="grid-item left-part">
 
-                    <div class="section_header">
-                        Pre-Conference Workshop
+
+                    <div class="section_header">Register</div>
+                    <div class="section_text">
+                         <video width="950" controls>
+                            <source src="static/pgconfnepal.2023.hd-final.mp4"  type="video/mp4">
+                            Pgconf video
+                        </video> 
                     </div>
+                    <div class="section_header">Pre-Conference Workshop</div>
                     <div class="section_text">
                         <a href="/pre_conf">
                             <img src="/static/images/Intro to PG15-banner.png" class="img-responsive">

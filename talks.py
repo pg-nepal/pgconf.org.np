@@ -372,6 +372,39 @@ talks = [
                             on the new features that have been recently adopted.
                         """
     },
+    {
+        'type'    : 'Talk',
+        'slug'    : 'talk_lexander',
+        'image'   : 'alexander.jpg',
+        'speaker' : 'Alexander Burtsev',
+        'title'   : 'PostgreSQL backup overview for DBA and programmers',
+        'long_bio'  : """
+                            Alexander works as Lead Technical Product Manager of backup systems, compression and cryptography algorithms at Postgres Professional.
+                            <br>
+                            My career started as a system programmer in C/C++ and QA-automation in 2006. 
+                            He has designed and implemented architecture of a famous sports and economics news media in Russia. Also, He developed and launched more 10 startups in advertising, finance, ecommerce and blockchain fields.
+                            <br>
+                            Speaking about Postgres Pro, he prefer to dive deeper into backup and disaster recovery of DBMS. He manages pg_probackup community and maintain Testgres - the project for simplifying automation DBA scenarios using Python.
+                        """,
+        'abstract'  : """
+                            
+                            How to start career as an DBMS developer and understand issues of backup tools with real examples from every day routine of our development team. 
+                            <br><br>
+                            <b>Talk will focus on following: </b><br>
+                            Why backups are important?<br>
+                            Why replica is not backup? <br>
+                            Recognize use-cases  for logical and physical replications <br>
+                            The cost of lost data <br>
+                            Developing a simple QA script for automatization DBA routine<br>
+                            Backups approaches, incremental copies to speed up your backups<br>
+                            Backup round-trip: compression and concurrency  <br>
+                            Where DBMS developer career starts if you like security and accuracy<br>
+                            How different backup tools resolve trilemma: backup, speed up backup round-trip, restore faster and accurate <br>
+                            Where is the simplest path to start contributing in Open Source?<br>
+                            Where the magic never ends for programmers.<br>
+                        """
+    },
+
 
     # {
     #     'type'    : 'talk',
