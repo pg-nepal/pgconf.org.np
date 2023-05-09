@@ -16,6 +16,14 @@
      </p>
 
      <div class="section_header_small">Conference Schedule</div>
-     <h3>will be published soon</h3>
+     <h4> Check the schedule </h4>
+     <p class="hero-text-par">
+          <a href="/static/PostgreSQL_Conference_Nepal_2023_Schedule.pdf" target="_blank">
+               PostgreSQL_Conference_Nepal_2023_Schedule.pdf
+          </a>
+     </p>
+
+
+     
 
 {% endblock %}
