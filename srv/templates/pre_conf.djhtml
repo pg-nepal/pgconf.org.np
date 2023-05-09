@@ -96,9 +96,14 @@ There will be NRs 2000 waive on the registration charge for the student (limited
 <b>Note: The bank account details for the payment will be shared separately on the email provided by participant.</b>
 <br>
 <br>
-Fill the registation forms : 
+Fill the registation form :  <s>CLOSED</s> &nbsp;&nbsp;&nbsp; For any information call Rupak Raj Ghimire: +977 9841046796.
+<br>
+<br>
+
+{#
 <a href="https://forms.gle/SRG7JNkp9aWBnFPJ7" class="button3" target="_blank">
     Register for Training
 </a> 
+#}
 
 {% endblock %}
