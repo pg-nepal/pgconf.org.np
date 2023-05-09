@@ -48,6 +48,14 @@
         <div class="hero-text"> 
             <div class="grid-container">
                 <div class="grid-item left-part">
+                    <div class="section_header">Main Conference Schedule</div>
+                    <div class="section_text">
+                        <center>
+                            <a href="/static/PostgreSQL_Conference_Nepal_2023_Schedule.pdf" target="_blank">
+                                <img src="/static/pg-conf-schedule.png" height="400" />
+                            </a>
+                        </center>
+                    </div>
 
 
                     <div class="section_header">Register</div>
