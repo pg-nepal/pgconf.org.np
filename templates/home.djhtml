@@ -24,23 +24,25 @@
                     <h3>@ Kathmandu University, Dhulikhel, Nepal</h3>
                 </div>
 
-                <table class="date-con">
-                    <tr>
-                        <td id="date-con-title" colspan="4">Countdown to your event</td>
-                    </tr>
-                    <tr>
-                        <td>Days</td>
-                        <td>Hours</td>
-                        <td>Minutes</td>
-                        <td>Seconds</td>
-                    </tr>
-                    <tr>
-                        <td id="days">115</td>
-                        <td id="hours">13</td>
-                        <td id="minutes">2</td>
-                        <td id="seconds">42</td>
-                    </tr>
-                </table>
+                {#
+                    <table class="date-con">
+                        <tr>
+                            <td id="date-con-title" colspan="4">Countdown to your event</td>
+                        </tr>
+                        <tr>
+                            <td>Days</td>
+                            <td>Hours</td>
+                            <td>Minutes</td>
+                            <td>Seconds</td>
+                        </tr>
+                        <tr>
+                            <td id="days">115</td>
+                            <td id="hours">13</td>
+                            <td id="minutes">2</td>
+                            <td id="seconds">42</td>
+                        </tr>
+                    </table>
+                #}
             </div>
         </div>
     </div>
@@ -48,6 +50,13 @@
         <div class="hero-text"> 
             <div class="grid-container">
                 <div class="grid-item left-part">
+                    <div class="section_header">Conference Conclusion</div>
+                    <div class="section_text">
+                        <center> 
+                            <img src="/static/main_conference.jpg" height="550" />
+                            <img src="/static/training3.jpeg" height="550" />
+                        </center>
+                    </div>
                     <div class="section_header">Main Conference Schedule</div>
                     <div class="section_text">
                         <center>
@@ -72,7 +81,7 @@
                         </a>
                         <br>
                         <b>About Training</b><br>
-                        Date: May 9-10, 2023<br>
+                        Date: <s>May 9-10, 2023</s><br>
                         Venue: Kathmandu University, Dhulikhel, Kathmandu<br>
                         Training Lead: Egor Rogov<br>
                         <br>
@@ -84,21 +93,17 @@
                     <br>
 
                     <div class="section_header_small">Contact Organizers</div>
-                        Reachout to the organizers using email : info@pgconf.org.np <br><br>
+                    Reachout to the organizers using email : info@pgconf.org.np <br><br>
                     {% include 'keydates.html' %}
                     <br>
                     <br>
 
                     {% include 'sponsor_list.html' %}
-
-
                     {% include "hotels.html" %}
 
                 </div>
                 <div class="grid-item right-menu">
                     {% include 'right_menubar_home.html' %}
-                    
-                    
                 </div>
             </div>
         </div>
