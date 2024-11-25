@@ -1,207 +1,210 @@
+/* Global Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-  header{
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0px;
-    background-color: #fff;
-    z-index: 100;
-  }
-  .top-header{
-      width: 80%;
-      padding: 10px 150px;
-      max-width: 1440px;
-  }
-  .logoo{
-      width: 80%;
-  }
-   .top-header .logoo {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    gap: 0.5rem;
+body {
+  font-family: 'Arial', sans-serif;
+  color: #333;
+  background-color: #f4f4f4;
+}
 
-    padding: 0;
-    background: transparent;
-    cursor: pointer;
-  }
+/* Header Styles */
+header {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add subtle shadow */
+}
 
-  .logo-img {
-    height: 2.5rem;
-    width: 8rem;
-    padding-left: 0.5rem;
-  }
+.top-header {
+  width: 80%;
+  padding: 20px 50px;
+  max-width: 1440px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+}
 
-  .logoo span {
-    font-size: 1.2rem;
-    font-weight: 600;
-  }
+.logoo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.logo-img {
+  height: 2.5rem;
+  width: auto;
+  padding-left: 0.5rem;
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+  transform: scale(1.1); /* Hover effect to enlarge logo */
+}
+
+.logoo span {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #484b4e;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+.logoo span:hover {
+  color: #1f5371; /* Darker shade on hover */
+}
+
+/* Navbar Styles */
+.navbar-area {
+  background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
+  padding: 3px 0;
+}
+
+.site-navbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
+  border-radius: 5px;
+  margin-bottom: 5px;
+}
+
+.site-navbar ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.site-navbar ul li {
+  padding: 0 15px;
+}
+
+.site-navbar ul li a {
+  color: #fff;
+  padding: 10px;
+  display: block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  transition: all 0.3s ease;
+}
+
+.site-navbar ul li a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05); /* Smooth scale effect on hover */
+}
+
+/* Navbar Toggler for Mobile */
+.nav-toggler {
+  border: 3px solid #fff;
+  padding: 5px;
+  background-color: transparent;
+  cursor: pointer;
+  height: 39px;
+  display: none;
+}
+
+.nav-toggler span,
+.nav-toggler span:before,
+.nav-toggler span:after {
+  width: 28px;
+  height: 3px;
+  background-color: #fff;
+  display: block;
+  transition: .3s;
+}
+
+.nav-toggler span:before {
+  content: '';
+  transform: translateY(-9px);
+}
+
+.nav-toggler span:after {
+  content: '';
+  transform: translateY(6px);
+}
+
+.nav-toggler.toggler-open span {
+  background-color: transparent;
+}
+
+.nav-toggler.toggler-open span:before {
+  transform: translateY(0px) rotate(45deg);
+}
+
+.nav-toggler.toggler-open span:after {
+  transform: translateY(-3px) rotate(-45deg);
+}
+
+.container{
+  height: 40px;
+}
+
+/* Mobile Styles */
+@media screen and (max-width: 1100px) {
   .container {
-    width: 80%;
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 15px;
+    max-width: 720px;
+    width: 100%;
   }
-  .header-area {
-    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.5));
-    background-position: center center;
-    background-size: cover;
-  }
-  /* default css end */
 
-  /* navbar regular css start */
-  .navbar-area {
-    background: #fff;
-
+  /* Navbar for mobile */
+  .nav-toggler {
+    display: block;
   }
 
   .site-navbar {
+    min-height: 60px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    background-color: #3367916e;
-    border-radius: 10px;
-    margin-bottom: 5px;
-
-  }
-  a.site-logo {
-    font-size: 26px;
-    font-weight: 800;
-    text-transform: uppercase;
-    color: #fff;
-    text-decoration: none;
-  }
-  .site-navbar ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    justify-content: space-around;
-
-
-  }
-  .site-navbar ul li{
-    padding: 0px 5px;
-  }
-  .site-navbar ul li a {
-    color: #000;
-    padding: 10px;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-  }
-  .site-navbar ul li a:hover {
-    background: rgba(255,255,255,.1);
-  }
-  /* navbar regular css end */
-
-
-  /* nav-toggler css start */
-  .nav-toggler {
-    border: 3px solid #fff;
-    padding: 5px;
-    background-color: transparent;
-    cursor: pointer;
-    height: 39px;
-    display: none;
-  }
-  .nav-toggler span,
-  .nav-toggler span:before,
-  .nav-toggler span:after {
-    width: 28px;
-    height: 3px;
     background-color: #336791;
-    display: block;
+    border-radius: 0;
+    margin-bottom: 0;
+  }
+
+  .site-navbar ul {
+    position: absolute;
+    width: 100%;
+    height: calc(100vh - 60px);
+    left: 0;
+    top: 60px;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.75);
+    max-height: 0;
+    overflow: hidden;
     transition: .3s;
   }
-  .nav-toggler span:before {
-    content: '';
-    transform: translateY(-9px);
+
+  .site-navbar ul li {
+    width: 100%;
+    text-align: center;
   }
-  .nav-toggler span:after {
-    content: '';
-    transform: translateY(6px);
+
+  .site-navbar ul li a {
+    color: #fff;
+    padding: 15px;
   }
-  .nav-toggler.toggler-open span {
-    background-color: transparent;
+
+  .site-navbar ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
   }
-  .nav-toggler.toggler-open span:before {
-    transform: translateY(0px) rotate(45deg);
+
+  .site-navbar ul.open {
+    max-height: 100vh;
+    overflow: visible;
   }
-  .nav-toggler.toggler-open span:after {
-    transform: translateY(-3px) rotate(-45deg);
-  }
-  /* nav-toggler css start */
-
-
-  /* intro-area css start */
-  /* mobile breakpoint start */
-  @media screen and (max-width: 767px) {
-
-    .container {
-      max-width: 720px;
-      width: 100%;
-    }
-    /* navbar css for mobile start */
-    .nav-toggler{
-      display: block;
-    }
-
-    .site-navbar {
-        min-height: 60px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #fff;
-        border-radius: 0px;
-        margin-bottom: none;
-
-      }
-    .site-navbar ul {
-      position: absolute;
-      width: 100%;
-      height: calc(100vh - 60px);
-      left: 0;
-      top: 60px;
-      flex-direction: column;
-      align-items: center;
-
-      background-color: rgba(0,0,0,.75);
-      max-height: 0;
-      overflow: hidden;
-      transition: .3s;
-    }
-    .site-navbar ul li {
-      width: 100%;
-      text-align: center;
-    }
-    .site-navbar ul li a {
-
-      color: #fff;
-    }
-    .site-navbar ul li a:hover {
-      background-color: rgba(255,255,255,.1);
-    }
-    .site-navbar ul.open {
-      max-height: 100vh;
-      overflow: visible;
-    }
-  }
-  @media screen and (max-width: 467px) {
-      .top-header {
-        width: 80%;
-        padding: 0px 80px;
-        margin-top: 5px;
-        max-width: 1440px;
-      }
-      .logo-img {
-        height: 2.5rem;
-        width: 8rem;
-        padding-left: 0rem;
-      }
-
-      .logoo span {
-        font-size: 1.2rem;
-        font-weight: 600;
-      }
-    }
+}
