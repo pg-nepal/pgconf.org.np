@@ -1,109 +1,132 @@
 {% extends "base_inner.html" %}
 {% block title%}/Pre-Conference Training{% endblock %}
 
-{% block page_title%}
-Pre-Conference Training<br>
-<small>getting started with PostgreSQL 15</small>
-{% endblock %}
-
 {% block main_content %}
-    <img src="/static/images/Intro to PG15-banner.png" class="img-responsive">
-    <div class="section_header_small">About Training</div>
-    <b>About Training</b><br>
-    Date: May 9-10, 2023<br>
-    Venue: Kathmandu University, Dhulikhel, Kathmandu<br>
-    Training Lead: Egor Rogov<br><br>
 
-    <div class="section_header_small">About Training Leads</div>
-    The training is led by Egor Rogov, the author of “PostgreSQL Internals” book 
-    and co-author of “Postgres: The First Experience” booklet.
-    Egor graduated from Computer Science Faculty of Lomonosov Moscow State University 
-    and has more than 15 years of Database Management Systems experience as an application 
-    developer and project manager. Since 2015 Egor works on 
-    educational programs in Postgres Professional company.
-    <br><br> 
-    
-    <div class="section_header_small">Training Contents</div>
-    Pre-conference event is an introductory training course. 
-    It is aimed at novice DBAs (but also should be helpful for application 
-    developers to better understand what's going on at the database side). 
-    <br><br>
-    Prerequisites for the course are basic understanding of SQL 
-    (nothing fancier than two-table joins) and some acquaintance with Linux 
-    (basic command like ls/cd/sudo).
-    <br><br>
-    The course covers basics of PostgreSQL architecture 
-    (things like MVCC, vacuum, buffer cache, WAL), 
-    installation and managing the server, using psql, 
-    data organization from both logical and physical points of view, 
-    and an overview of access control, backups, and replication.
-    <br><br>
-    The course is organized in several lessons. 
-    Each lesson consists of 20..60 mins of theory followed by 20..30 mins of practical assignment. 
-    <br>
-    For practical exercises students should use laptops with the course virtual machine installed. 
-    <br>
-    Minimum requirements: 64-bit host operating system and 1GB of spare operating memory for the VM.
+<link rel="stylesheet" href="/static/css//pre_conf.css">
+<div class="content-container">
+    <div class="about-training">
+        <h1>Pre-Conference Training</h1>
+        <p>getting started with PostgreSQL 15</p>
+        <img src="/static/images/Intro to PG15-banner.png" class="img-responsive">
 
-    <br><br>
-    <div class="section_header_small">Agenda</div>
-    <pre>
-    Day 1
-        Basic Toolkit
-            01. Overview: Installation and Management, psql
-        Architecture
-            02. General Overview
-            03. Isolation and Multiversion Concurrency Control
-            04. Vacuum
-            05. Buffer Cache and Logging
-        Data Organization
-            06. Logical Layout
-    Day 2
-        Data Organization (continued)
-            06. Physical Layout
-        Administration Tasks
-            07. Monitoring
-        Access Control
-            09. Access Control Overview
-        Backup and Replication
-            10. Backup and Restore Overview
-            11. Replication Overview
-    </pre>
+        <h1>About Training</h1>
+        <div class="highlight">
+            <p>Date: May 9-10, 2025</p>
+            <p>Venue: Kathmandu University, Dhulikhel, Kathmandu</p>
+            <p>Training Lead: Egor Rogov</p>
+        </div>
+    </div>
 
-    <div class="section_header_small">Registration</div>
-    <h3>Registration is now open !!! </h3>
+    <div class="about-training-leads">
+        <h1>About Training Leads</h1>
+        <p>
+            The training is led by Egor Rogov, the author of “PostgreSQL Internals” book and co-author of 
+            “Postgres: The First Experience” booklet. Egor graduated from Computer Science Faculty of Lomonosov 
+            Moscow State University and has more than 15 years of Database Management Systems experience as an 
+            application developer and project manager. Since 2015 Egor works on educational programs in Postgres 
+            Professional company.
+        </p>
+    </div>
 
+    <div class="training-contents">
+        <p>
+            Pre-conference event is an introductory training course. It is aimed at novice DBAs (but also should 
+            be helpful for application developers to better understand what's going on at the database side). 
+        </p>
+        <p>
+            Prerequisites for the course are basic understanding of SQL (nothing fancier than two-table joins) and 
+            some acquaintance with Linux (basic command like ls/cd/sudo). 
+        </p>
+        <p>
+            The course covers basics of PostgreSQL architecture (things like MVCC, vacuum, buffer cache, WAL), 
+            installation and managing the server, using psql, data organization from both logical and physical points 
+            of view, and an overview of access control, backups, and replication.
+        </p>
+        <p>
+            For practical exercises students should use laptops with the course virtual machine installed.
+            Minimum requirements: 64-bit host operating system and 1GB of spare operating memory for the VM.
+        </p>
+    </div>
 
-<b>Training cost</b><br>
-    Regular: NRs 10,000.00 (NRs. Ten Thousands only)
-<br>
-<br>
-Discount: Students can apply for the student discount as well. 
-There will be NRs 2000 waive on the registration charge for the student (limited seats are available).
-<br>
-<br>
+    <div class="agenda">
+        <h1>Agenda</h1>
+        <div class="box">
+        <h4>Day 1</h4>
+        <p>Basic Toolkit</p>
+        <ol>
+            <li><p>Overview: Installation and Management, psql</p></li>
+        </ol>
+        <p>Architecture</p>
+        <ol>
+            <li><p>General Overview</p></li>
+            <li><p>Isolation and Multiversion Concurrency Control</p></li>
+            <li><p>Vacuum</p></li>
+            <li><p>Buffer Cache and Logging</p></li>
+        </ol>
+        <p>Data Organization</p>
+        <ol>
+            <li><p>Logical Layout</p></li>
+        </ol>
 
-<b>The cost includes</b>
-<ul class="ul-list hero-text-par">
-    <li>2 Days PostgreSQL training session by an industry expert</li>
-    <li>Travel from Kathmandu pick up point to training venue</li>
-    <li>Light Breakfast, Lunch, Tea, Coffee and Water</li>
-    <li>Training Kit</li>
-    <li>Hands on notes and training materials</li>
-    <li>T-shirt with PostgreSQL logo etc.</li>
-</ul>
+        <h4>Day 2</h4>
+        <h5>Data Organization (continued)</h5>
+        <ol>
+            <li><p>Physical Layout</p></li>
+        </ol>
+        <h5>Administration Tasks</h5>
+        <ol>
+            <li>
+                <p>Monitoring</p>
+            </li>
+        </ol>
+        <h5>Access Control</h5>
+        <ol>
+            <li>
+                <p>
+                Access Control Overview
+            </p>
+        </li>
+        </ol>
+        <h5>Access Control Overview</h5>
+        <ol>
+            <li>
+                <p>
+                    Backup and Restore Overview
+                </p>
+                </li>
+            <li>
+                <p>
+                    Replication Overview
+                </p></li>
+        </ol>
+    </div>
+</div>
 
-<b>Note: The bank account details for the payment will be shared separately on the email provided by participant.</b>
-<br>
-<br>
-Fill the registation form :  <s>CLOSED</s> &nbsp;&nbsp;&nbsp;
-<br>
-<br>
+    <div class="registration">
+        <h1>Registration</h1>
+        <div class="box">
+        <h3>Registration is now open !!!</h3>
 
-{#
-    <a href="https://forms.gle/SRG7JNkp9aWBnFPJ7" class="button3" target="_blank">
-        Register for Training
-    </a> 
-#}
+        <h4>Training cost</h4>
+        <p>Regular: NRs 10,000.00 (NRs. Ten Thousands only)</p>
+
+        <p>Discount: Students can apply for the student discount as well. There will be NRs 2000 waive on the 
+            registration charge for the student (limited seats are available).</p>
+
+        <h4>The cost includes</h4>
+        <ol>
+            <li><p>2 Days PostgreSQL training session by an industry expert</p></li>
+            <li><p>Travel from Kathmandu pick up point to training venue</p></li>
+            <li><p>Light Breakfast, Lunch, Tea, Coffee and Water</p></li>
+            <li><p>Training Kit</p></li>
+            <li><p>Hands on notes and training materials</p></li>
+            <li><p>T-shirt with PostgreSQL logo etc.</p></li>
+        </ol>
+
+        <h4>Note: The bank account details for the payment will be shared separately on the email provided by participant.</h4>
+    </div>
+    </div>
+</div>
 
 {% endblock %}
