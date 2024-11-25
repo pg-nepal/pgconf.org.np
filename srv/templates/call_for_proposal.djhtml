@@ -1,52 +1,51 @@
 {% extends 'base_inner.html' %}
 {% block title%}/Call for Proposals{% endblock %}
 
-{% block page_title%}
-    Call for Proposals <br>
-    <small>Talks and Workshop sessions</small>
-{% endblock %}
-
 {% block main_content %}
 
-    PostgreSQL Conference Nepal 2023 will be held on {{eventOn.strftime('%b %d')}}-{{eventTo.strftime('%d')}} in Kathmandu University,
-    Dhulikhel, Nepal. It will cover topics for PostgreSQL users, developers and contributors, as well as decision and policy makers.
+<link rel="stylesheet" href="/static/css/call_for_proposal.css">
+<div class="content-container">
+<div class="headings">
+    <h1>Call for Proposals</h1>
+    <h3>Talks and Workshop sessions</h3>
 
-    We are now accepting proposals for talks in English.
-    Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
-    <br>
-    <br>
-    <div class="section_header_small">Conference Topics</div>
-    Suggested topic areas include but are not limited to:
-    <ul class="ul-list">
-        <li>Developing applications for PostgreSQL</li>
-        <li>Administering large scale PostgreSQL installations</li>
-        <li>Case studies and/or success stories of PostgreSQL deployments</li>
-        <li>PostgreSQL tools and utilities</li>
-        <li>PostgreSQL hacking</li>
-        <li>Community & user groups</li>
-        <li>Tuning the server</li>
-        <li>Migrating from other systems</li>
-        <li>Scaling/replication</li>
-        <li>Benchmarking & hardware</li>
-        <li>PostgreSQL related products</li>
-    </ul>
+    <p>
+        PostgreSQL Conference Nepal 2023 will be held on May 11-12 in Kathmandu University, Dhulikhel, Nepal. It will cover topics for PostgreSQL 
+        users, developers and contributors, as well as decision and policy makers. We are now accepting proposals for talks in English. 
+        Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
+    </p>
+</div>
 
-    <br><br>
-    Similarly, we are also accepting proposals for workshops. The workshop will be 3.5 hrs and will be run on the second day of the conference in parallel.
-    {# The submission deadline is February 28 March 6, 2020. Selected speakers/presenters will be notified by March 15 March 20, 2020. #}
-    <br><br>
+<div class="conference-topics">
+    <p>Suggested topic areas include but are not limited to:</p>
 
-    The proposals will be considered by committee, and we will produce a schedule closer to the conference date.
-    We look forward to hearing from you, and seeing you in Nepal in May, 2023
-    <br>
-    <br>
-    <div class="section_header_small"> Submit proposal</div>
-    Please submit the talk proposal using  <a href="https://conference.pgconf.org.np/conf-2023/cfp" class="button3" target="_blank">Submit a proposal</a>.
-    <br>
-    <br>
+    <ol>
+        <li><p>Developing applications for PostgreSQL</p></li>
+        <li><p>Administering large scale PostgreSQL installations</p></li>
+        <li><p>Case studies and/or success stories of PostgreSQL deployments</p></li>
+        <li><p>PostgreSQL tools and utilities</p></li>
+        <li><p>PostgreSQL hacking</p></li>
+        <li><p>Community & user groups</p></li>
+        <li><p>Tuning the server</p></li>
+        <li><p>Migrating from other systems</p></li>
+        <li><p>Scaling/replication</p></li>
+        <li><p>Benchmarking & hardware</p></li>
+        <li><p>PostgreSQL related products</p></li>
+    </ol>
+</div>
 
-    For any problem please write us to : info@pgconf.org.np
-    <br>
-    <br>
-    {% include 'keydates.html' %}
+<div class="proposal-submission">
+    <h1>Submit Proposal</h1>
+    <p>Please submit the talk proposal using</p>
+    <a href="https://conference.pgconf.org.np/conf-2023/cfp" class="button3" target="_blank">
+        <!-- <p> -->
+            Submit a proposal
+        <!-- </p> -->
+    </a>.
+    <p>
+        For any problem please write us to : info@pgconf.org.np 
+    </p>
+</div>
+</div>
+
 {% endblock %}
