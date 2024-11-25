@@ -1,0 +1,20 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Schedule' %}
+
+
+{% block main_content %}
+    <h1>Schedule</h1>
+    <p>talks and workshop sessions</p>
+
+    <div class="traininig-schedule">
+        <h2>Training Schedule</h2>
+        {% include 'comingSoon.djhtml' %}
+    </div>
+
+    <div class="conference-schedule">
+        <h2>Conference Schedule</h2>
+        <div class="box">
+            <p>Check the schedule...</h3>
+        </div>
+    </div>
+{% endblock %}
