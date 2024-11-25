@@ -1,8 +1,10 @@
 .footer-content{
+    height: 350px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 20%;
     padding: 2%;
     font-family: 'DM Sans', sans-serif;
     color: white;
