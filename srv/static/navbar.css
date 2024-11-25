@@ -63,12 +63,13 @@ header {
 }
 
 /* Navbar Styles */
-.navbar-area {
+/* .navbar-area {
   background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
   padding: 3px 0;
-}
+} */
 
 .site-navbar {
+  padding: 0.5%;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -156,7 +157,7 @@ header {
 /* Mobile Styles */
 @media screen and (max-width: 1100px) {
   .container {
-    max-width: 720px;
+    max-width: 100%;
     width: 100%;
   }
 
