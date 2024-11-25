@@ -1,0 +1,44 @@
+.content-container{
+    width: 80%;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1{
+    margin-top: 2%;
+    margin-bottom: 2%;
+    background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
+    -webkit-background-clip: text; /* Clips background to text */
+    -webkit-text-fill-color: transparent;
+}
+
+h4{
+    margin-bottom: 2%;
+}
+
+p{
+    margin-bottom: 2%;
+}
+
+img{
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.highlight{
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 3%;
+}
+
+.box{
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 3%;
+}
+
