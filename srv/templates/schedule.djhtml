@@ -1,29 +1,25 @@
 {% extends "base_inner.html" %}
 {% block title%}/Schedule{% endblock %}
 
-{% block page_title%}
-     Schedule <br>
-     <small> talks and workshop sessions</small>
-{% endblock %}
 
 {% block main_content %}
 
-    <div class="section_header_small">Training Schedule</div>
-     <p class="hero-text-par">
-          <a href="/static/EventDay-Planning - Training.pdf" target="_blank">
-               <img src="/static/event-training.png" width="800" />
-          </a>
-     </p>
+<link rel="stylesheet" href="/static/css/schedule.css">
 
-     <div class="section_header_small">Conference Schedule</div>
-     <h4> Check the schedule </h4>
-     <p class="hero-text-par">
-          <a href="/static/PostgreSQL_Conference_Nepal_2023_Schedule.pdf" target="_blank">
-               PostgreSQL_Conference_Nepal_2023_Schedule.pdf
-          </a>
-     </p>
+<div class="content-container">
+     <h1>Schedule</h1>
+     <h4>talks and workshop sessions</h4>
 
-
-     
+     <div class="traininig-schedule">
+          <h1>Training Schedule</h1>
+          <div class="box">
+               <h2>Coming Soon..</h2>
+          </div>
+     </div>
+     <div class="conference-schedule">
+          <h1>Conference Schedule</h1>
+          <h3>Check the schedule</h3>
+     </div>
+</div>
 
 {% endblock %}
