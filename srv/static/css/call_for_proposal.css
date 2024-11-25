@@ -1,0 +1,56 @@
+.content-container{
+    width: 80%;
+    margin: 80px auto;
+    display: flex;
+    flex-direction: column;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h1{
+    margin-bottom: 2%;
+    background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
+    -webkit-background-clip: text; /* Clips background to text */
+    -webkit-text-fill-color: transparent;
+}
+
+h4{
+    margin-bottom: 2%;
+}
+
+p{
+    margin-bottom: 2%;
+}
+
+.button3{
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #be2d39;
+    color: rgb(234, 234, 234);
+    padding: 5px;
+    font-weight: bold;
+    transition: border-color 0.2s, box-shadow 0.2s transform 0.3s ease;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.button3:hover{
+    background-color: #c91818;
+    box-shadow:  0 2px 4px rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-5px);
+}
+
+.proposal-submission{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 2%;
+}
