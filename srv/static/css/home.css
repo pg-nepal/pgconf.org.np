@@ -14,7 +14,9 @@
 
 
 p{
-    font-size: 30px;
+    font-size: 20px;
+    margin-bottom: 2%;
+    text-align: justify;
 }
 
 .hero{
@@ -27,11 +29,27 @@ p{
 }
 
 h1{
+    margin-bottom: 2%;
     font-family: 'DM Sans', sans-serif;
     background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%);
     -webkit-background-clip: text; /* Clips background to text */
     -webkit-text-fill-color: transparent;
 }
+
+.img-container {
+    display: flex;
+    gap: 10px; /* Space between the images */
+    justify-content: center; /* Center the images horizontally */
+    align-items: center; /* Align items vertically */
+  }
+  
+  .image {
+    flex: 1 1 auto; /* Make the images flexible */
+    max-width: 100%; /* Prevent overflow */
+    height: 400px; /* Set a fixed height for uniformity */
+    object-fit: cover; /* Ensure the images fill the container proportionally */
+  }
+  
 
 .intro{
     margin-top: 10%;
