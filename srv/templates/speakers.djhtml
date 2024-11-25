@@ -1,58 +1,15 @@
 {% extends "base_inner.html" %}
 {% block title%}/Speakers{% endblock %}
 
-{% block page_title%}
-Speakers<br>
-<small>talks and workshop sessions</small>
-{% endblock %}
-
 {% block main_content %}
 
-    <div class="section_header_small">Keynotes</div>
-    {# {keynotes} #}
-    {% for talk in keynotes %}
-        <div class="each-speaker">
-            <div class="speaker-img">
-                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
-            </div>
-            <div class="speaker-text">
-                <h3>{{talk.title}}</h3>
-                <span class="italic">{{talk.speaker}}</span>
-                <div class="underline-small"></div>
-                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
-            </div>
-        </div>
-    {% endfor %}
-
-
-    <div class="section_header_small">Talks</div>
-    {% for talk in talks %}
-        <div class="each-speaker">
-            <div class="speaker-img">
-                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
-            </div>
-            <div class="speaker-text">
-                <h3>{{talk.title}}</h3>
-                <span class="italic">{{talk.speaker}}</span>
-                <div class="underline-small"></div>
-                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
-            </div>
-        </div>
-        {% endfor %} 
-    <div class="section_header_small">Workshop</div>
-
-    {% for talk in workshops %}
-        <div class="each-speaker">
-            <div class="speaker-img">
-                <img src="/static/speakers/{{talk.image}}" class="speaker-photo" alt="Featured Speaker">
-            </div>
-            <div class="speaker-text">
-                <h3>{{talk.title}}</h3>
-                <span class="italic">{{talk.speaker}}</span>
-                <div class="underline-small"></div>
-                <p class="speaker-text-p">{{talk.short_bio}}  <a href='/speaker/{{talk.slug}}'>Learn more</a> </p>
-            </div>
-        </div>
-    {% endfor %} 
+<link rel="stylesheet" href="/static/css/speakers.css">
+<div class="content-container">
+    <h1>Speakers</h1>
+    <h3>Talks and Workshop Sessions</h3>
+    <div class="box">
+        Coming Soon...
+    </div>
+</div>
 
 {% endblock %}
