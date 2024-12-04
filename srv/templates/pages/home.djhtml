@@ -1,0 +1,115 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Home' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/home.css">
+{% endblock %}
+
+
+{% block main %}
+    <div class="banner-container">
+        <div class="text">
+            <h1>Third <span style="color: #336791; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
+            <h2>{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}}</h2>
+            <div class="countdown-container">
+            <div class="countDown">
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Days<br> <span id="days">115</span></div>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Hours<br> <span id="hours">13</span></div>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Minutes<br> <span id="minutes">2</span></div>
+                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Seconds<br> <span id="seconds">42</span></div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-container">
+        <div class="content">
+            <div class="left-content">
+                <div class="intro">
+                    <p>
+                        We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
+                        Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May
+                        2018, this year’s event promises to be even more engaging and inspiring.
+                    </p>
+
+                    <p>
+                        The 2023 conference featured captivating talks and hands on training by internationally renowned
+                        PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim
+                        to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for
+                        two days of knowledge sharing, networking, and collaboration.
+                    </p>
+
+                    <p>
+                        Join us in celebrating and advancing the PostgreSQL ecosystem!
+                    </p>
+                </div>
+
+                <div class="parts">
+                    <h2>Second Conference Conclusion</h2>
+                    <div class="conference-image-container">
+                        <img src="/static/main_conference.jpg" alt="main conference">
+                        <img src="/static/training3.jpeg" alt="training">
+                    </div>
+                </div>
+
+                <div class="home-content">
+                    <h2>Main Conference Schedule</h2>
+                    {% include 'comingSoon.djhtml' %}
+                </div>
+
+                <div class="home-content">
+                    <h2>Register</h2>
+                    {% include 'comingSoon.djhtml' %}
+                </div>
+
+                <div class="home-content">
+                    <h2>Pre-Conference Workshop</h2>
+                    {% include 'comingSoon.djhtml' %}
+                </div>
+
+                <div class="home-content">
+                    <h2>Pre-Conference Workshop</h2>
+                    {% include 'comingSoon.djhtml' %}
+                </div>
+            </div>
+
+            <div class="right-content">
+                {% include '/sidebar.djhtml' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block scripts%}
+    <script>
+        (function countDown() {
+            const now = new Date()
+            const eventDate = new Date('{{eventOn.isoformat()}}')
+            const currentTime = now.getTime()
+            const eventTime = eventDate.getTime()
+
+            const remTime = eventTime - currentTime
+            let s = Math.floor(remTime / 1000)
+            let m = Math.floor(s / 60)
+            let h = Math.floor(m / 60)
+            const d = Math.floor(h / 24)
+
+            h %= 24
+            m %= 60
+            s %= 60
+
+            h = h < 10 ? `0${h}` : h
+            m = m < 10 ? `0${m}` : m
+            s = s < 10 ? `0${s}` : s
+
+            document.getElementById('days').textContent = d;
+            document.getElementById('hours').textContent = h;
+            document.getElementById('minutes').textContent = m;
+            document.getElementById('seconds').textContent = s;
+
+            setTimeout(countDown, 1000)
+        })()
+    </script>
+{% endblock %}
