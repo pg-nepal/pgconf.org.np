@@ -2,8 +2,6 @@
 {% block title%}/Sponsor{% endblock %}
 
 {% block main_content %}
-
-<link rel="stylesheet" href="/static/css/sposor.css">
 <div class="content-container">
     <h1>Call for Sponsor</h1>
     <h3>let's contribute to grow the community</h3>
@@ -11,20 +9,20 @@
     <div class="event-sponsor">
         <h1>let's contribute to grow the community</h1>
         <div class="box">
-            <h1>Coming Soon...</h1>
+            <p>Coming Soon...</h1>
         </div>
     </div>
 
     <div class="media-partner">
         <div class="box">
-            <h1>Coming Soon...</h1>
+            <p>Coming Soon...</h1>
         </div>
     </div>
 
     <div class="supported-by">
         <h1>Supported by</h1>
         <div class="box">
-            <h1>Coming Soon...</h1>
+            <p>Coming Soon...</h1>
         </div>
     </div>
 
