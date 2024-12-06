@@ -7,9 +7,16 @@
 }
 
 .banner-container{
-    /* margin-top: 5%; */
+    all: unset;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    width: 100% !important;
+    height: 500px;
+    background-image: url('/static/images/file.png');
+    background-size: cover; /* Resize image to cover the container */
+    background-position: center; /* Center the image */
 }
 
 .content{
@@ -103,14 +110,19 @@ img{
 .hero{
     height: 500px;
     display: flex;
-    /* flex-direction: column; */
     justify-content: center;
     align-items: center;
     font-family: 'DM Sans', sans-serif;
 }
 
-.text{
-    width: 50%;
+.text {
+    width: 80%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: white; /* Text color white */
+    padding: 20px;
+    text-align: center;
+    border-radius: 8px; /* Optional: rounded corners */
+    top: 10%;
 }
 
 .img-container {
