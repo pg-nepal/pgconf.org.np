@@ -4,21 +4,21 @@
 
 {% block main_content %}
 
-<link rel="stylesheet" href="/static/css/schedule.css">
-
 <div class="content-container">
      <h1>Schedule</h1>
-     <h4>talks and workshop sessions</h4>
+     <p>talks and workshop sessions</h4>
 
      <div class="traininig-schedule">
           <h1>Training Schedule</h1>
           <div class="box">
-               <h2>Coming Soon..</h2>
+               <p>Coming Soon..</h2>
           </div>
      </div>
      <div class="conference-schedule">
           <h1>Conference Schedule</h1>
-          <h3>Check the schedule</h3>
+          <div class="box">
+          <p>Check the schedule</h3>
+          </div>
      </div>
 </div>
 
