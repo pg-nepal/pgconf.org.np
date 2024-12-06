@@ -1,14 +1,19 @@
 .content-container{
     width: 80%;
     margin: 80px auto;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    font-family: 'DM Sans', sans-serif;
+    /* justify-content: center;
+    align-items: center; */
+    max-width: 118.4rem;
 }
 
 h1{
     margin-bottom: 2%;
     font-family: 'DM Sans', sans-serif;
+    /* background: linear-gradient(114.9deg, rgb(34, 34, 34) 8.3%, rgb(0, 40, 60) 41.6%, rgb(0, 143, 213) 93.4%); */
 }
 
 h3{
