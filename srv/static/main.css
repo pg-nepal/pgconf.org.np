@@ -1,0 +1,9 @@
+.content-container{
+    padding: 1%;
+    width: 80%;
+    margin: 1rem auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    max-width: 118.4rem;
+}
