@@ -23,7 +23,7 @@ body {
 }
 
 .navbar-container {
-  width: 90%;
+  width: 95%;
   margin: 0 auto; /* Center it horizontally */
   padding: 0 20px; /* Add some padding on the sides */
   display: flex;
@@ -51,6 +51,7 @@ body {
 }
 
 .nav-options {
+  margin-left: none;
   display: flex;
   list-style-type: none;
 }
@@ -60,13 +61,15 @@ body {
 }
 
 .nav-options a {
+  font-family: 'DM Sans', sans-serif;
   color: #000000;
   text-decoration: none;
   font-size: 18px;
   text-transform: uppercase;
-  font-weight: 500;
+  font-size: 15px;
+  font-weight: 540;
   position: relative;
-  transition: color 0.6s ease, transform 0.6s ease;
+  transition: color 0.3s ease, transform 0.3s ease;
 }
 
 .nav-options a:hover {
@@ -80,10 +83,10 @@ body {
   position: absolute;
   width: 0;
   height: 3px;
-  /* background-color: #ff6f61; */
+  background-color: #27259d;
   left: 50%;
   bottom: -5px;
-  transition: width 0.6s ease, left 0.6s ease;
+  transition: width 0.3s ease, left 0.3s ease;
 }
 
 .nav-options a:hover::after {
@@ -91,31 +94,7 @@ body {
   left: 0;
 }
 
-/* Mobile Responsiveness */
-@media (max-width: 768px) {
-  .navbar-area {
-    flex-direction: column;
-    align-items: flex-start;
-  }
 
-  .headers {
-    margin-bottom: 15px;
-  }
-
-  .nav-options {
-    width: 100%;
-    justify-content: center;
-    margin-top: 10px;
-  }
-
-  .nav-options ul {
-    margin: 10px 0;
-  }
-
-  .nav-options a {
-    font-size: 16px;
-  }
-}
 
 /* Additional Styling for Logo and Nav */
 .navbar-area a {
@@ -165,4 +144,71 @@ body {
 /* Show the dropdown menu when hovering over the dropdown button */
 .nav-options .dropdown:hover .dropdown-content {
   display: block;
+}
+.hamburger-menu{
+  display: none;
+}
+
+/* Mobile Responsiveness */
+
+.hamburger-options {
+  display: none; /* Menu is hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Take full height of the screen */
+  background-color: black;
+  color: white;
+  text-align: center;
+  z-index: 9999;
+}
+
+/* Display the hamburger options when 'active' class is added */
+.hamburger-options.active {
+  display: block; /* Show the menu */
+}
+
+/* Style the menu items */
+.hamburger-options ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.hamburger-options li {
+  padding: 20px 0;
+}
+
+.hamburger-options a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.hamburger-options a:hover {
+  background-color: #333; /* Hover effect */
+}
+
+/* Hamburger icon styles */
+
+@media (max-width: 1000px){
+  
+  .hamburger-menu {
+    display: block; /* Always show the hamburger icon */
+    font-size: 30px;
+    cursor: pointer;
+    padding: 10px;
+  }
+  .nav-options{
+    display: none;
+  }
+
+  .hamburger-menu{
+    font-size: 30px;
+  }
+
+  .hamburger-options.active ul{
+    display: block;
+  }
+
 }
