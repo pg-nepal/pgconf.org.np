@@ -6,7 +6,7 @@
     background-color: white;
     width: 100% !important;
     height: 500px;
-    background-image: url('/static/images/file.png');
+    background-image: url('/static/images/annapurna.jpg');
     background-size: cover; /* Resize image to cover the container */
     background-position: center; /* Center the image */
 }
