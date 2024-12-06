@@ -12,9 +12,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/static/app.css"> -->
+  <link rel="stylesheet" href="../static/main.css">
   <link rel="stylesheet" href="../static/navbar.css">
   <link rel="stylesheet" href="../static/css/footer.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -25,59 +26,63 @@
 
 <body>
   <header>
-    <div class="top-header">
-    <div class="logoo">
-            <img class="logo-img" src="../static/images/np-pug-logo.png" alt="Logo">
-            <div class="logo-text">
-              <span>PGConference Nepal - 2025</span>
-            </div>
+    <nav>
+  <div class="navbar-area">
+    <div class="navbar-container">
+    <div class="headers">
+      <a href="../home.html">
+        <img class="logo-img" src="../static/images/np-pug-logo.png" alt="Logo">        
+      </a>
+      <!-- <div class="logo-text">PGConference Nepal - 2025</div> -->
     </div>
-</div>
-<div class="header-area">
-    <!-- site-navbar start -->
-    <!-- <div class="navbar-area"> -->
-      <div class="container">
-        <nav class="site-navbar">
 
-          <ul class="nav-menu" id="nav-menu">
-            <li class="nav-lis">
-                <a href="../index.html" class="nav-item">Home</a>
-            </li>
-            <li class="nav-lis">
-                <a href="../about.html" class="nav-item">About</a>
-            </li>
-            <li class="nav-lis">
-              <a href="../venue.html" class="nav-item">Venue</a>
-            </li>
-            <li class="nav-lis">
-              <a href="../registration.html" class="nav-item">Registration</a>
-            </li>
-            <li class="nav-lis">
-                <a href="../call_for_proposal.html" class="nav-item">Call for Proposal</a>
-            </li>
-            <li class="nav-lis">
-                <a href="../schedule.html" class="nav-item">Schedule</a>
-            </li>
-            <li class="nav-lis">
-                <a href="all.html" class="nav-item">Speakers</a>
-            </li>
-            <li class="nav-lis">
-                <a href="../sponsor.html" class="nav-item">Sponsor</a>
-            </li>
-        </ul>
+    <div class="nav-options">
+      <ul><a href="../home.html">Home</a></ul>
+      <ul><a href="http://localhost:5000/speakers/call_for_proposal">Call for Proposal</a></ul>
+      <ul><a href="../venue.html">Venue</a></ul>
+      <ul><a href="../registration.html">Registration</a></ul>
+      <ul><a href="../about.html">About</a></ul>
 
-          <!-- nav-toggler for mobile version only -->
-          <button class="nav-toggler">
-            <span></span>
-          </button>
-        </nav>
-      </div>
-    <!-- </div> -->
-    <!-- navbar-area end -->
+
+      <ul class="dropdown">
+        <a href="all.html#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
+        <div class="dropdown-content">
+          <a href="../schedule.html">Schedule</a>
+          <a href="all.html">Speakers</a>
+          <a href="../sponsor.html">Sponsors</a>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Mobile Hamburger Icon -->
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span>&#9776;</span> <!-- Hamburger icon -->
+    </div>
+    <div class="hamburger-options">
+      <ul>
+        <li><a href="../home.html">Home</a></li>
+        <li><a href="http://localhost:5000/speakers/call_for_proposal">Call for Proposal</a></li>
+        <li><a href="../venue.html">Venue</a></li>
+        <li><a href="../registration.html">Registration</a></li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../schedule.html">Schedule</a></li>
+        <li><a href="all.html">Speakers</a></li>
+        <li><a href="../sponsor.html">Sponsors</a></li>
+      </ul>
   </div>
- 
+  </div>
+</nav>
+
+<script>
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const navOptions = document.querySelector('.hamburger-options');
+
+  hamburgerMenu.addEventListener('click', () => {
+    navOptions.classList.toggle('active');
+  })
+</script>
+    <!-- <main style="margin-top: 125px;"> -->
   </header>
-  <main style="margin-top: 125px;">
     
 <div class="main_background">
     <div class="hero">
@@ -91,13 +96,44 @@
                         <div class="grid-text">
                             
 
-<link rel="stylesheet" href="../static/css/speakers.css">
+<link rel="stylesheet" href="http://localhost:5000/static/css/speakers.css">
 <div class="content-container">
-    <h1>Speakers</h1>
-    <h3>Talks and Workshop Sessions</h3>
-    <div class="box">
-        <p>Coming Soon...</p>
+
+    <div class="content">
+        <div class="left-content">
+            <h1>Speakers</h1>
+            <h3>Talks and Workshop Sessions</h3>
+            <div class="box">
+                <p>Coming Soon...</p>
+            </div>
+        </div>
+        <div class="right-content">
+                <div class="sidebar">
+                <div class="calendar">
+                    <h2>Mark on your calendar</h2>
+                    <div class="calendar-content">
+                        <h2 id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">2025 May 05 (Mon) ~ 06 (Tue)</h2>
+                        <h3 style="font-size: 21px;">@Dhulikhel, Nepal</h3>
+                        <a target="_blank"
+                            href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20230511T011500Z%2F20230512T121500Z&text=2nd%20PostgreSQL%20Conference%20Nepal%2C%202023&location=Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal&details=Event%3A%202md%20PostgreSQL%20Conference%20Nepal%0A11-12%20May%202023%0AVenue%3A%20Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal">
+                            <div class="image-container">
+                                <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="venue">
+                    <h2>Venue</h2>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.4999980968216!2d85.538371116359!3d27.618860565103255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb092082d99e3b%3A0xe509dafa47685dba!2z4KSV4KS-4KSg4KSu4KS-4KSh4KWM4KSCIOCkteCkv-CktuCljeCkteCkteCkv-CkpuCljeCkr-CkvuCksuCkrw!5e0!3m2!1sne!2snp!4v1673176323107!5m2!1sne!2snp" width="310" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <br>
+                        <a href="../venue.html">Know more about venue</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
 </div>
 
 
@@ -109,7 +145,7 @@
     </div>
 </div>
 
-  </main>
+  <!-- </main> -->
 
   <footer class="footer">
     <div class="footer-content">

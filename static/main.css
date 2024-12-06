@@ -1,14 +1,41 @@
-.banner-container{
-    all: unset;
+.content-container{
+    width: 80%;
+    margin: 50px auto;
+    font-family: 'DM Sans', sans-serif;
+    overflow-x: hidden;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    width: 100% !important;
-    height: 500px;
-    background-image: url('../images/annapurna.jpg');
-    background-size: cover; /* Resize image to cover the container */
-    background-position: center; /* Center the image */
+    flex-direction: column;
+    /* justify-content: center;
+    align-items: center; */
+    max-width: 118.4rem;
+}
+
+h1{
+    margin-bottom: 2%;
+    font-family: 'DM Sans', sans-serif;
+}
+
+h3{
+    margin-bottom: 2%;
+    font-family: 'DM Sans', sans-serif;
+}
+
+p{
+    /* font-size: 20px; */
+    margin-bottom: 2%;
+    text-align: justify;
+    font-size: 25px;
+    font-weight: 400;
+}
+
+.box{
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
 .content{
@@ -92,69 +119,19 @@ img{
     color: #0056b3; /* Darker shade on hover */
 }
 
+@media (max-width: 1100px) {
 
-/* p{
-    font-size: 20px;
-    margin-bottom: 2%;
-    text-align: justify;
-} */
-
-.hero{
-    height: 500px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'DM Sans', sans-serif;
-}
-
-.text {
-    width: 80%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
-    color: white; /* Text color white */
-    padding: 20px;
-    text-align: center;
-    border-radius: 8px; /* Optional: rounded corners */
-    top: 10%;
-}
-
-.img-container {
-    display: flex;
-    gap: 10px; /* Space between the images */
-    justify-content: center; /* Center the images horizontally */
-    align-items: center; /* Align items vertically */
-  }
-  
-  .image {
-    flex: 1 1 auto; /* Make the images flexible */
-    max-width: 100%; /* Prevent overflow */
-    height: 400px; /* Set a fixed height for uniformity */
-    object-fit: cover; /* Ensure the images fill the container proportionally */
-  }
-  
-
-.intro{
-    margin-top: 10%;
-}
-
-.conference-conclusion{
-    margin-top: 10%;
-}
-
-/* .box{
-    border: 0.5px solid rgb(197, 197, 197);
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    padding: 3%;
-    display: flex;
-    flex-direction: column;
-} */
-
-img{
-    width: 100%;
-    border-radius: 8px;
+    p{
+        font-size: 20px;
+    }
+    
 }
 
 @media (max-width: 700px) {
+
+    p{
+        font-size: 18px;
+    }
 
     .content{
         display: block;
@@ -167,3 +144,5 @@ img{
         width: 100%;
     }
 }
+
+

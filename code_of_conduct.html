@@ -12,9 +12,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/static/app.css"> -->
+  <link rel="stylesheet" href="static/main.css">
   <link rel="stylesheet" href="static/navbar.css">
   <link rel="stylesheet" href="static/css/footer.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -25,59 +26,63 @@
 
 <body>
   <header>
-    <div class="top-header">
-    <div class="logoo">
-            <img class="logo-img" src="static/images/np-pug-logo.png" alt="Logo">
-            <div class="logo-text">
-              <span>PGConference Nepal - 2025</span>
-            </div>
+    <nav>
+  <div class="navbar-area">
+    <div class="navbar-container">
+    <div class="headers">
+      <a href="home.html">
+        <img class="logo-img" src="static/images/np-pug-logo.png" alt="Logo">        
+      </a>
+      <!-- <div class="logo-text">PGConference Nepal - 2025</div> -->
     </div>
-</div>
-<div class="header-area">
-    <!-- site-navbar start -->
-    <!-- <div class="navbar-area"> -->
-      <div class="container">
-        <nav class="site-navbar">
 
-          <ul class="nav-menu" id="nav-menu">
-            <li class="nav-lis">
-                <a href="index.html" class="nav-item">Home</a>
-            </li>
-            <li class="nav-lis">
-                <a href="about.html" class="nav-item">About</a>
-            </li>
-            <li class="nav-lis">
-              <a href="venue.html" class="nav-item">Venue</a>
-            </li>
-            <li class="nav-lis">
-              <a href="registration.html" class="nav-item">Registration</a>
-            </li>
-            <li class="nav-lis">
-                <a href="call_for_proposal.html" class="nav-item">Call for Proposal</a>
-            </li>
-            <li class="nav-lis">
-                <a href="schedule.html" class="nav-item">Schedule</a>
-            </li>
-            <li class="nav-lis">
-                <a href="speakers/all.html" class="nav-item">Speakers</a>
-            </li>
-            <li class="nav-lis">
-                <a href="sponsor.html" class="nav-item">Sponsor</a>
-            </li>
-        </ul>
+    <div class="nav-options">
+      <ul><a href="home.html">Home</a></ul>
+      <ul><a href="call_for_proposal.html">Call for Proposal</a></ul>
+      <ul><a href="venue.html">Venue</a></ul>
+      <ul><a href="registration.html">Registration</a></ul>
+      <ul><a href="about.html">About</a></ul>
 
-          <!-- nav-toggler for mobile version only -->
-          <button class="nav-toggler">
-            <span></span>
-          </button>
-        </nav>
-      </div>
-    <!-- </div> -->
-    <!-- navbar-area end -->
+
+      <ul class="dropdown">
+        <a href="code_of_conduct.html#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
+        <div class="dropdown-content">
+          <a href="schedule.html">Schedule</a>
+          <a href="speakers/all.html">Speakers</a>
+          <a href="sponsor.html">Sponsors</a>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Mobile Hamburger Icon -->
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span>&#9776;</span> <!-- Hamburger icon -->
+    </div>
+    <div class="hamburger-options">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="call_for_proposal.html">Call for Proposal</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="speakers/all.html">Speakers</a></li>
+        <li><a href="sponsor.html">Sponsors</a></li>
+      </ul>
   </div>
- 
+  </div>
+</nav>
+
+<script>
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const navOptions = document.querySelector('.hamburger-options');
+
+  hamburgerMenu.addEventListener('click', () => {
+    navOptions.classList.toggle('active');
+  })
+</script>
+    <!-- <main style="margin-top: 125px;"> -->
   </header>
-  <main style="margin-top: 125px;">
     
 <div class="main_background">
     <div class="hero">
@@ -90,7 +95,7 @@
                     <div class="grid-item left-part" style="min-height:500px;">
                         <div class="grid-text">
                              
-<link rel="stylesheet" href="static/css/code_of_conduct.css">
+<link rel="stylesheet" href="http://localhost:5000/static/css/code_of_conduct.css">
 <div class="content-container">
     <h1>Code of Conduct</h1>
     <p>The PostgreSQL code of conduct has been adopted by the Conference (PgConf Nepal).</p>
@@ -108,7 +113,7 @@
     </div>
 </div>
 
-  </main>
+  <!-- </main> -->
 
   <footer class="footer">
     <div class="footer-content">

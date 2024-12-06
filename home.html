@@ -21,7 +21,7 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
 
 
-  <title>PgConf Nepal 2025 /Registration</title>
+  <title>PgConf Nepal 2025 /Home</title>
 </head>
 
 <body>
@@ -45,7 +45,7 @@
 
 
       <ul class="dropdown">
-        <a href="registration.html#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
+        <a href="home.html#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
         <div class="dropdown-content">
           <a href="schedule.html">Schedule</a>
           <a href="speakers/all.html">Speakers</a>
@@ -84,36 +84,72 @@
     <!-- <main style="margin-top: 125px;"> -->
   </header>
     
-<div class="main_background">
-    <div class="hero">
-        <div class="hero-text">
-            <div class="hero-text-header">
-                <h3></h3>
-            </div>
-            <div class="hero-text-par">
-                <div class="grid-container">
-                    <div class="grid-item left-part" style="min-height:500px;">
-                        <div class="grid-text">
-                            
+<link rel="stylesheet" href="static/css/home.css">
+
+<div class="banner-container">
+    <div class="text">
+        <h1>Third PostgreSQL Conference Nepal, 2025</h1> 
+        <h1>5 to 6 May, 2025</h1> 
+    </div>
+</div>
 
 <div class="content-container">
-
     <div class="content">
         <div class="left-content">
-        <div class="registration-content">
-        <h1>Registration</h1>
-        <p>Register for the events</p>
-
-        <div class="training">
-        <div class="box">
-        <p>Coming Soon..</p>
+            <div class="intro">
+                <p>
+                    We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal. 
+                    Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May 
+                    2018, this year’s event promises to be even more engaging and inspiring.
+                </p>
+        
+                <p>
+                    The 2023 conference featured captivating talks and hands on training by internationally renowned 
+                    PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim 
+                    to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for 
+                    two days of knowledge sharing, networking, and collaboration.
+                </p>
+        
+                <p>
+                    Join us in celebrating and advancing the PostgreSQL ecosystem!
+                </p>
+        
+            </div>
+            <div class="conference-conclusion">
+                <h1>Second Conference Conclusion</h1>
+                <!-- <div class="img-container">
+                <img src="/static/main_conference.jpg" class="image" alt="Main Conference">
+                <img src="/static/training3.jpeg" class="image" alt="Training">
+                </div> -->
+        
+            </div>
+            <div class="conference-conclusion">
+                <h1>Main Conference Schedule</h1>
+                <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Register</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Pre-Conference Workshop</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Pre-Conference Workshop</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-    </div>
-
-    <div class="right-content">
-         <div class="sidebar">
+        <div class="right-content">
+            <div class="sidebar">
                 <div class="calendar">
                     <h2>Mark on your calendar</h2>
                     <div class="calendar-content">
@@ -137,17 +173,10 @@
                 </div>
             </div>
         </div>
-       
-</div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
+
 </div>
+    
 
   <!-- </main> -->
 
@@ -173,6 +202,36 @@
   <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
   <script src="static/js/featured.js"></script>
   
+    <script>
+        (function countDown() {
+            const now = new Date()
+            const eventDate = new Date('2025-05-05T00:00:00')
+            const currentTime = now.getTime()
+            const eventTime = eventDate.getTime()
+
+            const remTime = eventTime - currentTime
+            let s = Math.floor(remTime / 1000)
+            let m = Math.floor(s / 60)
+            let h = Math.floor(m / 60)
+            const d = Math.floor(h / 24)
+
+            h %= 24
+            m %= 60
+            s %= 60
+
+            h = h < 10 ? `0${h}` : h
+            m = m < 10 ? `0${m}` : m
+            s = s < 10 ? `0${s}` : s
+
+            document.getElementById('days').textContent = d;
+            document.getElementById('hours').textContent = h;
+            document.getElementById('minutes').textContent = m;
+            document.getElementById('seconds').textContent = s;
+
+            setTimeout(countDown, 1000)
+        })()
+    </script>
+
 
 </body>
 </html>

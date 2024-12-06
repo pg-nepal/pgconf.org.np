@@ -12,9 +12,10 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
     rel="stylesheet">
-  <!-- <link rel="stylesheet" href="/static/app.css"> -->
+  <link rel="stylesheet" href="static/main.css">
   <link rel="stylesheet" href="static/navbar.css">
   <link rel="stylesheet" href="static/css/footer.css">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
@@ -25,124 +26,159 @@
 
 <body>
   <header>
-    <div class="top-header">
-    <div class="logoo">
-            <img class="logo-img" src="static/images/np-pug-logo.png" alt="Logo">
-            <div class="logo-text">
-              <span>PGConference Nepal - 2025</span>
-            </div>
+    <nav>
+  <div class="navbar-area">
+    <div class="navbar-container">
+    <div class="headers">
+      <a href="home.html">
+        <img class="logo-img" src="static/images/np-pug-logo.png" alt="Logo">        
+      </a>
+      <!-- <div class="logo-text">PGConference Nepal - 2025</div> -->
     </div>
-</div>
-<div class="header-area">
-    <!-- site-navbar start -->
-    <!-- <div class="navbar-area"> -->
-      <div class="container">
-        <nav class="site-navbar">
 
-          <ul class="nav-menu" id="nav-menu">
-            <li class="nav-lis">
-                <a href="index.html" class="nav-item">Home</a>
-            </li>
-            <li class="nav-lis">
-                <a href="about.html" class="nav-item">About</a>
-            </li>
-            <li class="nav-lis">
-              <a href="venue.html" class="nav-item">Venue</a>
-            </li>
-            <li class="nav-lis">
-              <a href="registration.html" class="nav-item">Registration</a>
-            </li>
-            <li class="nav-lis">
-                <a href="call_for_proposal.html" class="nav-item">Call for Proposal</a>
-            </li>
-            <li class="nav-lis">
-                <a href="schedule.html" class="nav-item">Schedule</a>
-            </li>
-            <li class="nav-lis">
-                <a href="speakers/all.html" class="nav-item">Speakers</a>
-            </li>
-            <li class="nav-lis">
-                <a href="sponsor.html" class="nav-item">Sponsor</a>
-            </li>
-        </ul>
+    <div class="nav-options">
+      <ul><a href="home.html">Home</a></ul>
+      <ul><a href="call_for_proposal.html">Call for Proposal</a></ul>
+      <ul><a href="venue.html">Venue</a></ul>
+      <ul><a href="registration.html">Registration</a></ul>
+      <ul><a href="about.html">About</a></ul>
 
-          <!-- nav-toggler for mobile version only -->
-          <button class="nav-toggler">
-            <span></span>
-          </button>
-        </nav>
-      </div>
-    <!-- </div> -->
-    <!-- navbar-area end -->
+
+      <ul class="dropdown">
+        <a href="index.html#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
+        <div class="dropdown-content">
+          <a href="schedule.html">Schedule</a>
+          <a href="speakers/all.html">Speakers</a>
+          <a href="sponsor.html">Sponsors</a>
+        </div>
+      </ul>
+    </div>
+
+    <!-- Mobile Hamburger Icon -->
+    <div class="hamburger-menu" id="hamburger-menu">
+      <span>&#9776;</span> <!-- Hamburger icon -->
+    </div>
+    <div class="hamburger-options">
+      <ul>
+        <li><a href="home.html">Home</a></li>
+        <li><a href="call_for_proposal.html">Call for Proposal</a></li>
+        <li><a href="venue.html">Venue</a></li>
+        <li><a href="registration.html">Registration</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="schedule.html">Schedule</a></li>
+        <li><a href="speakers/all.html">Speakers</a></li>
+        <li><a href="sponsor.html">Sponsors</a></li>
+      </ul>
   </div>
- 
+  </div>
+</nav>
+
+<script>
+  const hamburgerMenu = document.getElementById('hamburger-menu');
+  const navOptions = document.querySelector('.hamburger-options');
+
+  hamburgerMenu.addEventListener('click', () => {
+    navOptions.classList.toggle('active');
+  })
+</script>
+    <!-- <main style="margin-top: 125px;"> -->
   </header>
-  <main style="margin-top: 125px;">
     
 <link rel="stylesheet" href="static/css/home.css">
+
+<div class="banner-container">
+    <div class="text">
+        <h1>Third PostgreSQL Conference Nepal, 2025</h1> 
+        <h1>5 to 6 May, 2025</h1> 
+    </div>
+</div>
+
 <div class="content-container">
-    <div class="banner-container">
-        <div class="hero">
-            <h1>Third PostgreSQL Conference Nepal, 2025</h1> 
-            <h1>5 to 6 May, 2025</h1> 
-        </div>
-    </div>
-
-    <div class="intro">
-        <p>
-            We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal. 
-            Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May 
-            2018, this year’s event promises to be even more engaging and inspiring.
-        </p>
-
-        <p>
-            The 2023 conference featured captivating talks and hands on training by internationally renowned 
-            PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim 
-            to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for 
-            two days of knowledge sharing, networking, and collaboration.
-        </p>
-
-        <p>
-            Join us in celebrating and advancing the PostgreSQL ecosystem!
-        </p>
-
-    </div>
-    <div class="conference-conclusion">
-        <h1>Second Conference Conclusion</h1>
-        <div class="img-container">
-        <img src="static/main_conference.jpg" class="image" alt="Main Conference">
-        <img src="static/training3.jpeg" class="image" alt="Training">
-        </div>
-
-    </div>
-    <div class="conference-conclusion">
-        <h1>Main Conference Schedule</h1>
-        <div class="box">
-        <h1>Coming Soon...</h1>
-        </div>
-    </div>
-    <div class="conference-conclusion">
-        <h1>Register</h1>
+    <div class="content">
+        <div class="left-content">
+            <div class="intro">
+                <p>
+                    We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal. 
+                    Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May 
+                    2018, this year’s event promises to be even more engaging and inspiring.
+                </p>
+        
+                <p>
+                    The 2023 conference featured captivating talks and hands on training by internationally renowned 
+                    PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim 
+                    to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for 
+                    two days of knowledge sharing, networking, and collaboration.
+                </p>
+        
+                <p>
+                    Join us in celebrating and advancing the PostgreSQL ecosystem!
+                </p>
+        
+            </div>
+            <div class="conference-conclusion">
+                <h1>Second Conference Conclusion</h1>
+                <!-- <div class="img-container">
+                <img src="/static/main_conference.jpg" class="image" alt="Main Conference">
+                <img src="/static/training3.jpeg" class="image" alt="Training">
+                </div> -->
+        
+            </div>
+            <div class="conference-conclusion">
+                <h1>Main Conference Schedule</h1>
                 <div class="box">
-        <h1>Coming Soon...</h1>
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Register</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Pre-Conference Workshop</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+            <div class="conference-conclusion">
+                <h1>Pre-Conference Workshop</h1>
+                        <div class="box">
+                <h1>Coming Soon...</h1>
+                </div>
+            </div>
+        </div>
+        <div class="right-content">
+            <div class="sidebar">
+                <div class="calendar">
+                    <h2>Mark on your calendar</h2>
+                    <div class="calendar-content">
+                        <h2 id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">2025 May 05 (Mon) ~ 06 (Tue)</h2>
+                        <h3 style="font-size: 21px;">@Dhulikhel, Nepal</h3>
+                        <a target="_blank"
+                            href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20230511T011500Z%2F20230512T121500Z&text=2nd%20PostgreSQL%20Conference%20Nepal%2C%202023&location=Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal&details=Event%3A%202md%20PostgreSQL%20Conference%20Nepal%0A11-12%20May%202023%0AVenue%3A%20Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal">
+                            <div class="image-container">
+                                <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif">
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="venue">
+                    <h2>Venue</h2>
+                    <div class="map">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.4999980968216!2d85.538371116359!3d27.618860565103255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb092082d99e3b%3A0xe509dafa47685dba!2z4KSV4KS-4KSg4KSu4KS-4KSh4KWM4KSCIOCkteCkv-CktuCljeCkteCkteCkv-CkpuCljeCkr-CkvuCksuCkrw!5e0!3m2!1sne!2snp!4v1673176323107!5m2!1sne!2snp" width="310" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        <br>
+                        <a href="venue.html">Know more about venue</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="conference-conclusion">
-        <h1>Pre-Conference Workshop</h1>
-                <div class="box">
-        <h1>Coming Soon...</h1>
-        </div>
-    </div>
-    <div class="conference-conclusion">
-        <h1>Pre-Conference Workshop</h1>
-                <div class="box">
-        <h1>Coming Soon...</h1>
-        </div>
-    </div>
+
 </div>
     
 
-  </main>
+  <!-- </main> -->
 
   <footer class="footer">
     <div class="footer-content">
