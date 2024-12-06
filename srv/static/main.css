@@ -52,3 +52,26 @@ img{
 .map a:hover {
     color: #0056b3; /* Darker shade on hover */
 }
+
+@media (max-width: 1100px) {
+    p{
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 700px) {
+    p{
+        font-size: 12px;
+    }
+
+    .content{
+        display: block;
+    }
+
+    .left-content{
+        width: 100%;
+    }
+    .right-content{
+        width: 100%;
+    }
+}
