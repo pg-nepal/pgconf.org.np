@@ -7,3 +7,48 @@
     flex-direction: column;
     max-width: 118.4rem;
 }
+
+.content{
+    display: flex;
+    gap: 5%;
+}
+
+.left-content{
+    width: 70%;
+}
+
+.right-content{
+    width: 30%;
+    text-align: center;
+}
+
+.image-container{
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+img{
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.map-iframe {
+    width: 100%; /* Let it fill the container */
+    max-width: 800px; /* Bigger maximum width */
+    height: 20rem; /* Increased height for better visibility */
+    border: 1px solid rgb(0, 0, 0); /* Remove default border */
+    border-radius: 12px; /* Match container's border-radius */
+}
+
+.map a {
+    font-size: 18px; /* Larger font size for visibility */
+    text-decoration: none; /* Remove underline */
+    color: #007BFF; /* Blue color for link */
+    transition: color 0.3s ease; /* Smooth transition for hover */
+}
+
+.map a:hover {
+    color: #0056b3; /* Darker shade on hover */
+}
