@@ -23,17 +23,17 @@
                     <p>Suggested topic areas include but are not limited to:</p>
 
                     <ol>
-                        <li><p>Developing applications for PostgreSQL</p></li>
-                        <li><p>Administering large scale PostgreSQL installations</p></li>
-                        <li><p>Case studies and/or success stories of PostgreSQL deployments</p></li>
-                        <li><p>PostgreSQL tools and utilities</p></li>
-                        <li><p>PostgreSQL hacking</p></li>
-                        <li><p>Community & user groups</p></li>
-                        <li><p>Tuning the server</p></li>
-                        <li><p>Migrating from other systems</p></li>
-                        <li><p>Scaling/replication</p></li>
-                        <li><p>Benchmarking & hardware</p></li>
-                        <li><p>PostgreSQL related products</p></li>
+                        <li>Developing applications for PostgreSQL</li>
+                        <li>Administering large scale PostgreSQL installations</li>
+                        <li>Case studies and/or success stories of PostgreSQL deployments</li>
+                        <li>PostgreSQL tools and utilities</li>
+                        <li>PostgreSQL hacking</li>
+                        <li>Community & user groups</li>
+                        <li>Tuning the server</li>
+                        <li>Migrating from other systems</li>
+                        <li>Scaling/replication</li>
+                        <li>Benchmarking & hardware</li>
+                        <li>PostgreSQL related products</li>
                     </ol>
                 </div>
 
