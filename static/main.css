@@ -1,3 +1,8 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
 .content-container{
     width: 80%;
     margin: 50px auto;
@@ -24,7 +29,7 @@ p{
     /* font-size: 20px; */
     margin-bottom: 2%;
     text-align: justify;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 400;
 }
 
@@ -120,15 +125,13 @@ img{
 }
 
 @media (max-width: 1100px) {
-
     p{
         font-size: 20px;
     }
-    
+
 }
 
 @media (max-width: 700px) {
-
     p{
         font-size: 18px;
     }
@@ -144,5 +147,3 @@ img{
         width: 100%;
     }
 }
-
-
