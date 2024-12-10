@@ -1,83 +1,58 @@
-{% extends 'base_inner.html' %}
-{% block title%}/Call for Proposals{% endblock %}
+{% extends 'base_inner.djhtml' %}
+{% set pageTitle= '/ Call for Proposals' %}
+
 
 {% block main_content %}
+    <link rel="stylesheet" href="/static/css/call_for_proposal.css">
+    <div class="content-container">
 
-<link rel="stylesheet" href="/static/css/call_for_proposal.css">
-<div class="content-container">
-
-<div class="content">
+        <div class="content">
             <div class="left-content">
-            <div class="headings">
-            <h1>Call for Proposals</h1>
-            <h3>Talks and Workshop sessions</h3>
+                <div class="headings">
+                    <h1>Call for Proposals</h1>
+                    <h3>Talks and Workshop sessions</h3>
 
-            <p>
-                PostgreSQL Conference Nepal 2025 will be held on May 5-6 in Kathmandu University, Dhulikhel, Nepal. It will cover topics for PostgreSQL 
-                users, developers and contributors, as well as decision and policy makers. We are now accepting proposals for talks in English. 
-                Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
-            </p>
-        </div>
-
-        <div class="conference-topics">
-            <p>Suggested topic areas include but are not limited to:</p>
-
-            <ol>
-                <li><p>Developing applications for PostgreSQL</p></li>
-                <li><p>Administering large scale PostgreSQL installations</p></li>
-                <li><p>Case studies and/or success stories of PostgreSQL deployments</p></li>
-                <li><p>PostgreSQL tools and utilities</p></li>
-                <li><p>PostgreSQL hacking</p></li>
-                <li><p>Community & user groups</p></li>
-                <li><p>Tuning the server</p></li>
-                <li><p>Migrating from other systems</p></li>
-                <li><p>Scaling/replication</p></li>
-                <li><p>Benchmarking & hardware</p></li>
-                <li><p>PostgreSQL related products</p></li>
-            </ol>
-        </div>
-
-        <div class="proposal-submission">
-            <h1>Submit Proposal</h1>
-            <p>Please submit the talk proposal using</p>
-            <a class="button3" target="_blank">
-                <!-- <p> -->
-                    Submit a proposal
-                <!-- </p> -->
-            </a>.
-            <p>
-                For any problem please write us to : info@pgconf.org.np 
-            </p>
-        </div>
-    </div>
-    <div class="right-content">
-     <div class="sidebar">
-                <div class="calendar">
-                    <h2>Mark on your calendar</h2>
-                    <div class="calendar-content">
-                        <h2 id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">{{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}</h2>
-                        <h3 style="font-size: 21px;">@Dhulikhel, Nepal</h3>
-                        <a target="_blank"
-                            href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20230511T011500Z%2F20230512T121500Z&text=2nd%20PostgreSQL%20Conference%20Nepal%2C%202023&location=Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal&details=Event%3A%202md%20PostgreSQL%20Conference%20Nepal%0A11-12%20May%202023%0AVenue%3A%20Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal">
-                            <div class="image-container">
-                                <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif">
-                            </div>
-                        </a>
-                    </div>
+                    <p>
+                        PostgreSQL Conference Nepal 2025 will be held on{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in Kathmandu University, Dhulikhel, Nepal. It will cover topics for PostgreSQL
+                        users, developers and contributors, as well as decision and policy makers. We are now accepting proposals for talks in English.
+                        Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
+                    </p>
                 </div>
-                <div class="venue">
-                    <h2>Venue</h2>
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.4999980968216!2d85.538371116359!3d27.618860565103255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb092082d99e3b%3A0xe509dafa47685dba!2z4KSV4KS-4KSg4KSu4KS-4KSh4KWM4KSCIOCkteCkv-CktuCljeCkteCkteCkv-CkpuCljeCkr-CkvuCksuCkrw!5e0!3m2!1sne!2snp!4v1673176323107!5m2!1sne!2snp" width="310" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <br>
-                        <a href="/venue">Know more about venue</a>
-                    </div>
+
+                <div class="conference-topics">
+                    <p>Suggested topic areas include but are not limited to:</p>
+
+                    <ol>
+                        <li><p>Developing applications for PostgreSQL</p></li>
+                        <li><p>Administering large scale PostgreSQL installations</p></li>
+                        <li><p>Case studies and/or success stories of PostgreSQL deployments</p></li>
+                        <li><p>PostgreSQL tools and utilities</p></li>
+                        <li><p>PostgreSQL hacking</p></li>
+                        <li><p>Community & user groups</p></li>
+                        <li><p>Tuning the server</p></li>
+                        <li><p>Migrating from other systems</p></li>
+                        <li><p>Scaling/replication</p></li>
+                        <li><p>Benchmarking & hardware</p></li>
+                        <li><p>PostgreSQL related products</p></li>
+                    </ol>
+                </div>
+
+                <div class="proposal-submission">
+                    <h1>Submit Proposal</h1>
+                    <p>Please submit the talk proposal using</p>
+
+                    <a class="button3" target="_blank">
+                        Submit a proposal
+                    </a>
+
+                    <p>
+                        For any problem please write us to : <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a>
+                    </p>
                 </div>
             </div>
+
+            <div class="right-content">
+            </div>
+        </div>
     </div>
-</div>
-
-
-</div>
-
 {% endblock %}
