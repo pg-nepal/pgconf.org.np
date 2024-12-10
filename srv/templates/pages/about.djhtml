@@ -33,6 +33,40 @@
     </p>
 
     <div>
+        <h3>Organizing Committee</h3>
+        <ol>
+            <li>Prof. Dr. Bal Krishna Bal - Kathmandu University, Conference Chair</li>
+            <li>Dr. Oleg Bartunov - Postgres Professional, Co-Chair</li>
+            <li>Mr. Hempal Shrestha - Nepal ICT Foundation, Co-Chair</li>
+            <li>Mr. Ivan Pachenko - Postgres Professional, Co-Chair</li>
+            <li>Mr. Mark Rivkin - Postgres Professional, Member</li>
+            <li>Dr. Manoj Shakya - Assistant Professor, Kathmandu University, Member</li>
+            <li>Mr. Sagun Dhakhwa - Outlines Research & Development, Member</li>
+            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd., Member</li>
+            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd., Member</li>
+        </ol>
+    </div>
+
+    <div>
+        <h3>Program Committee/Talk Selection Committee</h3>
+        <ol>
+            <li>Dr. Manoj Shakya - Kathmandu University</li>
+            <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
+            <li>Mr. Mark Rivkin - Postgres Professional</li>
+            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd.</li>
+            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd.</li>
+        </ol>
+    </div>
+
+    <div>
+        <h3>Code of Conduct Committee</h3>
+        <ol>
+            <li>Mr. Ivan Pachenko - Postgres Professional</li>
+            <li>Dr. Prakash Poudyal - Kathmandu University</li>
+        </ol>
+    </div>
+
+    <div>
         <h3>Financial Disclosure</h3>
         <p>
             Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal. It is hereby stipulated that
