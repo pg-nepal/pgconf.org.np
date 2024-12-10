@@ -1,196 +1,172 @@
-{% extends "base_inner.html" %}
-{% block title%}/Sponsor{% endblock %}
+{% extends 'base_inner.djhtml' %}
+{% set pageTitle = '/ Sponsor' %}
+
 
 {% block main_content %}
-<div class="content-container">
+    <div class="content-container">
+        <div class="content">
+            <div class="left-content">
+                <h1>Call for Sponsor</h1>
+                <h3>let's contribute to grow the community</h3>
 
-    <div class="content">
-        <div class="left-content">
-            <h1>Call for Sponsor</h1>
-    <h3>let's contribute to grow the community</h3>
-
-    <div class="event-sponsor">
-        <h1>let's contribute to grow the community</h1>
-        <div class="box">
-            <p>Coming Soon...</h1>
-        </div>
-    </div>
-
-    <div class="media-partner">
-        <div class="box">
-            <p>Coming Soon...</h1>
-        </div>
-    </div>
-
-    <div class="supported-by">
-        <h1>Supported by</h1>
-        <div class="box">
-            <p>Coming Soon...</h1>
-        </div>
-    </div>
-
-    <div class="support-event">
-        <p>
-            We invite proposals for sponsorships for the event PGCONF Nepal 2025. Benefits and prices of sponsorships 
-            are as mentioned below
-        </p>
-    </div>
-
-    <div class="platinum-sponsorship">
-        <h1>Platinum Sponsorship</h1>
-        <div class="box">
-        <h3>Benefits:</h3>
-        <ol>
-            <li><p>
-                Permission for the Business to use the following endorsement: “Platinum Partner of PostgreSQL 
-                Conference Nepal 2025” on the Business' website or in any promotional materials or press 
-                releases that the Business sees fit.
-            </p></li>
-            <li><p>
-                Prominent inclusion of the Business' logo and a link to the Business' website on the official 
-                conference website (the logo to be provided by Business).
-            </p></li>
-            <li><p>
-                The Business' logo printed on the official PostgreSQL Conference Nepal 2025 attendees t-shirts 
-                and certificates (the logo to be provided by Business).
-            </p></li>
-            <li><p>
-                Inclusion of three A4 or Letter sized pages of the Business' promotional material - optionally 
-                in a folder without bindings - in the conference packs for registered attendees (the paperwork to be provided by Business).
-            </p></li>
-            <li><p>
-                Two free attendee passes for the conference (not including admission to training sessions), subject to availability 
-                (registration required, seats are not reserved until registration is completed).
-            </p></li>
-            <li><p>
-                A desk in the exhibitors area of the conference for the promotion of the Business' products or services.
-            </p></li>
-            <li><p>
-                Inclusion of one or two small Business promotional giveaways in the conference packs for registered attendees, 
-                such as a pen, USB memory stick or pin (the giveaway to be provided by Business).
-            </p></li>
-        </ol>
-
-        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
-        <p>Up to one platinum sponsor may be accepted, on a first come, first served basis.</p>
-    </div>
-    </div>
-
-    <div class="gold-sponsorship">
-        <h1>Gold Sponsorship</h1>
-        <div class="box">
-            <h3>Benefits:</h3>
-            <ol>
-                <li><p>
-                    Permission for the Business to use the following endorsement: “Gold Partner of PostgreSQL 
-                    Conference Nepal 2025” on the Business' website or in any promotional materials or press 
-                    releases that the Business sees fit.
-                </p></li>
-                <li><p>
-                    Prominent inclusion of the Business' logo and a link to the Business' website on the official 
-                    conference website (the logo to be provided by Business).
-                </p></li>
-                <li><p>
-                    The Business' logo printed on the official PostgreSQL Conference Nepal 2025 attendees t-shirts 
-                    and certificates (the logo to be provided by Business).
-                </p></li>
-                <li><p>Inclusion of two A4 or Letter sized pages of the Business' promotional material - optionally 
-                    in a folder without bindings - in the conference packs for registered attendees (the paperwork to be provided by Business).
-                </p></li>
-                <li><p>
-                    Two free attendee passes for the conference (not including admission to training sessions), subject to 
-                    availability (registration required, seats are not reserved until registration is completed).
-                </p></li>
-                <li><p>
-                    A desk in the exhibitors area of the conference for the promotion of the Business' products or services.
-                </p></li>
-                <li><p>Inclusion of one small Business promotional giveaway in the conference packs for registered attendees, such as a pen, USB 
-                    memory stick or pin (the giveaway to be provided by Business).</p></li>
-            </ol>
-            <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
-            <p>Up to two platinum sponsor may be accepted, on a first come, first served basis.</p>
-        </div>
-    </div>
-
-    <div class="silver-sponsorship">
-        <h1>Silver Sponsorship</h1>
-        <div class="box">
-        <h3>Benefits:</h3>
-
-        <ol>
-            <li><p>
-                Permission for the Business to use the following endorsement: “Silver Partner of PostgreSQL 
-                Conference Nepal 2025” on the Business' website or in any promotional materials or press 
-                releases that the Business sees fit.
-            </p></li>
-            <li><p>
-                Prominent inclusion of the Business' logo and a link to the Business' website on the official 
-                conference website (the logo to be provided by Business).
-            </p></li>
-            <li><p>
-                Inclusion of one A4 or Letter sized page of the Business' promotional material in the conference 
-                packs for registered attendees (the paperwork to be provided by Business).
-            </p></li>
-            <li><p>
-                One free attendee passes for the conference (not including admission to training sessions), subject 
-                to availability (registration required, seats are not reserved until registration is completed).
-            </p></li>
-        </ol>
-        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
-    </div>
-    </div>
-
-    <div class="bronze-sposorship">
-        <h1>Bronze Sponsorship</h1>
-        <div class="box">
-        <h4>Benefits:</h4>
-
-        <ol>
-            <li><p>
-                Permission for the Business to use the following endorsement: “Bronze Partner of PostgreSQL 
-                Conference Nepal 2025” on the Business' website or in any promotional materials or press 
-                releases that the Business sees fit.
-            </p></li>
-            <li><p>
-                Inclusion of the Business' logo and a link to the Business' website on the official conference 
-                website (the logo to be provided by Business).
-            </p></li>
-            <li><p>
-                One free attendee passes for the conference (not including admission to training sessions), subject 
-                to availability (registration required, seats are not reserved until registration is completed).
-            </p></li>
-        </ol>
-        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
-    </div>
-    </div>
-        </div>
-        <div class="right-content">
-                        <div class="sidebar">
-                <div class="calendar">
-                    <h2>Mark on your calendar</h2>
-                    <div class="calendar-content">
-                        <h2 id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">{{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}</h2>
-                        <h3 style="font-size: 21px;">@Dhulikhel, Nepal</h3>
-                        <a target="_blank"
-                            href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20230511T011500Z%2F20230512T121500Z&text=2nd%20PostgreSQL%20Conference%20Nepal%2C%202023&location=Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal&details=Event%3A%202md%20PostgreSQL%20Conference%20Nepal%0A11-12%20May%202023%0AVenue%3A%20Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal">
-                            <div class="image-container">
-                                <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif">
-                            </div>
-                        </a>
+                <div class="event-sponsor">
+                    <h1>let's contribute to grow the community</h1>
+                    <div class="box">
+                        <p>Coming Soon...</h1>
                     </div>
                 </div>
-                <div class="venue">
-                    <h2>Venue</h2>
-                    <div class="map">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1286.4999980968216!2d85.538371116359!3d27.618860565103255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39eb092082d99e3b%3A0xe509dafa47685dba!2z4KSV4KS-4KSg4KSu4KS-4KSh4KWM4KSCIOCkteCkv-CktuCljeCkteCkteCkv-CkpuCljeCkr-CkvuCksuCkrw!5e0!3m2!1sne!2snp!4v1673176323107!5m2!1sne!2snp" width="310" height="270" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        <br>
-                        <a href="/venue">Know more about venue</a>
+
+                <div class="media-partner">
+                    <div class="box">
+                        <p>Coming Soon...</h1>
+                    </div>
+                </div>
+
+                <div class="supported-by">
+                    <h1>Supported by</h1>
+                    <div class="box">
+                        <p>Coming Soon...</h1>
+                    </div>
+                </div>
+
+                <div class="support-event">
+                    <p>
+                        We invite proposals for sponsorships for the event PGCONF Nepal 2025. Benefits and prices of sponsorships
+                        are as mentioned below
+                    </p>
+                </div>
+
+                <div class="platinum-sponsorship">
+                    <h1>Platinum Sponsorship</h1>
+                    <div class="box">
+                        <h3>Benefits:</h3>
+                        <ol>
+                            <li><p>
+                                Permission for the Business to use the following endorsement: “Platinum Partner of PostgreSQL
+                                Conference Nepal 2025” on the Business' website or in any promotional materials or press
+                                releases that the Business sees fit.
+                            </p></li>
+                            <li><p>
+                                Prominent inclusion of the Business' logo and a link to the Business' website on the official
+                                conference website (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                The Business' logo printed on the official PostgreSQL Conference Nepal 2025 attendees t-shirts
+                                and certificates (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                Inclusion of three A4 or Letter sized pages of the Business' promotional material - optionally
+                                in a folder without bindings - in the conference packs for registered attendees (the paperwork to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                Two free attendee passes for the conference (not including admission to training sessions), subject to availability
+                                (registration required, seats are not reserved until registration is completed).
+                            </p></li>
+                            <li><p>
+                                A desk in the exhibitors area of the conference for the promotion of the Business' products or services.
+                            </p></li>
+                            <li><p>
+                                Inclusion of one or two small Business promotional giveaways in the conference packs for registered attendees,
+                                such as a pen, USB memory stick or pin (the giveaway to be provided by Business).
+                            </p></li>
+                        </ol>
+
+                        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
+                        <p>Up to one platinum sponsor may be accepted, on a first come, first served basis.</p>
+                    </div>
+                </div>
+
+                <div class="gold-sponsorship">
+                    <h1>Gold Sponsorship</h1>
+                    <div class="box">
+                        <h3>Benefits:</h3>
+                        <ol>
+                            <li><p>
+                                Permission for the Business to use the following endorsement: “Gold Partner of PostgreSQL
+                                Conference Nepal 2025” on the Business' website or in any promotional materials or press
+                                releases that the Business sees fit.
+                            </p></li>
+                            <li><p>
+                                Prominent inclusion of the Business' logo and a link to the Business' website on the official
+                                conference website (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                The Business' logo printed on the official PostgreSQL Conference Nepal 2025 attendees t-shirts
+                                and certificates (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>Inclusion of two A4 or Letter sized pages of the Business' promotional material - optionally
+                                in a folder without bindings - in the conference packs for registered attendees (the paperwork to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                Two free attendee passes for the conference (not including admission to training sessions), subject to
+                                availability (registration required, seats are not reserved until registration is completed).
+                            </p></li>
+                            <li><p>
+                                A desk in the exhibitors area of the conference for the promotion of the Business' products or services.
+                            </p></li>
+                            <li><p>Inclusion of one small Business promotional giveaway in the conference packs for registered attendees, such as a pen, USB
+                                memory stick or pin (the giveaway to be provided by Business).</p></li>
+                        </ol>
+                        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
+                        <p>Up to two platinum sponsor may be accepted, on a first come, first served basis.</p>
+                    </div>
+                </div>
+
+                <div class="silver-sponsorship">
+                    <h1>Silver Sponsorship</h1>
+                    <div class="box">
+                        <h3>Benefits:</h3>
+
+                        <ol>
+                            <li><p>
+                                Permission for the Business to use the following endorsement: “Silver Partner of PostgreSQL
+                                Conference Nepal 2025” on the Business' website or in any promotional materials or press
+                                releases that the Business sees fit.
+                            </p></li>
+                            <li><p>
+                                Prominent inclusion of the Business' logo and a link to the Business' website on the official
+                                conference website (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                Inclusion of one A4 or Letter sized page of the Business' promotional material in the conference
+                                packs for registered attendees (the paperwork to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                One free attendee passes for the conference (not including admission to training sessions), subject
+                                to availability (registration required, seats are not reserved until registration is completed).
+                            </p></li>
+                        </ol>
+                        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
+                    </div>
+                </div>
+
+                <div class="bronze-sposorship">
+                    <h1>Bronze Sponsorship</h1>
+                    <div class="box">
+                        <h4>Benefits:</h4>
+
+                        <ol>
+                            <li><p>
+                                Permission for the Business to use the following endorsement: “Bronze Partner of PostgreSQL
+                                Conference Nepal 2025” on the Business' website or in any promotional materials or press
+                                releases that the Business sees fit.
+                            </p></li>
+                            <li><p>
+                                Inclusion of the Business' logo and a link to the Business' website on the official conference
+                                website (the logo to be provided by Business).
+                            </p></li>
+                            <li><p>
+                                One free attendee passes for the conference (not including admission to training sessions), subject
+                                to availability (registration required, seats are not reserved until registration is completed).
+                            </p></li>
+                        </ol>
+                        <h4>Cost of sponsorship-<p>(-/-/-)</p></h4>
                     </div>
                 </div>
             </div>
+
+            <div class="right-content">
+            </div>
         </div>
     </div>
-    
-</div>
-
 {% endblock %}
