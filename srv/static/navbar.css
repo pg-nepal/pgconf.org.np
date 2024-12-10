@@ -1,15 +1,4 @@
 /* Reset some default styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  /* font-family: 'DM Sans', sans-serif; */
-  background-color: #f4f4f9;
-  color: #333;
-}
 
 /* Navbar Styling */
 .navbar-area {
@@ -93,8 +82,6 @@ body {
   width: 100%;
   left: 0;
 }
-
-
 
 /* Additional Styling for Logo and Nav */
 .navbar-area a {
@@ -192,7 +179,7 @@ body {
 /* Hamburger icon styles */
 
 @media (max-width: 1000px){
-  
+
   .hamburger-menu {
     display: block; /* Always show the hamburger icon */
     font-size: 30px;
