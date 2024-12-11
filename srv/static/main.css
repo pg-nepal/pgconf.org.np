@@ -1,3 +1,10 @@
+html, body{
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    font-family: 'DM Sans', sans-serif;
+}
+
 .content-container{
     padding: 1%;
     width: 80%;
@@ -54,6 +61,20 @@ img{
 }
 
 @media (max-width: 1100px) {
+    .map {
+        width: 90%; /* Make the container width more responsive on tablets */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .map-iframe {
+        max-width: 100%; /* Allow the iframe to take full width */
+        height: 350px; /* Adjust iframe height on smaller screens */
+    }
+
+    .map a {
+        font-size: 16px; /* Slightly smaller font size */
+    }
+
     p{
         font-size: 14px;
     }
