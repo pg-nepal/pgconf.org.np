@@ -20,8 +20,8 @@
                 </div>
 
                 <div class="conference-topics">
+                    <div class="box">
                     <p>Suggested topic areas include but are not limited to:</p>
-
                     <ol>
                         <li>Developing applications for PostgreSQL</li>
                         <li>Administering large scale PostgreSQL installations</li>
@@ -35,15 +35,16 @@
                         <li>Benchmarking & hardware</li>
                         <li>PostgreSQL related products</li>
                     </ol>
+                    </div>
                 </div>
 
                 <div class="proposal-submission">
                     <h1>Submit Proposal</h1>
                     <p>Please submit the talk proposal using</p>
 
-                    <a class="button3" target="_blank">
+                    <button class="button" target="_blank">
                         Submit a proposal
-                    </a>
+                    </button>
 
                     <p>
                         For any problem please write us to : <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a>
