@@ -3,6 +3,7 @@ html, body{
     margin: 0;
     padding: 0;
     font-family: 'DM Sans', sans-serif;
+    text-align: justify;
 }
 
 .content-container{
@@ -11,8 +12,6 @@ html, body{
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
-    /* justify-content: center;
-    align-items: center; */
     max-width: 118.4rem;
 }
 
@@ -27,12 +26,21 @@ h3{
 p{
     /* font-size: 20px; */
     margin-bottom: 2%;
-    text-align: justify;
     font-size: 16px;
     font-weight: 400;
 }
 
+ol{
+    list-style-position: outside;
+    padding-left: 20px;
+}
+
+ol li{
+    margin-top: 2%;
+}
+
 .box{
+    margin-top: 2%;
     border: 0.5px solid rgb(197, 197, 197);
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
