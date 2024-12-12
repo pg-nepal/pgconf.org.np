@@ -108,11 +108,15 @@ img{
 }
 
 .text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 80%;
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
     color: white; /* Text color white */
     padding: 20px;
-    text-align: center;
+    /* text-align: center; */
     border-radius: 8px; /* Optional: rounded corners */
     top: 10%;
 }
@@ -131,11 +135,20 @@ height: 400px; /* Set a fixed height for uniformity */
 object-fit: cover; /* Ensure the images fill the container proportionally */
 }
 
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+}
+
 .countDown {
+    font-size: 18px;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: space-around;
-    row-gap: 20px;
+    row-gap: 10px;
     column-gap: 20px;
     margin-bottom: 50px;
 }
@@ -148,7 +161,7 @@ object-fit: cover; /* Ensure the images fill the container proportionally */
     margin-top: 10%;
 }
 
-.image-container{
+.conference-image-container{
     display: flex;
     flex-direction: column;
 }
@@ -161,6 +174,10 @@ img{
 
 
 @media (max-width: 700px) {
+
+    .countDown{
+        font-size: 12px;
+    }
 
     .content{
         display: block;
