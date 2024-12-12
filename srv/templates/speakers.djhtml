@@ -10,9 +10,7 @@
             <div class="left-content">
                 <h1>Speakers</h1>
                 <h3>Talks and Workshop Sessions</h3>
-                <div class="box">
-                    <p>Coming Soon...</p>
-                </div>
+                {% include 'comingSoon.djhtml' %}
             </div>
 
             <div class="right-content">
