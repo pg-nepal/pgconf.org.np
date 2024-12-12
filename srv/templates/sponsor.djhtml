@@ -11,22 +11,16 @@
 
                 <div class="event-sponsor">
                     <h1>let's contribute to grow the community</h1>
-                    <div class="box">
-                        <p>Coming Soon...</h1>
-                    </div>
+                    {% include 'comingSoon.djhtml' %}
                 </div>
 
                 <div class="media-partner">
-                    <div class="box">
-                        <p>Coming Soon...</h1>
-                    </div>
+                    {% include 'comingSoon.djhtml' %}
                 </div>
 
                 <div class="supported-by">
                     <h1>Supported by</h1>
-                    <div class="box">
-                        <p>Coming Soon...</h1>
-                    </div>
+                    {% include 'comingSoon.djhtml' %}
                 </div>
 
                 <div class="support-event">

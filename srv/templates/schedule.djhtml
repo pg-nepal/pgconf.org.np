@@ -12,14 +12,12 @@
 
                 <div class="traininig-schedule">
                     <h1>Training Schedule</h1>
-                    <div class="box">
-                        <p>Coming Soon..</h2>
-                    </div>
+                    {% include 'comingSoon.djhtml' %}
                 </div>
                 <div class="conference-schedule">
                     <h1>Conference Schedule</h1>
                     <div class="box">
-                        <p>Check the schedule</h3>
+                        <p>Check the schedule...</h3>
                     </div>
                 </div>
             </div>

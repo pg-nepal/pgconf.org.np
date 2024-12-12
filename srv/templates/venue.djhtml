@@ -65,9 +65,6 @@
         </ol>
 
         <h1>Hospitality Partner</h1>
-        <div class="box">
-            <p>Coming Soon..</p>
-        </div>
-
+        {% include 'comingSoon.djhtml' %}
     </div>
 {% endblock %}
