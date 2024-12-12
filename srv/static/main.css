@@ -26,7 +26,7 @@ h3{
 p{
     /* font-size: 20px; */
     margin-bottom: 2%;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 400;
 }
 
@@ -96,6 +96,8 @@ img{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
+
 .map {
     display: flex;
     flex-direction: column;
@@ -131,7 +133,39 @@ img{
     color: #0056b3; /* Darker shade on hover */
 }
 
-@media (max-width: 1100px) {
+/* Hide the up and down arrows in WebKit browsers (Chrome, Safari, Opera, Edge) */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+@media (max-width: 1600px) {
+    .sidebar{
+        padding: 5%; /* Increase padding for better readability */
+        margin-top: 10%; /* Reduce the top margin */
+        width: 90%; /* Make the sidebar take up 90% of the screen width */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .map iframe {
+        width: 100%; /* Make the map take full width on small screens */
+        height: 200px; /* Reduce the map height for smaller screens */
+    }
+
+    .image-container img {
+        width: 100%; /* Ensure the image fits the container */
+        max-width: 180px; /* Limit image size */
+    }
+
+    .venue a {
+        font-size: 14px; /* Make the "Know more about venue" link smaller */
+    }
+
+}
+
+@media (max-width: 1300px) {
     .map {
         width: 90%; /* Make the container width more responsive on tablets */
         padding: 15px; /* Adjust padding for smaller screens */
@@ -146,13 +180,37 @@ img{
         font-size: 16px; /* Slightly smaller font size */
     }
 
-    p{
-        font-size: 14px;
+    h1{
+        font-size: 30px;
     }
 
+    p{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 1000px) {
+    p{
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 800px) {
+    h1{
+        font-size: 25px;
+    }
+
+    p{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 700px) {
+
+    h1{
+        font-size: 22px;
+    }
+
     p{
         font-size: 12px;
     }
@@ -166,5 +224,17 @@ img{
     }
     .right-content{
         width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    h1{
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 500px) {
+    h1{
+        font-size: 10px;
     }
 }
