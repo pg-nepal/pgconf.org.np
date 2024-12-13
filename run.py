@@ -1,8 +1,8 @@
 #!venv/bin/python
 
 import datetime as dt
-
 import flask
+from server import create_tables
 
 eventOn = dt.datetime(2025, 5, 5)
 eventTo = dt.datetime(2025, 5, 6)
@@ -13,7 +13,6 @@ app.jinja_env.globals.update({
     'eventOn' : eventOn,
     'eventTo' : eventTo,
 })
-
 
 @app.route('/')
 def render_home():
