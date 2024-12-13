@@ -1,0 +1,47 @@
+{% extends '/base.djhtml' %}
+{% set pageTitle= '/ Call for Proposals' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/form.css">
+{% endblock %}
+
+
+{% block main_content %}
+    <div class="headings">
+        <h1>Call for Proposals</h1>
+    </div>
+
+    <div class="box">
+        <form id="wtf-form" action="/proposals/add" method="POST" enctype="multipart/form-data">
+            <fieldset>
+                {% include '/attendees/form-part.djhtml' %}
+            </fieldset>
+
+            <fieldset>
+                <div class="fields">
+                    <label for="wtf-session">Session <sup>*</sup></label>
+                    <select id="wtf-session" name="session" required>
+                        <option value="">Select Session</option>
+                        <option value="talk">Talk</option>
+                        <option value="workshop">Workshop</option>
+                    </select>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-title">Title <sup>*</sup></label>
+                    <input id="wtf-title" name="title" placeholder="Session Title" required>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-abstract">Abstract <sup>*</sup></label>
+                    <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
+                </div>
+            </fieldset>
+
+            <button class="button" style="font-size:110%">
+                Submit
+            </button>
+        </form>
+    </div>
+{% endblock %}
