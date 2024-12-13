@@ -1,0 +1,52 @@
+.fields{
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    margin-top: 10px;
+    font-size: 15px;
+}
+
+input {
+    margin-top: 10px;
+    font-size: 18px;
+    border: solid 0.5px rgb(175, 172, 172);
+    border-radius: 4px;
+    background-color: rgb(255, 255, 255);
+    padding: 15px;
+    outline: none;
+}
+
+select{
+    font-size: 18px;
+    margin-top: 10px;
+    background-color: white;
+    border: solid 0.5px rgb(175, 172, 172);
+    border-radius: 4px;
+    outline: none;
+    padding: 15px;
+    outline: none;
+}
+
+textarea {
+    height: 200px;
+    font-size: 18px;
+    margin-top: 10px;
+    font-family: 'DM Sans', sans-serif;
+    margin-bottom: 8px;
+    padding: 12px 15px;
+    border: solid 0.5px rgb(175, 172, 172);
+    border-radius: 4px;
+    outline: none;
+    resize: vertical; /* allows vertical resizing */
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+}
+
+input:focus, select:focus{
+    border: solid 0.5px #3b56a0;
+}
