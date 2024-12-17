@@ -2,7 +2,10 @@
 
 import datetime as dt
 import flask
-from server import create_tables
+import sqlalchemy as sa
+import db
+import db.proposals
+import server.routes
 
 eventOn = dt.datetime(2025, 5, 5)
 eventTo = dt.datetime(2025, 5, 6)
@@ -35,7 +38,7 @@ def render_speaker_page():
         'speakers.djhtml',
         keynotes  = keynotes,
         talks     = talks,
-        workshops = workshops    
+        workshops = workshops
     )
 
 
@@ -51,7 +54,7 @@ def render_speaker_page_slug(slug):
         selected_talk = talk
     print(selected_talk)
     return flask.render_template(
-        'speakers_indivisual.djhtml', 
+        'speakers_indivisual.djhtml',
         talk     = selected_talk
     )
 
