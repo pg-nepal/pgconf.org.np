@@ -37,6 +37,7 @@ ol{
 
 ol li{
     margin-top: 2%;
+    font-size: 18px;
 }
 
 .box{
@@ -48,6 +49,31 @@ ol li{
     display: flex;
     flex-direction: column;
     margin-bottom: 20px;
+}
+
+.button{
+    /* width: 25%; */
+    font-family: 'DM Sans', sans-serif;
+    text-decoration: none;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    background-color: #be2d39;
+    color: rgb(234, 234, 234);
+    padding: 5px;
+    font-weight: bold;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); */
+}
+
+.button:hover{
+    background-color: #c91818;
+    box-shadow:  0 2px 4px rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-5px);
 }
 
 .content{
@@ -96,6 +122,27 @@ img{
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are collapsed between cells */
+}
+
+th, td {
+    /* border: 1px solid rgb(158, 158, 158); */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: white;
+}
+
+td {
+    border-top: 1px solid rgb(191, 191, 191);
+    border-bottom: 1px solid rgb(191, 191, 191);
+    max-width: 200px;
+    word-wrap: break-word; /* Ensures long text breaks into multiple lines */
+}
 
 
 .map {
@@ -187,6 +234,9 @@ input[type="number"]::-webkit-inner-spin-button {
     p{
         font-size: 16px;
     }
+    ol li{
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -203,16 +253,16 @@ input[type="number"]::-webkit-inner-spin-button {
     p{
         font-size: 12px;
     }
+
+    ol li{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 700px) {
 
     h1{
         font-size: 22px;
-    }
-
-    p{
-        font-size: 12px;
     }
 
     .content{
