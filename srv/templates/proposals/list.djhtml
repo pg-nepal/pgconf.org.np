@@ -1,0 +1,49 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= '/ Proposals' %}
+
+
+{% block main_content %}
+    <link rel="stylesheet" href="/static/css/proposals.css">
+    <div class="content-container">
+        <h1>Proposals</h1>
+
+        <div class="box">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for proposal in cursor %}
+                        <tr>
+                            <td>{{ proposal.name }}</td>
+                            <td>{{ proposal.email }}</td>
+                            <td>
+                                <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
+                                <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function onDelete(pk){
+            fetch(`/proposals/${pk}`, {
+                method : 'DELETE',
+            }).then(response => {
+                alert('proposal deleted successfully.');
+                location.reload();
+            }).catch(error => {
+                console.log('Error: ', error)
+            })
+        }
+        window.onDelete = onDelete;
+    </script>
+{% endblock %}
