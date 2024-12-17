@@ -41,6 +41,28 @@ img{
     height: 100%;
 }
 
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Ensures borders are collapsed between cells */
+}
+
+th, td {
+    /* border: 1px solid rgb(158, 158, 158); */
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: white;
+}
+
+td {
+    border-top: 1px solid rgb(191, 191, 191);
+    border-bottom: 1px solid rgb(191, 191, 191);
+    max-width: 200px;
+}
+
 .map-iframe {
     width: 100%; /* Let it fill the container */
     max-width: 800px; /* Bigger maximum width */
@@ -107,6 +129,9 @@ input[type="number"]::-webkit-inner-spin-button {
     p{
         font-size: 16px;
     }
+    ol li{
+        font-size: 16px;
+    }
 }
 
 @media (max-width: 1000px) {
@@ -123,9 +148,17 @@ input[type="number"]::-webkit-inner-spin-button {
     p{
         font-size: 12px;
     }
+
+    ol li{
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 700px) {
+
+    .map {
+        width: 90%;
+    }
 
     h1{
         font-size: 22px;
