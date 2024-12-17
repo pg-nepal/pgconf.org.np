@@ -42,7 +42,7 @@
                     <h1>Submit Proposal</h1>
                     <p>Please submit the talk proposal using</p>
 
-                    <button class="button" onClick="window.location.href='/proposalForm';">
+                    <button class="button" onClick="window.location.href='/proposal/proposalForm';">
                         Submit a proposal
                     </button>
 
