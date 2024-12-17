@@ -5,7 +5,6 @@ import flask
 import sqlalchemy as sa
 import db
 import db.proposals
-import server.routes
 
 eventOn = dt.datetime(2025, 5, 5)
 eventTo = dt.datetime(2025, 5, 6)
