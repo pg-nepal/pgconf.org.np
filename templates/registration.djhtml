@@ -1,0 +1,23 @@
+{% extends 'base_inner.djhtml' %}
+{% set pageTitle = '/ Registration' %}
+
+
+{% block main_content %}
+    <div class="content-container">
+        <div class="content">
+            <div class="left-content">
+                <div class="registration-content">
+                    <h1>Registration</h1>
+                    <p>Register for the events</p>
+
+                    <div class="training">
+                        {% include 'comingSoon.djhtml' %}
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content">
+                {% include 'sidebar.djhtml' %}
+            </div>
+        </div>
+{% endblock %}
