@@ -1,0 +1,69 @@
+{% extends 'base_inner.djhtml' %}
+{% set pageTitle= '/ Proposals' %}
+
+{% block main_content %}
+<link rel="stylesheet" href="/static/css/proposals.css">
+<div class="content-container">
+    <h1>Proposals</h1>
+
+    <div class="box">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Phone Number</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                {% if not cursor %}
+                
+                <h1>There are no proposals.</h1>
+                
+                {% else %}
+                
+                {% for proposal in cursor %}
+                <tr>
+                    <td>{{ proposal.firstname }}</td>
+                    <td>{{ proposal.lastname }}</td>
+                    <td>{{ proposal.email }}</td>
+                    <td>{{ proposal.phonenum }}</td>
+                    <td>
+                        <a class="details-link" href="/admin/proposals/{{proposal.pk}}">Details</a>
+                        <button class="delete-btn" onclick="onDelete({{ proposal.pk }})">Delete</button>
+                    </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+        </tbody>
+        
+    </table>
+    
+</div>
+</div>
+
+<script>
+    function onDelete(pk){
+        fetch(`/admin/proposals/${pk}`, {
+            method: 'DELETE',
+            headers: {
+                "Content-type": 'application/json'
+            },
+        }).then(response => {
+            if(response.ok){
+                alert('proposal deleted successfully.');
+                location.reload();
+            } else {
+                alert("Error deleting the proposal.")
+            }
+        }).catch(error => {
+            console.log('Error: ', error)
+        })
+    }
+    window.onDelete = onDelete;
+</script>
+{% endblock %}
