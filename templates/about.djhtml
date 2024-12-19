@@ -1,0 +1,93 @@
+{% extends 'base_inner.djhtml' %}
+{% set pageTitle = '/ About' %}
+
+
+{% block main_content %}
+    <div class="content-container">
+        <div class="content">
+            <div class="left-content">
+                <h1>About</h1>
+                <h3>organizing committee/talks selection committee</h3>
+
+                <div class="about-content">
+                    <div class="welcome-content">
+                        <h2>Welcome</h2>
+                        <p>
+                            Welcome to the third PostgreSQL Conference happening on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in Kathmandu University,
+                            Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference
+                            Nepal in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference,
+                            we had quite a few exciting talks from internationally renowned and prominent personalities from the PostgreSQL
+                            community as well as from many local speakers. We hope to continue the trend for this year and have similar support
+                            from the international community as well as locally.
+                        </p>
+                        <p>
+                            With the increased globalization trends in recent years, Nepal has continued to be one of the major attractions
+                            not just because of its rich natural beauty but also because of the fact that it contributes significantly to the global
+                            software development ecosystem through our talented pool of Nepali computer professionals. In this context, Open Source
+                            applications and solutions like PostgreSQL have a lot of prospects in the overall development and prosperity of Nepal.
+                        </p>
+                        <p>
+                            One of the goals of PostgreSQL conferences in Nepal is to add momentum to the current use and adoption of PostgreSQL as a
+                            first choice of the database, fuel the advocacy and awareness about the use and benefits among policymakers and implementation
+                            agencies in the government, private and the public. This conference is an opportunity to bring together local and international
+                            experts, novices, enthusiasts and the like to discuss technical, non-technical, social and other issues on PostgreSQL thus helping
+                            to build a strong PostgreSQL community in Nepal which will not only be capable to solve the local technical problems locally but
+                            provide an international platform to the community members.
+                        </p>
+                        <p>
+                            Please check our <a href="/code_of_conduct">Code of conduct.</a>
+                        </p>
+                    </div>
+
+                    <div style="padding:1rem 0">
+                        <h3>Organizing Committee</h3>
+                        <ol>
+                            <li>Prof. Dr. Bal Krishna Bal - Kathmandu University, Conference Chair</li>
+                            <li>Dr. Oleg Bartunov - Postgres Professional, Co-Chair</li>
+                            <li>Mr. Hempal Shrestha - Nepal ICT Foundation, Co-Chair</li>
+                            <li>Mr. Ivan Pachenko, Postgres Professional, Co-Chair</li>
+                            <li>Mr. Mark Rivkin, Postgres Professional, Member</li>
+                            <li>Dr. Manoj Shakya, Assistant Professor, Kathmandu University, Member</li>
+                            <li>Mr. Sagun Dhakhwa - Outlines Research & Development, Member</li>
+                            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd., Member</li>
+                            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd., Member</li>
+                        </ol>
+                    </div>
+
+                    <div style="padding:1rem 0">
+                        <h3>Program Committee/Talk Selection Committee</h3>
+                        <ol>
+                            <li>Dr. Manoj Shakya, Assistant Professor, Kathmandu University</li>
+                            <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
+                            <li>Mr. Mark Rivkin, Postgres Professional</li>
+                            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd.</li>
+                            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd.</li>
+                        </ol>
+                    </div>
+
+                    <div style="padding:1rem 0">
+                        <h3>Conduct Committee</h3>
+                        <ol>
+                            <li>Mr. Ivan Pachenko, Postgres Professional</li>
+                            <li>Dr. Prakash Poudyal, Assistant Professor, Kathmandu University</li>
+                        </ol>
+                    </div>
+
+                    <div>
+                        <h3>Financial Disclosure</h3>
+                        <p>
+                            Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal. It is hereby stipulated that
+                            the expenses associated with the conference shall be covered by our sponsors, and any surplus funds shall be allocated
+                            towards financing another conference. The financial statement shall be included into the conference completion report and
+                            the report will be shared to all the sponsors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-content">
+                {% include 'sidebar.djhtml' %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
