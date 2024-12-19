@@ -1,4 +1,4 @@
-{% extends 'base_inner.djhtml' %}
+{% extends 'base.djhtml' %}
 {% set pageTitle = '/ Venue' %}
 
 
