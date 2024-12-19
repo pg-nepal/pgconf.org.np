@@ -3,6 +3,8 @@
 import datetime as dt
 
 import srv.pages
+import srv.proposals
+
 from srv import app
 
 
