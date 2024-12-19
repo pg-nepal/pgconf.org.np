@@ -2,12 +2,15 @@
 
 import datetime as dt
 
-import flask
+import srv.pages
+import srv.proposals
+
+from srv import app
+
 
 eventOn = dt.datetime(2025, 5, 5)
 eventTo = dt.datetime(2025, 5, 6)
 
-app = flask.Flask(__name__)
 
 app.jinja_env.globals.update({
     'eventOn' : eventOn,
