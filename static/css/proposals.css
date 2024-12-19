@@ -1,0 +1,29 @@
+.details-link{
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(111, 111, 111);
+    border: none;
+    border-radius: 4px;
+    transition: font-weight 0.2s ease;
+}
+
+.details-link:hover{
+    font-weight: 400;
+    color: rgb(25, 125, 50);
+}
+
+.delete-btn{
+    border: none;
+    font-size: 18px;
+    text-decoration: none;
+    color: rgb(111, 111, 111);
+    border: none;
+    border-radius: 4px;
+    transition: font-weight 0.2s ease;
+    background-color: white;
+}
+
+.delete-btn:hover{
+    font-weight: 400;
+    color: rgb(175, 14, 14);
+}

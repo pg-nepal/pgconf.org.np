@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link rel="icon" type="image/x-icon" href="/static/images/favicon.ico">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/brands.min.css">
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/static/main.css">
+  <link rel="stylesheet" href="/static/navbar.css">
+  <link rel="stylesheet" href="/static/css/footer.css">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+
+
+  <title>PgConf Nepal 2025 {% block title%}{% endblock %}</title>
+</head>
+
+<body>
+  <header>
+    {% include 'navbar.html' %}
+    <!-- <main style="margin-top: 125px;"> -->
+  </header>
+    {% block main %}
+
+    {% endblock %}
+  <!-- </main> -->
+
+  <footer class="footer">
+    <div class="footer-content">
+    <div class="footer-logo">
+      <div class="logo">
+        <img class="logo-img" src="/static/images/np-pug-logo.png" alt="np-pug-logo">
+        <div class="logo-text footer-logo-text">
+          <span>pgconf.2025</span>
+        </div>
+      </div>
+    </div>
+    <div class="footer-text">
+      <p>
+        The conference is organized by Nepal PostgreSQL user group (NP-PUG).<br>
+        info@pgconf.org.np
+      </p>
+    </div>
+  </div>
+  </footer>
+  <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
+  <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" data-auto-a11y="true"></script>
+  <script src="/static/js/featured.js"></script>
+  {% block scripts%}{% endblock %}
+
+</body>
+</html>
