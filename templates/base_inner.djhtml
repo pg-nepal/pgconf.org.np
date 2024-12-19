@@ -1,0 +1,23 @@
+{% extends 'base.djhtml' %}
+
+
+{% block main %}
+    <div class="main_background">
+        <div class="hero">
+            <div class="hero-text">
+                <div class="hero-text-header">
+                    <h3>{{ page_title }}</h3>
+                </div>
+                <div class="hero-text-par">
+                    <div class="grid-container">
+                        <div class="grid-item left-part" style="min-height:500px;">
+                            <div class="grid-text">
+                                {% block main_content %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
