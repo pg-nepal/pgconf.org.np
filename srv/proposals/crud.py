@@ -3,6 +3,7 @@ import sqlalchemy as sa
 
 import db
 import db.proposals
+import srv.auth
 
 from srv import app
 
@@ -16,6 +17,10 @@ def proposal_form():
 
 @app.get('/proposals')
 def proposal_list():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     query = sa.select(db.proposals.Proposals)
 
     with db.engine.connect() as connection:
@@ -23,7 +28,8 @@ def proposal_list():
 
     return flask.render_template(
         '/proposals/list.djhtml',
-        cursor = cursor,
+        cursor  = cursor,
+        isAdmin = isAdmin,
     )
 
 
@@ -45,6 +51,10 @@ def proposal_create():
 
 @app.get('/proposals/<int:pk>')
 def proposal_read(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     query = sa.select(
         db.proposals.Proposals,
     ).where(
@@ -60,7 +70,8 @@ def proposal_read(pk):
 
     return flask.render_template(
         '/proposals/read.djhtml',
-        proposal = row._asdict()
+        proposal = row._asdict(),
+        isAdmin  = isAdmin,
     )
 
 
