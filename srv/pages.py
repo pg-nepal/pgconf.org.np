@@ -1,4 +1,5 @@
 import flask
+import jinja2
 
 from srv import app
 
@@ -12,6 +13,9 @@ def render_home():
 
 @app.route('/<page>')
 def render_page(page):
-    return flask.render_template(
-        page + '.djhtml'
-    )
+    try:
+        return flask.render_template(
+            page + '.djhtml'
+        )
+    except jinja2.exceptions.TemplateNotFound:
+        flask.abort(404)
