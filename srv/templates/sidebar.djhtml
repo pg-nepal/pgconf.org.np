@@ -1,12 +1,12 @@
 <div class="sidebar">
     <div class="calendar">
-        <h1>Mark on your calendar</h2>
         <div class="calendar-content">
-            <p id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">{{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}</p>
-            <p style="font-size: 21px;">@Dhulikhel, Nepal</p>
+            <p id="start-date" style="font-size: 20px; letter-spacing: 0px; word-spacing: 0;">
+                {{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}
+            </p>
             <a target="_blank" href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20230511T011500Z%2F20230512T121500Z&text=2nd%20PostgreSQL%20Conference%20Nepal%2C%202023&location=Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal&details=Event%3A%202md%20PostgreSQL%20Conference%20Nepal%0A11-12%20May%202023%0AVenue%3A%20Kathmandu%20University%2C%20Dhulikhel%2C%20Nepal">
                 <div class="image-container">
-                    <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif">
+                    <!-- <img border="0" src="https://www.google.com/calendar/images/ext/gc_button1_en-GB.gif"> -->
                 </div>
             </a>
         </div>
