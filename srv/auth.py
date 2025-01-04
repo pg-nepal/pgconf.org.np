@@ -3,12 +3,16 @@ from http import HTTPStatus
 import os
 import flask
 
+from srv import app
+
 
 bauth = os.getenv('BAUTH')
 
 keys = {
     bauth : 'root',
 }
+
+app.jinja_env.globals.update(isAdmin=False)
 
 
 def isValid(request):
@@ -28,3 +32,8 @@ def respondInValid():
     response = flask.make_response(status.description, status.value)
     response.headers['WWW-Authenticate'] = 'Basic'
     return response
+
+
+@app.route('/logout/basic')
+def logoutBasic():
+    return respondInValid()
