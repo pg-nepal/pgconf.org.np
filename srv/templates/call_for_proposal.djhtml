@@ -18,7 +18,7 @@
                 </div>
 
                 <div style="text">
-                    <button class="button" onclick="window.location.href='/proposals/form'">
+                    <button class="button" style="font-size:125%" onclick="window.location.href='/proposals/form'">
                         Submit Your Proposal
                     </button>
 
