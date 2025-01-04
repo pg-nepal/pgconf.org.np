@@ -14,10 +14,11 @@ url = sa.URL.create(
     database = os.getenv('PG_DB', 'pug'),
 )
 
+isDebug = bool(os.getenv('DEBUG'))  # direct access
 engine = sa.create_engine(
     url    = url,
     future = True,
-    echo   = True,
+    echo   = isDebug,  # default:False
 )
 
 SessionMaker = sa.orm.sessionmaker(bind=engine)
