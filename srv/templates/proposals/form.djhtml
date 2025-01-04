@@ -5,78 +5,64 @@
 {% block main_content %}
     <link rel="stylesheet" href="/static/css/proposalForm.css">
     <div class="content-container">
-
         <div class="content">
             <div class="left-content">
+                <div class="headings">
+                    <h1>Call for Proposals</h1>
+                </div>
+
                 <div class="box">
-                    <form id="proposal-form" action="/proposal/add" method="POST" enctype="multipart/form-data">
+                    <form id="proposal-form" action="/proposals/add" method="POST" enctype="multipart/form-data">
                         <div class="form-container">
-                            <div class="field-1">
+                            <div class="fields">
                                 <div class="fields">
-                                    <label for="firstname">First Name</label>
-                                    <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
-                                </div>
-
-                                <div class="fields">
-                                    <label for="secondname">Last Name</label>
-                                    <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
+                                    <label for="wtf-name">Name <sup>*</sup></label>
+                                    <input id="wtf-nam" name="name" placeholder="Full Name" required>
                                 </div>
                             </div>
 
-                            <div class="field-2">
-                                <div class="fields">
-                                    <label for="email">Email</label>
-                                    <input type="email" id="email" name="email" placeholder="Email" required>
-                                </div>
-
-                                <div class="fields">
-                                    <label for="country">Country</label>
-                                    <select id="session_type" name="session_type" required>
-                                        <option value="Nepal">Nepal</option>
-                                        <option value="USA">USA</option>
-                                        <option value="Canada">Canada</option>
-                                        <option value="India">India</option>
-                                    </select>
-                                </div>
-
-                                <div class="fields">
-                                    <label for="job">Job</label>
-                                    <input type="job" id="job" name="job" placeholder="job">
-                                </div>
-
-                                <div class="fields">
-                                    <label for="phonenum">Phone Number</label>
-                                    <input id="phonenum" name="phonenum" placeholder="Phone Number">
-                                </div>
-
-                                <div class="field-1">
-                                    <div class="fields">
-                                        <label for="session_type">Session Type</label>
-                                        <select id="session_type" name="session_type" required>
-                                            <option value="">Select Session Type</option>
-                                            <option value="workshop">Workshop</option>
-                                            <option value="lecture">Lecture</option>
-                                            <option value="panel">Panel</option>
-                                            <option value="discussion">Discussion</option>
-                                        </select>
-                                    </div>
-
-                                    <div class="fields">
-                                        <label for="session_title">Session Title</label>
-                                        <input type="text" id="session_title" name="session_title" placeholder="Session Title" required>
-                                    </div>
-                                </div>
-
-                                <div class="field-2">
-                                    <label for="abstract">Abstract</label>
-                                    <textarea name="abstract" id="abstract" placeholder="Abstract of your session." required></textarea>
-                                </div>
+                            <div class="fields">
+                                <label for="wtf-email">Email <sup>*</sup></label>
+                                <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
                             </div>
 
-                            <button class="button">
-                                Submit
-                            </button>
+                            <div class="fields">
+                                <label for="wtf-category">Category <sup>*</sup></label>
+                                <select id="wtf-category" name="email" placeholder="Email Address" required>
+                                    <option value="">Select Category</option>
+                                    <option value="stundent">Student</option>
+                                    <option value="professional">Professional</option>
+                                </select>
+                            </div>
+
+                            <div class="fields">
+                                <label for="wtf-country">Country <sup>*</sup></label>
+                                <input id="wtf-country" name="country" required>
+                            </div>
+
+                            <div class="fields">
+                                <label for="wtf-session">Session <sup>*</sup></label>
+                                <select id="wtf-session" name="session" required>
+                                    <option value="">Select Session</option>
+                                    <option value="talk">Talk</option>
+                                    <option value="workshop">Workshop</option>
+                                </select>
+                            </div>
+
+                            <div class="fields">
+                                <label for="wtf-title">Title <sup>*</sup></label>
+                                <input id="wtf-title" name="title" placeholder="Session Title" required>
+                            </div>
+
+                            <div class="fields">
+                                <label for="wtf-abstract">Abstract <sup>*</sup></label>
+                                <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
+                            </div>
                         </div>
+
+                        <button class="button" style="font-size:110%">
+                            Submit
+                        </button>
                     </form>
                 </div>
             </div>
