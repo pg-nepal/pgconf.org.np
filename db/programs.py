@@ -16,9 +16,7 @@ class Proposal(db.Base):
 
     name           = sa.Column(sa.String(256), nullable=False)
     email          = sa.Column(sa.String(256))
-    address        = sa.Column(sa.String(256))
     country        = sa.Column(sa.String(256))
-    phone          = sa.Column(sa.String(10))
     category       = sa.Column(sa.String(256), nullable=False)
 
     # Session Details
