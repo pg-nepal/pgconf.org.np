@@ -3,9 +3,7 @@
 
 
 {% block main_content %}
-    <link rel="stylesheet" href="/static/css/call_for_proposal.css">
     <div class="content-container">
-
         <div class="content">
             <div class="left-content">
                 <div class="headings">
@@ -19,9 +17,24 @@
                     </p>
                 </div>
 
-                <div class="conference-topics">
-                    <div class="box">
-                    <p>Suggested topic areas include but are not limited to:</p>
+                <div style="text">
+                    <button class="button" onclick="window.location.href='/proposals/form'">
+                        Submit Your Proposal
+                    </button>
+
+                    <p>
+                        For any problem please write us to :
+                        <a href="mailto:info@pgconf.org.np">
+                            info@pgconf.org.np
+                        </a>
+                    </p>
+                </div>
+
+
+                <h3>Suggested Topics</h3>
+
+                <div class="box">
+                    <p>These are the topics suggested but are not limited to:</p>
                     <ol>
                         <li>Developing applications for PostgreSQL</li>
                         <li>Administering large scale PostgreSQL installations</li>
@@ -35,20 +48,6 @@
                         <li>Benchmarking & hardware</li>
                         <li>PostgreSQL related products</li>
                     </ol>
-                    </div>
-                </div>
-
-                <div class="proposal-submission">
-                    <h1>Submit Proposal</h1>
-                    <p>Please submit the talk proposal using</p>
-
-                    <button class="button" onClick="window.location.href='/proposal/form';">
-                        Submit a proposal
-                    </button>
-
-                    <p>
-                        For any problem please write us to : <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a>
-                    </p>
                 </div>
             </div>
 
