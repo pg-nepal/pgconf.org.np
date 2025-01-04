@@ -28,7 +28,7 @@
 
                             <div class="fields">
                                 <label for="wtf-category">Category <sup>*</sup></label>
-                                <select id="wtf-category" name="email" placeholder="Email Address" required>
+                                <select id="wtf-category" name="category" placeholder="Email Address" required>
                                     <option value="">Select Category</option>
                                     <option value="stundent">Student</option>
                                     <option value="professional">Professional</option>
