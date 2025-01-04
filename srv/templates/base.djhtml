@@ -17,6 +17,7 @@
 
     <body>
         <header>
+            {% if isAdmin %}{% include '/parts/auth.djhtml' %}{% endif %}
             {% include '/navbar.djhtml' %}
         </header>
 
