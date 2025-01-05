@@ -1,55 +1,52 @@
 <nav>
-  <div class="navbar-area">
-    <div class="navbar-container">
-    <div class="headers">
-      <a href="/home">
-        <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">        
-      </a>
-      <!-- <div class="logo-text">PGConference Nepal - 2025</div> -->
-    </div>
+    <div class="navbar-area">
+        <div class="navbar-container">
+            <div class="headers">
+                <a href="/home">
+                    <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+                </a>
+            </div>
 
-    <div class="nav-options">
-      <ul><a href="/home">Home</a></ul>
-      <ul><a href="call_for_proposal">Call for Proposal</a></ul>
-      <ul><a href="/venue">Venue</a></ul>
-      <ul><a href="/registration">Registration</a></ul>
-      <ul><a href="/about">About</a></ul>
+            <div class="nav-options">
+                <ul><a href="/home">Home</a></ul>
+                <ul><a href="call_for_proposal">Call for Proposal</a></ul>
+                <ul><a href="/venue">Venue</a></ul>
+                <ul><a href="/registration">Registration</a></ul>
+                <ul><a href="/about">About</a></ul>
 
+                <ul class="dropdown">
+                    <a href="#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
+                    <div class="dropdown-content">
+                        <a href="/schedule">Schedule</a>
+                        <a href="/speakers/all">Speakers</a>
+                        <a href="/sponsor">Sponsors</a>
+                    </div>
+                </ul>
+            </div>
 
-      <ul class="dropdown">
-        <a href="#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
-        <div class="dropdown-content">
-          <a href="/schedule">Schedule</a>
-          <a href="/speakers/all">Speakers</a>
-          <a href="/sponsor">Sponsors</a>
+            <!-- Mobile Hamburger Icon -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span>&#9776;</span> <!-- Hamburger icon -->
+            </div>
+
+            <div class="hamburger-options">
+                <ul>
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="call_for_proposal">Call for Proposal</a></li>
+                    <li><a href="/venue">Venue</a></li>
+                    <li><a href="/registration">Registration</a></li>
+                    <li><a href="/about">About</a></li>
+                    <li><a href="/schedule">Schedule</a></li>
+                    <li><a href="/speakers/all">Speakers</a></li>
+                    <li><a href="/sponsor">Sponsors</a></li>
+                </ul>
+            </div>
         </div>
-      </ul>
-    </div>
-
-    <!-- Mobile Hamburger Icon -->
-    <div class="hamburger-menu" id="hamburger-menu">
-      <span>&#9776;</span> <!-- Hamburger icon -->
-    </div>
-    <div class="hamburger-options">
-      <ul>
-        <li><a href="/home">Home</a></li>
-        <li><a href="call_for_proposal">Call for Proposal</a></li>
-        <li><a href="/venue">Venue</a></li>
-        <li><a href="/registration">Registration</a></li>
-        <li><a href="/about">About</a></li>
-        <li><a href="/schedule">Schedule</a></li>
-        <li><a href="/speakers/all">Speakers</a></li>
-        <li><a href="/sponsor">Sponsors</a></li>
-      </ul>
-  </div>
-  </div>
 </nav>
 
 <script>
-  const hamburgerMenu = document.getElementById('hamburger-menu');
-  const navOptions = document.querySelector('.hamburger-options');
-
-  hamburgerMenu.addEventListener('click', () => {
-    navOptions.classList.toggle('active');
-  })
+    const navOptions = document.querySelector('.hamburger-options')
+    document.getElementById('hamburger-menu').addEventListener('click', function () {
+        navOptions.classList.toggle('active')
+    })
 </script>
