@@ -60,6 +60,10 @@
                             </div>
                         </div>
 
+                        <!-- Prevent implicit submission of the form -->
+                        <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+                        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
                         <button class="button" style="font-size:110%">
                             Submit
                         </button>
