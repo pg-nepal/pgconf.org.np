@@ -47,5 +47,23 @@
                 Submit
             </button>
         </form>
+
+        <script>
+            document.getElementById('wtf-form').addEventListener('submit', function (event) {
+                event.preventDefault()
+                event.stopPropagation()
+                event.target.reportValidity()
+                fetch('/proposals/add', {
+                    method : 'POST',
+                    body   : new FormData(event.target),
+                }).then(function (response) {
+                    alert('proposal submitted successfully');
+                    // may be page here
+                    // event.target.reset()  // may be only partial clear
+                }).catch(function (error) {
+                    alert('Oops! something went wrong')
+                })
+            })
+        </script>
     </div>
 {% endblock %}
