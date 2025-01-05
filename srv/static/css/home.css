@@ -41,22 +41,6 @@ img{
     height: 100%;
 }
 
-.sidebar{
-    padding: 2%;
-    margin-top: 20%;
-    border: 0.5px solid rgb(197, 197, 197);
-    border-radius: 8px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
-}
-
-.sidebar:hover{
-    transform: translateY(-5px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 .map {
     display: flex;
     flex-direction: column;
@@ -71,27 +55,6 @@ img{
     width: fit-content; /* Ensure content fits dynamically */
     margin: auto; /* Center the container on the page */
 }
-
-.map-iframe {
-    width: 100%; /* Let it fill the container */
-    max-width: 800px; /* Bigger maximum width */
-    height: 450px; /* Increased height for better visibility */
-    border: 0; /* Remove default border */
-    border-radius: 12px; /* Match container's border-radius */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for the map */
-}
-
-.map a {
-    font-size: 18px; /* Larger font size for visibility */
-    text-decoration: none; /* Remove underline */
-    color: #007BFF; /* Blue color for link */
-    transition: color 0.3s ease; /* Smooth transition for hover */
-}
-
-.map a:hover {
-    color: #0056b3; /* Darker shade on hover */
-}
-
 
 /* p{
     font-size: 20px;
