@@ -39,7 +39,8 @@
                 <div class="footer-text">
                     <p>
                         The conference is organized by Nepal PostgreSQL user group (NP-PUG).<br>
-                        info@pgconf.org.np
+                        For any queries mail us at <a style="color:white" href="mailto:info@pgconf.org.np">info@pgconf.org.np</a><br>
+                        For website related issue <a style="color:white" href="https://github.com/pg-nepal/pgconf.org.np/issues">report</a>
                     </p>
                 </div>
             </div>
