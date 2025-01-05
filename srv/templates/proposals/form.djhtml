@@ -38,7 +38,7 @@
                         <div class="fields">
                             <label for="wtf-country">Country <sup>*</sup></label>
                             <input list="countries" id="wtf-country" name="country" required>
-                            <datalist id="countries"></datalist>
+                            <datalist id="countries" style="display: none;"></datalist>
                         </div>
 
                         <div class="fields">
@@ -120,19 +120,11 @@
 
     const countries = getCountries('en');
     const datalist = document.getElementById('countries');
-    const inputField = document.getElementById('wtf-country');
 
-    inputField.addEventListener('input', function () { // suggests the countries
-        const query = inputField.value.toLowerCase();
-        const filteredCountries = Object.values(countries).filter(country => country.toLowerCase().startsWith(query) && query.length > 0);
-
-        datalist.innnerHTML = '';
-
-        filteredCountries.forEach(country => {
-            const option = document.createElement('option');
-            option.value = country;
-            datalist.appendChild(option);
-        });
+    Object.values(countries).forEach(country => {
+        const option = document.createElement('option');
+        option.value = country;
+        datalist.appendChild(option);
     })
 </script>
 {% endblock %}
