@@ -122,7 +122,7 @@
     const datalist = document.getElementById('countries');
     const inputField = document.getElementById('wtf-country');
 
-    inputField.addEventListener('input', function () {
+    inputField.addEventListener('input', function () { // suggests the countries
         const query = inputField.value.toLowerCase();
         const filteredCountries = Object.values(countries).filter(country => country.toLowerCase().startsWith(query) && query.length > 0);
 
