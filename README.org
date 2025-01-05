@@ -9,3 +9,46 @@
 
    - postgresql
    - python
+
+* RUNNING
+** setup
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     git clone git@github.com:pg-nepal/pgconf.org.np.git
+     cd pgconf.org.np
+     ./configure
+     su postgres --login --command 'createdb --echo pug'
+     ./initdb.py
+   #+END_SRC
+
+** options
+
+   run using =scons= or use following command which set the default
+   password for root user which is need for administration.
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     BAUTH="Basic $(echo -n root:pass | base64)" ./run.py --debug
+   #+END_SRC
+
+   check further options using.
+
+   #+HEADER: :results output :eval no-export
+   #+BEGIN_SRC sh :exports both
+     ./run.py --help
+   #+END_SRC
+
+   #+RESULTS:
+   #+begin_example
+   usage: core [-h] [-d] [-u] [-e EXPOSE] [-p PORT]
+
+   services switches
+
+   options:
+     -h, --help           show this help message and exit
+     -d, --debug          server on debug-mode
+     -u, --unstrict       disable jinja2.strictUndefined in debug mode
+     -e, --expose EXPOSE  0.0.0.0 for exposing beyond local
+     -p, --port PORT      default=5000, use 0 for auto
+   #+end_example
