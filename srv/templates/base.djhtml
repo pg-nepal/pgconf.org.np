@@ -21,9 +21,9 @@
             {% include '/navbar.djhtml' %}
         </header>
 
-        <div class="main_background">
+        <main class="main_background">
             {% block main_content %}{% endblock %}
-        </div>
+        </main>
 
         <footer class="footer">
             <div class="footer-content">
