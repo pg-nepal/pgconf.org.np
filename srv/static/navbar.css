@@ -12,7 +12,7 @@
 }
 
 .navbar-container {
-  width: 95%;
+  width: 80%;
   margin: 0 auto; /* Center it horizontally */
   padding: 0 20px; /* Add some padding on the sides */
   display: flex;
@@ -45,17 +45,38 @@
   list-style-type: none;
 }
 
-.nav-options ul {
-  margin-left: 30px;
+.nav-options .nav-list {
+  display: flex;
+  list-style-type: none;
+}
+
+.nav-options .nav-list .nav-item:not(:last-of-type) {
+  margin-right: 1.5rem;
+}
+
+.nav-options .nav-list .nav-item {
+  position: relative;
+}
+
+.nav-options .nav-list .nav-item .dropdown-item {
+  background: white;
+  padding: 1rem !important;
+  position: absolute;
+  top: 150%;
+  left: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.nav-options .nav-list .nav-item .dropdown-item .nav-item {
+  margin-bottom: 1rem;
 }
 
 .nav-options a {
   font-family: 'DM Sans', sans-serif;
   color: #000000;
   text-decoration: none;
-  /* font-size: 18px; */
   text-transform: uppercase;
-  font-size: 20px;
   font-weight: 540;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
@@ -94,16 +115,16 @@
   display: inline-block;
 }
 
-.nav-options .dropdown .dropbtn {
-  color: rgb(0, 0, 0);
+/* .nav-options .dropdown .dropbtn { */
+  /* color: rgb(0, 0, 0); */
   /* padding: 14px 16px; */
-  text-align: center;
+  /* text-align: center;
   text-decoration: none;
   font-size: 20px;
   border: none;
   background-color: transparent;
   cursor: pointer;
-}
+} */
 
 .nav-options .dropdown-content {
   display: none;
@@ -154,6 +175,14 @@
 /* Display the hamburger options when 'active' class is added */
 .hamburger-options.active {
   display: block; /* Show the menu */
+}
+
+.hamburger-options .close-btn {
+  font-size: 1.5rem;
+  background: unset;
+  color: white;
+  border: none;
+  float: right;
 }
 
 /* Style the menu items */
