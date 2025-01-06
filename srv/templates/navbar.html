@@ -71,4 +71,8 @@
     document.getElementById('hamburger-menu').addEventListener('click', function () {
         navOptions.classList.toggle('active')
     })
+
+    navOptions.querySelector('.close-btn').onclick = function() {
+        navOptions.classList.toggle('active')
+    }
 </script>
