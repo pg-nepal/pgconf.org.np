@@ -1,5 +1,5 @@
 .banner-container{
-    all: unset;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -20,7 +20,7 @@
 
 .content{
     display: flex;
-    gap: 5%;
+    margin-top: 1rem;
 }
 
 .left-content{
@@ -32,8 +32,8 @@
     text-align: center;
 }
 
-.venue{
-    margin-top: 10%;
+#intro p {
+    margin-bottom: 0.8rem;
 }
 
 .image-container{
@@ -68,12 +68,12 @@ img{
     justify-content: center;
     align-items: center;
     width: 80%;
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
     color: white; /* Text color white */
     padding: 20px;
     /* text-align: center; */
     border-radius: 8px; /* Optional: rounded corners */
     top: 10%;
+    z-index: 1;
 }
 
 .img-container {
@@ -91,6 +91,7 @@ object-fit: cover; /* Ensure the images fill the container proportionally */
 }
 
 .countdown-container {
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
