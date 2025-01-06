@@ -39,7 +39,7 @@
     <div class="content-container">
         <div class="content">
             <div class="left-content">
-                <div class="intro">
+                <section id="intro" class="home-content">
                     <p>
                         We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
                         Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May
@@ -56,15 +56,15 @@
                     <p>
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </p>
-                </div>
+                </section>
 
-                <div class="parts">
+                <section class="home-content mt-1">
                     <h2>Second Conference Conclusion</h2>
                     <div class="conference-image-container">
                         <img src="/static/main_conference.jpg" alt="main conference">
                         <img src="/static/training3.jpeg" alt="training">
                     </div>
-                </div>
+                </section>
             </div>
 
             <div class="right-content">
