@@ -123,8 +123,17 @@ object-fit: cover; /* Ensure the images fill the container proportionally */
     margin-bottom: 50px;
 }
 
-.intro{
-    margin-top: 10%;
+.countDown .countdown-cells {
+    display: flex;
+    margin: 0 1rem;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countDown .countdown-numbers {
+    font-size: 3rem;
+    font-weight: 600;
 }
 
 .home-content{
