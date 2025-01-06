@@ -11,11 +11,11 @@
                 <p>talks and workshop sessions</p>
 
                 <div class="traininig-schedule">
-                    <h1>Training Schedule</h1>
+                    <h2>Training Schedule</h2>
                     {% include 'comingSoon.djhtml' %}
                 </div>
                 <div class="conference-schedule">
-                    <h1>Conference Schedule</h1>
+                    <h2>Conference Schedule</h2>
                     <div class="box">
                         <p>Check the schedule...</h3>
                     </div>

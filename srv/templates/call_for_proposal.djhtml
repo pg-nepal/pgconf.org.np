@@ -8,7 +8,7 @@
             <div class="left-content">
                 <div class="headings">
                     <h1>Call for Proposals</h1>
-                    <h3>Talks and Workshop sessions</h3>
+                    <h2>Talks and Workshop sessions</h2>
 
                     <p>
                         PostgreSQL Conference Nepal 2025 will be held on{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in Kathmandu University, Dhulikhel, Nepal. It will cover topics for PostgreSQL
@@ -31,7 +31,7 @@
                 </div>
 
 
-                <h3>Suggested Topics</h3>
+                <h2>Suggested Topics</h2>
 
                 <div class="box">
                     <p>These are the topics suggested but are not limited to:</p>
