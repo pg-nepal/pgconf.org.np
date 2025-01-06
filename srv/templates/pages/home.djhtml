@@ -9,15 +9,28 @@
 
 {% block main %}
     <div class="banner-container">
+        <div class="overlay"></div>
         <div class="text">
             <h1>Third <span style="color: #336791; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
             <h2>{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}}</h2>
             <div class="countdown-container">
             <div class="countDown">
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Days<br> <span id="days">115</span></div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Hours<br> <span id="hours">13</span></div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Minutes<br> <span id="minutes">2</span></div>
-                <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">Seconds<br> <span id="seconds">42</span></div>
+                <div class="countdown-cells">
+                    Days <br> 
+                    <span id="days" class="countdown-numbers">115</span>
+                </div>
+                <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    Hours <br>
+                    <span id="hours" class="countdown-numbers">13</span>
+                </div>
+                <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    Minutes <br>
+                    <span id="minutes" class="countdown-numbers">2</span>
+                </div>
+                <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                    Seconds <br>
+                    <span id="seconds" class="countdown-numbers">42</span>
+                </div>
             </div>
             </div>
         </div>
