@@ -11,6 +11,13 @@
     background-position: center; /* Center the image */
 }
 
+.banner-container .overlay{
+    background: #00000070;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 .content{
     display: flex;
     gap: 5%;

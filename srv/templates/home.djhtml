@@ -9,6 +9,7 @@
 
 {% block main %}
     <div class="banner-container">
+        <div class="overlay"></div>
         <div class="text">
             <h1>Third <span style="color: #336791; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
             <h2>{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}}</h2>
