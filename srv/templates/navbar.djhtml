@@ -26,6 +26,25 @@
                 </ul>
             </div>
 
+            <script>
+                const dropdownNavItems = document.querySelectorAll('.navbar-area .nav-list .nav-item.dropdown')
+
+                for (let e of dropdownNavItems) {
+                    const dropTarget = e.getAttribute('drop-target')
+
+                    e.onclick = function () {
+                        const dropDown = document.querySelector(`#${dropTarget}`)
+                        const isShown = dropDown.style.display == 'block'
+
+                        if (isShown) {
+                            dropDown.style.display = 'none'
+                        } else {
+                            dropDown.style.display = 'block'
+                        }
+                    }
+                }
+            </script>
+
             <!-- Mobile Hamburger Icon -->
             <div class="hamburger-menu" id="hamburger-menu">
                 <span>&#9776;</span> <!-- Hamburger icon -->
@@ -52,4 +71,8 @@
     document.getElementById('hamburger-menu').addEventListener('click', function () {
         navOptions.classList.toggle('active')
     })
+
+    navOptions.querySelector('.close-btn').onclick = function () {
+        navOptions.classList.toggle('active')
+    }
 </script>
