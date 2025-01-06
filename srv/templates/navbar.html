@@ -8,19 +8,21 @@
             </div>
 
             <div class="nav-options">
-                <ul><a href="/home">Home</a></ul>
-                <ul><a href="/call_for_proposal">Call for Proposal</a></ul>
-                <ul><a href="/venue">Venue</a></ul>
-                <ul><a href="/registration">Registration</a></ul>
-                <ul><a href="/about">About</a></ul>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/home">Home</a></li>
+                    <li class="nav-item"><a href="/call_for_proposal">Call for Proposal</a></li>
+                    <li class="nav-item"><a href="/venue">Venue</a></li>
+                    <li class="nav-item"><a href="/registration">Registration</a></li>
+                    <li class="nav-item"><a href="/about">About</a></li>
+                    <li class="nav-item dropdown" drop-target="more-dropdown" >
+                        <a href="#">More</a>
 
-                <ul class="dropdown">
-                    <a href="#" class="dropbtn" style="color: rgb(0, 0, 0);">More</a>
-                    <div class="dropdown-content">
-                        <a href="/schedule">Schedule</a>
-                        <a href="/speakers/all">Speakers</a>
-                        <a href="/sponsor">Sponsors</a>
-                    </div>
+                        <ul id="more-dropdown" class="dropdown-item" style="display: none;">
+                            <li class="nav-item"><a href="/schedule">Schedule</a></li>
+                            <li class="nav-item"><a href="/speakers/all">Speakers</a></li>
+                            <li class="nav-item"><a href="/sponsor">Sponsors</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
