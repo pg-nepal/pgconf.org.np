@@ -48,21 +48,6 @@ img{
     height: 100%;
 }
 
-.map {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 15px; /* Increased space between elements */
-    background: #f9f9f9; /* Light background for contrast */
-    padding: 20px; /* More padding for a spacious look */
-    border: 1px solid #ddd; /* Light border for separation */
-    border-radius: 12px; /* Slightly more rounded corners */
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.1); /* Enhanced shadow for depth */
-    width: fit-content; /* Ensure content fits dynamically */
-    margin: auto; /* Center the container on the page */
-}
-
 /* p{
     font-size: 20px;
     margin-bottom: 2%;
