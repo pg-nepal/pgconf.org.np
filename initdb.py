@@ -3,6 +3,7 @@
 import sqlalchemy as sa
 
 import db
+import db.users
 import db.proposals
 
 
