@@ -136,8 +136,8 @@ object-fit: cover; /* Ensure the images fill the container proportionally */
     font-weight: 600;
 }
 
-.home-content{
-    margin-top: 10%;
+.home-content.mt-1 {
+    margin-top: 1.5rem;
 }
 
 .conference-image-container{
