@@ -14,7 +14,7 @@ html, body{
 
 .content-container{
     width: 80%;
-    margin: 50px auto;
+    margin: 1rem auto;
     overflow-x: hidden;
     display: flex;
     flex-direction: column;
@@ -40,7 +40,7 @@ html, body{
     border: 1px solid #c91818;
     background-color: transparent;
     border-radius: 8px;
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
 }
 
@@ -61,13 +61,8 @@ html, body{
 }
 
 .right-content{
-    padding: 2%;
     width: 30%;
     text-align: center;
-}
-
-.venue{
-    margin-top: 10%;
 }
 
 .image-container{
