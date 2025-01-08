@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="/static/css/home.css">
+    <script src="/static/js/slider.js"></script>
 {% endblock %}
 
 
@@ -16,7 +17,7 @@
             <div class="countdown-container">
             <div class="countDown">
                 <div class="countdown-cells">
-                    Days <br> 
+                    Days <br>
                     <span id="days" class="countdown-numbers">115</span>
                 </div>
                 <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
@@ -33,7 +34,10 @@
                 </div>
             </div>
             </div>
+
+            <a href="/registration" class="btn main-btns">Register Now</a>
         </div>
+
     </div>
 
     <div class="content-container">
@@ -60,11 +64,21 @@
 
                 <section class="home-content mt-1">
                     <h2>Second Conference Conclusion</h2>
-                    <div class="conference-image-container">
-                        <img src="/static/main_conference.jpg" alt="main conference">
-                        <img src="/static/training3.jpeg" alt="training">
+                    <div id="img-slider" class="img-slider conference-image-container">
+                        <button class="slide-btn prev">p</button>
+                        <button class="slide-btn next">n</button>
+                        <div class="slides show">
+                            <img src="/static/main_conference.jpg" alt="main conference">
+                        </div>
+                        <div class="slides">
+                            <img src="/static/training3.jpeg" alt="training">
+                        </div>
                     </div>
                 </section>
+
+                <script>
+                    init('img-slider')
+                </script>
 
                 <section class="home-content mt-1">
                     <h2>Main Conference Schedule</h2>
