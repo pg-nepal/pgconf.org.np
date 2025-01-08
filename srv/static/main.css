@@ -82,6 +82,14 @@ td {
     color: #0056b3; /* Darker shade on hover */
 }
 
+/* global btns */
+.main-btns {
+    background: #336791;
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+}
+
 /* Hide the up and down arrows in WebKit browsers (Chrome, Safari, Opera, Edge) */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
