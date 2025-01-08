@@ -14,7 +14,7 @@
                     <li class="nav-item"><a href="/venue">Venue</a></li>
                     <li class="nav-item"><a href="/registration">Registration</a></li>
                     <li class="nav-item"><a href="/about">About</a></li>
-                    <li class="nav-item dropdown" drop-target="more-dropdown" >
+                    <li class="nav-item dropdown" drop-target="more-dropdown">
                         <a href="#">More</a>
 
                         <ul id="more-dropdown" class="dropdown-item" style="display: none;">
@@ -23,6 +23,7 @@
                             <li class="nav-item"><a href="/sponsor">Sponsors</a></li>
                         </ul>
                     </li>
+                    <li><a id="logout-btn">logout</a></li>
                 </ul>
             </div>
 
@@ -32,10 +33,10 @@
                 for (let e of dropdownNavItems) {
                     const dropTarget = e.getAttribute('drop-target')
 
-                    e.onclick = function() {
+                    e.onclick = function () {
                         const dropDown = document.querySelector(`#${dropTarget}`)
                         const isShown = dropDown.style.display == 'block'
-                        
+
                         if (isShown) {
                             dropDown.style.display = 'none'
                         } else {
@@ -61,6 +62,7 @@
                     <li><a href="/schedule">Schedule</a></li>
                     <li><a href="/speakers/all">Speakers</a></li>
                     <li><a href="/sponsor">Sponsors</a></li>
+                    <li><a id="logout-btn">logout</a></li>
                 </ul>
             </div>
         </div>
@@ -72,7 +74,32 @@
         navOptions.classList.toggle('active')
     })
 
-    navOptions.querySelector('.close-btn').onclick = function() {
+    navOptions.querySelector('.close-btn').onclick = function () {
         navOptions.classList.toggle('active')
+    }
+
+    const logout = document.getElementById('logout-btn');
+
+    if (!localStorage.getItem("access_token")) {
+        logout.style.display = "none";
+    } else {
+        logout.addEventListener('click', function () {
+            fetch('/logout', {
+                method: 'POST',
+                credentials: 'include'
+            })
+                .then(response => {
+                    if (response.ok) {
+                        localStorage.removeItem("access_token");
+                        alert("Logged out successfully.")
+                        window.location.href = "/";
+                    } else {
+                        alert("Log out unsuccessful.")
+                    }
+                }).catch(error => {
+                    console.error("Error: ", error);
+                    alert("Error loggin out.")
+                });
+        });
     }
 </script>
