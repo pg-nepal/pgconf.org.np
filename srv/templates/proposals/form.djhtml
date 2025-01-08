@@ -127,4 +127,28 @@
         datalist.appendChild(option);
     })
 </script>
+
+<script>
+    // const token = localStorage.getItem("access_token");
+
+    // if (!token) {
+    //     alert("You need to log in to access this page.");
+    //     window.location.href = '/login';
+    // } else {
+    //     fetch('/proposals/form', {
+    //         method: 'GET',
+    //         headers: {
+    //             'Authorization': `Bearer ${token}`
+    //         }
+    //     }).then(response => response.json())
+    //         .then(data => {
+    //             if (response.status === 401) {
+    //                 alert("Session expired. Please log in again.");
+    //                 window.location.href = '/login';
+    //             } else {
+    //                 return reponse.json()
+    //             }
+    //         }).catch(error => console.error('Error: ', error));
+    // }
+</script>
 {% endblock %}
