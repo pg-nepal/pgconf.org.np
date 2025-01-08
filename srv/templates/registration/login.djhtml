@@ -1,0 +1,72 @@
+<style>
+    .container {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .signup-btn {
+        font-family: 'DM Sans', sans-serif;
+        text-decoration: none;
+        color: #c91818;
+        border: 1px solid #c91818;
+        background-color: transparent;
+        border-radius: 8px;
+        padding: 0.5rem;
+        transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
+    }
+
+    .signup-btn:hover {
+        background-color: #c91818;
+        box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+        color: white;
+        transform: translateY(-3px);
+    }
+</style>
+
+<div class="container">
+    <h1>Log in</h1>
+    <div class="loginform">
+        <form id="login-form" action="/login" method="POST" enctype="multipart/form-data">
+            <div class="container">
+                <label for="username">Username<sup>*</sup></label>
+                <input id="username" name="username" type="text" placeholder="Username" required>
+
+                <label for="password">Password<sup>*</sup></label>
+                <input id="password" name="password" type="password" placeholder="Password" required>
+
+                <button id="login-btn" class="login-btn">Log in</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("login-form").addEventListener('submit', function(){
+
+        event.preventDefault();
+        
+        const formData = new FormData(document.getElementById('login-form'));
+
+        fetch('/login', {
+            method: 'POST', 
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.access_token){
+                localStorage.setItem("access_token", data.access_token);
+                location.href = '/'
+            } else {
+                alert("Login failed");
+            }
+        })
+        .catch(error => {
+            console.error("Error: ", error);
+            alert("An error occured during login");
+        })
+    })
+</script>
