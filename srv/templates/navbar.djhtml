@@ -10,19 +10,11 @@
             <div class="nav-options">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="/">Home</a></li>
-                    <li class="nav-item"><a href="/pages/call-for-proposal">Call for Proposal</a></li>
-                    <li class="nav-item"><a href="/pages/venue">Venue</a></li>
-                    <li class="nav-item"><a href="/pages/register">Registration</a></li>
                     <li class="nav-item"><a href="/pages/about">About</a></li>
-                    <li class="nav-item dropdown" drop-target="more-dropdown" >
-                        <a href="#">More</a>
-
-                        <ul id="more-dropdown" class="dropdown-item" style="display: none;">
-                            <li class="nav-item"><a href="/schedule">Schedule</a></li>
-                            <li class="nav-item"><a href="/speakers/all">Speakers</a></li>
-                            <li class="nav-item"><a href="/sponsor">Sponsors</a></li>
-                        </ul>
-                    </li>
+                    <li class="nav-item"><a href="/pages/call-for-proposal">Call for Proposal</a></li>
+                    <li class="nav-item"><a href="/pages/registration">Registration</a></li>
+                    <li class="nav-item"><a href="/pages/schedule">Schedule</a></li>
+                    <li class="nav-item"><a href="/pages/venue">Venue</a></li>
                 </ul>
             </div>
 
@@ -53,14 +45,12 @@
             <div class="hamburger-options">
                 <button class="close-btn">X</button>
                 <ul>
-                    <li><a href="/home">Home</a></li>
-                    <li><a href="/call_for_proposal">Call for Proposal</a></li>
-                    <li><a href="/venue">Venue</a></li>
-                    <li><a href="/registration">Registration</a></li>
-                    <li><a href="/about">About</a></li>
-                    <li><a href="/schedule">Schedule</a></li>
-                    <li><a href="/speakers/all">Speakers</a></li>
-                    <li><a href="/sponsor">Sponsors</a></li>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/pages/call-for-proposal">Call for Proposal</a></li>
+                    <li><a href="/pages/about">About</a></li>
+                    <li><a href="/pages/registration">Registration</a></li>
+                    <li><a href="/pages/schedule">Schedule</a></li>
+                    <li><a href="/pages/venue">Venue</a></li>
                 </ul>
             </div>
         </div>
