@@ -23,7 +23,7 @@
                 is located in Dhulikhel and it offers undergraduate and graduate programs in various disciplines such as Engineering, Management,
                 Medicine, Science, and Humanities.
             </p>
-            <img src="/static/images/Kathmandu_University.jpg" class="img-responsive">
+            <img id="ktm-uni" src="/static/images/Kathmandu_University.jpg" class="img-responsive">
         </section>
 
 
