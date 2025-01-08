@@ -4,6 +4,7 @@
 
 {% block head %}
     <link rel="stylesheet" href="/static/css/home.css">
+    <script src="/static/js/slider.js"></script>
 {% endblock %}
 
 
@@ -60,10 +61,20 @@
 
                 <section class="home-content mt-1">
                     <h2>Second Conference Conclusion</h2>
-                    <div class="conference-image-container">
-                        <img src="/static/main_conference.jpg" alt="main conference">
-                        <img src="/static/training3.jpeg" alt="training">
+                    <p>Here's a glimpse of the second PostgreSQL Conference Nepal:</p>
+                    <div id="img-slider" class="img-slider conference-image-container">
+                        <div class="slides show">
+                            <img class="slide-image" src="/static/main_conference.jpg" alt="main conference">
+                        </div>
+
+                        <div class="slides">
+                            <img class="slide-image" src="/static/training3.jpeg" alt="training">
+                        </div>
                     </div>
+
+                    <script>
+                        init('img-slider')
+                    </script>
                 </section>
             </div>
 
