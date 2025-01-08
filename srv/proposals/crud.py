@@ -6,6 +6,7 @@ import db.proposals
 import srv.auth
 
 from srv import app
+# from flask_jwt_extended import jwt_required, get_jwt_identity
 
 
 @app.get('/proposals/form')
@@ -34,6 +35,7 @@ def proposal_list():
 
 
 @app.post('/proposals/add')
+# @jwt_required()
 def proposal_create():
     formdata = flask.request.form.to_dict()
 
