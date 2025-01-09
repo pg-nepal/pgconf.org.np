@@ -1,0 +1,55 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Attendee' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/form.css">
+{% endblock %}
+
+
+{% block main_content %}
+    <div class="headings">
+        <h1>Attendee</h1>
+    </div>
+
+    <form id="registration-form" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            {% include '/attendees/form-part.djhtml' %}
+        </fieldset>
+
+        <!-- Prevent implicit submission of the form -->
+        <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+        <button id="submitBtn" class="button" style="font-size:110%;">
+            Submit
+        </button>
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="module">
+        document.getElementById('wtf-form').addEventListener('submit', function (event) {
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            const submitBtn = document.getElementById('submitBtn')
+            submitBtn.disabled = true
+            submitBtn.innerText = 'Processing ...'
+
+            const formData = new FormData(event.target)
+            fetch('/api/attendees/add', {
+                method  : 'POST',
+                body    : formData,
+            }).then(function (response) {
+                respose.text().then(function (text) {
+                    alert(text)
+                })
+            }).finally(function () {
+                submitBtn.disabled = false
+                submitBtn.innerText = 'Re-Submit'
+            })
+        })
+    </script>
+{% endblock %}
