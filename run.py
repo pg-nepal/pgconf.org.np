@@ -7,6 +7,7 @@ import datetime as dt
 
 import srv.pages
 import srv.proposals
+import srv.attendees
 
 import jinja2
 
