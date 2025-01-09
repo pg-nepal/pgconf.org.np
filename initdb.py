@@ -3,15 +3,18 @@
 import sqlalchemy as sa
 
 import db
+import db.conf
 import db.programs
 
 
-def main(schema):
+def main(schemas):
     with db.engine.begin() as conn:
-        conn.execute(sa.text('CREATE SCHEMA IF NOT EXISTS {}'.format(schema)))  # noqa: E501
+        for schema in schemas:
+            conn.execute(sa.text('CREATE SCHEMA IF NOT EXISTS {}'.format(schema))) # noqa: E501
 
     db.meta.create_all(bind=db.engine, checkfirst=True)
 
 
 if __name__ == '__main__':
-    main('conf25')
+    schemas = ['conf25', 'um']
+    main(schemas)
