@@ -10,9 +10,21 @@
                     <h1>Registration</h1>
                     <p>Register for the events</p>
 
-                    <div class="training">
-                        {% include 'comingSoon.djhtml' %}
-                    </div>
+                    <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+
+                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+                    <button class="button" style="font-size:110%" onclick="window.location.href='/registration/form'">
+                        + Register
+                    </button>
+
+                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+                    <button class="button" style="font-size:110%" onclick="window.location.href='/registration/payment'">
+                        Payment
+                    </button>
+                </div>
+
                 </div>
             </div>
 
