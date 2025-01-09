@@ -1,3 +1,4 @@
 flask
 psycopg
 sqlalchemy
+Flask-JWT-Extended
