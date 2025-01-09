@@ -1,0 +1,101 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Registration Form' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/proposalForm.css">
+{% endblock %}
+
+
+{% block main_content %}
+    <div class="headings">
+        <h1>Call for Proposals</h1>
+    </div>
+
+    <div class="box">
+        <form id="registration-form" action="/registrations/add" method="POST" enctype="multipart/form-data">
+            <div class="form-container">
+                <div class="fields">
+                    <div class="fields">
+                        <label for="wtf-name">Name <sup>*</sup></label>
+                        <input id="wtf-nam" name="name" placeholder="Full Name" required>
+                    </div>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-email">Email <sup>*</sup></label>
+                    <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-phone">Phone Number <sup>*</sup></label>
+                    <input id="wtf-phone" name="phone" type="phone" placeholder="Phone Number" required>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-category">Category <sup>*</sup></label>
+                    <select id="wtf-category" name="category" placeholder="Email Address" required>
+                        <option value="">Select Category</option>
+                        <option value="stundent">Students</option>
+                        <option value="professional">Professional(None-students)</option>
+                        <option value="SAARC">For SAARC country citizens other than Nepal</option>
+                        <option value="int">For international Participants</option>
+                    </select>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-id-url">Image of Citizenship <sup>*</sup></label>
+                    <input id="wtf-id-url" name="id_url" placeholder="Image of ID of your school/college/University." required>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-country">Country <sup>*</sup></label>
+                    <input list="countries" id="wtf-country" name="country" required>
+                    <datalist id="countries" style="display: none;"></datalist>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-citizen-url">Image of Citizenship <sup>*</sup></label>
+                    <input id="wtf-citizen-url" name="citizen_url" placeholder="Image of Citizenship" required>
+                </div>
+            </div>
+
+            <!-- Prevent implicit submission of the form -->
+            <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+            <button class="button" style="font-size:110%;">
+                Submit
+            </button>
+        </form>
+    </div>
+    </div>
+
+    <script>
+        function getCountries(lang = 'en') {
+            const A = 65
+            const Z = 90
+            const countryName = new Intl.DisplayNames([lang], { type: 'region' });
+            const countries = {}
+            for (let i = A; i <= Z; ++i) {
+                for (let j = A; j <= Z; ++j) {
+                    let code = String.fromCharCode(i) + String.fromCharCode(j)
+                    let name = countryName.of(code)
+                    if (code !== name) {
+                        countries[code] = name
+                    }
+                }
+            }
+            return countries
+        }
+
+        const countries = getCountries('en');
+        const datalist = document.getElementById('countries');
+
+        Object.values(countries).forEach(country => {
+            const option = document.createElement('option');
+            option.value = country;
+            datalist.appendChild(option);
+        })
+    </script>
+{% endblock %}
