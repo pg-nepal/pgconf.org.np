@@ -73,3 +73,23 @@ def proposal_read(pk):
         proposal = row._asdict(),
         isAdmin  = isAdmin,
     )
+
+
+@app.post('/proposals/<int:pk>')
+def proposal_update(pk):
+    data = flask.request.form
+    query = sa.update(
+        db.proposals.Proposals,
+    ).where(
+        db.proposals.Proposals.pk == pk,
+    ).values(
+        **data,
+        updatedBy = 'dummy',
+    )
+
+    with db.Session.begin() as session:
+        session.execute(query)
+        return flask.redirect(
+            flask.url_for('proposal_read'),
+            pk = pk,
+        )
