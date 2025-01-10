@@ -85,6 +85,20 @@
                 {% include '/sidebar.djhtml' %}
             </div>
         </div>
+
+        <section id="sponsors" class="home-content mt-1">
+            <h2 class="section-header">
+                Sponsors
+            </h2>
+
+            <div class="sponsors-logos">
+                <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
+            </div>
+
+            <a class="btn learn-more" href="/pages/sponsors">
+                Learn more about sponsorship
+            </a>
+        </section>
     </div>
 {% endblock %}
 
