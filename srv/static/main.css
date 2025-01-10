@@ -15,6 +15,28 @@ html, body{
     max-width: 118.4rem;
 }
 
+
+.button{
+    margin: 1.5% 0 1.5% 0;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
+    text-decoration: none;
+    color: #c91818;
+    border: 1px solid #c91818;
+    background-color: transparent;
+    border-radius: 8px;
+    padding: 0.5rem 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
+}
+
+.button:hover{
+    background-color: #c91818;
+    box-shadow:  0 2px 4px rgba(255, 255, 255, 0.1);
+    color: white;
+    transform: translateY(-3px);
+}
+
+
 .content{
     display: flex;
     gap: 5%;
