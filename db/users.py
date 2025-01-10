@@ -1,23 +1,45 @@
+import os
+import hashlib
+
 import sqlalchemy as sa
-from passlib.hash import bcrypt
 import db
 
 
 class Users(db.Base):
     __tablename__  = 'users'
     __table_args__ = {
-        'schema'  : 'conf25',
-        'comment' : 'conference proposals',
+        'schema'  : 'um',
+        'comment' : 'users list',
     }
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
-    username       = sa.Column(sa.String(256), nullable=False, unique=True)
-    email          = sa.Column(sa.String(256), nullable=False, unique=True)
-    password       = sa.Column(sa.String(60), nullable=True)
+
+    # https        ://en.wikipedia.org/wiki/Salt_(cryptography)
+    salt           = sa.Column(sa.dialects.postgresql.BYTEA)
+    hashed         = sa.Column(sa.dialects.postgresql.BYTEA)
+    uname          = sa.Column(sa.String(32), nullable=False, unique=True)
+
+    fullname       = sa.Column(sa.String(256))
+    email          = sa.Column(sa.String(256), index=True, unique=True)
+    mobile         = sa.Column(sa.String(15), index=True, unique=True)
+
     createdOn      = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now())  # noqa:E501
+    createdBy      = sa.Column(sa.String(32))
+    updatedOn      = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now(), onupdate=sa.func.now())  # noqa:E501
+    updatedBy      = sa.Column(sa.String(32))
 
-    def set_password(self, password):
-        self.password = bcrypt.hash(password)
+    ##
+    def set_password(self, shadow):
+        salt = os.urandom(16)
+        hashed = hashlib.scrypt(
+            password = shadow.encode('utf-8'),  # in octet string
+            salt     = salt,  # in octet string
+            r        = 8,  # block size
+            n        = 1024,  # CPU/Memory cost, range: 1 < n < 2^(128 * r / 8)
+            p        = 1,  # parallelization factor
+            maxmem   = 32 * 1024 * 1024,  # limits memory
+            dklen    = 64,  # output (derived key) length default:64
+        )
 
-    def check_password(self, password):
-        return bcrypt.verify(password, self.password)
+        self.salt = salt
+        self.password = hashed
