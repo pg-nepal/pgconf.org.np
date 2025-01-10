@@ -124,7 +124,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
 @media (max-width: 1600px) {
     .sidebar{
-        margin-top: 10%; /* Reduce the top margin */
         width: 90%; /* Make the sidebar take up 90% of the screen width */
         margin-left: auto;
         margin-right: auto;
@@ -196,7 +195,7 @@ input[type="number"]::-webkit-inner-spin-button {
 @media (max-width: 700px) {
 
     .map {
-        width: 90%; 
+        width: 90%;
     }
 
     h1{
