@@ -79,26 +79,6 @@
                 <script>
                     init('img-slider')
                 </script>
-
-                <section class="home-content mt-1">
-                    <h2>Main Conference Schedule</h2>
-                    {% include 'comingSoon.djhtml' %}
-                </section>
-
-                <section class="home-content mt-1">
-                    <h2>Register</h2>
-                    {% include 'comingSoon.djhtml' %}
-                </section>
-
-                <section class="home-content mt-1">
-                    <h2>Pre-Conference Workshop</h2>
-                    {% include 'comingSoon.djhtml' %}
-                </section>
-
-                <section class="home-content mt-1">
-                    <h2>Pre-Conference Workshop</h2>
-                    {% include 'comingSoon.djhtml' %}
-                </section>
             </div>
 
             <div class="right-content">
