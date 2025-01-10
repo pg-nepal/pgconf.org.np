@@ -73,3 +73,24 @@ def proposal_read(pk):
             row     = row,
             isAdmin = isAdmin,
         )
+
+
+@app.post('/proposals/<int:pk>')
+def proposal_update(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    data = flask.request.form
+    query = sa.update(
+        db.programs.Proposal,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    ).values(
+        **data,
+        updatedBy = isAdmin,
+    )
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+        return flask.redirect('/proposals'), 202
