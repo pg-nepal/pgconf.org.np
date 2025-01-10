@@ -18,4 +18,18 @@ def render_page(page):
             page + '.djhtml'
         )
     except jinja2.exceptions.TemplateNotFound:
+        return flask.render_template(
+            '/pages/{}.djhtml'.format(page),
+        )
+    finally:
+        flask.abort(404)
+
+
+#@app.route('/pages/<page>')
+def render_form_pages(page):
+    try:
+        return flask.render_template(
+            '/pages/{}.djhtml'.format(page),
+        )
+    except jinja2.exceptions.TemplateNotFound:
         flask.abort(404)
