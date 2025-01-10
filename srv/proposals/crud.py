@@ -33,3 +33,26 @@ def proposal_create():
     with db.SessionMaker.begin() as session:
         session.execute(query)
         return flask.redirect('/pages/call-for-proposal')
+
+
+@app.post('/api/proposals/<int:pk>')
+def proposal_update(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    formData = flask.request.form.to_dict()
+    name = formData.get('name') or isAdmin
+
+    query = sa.update(
+        db.programs.Proposal,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    ).values(
+        **formData,
+        updatedBy = isAdmin,
+    )
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+        return flask.redirect('/proposals'), 202
