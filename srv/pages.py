@@ -11,11 +11,11 @@ def render_home():
     )
 
 
-@app.route('/<page>')
-def render_page(page):
+@app.route('/pages/<page>')
+def render_form_pages(page):
     try:
         return flask.render_template(
-            page + '.djhtml'
+            '/pages/{}.djhtml'.format(page),
         )
     except jinja2.exceptions.TemplateNotFound:
         flask.abort(404)
