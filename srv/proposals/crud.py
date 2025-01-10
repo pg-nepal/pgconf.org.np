@@ -15,6 +15,17 @@ def proposal_form():
         "/proposals/form.djhtml",
     )
 
+@app.post("/proposals/add")
+# @jwt_required()
+def proposal_create():
+    formdata = flask.request.form.to_dict()
+
+    query = sa.insert(db.proposals.Proposals).values(**formdata)
+
+    with db.Session.begin() as session:
+        session.execute(query)
+
+    return flask.redirect("/call_for_proposal")
 
 @app.get("/proposals")
 def proposal_list():
@@ -33,25 +44,8 @@ def proposal_list():
         isAdmin=isAdmin,
     )
 
-
-@app.post("/proposals/add")
-# @jwt_required()
-def proposal_create():
-    formdata = flask.request.form.to_dict()
-
-    query = sa.insert(db.proposals.Proposals).values(**formdata)
-
-    with db.Session.begin() as session:
-        session.execute(query)
-
-    return flask.redirect("/call_for_proposal")
-
-
 @app.get("/proposals/<int:pk>")
 def proposal_read(pk):
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
 
     query = sa.select(
         db.proposals.Proposals,
@@ -60,18 +54,39 @@ def proposal_read(pk):
     )
 
     with db.engine.connect() as connection:
-        cursor = connection.execute(query)
-        row = cursor.first()
+        cursor = connection.execute(query).first()
+        row = cursor._asdict() if cursor else None
 
     if row is None:
         return "Invalid Pk", 400
 
     return flask.render_template(
-        "/proposals/read.djhtml",
-        proposal=row._asdict(),
-        isAdmin=isAdmin,
+        "/proposals/form.djhtml",
+        proposal=row
     )
 
+@app.post("/proposals/<int:pk>")
+def proposal_update(pk):
+    data = flask.request.form
+    query = (
+        sa.update(
+            db.proposals.Proposals
+        )
+        .where(
+            db.proposals.Proposals.pk == pk
+        )
+        .values(
+            **data,
+            updatedBy = 'dummy'
+        )
+    )
+
+    print(query)
+
+    with db.Session.begin() as session:
+        session.execute(query)
+
+    return flask.redirect(flask.url_for('proposal_read'), pk=pk)
 
 @app.delete("/proposals/<int:pk>")
 def proposal_delete(pk):
