@@ -22,6 +22,7 @@ html, body{
 }
 
 .button{
+    margin: 1.5% 0 1.5% 0;
     font-family: 'DM Sans', sans-serif;
     text-decoration: none;
     color: #c91818;
