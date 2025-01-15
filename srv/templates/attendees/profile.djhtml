@@ -1,0 +1,49 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Registration Form' %}
+
+
+{% block head %}
+<link rel="stylesheet" href="/static/css/form.css">
+{% endblock %}
+
+
+{% block main_content %}
+<a href="/registration">
+    Back
+</a>
+
+{% if cursor is none %}
+<h2>Your registration details is getting evaluated. Please wait until the evaluation is over.</h2>
+
+{% else %}
+
+<h1>Your Registration Status</h1>
+
+<div style="padding: 3% 0 3% 0;">
+
+    <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+        <button class="button" style="font-size:110%" onclick="window.location.href='/register/form'">
+            + Register
+        </button>
+
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+    </div>
+
+    <p>Name: {{row.name}}</p>
+    <p>regid: {{row.registration_id}}</p>
+    <p>Email: {{row.email}}</p>
+    <p>country: {{row.country}}</p>
+    <p>Phone: {{row.phone}}</p>
+    <p>Profession: {{row.category}}</p>
+    <p>Student ID card: {{row.id_url}}</p>
+    <img class="img" src="{{row.id_url}}" alt="">
+    <p>Country: {{row.country}}</p>
+    <p>Citizenship: {{row.citizen_url}}</p>
+    <img class="img" src="{{row.citizen_url}}" alt="">
+</div>
+
+<button id="pay-btn" class="button" style="font-size:110%">
+    Payment
+</button>
