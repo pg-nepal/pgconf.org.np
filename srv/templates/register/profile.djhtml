@@ -1,0 +1,132 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Registration Form' %}
+
+
+{% block head %}
+{% endblock %}
+
+
+{% block main_content %}
+<a href="/registration">
+    Back
+</a>
+
+{% if cursor is none %}
+<h2>Your registration details is getting evaluated. Please wait until the evaluation is over.</h2>
+
+{% else %}
+
+<h1>Your Registration Status</h1>
+
+<div style="padding: 3% 0 3% 0;">
+
+    <div class="" style="display: flex; justify-content: space-between; align-items: center;">
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+        <button class="button" style="font-size:110%" onclick="window.location.href='/register/form'">
+            + Register
+        </button>
+
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+    </div>
+
+    <p>Name: {{row.name}}</p>
+    <p>regid: {{row.registration_id}}</p>
+    <p>Email: {{row.email}}</p>
+    <p>country: {{row.country}}</p>
+    <p>Phone: {{row.phone}}</p>
+    <p>Profession: {{row.category}}</p>
+    <p>Student ID card: {{row.id_url}}</p>
+    <img class="img" src="{{row.id_url}}" alt="">
+    <p>Country: {{row.country}}</p>
+    <p>Citizenship: {{row.citizen_url}}</p>
+    <img class="img" src="{{row.citizen_url}}" alt="">
+</div>
+
+<div style="padding: 3% 0 3% 0;">
+    <h1>Payment Details</h1>
+    <p>Country: {{row.country}}</p>
+    <p>Profession: {{row.category}}</p>
+    <p>Total Amount: <span id="price">Loading...</span></p>
+</div>
+
+<button id="pay-btn" class="button" style="font-size:110%">
+    Payment
+</button>
+
+<script>
+    function calculatePrice(country, profession) {
+        let price = 0;
+
+        const saarc = ["Bhutan", "India", "Pakistan", "Sri Lanka", "Bangladesh", "Afghanistan"];
+
+        const prices = {
+            "students": { "discounted": 3000, "normal": 5000 },
+            "professional": { "discounted": 5000, "normal": 7000},
+            "international": { "discounted": 200, "normal": 300 }
+        };
+
+        if (category === "student") {
+            if (country === "Nepal") {
+                price = prices.student.discounted;
+            } else {
+                price = prices.student.normal;
+            }
+        }
+        else if (category == "professional") {
+            if (country == "Nepal") {
+                price = prices.professional.discounted;
+            } else {
+                price = prices.professional.normal;
+            }
+        }
+        else if (category === "international") {
+            if (saarc.includes(country)) {
+                price = prices.international.discounted;
+            } else {
+                price = prices.international.normal;
+            }
+        }
+        return price;
+    }
+
+    const country = "{{ row.country }}";
+    const category = "{{ row.category }}";
+    console.log(country, category);
+
+    let price = document.getElementById("price").textContent = ` ${calculatePrice(country, category)}`;
+    price *= 100;
+
+    document.getElementById('pay-btn').addEventListener('click', function () {
+        fetch(`/start-payment`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                return_url: "http://localhost:5000/register",
+                website_url: "http://localhost:5000/",
+                amount: price,
+                purchase_order_id: "Order01",
+                purchase_order_name: "test",
+                customer_info: {
+                    name: "{{row.name}}",
+                    email: "{{row.email}}",
+                    phone: "{{row.email}}"
+                }
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data);
+            if(data.payment_url){
+                window.location.href = data.payment_url;
+            }
+        })
+        .catch(error => {
+            console.error('Error: ', error);
+        })
+    })
+</script>
+{% endif %}
+{% endblock %}
