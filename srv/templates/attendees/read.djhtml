@@ -1,0 +1,12 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= 'Attendees' %}
+
+
+{% block main %}
+    <div class="content-container">
+        <p><strong class="field">Name:</strong> {{row.name}}</p>
+        <p><strong class="field">Email:</strong> {{row.email}}</p>
+        <p><strong class="field">Country:</strong> {{row.country}}</p>
+        <p><strong class="field">Profession:</span>{{row.category}}</p>
+    </div>
+{% endblock %}
