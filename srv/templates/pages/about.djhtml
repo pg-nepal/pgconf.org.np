@@ -4,9 +4,6 @@
 
 {% block main_content %}
     <h1>About</h1>
-
-    <div class="about-content">
-        <div class="welcome-content">
             <p>
                 Welcome to the third PostgreSQL Conference happening on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in Kathmandu University,
                 Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference
@@ -30,10 +27,8 @@
                 provide an international platform to the community members.
             </p>
             <p>
-                Please check our <a href="/pages/code_of_conduct">Code of conduct.</a>
+                Please check our <a href="/code_of_conduct">Code of conduct.</a>
             </p>
-        </div>
-
 
         <div style="padding:1rem 0">
             <h3>Organizing Committee</h3>
@@ -78,5 +73,4 @@
                 the report will be shared to all the sponsors.
             </p>
         </div>
-    </div>
 {% endblock %}
