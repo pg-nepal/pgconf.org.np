@@ -1,0 +1,30 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Registration Form' %}
+
+
+{% block head %}
+    {{super()}}
+{% endblock %}
+
+
+{% block main_content %}
+    <h1>Your Registration Status</h1>
+
+    <p>
+        <strong>Your Total:</strong> NRs. {{row.fee}}
+    </p>
+
+    <div id='esewa'>
+        <h2>Scan the QRcode</h2>
+        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+    </div>
+
+    <div id='bank'>
+        <h1>Bank Details</h1>
+        <p><b>Bank Account Name:</b> Kathmandu University</p>
+        <p><b>Bank Account Number:</b> 00501030250009</p>
+        <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+        <p><b>Branch:</b> Banepa, Nepal</p>
+        <p><b>Swift Code:</b> NIBLNPKT</p>
+    </div>
+{% endblock %}
