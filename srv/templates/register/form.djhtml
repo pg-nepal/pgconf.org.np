@@ -9,11 +9,11 @@
 
 {% block main_content %}
     <div class="headings">
-        <h1>Call for Proposals</h1>
+        <h1>Registration</h1>
     </div>
 
-    <div class="box">
-        <form id="registration-form" action="/registrations/add" method="POST" enctype="multipart/form-data">
+    <!-- <div class="box"> -->
+        <form id="registration-form" action="/register/add" method="POST" enctype="multipart/form-data">
             <div class="form-container">
                 <div class="fields">
                     <div class="fields">
@@ -36,10 +36,9 @@
                     <label for="wtf-category">Category <sup>*</sup></label>
                     <select id="wtf-category" name="category" placeholder="Email Address" required>
                         <option value="">Select Category</option>
-                        <option value="stundent">Students</option>
-                        <option value="professional">Professional(None-students)</option>
-                        <option value="SAARC">For SAARC country citizens other than Nepal</option>
-                        <option value="int">For international Participants</option>
+                        <option value="stundent">student</option>
+                        <option value="professional">professional</option>
+                        <option value="international">international</option>
                     </select>
                 </div>
 
@@ -68,8 +67,7 @@
                 Submit
             </button>
         </form>
-    </div>
-    </div>
+    <!-- </div> -->
 
     <script>
         function getCountries(lang = 'en') {
