@@ -33,3 +33,39 @@ def render_form_pages(page):
         )
     except jinja2.exceptions.TemplateNotFound:
         flask.abort(404)
+
+@app.route('/about')
+def render_about():
+    return flask.render_template(
+        'pages/about.djhtml',
+    )
+
+@app.route('/call_for_proposal')
+def call_for_proposal():
+    return flask.render_template(
+        'pages/call_for_proposal.djhtml',
+    )
+
+@app.route('/register')
+def registration():
+    return flask.render_template(
+        'pages/registration.djhtml',
+    )
+
+@app.route('/schedule')
+def schedule():
+    return flask.render_template(
+        'pages/schedule.djhtml',
+    )
+
+@app.route('/venue')
+def venue():
+    return flask.render_template(
+        'pages/venue.djhtml',
+    )
+
+@app.route('/code_of_conduct')
+def code_of_conduct():
+    return flask.render_template(
+        'pages/code_of_conduct.djhtml',
+    )
