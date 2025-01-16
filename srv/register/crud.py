@@ -1,57 +1,58 @@
-import flask
-import sqlalchemy as sa
-
 import db
 import db.events
-import srv.auth
+import flask
+import sqlalchemy as sa
+import uuid
 
+import srv.auth
 from srv import app
 
 
-@app.get('/register/form')
+@app.get("/register/form")
 def register_form():
-    return flask.render_template(
-        '/register/form.djhtml'
-    )
+    return flask.render_template("/register/form.djhtml")
 
 
-@app.get('/register')
+@app.get("/register/payment")
+def payment_form():
+    return flask.render_template("/register/payment.djhtml")
+
+
+@app.get("/root/register")
 def register_list():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    query = sa.select(db.registrations.Registrations)
+    query = sa.select(db.events.Register)
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
 
     return flask.render_template(
-        '/register/list.djhtml',
-        cursor  = cursor,
-        isAdmin = isAdmin
+        "/register/list.djhtml", cursor=cursor, isAdmin=isAdmin
     )
 
 
-@app.post('/register/add')
+@app.post("/register/add")
 def register_create():
     formdata = flask.request.form.to_dict()
 
-    query = sa.insert(
-        db.events.Register
-    ).values(
+    query = sa.insert(db.events.Register).values(
         **formdata,
-        fee    = 1000,
-        status = 'pending',
-        ticket = 'ticket',
+        registration_id=str(uuid.uuid4()),
+        fee=1000,
+        status="pending",
+        ticket="ticket",
     )
 
     with db.SessionMaker.begin() as session:
-        session.execute(query)
-        return flask.redirect('/register')
+        cursor = session.execute(query)
+        id = cursor.inserted_primary_key[0]
+        return flask.redirect(f"/register/{id}")
 
 
-@app.get('/register/<int:pk>')
+@app.get("/root/register/<int:pk>")
 def register_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -68,18 +69,36 @@ def register_read(pk):
         row = cursor.first()
 
         if row is None:
-            return 'Invalid pk', 400
+            return "Invalid pk", 400
 
         return flask.render_template(
-            '/register/read.djhtml',
-            row     = row,
-            isAdmin = isAdmin,
+            "/register/read.djhtml",
+            row=row,
+            isAdmin=isAdmin,
         )
 
 
-@app.delete('/registrations/<int:pk>')
+@app.get("/register/<int:pk>")
+def register_read_client(pk):
+    query = sa.select(
+        db.events.Register,
+    ).where(
+        db.events.Register.pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return "Invalid pk", 400
+
+        return flask.render_template("/register/profile.djhtml", row=row)
+
+
+@app.delete("/register/<int:pk>")
 def register_delete(pk):
-    with db.SessionMake.begin() as session:
+    with db.SessionMaker.begin() as session:
         session.execute(
             sa.delete(
                 db.events.Register,
@@ -88,6 +107,4 @@ def register_delete(pk):
             )
         )
 
-    return flask.jsonify({
-        'message': 'Registration deleted successfully'
-    }), 202
+    return flask.jsonify({"message": "Registration deleted successfully"}), 202
