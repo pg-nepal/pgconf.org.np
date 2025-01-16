@@ -5,88 +5,121 @@
 {% block main_content %}
 <link rel="stylesheet" href="/static/css/proposalForm.css">
 <div class="content-container">
-            <div class="headings">
-                <h1>Call for Proposals</h1>
-            </div>
+    <div class="headings">
+        <h1>Call for Proposals</h1>
+    </div>
 
-            <div class="box">
-                <form id="proposal-form" action="/proposals/add" method="POST" enctype="multipart/form-data">
-                    <div class="form-container">
-                        <div class="fields">
-                            <div class="fields">
-                                <label for="wtf-name">Name <sup>*</sup></label>
-                                <input id="wtf-nam" name="name" placeholder="Full Name" required>
-                            </div>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-email">Email <sup>*</sup></label>
-                            <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-category">Category <sup>*</sup></label>
-                            <select id="wtf-category" name="category" placeholder="Email Address" required>
-                                <option value="">Select Category</option>
-                                <option value="stundent">Student</option>
-                                <option value="professional">Professional</option>
-                            </select>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-country">Country <sup>*</sup></label>
-                            <input list="countries" id="wtf-country" name="country" required>
-                            <datalist id="countries" style="display: none;"></datalist>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-session">Session <sup>*</sup></label>
-                            <select id="wtf-session" name="session" required>
-                                <option value="">Select Session</option>
-                                <option value="talk">Talk</option>
-                                <option value="workshop">Workshop</option>
-                            </select>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-title">Title <sup>*</sup></label>
-                            <input id="wtf-title" name="title" placeholder="Session Title" required>
-                        </div>
-
-                        <div class="fields">
-                            <label for="wtf-abstract">Abstract <sup>*</sup></label>
-                            <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session"
-                                required></textarea>
-                        </div>
+    <div class="box">
+        <form id="proposal-form" action="/proposals/add" method="POST" enctype="multipart/form-data">
+            <div class="form-container">
+                <div class="fields">
+                    <div class="fields">
+                        <label for="wtf-name">Name <sup>*</sup></label>
+                        <input id="wtf-nam" name="name" placeholder="Full Name" required>
                     </div>
+                </div>
 
-                    <!-- Prevent implicit submission of the form -->
-                    <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
-                    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+                <div class="fields">
+                    <label for="wtf-email">Email <sup>*</sup></label>
+                    <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
+                </div>
 
-                    <button class="button" style="font-size:110%">
-                        Submit
-                    </button>
-                </form>
+                <div class="fields">
+                    <label for="wtf-category">Category <sup>*</sup></label>
+                    <select id="wtf-category" name="category" placeholder="Email Address" required>
+                        <option value="">Select Category</option>
+                        <option value="stundent">Student</option>
+                        <option value="professional">Professional</option>
+                    </select>
+                </div>
 
-                <script>
-                    document.getElementById('proposal-form').addEventListener('submit', function (event) {
-                        event.preventDefault()
-                        event.stopPropagation()
-                        event.target.reportValidity()
-                        fetch(`/proposals/add`, {
-                            method: 'POST',
-                            body: new FormData(event.target),
-                        }).then(function (response) {
-                            alert('proposal submitted successfully');
-                            // may be page here
-                            // event.target.reset()  // may be only partial clear
-                        }).catch(function (error) {
-                            alert('Oops! something went wrong')
-                        })
-                    })
-                </script>
+                <div class="fields">
+                    <label for="wtf-country">Country <sup>*</sup></label>
+                    <input list="countries" id="wtf-country" name="country" required>
+                    <datalist id="countries" style="display: none;"></datalist>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-session">Session <sup>*</sup></label>
+                    <select id="wtf-session" name="session" required>
+                        <option value="">Select Session</option>
+                        <option value="talk">Talk</option>
+                        <option value="workshop">Workshop</option>
+                    </select>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-title">Title <sup>*</sup></label>
+                    <input id="wtf-title" name="title" placeholder="Session Title" required>
+                </div>
+
+                <div class="fields">
+                    <label for="wtf-abstract">Abstract <sup>*</sup></label>
+                    <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session"
+                        required></textarea>
+                </div>
             </div>
+
+            <!-- Prevent implicit submission of the form -->
+            <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+
+            <button class="button" style="font-size:110%">
+                Submit
+            </button>
+
+            <div id="captcha" class="captcha">
+                <div class="fields">
+                    <label id="wtf-captcha" for="captcha">{{ question }}</label>
+                    <input id="wtf-answer" type="text" name="wtf-answer" placeholder="Enter your answer.">
+                    <button id="captcha-btn" class="button" type="button">Submit</button>
+                </div>
+            </div>
+        </form>
+
+        {% if request.args.get('error') == 'captcha' %}
+        <p style="color:red;">Incorrect CAPTCHA. Please try again.</p>
+        {% endif %}
+
+        <script>
+            const form = document.getElementById('proposal-form');
+            const captcha = document.getElementById('captcha');
+            const captchaBtn = document.getElementById('captcha-btn');
+
+            captcha.style.display = 'none';
+
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                captcha.style.display = 'block';
+            })
+
+            captchaBtn.addEventListener('click', function () {
+                const captchaInput = document.getElementById('wtf-answer');
+                const answer = captchaInput.value.trim().toLowerCase();
+
+                const formData = new FormData(form);
+                formData.append('wtf-answer', answer);
+                
+                fetch(`/proposals/add`, {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => {
+                    if(response.ok){
+                        alert('Proposal submitted successfully.');
+                        window.location.href = "/call_for_proposal"
+                    } else {
+                        alert('Proposal submission failed. Please try again.');
+                    }
+                })
+                .catch(error => {
+                    console.error("Error: ", error);
+                    alert("Error submitting proposal.");
+                })
+
+            });
+        </script>
+    </div>
 </div>
 {% endblock %}
 
@@ -120,27 +153,4 @@
     })
 </script>
 
-<script>
-    // const token = localStorage.getItem("access_token");
-
-    // if (!token) {
-    //     alert("You need to log in to access this page.");
-    //     window.location.href = '/login';
-    // } else {
-    //     fetch('/proposals/form', {
-    //         method: 'GET',
-    //         headers: {
-    //             'Authorization': `Bearer ${token}`
-    //         }
-    //     }).then(response => response.json())
-    //         .then(data => {
-    //             if (response.status === 401) {
-    //                 alert("Session expired. Please log in again.");
-    //                 window.location.href = '/login';
-    //             } else {
-    //                 return reponse.json()
-    //             }
-    //         }).catch(error => console.error('Error: ', error));
-    // }
-</script>
 {% endblock %}
