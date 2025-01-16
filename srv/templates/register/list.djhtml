@@ -8,6 +8,9 @@
     <h1>Registration</h1>
 
     <div class="box">
+        {{% if cursor is None %}}
+        <h2>No registrations yet.</h2>
+        {% else %}
         <table>
             <thead>
                 <tr>
@@ -30,6 +33,7 @@
                 {% endfor %}
             </tbody>
         </table>
+        {{% endif %}}
     </div>
 </div>
 
