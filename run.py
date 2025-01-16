@@ -8,6 +8,7 @@ import datetime as dt
 import srv.pages
 import srv.proposals
 import srv.register
+import srv.khalti
 
 import jinja2
 
