@@ -2,27 +2,49 @@ import db
 import db.proposals
 import flask
 import sqlalchemy as sa
+import random
 
 import srv.auth
 from srv import app
 
 # from flask_jwt_extended import jwt_required, get_jwt_identity
 
+questions = [
+    ("What is used to retrieve data from a database?", "SELECT"),
+    ("What is used to remove data from a table?", "DELETE"),
+    ("What command is used to modify data in a table?", "UPDATE"),
+    ("What is used to sort data in SQL?", "ORDER"),
+    ("What SQL keyword is used to combine results from two or more tables?", "JOIN"),
+]
 
 @app.get("/proposals/form")
 def proposal_form():
+
+    question, answer = random.choice(questions)
+
+    flask.session['captcha_answer'] = answer
+
     return flask.render_template(
         "/proposals/form.djhtml",
+        question=question
     )
 
 @app.post("/proposals/add")
 # @jwt_required()
 def proposal_create():
     formdata = flask.request.form.to_dict()
+    captcha_answer = formdata.get('wtf-answer', '')
+    correct_answer = flask.session.get('captcha_answer')
+
+    if captcha_answer != correct_answer:
+        flask.flash("Your answer: ",captcha_answer)
+        return flask.jsonify({"error": "Incorrect answer. Please try again."}), 400
+
+    formdata.pop("wtf-answer", None)
 
     query = sa.insert(db.proposals.Proposals).values(**formdata)
 
-    with db.Session.begin() as session:
+    with db.SessionMaker.begin() as session:
         session.execute(query)
 
     return flask.redirect("/call_for_proposal")
@@ -46,6 +68,9 @@ def proposal_list():
 
 @app.get("/proposals/<int:pk>")
 def proposal_read(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
 
     query = sa.select(
         db.proposals.Proposals,
@@ -61,7 +86,7 @@ def proposal_read(pk):
         return "Invalid Pk", 400
 
     return flask.render_template(
-        "/proposals/form.djhtml",
+        "/proposals/read.djhtml",
         proposal=row
     )
 
@@ -83,14 +108,14 @@ def proposal_update(pk):
 
     print(query)
 
-    with db.Session.begin() as session:
+    with db.SessionMaker.begin() as session:
         session.execute(query)
 
     return flask.redirect(flask.url_for('proposal_read'), pk=pk)
 
 @app.delete("/proposals/<int:pk>")
 def proposal_delete(pk):
-    with db.Session.begin() as session:
+    with db.SessionMaker.begin() as session:
         session.execute(
             sa.delete(
                 db.proposals.Proposals,
