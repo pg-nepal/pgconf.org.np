@@ -18,6 +18,9 @@
                 </thead>
 
                 <tbody>
+                    {% if cursor is none %}
+                    <h2>No proposls yet.</h2>
+                    {% else %}
                     {% for proposal in cursor %}
                         <tr>
                             <td>{{ proposal.name }}</td>
@@ -28,6 +31,7 @@
                             </td>
                         </tr>
                     {% endfor %}
+                    {%endif%}
                 </tbody>
             </table>
         </div>
