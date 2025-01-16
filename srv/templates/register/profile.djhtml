@@ -107,7 +107,7 @@
                 return_url: "http://localhost:5000/register",
                 website_url: "http://localhost:5000/",
                 amount: price,
-                purchase_order_id: "Order01",
+                purchase_order_id: "{{row.registration_id}}",
                 purchase_order_name: "test",
                 customer_info: {
                     name: "{{row.name}}",
