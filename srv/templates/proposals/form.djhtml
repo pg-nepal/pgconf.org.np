@@ -37,6 +37,11 @@
                     <label for="wtf-abstract">Abstract <sup>*</sup></label>
                     <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
                 </div>
+
+                <div id="captcha" class="fields">
+                    <label for="captcha">{{question}} <sup>*</sup></label>
+                    <input id="wtf-answer" type="text" name="wtf-answer" placeholder="Enter your answer" required>
+                </div>
             </fieldset>
 
             <!-- Prevent implicit submission of the form -->
@@ -53,9 +58,15 @@
                 event.preventDefault()
                 event.stopPropagation()
                 event.target.reportValidity()
+
+                const formData = new FormData(event.target)
+                formData.set('idx', '{{idx}}')
+                formData.set('answer', formData.get('wtf-answer').toUpperCase())
+                formData.delete('wtf-answer')
+
                 fetch('/proposals/add', {
                     method : 'POST',
-                    body   : new FormData(event.target),
+                    body   : formData,
                 }).then(function (response) {
                     alert('proposal submitted successfully');
                     // may be page here
