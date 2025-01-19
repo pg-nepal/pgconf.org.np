@@ -14,6 +14,7 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Actions</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
 
@@ -26,9 +27,10 @@
                             <td>{{ proposal.name }}</td>
                             <td>{{ proposal.email }}</td>
                             <td>
-                                <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
+                                <a class="details-link" href="/root/proposals/{{proposal.pk}}">Details</a>
                                 <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button>
                             </td>
+                            <td class="status" id="status">{{ proposal.status }}</td>
                         </tr>
                     {% endfor %}
                     {%endif%}
@@ -39,7 +41,8 @@
 
     <script>
         function onDelete(pk){
-            fetch(`/proposals/${pk}`, {
+            console.log("pk: ", pk)
+            fetch(`/root/proposals/delete/${pk}`, {
                 method : 'DELETE',
             }).then(response => {
                 alert('proposal deleted successfully.');
@@ -49,5 +52,17 @@
             })
         }
         window.onDelete = onDelete;
+
+        const status =  document.getElementById("status");
+        let statusValue = status.textContent;
+        if(statusValue === "pending"){
+            status.style.color = "grey";
+        }
+        else if(statusValue === "accepted"){
+            status.style.color = "green";
+        }
+        else if(statusValue === "rejected"){
+            status.style.color = "red";
+        }
     </script>
 {% endblock %}
