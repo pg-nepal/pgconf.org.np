@@ -112,7 +112,7 @@
                 customer_info: {
                     name: "{{row.name}}",
                     email: "{{row.email}}",
-                    phone: "{{row.email}}"
+                    phone: "{{row.phone}}"
                 }
             })
         })
