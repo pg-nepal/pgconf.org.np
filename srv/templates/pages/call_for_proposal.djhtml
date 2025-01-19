@@ -19,9 +19,14 @@
     Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
 </p>
 
-<button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size: 20px;">
+<!-- <button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size: 20px;">
     Submit Your Proposal
-</button>
+</button> -->
+
+<div id="submit-btn-area" class="submit-btn-area"></div>
+<div id="status-btn-area" class="status-btn-area"></div>
+
+<!-- <button id="proposal-status" class="button" style="font-size: 20px;">Proposal Status</button> -->
 
 <p>
     For any problem please write us to :
@@ -48,4 +53,44 @@
         <li class="topics">PostgreSQL related products</li>
     </ol>
 </div>
+
+<script>
+    const sessionID = "{{ session['session_id'] }}";
+    const submitArea = document.getElementById("submit-btn-area");
+    const statusArea = document.getElementById("status-btn-area");
+
+    fetch(`/proposals/status/${sessionID}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log("data: ", data);
+        if(data.status === 'exists'){
+            const statusBtn = document.createElement('button');
+            statusBtn.classList.add("button");
+            statusBtn.innerHTML = 'Proposal status';
+            statusBtn.style.fontSize = "20px";
+            statusBtn.onclick = function(){
+                window.location.href = `/proposals/${sessionID}`;
+            };
+            statusArea.appendChild(statusBtn);
+        }
+        else if(data.status === 'not_exists'){
+            const newProposalBtn = document.createElement('button');
+            newProposalBtn.classList.add("button");
+            newProposalBtn.innerHTML = 'Submit Proposal';
+            newProposalBtn.style.fontSize = "20px";
+            newProposalBtn.onclick = function(){
+                window.location.href = `/proposals/form`;
+            };
+            submitArea.appendChild(newProposalBtn);
+        }
+    })
+    .catch(error => {
+        console.error("Error: ", error);
+    });
+</script>
 {% endblock %}
