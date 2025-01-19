@@ -42,14 +42,21 @@ def proposal_create():
 
     formdata.pop("wtf-answer", None)
 
-    query = sa.insert(db.proposals.Proposals).values(**formdata)
+    formdata['session_id'] = flask.session['session_id']
 
-    with db.SessionMaker.begin() as session:
-        session.execute(query)
+    try:
 
-    return flask.redirect("/call_for_proposal")
+        query = sa.insert(db.proposals.Proposals).values(**formdata)
 
-@app.get("/proposals")
+        with db.SessionMaker.begin() as session:
+            session.execute(query)
+
+        return flask.redirect("/call_for_proposal")
+
+    except Exception as e: 
+        return flask.jsonify({"error": str(e)}), 400        
+
+@app.get("/root/proposals")
 def proposal_list():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -66,7 +73,7 @@ def proposal_list():
         isAdmin=isAdmin,
     )
 
-@app.get("/proposals/<int:pk>")
+@app.get("/root/proposals/<int:pk>")
 def proposal_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -79,7 +86,7 @@ def proposal_read(pk):
     )
 
     with db.engine.connect() as connection:
-        cursor = connection.execute(query).first()
+        cursor = connection.execute(query)
         row = cursor._asdict() if cursor else None
 
     if row is None:
@@ -90,8 +97,50 @@ def proposal_read(pk):
         proposal=row
     )
 
-@app.post("/proposals/<int:pk>")
+@app.get("/proposals/status/<string:session_id>")
+def check_proposal(session_id):
+
+    query = sa.select(
+        db.proposals.Proposals
+        ).where(
+        session_id==session_id
+        )
+
+    with db.engine.connect() as connection:
+        proposal = connection.execute(query).first()
+        # proposal = cursor._asdict()
+
+    if proposal:
+        return flask.jsonify({"status": "exists", "message": "The proposal exist"})
+    else:
+        return flask.jsonify({"status": "not_exists", "message": "The proposal does not exist"})
+
+@app.get("/proposals/<string:session_id>")
+def client_proposal_read(session_id):
+
+    session_id = flask.session.get('session_id')
+
+    query = sa.select(
+        db.proposals.Proposals,
+    ).where(
+        db.proposals.Proposals.session_id == session_id
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query).first()
+        row = cursor._asdict() if cursor else None
+
+    if row is None:
+        return flask.jsonify({"error": "Invalid PK"}), 400
+
+    return flask.jsonify(row)
+
+@app.post("/proposals/update/<int:pk>")
 def proposal_update(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+        
     data = flask.request.form
     query = (
         sa.update(
@@ -111,9 +160,32 @@ def proposal_update(pk):
     with db.SessionMaker.begin() as session:
         session.execute(query)
 
+    return flask.redirect(flask.url_for('proposal_list'))
+
+@app.post("/proposals/<string:session_id>")
+def client_proposal_update(session_id):
+    data = flask.request.form
+    query = (
+        sa.update(
+            db.proposals.Proposals
+        )
+        .where(
+            db.proposals.Proposals.session_id == session_id
+        )
+        .values(
+            **data,
+            updatedBy = 'dummy'
+        )
+    )
+
+    print(query)
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+
     return flask.redirect(flask.url_for('proposal_read'), pk=pk)
 
-@app.delete("/proposals/<int:pk>")
+@app.delete("/root/proposals/<int:pk>")
 def proposal_delete(pk):
     with db.SessionMaker.begin() as session:
         session.execute(
