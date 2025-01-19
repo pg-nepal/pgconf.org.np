@@ -72,28 +72,28 @@
         navOptions.classList.toggle('active')
     }
 
-    const logout = document.getElementById('logout-btn');
+    // const logout = document.getElementById('logout-btn');
 
-    if (!localStorage.getItem("access_token")) {
-        logout.style.display = "none";
-    } else {
-        logout.addEventListener('click', function () {
-            fetch('/logout', {
-                method: 'POST',
-                credentials: 'include'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        localStorage.removeItem("access_token");
-                        alert("Logged out successfully.")
-                        window.location.href = "/";
-                    } else {
-                        alert("Log out unsuccessful.")
-                    }
-                }).catch(error => {
-                    console.error("Error: ", error);
-                    alert("Error loggin out.")
-                });
-        });
-    }
+    // if (!localStorage.getItem("access_token")) {
+    //     logout.style.display = "none";
+    // } else {
+    //     logout.addEventListener('click', function () {
+    //         fetch('/logout', {
+    //             method: 'POST',
+    //             credentials: 'include'
+    //         })
+    //             .then(response => {
+    //                 if (response.ok) {
+    //                     localStorage.removeItem("access_token");
+    //                     alert("Logged out successfully.")
+    //                     window.location.href = "/";
+    //                 } else {
+    //                     alert("Log out unsuccessful.")
+    //                 }
+    //             }).catch(error => {
+    //                 console.error("Error: ", error);
+    //                 alert("Error loggin out.")
+    //             });
+    //     });
+    // }
 </script>
