@@ -1,7 +1,14 @@
 import flask
 import jinja2
+import uuid
 
 from srv import app
+
+
+@app.before_request
+def assign_session_id():
+    if 'session_id' not in flask.session:
+        flask.session['session_id'] = str(uuid.uuid4())
 
 
 @app.route('/')
