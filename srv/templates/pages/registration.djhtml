@@ -1,6 +1,10 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle = '/ Registration' %}
 
+{% block head %}
+    <link rel="stylesheet" href="/static/css/proposalForm.css">
+{% endblock %}
+
 
 {% block main_content %}
 <h1>Registration</h1>
@@ -8,6 +12,7 @@
 
 <div style="margin-bottom: 0.5rem;">
     <p>Please register. Follow the steps below to complete your registration and secure your spot</p>
+    <p>Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling you fill up the form you will receive an email through which you will revceive your registration Id. Use that registration Id for actual payments of the tickets.</p>
 </div>
 
 <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -16,16 +21,11 @@
     <button class="button" style="font-size:110%" onclick="window.location.href='/register/form'">
         + Register
     </button>
+</div>
 
-    <!-- <button id="status-btn" class="button" style="font-size:110%" onclick="window.location.href='/register/form'">
-        Your Status
-    </button>
-
-    <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-
-    <button class="button" style="font-size:110%" onclick="window.location.href='/register/payment'">
-        Payment
-    </button> -->
+<div class="fields">
+    <label for="registration_id">Enter your registration Id</label>
+    <input type="text">
 </div>
 
 <div style="padding:1rem 0">
@@ -90,12 +90,4 @@
 
 <p><strong>For sponsorship inquiries or ticket purchases, please contact us!</strong></p>
 
-
-
-<script>
-    document.getElementById('status-btn').addEventListener('click', function () {
-        fetch(`/register/`)
-        window.location.href = `/register/{id}`
-    })
-</script>
 {% endblock %}
