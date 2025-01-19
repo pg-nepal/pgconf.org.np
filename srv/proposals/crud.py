@@ -78,6 +78,9 @@ def proposal_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
 
     query = sa.select(
         db.proposals.Proposals,
@@ -87,7 +90,7 @@ def proposal_read(pk):
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
-        row = cursor._asdict() if cursor else None
+        row = cursor.mappings().first() if cursor else None
 
     if row is None:
         return "Invalid Pk", 400
@@ -118,8 +121,6 @@ def check_proposal(session_id):
 @app.get("/proposals/<string:session_id>")
 def client_proposal_read(session_id):
 
-    session_id = flask.session.get('session_id')
-
     query = sa.select(
         db.proposals.Proposals,
     ).where(
@@ -131,7 +132,7 @@ def client_proposal_read(session_id):
         row = cursor._asdict() if cursor else None
 
     if row is None:
-        return flask.jsonify({"error": "Invalid PK"}), 400
+        return flask.jsonify({"error": "Invalid session ID"}), 400
 
     return flask.jsonify(row)
 
@@ -185,7 +186,7 @@ def client_proposal_update(session_id):
 
     return flask.redirect(flask.url_for('proposal_read'), pk=pk)
 
-@app.delete("/root/proposals/<int:pk>")
+@app.delete("/root/proposals/delete/<int:pk>")
 def proposal_delete(pk):
     with db.SessionMaker.begin() as session:
         session.execute(
