@@ -8,7 +8,7 @@
     <h1>Registration</h1>
 
     <div class="box">
-        {{% if cursor is None %}}
+        {% if cursor is none %}
         <h2>No registrations yet.</h2>
         {% else %}
         <table>
@@ -33,13 +33,13 @@
                 {% endfor %}
             </tbody>
         </table>
-        {{% endif %}}
+        {% endif %}
     </div>
 </div>
 
 <script>
     function onDelete(pk) {
-        fetch(`/registrations/${pk}`, {
+        fetch(`/register/${pk}`, {
             method: 'DELETE',
         }).then(response => {
             alert('Registration deleted successfully.');
