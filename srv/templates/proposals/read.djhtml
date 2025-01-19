@@ -1,0 +1,53 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= '/ Proposals' %}
+
+
+{% block head %}
+    {{super()}}
+    <style>
+        .comment-section{
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 3%;
+        }
+
+        .comment{
+            border-bottom: 1px solid grey;
+            padding-bottom: 2%;
+        }
+
+        .headings{
+            font-weight: bold;
+        }
+
+        .rating__star {
+            font-size: 30px;
+            cursor: pointer;
+            filter: grayscale(1);
+            transition: color 0.3s;
+        }
+
+        .small_star{
+            font-size: 15px;
+        }
+
+        .rating__star.active {
+            filter: grayscale(0);
+        }
+
+        .comment-text{
+            padding: 2px; margin-left: 20px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block admin_content %}
+{% endblock %}
+
+
+{% block tail %}
+{% endblock %}
