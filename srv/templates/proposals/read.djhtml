@@ -1,0 +1,79 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= '/ Proposals' %}
+
+
+{% block head %}
+    {{super()}}
+    <style>
+        .comment-section{
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 2%;
+        }
+
+        .comment{
+            border-bottom: 1px solid grey;
+            padding-bottom: 2%;
+        }
+
+        .headings{
+            font-weight: bold;
+        }
+
+        .rating__star {
+            font-size: 30px;
+            cursor: pointer;
+            filter: grayscale(1);
+            transition: color 0.3s;
+        }
+
+        .small_star{
+            font-size: 15px;
+        }
+
+        .rating__star.active {
+            filter: grayscale(0);
+        }
+
+        .comment-text{
+            padding: 2px; margin-left: 20px;
+        }
+    </style>
+{% endblock %}
+
+
+{% block main %}
+    <div class="content-container">
+        <div>
+            <h2>{{row.title}}</h2>
+            <p><strong>Name: </strong>{{row.name}}</p>
+            <p><strong>Email: </strong>{{row.email}}</p>
+            <p><strong>Country: </strong>{{row.country}}</p>
+            <p><strong>Submitted on: </strong>{{row.createdOn.strftime('%B %d %Y')}}</p>
+            <p><strong>Session Type: </strong>{{row.session}}</p>
+            <p><strong>Abstract:</strong></p>
+            <p>{{row.abstract}}</p>
+
+            <div class="review">
+                <h2>Comments</h2>
+                <div id="comment-section" class="comment-section">
+                    {% for reviews in review %}
+                        <div class="comment-block">
+                            <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d %Y, %I:%M:%S')}} </strong>
+                            <div class="comment-text">
+                                {{reviews.comments}}
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block tail %}
+{% endblock %}
