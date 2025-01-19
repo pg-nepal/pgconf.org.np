@@ -44,7 +44,7 @@
 
                 <div class="fields">
                     <label for="wtf-id-url">Image of Citizenship <sup>*</sup></label>
-                    <input id="wtf-id-url" name="id_url" placeholder="Image of ID of your school/college/University." required>
+                    <input id="wtf-id-url" name="id_url" type="file" placeholder="Image of ID of your school/college/University." required>
                 </div>
 
                 <div class="fields">
@@ -55,7 +55,7 @@
 
                 <div class="fields">
                     <label for="wtf-citizen-url">Image of Citizenship <sup>*</sup></label>
-                    <input id="wtf-citizen-url" name="citizen_url" placeholder="Image of Citizenship" required>
+                    <input id="wtf-citizen-url" name="citizen_url" type="file" placeholder="Image of Citizenship" required>
                 </div>
             </div>
 
