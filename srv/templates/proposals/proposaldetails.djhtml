@@ -1,0 +1,21 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= '/ Proposals' %}
+
+
+{% block main_content %}
+    <link rel="stylesheet" href="/static/css/proposal_details.css">
+    <div class="content-container">
+        <a href="{{ request.referrer }}">
+            Go Back
+        </a>
+
+        <h1>Title: {{proposal.title}}</h1>
+        <p>UUID: {{proposal.session_id}}</p>
+        <p>Name: {{proposal.name}}</p>
+        <p>Email: {{proposal.email}}</p>
+        <p>country: {{proposal.country}}</p>
+        <p>Session Type: {{proposal.session}}</p>
+        <p>Abstract:</p>
+        <p>{{proposal.abstract}}</p>
+    </div>
+{% endblock %}
