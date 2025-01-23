@@ -59,9 +59,11 @@
     </div>
 
     <div>
-        <h3>Conduct Committee</h3>
+        <h3>Code of Conduct Committee</h3>
         <ol>
             <li>Mr. Ivan Pachenko, Postgres Professional</li>
+            <li>Pavel Luzanov</li>
+            <li>Chris Travers</li>
             <li>Dr. Prakash Poudyal, Assistant Professor, Kathmandu University</li>
         </ol>
     </div>
