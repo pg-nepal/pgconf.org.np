@@ -32,7 +32,7 @@
                 <a  href="https://www.immigration.gov.np/" target="_blank">Department of Immigration </a>
                 and
                 <a href="https://www.immigration.gov.np/" target="_blank">Immigration Office,</a>
-                <a href="" target="_blank">Tribhuvan International Airport.</a>
+                <a href="https://www.tiairport.com.np/" target="_blank">Tribhuvan International Airport.</a>
             </p>
         </section>
 
@@ -40,11 +40,12 @@
             <h2 class="section-header">Travel</h2>
             <p>Airport:</p>
             <p>
-                <a href="">Tribhuwan International Airport</a> is the only international airport located in Kathmandu.
+                Nearest International airport located in Kathmandu is
+                <a href="https://www.tiairport.com.np/">Tribhuwan International Airport</a>.
             </p>
 
             <a href="https://www.google.com/maps/dir/Tribhuvan+International+Airport+(KTM),+Ring+Rd,+Kathmandu+44600/Kathmandu+University,+Kathmandu+University,+Dhulikhel/@27.6521762,85.4740708,13z/data=!4m13!4m12!1m5!1m1!1s0x39eb1a266b342bc5:0x73bbfa829a89af1b!2m2!1d85.3592231!2d27.6980899!1m5!1m1!1s0x39eb092082d99e3b:0xe509dafa47685dba!2m2!1d85.5386417!2d27.6195482?hl=en" target="_blank">
-                <img src="/static/images/tia-ku.png" class="img-responsive" />
+                <img src="/static/images/tia-ku.png" class="img-responsive">
             </a>
 
             <p>
