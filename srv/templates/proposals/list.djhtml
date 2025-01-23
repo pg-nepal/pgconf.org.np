@@ -2,7 +2,7 @@
 {% set pageTitle= '/ Proposals' %}
 
 
-{% block main_content %}
+{% block main %}
     <link rel="stylesheet" href="/static/css/proposals.css">
     <div class="content-container">
         <h1>Proposals</h1>
