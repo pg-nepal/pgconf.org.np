@@ -50,6 +50,7 @@
     <div>
         <h3>Program Committee/Talk Selection Committee</h3>
         <ol>
+            <li>Dr. Oleg Bartunov - Postgres Professional</li>
             <li>Dr. Manoj Shakya - Kathmandu University</li>
             <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
             <li>Mr. Mark Rivkin - Postgres Professional</li>
