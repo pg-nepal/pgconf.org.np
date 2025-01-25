@@ -12,38 +12,86 @@
     Back
 </a>
 
-{% if cursor is none %}
-<h2>Your registration details is getting evaluated. Please wait until the evaluation is over.</h2>
-
-{% else %}
-
 <h1>Your Registration Status</h1>
 
-<div style="padding: 3% 0 3% 0;">
-
-    <div class="" style="display: flex; justify-content: space-between; align-items: center;">
-        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-
-        <button class="button" style="font-size:110%" onclick="window.location.href='/register/form'">
-            + Register
-        </button>
-
-        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-    </div>
-
     <p>Name: {{row.name}}</p>
-    <p>regid: {{row.registration_id}}</p>
     <p>Email: {{row.email}}</p>
     <p>country: {{row.country}}</p>
     <p>Phone: {{row.phone}}</p>
     <p>Profession: {{row.category}}</p>
-    <p>Student ID card: {{row.id_url}}</p>
-    <img class="img" src="{{row.id_url}}" alt="">
     <p>Country: {{row.country}}</p>
-    <p>Citizenship: {{row.citizen_url}}</p>
-    <img class="img" src="{{row.citizen_url}}" alt="">
+    <p>img: {{row.studentID_url}}</p>
+    <img src="{{ url_for('student_uploaded_file', filename=row.studentID_url.split('/')[-1]) }}" alt="studentID">
+
+    <p>Your Total: Rs {{row.fee}}</p>
+
+<div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
+    <button id="esewa-btn" class="button" style="font-size:110%">
+        Esewa
+    </button>
+
+    <button id="khalti-btn" class="button" style="font-size:110%">
+        Khalti
+    </button>
+
 </div>
 
-<button id="pay-btn" class="button" style="font-size:110%">
-    Payment
-</button>
+<form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+    <div id="qr-container" class="qr-container" style="text-align: center;">
+    </div>
+</form>
+
+<script>
+    const esewaBtn = document.getElementById('esewa-btn');
+    const khaltiBtn = document.getElementById('khalti-btn');
+    const profession = document.getElementById('profession');
+    const qrContainer = document.getElementById('qr-container');
+    qrContainer.style.display = 'none';
+
+    esewaBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        qrContainer.style.display = 'block';
+        qrContainer.innerHTML = `
+        <h2>Scan the QRcode: </h2>
+        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+        <p style="color: red;">After the payment, please send us the payment receipt.</p>
+        <div class="fields">
+            <input id="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
+            </div>
+        <button class="button">Send receipt</button>
+        `;
+    });
+
+    khaltiBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        qrContainer.style.display = 'block';
+        qrContainer.innerHTML = `
+        <h1>Khalti QRcode </h1>
+        <h2>Scan the QRcode</h2>
+        <p style="color: red;">After the payment, please send us the payment receipt.</p>
+        <button class="button">Send receipt</button>
+        `;
+    });
+
+    const form = document.getElementById('receipt-submission');
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch(`/register/update/{{row.slug}}`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if(response .ok){
+                alert("Your payment receipt has been submitted.");
+            } else {
+                alert("Something went wrong submitting the payment receipt. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error: ", error);
+        });
+    })
+
+</script>
+{% endblock %}
