@@ -1,15 +1,4 @@
 <style>
-    .sidebar{
-        width: 100%;
-        border: 0.5px solid rgb(197, 197, 197);
-        border-radius: 8px;
-        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-        display: flex;
-        flex-direction: column;
-        transition: transform 0.3s ease;
-        padding: 1.5rem;
-    }
-
     .sidebar .calendar-content {
         font-size: 1.2rem;
         margin-bottom: 1rem;
