@@ -7,6 +7,7 @@ html, body{
 }
 
 .content-container{
+    padding: 1%;
     width: 80%;
     margin: 1rem auto;
     overflow-x: hidden;
@@ -46,6 +47,17 @@ html, body{
 .right-content{
     width: 30%;
     text-align: center;
+}
+
+.sidebar{
+    width: 80%;
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease;
+    padding: 1.5rem;
 }
 
 .image-container{
@@ -88,7 +100,6 @@ td {
     height: 20rem; /* Increased height for better visibility */
     border: 1px solid rgb(0, 0, 0); /* Remove default border */
     border-radius: 12px; /* Match container's border-radius */
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); /* Subtle shadow for the map */
 }
 
 .map a {
@@ -118,11 +129,6 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media (max-width: 1600px) {
-    .sidebar{
-        width: 90%; /* Make the sidebar take up 90% of the screen width */
-        margin-left: auto;
-        margin-right: auto;
-    }
 
     .map iframe {
         width: 100%; /* Make the map take full width on small screens */
@@ -168,6 +174,10 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media (max-width: 1000px) {
+    .sidebar{
+        width: 90%;
+    }
+
     p{
         font-size: 15px;
     }
