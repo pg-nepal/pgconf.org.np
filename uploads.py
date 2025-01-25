@@ -1,13 +1,12 @@
-import uuid
 import pathlib
 
 import flask
 import werkzeug.utils
-import sqlalchemy as sa
 
-PATH_base = pathlib.Path('./uploads')
-PATH_identification = PATH_base / 'identification'
-PATH_receipts = PATH_base / 'receipts'
+from srv import app
+
+
+PATH_base = pathlib.Path('./uploads/attendees')
 
 
 def save(fileData, field):
@@ -19,7 +18,17 @@ def save(fileData, field):
     filename = fobj.filename
     if filename.endswith(('pdf', 'jpg', 'png')):
         name = werkzeug.utils.secure_filename(filename)
-        fullpath = PATH_receipts / name
+        fullpath = PATH_base / name
         fobj(fullpath)
         fullpath.parent.mkdir(parents=True, exist_ok=True)
         return fullpath
+
+
+@app.route('/uploads/attendees/<filename>')
+def file_srv(filename):
+    return flask.send_from_directory(PATH_base, filename)
+
+
+@app.route('/uploads/attendees/receipt/<filename>')
+def files_srv_receipt(filename):
+    return flask.send_from_directory(PATH_base / 'receipt', filename)
