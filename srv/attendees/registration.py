@@ -3,6 +3,7 @@ import sqlalchemy as sa
 
 import db
 import db.events
+import uploads
 
 from srv import app
 
@@ -32,3 +33,22 @@ def registered_read(slug):
             '/attendees/profile.djhtml',
             row = row._asdict(),
         )
+
+
+@app.post('/registered/<slug>')
+def registered_update(slug):
+    fileData = flask.request.files
+
+    fullpath = uploads.save(fileData, 'receiptPath')
+
+    query = sa.update(
+        db.events.Attendee,
+    ).where(
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+    ).values(
+        receiptPath = fullpath,
+    )
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(query)
+        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
