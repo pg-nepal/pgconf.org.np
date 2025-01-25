@@ -51,3 +51,6 @@ class Users(db.Base):
         dklen    = 64,  # output (derived key) length default:64
         )
         return hashed_attempt == self.hashed
+
+    def assign_creator(self, createdBy):
+        self.createdBy = createdBy
