@@ -38,3 +38,16 @@ class Users(db.Base):
 
         self.salt = salt
         self.password = hashed
+
+    ##
+    def check_password(self, password):
+        hashed_attempt = hashlib.scrypt(
+        password = password.encode('utf-8'),  # in octet string
+        salt     = self.salt,  # in octet string
+        r        = 8,  # block size
+        n        = 1024,  # CPU/Memory cost, range: 1 < n < 2^(128 * r / 8)
+        p        = 1,  # parallelization factor
+        maxmem   = 32 * 1024 * 1024,  # limits memory
+        dklen    = 64,  # output (derived key) length default:64
+        )
+        return hashed_attempt == self.hashed
