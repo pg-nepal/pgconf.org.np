@@ -23,6 +23,15 @@
         color: white;
         background-color: rgb(138, 95, 154);
     }
+
+    .receipt-url{
+        width: 90%;
+    }
+
+    .fields{
+        display: flex;
+        align-items: center;
+    }
 </style>
 {% endblock %}
 
@@ -66,10 +75,20 @@
     </button>
 </div>
 
+<<<<<<< HEAD
     <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
         <div id="qr-container" class="qr-container" style="text-align: center;">
         </div>
     </form>
+=======
+<form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+    <div id="qr-container" class="qr-container" style="text-align: center;     
+    border: 0.5px solid rgb(197, 197, 197);
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);">
+    </div>
+</form>
+>>>>>>> 944189e (minor changes)
 
     <script>
         const esewaBtn = document.getElementById('esewa-btn');
@@ -78,6 +97,7 @@
         const qrContainer = document.getElementById('qr-container');
         qrContainer.style.display = 'none';
 
+<<<<<<< HEAD
         esewaBtn.addEventListener('click', function(event){
             event.preventDefault();
             qrContainer.style.display = 'block';
@@ -87,6 +107,67 @@
                 <p style="color: red;">After the payment, please send us the payment receipt.</p>
                 Send receipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
             `;
+=======
+    esewaBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        qrContainer.style.display = 'block';
+        qrContainer.innerHTML = `
+        <h2>Scan the QRcode: </h2>
+        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+        <p style="color: red;">After the payment, please send us the payment receipt.</p>
+        <h1>Bank Details</h1>
+        <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
+        <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
+        <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
+        <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
+        <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
+        <div class="fields">
+            <label for="receipt-url">Submit your payment receipt</label>
+            <input id="receipt-url" class="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
+            </div>
+        <button class="button">Send receipt</button>
+        `;
+    });
+
+    khaltiBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        qrContainer.style.display = 'block';
+        qrContainer.innerHTML = `
+        <h1>Khalti QRcode </h1>
+        <h2>Scan the QRcode</h2>
+        <p style="color: red;">After the payment, please send us the payment receipt.</p>
+        <h1>Bank Details</h1>
+        <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
+        <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
+        <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
+        <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
+        <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
+        <div class="fields">
+            <label for="receipt-url">Submit your payment receipt</label>
+            <input id="receipt-url" class="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
+            </div>
+        <button class="button" style="font-weight: bold;">Send receipt</button>
+        `;
+    });
+
+    const form = document.getElementById('receipt-submission');
+    form.addEventListener('submit', function(event){
+        event.preventDefault();
+        const formData = new FormData(form);
+        fetch(`/register/update/{{row.slug}}`, {
+            method: 'POST',
+            body: formData,
+        })
+        .then(response => {
+            if(response .ok){
+                alert("Your payment receipt has been submitted.");
+            } else {
+                alert("Something went wrong submitting the payment receipt. Please try again.");
+            }
+        })
+        .catch(error => {
+            console.error("Error: ", error);
+>>>>>>> 944189e (minor changes)
         });
 
         khaltiBtn.addEventListener('click', function(event){
