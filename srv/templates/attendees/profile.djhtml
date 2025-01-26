@@ -4,6 +4,25 @@
 
 {% block head %}
     {{super()}}
+    <style>
+        #esewa-btn{
+            color: green;
+            font-size:110%;
+        }
+        #esewa-btn:hover{
+            color: white;
+            background-color: rgb(82, 160, 82);
+        }
+
+        #bank-btn{
+            color: purple;
+            font-size:110%;
+        }
+        #bank-btn:hover{
+            color: white;
+            background-color: rgb(138, 95, 154);
+        }
+    </style>
 {% endblock %}
 
 
@@ -14,18 +33,31 @@
         <strong>Your Total:</strong> NRs. {{row.fee}}
     </p>
 
-    <div id='esewa'>
-        <h2>Scan the QRcode</h2>
-        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
-    </div>
+    <div>
+        <p>Chose your payment options</p>
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
+            <button id="esewa-btn" class="btn">
+                Esewa
+            </button>
 
-    <div id='bank'>
-        <h1>Bank Details</h1>
-        <p><b>Bank Account Name:</b> Kathmandu University</p>
-        <p><b>Bank Account Number:</b> 00501030250009</p>
-        <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
-        <p><b>Branch:</b> Banepa, Nepal</p>
-        <p><b>Swift Code:</b> NIBLNPKT</p>
+            <button id="bank-btn" class="btn">
+                Bank
+            </button>
+        </div>
+
+        <div id='esewa'>
+            <h2>Scan the QRcode</h2>
+            <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+        </div>
+
+        <div id='bank'>
+            <h1>Bank Details</h1>
+            <p><b>Bank Account Name:</b> Kathmandu University</p>
+            <p><b>Bank Account Number:</b> 00501030250009</p>
+            <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+            <p><b>Branch:</b> Banepa, Nepal</p>
+            <p><b>Swift Code:</b> NIBLNPKT</p>
+        </div>
     </div>
 
     <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
