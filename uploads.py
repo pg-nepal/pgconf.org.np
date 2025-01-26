@@ -21,7 +21,7 @@ def save(fileData, field):
         fullpath = PATH_base / name
         fobj(fullpath)
         fullpath.parent.mkdir(parents=True, exist_ok=True)
-        return fullpath
+        return str(fullpath)
 
 
 @app.route('/uploads/attendees/<filename>')
