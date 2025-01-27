@@ -1,0 +1,45 @@
+{% extends 'base.djhtml' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/form.css">
+    <style>
+        #wtf-answer {
+            text-transform: uppercase;
+        }
+    </style>
+{% endblock %}
+
+
+{% block main_content %}
+    <form id="wtf-form" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            {% include fields %}
+        </fieldset>
+
+        <fieldset>
+            <div id="captcha" class="fields">
+                <label for="captcha">{{question}} <sup>*</sup></label>
+                <input id="wtf-answer" type="text" name="answer" placeholder="Enter your answer" required>
+            </div>
+        </fieldset>
+
+        <!-- Prevent implicit submission of the form -->
+        <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+        <button id="submitBtn" class="button" style="font-size:110%;">
+            Submit
+        </button>
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="module">
+        document.getElementById('wtf-form').addEventListener('submit', function (event) {
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+        })
+    </script>
+{% endblock %}
