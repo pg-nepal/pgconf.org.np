@@ -11,6 +11,16 @@ import uploads
 from srv import app
 
 
+@app.get('/registered/form')
+def registered_form():
+    idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
+    return flask.render_template(
+        '/attendees/form-registration.djhtml',
+        idx      = idx,
+        question = srv.captcha.questions[idx][0],
+    )
+
+
 @app.post('/registered/add')
 def registered_create():
     formData = flask.request.form.to_dict()
