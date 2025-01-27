@@ -4,6 +4,11 @@
 
 {% block head %}
     <link rel="stylesheet" href="/static/css/form.css">
+    <style>
+        #wtf-answer {
+            text-transform: uppercase;
+        }
+    </style>
 {% endblock %}
 
 
