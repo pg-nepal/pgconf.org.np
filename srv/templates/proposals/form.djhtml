@@ -95,3 +95,12 @@
         </script>
     </div>
 {% endblock %}
+
+
+{% block scripts %}
+    <script type="module">
+        import * as main from '/static/main.mjs'
+
+        main.add_countries_opts(document.getElementById('countries'))
+    </script>
+{% endblock %}
