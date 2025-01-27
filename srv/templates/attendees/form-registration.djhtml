@@ -1,0 +1,82 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Registration Form' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/form.css">
+    <style>
+        #wtf-answer {
+            text-transform: uppercase;
+        }
+    </style>
+{% endblock %}
+
+
+{% block main_content %}
+    <div class="headings">
+        <h1>Registration</h1>
+    </div>
+
+    <form id="wtf-form" action="/registered/add" method="POST" enctype="multipart/form-data">
+        <fieldset>
+            {% include '/attendees/form-part.djhtml' %}
+        </fieldset>
+
+        <fieldset>
+            <div id="captcha" class="fields">
+                <label for="captcha">{{question}} <sup>*</sup></label>
+                <input id="wtf-answer" type="text" name="wtf-answer" placeholder="Enter your answer" required>
+            </div>
+        </fieldset>
+
+        <!-- Prevent implicit submission of the form -->
+        <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
+        <button type="submit" disabled style="display: none" aria-hidden="true"></button>
+        <button class="button" style="font-size:110%;">
+            Submit
+        </button>
+    </form>
+{% endblock %}
+
+
+{% block scripts %}
+    <script type="module">
+        import * as main from '/static/main.mjs'
+
+        main.add_countries_opts(document.getElementById('countries'))
+
+        document.getElementById('wtf-form').addEventListener('submit', function (event) {
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            const formData = new FormData(event.target)
+            formData.set('idx', '{{idx}}')
+            formData.set('answer', formData.get('wtf-answer').toUpperCase())
+            formData.delete('wtf-answer')
+
+            fetch('/registered/add', {
+                method : 'POST',
+                body   : formData,
+            }).then(function (response) {
+                if (500 <= response.status) {
+                    throw new Error(response.statusText)
+                }
+
+                if (200 > response.status || 300 <= response.status) {
+                    return response.text().then(function (text) {
+                        alert(text)
+                    })
+                }
+
+                alert('Registration submitted successfully');
+                window.location = '/registered/'
+                // may be page here
+                // event.target.reset()  // may be only partial clear
+            }).catch(function (error) {
+                console.error(error)
+                alert('Oops! something went wrong')
+            })
+        })
+    </script>
+{% endblock %}
