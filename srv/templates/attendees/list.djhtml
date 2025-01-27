@@ -1,0 +1,54 @@
+{% extends '/base.djhtml' %}
+{% set pageTitle= '/attendees' %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="/static/css/proposals.css">
+{% endblock %}
+
+
+{% block main %}
+    <div class="content-container">
+        <h1>Attendees List</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    {% for h in headers %}
+                        <th>{{h}}</th>
+                    {% endfor %}
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for row in cursor %}
+                    <tr>
+                        {% for e in row %}
+                            <td>{{e}}</td>
+                        {% endfor %}
+                        <td>
+                            <a class="details-link" href="/attendees/{{row.pk}}">Details</a>
+                            <button class="delete-btn" onclick="onDelete('{{row.pk}}')">Delete</button>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+{% endblock %}
+
+
+{% block tail %}
+    <script>
+        function onDelete(slug) {
+            fetch(`/attendees/${slug}`, {
+                method : 'DELETE',
+            }).then(function (response) {
+                alert('Registration deleted successfully.')
+                location.reload()
+            }).catch(function (error) {
+                console.log(error)
+            })
+        }
+    </script>
+{% endblock %}
