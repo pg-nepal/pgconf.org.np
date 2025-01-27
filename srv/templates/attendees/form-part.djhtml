@@ -1,0 +1,26 @@
+<div class="fields">
+    <div class="fields">
+        <label for="wtf-name">Name <sup>*</sup></label>
+        <input id="wtf-name" name="name" placeholder="Full Name" required autofocus>
+    </div>
+</div>
+
+<div class="fields">
+    <label for="wtf-email">Email <sup>*</sup></label>
+    <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
+</div>
+
+<div class="fields">
+    <label for="wtf-country">Country <sup>*</sup></label>
+    <input list="countries" id="wtf-country" name="country" required>
+    <datalist id="countries" style="display: none;"></datalist>
+</div>
+
+<div class="fields">
+    <label for="wtf-category">Category <sup>*</sup></label>
+    <select id="wtf-category" name="category" placeholder="Email Address" required>
+        <option value="">Select Category</option>
+        <option value="student">Student</option>
+        <option value="professional">Professional</option>
+    </select>
+</div>
