@@ -1,10 +1,11 @@
-import uuid
+import random
 
 import flask
 import sqlalchemy as sa
 
 import db
 import db.events
+import srv.captcha
 import uploads
 
 from srv import app
@@ -12,7 +13,13 @@ from srv import app
 
 @app.post('/registered/add')
 def registered_create():
-    formData = flask.request.form
+    formData = flask.request.form.to_dict()
+
+    idx = int(formData.pop('idx'))
+    answer = formData.pop('answer').upper()
+
+    if answer != srv.captcha.questions[idx][1]:
+        return 'Incorrect answer', 400
 
     category = formData.get('category')
     with db.engine.connect() as connection:
@@ -32,7 +39,6 @@ def registered_create():
     ).values(
         **formData,
         fee    = 7000 - discount_student - discount_early,
-        slug   = uuid.uuid4().hexdump(),
         status = 'pending',
         ticket = 'ticket',
     ).returning(
