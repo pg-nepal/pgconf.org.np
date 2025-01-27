@@ -1,8 +1,11 @@
+import random
+
 import flask
 import sqlalchemy as sa
 
 import db
 import db.conf
+import srv.captcha
 import uploads
 
 from srv import app
@@ -10,14 +13,20 @@ from srv import app
 
 @app.post('/registered/add')
 def registered_create():
-    formData = flask.request.form
+    formData = flask.request.form.to_dict()
+
+    idx = int(formData.pop('idx'))
+    answer = formData.pop('answer').upper()
+
+    if answer != srv.captcha.questions[idx][1]:
+        return 'Incorrect answer', 400
 
     category = formData.get('category')
     with db.engine.connect() as connection:
         cursor = connection.execute(sa.select(
             sa.func.count().label('count'),
         ).where(
-            db.events.Attendee.category == category,
+            db.conf.Attendee.category == category,
         ))
 
         count = cursor.scalar()
@@ -26,14 +35,14 @@ def registered_create():
     discount_early = 2000 if count < 20 else 0
 
     query = sa.insert(
-        db.events.Attendee,
+        db.conf.Attendee,
     ).values(
         **formData,
         fee    = 7000 - discount_student - discount_early,
         status = 'pending',
         ticket = 'ticket',
     ).returning(
-        db.events.Attendee.slug,
+        db.conf.Attendee.slug,
     )
 
     with db.SessionMaker.begin() as session:
