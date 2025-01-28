@@ -143,6 +143,12 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+@media (max-width: 420px) {
+    .countDown {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
 @media (max-width: 1600px) {
 
     .map iframe {
@@ -231,17 +237,5 @@ input[type="number"]::-webkit-inner-spin-button {
     }
     .right-content{
         width: 100%;
-    }
-}
-
-@media (max-width: 600px) {
-    h1{
-        font-size: 18px;
-    }
-}
-
-@media (max-width: 500px) {
-    h1{
-        font-size: 10px;
     }
 }
