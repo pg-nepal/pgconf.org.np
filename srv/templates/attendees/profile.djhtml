@@ -3,104 +3,116 @@
 
 
 {% block head %}
-<link rel="stylesheet" href="/static/css/form.css">
+    <link rel="stylesheet" href="/static/css/form.css">
 {% endblock %}
 
 
 {% block main_content %}
-<a href="/pages/register">
-    Back
-</a>
+    <a href="/pages/register">
+        Back
+    </a>
 
-<h1>Your Registration Status</h1>
-    <p><span class="field" style="font-weight: bold;">Ban Name:</span> {{row.name}}</p>
-    <p><span class="field" style="font-weight: bold;">Email:</span> {{row.email}}</p>
-    <p><span class="field" style="font-weight: bold;">Country:</span> {{row.country}}</p>
-    <p><span class="field" style="font-weight: bold;">Phone:</span> {{row.phone}}</p>
-    {% if row.studentID_url %}
-        <img src="{{ url_for('student_uploaded_file', filename=row.studentID_url.split('/')[-1]) }}" alt="studentID" style="width: 100%; height: 500px;">
-    {% endif %}
+    <h1>Your Registration Status</h1>
+
+    <table>
+        <thead>
+            <tr>
+                {% for h in row.keys() %}
+                    <th>{{h}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {% for e in row.values() %}
+                    <td>{{e}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
     <p><span class="field" style="font-weight: bold;">Your Total:</span> Rs {{row.fee}}</p>
 
-<div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
-    <button id="esewa-btn" class="button" style="font-size:110%">
-        Esewa
-    </button>
+    <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
+        <button id="esewa-btn" class="button" style="font-size:110%">
+            Esewa
+        </button>
 
-    <button id="khalti-btn" class="button" style="font-size:110%">
-        Khalti
-    </button>
+        <button id="khalti-btn" class="button" style="font-size:110%">
+            Khalti
+        </button>
 
-</div>
-
-<form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
-    <div id="qr-container" class="qr-container" style="text-align: center;">
     </div>
-</form>
 
-<script>
-    const esewaBtn = document.getElementById('esewa-btn');
-    const khaltiBtn = document.getElementById('khalti-btn');
-    const profession = document.getElementById('profession');
-    const qrContainer = document.getElementById('qr-container');
-    qrContainer.style.display = 'none';
+    <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+        <div id="qr-container" class="qr-container" style="text-align: center;">
+        </div>
+    </form>
 
-    esewaBtn.addEventListener('click', function(event){
-        event.preventDefault();
-        qrContainer.style.display = 'block';
-        qrContainer.innerHTML = `
-        <h2>Scan the QRcode: </h2>
-        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
-        <p style="color: red;">After the payment, please send us the payment receipt.</p>
-        <h1>Bank Details</h1>
-        <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
-        <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
-        <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
-        <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
-        <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
-        <div class="fields">
-            <input id="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
-            </div>
-        <button class="button">Send receipt</button>
-        `;
-    });
+    <script>
+        const esewaBtn = document.getElementById('esewa-btn');
+        const khaltiBtn = document.getElementById('khalti-btn');
+        const profession = document.getElementById('profession');
+        const qrContainer = document.getElementById('qr-container');
+        qrContainer.style.display = 'none';
 
-    khaltiBtn.addEventListener('click', function(event){
-        event.preventDefault();
-        qrContainer.style.display = 'block';
-        qrContainer.innerHTML = `
-        <h1>Khalti QRcode </h1>
-        <h2>Scan the QRcode</h2>
-        <p style="color: red;">After the payment, please send us the payment receipt.</p>
-        <h1>Bank Details</h1>
-        <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
-        <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
-        <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
-        <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
-        <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
-        <button class="button" style="font-weight: bold;">Send receipt</button>
-        `;
-    });
-
-    const form = document.getElementById('receipt-submission');
-    form.addEventListener('submit', function(event){
-        event.preventDefault();
-        const formData = new FormData(form);
-        fetch(`/register/update/{{row.slug}}`, {
-            method: 'POST',
-            body: formData,
-        })
-        .then(response => {
-            if(response .ok){
-                alert("Your payment receipt has been submitted.");
-            } else {
-                alert("Something went wrong submitting the payment receipt. Please try again.");
-            }
-        })
-        .catch(error => {
-            console.error("Error: ", error);
+        esewaBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            qrContainer.style.display = 'block';
+            qrContainer.innerHTML = `
+                <h2>Scan the QRcode: </h2>
+                <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+                <p style="color: red;">After the payment, please send us the payment receipt.</p>
+                <h1>Bank Details</h1>
+                <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
+                <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
+                <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
+                <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
+                <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
+                <div class="fields">
+                    <input id="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
+                </div>
+                <button class="button">Send receipt</button>
+            `;
         });
-    })
 
-</script>
+        khaltiBtn.addEventListener('click', function(event){
+            event.preventDefault();
+            qrContainer.style.display = 'block';
+            qrContainer.innerHTML = `
+                <h1>Khalti QRcode </h1>
+                <h2>Scan the QRcode</h2>
+                <p style="color: red;">After the payment, please send us the payment receipt.</p>
+                <h1>Bank Details</h1>
+                <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
+                <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
+                <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
+                <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
+                <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
+                <button class="button" style="font-weight: bold;">Send receipt</button>
+            `;
+        });
+
+        const form = document.getElementById('receipt-submission');
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+            const formData = new FormData(form);
+            fetch(`/register/update/{{row.slug}}`, {
+                method: 'POST',
+                body: formData,
+            })
+                .then(response => {
+                    if(response .ok){
+                        alert("Your payment receipt has been submitted.");
+                    } else {
+                        alert("Something went wrong submitting the payment receipt. Please try again.");
+                    }
+                })
+                .catch(error => {
+                    console.error("Error: ", error);
+                });
+        })
+
+    </script>
 {% endblock %}
