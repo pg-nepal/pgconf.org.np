@@ -33,7 +33,7 @@ class Attendee(db.Base):
     slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
 
     name           = sa.Column(sa.String(50), nullable=False)
-    email          = sa.Column(sa.String(256), nullable=False)
+    email          = sa.Column(sa.String(256), unique=True, nullable=False)
     phone          = sa.Column(sa.String(10))
 
     category       = sa.Column(sa.String(100), nullable=False)
