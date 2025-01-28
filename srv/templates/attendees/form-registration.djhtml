@@ -69,8 +69,11 @@
                     })
                 }
 
-                alert('Registration submitted successfully');
-                window.location = '/registered/'
+                if (true == response.redirected) {
+                    alert('Registration submitted successfully');
+                    window.location = response.url
+                }
+
                 // may be page here
                 // event.target.reset()  // may be only partial clear
             }).catch(function (error) {
