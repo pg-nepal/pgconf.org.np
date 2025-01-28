@@ -37,6 +37,18 @@ html, body{
 }
 
 
+.button-secondary{
+    color: #336791;
+    border: 1px solid #007BFF;
+}
+
+.button-secondary:hover {
+    background-color: #336791;
+    color: antiquewhite;
+    border: 1px solid #007BFF;
+}
+
+
 .content{
     display: flex;
     gap: 5%;
