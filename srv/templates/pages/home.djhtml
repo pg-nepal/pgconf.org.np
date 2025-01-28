@@ -82,8 +82,6 @@
                 <section class="home-content mt-1">
                     <h2>Second Conference Conclusion</h2>
                     <div id="img-slider" class="img-slider conference-image-container">
-                        <button class="slide-btn prev">p</button>
-                        <button class="slide-btn next">n</button>
                         <div class="slides show">
                             <img src="/static/main_conference.jpg" alt="main conference">
                         </div>
