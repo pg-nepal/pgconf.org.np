@@ -135,6 +135,11 @@ td {
     padding: 0.5rem 1rem;
 }
 
+.main-btns:hover {
+    background: white;
+    color: black;
+}
+
 /* Hide the up and down arrows in WebKit browsers (Chrome, Safari, Opera, Edge) */
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
