@@ -28,11 +28,21 @@ html, body{
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
 }
 
+.button-secondary{
+    color: #336791;
+    border: 1px solid #007BFF;
+}
+
 .button:hover{
     background-color: #c91818;
     box-shadow:  0 2px 4px rgba(255, 255, 255, 0.1);
     color: white;
     transform: translateY(-3px);
+}
+.button-secondary:hover{
+    background-color: #336791;
+    color: antiquewhite;
+    border: 1px solid #007BFF;
 }
 
 .content{
