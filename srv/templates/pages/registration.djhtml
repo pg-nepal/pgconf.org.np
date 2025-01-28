@@ -8,7 +8,11 @@
 
     <div style="margin-bottom: 0.5rem;">
         <p>Please register. Follow the steps below to complete your registration and secure your spot</p>
-        <p>Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling you fill up the form you will receive an email through which you will revceive your registration Id. Use that registration Id for actual payments of the tickets.</p>
+
+        <p>
+        Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling the form, you will be redicted to the payment processing page. Currently we accept (eSewa and direct bank payment). Preseve the URL for future reference.
+        Send your proof of payment.
+        </p>
     </div>
 
     <div style="display: flex; justify-content: space-between; align-items: center;">
@@ -59,6 +63,7 @@
             </li>
         </div>
     </ul>
+    <b>Note:</b> Discount are limitted and will be available based on first-come-first-served basis.
 
     <div style="padding:1rem 0">
         <h3>Supporter Category</h3>
