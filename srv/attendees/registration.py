@@ -63,9 +63,14 @@ def registered_create():
 @app.get('/registered/<slug>')
 def registered_read_client(slug):
     query = sa.select(
-        db.events.Attendee,
+        db.events.Attendee.name,
+        db.events.Attendee.email,
+        db.events.Attendee.country,
+        db.events.Attendee.fee,
+        db.events.Attendee.slug,
+        sa.cast(db.events.Attendee.status, sa.String).label('status'),
     ).where(
-        db.events.Attendee.slug == slug.encode(),
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
     )
 
     with db.engine.connect() as connection:
@@ -75,14 +80,9 @@ def registered_read_client(slug):
         if row is None:
             return 'Invalid uuid', 400
 
-        data = dict(row._mapping)
-
-        if data.get('slug'):
-            data['slug'] = data['slug'].decode()
-
         return flask.render_template(
             '/attendees/profile.djhtml',
-            row = data,
+            row = row._asdict(),
         )
 
 
