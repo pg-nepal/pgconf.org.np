@@ -27,4 +27,10 @@
         <p><b>Branch:</b> Banepa, Nepal</p>
         <p><b>Swift Code:</b> NIBLNPKT</p>
     </div>
+
+    <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
+        <p>
+            In case of any issue send us the recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
+        </p>
+    </div>
 {% endblock %}
