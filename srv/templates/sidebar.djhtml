@@ -21,6 +21,9 @@
             <p id="start-date">
                 {{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}
             </p>
+            
+            <a class="button button-secondary" href="http://www.google.com/calendar/event?action=TEMPLATE&dates=20250505T011500Z%2F20250506T121400Z&text=3rd%20PostgreSQL%20Conference%20Nepal&location=Dhulikhel%2C%20Nepal&details=The%20conference%20will%20feature%20captivating%20talks%20and%20hands%20on%20training%20by%20internationally%20renowned%20PostgreSQL%20experts%20alongside%20insightful%20contributions%20from%20talented%20local%20speakers"
+                target="_blank">Add to Google Calender</a>
         </div>
     </div>
 
