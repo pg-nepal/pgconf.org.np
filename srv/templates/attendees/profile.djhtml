@@ -40,7 +40,7 @@
         </button>
 
         <button id="khalti-btn" class="button" style="font-size:110%">
-            Khalti
+            Bank
         </button>
 
     </div>
@@ -61,19 +61,10 @@
             event.preventDefault();
             qrContainer.style.display = 'block';
             qrContainer.innerHTML = `
-                <h2>Scan the QRcode: </h2>
+                <h2>ESewa</h2>
                 <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
                 <p style="color: red;">After the payment, please send us the payment receipt.</p>
-                <h1>Bank Details</h1>
-                <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
-                <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
-                <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
-                <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
-                <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
-                <div class="fields">
-                    <input id="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
-                </div>
-                <button class="button">Send receipt</button>
+                Send receipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
             `;
         });
 
@@ -81,16 +72,13 @@
             event.preventDefault();
             qrContainer.style.display = 'block';
             qrContainer.innerHTML = `
-                <h1>Khalti QRcode </h1>
-                <h2>Scan the QRcode</h2>
-                <p style="color: red;">After the payment, please send us the payment receipt.</p>
-                <h1>Bank Details</h1>
+                <h2>Bank Details</h2>
                 <p><span class="field" style="font-weight: bold;">Bank Account Name:</span> Kathmandu University</p>
                 <p><span class="field" style="font-weight: bold;">Bank Account Number:</span> 00501030250009</p>
                 <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
                 <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
                 <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
-                <button class="button" style="font-weight: bold;">Send receipt</button>
+                Send receipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
             `;
         });
 
