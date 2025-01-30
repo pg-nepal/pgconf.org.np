@@ -17,61 +17,18 @@
 }
 </style>
 
-    <link rel="stylesheet" href="/static/css/proposal_details.css">
+    <link rel="stylesheet" href="/static/css/form.css">
         <a href="{{ request.referrer }}">
             Go Back
         </a>
 
         <div style="display: flex; justify-content: space-between;">
-            <h1>Title: {{proposal.title}}</h1>  
-            <p class="status" id="status">{{proposal.status}}</p>
+            <h1>Title: {{proposal.title}}</h1>
         </div>
-        <p>UUID: {{proposal.session_id}}</p>
         <p>Name: {{proposal.name}}</p>
         <p>Email: {{proposal.email}}</p>
         <p>country: {{proposal.country}}</p>
         <p>Session Type: {{proposal.session}}</p>
         <p>Abstract:</p>
         <p>{{proposal.abstract}}</p>
-
-        <form action="/proposals/update/{{proposal.pk}}" method="POST" enctype="multipart/form-data">
-        <div style="display: flex; gap: 2%; justify-content: space-between;">
-            <select id="status" name="status" placeholder="Email Address" required>
-                <option value="pending">Pending</option>
-                <option value="accepted">Accept</option>
-                <option value="rejected">Reject</option>
-            </select>
-
-            <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-
-            <button class="button" style="font-size:110%">
-                Update
-            </button>
-        </div>
-        </form>
-    
-    <script>
-        const status =  document.getElementById("status");
-        let statusValue = status.textContent;
-        if(statusValue === "pending"){
-            status.style.background = "grey";
-            status.style.color = "white";
-            status.style.padding = "1%";
-            status.style.borderRadius = "15px";
-        }
-        else if(statusValue === "accepted"){
-            status.style.background = "green";
-            status.style.color = "white";
-            status.style.padding = "1%";
-            status.style.borderRadius = "15px";
-        }
-        else {
-            status.style.background = "red";
-            status.style.color = "white";
-            status.style.padding = "1%";
-            status.style.borderRadius = "15px";
-        }
-
-        const updatedStatus = document.getElementById("status").values;
-    </script>
 {% endblock %}
