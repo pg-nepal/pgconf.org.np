@@ -1,9 +1,11 @@
+# flake8: noqa:E501
+
 import sqlalchemy as sa
 
 import db
 
 
-class Proposals(db.Base):
+class Proposal(db.Base):
     __tablename__  = 'proposals'
     __table_args__ = {
         'schema'  : 'conf25',
