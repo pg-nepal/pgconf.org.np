@@ -29,14 +29,5 @@
         <p><span class="field">Country:</span> {{row.country}}</p>
         <p><span class="field">Phone:</span> {{row.phone}}</p>
         <p><span class="field">Profession:</span>Profession: {{row.category}}</p>
-        <p><span class="field">Student ID card:</span></p>
-
-        {% if row.studentID_url %}
-            <img src="{{ url_for('student_uploaded_file', filename=row.studentID_url.split('/')[-1]) }}" alt="Student ID Image">
-        {% endif %}
-
-        <p><span class="field" style="font-weight: bold;">Payment Receipt</span></p>
-
-        <img src="{{ url_for('receipt_uploaded_file', filename=row.receipt_url.split('/')[-1]) }}" alt="Receipt Image" style="width: 100%; height: 50%;">
     </div>
 {% endblock %}
