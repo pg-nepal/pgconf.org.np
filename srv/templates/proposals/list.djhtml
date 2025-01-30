@@ -27,7 +27,7 @@
                             <td>{{ proposal.email }}</td>
                             <td>
                                 <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
-                                <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button>
+                                <!-- <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button> -->
                             </td>
                         </tr>
                     {% endfor %}
