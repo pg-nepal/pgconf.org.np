@@ -28,6 +28,6 @@
         <p><span class="field">Email:</span> {{row.email}}</p>
         <p><span class="field">Country:</span> {{row.country}}</p>
         <p><span class="field">Phone:</span> {{row.phone}}</p>
-        <p><span class="field">Profession:</span>Profession: {{row.category}}</p>
+        <p><span class="field">Profession:</span>{{row.category}}</p>
     </div>
 {% endblock %}
