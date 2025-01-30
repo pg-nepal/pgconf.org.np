@@ -38,14 +38,17 @@
     </div>
 
     <script>
-        function onDelete(pk){
+        function onDelete(pk) {
+            if (!confirm('Do you really want to delete talk?')) return
             fetch(`/proposals/${pk}`, {
                 method : 'DELETE',
-            }).then(response => {
-                alert('proposal deleted successfully.');
-                location.reload();
-            }).catch(error => {
-                console.log('Error: ', error)
+            }).then(function (response) {
+                renspose.text(function (txt) {
+                    alert(txt)
+                    location.reload()
+                })
+            }).catch(function (error){
+                console.error(error)
             })
         }
         window.onDelete = onDelete;
