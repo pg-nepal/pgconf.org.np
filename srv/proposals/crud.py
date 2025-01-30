@@ -109,11 +109,11 @@ def proposal_update(pk):
 
 @app.delete('/proposals/<int:pk>')
 def proposal_delete(pk):
-    with db.SessionMaker.begin() as session:
-        session.execute(sa.delete(
-            db.proposals.Proposal,
-        ).where(
-            db.proposals.Proposal.pk == pk,
-        ))
+    # with db.SessionMaker.begin() as session:
+    #     session.execute(sa.delete(
+    #         db.proposals.Proposal,
+    #     ).where(
+    #         db.proposals.Proposal.pk == pk,
+    #     ))
 
     return 'Sorry, Proposal can not be deleted at this moment', 202
