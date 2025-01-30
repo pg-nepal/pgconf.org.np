@@ -27,7 +27,7 @@ def proposal_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    query = sa.select(db.proposals.Proposals)
+    query = sa.select(db.proposals.Proposal)
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
@@ -50,7 +50,7 @@ def proposal_create():
         return 'Incorrect answer', 400
 
     query = sa.insert(
-        db.proposals.Proposals,
+        db.proposals.Proposal,
     ).values(
         **formData,
     )
@@ -68,9 +68,9 @@ def proposal_read(pk):
         return srv.auth.respondInValid()
 
     query = sa.select(
-        db.proposals.Proposals,
+        db.proposals.Proposal,
     ).where(
-        db.proposals.Proposals.pk == pk,
+        db.proposals.Proposal.pk == pk,
     )
 
     with db.engine.connect() as connection:
@@ -91,9 +91,9 @@ def proposal_read(pk):
 def proposal_update(pk):
     data = flask.request.form
     query = sa.update(
-        db.proposals.Proposals,
+        db.proposals.Proposal,
     ).where(
-        db.proposals.Proposals.pk == pk,
+        db.proposals.Proposal.pk == pk,
     ).values(
         **data,
         updatedBy = 'dummy',
