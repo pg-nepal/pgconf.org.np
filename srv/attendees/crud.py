@@ -29,7 +29,7 @@ def attendee_list():
         db.events.Attendee.fee,
         db.events.Attendee.slug,
         sa.cast(db.events.Attendee.status, sa.String).label('status'),
-        sa.literal(None).label('action'),
+        # sa.literal(None).label('action'),
     )
 
     with db.engine.connect() as connection:
@@ -92,15 +92,15 @@ def attendee_delete(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
-        
-    with db.SessionMaker.begin() as session:
-        session.execute(
-            sa.delete(
-                db.events.Attendee,
-            ).where(
-                db.events.Attendee.pk == pk,
-            ),
-        )
+
+    # with db.SessionMaker.begin() as session:
+    #     session.execute(
+    #         sa.delete(
+    #             db.events.Attendee,
+    #         ).where(
+    #             db.events.Attendee.pk == pk,
+    #         ),
+    #     )
 
     return flask.jsonify({
         'msg' : 'Registration deleted successfully',
