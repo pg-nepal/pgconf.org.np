@@ -89,6 +89,10 @@ def attendee_read(pk):
 
 @app.delete('/attendees/<int:pk>')
 def attendee_delete(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+        
     with db.SessionMaker.begin() as session:
         session.execute(
             sa.delete(
