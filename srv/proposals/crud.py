@@ -54,3 +54,15 @@ def proposal_update(pk):
     with db.SessionMaker.begin() as session:
         session.execute(query)
         return flask.redirect('/proposals'), 202
+
+
+@app.delete('/proposals/<int:pk>')
+def proposal_delete(pk):
+    return 'Sorry, Proposal can not be deleted at this moment', 202
+
+    with db.SessionMaker.begin() as session:
+        session.execute(sa.delete(
+            db.programs.Proposal,
+        ).where(
+            db.programs.Proposal.pk == pk,
+        ))
