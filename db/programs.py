@@ -23,3 +23,16 @@ class Proposal(db.Base):
     session        = sa.Column(sa.String(50))
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
+
+
+class Review(db.Base):
+    __tablename__  = 'reviews'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'conference proposals reviews',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+
+    proposal_pk    = sa.Column(sa.Integer, sa.ForeignKey(Proposal.pk, ondelete='CASCADE'))
+    comment        = sa.Column(sa.Text(), nullable=False)
