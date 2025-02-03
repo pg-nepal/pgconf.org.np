@@ -70,8 +70,8 @@
         Esewa
     </button>
 
-    <button id="khalti-btn" class="button" style="font-size:110%; border-color: purple;">
-        Khalti
+    <button id="bank-btn" class="button" style="font-size:110%; border-color: purple;">
+        Bank
     </button>
 </div>
 
@@ -82,7 +82,7 @@
 
     <script>
         const esewaBtn = document.getElementById('esewa-btn');
-        const khaltiBtn = document.getElementById('khalti-btn');
+        const khaltiBtn = document.getElementById('bank-btn');
         const profession = document.getElementById('profession');
         const qrContainer = document.getElementById('qr-container');
         qrContainer.style.display = 'none';
