@@ -32,6 +32,8 @@ def proposal_list():
         sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Review.rating), 0)).label("average_rating"),
         ).outerjoin(
             db.proposals.Review, db.proposals.Proposal.pk == db.proposals.Review.proposal_pk,
+        ).where(
+            db.proposals.Proposal.rec_status=='A'
         ).group_by(
             db.proposals.Proposal.pk,
         ).order_by(
