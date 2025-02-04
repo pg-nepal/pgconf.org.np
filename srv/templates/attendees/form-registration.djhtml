@@ -68,17 +68,19 @@
                         alert(text)
                     })
                 }
-
-                if (true == response.redirected) {
-                    alert('Registration submitted successfully');
-                    window.location = response.url
+                return response.json();
+            })
+            .then(function(data){
+                if(data.redirect){
+                    alert('Your registration has been submitted successfully.');
+                    window.location.href = data.redirect;
+                } else if(data.error){
+                    alert(data.error);
                 }
-
-                // may be page here
-                // event.target.reset()  // may be only partial clear
-            }).catch(function (error) {
+            })
+            .catch(function (error) {
                 console.error(error)
-                alert('The registration with the following mail already exists.')
+                alert(error.text)
             })
         })
     </script>
