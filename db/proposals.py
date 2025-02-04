@@ -22,7 +22,7 @@ class Proposal(db.Base):
     # Session Details
     session        = sa.Column(sa.String(50))
     title          = sa.Column(sa.String(100))
-    abstract       = sa.Column(sa.String(800))
+    abstract       = sa.Column(sa.Text())
 
 
 class Review(db.Base):
