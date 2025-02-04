@@ -11,9 +11,11 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Ratings</th>
+                        <th>Title</th>
+                        <th>Submitted By</th>
+                        <th>Category</th>
+                        <th>Submitted On</th>
+                        <th>Average Rating</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -21,8 +23,11 @@
                 <tbody>
                     {% for proposal in cursor %}
                         <tr>
+                            <td>{{ proposal.title }}</td>
                             <td>{{ proposal.name }}</td>
-                            <td>{{ proposal.email }}</td>
+                            <td>{{ proposal.session }}</td>
+                            <td>{{ proposal.createdOn.strftime('%B %d, %Y') }}</td>
+                            
                             <td>
                                 {% for _ in range(proposal.average_rating | int) %}⭐{% endfor %}
                             </td>
