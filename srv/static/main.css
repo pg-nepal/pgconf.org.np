@@ -18,6 +18,7 @@ html, body{
 .button{
     margin: 1.5% 0 1.5% 0;
     font-family: 'DM Sans', sans-serif;
+    font-size: 20px;
     text-decoration: none;
     color: #c91818;
     border: 1px solid #c91818;
