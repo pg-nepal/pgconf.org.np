@@ -110,7 +110,18 @@ def proposal_read(pk):
         row = cursor.first()
 
     if row is None:
-        return 'Invalid Pk', 400
+        return 'Invalid proposal Pk', 400
+
+    review_query = sa.select(
+        db.proposals.Review,
+    ).where(
+        db.proposals.Review.proposal_pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(review_query)
+        reviews = cursor.fetchall()
+        print (reviews)
 
     return flask.render_template(
         '/proposals/read.djhtml',
