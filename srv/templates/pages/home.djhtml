@@ -95,6 +95,21 @@
                         init('img-slider')
                     </script>
                 </section>
+
+                <section id="sponsors" class="home-content mt-1">
+                    <h2 class="section-header">
+                        Organizers
+                    </h2>
+
+                    <div class="sponsors-logos">
+                        <a href="https://postgrespro.com" target="_blank">
+                            <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
+                        </a>
+                        <a href="https://ku.edu.np" target="_blank">
+                            <img src="/static/sponsors/ku-logo.png" alt="Kathmandu University">
+                        </a>
+                    </div>
+                </section>
             </div>
 
             <div class="right-content">
