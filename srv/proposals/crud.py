@@ -48,6 +48,29 @@ def proposal_list():
     )
 
 
+@app.get('/client/proposals')
+def client_proposal_list():
+
+    query = sa.select(
+        db.proposals.Proposal,
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Review.rating), 0)).label("average_rating"),
+        ).outerjoin(
+            db.proposals.Review, db.proposals.Proposal.pk == db.proposals.Review.proposal_pk
+        ).group_by(
+            db.proposals.Proposal.pk
+        ).order_by(
+            sa.desc("average_rating").nulls_last(),
+        )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
+    return flask.render_template(
+        '/proposals/list.djhtml',
+        cursor  = cursor,
+    )    
+
+
 @app.post('/proposals/add')
 def proposal_create():
     formData = flask.request.form.to_dict()
