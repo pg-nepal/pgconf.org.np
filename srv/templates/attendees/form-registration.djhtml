@@ -78,7 +78,7 @@
                 // event.target.reset()  // may be only partial clear
             }).catch(function (error) {
                 console.error(error)
-                alert('Oops! something went wrong')
+                alert('The registration with the following mail already exists.')
             })
         })
     </script>
