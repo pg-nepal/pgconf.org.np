@@ -13,25 +13,31 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
+                        <th>Ratings</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                    {% if cursor is none %}
-                    <h2>No proposls yet.</h2>
-                    {% else %}
                     {% for proposal in cursor %}
                         <tr>
                             <td>{{ proposal.name }}</td>
                             <td>{{ proposal.email }}</td>
                             <td>
+                                {% for _ in range(proposal.average_rating | int) %}⭐{% endfor %}
+                            </td>
+                            <td>
+                                {% if isAdmin %}
                                 <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
-                                <!-- <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button> -->
+                                {% else %}
+                                <a class="details-link" href="/client/proposals/{{proposal.pk}}">Details</a>
+                                {% endif %}
+                                {% if isAdmin %}
+                                <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button>
+                                {% endif %}
                             </td>
                         </tr>
                     {% endfor %}
-                    {%endif%}
                 </tbody>
             </table>
         </div>
@@ -43,12 +49,12 @@
             fetch(`/proposals/${pk}`, {
                 method : 'DELETE',
             }).then(function (response) {
-                renspose.text(function (txt) {
-                    alert(txt)
-                    location.reload()
+                response.text(function (txt) {
+                    alert(txt);
+                    location.reload();
                 })
             }).catch(function (error){
-                console.error(error)
+                console.error(error);
             })
         }
         window.onDelete = onDelete;
