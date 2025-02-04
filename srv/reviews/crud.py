@@ -88,3 +88,24 @@ def review_read(proposal_pk):
         isAdmin  = isAdmin,
     )
 
+@app.get('/client/reviews/<int:proposal_pk>')
+def client_review_read(proposal_pk):
+
+    query = sa.select(
+        db.proposals.Review,
+    ).where(
+        db.proposals.Review.proposal_pk == proposal_pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+    if row is None:
+        return 'Invalid Pk', 400
+
+    return flask.redirect(
+        flask.url_for(),
+        proposal = row._asdict(),
+    )
+
