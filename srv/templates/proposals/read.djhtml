@@ -24,7 +24,6 @@ outline: none;
 .comment-section{
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1); 
     border-radius: 6px;
-    height: 300px; 
     overflow-y: auto;
     display: flex;
     flex-direction: column;
@@ -46,9 +45,16 @@ outline: none;
     filter: grayscale(1);
     transition: color 0.3s;
 }
+.small_star{
+    font-size: 15px;
+}
 
 .rating__star.active {
     filter: grayscale(0);
+}
+
+.comment-text{
+    padding: 2px; margin-left: 20px;
 }
 </style>
 
