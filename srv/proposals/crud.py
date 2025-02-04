@@ -177,7 +177,7 @@ def proposal_update(pk):
         updatedBy = 'dummy',
     )
 
-    with db.Session.begin() as session:
+    with db.SessionMaker.begin() as session:
         session.execute(query)
         return flask.redirect(
             flask.url_for('proposal_read'),
