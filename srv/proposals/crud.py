@@ -35,6 +35,20 @@ def proposal_create():
         return flask.redirect('/pages/call-for-proposal')
 
 
+@app.get('/proposals/<int:pk>')
+def proposal_page_read(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    return flask.render_template(
+        '/proposals/read.djhtml',
+        isAdmin = isAdmin,
+        pk      = pk,
+        status  = db.programs.proposal_status,
+    )
+
+
 @app.post('/api/proposals/<int:pk>')
 def proposal_update(pk):
     isAdmin = srv.auth.isValid(flask.request)
