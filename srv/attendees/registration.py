@@ -55,9 +55,17 @@ def registered_create():
         db.events.Attendee.slug,
     )
 
-    with db.SessionMaker.begin() as session:
-        cursor = session.execute(query)
-        return flask.redirect('/registered/{}'.format(cursor.scalar()))
+    try:
+        with db.SessionMaker.begin() as session:
+            cursor = session.execute(query)
+            return flask.jsonify({
+                'redirect': '/registered/{}'.format(cursor.scalar()),
+            }), 201
+
+    except Exception as e:
+        return flask.jsonify({
+            'error': 'Registration with the following email already exists',
+        }), 400
 
 
 @app.get('/registered/<slug>')
