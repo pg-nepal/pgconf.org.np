@@ -27,7 +27,20 @@ def proposal_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    query = sa.select(db.programs.Proposal)
+    query = sa.select(
+        db.programs.Proposal.pk,
+        db.programs.Proposal.title,
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
+        db.programs.Proposal.category,
+        db.programs.Proposal.createdOn,
+    ).outerjoin(
+        db.programs.Rate,
+        db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
+    ).group_by(
+        db.programs.Proposal.pk,
+    ).order_by(
+        db.programs.Proposal.pk,
+    )
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
