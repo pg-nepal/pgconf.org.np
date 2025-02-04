@@ -40,6 +40,8 @@ html, body{
 .button-secondary{
     color: #336791;
     border: 1px solid #007BFF;
+    display: block;
+    overflow: hidden;
 }
 
 .button-secondary:hover {
