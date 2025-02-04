@@ -126,6 +126,7 @@ def proposal_read(pk):
     return flask.render_template(
         '/proposals/read.djhtml',
         proposal = row._asdict(),
+        review = [review._asdict() for review in reviews],
         isAdmin  = isAdmin,
     )
 
