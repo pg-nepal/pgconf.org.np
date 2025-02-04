@@ -25,6 +25,20 @@ def review_list():
         "isAdmin" : isAdmin,
         })
 
+@app.get('/client/reviews')
+def client_review_list():
+
+    query = sa.select(db.proposals.Review)
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        review = [row._asdict() for row in cursor]
+
+    return flask.jsonify({
+        "review" : review,
+        })
+
+
 @app.post('/reviews/add/<int:proposal_pk>')
 def review_create(proposal_pk):
     isAdmin = srv.auth.isValid(flask.request)
