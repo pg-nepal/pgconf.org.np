@@ -48,3 +48,29 @@ def review_create(proposal_pk):
             "success": "Review submitted successfully",
         }), 200
 
+
+@app.get('/reviews/<int:proposal_pk>')
+def review_read(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        db.proposals.Review,
+    ).where(
+        db.proposals.Review.proposal_pk == proposal_pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+    if row is None:
+        return 'Invalid Pk', 400
+
+    return flask.redirect(
+        flask.url_for(),
+        proposal = row._asdict(),
+        isAdmin  = isAdmin,
+    )
+
