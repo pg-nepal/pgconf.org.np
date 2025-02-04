@@ -119,6 +119,40 @@ def proposal_read(pk):
     )
 
 
+@app.get('/client/proposals/<int:pk>')
+def client_proposal_read(pk):
+
+    query = sa.select(
+        db.proposals.Proposal,
+    ).where(
+        db.proposals.Proposal.pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+    if row is None:
+        return 'Invalid proposal Pk', 400
+
+    review_query = sa.select(
+        db.proposals.Review,
+    ).where(
+        db.proposals.Review.proposal_pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(review_query)
+        reviews = cursor.fetchall()
+        print (reviews)
+
+    return flask.render_template(
+        '/proposals/read.djhtml',
+        proposal = row._asdict(),
+        review = [review._asdict() for review in reviews],
+    )
+
+
 @app.post('/proposals/<int:pk>')
 def proposal_update(pk):
     data = flask.request.form
