@@ -23,6 +23,7 @@ class Proposal(db.Base):
     session        = sa.Column(sa.String(50))
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
+    rec_status     = sa.Column(sa.String(1), default='A')
 
 
 class Review(db.Base):
