@@ -109,3 +109,22 @@ def client_review_read(proposal_pk):
         proposal = row._asdict(),
     )
 
+
+@app.post('/reviews/update/<int:pk>')
+def review_update(pk):
+    data = flask.request.form
+    query = sa.update(
+        db.proposals.Review,
+    ).where(
+        db.proposals.Review.pk == pk,
+    ).values(
+        **data,
+        updatedBy = 'dummy',
+    )
+
+    with db.Session.begin() as session:
+        session.execute(query)
+        return flask.redirect(
+            flask.url_for(''),
+            pk = pk,
+        )
