@@ -16,6 +16,7 @@
                         <th>Category</th>
                         <th>Submitted On</th>
                         <th>Average Rating</th>
+                        <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -31,6 +32,7 @@
                             <td>
                                 {% for _ in range(proposal.average_rating | int) %}⭐{% endfor %}
                             </td>
+                            <td>{{ proposal.rec_status }}</td>
                             <td>
                                 {% if isAdmin %}
                                 <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
@@ -38,7 +40,10 @@
                                 <a class="details-link" href="/client/proposals/{{proposal.pk}}">Details</a>
                                 {% endif %}
                                 {% if isAdmin %}
-                                <button class="delete-btn" onclick="onDelete({{proposal.pk}})">Delete</button>
+                                <form action="/proposals/{{proposal.pk}}" id="status-form">
+                                    <button class="delete-btn" type="submit">Delete</button>
+                                    <input id="status-value" type="hidden" name="rec_status">
+                                </form>
                                 {% endif %}
                             </td>
                         </tr>
@@ -49,19 +54,31 @@
     </div>
 
     <script>
-        function onDelete(pk) {
+        let statusValue = document.getElementById('status-value');
+
+        const form = document.getElementById('status-form');
+        form.addEventListener('submit', function(event){
+            event.preventDefault();
+            statusValue.value = 'D';
+            console.log('statusvalue: ', statusValue)
+            const formdata = new FormData (event.target);
+            const url = form.getAttribute('action');
+
             if (!confirm('Do you really want to delete talk?')) return
-            fetch(`/proposals/${pk}`, {
-                method : 'DELETE',
-            }).then(function (response) {
+
+            fetch(url, {
+                method : 'POST',
+                body   : formdata,
+            })
+            .then(function (response) {
                 response.text(function (txt) {
                     alert(txt);
                     location.reload();
                 })
-            }).catch(function (error){
+            })
+            .catch(function (error){
                 console.error(error);
             })
-        }
-        window.onDelete = onDelete;
+        })
     </script>
 {% endblock %}
