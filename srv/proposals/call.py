@@ -23,6 +23,7 @@ def proposal_call_form():
 @app.post('/proposals/call/add')
 def proposal_call_create():
     formData = flask.request.form.to_dict()
+    email = formData['email']
 
     idx = int(formData.pop('idx'))
     answer = formData.pop('answer').upper()
@@ -34,6 +35,7 @@ def proposal_call_create():
         db.programs.Proposal,
     ).values(
         **formData,
+        createdBy = email,
     )
 
     with db.SessionMaker.begin() as session:
