@@ -46,13 +46,13 @@ def attendee_list():
 @app.post('/attendees/add')
 def attendee_create():
     formData = flask.request.form
-    email = formData.get('email')
+    name = formData.get('name')
 
     query = sa.insert(
         db.events.Attendees,
     ).values(
         **formData,
-        createdBy = email,
+        createdBy = name,
         status = 'pending',
         ticket = 'ticket',
     )
