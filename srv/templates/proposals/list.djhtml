@@ -34,12 +34,9 @@
                             </td>
                             <td>{{ proposal.rec_status }}</td>
                             <td>
-                                {% if isAdmin %}
                                 <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
-                                {% else %}
-                                <a class="details-link" href="/client/proposals/{{proposal.pk}}">Details</a>
-                                {% endif %}
-                                {% if isAdmin %}
+                                
+                                {% if isAdmin == 'root' %}
                                 <form action="/proposals/{{proposal.pk}}" id="status-form">
                                     <button class="delete-btn" type="submit">Delete</button>
                                     <input id="status-value" type="hidden" name="rec_status">
