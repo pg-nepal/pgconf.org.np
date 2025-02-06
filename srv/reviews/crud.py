@@ -66,7 +66,7 @@ def review_create(proposal_pk):
             ).values(
                 **formdata,
                 proposal_pk=proposal_pk,
-                createdBy=name,
+                createdBy=isAdmin,
             )
 
         session.execute(query)
