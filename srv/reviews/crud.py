@@ -45,22 +45,20 @@ def review_create(proposal_pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-
     formdata = flask.request.form.to_dict()
     formdata['proposal_pk'] = proposal_pk
-    print("formdata: ",formdata)
 
     query = sa.insert(
         db.proposals.Review,
-        ).values(
-            **formdata,
-        )
+    ).values(
+        **formdata,
+        proposal_pk = proposal_pk,
+        createdBy   = isAdmin,
+    )
 
     with db.SessionMaker.begin() as session:
         session.execute(query)
-        return flask.jsonify({
-            "success": "Review submitted successfully",
-        }), 200
+        return 'Review submitted successfully'
 
 
 @app.get('/reviews/<int:proposal_pk>')
