@@ -18,7 +18,7 @@ def attendee_form():
 @app.get('/attendees')
 def attendee_list():
     isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
+    if isAdmin is False or isAdmin != 'root':
         return srv.auth.respondInValid()
 
     query = sa.select(
@@ -66,7 +66,7 @@ def attendee_create():
 @app.get('/attendees/<int:pk>')
 def attendee_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
+    if isAdmin is False or isAdmin != 'root':
         return srv.auth.respondInValid()
 
     query = sa.select(
@@ -92,7 +92,7 @@ def attendee_read(pk):
 @app.delete('/attendees/<int:pk>')
 def attendee_delete(pk):
     isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
+    if isAdmin is False or isAdmin != 'root':
         return srv.auth.respondInValid()
 
     # with db.SessionMaker.begin() as session:
