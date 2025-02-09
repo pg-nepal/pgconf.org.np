@@ -192,6 +192,36 @@
         ratingOptionsArea.style.display = 'block'
     })
 
+    ratingSubmitBtn.addEventListener('click', function(event){
+        event.preventDefault();
+
+        const formdata = new FormData(ratingForm);
+
+        fetch(`/rating/add/{{proposal.pk}}`, {
+            method: 'POST',
+            body  : formdata,
+        })
+        .then(function(response){
+            if(500 <= response.status){
+                throw new Error(response.statusText);
+            }
+
+            if(200 <= response.status || 300 >= response.status){
+                return response.text().then(function(text){
+                    alert(text);
+                    location.reload();
+                })
+            }
+            return response.json();    
+        })
+        .catch(function(error){
+            console.error(error);
+            alert(error.message);
+        })
+    })
+
+
+
     submitBtn.addEventListener('click', function (event) {
 
         event.preventDefault();
