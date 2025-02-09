@@ -141,6 +141,13 @@
     const stars = document.querySelectorAll('.rating__star');
     const ratingValue = document.getElementById('rating-value');
     const submitBtn = document.getElementById('submit-btn')
+    const commentSection = document.getElementById('comment-section');
+    const ratingForm = document.getElementById('rating-form');
+    const ratingOptionsArea = document.getElementById('rating-options-area');
+    const ratingCancelBtn = document.getElementById('rating-cancel-btn');
+    const ratingArea = document.getElementById("rating")
+    const ratingSubmitBtn = document.getElementById('rating-submit-btn');
+    const upateRatingBtn = document.getElementById('update-rating-btn');
 
     commentSection.scrollTop = commentSection.scrollHeight;
 
