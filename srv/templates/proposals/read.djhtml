@@ -152,6 +152,8 @@
     commentSection.scrollTop = commentSection.scrollHeight;
 
     optionsArea.style.display = 'none';
+    ratingOptionsArea.style.display = 'none';
+    upateRatingBtn.style.display = 'none';
 
     cancelBtn.addEventListener('click', function(event){
         event.preventDefault();
