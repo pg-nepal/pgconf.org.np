@@ -23,3 +23,42 @@ def rating_list():
         "rating"  : rating,
         "isAdmin" : isAdmin,
     })
+
+
+@app.post('/rating/add/<int:proposal_pk>')
+def rating_create(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    formdata = flask.request.form.to_dict()
+
+    with db.SessionMaker.begin() as session:
+
+        cursor = session.execute(
+            sa.select(
+                db.proposals.Proposal,
+            ).where(
+                db.proposals.Proposal.pk == proposal_pk,
+            ),
+        )
+
+        proposal = cursor.scalar()
+
+        if not proposal:
+            return flask.jsonify({
+                "error" : "Proposal not found",
+            }), 404
+
+        query = sa.insert(
+            db.proposals.Rating,
+            ).values(
+                **formdata,
+                proposal_pk=proposal_pk,
+                createdBy=isAdmin,
+            )
+
+        session.execute(query)
+        return flask.jsonify({
+            "success": "Rating submitted successfully",
+        }), 200
