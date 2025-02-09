@@ -9,6 +9,7 @@ import srv.pages
 import srv.proposals
 import srv.attendees
 import srv.reviews
+import srv.ratings
 
 import jinja2
 
