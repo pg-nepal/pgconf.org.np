@@ -258,5 +258,60 @@
             // location.reload();
         });
     })
+
+
+    function readRatings(){
+        const proposalPk = '{{proposal.pk}}';
+        
+        fetch(`/ratings/${proposalPk}`, {
+            method: 'GET',
+        })
+        .then(function(response){
+            if(500 <= response.status){
+                throw new Error(response.statusText);
+            }
+    
+            if(404 === response.status){
+                return null;
+            }
+
+            if(200 <= response.status || 300 > response.status){
+                return response.json();
+            }
+    
+            throw new Error(`Unexpected status response: ${response.status}`);
+        }).then(function(data){
+            console.log("data: ", data);
+            const rating = data.rating; 
+            console.log('Rating: ', rating);
+            if(rating != null){
+                document.getElementById('rate-texts').innerText = 'Update this proposal';
+                ratingSubmitBtn.style.display = 'none'
+                upateRatingBtn.style.display = 'block';
+                upateRatingBtn.addEventListener("click", function(event){
+                    event.preventDefault();
+    
+                    const proposalPk = '{{proposal.pk}}';
+                    const formData = new FormData(ratingForm);
+    
+                    fetch(`/rating/${proposalPk}`, {
+                        method: 'POST',
+                        body  : formData,
+                    }).then(function (response) {
+                        return response.json();
+                    }).then(function(data) {
+                        console.log("data: ", data)
+                        alert(data.success);
+                        
+                        location.reload();
+                    })
+                })                     
+            }
+        }).catch(function(error){
+            console.log("Error: ", error);
+            alert(error.message);
+        });
+    }
+    readRatings();
 </script>
 {% endblock %}
