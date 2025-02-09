@@ -39,3 +39,17 @@ class Review(db.Base):
 
     comments       = sa.Column(sa.Text())
     rating         = sa.Column(sa.Integer())
+
+
+class Rating(db.Base):
+    __tablename__  = 'ratings'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'conference proposals rating',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+
+    proposal_pk    = sa.Column(sa.Integer, sa.ForeignKey(Proposal.pk, ondelete='CASCADE'))
+
+    rating         = sa.Column(sa.Integer())
