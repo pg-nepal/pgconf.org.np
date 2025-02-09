@@ -240,6 +240,7 @@
             if(200 > response.status || 300 <= response.status){
                 return response.text().then(function(text){
                     alert(text);
+                    location.reload();
                 });
             }
             return response.json()
