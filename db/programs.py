@@ -36,3 +36,16 @@ class Review(db.Base):
 
     proposal_pk    = sa.Column(sa.Integer, sa.ForeignKey(Proposal.pk, ondelete='CASCADE'))
     comment        = sa.Column(sa.Text(), nullable=False)
+
+
+class Rate(db.Base):
+    __tablename__  = 'rates'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'conference proposals rating',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+
+    proposal_pk    = sa.Column(sa.Integer, sa.ForeignKey(Proposal.pk, ondelete='CASCADE'))
+    value          = sa.Column(sa.Integer, comment='average value of all the rates')
