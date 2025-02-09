@@ -91,3 +91,25 @@ def rating_read(proposal_pk):
         return flask.jsonify(row._asdict())
         
 
+@app.post('/rating/<int:proposal_pk>')
+def rating_update(proposal_pk):
+    
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    formdata = flask.request.form
+    query = sa.update(
+        db.proposals.Rating,
+    ).where(
+        db.proposals.Rating.proposal_pk == proposal_pk,
+    ).values(
+        **formdata,
+        updatedBy=isAdmin,
+    )
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+        return flask.jsonify({
+            "success": "Ratings updated successfully",
+        }), 200
