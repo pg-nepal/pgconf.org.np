@@ -62,3 +62,32 @@ def rating_create(proposal_pk):
         return flask.jsonify({
             "success": "Rating submitted successfully",
         }), 200
+
+
+@app.get('/ratings/<int:proposal_pk>')
+def rating_read(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    print('isadmin: ', isAdmin)
+
+    query = sa.select(
+        db.proposals.Rating,
+    ).where(
+        db.proposals.Rating.proposal_pk == proposal_pk,
+        db.proposals.Rating.createdBy == isAdmin,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return flask.jsonify({
+                "message": "You haven't rated this proposal.",
+            })
+
+        return flask.jsonify(row._asdict())
+        
+
