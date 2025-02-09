@@ -160,6 +160,11 @@
         optionsArea.style.display = 'none';
     });
 
+    ratingCancelBtn.addEventListener('click', function(event){
+        event.preventDefault();
+        ratingOptionsArea.style.display = 'none';
+    });
+
     commentBox.addEventListener('click', function(event){
         event.preventDefault();
 
