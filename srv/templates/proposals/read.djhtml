@@ -187,6 +187,10 @@
         })
     });
 
+    ratingArea.addEventListener('click', function(event){
+        event.preventDefault();
+        ratingOptionsArea.style.display = 'block'
+    })
 
     submitBtn.addEventListener('click', function (event) {
 
