@@ -68,10 +68,10 @@
                 body   : formdata,
             })
             .then(function (response) {
-                response.text(function (txt) {
-                    alert(txt);
-                    location.reload();
-                })
+                return response.json();
+            })
+            .then(function(data){
+                location.reload();
             })
             .catch(function (error){
                 console.error(error);
