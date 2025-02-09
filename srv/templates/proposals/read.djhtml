@@ -58,6 +58,30 @@
     <p><strong>Abstract:</strong></p>
     <p>{{proposal.abstract}}</p>
 
+    <div class="rating-form-area">
+        <form id="rating-form">
+            <fieldset>
+                <p id="rate-texts">Rate this proposal</p>
+                <div id="rating" class="rating" style="display: flex;">
+                    <span class="rating__star">⭐</span>
+                    <span class="rating__star">⭐</span>
+                    <span class="rating__star">⭐</span>
+                    <span class="rating__star">⭐</span>
+                    <span class="rating__star">⭐</span>
+                </div>
+                <input type="hidden" name="rating" id="rating-value">
+            </fieldset>
+    
+            <div id="rating-options-area" class="rating-options-area">
+                <div class="options">
+                    <button id="rating-cancel-btn" class="button">Cancel</button>
+                    <button id="rating-submit-btn" class="button" type="button">Submit</button>
+                    <button id="update-rating-btn" class="button" type="button">Update</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
     <div class="review">
         <h2>Comments</h2>
         <div id="comment-section" class="comment-section">
