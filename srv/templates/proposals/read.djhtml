@@ -85,19 +85,14 @@
     <div class="review">
         <h2>Comments</h2>
         <div id="comment-section" class="comment-section">
-            {% if review %}
                 {% for reviews in review %}
                     <div class="comment-block">
                         <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d, %Y %H:%M:%S %Z')}} </strong>
-                        {% for _ in range(0,reviews.rating) %}<strong class="small_star active">⭐</strong>{% endfor %}
                         <div class="comment-text">
                             {{reviews.comments}}
                         </div>
                     </div>
                 {% endfor %}
-            {% else %}
-                No comments yet!
-            {% endif %}
         </div>
 
         <form id="comment-form">
@@ -111,17 +106,6 @@
                     </div>
             </fieldset>
             <div id="options-area" class="options-area">
-                <fieldset>
-                    <p id="rate-btn">Rate this proposal</p>
-                    <div class="rating" style="display: flex;">
-                        <span class="rating__star">⭐</span>
-                        <span class="rating__star">⭐</span>
-                        <span class="rating__star">⭐</span>
-                        <span class="rating__star">⭐</span>
-                        <span class="rating__star">⭐</span>
-                    </div>
-                    <input type="hidden" name="rating" id="rating-value">
-                </fieldset>
                 <div class="options" style="display: flex; justify-content: end; gap: 1%;">
                     <button id="cancel-btn" class="button">Cancel</button>
                     <button id="submit-btn" class="button" type="button">Submit</button>
@@ -132,7 +116,6 @@
 </div>
 
 <script>
-    var commentSection = document.getElementById('comment-section');
     const form = document.getElementById('comment-form');
     const optionsArea = document.getElementById('options-area');
     const cancelBtn = document.getElementById('cancel-btn');
@@ -169,11 +152,6 @@
         event.preventDefault();
 
         optionsArea.style.display = 'block';
-    });
-
-    rateBtn.addEventListener('click', function(event){
-        event.preventDefault();
-        
     });
 
 
@@ -247,7 +225,6 @@
         })
         .then(function(data){
             if(data.success){
-                console.log("help")
                 alert(data.success);
                 location.reload();
             }
@@ -255,7 +232,6 @@
         .catch(function(error){
             console.error(error);
             alert("Error" + error.message);
-            // location.reload();
         });
     })
 
