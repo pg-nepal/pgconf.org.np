@@ -42,10 +42,7 @@
     <p><span class="field" style="font-weight: bold;">Ban Name:</span> {{row.name}}</p>
     <p><span class="field" style="font-weight: bold;">Email:</span> {{row.email}}</p>
     <p><span class="field" style="font-weight: bold;">Country:</span> {{row.country}}</p>
-    <p><span class="field" style="font-weight: bold;">Phone:</span> {{row.phone}}</p>
-    {% if row.studentID_url %}
-        <img src="{{ url_for('student_uploaded_file', filename=row.studentID_url.split('/')[-1]) }}" alt="studentID" style="width: 100%; height: 500px;">
-    {% endif %}
+
     <p><span class="field" style="font-weight: bold;">Your Total:</span> Rs {{row.fee}}</p>
 
     <p>Chose your digital wallet for further payment</p>
@@ -86,9 +83,9 @@
         <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
         <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
         <div class="fields">
-            <input id="receipt-url" name="receipt_url" type="file" placeholder="Image of ID of your school/college/University.">
+            <input id="receipt-url" name="receiptPath" type="file">
             </div>
-        <button class="button">Send receipt</button>
+            <button class="button">Send receipt</button>
         `;
     });
 
@@ -110,7 +107,7 @@
     form.addEventListener('submit', function(event){
         event.preventDefault();
         const formData = new FormData(form);
-        fetch(`/register/update/{{row.slug}}`, {
+        fetch(`/registered/{{row.slug}}`, {
             method: 'POST',
             body: formData,
         })
