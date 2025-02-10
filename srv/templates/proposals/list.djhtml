@@ -11,12 +11,10 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Title</th>
-                        <th>Submitted By</th>
-                        <th>Category</th>
-                        <th>Submitted On</th>
-                        <th>Average Rating</th>
-                        <th>Status</th>
+                        {% for h in headers %}
+                        <th>{{h if loop.index != 6 else ''}}</th>
+                        {% endfor %}
+                        <th>Ratings</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -24,24 +22,31 @@
                 <tbody>
                     {% for proposal in cursor %}
                         <tr>
-                            <td>{{ proposal.title }}</td>
-                            <td>{{ proposal.name }}</td>
-                            <td>{{ proposal.session }}</td>
-                            <td>{{ proposal.createdOn.strftime('%B %d, %Y') }}</td>
-                            
+                            {% for e in proposal %}
+                            <td>{{ e if loop.index != 6 else '' }}</td>
+                            {% endfor %}
+
                             <td>
-                                {% for _ in range(proposal.average_rating | int) %}⭐{% endfor %}
+                                {% set average_rating = proposal[5] | int %}
+                                    {% for i in range(5) %}
+                                        {% if i < average_rating %}
+                                            ⭐
+                                        {% else %}
+                                        {% endif %}
+                                    {% endfor %}
                             </td>
-                            <td>{{ proposal.rec_status }}</td>
+
                             <td>
-                                <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
-                                
-                                {% if isAdmin == 'root' %}
-                                <form action="/proposals/{{proposal.pk}}" id="status-form">
-                                    <button class="delete-btn" type="submit">Delete</button>
-                                    <input id="status-value" type="hidden" name="rec_status">
-                                </form>
-                                {% endif %}
+                                <div style="display: flex;">
+                                    <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
+                                    
+                                    {% if isAdmin == 'root' %}
+                                    <form action="/proposals/{{proposal.pk}}" id="status-form">
+                                        <button class="delete-btn" type="submit">Delete</button>
+                                        <input id="status-value" type="hidden" name="rec_status">
+                                    </form>
+                                    {% endif %}
+                                </div>
                             </td>
                         </tr>
                     {% endfor %}
