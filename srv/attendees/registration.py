@@ -103,7 +103,7 @@ def registered_update(slug):
     query = sa.update(
         db.events.Attendee,
     ).where(
-        db.events.Attendee.slug == slug.encode(),
+            sa.cast(db.events.Attendee.slug, sa.String) == slug,
     ).values(
         receipt_url = fullpath,
     )
