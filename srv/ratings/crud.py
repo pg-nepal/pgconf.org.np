@@ -88,7 +88,7 @@ def rating_read(proposal_pk):
                 "message": "You haven't rated this proposal.",
             })
 
-        return flask.jsonify(row._asdict())
+        return flask.jsonify(dict(row._mapping))
         
 
 @app.post('/rating/<int:proposal_pk>')
