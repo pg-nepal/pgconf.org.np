@@ -105,7 +105,7 @@ def registered_update(slug):
     ).where(
             sa.cast(db.events.Attendee.slug, sa.String) == slug,
     ).values(
-        receipt_url = fullpath,
+        receiptPath = fullpath,
     )
 
     with db.SessionMaker.begin() as session:
