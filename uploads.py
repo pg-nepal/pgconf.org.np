@@ -10,7 +10,7 @@ PATH_base = pathlib.Path('./srv/uploads/receipts')
 
 
 def save(fileData, field):
-    fobj = fileData.get()
+    fobj = fileData.get(field)
 
     if fobj is None:
         return
@@ -19,7 +19,7 @@ def save(fileData, field):
     if filename.endswith(('pdf', 'jpg', 'png')):
         name = werkzeug.utils.secure_filename(filename)
         fullpath = PATH_base / name
-        fobj(fullpath)
+        fobj.save(str(fullpath))
         fullpath.parent.mkdir(parents=True, exist_ok=True)
         return str(fullpath)
 
