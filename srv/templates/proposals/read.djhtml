@@ -130,13 +130,13 @@
     const ratingCancelBtn = document.getElementById('rating-cancel-btn');
     const ratingArea = document.getElementById("rating")
     const ratingSubmitBtn = document.getElementById('rating-submit-btn');
-    const upateRatingBtn = document.getElementById('update-rating-btn');
+    const updateRatingBtn = document.getElementById('update-rating-btn');
 
     commentSection.scrollTop = commentSection.scrollHeight;
 
     optionsArea.style.display = 'none';
     ratingOptionsArea.style.display = 'none';
-    upateRatingBtn.style.display = 'none';
+    updateRatingBtn.style.display = 'none';
 
     cancelBtn.addEventListener('click', function(event){
         event.preventDefault();
@@ -263,8 +263,8 @@
             if(rating != null){
                 document.getElementById('rate-texts').innerText = 'Update this proposal';
                 ratingSubmitBtn.style.display = 'none'
-                upateRatingBtn.style.display = 'block';
-                upateRatingBtn.addEventListener("click", function(event){
+                updateRatingBtn.style.display = 'inline';
+                updateRatingBtn.addEventListener("click", function(event){
                     event.preventDefault();
     
                     const proposalPk = '{{proposal.pk}}';
