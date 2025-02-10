@@ -87,7 +87,7 @@
         <div id="comment-section" class="comment-section">
                 {% for reviews in review %}
                     <div class="comment-block">
-                        <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d, %Y %H:%M:%S %Z')}} </strong>
+                        <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d %Y, %I:%M:%S')}} </strong>
                         <div class="comment-text">
                             {{reviews.comments}}
                         </div>
