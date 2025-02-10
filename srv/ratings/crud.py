@@ -103,6 +103,7 @@ def rating_update(proposal_pk):
         db.proposals.Rating,
     ).where(
         db.proposals.Rating.proposal_pk == proposal_pk,
+        db.proposals.Rating.createdBy == isAdmin,
     ).values(
         **formdata,
         updatedBy=isAdmin,
