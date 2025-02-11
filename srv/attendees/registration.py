@@ -99,7 +99,7 @@ def registered_read_client(slug):
 def registered_update(slug):
     fileData = flask.request.files
 
-    fullpath = uploads.save(fileData, 'receipt_url')
+    fullpath = uploads.save(fileData, 'receiptPath')
 
     query = sa.update(
         db.events.Attendee,
