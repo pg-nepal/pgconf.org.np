@@ -44,6 +44,7 @@
     <p><span class="field" style="font-weight: bold;">Country:</span> {{row.country}}</p>
 
     <p><span class="field" style="font-weight: bold;">Your Total:</span> Rs {{row.fee}}</p>
+    <input id="receiptPath-value" value="{{row.receiptPath}}" type="hidden">
 
     <p>Chose your digital wallet for further payment</p>
 
@@ -57,17 +58,34 @@
     </button>
 </div>
 
-<form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
-    <div id="qr-container" class="qr-container" style="text-align: center;">
-    </div>
-</form>
+<div id="qr-container" class="qr-container" style="text-align: center;">
+</div>
+
+
+<div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
+    <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+        <div class="fields">
+            <input id="receipt-url" name="receiptPath" type="file">
+            <button class="button">Send receipt</button>
+        </div>
+    </form>
+</div>
 
     <script>
         const esewaBtn = document.getElementById('esewa-btn');
         const khaltiBtn = document.getElementById('bank-btn');
         const profession = document.getElementById('profession');
         const qrContainer = document.getElementById('qr-container');
+        const receiptPathValue = document.getElementById('receiptPath-value').value;
+        const receiptContainer = document.getElementById('receipt-container');
+        const receiptForm = document.getElementById('receipt-submission');
         qrContainer.style.display = 'none';
+        if(receiptPathValue !== 'None'){
+            receiptForm.style.display = 'none';
+            receiptContainer.innerHTML = `
+            <h2 style="text-align: center;">Thankyou. Your payment receipt has been submitted.</h2>
+            `;
+        }
 
     esewaBtn.addEventListener('click', function(event){
         event.preventDefault();
@@ -82,10 +100,6 @@
         <p><span class="field" style="font-weight: bold;">Bank Name:</span> Nepal Investment Mega Bank</p>
         <p><span class="field" style="font-weight: bold;">Branch:</span> Banepa, Nepal</p>
         <p><span class="field" style="font-weight: bold;">Swift Code:</span> NIBLNPKT</p>
-        <div class="fields">
-            <input id="receipt-url" name="receiptPath" type="file">
-            </div>
-            <button class="button">Send receipt</button>
         `;
     });
 
@@ -112,16 +126,22 @@
             body: formData,
         })
         .then(response => {
-            if(response .ok){
-                alert("Your payment receipt has been submitted.");
-            } else {
-                alert("Something went wrong submitting the payment receipt. Please try again.");
-            }
+            if (500 <= response.status) {
+                        throw new Error(response.statusText)
+                    }
+
+                    if (200 > response.status || 300 <= response.status) {
+                        return response.text().then(function (text) {
+                            alert(text)
+                        })
+                    }
+
+                    alert('Receipt submitted successfully');
+                    location.reload();
         })
         .catch(error => {
             console.error("Error: ", error);
         });
     })
-
 </script>
 {% endblock %}
