@@ -76,6 +76,7 @@ def registered_read_client(slug):
         db.events.Attendee.country,
         db.events.Attendee.fee,
         db.events.Attendee.slug,
+        db.events.Attendee.receiptPath,
         sa.cast(db.events.Attendee.status, sa.String).label('status'),
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
