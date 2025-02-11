@@ -61,8 +61,45 @@
     </div>
 
     <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
+        <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+            <div class="fields">
+                <input id="receipt-url" name="receiptPath" type="file">
+                <button class="button">Send receipt</button>
+            </div>
+        </form>
+
         <p>
             In case of any issue send us the recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
         </p>
     </div>
+{% endblock %}
+
+
+{% block tail %}
+    <script>
+        const form = document.getElementById('receipt-submission')
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+            const formData = new FormData(form)
+            fetch(`/registered/{{row.slug}}`, {
+                method : 'POST',
+                body   : formData,
+            }).then(function (response) {
+                if (500 <= response.status) {
+                    throw new Error(response.statusText)
+                }
+
+                if (200 > response.status || 300 <= response.status) {
+                    return response.text().then(function (text) {
+                        alert(text)
+                    })
+                }
+
+                alert('Receipt submitted successfully')
+                location.reload()
+            }).catch(function (error) {
+                console.error(error)
+            })
+        })
+    </script>
 {% endblock %}
