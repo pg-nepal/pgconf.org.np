@@ -1,6 +1,45 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle= '/ Proposals' %}
 
+{% block head %}
+<style>
+    .options{
+        display: flex;
+    }
+    
+    @media (max-width: 1200px) {
+        .table td:nth-child(7), .table th:nth-child(7) {
+            display: none;
+        }
+        .table td:nth-child(1), .table th:nth-child(1) {
+            display: none;
+        }
+        .options{
+            display: block;
+        }
+    }
+
+    @media (max-width: 1000px) {
+        .table td:nth-child(3), .table th:nth-child(3) {
+            display: none;
+        }
+    }
+
+    @media (max-width: 800px) {
+        .table td:nth-child(9), .table th:nth-child(9) {
+            display: none;
+        }
+    }
+
+    @media (max-width: 500px) {
+        .table td:nth-child(4), .table th:nth-child(4) {
+            display: none;
+        }
+    }
+    }
+</style>
+{% endblock %}
+
 
 {% block main %}
     <link rel="stylesheet" href="/static/css/proposals.css">
@@ -8,7 +47,7 @@
         <h1>Proposals</h1>
 
         <div class="box">
-            <table>
+            <table class="table">
                 <thead>
                     <tr>
                         {% for h in headers %}
@@ -42,13 +81,13 @@
                             </td>
 
                             <td>
-                                <div style="display: flex;">
+                                <div class="options">
                                     <a class="details-link" href="/proposals/{{proposal.pk}}">Details</a>
-                                    
+
                                     {% if isAdmin == 'root' %}
-                                    <form action="/proposals/{{proposal.pk}}" id="status-form">
+                                    <form action="/proposals/{{proposal.pk}}" id="status-form" style="padding: 1%;">
+                                        <input id="status-value" value="{{proposal.rec_status}}" type="hidden" name="rec_status">
                                         <button class="delete-btn" type="submit">Delete</button>
-                                        <input id="status-value" type="hidden" name="rec_status">
                                     </form>
                                     {% endif %}
                                 </div>
@@ -62,7 +101,7 @@
 
     <script>
         let statusValue = document.getElementById('status-value');
-
+        const value = statusValue.value;
         const form = document.getElementById('status-form');
         form.addEventListener('submit', function(event){
             event.preventDefault();
@@ -81,7 +120,10 @@
                 return response.json();
             })
             .then(function(data){
-                location.reload();
+                if(data.success){
+                    alert(data.message);
+                    location.reload
+                }
             })
             .catch(function (error){
                 console.error(error);
