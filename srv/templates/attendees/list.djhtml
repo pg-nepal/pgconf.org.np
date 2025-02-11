@@ -4,6 +4,42 @@
 
 {% block head %}
     <link rel="stylesheet" href="/static/css/proposals.css">
+
+    <style>
+        @media (max-width: 1200px) {
+            .table td:nth-child(6), .table th:nth-child(6) {
+                display: none;
+            }
+
+            .table td:nth-child(1), .table th:nth-child(1) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .table td:nth-child(4), .table th:nth-child(4) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .table td:nth-child(5), .table th:nth-child(5) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            .table td:nth-child(2), .table th:nth-child(2) {
+                display: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+            .table td:nth-child(7), .table th:nth-child(7) {
+                display: none;
+            }
+        }
+    </style>
 {% endblock %}
 
 
@@ -11,7 +47,7 @@
     <div class="content-container">
         <h1>Attendees List</h1>
 
-        <table>
+        <table class="table">
             <thead>
                 <tr>
                     {% for h in headers %}
