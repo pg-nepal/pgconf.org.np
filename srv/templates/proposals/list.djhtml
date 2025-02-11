@@ -12,8 +12,9 @@
                 <thead>
                     <tr>
                         {% for h in headers %}
-                        <th>{{h if loop.index != 6 else ''}}</th>
+                        <th>{{h if loop.index != 6 and loop.index != 5 else ''}}</th>
                         {% endfor %}
+                        <th>Created On</th>
                         <th>Ratings</th>
                         <th>Actions</th>
                     </tr>
@@ -23,8 +24,12 @@
                     {% for proposal in cursor %}
                         <tr>
                             {% for e in proposal %}
-                            <td>{{ e if loop.index != 6 else '' }}</td>
+                            <td>{{ e if loop.index != 6 and loop.index != 5 else '' }}</td>
                             {% endfor %}
+
+                            <td>
+                                {{ proposal[4].strftime('%B %d %Y, %I:%M:%S') }}
+                            </td>
 
                             <td>
                                 {% set average_rating = proposal[5] | int %}
