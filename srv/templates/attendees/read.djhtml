@@ -20,7 +20,6 @@
         <p><strong class="field">Name:</strong> {{row.name}}</p>
         <p><strong class="field">Email:</strong> {{row.email}}</p>
         <p><strong class="field">Country:</strong> {{row.country}}</p>
-        <p><strong class="field">Phone:</strong> {{row.phone}}</p>
         <p><strong class="field">Profession:</span>{{row.category}}</p>
         {% if row.receiptPath %}
         {% set filename = row.receiptPath.split('/')[-1] %}
