@@ -201,12 +201,18 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 @media (max-width: 1000px) {
+    p {
+        font-size: 15px;
+    }
+
     .sidebar{
         width: 80%;
     }
+}
 
-    p{
-        font-size: 15px;
+@media (max-width: 900px) {
+    .sidebar{
+        width: 70%;
     }
 }
 
@@ -244,16 +250,28 @@ input[type="number"]::-webkit-inner-spin-button {
     .right-content{
         width: 100%;
     }
+
+    .sidebar{
+        width: 90%
+    }
 }
 
 @media (max-width: 600px) {
     h1{
         font-size: 18px;
     }
+
+    .sidebar{
+        width: 85%
+    }
 }
 
 @media (max-width: 500px) {
     h1{
         font-size: 15px;
+    }
+
+    .sidebar{
+        width: 75%
     }
 }
