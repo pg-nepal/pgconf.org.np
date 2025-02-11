@@ -59,15 +59,16 @@
         </form>
 
         <script>
+            const localDate = new Date().toISOString(); 
             document.getElementById('wtf-form').addEventListener('submit', function (event) {
                 event.preventDefault()
                 event.stopPropagation()
-                event.target.reportValidity()
-
+                event.target.reportValidity()    
                 const formData = new FormData(event.target)
                 formData.set('idx', '{{idx}}')
                 formData.set('answer', formData.get('wtf-answer').toUpperCase())
                 formData.delete('wtf-answer')
+                formData.append('createdOn', localDate);
 
                 fetch('/proposals/add', {
                     method : 'POST',
