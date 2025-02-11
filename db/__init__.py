@@ -30,7 +30,7 @@ meta = sa.MetaData()
 class Base(sqlalchemy.orm.DeclarativeBase):
     metadata  = meta
 
-    createdOn = sa.Column(sa.DateTime(timezone=True), nullable=False, default=dt.datetime.now)  # noqa:E501
+    createdOn = sa.Column(sa.DateTime(timezone=True), nullable=False)  # noqa:E501
     createdBy = sa.Column(sa.String(256))
-    updatedOn = sa.Column(sa.DateTime(timezone=True), nullable=False, server_default=sa.func.now(), onupdate=dt.datetime.now)  # noqa:E501
+    updatedOn = sa.Column(sa.DateTime(timezone=True), nullable=False)  # noqa:E501
     updatedBy = sa.Column(sa.String(32))
