@@ -22,5 +22,9 @@
         <p><strong class="field">Country:</strong> {{row.country}}</p>
         <p><strong class="field">Phone:</strong> {{row.phone}}</p>
         <p><strong class="field">Profession:</span>{{row.category}}</p>
+        {% if row.receiptPath %}
+        {% set filename = row.receiptPath.split('/')[-1] %}
+        <a href="{{ url_for('files_srv_receipt', filename=filename) }}" download>Download Receipt</a>
+        {% endif %}
     </div>
 {% endblock %}
