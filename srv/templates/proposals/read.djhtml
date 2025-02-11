@@ -51,6 +51,7 @@
     <div style="display: flex; justify-content: space-between;">
         <h2>{{proposal.title}}</h2>
     </div>
+    <p><strong>Submitted on: </strong>{{proposal.createdOn.strftime('%B %d %Y')}}</p>
     <p><strong>Name: </strong>{{proposal.name}}</p>
     <p><strong>Email: </strong>{{proposal.email}}</p>
     <p><strong>Country: </strong>{{proposal.country}}</p>
