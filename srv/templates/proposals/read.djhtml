@@ -262,11 +262,14 @@
     
             throw new Error(`Unexpected status response: ${response.status}`);
         }).then(function(data){
-            console.log("data: ", data);
             const rating = data.rating; 
-            console.log('Rating: ', rating);
             if(rating != null){
-                document.getElementById('rate-texts').innerText = 'Update this proposal';
+                document.getElementById('rate-texts').innerHTML = `
+                Update this proposal. 
+                <strong>
+                    You\'ve previously rated ${data.rating} stars to this proposal.
+                </strong>
+                `;
                 ratingSubmitBtn.style.display = 'none'
                 updateRatingBtn.style.display = 'inline';
                 updateRatingBtn.addEventListener("click", function(event){
@@ -283,7 +286,6 @@
                     }).then(function (response) {
                         return response.json();
                     }).then(function(data) {
-                        console.log("data: ", data)
                         alert(data.success);
                         
                         location.reload();
@@ -291,7 +293,7 @@
                 })                     
             }
         }).catch(function(error){
-            console.log("Error: ", error);
+            console.error("Error: ", error);
             alert(error.message);
         });
     }
