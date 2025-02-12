@@ -1,4 +1,7 @@
 import os
+import sys
+import json
+import pathlib
 from http import HTTPStatus
 
 import flask
@@ -9,6 +12,13 @@ from srv import app
 keys = {
     os.getenv('BAUTH') : 'root',
 }
+
+FILE = pathlib.Path('users.json').resolve()
+if FILE.exists():
+    print('# Loading users from: {}'.format(FILE), file=sys.stderr)
+    with FILE.open() as fp:
+        keys.update(json.load(fp))
+
 
 app.jinja_env.globals.update(isAdmin=False)
 
