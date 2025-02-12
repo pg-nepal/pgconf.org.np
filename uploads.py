@@ -6,7 +6,7 @@ import werkzeug.utils
 from srv import app
 
 
-PATH_base = pathlib.Path('./srv/uploads/receipts')
+PATH_base = pathlib.Path('./srv/uploads/receipts').resolve()
 
 
 def save(fileData, field):
