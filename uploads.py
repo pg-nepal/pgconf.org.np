@@ -31,4 +31,4 @@ def file_srv(filename):
 
 @app.route('/uploads/attendees/receipt/<filename>')
 def files_srv_receipt(filename):
-    return flask.send_from_directory(PATH_base / 'receipt', filename)
+    return flask.send_from_directory(PATH_base, filename, as_attachment=True)
