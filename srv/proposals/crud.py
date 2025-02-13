@@ -21,7 +21,7 @@ def proposal_form():
     )
 
 
-@app.get('/proposals')
+@app.get('/api/proposals')
 def proposal_list():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -30,10 +30,9 @@ def proposal_list():
     query = sa.select(
         db.proposals.Proposal.pk,
         db.proposals.Proposal.title,
-        db.proposals.Proposal.createdBy,
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Rating.rating), 0)).label('avg(rating)'),
         db.proposals.Proposal.category,
         db.proposals.Proposal.createdOn,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Rating.rating), 0)).label('avg(rating)'),
     ).outerjoin(
         db.proposals.Rating, db.proposals.Proposal.pk == db.proposals.Rating.proposal_pk,
     ).group_by(
@@ -44,12 +43,10 @@ def proposal_list():
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
-
-    return flask.render_template(
-        '/proposals/list.djhtml',
-        cursor  = cursor,
-        isAdmin = isAdmin,
-    )
+        return flask.jsonify(
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [ list(row) for row in cursor ],
+        )
 
 
 @app.post('/proposals/add')
