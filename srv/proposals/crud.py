@@ -15,6 +15,20 @@ def proposal_form():
     )
 
 
+@app.get('/proposals')
+def proposal_list():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    return flask.render_template(
+        '/table.djhtml',
+        pageTitle = 'Proposals',
+        baseURL   = '/proposals',
+        isAdmin   = isAdmin,
+    )
+
+
 @app.post('/proposals/add')
 def proposal_create():
     isAdmin = srv.auth.isValid(flask.request)
