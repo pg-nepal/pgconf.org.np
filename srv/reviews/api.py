@@ -9,7 +9,7 @@ from srv import app
 
 
 @app.get('/api/proposals/review/<int:pk>')
-def proposal_read(pk):
+def proposal_review_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
