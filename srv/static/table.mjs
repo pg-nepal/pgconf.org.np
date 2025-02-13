@@ -18,6 +18,20 @@ function createRow(headers, row, baseURL) {
                 eTd.innerHTML = date.toString().substring(0, 24)
                 break
 
+            case 'avg(rating)':
+                if (null == v) break
+                let stars = '';
+                for (let i = 0; i < 5; i++) {
+                    if (i < v) {
+                        stars += '⭐'
+                    } else {
+                        stars += ''
+                    }
+                }
+
+                eTd.append(stars)
+                break
+
             default:
                 eTd.innerHTML = v
         }
