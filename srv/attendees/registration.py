@@ -62,9 +62,9 @@ def registered_create():
                 'redirect': '/registered/{}'.format(cursor.scalar()),
             }), 201
 
-    except Exception as e:
+    except Exception:
         return flask.jsonify({
-            'error': 'Registration with the following email already exists',
+            'error': 'Registration with the following email already exists', # noqa: E501
         }), 400
 
 
