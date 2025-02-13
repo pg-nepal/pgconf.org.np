@@ -16,7 +16,17 @@ def attendee_form():
 
 
 @app.get('/attendees')
-def attendee_list():
+def attendees_list():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    return flask.render_template(
+        '/table.djhtml',
+        pageTitle='Attendees',
+        baseURL='/attendees',
+        isAdmin=isAdmin,
+    )
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False or isAdmin != 'root':
         return srv.auth.respondInValid()
