@@ -2,3 +2,6 @@
 .sconsign.dblite
 dist
 venv
+
+# files
+users.json
