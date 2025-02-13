@@ -21,6 +21,20 @@ def attendee_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
+    return flask.render_template(
+        '/table.djhtml',
+        pageTitle = 'Attendees',
+        baseURL   = '/attendees',
+        isAdmin   = isAdmin,
+    )
+
+
+@app.get('/api/attendees')
+def attendee_list_api():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     query = sa.select(
         db.events.Attendee.pk,
         db.events.Attendee.name,
@@ -34,11 +48,9 @@ def attendee_list():
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
 
-    return flask.render_template(
-        '/attendees/list.djhtml',
+    return flask.jsonify(
         headers = tuple(c['name'] for c in query.column_descriptions),
-        cursor  = cursor,
-        isAdmin = isAdmin,
+        data    = [list(row) for row in cursor],
     )
 
 
