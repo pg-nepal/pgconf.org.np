@@ -5,7 +5,7 @@ import db.users
 
 from srv import app
 
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import create_access_token
 
 
 @app.post("/login")
@@ -19,7 +19,7 @@ def login():
         return flask.redirect('/login')
 
     with db.Session() as session:
-        user = session.query(db.users.Users).filter_by(username=username).first()
+        user = session.query(db.users.Users).filter_by(username=username).first()  # noqa: E501
 
     # Checking if the user exists and if the password is correct
     if not user or not user.check_password(password):
@@ -28,7 +28,7 @@ def login():
 
     access_token = create_access_token(identity=user.pk)
     flask.session["username"] = username
-    return flask.jsonify({'message': 'Login Success', 'access_token': access_token})
+    return flask.jsonify({'message': 'Login Success', 'access_token': access_token}) # noqa: E501
 
 
 @app.post("/signup")
@@ -43,7 +43,7 @@ def signup():
         existing_user = (
             session.query(db.users.Users).filter_by(username=username).first()
         )
-        existing_email = session.query(db.users.Users).filter_by(email=email).first()
+        existing_email = session.query(db.users.Users).filter_by(email=email).first() # noqa: E501
 
         if existing_user or existing_email:
             flask.flash("Username already exists.", "danger")
@@ -73,4 +73,4 @@ def login_form():
 @app.post("/logout")
 def logout():
     flask.session.clear()
-    return flask.jsonify({'message': 'You have successfully looged out'}), 200
+    return flask.jsonify({'message': 'You have successfully looged out'}), 200 # noqa: E501
