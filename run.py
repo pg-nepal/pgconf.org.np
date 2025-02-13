@@ -73,7 +73,7 @@ def main():
         srv.app.jinja_env.undefined = jinja2.StrictUndefined
 
     if sysArgs.debug is False:
-        print('running on http://{}:{}'.format(sysArgs.expose, sysArgs.port))
+        print('running on http://{}:{}'.format(sysArgs.expose, sysArgs.port)) # noqa: E501
         corn = importlib.import_module('corn')
         corn.Unicorn(
             app  = app,
