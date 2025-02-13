@@ -14,12 +14,10 @@ class Unicorn(gunicorn.app.base.BaseApplication):
         super().__init__()
         self.application = app
 
-    #
     def load_config(self):
         self.cfg.set('bind', '{}:{}'.format(self.host, self.port))
         self.cfg.set('workers', self.workers)
         self.cfg.set('reload', self.reload)
 
-    #
     def load(self):
         return self.application
