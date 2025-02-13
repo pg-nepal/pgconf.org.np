@@ -4,7 +4,6 @@ import sqlalchemy as sa
 import db
 import db.events
 import srv.auth
-
 from srv import app
 
 
@@ -43,7 +42,6 @@ def attendee_list_api():
         db.events.Attendee.fee,
         db.events.Attendee.slug,
         sa.cast(db.events.Attendee.status, sa.String).label('status'),
-        # sa.literal(None).label('action'),
     )
 
     with db.engine.connect() as connection:
@@ -64,9 +62,9 @@ def attendee_create():
         db.events.Attendees,
     ).values(
         **formData,
-        createdBy = name,
-        status = 'pending',
-        ticket = 'ticket',
+        createdBy=name,
+        status='pending',
+        ticket='ticket',
     )
 
     with db.SessionMaker.begin() as session:
@@ -96,8 +94,8 @@ def attendee_read(pk):
 
         return flask.render_template(
             '/attendees/read.djhtml',
-            row     = row,
-            isAdmin = isAdmin,
+            row=row,
+            isAdmin=isAdmin,
         )
 
 
@@ -116,6 +114,8 @@ def attendee_delete(pk):
     #         ),
     #     )
 
-    return flask.jsonify({
-        'msg' : 'Registration deleted successfully',
-    }), 202
+    return flask.jsonify(
+        {
+            'msg': 'Registration deleted successfully',
+        },
+    ), 202
