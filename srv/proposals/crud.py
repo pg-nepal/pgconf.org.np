@@ -43,11 +43,12 @@ def proposal_list_api():
     query = sa.select(
         db.proposals.Proposal.pk,
         db.proposals.Proposal.title,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Rating.rating), 0)).label('avg(rating)'),
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
         db.proposals.Proposal.category,
         db.proposals.Proposal.createdOn,
     ).outerjoin(
-        db.proposals.Rating, db.proposals.Proposal.pk == db.proposals.Rating.proposal_pk,
+        db.proposals.Rate,
+        db.proposals.Proposal.pk == db.proposals.Rate.proposal_pk,
     ).group_by(
         db.proposals.Proposal.pk,
     ).order_by(
