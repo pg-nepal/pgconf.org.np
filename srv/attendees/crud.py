@@ -49,11 +49,9 @@ def attendee_list_api():
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
 
-    return flask.render_template(
-        '/attendees/list.djhtml',
-        headers = tuple(c['name'] for c in query.column_descriptions),
-        cursor  = cursor,
-        isAdmin = isAdmin,
+    return flask.jsonify(
+        headers=tuple(c['name'] for c in query.column_descriptions),
+        data=[list(row) for row in cursor],
     )
 
 
