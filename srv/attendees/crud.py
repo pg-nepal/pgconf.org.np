@@ -27,6 +27,10 @@ def attendees_list():
         baseURL='/attendees',
         isAdmin=isAdmin,
     )
+
+
+@app.get('/api/attendees')
+def attendee_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False or isAdmin != 'root':
         return srv.auth.respondInValid()
