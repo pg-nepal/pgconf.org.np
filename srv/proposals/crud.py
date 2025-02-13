@@ -5,9 +5,8 @@ import sqlalchemy as sa
 
 import db
 import db.proposals
-import srv.captcha
 import srv.auth
-
+import srv.captcha
 from srv import app
 
 
@@ -16,8 +15,8 @@ def proposal_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
     return flask.render_template(
         '/proposals/form.djhtml',
-        idx      = idx,
-        question = srv.captcha.questions[idx][0],
+        idx=idx,
+        question=srv.captcha.questions[idx][0],
     )
 
 
@@ -29,8 +28,9 @@ def proposal_list():
 
     return flask.render_template(
         '/table.djhtml',
-        pageTitle = 'Proposals',
-        baseURL   = '/proposals',
+        pageTitle='Proposals',
+        baseURL='/proposals',
+        isAdmin=isAdmin,
     )
 
 
@@ -40,25 +40,33 @@ def proposal_list_api():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    query = sa.select(
-        db.proposals.Proposal.pk,
-        db.proposals.Proposal.title,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.proposals.Rating.rating), 0)).label('avg(rating)'),
-        db.proposals.Proposal.category,
-        db.proposals.Proposal.createdOn,
-    ).outerjoin(
-        db.proposals.Rating, db.proposals.Proposal.pk == db.proposals.Rating.proposal_pk,
-    ).group_by(
-        db.proposals.Proposal.pk,
-    ).order_by(
-        sa.desc('avg(rating)'),
+    query = (
+        sa.select(
+            db.proposals.Proposal.pk,
+            db.proposals.Proposal.title,
+            sa.func.coalesce(
+                sa.func.round(sa.func.avg(db.proposals.Rating.rating), 0),
+            ).label('avg(rating)'),
+            db.proposals.Proposal.category,
+            db.proposals.Proposal.createdOn,
+        )
+        .outerjoin(
+            db.proposals.Rating,
+            db.proposals.Proposal.pk == db.proposals.Rating.proposal_pk,
+        )
+        .group_by(
+            db.proposals.Proposal.pk,
+        )
+        .order_by(
+            sa.desc('avg(rating)'),
+        )
     )
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
         return flask.jsonify(
-            headers = tuple(c['name'] for c in query.column_descriptions),
-            data    = [ list(row) for row in cursor ],
+            headers=tuple(c['name'] for c in query.column_descriptions),
+            data=[list(row) for row in cursor],
         )
 
 
@@ -77,7 +85,7 @@ def proposal_create():
         db.proposals.Proposal,
     ).values(
         **formData,
-        createdBy = email,
+        createdBy=email,
     )
 
     with db.SessionMaker.begin() as session:
@@ -107,8 +115,8 @@ def proposal_read(pk):
 
     return flask.render_template(
         '/proposals/read.djhtml',
-        proposal = row._asdict(),
-        isAdmin  = isAdmin,
+        proposal=row._asdict(),
+        isAdmin=isAdmin,
     )
 
 
@@ -119,13 +127,17 @@ def proposal_update(pk):
         return srv.auth.respondInValid()
 
     data = flask.request.form
-    query = sa.update(
-        db.proposals.Proposal,
-    ).where(
-        db.proposals.Proposal.pk == pk,
-    ).values(
-        **data,
-        updatedBy = isAdmin,
+    query = (
+        sa.update(
+            db.proposals.Proposal,
+        )
+        .where(
+            db.proposals.Proposal.pk == pk,
+        )
+        .values(
+            **data,
+            updatedBy=isAdmin,
+        )
     )
 
     with db.SessionMaker.begin() as session:
@@ -136,10 +148,12 @@ def proposal_update(pk):
 @app.delete('/proposals/<int:pk>')
 def proposal_delete(pk):
     with db.SessionMaker.begin() as session:
-        session.execute(sa.delete(
-            db.proposals.Proposal,
-        ).where(
-            db.proposals.Proposal.pk == pk,
-        ))
+        session.execute(
+            sa.delete(
+                db.proposals.Proposal,
+            ).where(
+                db.proposals.Proposal.pk == pk,
+            ),
+        )
 
     return 'Sorry, Proposal can not be deleted at this moment', 202
