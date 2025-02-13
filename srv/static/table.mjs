@@ -35,6 +35,14 @@ export function load(id, baseURL) {
                         eTd.innerHTML = date.toString().substring(0, 24)
                         break
 
+                    case 'email':
+                        if (null == v) break
+                        const eA_email = document.createElement('a')
+                        eA_email.innerText = v
+                        eA_email.href = `mailto:${v}`
+                        eTd.append(eA_email)
+                        break
+
                     case 'avg(rating)':
                         if (null == v) break
                         const averageRating = v
