@@ -240,6 +240,56 @@
         });
     })
 
+    function readReview(){
+        pk = '{{proposal.pk}}';
+
+        fetch(`/api/proposals/review/${pk}`, {
+            method: 'GET',
+        })
+        .then(function(response){
+            if(500 <= response.status){
+                throw new Error(response.statusText);
+            }
+    
+            if(404 === response.status){
+                return null;
+            }
+
+            if(200 <= response.status || 300 > response.status){
+                return response.json();
+            }
+    
+            throw new Error(`Unexpected status response: ${response.status}`);
+        })
+        .then(function(data){
+            data.forEach(review => {
+                const commentBlock = document.createElement('div');
+                const createdOn = new Date(review.createdOn);
+                const formattedDate = createdOn.toLocaleString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    second: 'numeric'
+                });
+                commentBlock.style.paddingBottom = '20px'
+                commentBlock.innerHTML = `
+                    <strong>👤 ${review.createdBy} on ${createdOn} </strong>
+                    <div class="comment-text">
+                        ${review.comments}
+                        </div>
+                `;
+                commentSection.appendChild(commentBlock);
+            });
+        })
+        .catch(function(error){
+            alert(error.message);
+            console.error(error);
+        })
+    }
+
+    readReview();
 
     function readRatings(){
         const proposalPk = '{{proposal.pk}}';
