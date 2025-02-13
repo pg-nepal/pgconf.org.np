@@ -27,6 +27,20 @@ def proposal_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
+    return flask.render_template(
+        '/table.djhtml',
+        pageTitle = 'Proposals',
+        baseURL   = '/proposals',
+        isAdmin   = isAdmin,
+    )
+
+
+@app.get('/api/proposals')
+def proposal_list_api():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     query = sa.select(
         db.programs.Proposal.pk,
         db.programs.Proposal.title,
@@ -45,10 +59,9 @@ def proposal_list():
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
 
-        return flask.render_template(
-            '/proposals/list.djhtml',
-            cursor  = cursor,
-            isAdmin = isAdmin,
+        return flask.jsonify(
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [ list(row) for row in cursor ],
         )
 
 
