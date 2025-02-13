@@ -35,6 +35,22 @@ export function load(id, baseURL) {
                         eTd.innerHTML = date.toString().substring(0, 24)
                         break
 
+                    case 'avg(rating)':
+                        if (null == v) break
+                        const averageRating = v
+                        let stars = '';
+                        for (let i = 0; i < 5; i++) {
+                            if(i < averageRating){
+                                stars += '⭐'
+                            } else {
+                                stars += ''
+                            }
+                        }
+
+                        console.log(stars)
+                        eTd.append(stars)
+                        break
+
                     default:
                         eTd.innerHTML = v
 
