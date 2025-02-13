@@ -18,9 +18,6 @@
     border-bottom: 1px solid grey;
     padding-bottom: 2%;
 }
-.comment-block{
-    padding-bottom: 20px;
-}
 
 .headings{
     font-weight: bold;
@@ -86,14 +83,6 @@
     <div class="review">
         <h2>Comments</h2>
         <div id="comment-section" class="comment-section">
-                {% for reviews in review %}
-                    <div class="comment-block">
-                        <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d %Y, %I:%M:%S')}} </strong>
-                        <div class="comment-text">
-                            {{reviews.comments}}
-                        </div>
-                    </div>
-                {% endfor %}
         </div>
 
         <form id="comment-form">
