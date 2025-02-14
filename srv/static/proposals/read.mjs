@@ -33,3 +33,25 @@ export function rateRead(proposal_pk) {
         }
     })
 }
+
+
+export function reviewReadAll(proposal_pk) {
+    fetch(`/api/reviews/mine/${proposal_pk}`).then(function (response) {
+        return response.json()
+    }).then(function (json) {
+        const eDiv_root = document.getElementById('comment-section')
+        for (let [pk, comment, date, user] of json.data) {
+            const eDiv = document.createElement('div')
+
+            const eP = document.createElement('p')
+            eP.innerHTML = comment
+            eDiv.append(eP)
+
+            const eSpan = document.createElement('span')
+            eSpan.innerText = (new Date(date)).toString()
+            eDiv.append(eSpan)
+
+            eDiv_root.append(eDiv)
+        }
+    })
+}
