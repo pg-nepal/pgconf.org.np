@@ -103,14 +103,14 @@ def proposal_read(pk):
         cursor = connection.execute(query)
         row = cursor.first()
 
-    if row is None:
-        return 'Invalid Pk', 400
+        if row is None:
+            return 'Invalid Pk', 400
 
-    return flask.render_template(
-        '/proposals/read.djhtml',
-        proposal = row._asdict(),
-        isAdmin  = isAdmin,
-    )
+        return flask.render_template(
+            '/proposals/read.djhtml',
+            row      = row,
+            isAdmin  = isAdmin,
+        )
 
 
 @app.post('/proposals/<int:pk>')
