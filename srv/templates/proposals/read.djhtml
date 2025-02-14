@@ -56,24 +56,29 @@
             <p><strong>Session Type: </strong>{{row.session}}</p>
             <p><strong>Abstract:</strong></p>
             <p>{{row.abstract}}</p>
+        </div>
 
-            <div class="review">
-                <h2>Comments</h2>
-                <div id="comment-section" class="comment-section">
-                    {% for reviews in review %}
-                        <div class="comment-block">
-                            <strong>👤 {{reviews.createdBy}} on {{reviews.createdOn.strftime('%B %d %Y, %I:%M:%S')}} </strong>
-                            <div class="comment-text">
-                                {{reviews.comments}}
-                            </div>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
+        <div id="rating" class="rating" style="display: flex;"></div>
+
+        <div class="review">
+            <h2>Comments</h2>
+            <div id="comment-section" class="comment-section"></div>
+            <button id="comment-add" class="button">Add</button>
         </div>
     </div>
+    {% include '/proposals/comment-dialog.djhtml' %}
 {% endblock %}
 
 
 {% block tail %}
+    <script type="module">
+        import * as proposals from '/static/proposals/read.mjs'
+        proposals.rateRead({{row.pk}})
+        proposals.reviewReadAll({{row.pk}})
+
+        const eDialog = document.getElementById('dialog-comment')
+        document.getElementById('comment-add').onclick = function (event) {
+            eDialog.showModal()
+        }
+    </script>
 {% endblock %}
