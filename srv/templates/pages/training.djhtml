@@ -1,0 +1,43 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = '/ Training' %}
+
+
+{% block main_content %}
+    <h1>Pre Conference Training</h1>
+    This training is intended for entry to mid-level developers and DBAs who have some experience but lack deep knowledge of inner workings of the server.
+
+    <h2>About the course</h2>
+    <p><strong>Duration:</strong> 2 days (14 Hours)</p>
+
+    <p><strong>Prerequisites:</strong></p>
+    <ul>
+        <li>SQL fundamentals</li>
+        <li>experience with any procedural programming language</li>
+        <li>basic knowledge of Unix OS</li>
+    </ul>
+    The detailed course materials will be available upon the registation.
+
+    <p><strong>Skills to be gained:</strong></p>
+    <ul>
+        <li>general information about PostgreSQL architecture</li>
+        <li>working with the main database objects: tables, indexes, views</li>
+        <li>programming in SQL and PL/pgSQL on the server side</li>
+        <li>using the main data types, including records and arrays</li>
+        <li>setting up client-server communication</li>
+    </ul>
+
+    <h2>Registration</h2>
+    Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limitted seats are available.
+
+    <p><strong>Registration Fee: NRs. 4000.00</strong> (student discount available)</p>
+    <p>
+        Registration will cover: Transportation (from pickup point to Kathmandu University), Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit
+    </p>
+
+    <h2>Venue</h2>
+    Kathmandu University<br>
+    Dhulikhel, Nepal<br>
+
+    <h2>Schedule</h2>
+    {% include 'comingSoon.djhtml' %}
+{% endblock %}
