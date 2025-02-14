@@ -1,6 +1,8 @@
 import random
+import traceback
 
 import flask
+import psycopg.errors
 import sqlalchemy as sa
 
 import db
@@ -55,9 +57,16 @@ def registered_create():
         db.conf.Attendee.slug,
     )
 
-    with db.SessionMaker.begin() as session:
-        cursor = session.execute(query)
-        return flask.redirect('/registered/{}'.format(cursor.scalar()))
+    try:
+        with db.SessionMaker.begin() as session:
+            cursor = session.execute(query)
+            # not returning 201 because of redirection
+            return flask.redirect('/registered/{}'.format(cursor.scalar()))
+    except sa.exc.IntegrityError as e:
+        if isinstance(e.orig, psycopg.errors.UniqueViolation):
+            return 'email in used has already been registered', 400
+        traceback.print_exc()
+        raise e
 
 
 @app.get('/registered/<slug>')
