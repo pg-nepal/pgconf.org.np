@@ -1,0 +1,35 @@
+<dialog id="dialog-comment" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <style>
+        dialog::backdrop {
+            backdrop-filter: contrast(50%);
+        }
+    </style>
+
+    <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <span class="dialog-title">Drop your comment</span>
+    </header>
+
+    <form id="form" method="dialog" style="padding-top:1.5rem">
+        <fieldset>
+            <textarea name="comment"></textarea>
+        </fieldset>
+        <button class="button">Submit</button>
+    </form>
+
+    <script>
+        const dialog = document.getElementById('dialog-comment')
+        dialog.addEventListener('click', function (event) {
+            if ('DIALOG' != event.target.tagName) return
+
+            const pos = dialog.getBoundingClientRect()
+            if (
+                event.clientX < pos.left ||
+                event.clientX > pos.right ||
+                event.clientY < pos.top ||
+                event.clientY > pos.bottom
+            ) {
+                dialog.close()
+            }
+        })
+    </script>
+</dialog>
