@@ -45,13 +45,12 @@ def review_create(proposal_pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    formdata = flask.request.form.to_dict()
-    formdata['proposal_pk'] = proposal_pk
+    formData = flask.request.form
 
     query = sa.insert(
         db.proposals.Review,
     ).values(
-        **formdata,
+        **formData,
         proposal_pk = proposal_pk,
         createdBy   = isAdmin,
     )
@@ -85,6 +84,7 @@ def review_read(proposal_pk):
         proposal = row._asdict(),
         isAdmin  = isAdmin,
     )
+
 
 @app.get('/client/reviews/<int:proposal_pk>')
 def client_review_read(proposal_pk):
