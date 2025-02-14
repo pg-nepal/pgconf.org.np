@@ -76,6 +76,17 @@
                     <p>
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </p>
+
+                    <h2>Events 🗓️</h2>
+
+                    <p>
+                        This year we are planning two events.
+                    </p>
+
+                    {% with showLinks=true %}
+                        {% include "parts/events.djhtml" %}
+                    {% endwith %}
+
                 </section>
 
                 <section class="home-content mt-1">
