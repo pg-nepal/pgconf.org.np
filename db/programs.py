@@ -40,10 +40,15 @@ class Review(db.Base):
 
 class Rate(db.Base):
     __tablename__  = 'rates'
-    __table_args__ = {
-        'schema'  : 'conf25',
-        'comment' : 'conference proposals rating',
-    }
+    __table_args__ = (
+        # https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#orm-declarative-table-configuration
+        # keyword arguments can be specified using last argument as a dictionary
+        sa.UniqueConstraint('createdBy', 'proposal_pk', name='uq_one_rating_only'),
+        {
+            'schema'  : 'conf25',
+            'comment' : 'conference proposals rating',
+        },
+    )
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
 
