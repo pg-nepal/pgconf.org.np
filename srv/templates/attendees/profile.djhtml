@@ -29,6 +29,24 @@
 {% block main_content %}
     <h1>Your Registration Status</h1>
 
+    <table>
+        <thead>
+            <tr>
+                {% for h in show.keys() %}
+                    <th>{{h}}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                {% for e in show.values() %}
+                    <td>{{e}}</td>
+                {% endfor %}
+            </tr>
+        </tbody>
+    </table>
+
     <p>
         <strong>Your Total:</strong> NRs. {{row.fee}}
     </p>
