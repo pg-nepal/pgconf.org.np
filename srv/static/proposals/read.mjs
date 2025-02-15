@@ -59,3 +59,17 @@ export function reviewReadAll(proposal_pk) {
         }
     })
 }
+
+
+export function reviewUpdate(eForm, proposal_pk) {
+    event.preventDefault()
+    fetch(`/reviews/add/${proposal_pk}`, {
+        method : 'POST',
+        body   : new FormData(eForm),
+    }).then(function (response) {
+        return response.text()
+    }).then(function (textData) {
+        console.log(textData)
+        location.reload()
+    })
+}
