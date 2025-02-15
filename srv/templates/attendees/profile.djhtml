@@ -63,12 +63,12 @@
             </button>
         </div>
 
-        <div id='esewa'>
+        <div id='esewa' style="display:none; text-align:center">
             <h2>Scan the QRcode</h2>
             <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
         </div>
 
-        <div id='bank'>
+        <div id='bank' style="display:none; text-align:center">
             <h1>Bank Details</h1>
             <p><b>Bank Account Name:</b> Kathmandu University</p>
             <p><b>Bank Account Number:</b> 00501030250009</p>
@@ -95,6 +95,16 @@
 
 {% block tail %}
     <script>
+        document.getElementById('esewa-btn').addEventListener('click', function(event) {
+            document.getElementById('bank').style.display = 'none'
+            document.getElementById('esewa').style.display = 'block'
+        })
+
+        document.getElementById('bank-btn').addEventListener('click', function(event) {
+            document.getElementById('esewa').style.display = 'none'
+            document.getElementById('bank').style.display = 'block'
+        })
+
         const form = document.getElementById('receipt-submission')
         form.addEventListener('submit', function (event) {
             event.preventDefault()
