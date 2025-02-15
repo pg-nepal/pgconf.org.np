@@ -57,8 +57,14 @@ export function load(id, baseURL) {
             eTh.innerHTML = h
         }
 
+        let count = 0
         for (const row of json.data) {
             eTable.children[1].append(createRow(json.headers, row, baseURL))
+            count += 1
         }
+
+        const eP = document.createElement('p')
+        eP.innerHTML = `${count} rows`
+        eTable.after(eP)
     })
 }
