@@ -43,6 +43,10 @@ export function reviewReadAll(proposal_pk) {
         for (let [pk, comment, date, user] of json.data) {
             const eDiv = document.createElement('div')
 
+            const eP_user = document.createElement('p')
+            eP_user.innerHTML = `👤 <strong>${user}</strong>`
+            eDiv.append(eP_user)
+
             const eP = document.createElement('p')
             eP.innerHTML = comment
             eDiv.append(eP)
