@@ -6,15 +6,14 @@
     </style>
 
     <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
-        <span class="dialog-title"></span>
+        <span class="dialog-title">Drop your comment</span>
     </header>
 
-    <form method="dialog" class="dialog-form" style="padding-top:1.5rem">
+    <form id="form" method="dialog" style="padding-top:1.5rem">
         <fieldset>
-            <textarea></textarea>
+            <textarea name="comment"></textarea>
         </fieldset>
         <button class="button">Submit</button>
-        <div style="display:flex; justify-content:flex-end;"></div>
     </form>
 
     <script>
@@ -31,6 +30,22 @@
             ) {
                 dialog.close()
             }
+        })
+
+        document.getElementById('form').addEventListener('submit', function(event){
+            event.preventDefault()
+            const formdata = new FormData(event.target)
+
+            fetch('/reviews/add/{{proposal_pk}}', {
+                method : 'POST',
+                body   : formdata,
+            }).then(function (response){
+                return response.text()
+            }).then(function (textData){
+                location.reload()
+            }).catch(function (error){
+                alert(error.message)
+            })
         })
     </script>
 </dialog>
