@@ -40,14 +40,18 @@ export function reviewReadAll(proposal_pk) {
         return response.json()
     }).then(function (jsonData) {
         const eDiv_root = document.getElementById('comment-section')
-        for (let [comment, date] of jsonData.data) {
+        for (let [comment, date, user] of jsonData.data) {
             const eDiv = document.createElement('div')
+
+            const eCreatedBy = document.createElement('p')
+            eCreatedBy.innerText = `👤 ${user}`
+            eDiv.append(eCreatedBy)
 
             const eP = document.createElement('p')
             eP.innerHTML = comment
             eDiv.append(eP)
-
-            const eSpan = document.createElement('span')
+            
+            const eSpan = document.createElement('p')
             eSpan.innerText = (new Date(date)).toString().substring(0, 24)
             eDiv.append(eSpan)
 
