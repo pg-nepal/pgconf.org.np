@@ -15,6 +15,20 @@ html, body{
     max-width: 118.4rem;
 }
 
+.btn {
+    font-family: 'DM Sans', sans-serif;
+    border: 1px solid black;
+    text-decoration: none;
+    border-radius: 7px;
+    padding: 0.25rem 1rem;
+    margin: 0 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+}
+
 
 .button{
     margin: 1.5% 0 1.5% 0;
