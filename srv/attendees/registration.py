@@ -92,7 +92,12 @@ def registered_read(slug):
 
         return flask.render_template(
             '/attendees/profile.djhtml',
-            row = row._asdict(),
+            row  = row,
+            show = {
+                'name'    : row.name,
+                'country' : row.country,
+                'status'  : row.status,
+            },
         )
 
 
