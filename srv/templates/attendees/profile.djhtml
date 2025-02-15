@@ -79,15 +79,15 @@
     </div>
 
     <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
-        <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+        <form id="receipt-submission" style="display:none" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
             <div class="fields">
                 <input id="receipt-url" name="receiptPath" type="file">
                 <button class="button">Send receipt</button>
             </div>
         </form>
 
-        <p>
-            In case of any issue send us the recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
+        <p style="color:red">
+            Send us the payment recipt at recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
         </p>
     </div>
 {% endblock %}
