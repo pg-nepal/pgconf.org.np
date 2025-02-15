@@ -44,9 +44,9 @@ def proposal_list_api():
     query = sa.select(
         db.programs.Proposal.pk,
         db.programs.Proposal.title,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
-        db.programs.Proposal.category,
+        db.programs.Proposal.name,
         db.programs.Proposal.createdOn,
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
     ).outerjoin(
         db.programs.Rate,
         db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
