@@ -18,6 +18,7 @@ def rate_read_mine(proposal_pk):
         db.programs.Rate.value,
     ).where(
         db.programs.Rate.proposal_pk == proposal_pk,
+        db.programs.Rate.createdBy   == isAdmin,
     )
 
     with db.engine.connect() as connection:
