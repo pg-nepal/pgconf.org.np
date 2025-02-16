@@ -1,0 +1,87 @@
+<style>
+    .admin{
+        color: maroon;
+    }
+    .admin a:hover{
+        color: maroon;
+    }
+    .login-identifier-line {
+        border-bottom: 2px solid red;
+    }
+</style>
+<nav class="login-identifier-line">
+    <div class="navbar-area">
+        <div class="navbar-container">
+            <div class="headers">
+                <a href="/">
+                    <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+                </a>
+            </div>
+            <span class="admin">Logged In as <strong>{{isAdmin}}</strong></span>
+
+            <div class="nav-options">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/proposals">Proposals</a></li>
+                    <li class="nav-item"><a href="/attendees">Attendees</a></li>
+                    <li class="nav-item admin">
+                        <a href="/" class="logout" 
+                        onclick="logout();return false;">Logout</a>
+                    </li>
+                </ul>
+            </div>
+
+            <script>
+                const dropdownNavItems = document.querySelectorAll('.navbar-area .nav-list .nav-item.dropdown')
+
+                for (let e of dropdownNavItems) {
+                    const dropTarget = e.getAttribute('drop-target')
+
+                    e.onclick = function () {
+                        const dropDown = document.querySelector(`#${dropTarget}`)
+                        const isShown = dropDown.style.display == 'block'
+
+                        if (isShown) {
+                            dropDown.style.display = 'none'
+                        } else {
+                            dropDown.style.display = 'block'
+                        }
+                    }
+                }
+            </script>
+
+            <!-- Mobile Hamburger Icon -->
+            <div class="hamburger-menu" id="hamburger-menu">
+                <span>&#9776;</span> <!-- Hamburger icon -->
+            </div>
+
+            <div class="hamburger-options">
+                <button class="close-btn">X</button>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="/proposals">Proposals</a></li>
+                    <li class="nav-item"><a href="/attendees">Attendees</a></li>
+                    <li class="nav-item admin">
+                        <a href="/" class="logout" 
+                        onclick="logout();return false;">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+</nav>
+
+<script>
+    const navOptions = document.querySelector('.hamburger-options')
+    document.getElementById('hamburger-menu').addEventListener('click', function () {
+        navOptions.classList.toggle('active')
+    })
+
+    navOptions.querySelector('.close-btn').onclick = function () {
+        navOptions.classList.toggle('active')
+    }
+
+    function logout() {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', '/logout/basic', false, 'false', 'false');
+        xhr.send();
+        window.location.search = '';
+    }
+</script>
