@@ -4,14 +4,9 @@
             backdrop-filter: contrast(50%);
         }
 
-        .dialog-form{
-            width: 60%;
-        }
-
         .comment-area {
             width: 100%;
             min-height: 100px;
-            padding: 0.75rem;
             border: 1px solid lightgray;
             border-radius: 8px;
             font-size: 1rem;
@@ -79,6 +74,6 @@
                 console.log(error)
                 alert(error.message)
             })
-}
+        }
     </script>
 </dialog>
