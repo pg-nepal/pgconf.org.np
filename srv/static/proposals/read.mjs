@@ -81,15 +81,7 @@ export function reviewReadAll(proposal_pk) {
             eSpan.style.fontWeight = 200
             eSpan.style.fontWeight = 200
 
-            const options = document.createElement('div')
-            const updatebtn = document.createElement('button')
-            updatebtn.classList = 'button'
-            updatebtn.innerText = 'Delete'
-            updatebtn.setAttribute('onClick', `reviewDelete(${pk})`)
-            options.append(updatebtn)
-
             fd.append(eSpan)
-            fd.append(options)
             eDiv.append(fd)
 
             eDiv_root.append(eDiv)
