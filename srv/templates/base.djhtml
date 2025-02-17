@@ -29,15 +29,20 @@
         <main class="main_background">
             {% block main %}
                 <div class="content-container">
-                    <div class="content">
-                        <div class="left-content">
-                            {% block main_content %}{% endblock %}
+                    {% if isAdmin %}
+                        <div class="admin-content">
+                            {% block admin_content %}{% endblock %}
                         </div>
-
-                        <div class="right-content">
-                            {% include '/sidebar.djhtml' %}
+                    {% else %}
+                        <div class="content">
+                            <div class="left-content">
+                                {% block main_content %}{% endblock %}
+                            </div>
+                            <div class="right-content">
+                                {% include '/sidebar.djhtml' %}
+                            </div>
                         </div>
-                    </div>
+                    {% endif %}
                 </div>
             {% endblock %}
         </main>
