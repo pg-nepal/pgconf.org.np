@@ -3,14 +3,14 @@ import flask
 from srv import app
 
 
-@app.route('/pages/speakers/all')
+@app.route('/speakers/all')
 def render_speaker_page():
     from talks import keynotes,talks, workshops
     return flask.render_template(
         'speakers.djhtml',
         keynotes  = keynotes,
         talks     = talks,
-        workshops = workshops,
+        workshops = workshops
     )
 
 
