@@ -51,9 +51,21 @@ export function reviewReadAll(proposal_pk) {
             eP.innerHTML = comment
             eDiv.append(eP)
 
+            const eDiv_bottom = document.createElement('div')
+            eDiv_bottom.style.display = 'flex'
+            eDiv_bottom.style.justifyContent = 'space-between'
+            eDiv.append(eDiv_bottom)
+
             const eSpan = document.createElement('span')
             eSpan.innerText = (new Date(date)).toString()
-            eDiv.append(eSpan)
+            eSpan.style.fontWeight = 200
+            eDiv_bottom.append(eSpan)
+
+            const eButton = document.createElement('button')
+            eButton.classList = 'button'
+            eButton.innerText = 'Delete'
+            eButton.setAttribute('onClick', `reviewDelete(${pk})`)
+            eDiv_bottom.append(eButton)
 
             eDiv_root.append(eDiv)
         }
