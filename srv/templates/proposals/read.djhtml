@@ -1,5 +1,6 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle= '/ Proposals' %}
+{% set pageTitle = 'Proposal / Details' %}
+{% set pageDesc  = 'details of the proposal submitted by - {}'.format(row.name) %}
 
 
 {% block head %}
@@ -13,58 +14,37 @@
             flex-direction: column;
             padding: 3%;
         }
-
-        .comment{
-            border-bottom: 1px solid grey;
-            padding-bottom: 2%;
-        }
-
-        .headings{
-            font-weight: bold;
-        }
-
-        .rating__star {
-            font-size: 30px;
-            cursor: pointer;
-            filter: grayscale(1);
-            transition: color 0.3s;
-        }
-
-        .small_star{
-            font-size: 15px;
-        }
-
-        .rating__star.active {
-            filter: grayscale(0);
-        }
-
-        .comment-text{
-            padding: 2px; margin-left: 20px;
-        }
     </style>
 {% endblock %}
 
 
 {% block admin_content %}
-    <div class="content-container">
-        <div>
-            <h2>{{row.title}}</h2>
-            <p><strong>Name: </strong>{{row.name}}</p>
-            <p><strong>Email: </strong>{{row.email}}</p>
-            <p><strong>Country: </strong>{{row.country}}</p>
-            <p><strong>Submitted on: </strong>{{row.createdOn.strftime('%B %d %Y')}}</p>
-            <p><strong>Session Type: </strong>{{row.session}}</p>
-            <p><strong>Abstract:</strong></p>
-            <p>{{row.abstract}}</p>
-        </div>
+    <h3>{{row.title}}</h3>
 
+    <div class="info-table">
+        {% for key, value in meta.items() %}
+            <div class="info-row">
+                <div class="info-label">{{ key }}</div>
+                <div class="info-value">{{ value }}</div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div style="margin-top: 20px;">
+        <strong>Proposed Abstract</strong>
+        <p>{{row.abstract}}</p>
+    </div>
+
+    <hr/>
+
+    <div style="padding-top:20px;">
         <div id="rating" class="rating" style="display: flex;"></div>
+    </div>
 
-        <div class="review">
-            <h2>Comments</h2>
-            <div id="comment-section" class="comment-section"></div>
-            <button id="comment-add" class="button">Add</button>
-        </div>
+    <div class="review">
+        <h3>Comments</h3>
+        <div id="comment-section" class="comment-section"></div>
+        <button id="comment-add" class="button">Add</button>
     </div>
     {% include '/proposals/comment-dialog.djhtml' %}
 {% endblock %}
