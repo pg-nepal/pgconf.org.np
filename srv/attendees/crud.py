@@ -24,6 +24,7 @@ def attendee_list():
     return flask.render_template(
         '/table.djhtml',
         pageTitle = 'Attendees',
+        pageDesc  = 'List of all registered attendees',
         baseURL   = '/attendees',
         isAdmin   = isAdmin,
     )
