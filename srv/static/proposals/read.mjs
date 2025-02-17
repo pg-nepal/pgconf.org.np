@@ -97,6 +97,54 @@ export function reviewReadAll(proposal_pk) {
     })
 }
 
+
+export function reviewReadMine(proposal_pk){
+    fetch(`/api/review/mine/list/${proposal_pk}`).then(function (response){
+        return response.json()
+    }).then(function(jsonData){
+        console.log('mero review:',jsonData)
+        const eDiv_root = document.getElementById('comment-section')
+        for (let [pk, comment, user, date] of jsonData.data) {
+            const eDiv = document.createElement('div')
+
+            const eCreatedBy = document.createElement('p')
+            eCreatedBy.innerHTML = `
+            👤 <strong>${user}</strong>
+            `
+            eCreatedBy.innerHTML = `
+            👤 <strong>${user}</strong>
+            `
+            eDiv.append(eCreatedBy)
+
+            const eP = document.createElement('p')
+            eP.innerHTML = comment
+            eDiv.append(eP)
+
+            const fd = document.createElement('div')
+            fd.style.display = 'flex'
+            fd.style.justifyContent = 'space-between'
+            const eSpan = document.createElement('p')
+            eSpan.innerText = (new Date(date)).toString().substring(0, 24)
+            eSpan.style.fontWeight = 200
+            eSpan.style.fontWeight = 200
+
+            const options = document.createElement('div')
+            const updatebtn = document.createElement('button')
+            updatebtn.classList = 'button'
+            updatebtn.innerText = 'Delete'
+            updatebtn.setAttribute('onClick', `reviewDelete(${pk})`)
+            options.append(updatebtn)
+
+            fd.append(eSpan)
+            fd.append(options)
+            eDiv.append(fd)
+            
+            eDiv_root.append(eDiv)
+        }
+    })
+}
+
+
 export function reviewDelete(pk){
     fetch(`/reviews/delete/${pk}`, {
         method: 'DELETE'
