@@ -24,6 +24,7 @@ def proposal_list():
     return flask.render_template(
         '/table.djhtml',
         pageTitle = 'Proposals',
+        pageDesc  = 'List of all submitted proposals',
         baseURL   = '/proposals',
         isAdmin   = isAdmin,
     )
