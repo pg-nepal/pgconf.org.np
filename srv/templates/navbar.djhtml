@@ -18,7 +18,6 @@
                         <a class="dropbtn">Programs</a>
                             <div class="dropdown-content">
                                 <a href="/pages/schedule">Schedule</a>
-                                <a href="/pages/speakers/all">Speakers</a>
                                 <a href="/pages/venue">Venue</a>
                                 <a href="/pages/training">Training</a>
                             </div>
