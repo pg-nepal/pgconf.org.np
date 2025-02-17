@@ -27,6 +27,25 @@ def rate_read_mine(proposal_pk):
         return flask.jsonify(row and row.value)
 
 
+@app.get('/api/rates/average/<int:proposal_pk>')
+def average_rate(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        sa.func.round(sa.func.avg(db.programs.Rate.value), 0),
+    ).where(
+        db.programs.Rate.proposal_pk == proposal_pk,
+    )
+
+    with db.engine.connect() as connection:
+        rate = connection.execute(query).scalar()
+        return flask.jsonify({
+            'average_rating' : rate,
+        })
+
+
 @app.post('/api/rates/mine/<int:proposal_pk>')
 def rate_update_or_insert(proposal_pk):
     isAdmin = srv.auth.isValid(flask.request)
