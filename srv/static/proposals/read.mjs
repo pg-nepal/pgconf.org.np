@@ -31,6 +31,8 @@ export function rateRead(proposal_pk) {
         }
     })
 }
+
+export function rateReadAndUpdate(proposal_pk){
     fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
         return response.json()
     }).then(function (jsonData) {
