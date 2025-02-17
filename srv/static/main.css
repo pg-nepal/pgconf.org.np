@@ -110,7 +110,9 @@ th, td {
 }
 
 th {
-    background-color: white;
+    border-top: 1px solid rgb(191, 191, 191);
+    border-bottom: 1px solid rgb(191, 191, 191);
+    background-color: #2e507768;
 }
 
 td {
@@ -118,6 +120,10 @@ td {
     border-bottom: 1px solid rgb(191, 191, 191);
     max-width: 200px;
     word-wrap: break-word; /* Ensures long text breaks into multiple lines */
+}
+
+tr:hover{
+    background-color: #2e507724;
 }
 
 .map-iframe {
