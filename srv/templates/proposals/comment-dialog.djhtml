@@ -68,7 +68,7 @@
             })
         })
 
-        export function reviewDelete(pk){
+         function reviewDelete(pk){
             fetch(`/reviews/delete/${pk}`, {
                 method: 'DELETE'
             }).then(function(response){
