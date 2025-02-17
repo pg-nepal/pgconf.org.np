@@ -73,3 +73,15 @@ export function reviewUpdate(eForm, proposal_pk) {
         location.reload()
     })
 }
+
+
+export function reviewDelete(pk){
+    if (!confirm('Do you really want to delete this comment?')) return
+
+    fetch(`/reviews/delete/${pk}`, {
+        method : 'DELETE'
+    }).then(function(response){
+        alert('Comment deleted successfully.')
+        location.reload()
+    })
+}
