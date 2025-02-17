@@ -75,6 +75,8 @@ export function reviewReadAll(proposal_pk) {
             
             const eSpan = document.createElement('p')
             eSpan.innerText = (new Date(date)).toString().substring(0, 24)
+            eSpan.style.fontWeight = 200
+            eSpan.style.fontWeight = 200
             eDiv.append(eSpan)
 
             eDiv_root.append(eDiv)
