@@ -54,10 +54,6 @@
   list-style-type: none;
 }
 
-.nav-options .nav-list .nav-item .dropdown-item .nav-item {
-  margin-bottom: 1rem;
-}
-
 .nav-options a {
   font-family: 'DM Sans', sans-serif;
   color: #000000;
