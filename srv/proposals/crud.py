@@ -115,6 +115,32 @@ def proposal_read(pk):
         )
 
 
+@app.get('/proposals/action/<int:pk>')
+def proposal_action(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        db.programs.Proposal,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return 'Invalid Pk', 400
+
+        return flask.render_template(
+            '/proposals/action.djhtml',
+            row     = row,
+            isAdmin = isAdmin,
+        )
+
+
 @app.post('/proposals/<int:pk>')
 def proposal_update(pk):
     isAdmin = srv.auth.isValid(flask.request)
