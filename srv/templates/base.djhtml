@@ -33,6 +33,9 @@
                         <div class="dash-info-bar">
                             <span class="dash-title">🐘 Conference Management</span>
                             <span class="page-title">&#x232A; {{pageTitle}}</span>
+                            {% if pageDesc is defined %}
+                                <div class="desc">🛈 {{pageDesc}}</div>
+                            {% endif %}
                         </div>
                         <div class="admin-content">
                             {% block admin_content %}{% endblock %}
