@@ -10,6 +10,7 @@ import srv.proposals
 import srv.attendees
 import srv.reviews
 import srv.rates
+import srv.dash
 
 import jinja2
 
