@@ -3,15 +3,32 @@
         dialog::backdrop {
             backdrop-filter: contrast(50%);
         }
+
+        .dialog-form{
+            width: 60%;
+        }
+
+        .comment-area {
+            width: 100%;
+            min-height: 100px;
+            padding: 0.75rem;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .fieldset{
+            margin: 0
+        }
     </style>
 
     <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <span class="dialog-title">Drop your comment</span>
     </header>
 
-    <form id="form" method="dialog" style="padding-top:1.5rem">
-        <fieldset>
-            <textarea name="comment"></textarea>
+    <form id="form" action="/reviews/add/{{proposal_pk}}" method="dialog" class="dialog-form" style="padding-top:1.5rem">
+        <fieldset class="fieldset">
+            <textarea class="comment-area" name="comment"></textarea>
         </fieldset>
         <button class="button">Submit</button>
     </form>
@@ -38,14 +55,29 @@
 
             fetch('/reviews/add/{{proposal_pk}}', {
                 method : 'POST',
-                body   : formdata,
-            }).then(function (response){
+                body   : formdata, 
+            }).then(function(response){
                 return response.text()
-            }).then(function (textData){
+            }).then(function(textData){
+                console.log(textData)
+                alert(textData);
                 location.reload()
-            }).catch(function (error){
+            }).catch(function(error){
+                console.error("error: ", error)
                 alert(error.message)
             })
         })
+
+        export function reviewDelete(pk){
+            fetch(`/reviews/delete/${pk}`, {
+                method: 'DELETE'
+            }).then(function(response){
+                alert('Comment deleted successfully.')
+                location.reload()
+            }).catch(function(error){
+                console.log(error)
+                alert(error.message)
+            })
+}
     </script>
 </dialog>
