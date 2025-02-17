@@ -14,11 +14,6 @@
             padding: 3%;
         }
 
-        .comment{
-            border-bottom: 1px solid grey;
-            padding-bottom: 2%;
-        }
-
         .headings{
             font-weight: bold;
         }
@@ -36,10 +31,6 @@
 
         .rating__star.active {
             filter: grayscale(0);
-        }
-
-        .comment-text{
-            padding: 2px; margin-left: 20px;
         }
     </style>
 {% endblock %}
@@ -63,11 +54,8 @@
         <div class="review">
             <h2>Comments</h2>
             <div id="comment-section" class="comment-section"></div>
-            <button id="comment-add" class="button">Add</button>
         </div>
     </div>
-    {% set proposal_pk = row.pk %}
-    {% include '/proposals/comment-dialog.djhtml' %}
 {% endblock %}
 
 
