@@ -3,6 +3,19 @@
         dialog::backdrop {
             backdrop-filter: contrast(50%);
         }
+
+        #dialog-comment textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        #dialog-comment fieldset{
+            border: none;
+            border: none;
+        }
     </style>
 
     <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
