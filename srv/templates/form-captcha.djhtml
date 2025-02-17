@@ -40,6 +40,19 @@
             event.preventDefault()
             event.stopPropagation()
             event.target.reportValidity()
+
+            const submitBtn = document.getElementById('submitBtn')
+            submitBtn.disabled = true
+            submitBtn.innerText = 'Processing ...'
+
+            fetch('/', {
+            }).catch(function (error) {
+                console.error(error)
+                alert('Oops! something went wrong')
+            }).finally(function () {
+                submitBtn.disabled = false
+                submitBtn.innerText = 'Re-Submit'
+            })
         })
     </script>
 {% endblock %}
