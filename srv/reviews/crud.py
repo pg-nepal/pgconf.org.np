@@ -94,3 +94,22 @@ def review_update(pk):
             flask.url_for(''),
             pk = pk,
         )
+
+
+@app.delete('/reviews/delete/<int:pk>')
+def review_delete(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    with db.SessionMaker.begin() as session:
+        session.execute(
+            sa.delete(
+                db.programs.Review,
+            ).where(
+                db.programs.Review.pk == pk,
+
+            ),
+        )
+
+        return 'Review deleted successfully', 202
