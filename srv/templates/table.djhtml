@@ -11,19 +11,14 @@
 {% endblock %}
 
 
-{% block main %}
-    <div class="content-container">
-        <h1>{{pageTitle}}</h1>
-
-        <div class="box" style="overflow-x:auto;">
-            <table id="my-table" class="table">
-                <thead>
-                    <tr></tr>
-                </thead>
-
-                <tbody></tbody>
-            </table>
-        </div>
+{% block admin_content %}
+    <div class="box" style="overflow-x:auto;">
+        <table id="my-table" class="table">
+            <thead>
+                <tr></tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
 {% endblock %}
 
