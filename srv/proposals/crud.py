@@ -53,7 +53,7 @@ def proposal_list_api():
     ).group_by(
         db.programs.Proposal.pk,
     ).order_by(
-        db.programs.Proposal.pk,
+        db.programs.Proposal.createdBy,
     )
 
     with db.engine.connect() as connection:
@@ -122,9 +122,9 @@ def proposal_action(pk):
         return srv.auth.respondInValid()
 
     query = sa.select(
-        db.proposals.Proposal,
+        db.programs.Proposal,
     ).where(
-        db.proposals.Proposal.pk == pk,
+        db.programs.Proposal.pk == pk,
     )
 
     with db.engine.connect() as connection:
