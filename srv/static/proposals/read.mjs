@@ -73,6 +73,9 @@ export function reviewReadAll(proposal_pk) {
             eP.innerHTML = comment
             eDiv.append(eP)
             
+            const fd = document.createElement('div')
+            fd.style.display = 'flex'
+            fd.style.justifyContent = 'space-between'
             const eSpan = document.createElement('p')
             eSpan.innerText = (new Date(date)).toString().substring(0, 24)
             eSpan.style.fontWeight = 200
