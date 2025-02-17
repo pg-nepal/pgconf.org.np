@@ -61,7 +61,12 @@ export function reviewReadAll(proposal_pk) {
             const eDiv = document.createElement('div')
 
             const eCreatedBy = document.createElement('p')
-            eCreatedBy.innerText = `👤 ${user}`
+            eCreatedBy.innerHTML = `
+            👤 <strong>${user}</strong>
+            `
+            eCreatedBy.innerHTML = `
+            👤 <strong>${user}</strong>
+            `
             eDiv.append(eCreatedBy)
 
             const eP = document.createElement('p')
