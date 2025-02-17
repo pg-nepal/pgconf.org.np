@@ -83,3 +83,15 @@ export function reviewReadAll(proposal_pk) {
         }
     })
 }
+
+export function reviewDelete(pk){
+    fetch(`/reviews/delete/${pk}`, {
+        method: 'DELETE'
+    }).then(function(response){
+        alert('Comment deleted successfully.')
+        location.reload()
+    }).catch(function(error){
+        console.log(error)
+        alert(error.message)
+    })
+}
