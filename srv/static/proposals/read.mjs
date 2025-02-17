@@ -83,7 +83,7 @@ export function reviewReadAll(proposal_pk) {
 
             const options = document.createElement('div')
             const updatebtn = document.createElement('button')
-            updatebtn.classList.add = 'button'
+            updatebtn.classList = 'button'
             updatebtn.innerText = 'Delete'
             updatebtn.setAttribute('onClick', `reviewDelete(${pk})`)
             options.append(updatebtn)
