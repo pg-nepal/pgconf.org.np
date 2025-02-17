@@ -35,3 +35,14 @@ footer {
   letter-spacing: 1px;
   text-transform: uppercase;
 }
+
+@media (max-width: 700px) {
+    .footer-content{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 0;
+        margin: auto;
+    }
+}
