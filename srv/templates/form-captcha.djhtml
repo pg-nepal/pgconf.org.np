@@ -31,7 +31,7 @@
         <!-- Prevent implicit submission of the form -->
         <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
         <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-        <button class="button" style="font-size:110%;">
+        <button id="submitBtn" class="button" style="font-size:110%;">
             Submit
         </button>
     </form>
@@ -44,6 +44,19 @@
             event.preventDefault()
             event.stopPropagation()
             event.target.reportValidity()
+
+            const submitBtn = document.getElementById('submitBtn')
+            submitBtn.disabled = true
+            submitBtn.innerText = 'Processing ...'
+
+            fetch('/', {
+            }).catch(function (error) {
+                console.error(error)
+                alert('Oops! something went wrong')
+            }).finally(function () {
+                submitBtn.disabled = false
+                submitBtn.innerText = 'Re-Submit'
+            })
         })
     </script>
 {% endblock %}
