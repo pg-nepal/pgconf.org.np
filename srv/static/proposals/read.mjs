@@ -16,6 +16,21 @@ function rateUpdate(proposal_pk, value) {
 
 
 export function rateRead(proposal_pk) {
+    fetch(`/api/rates/average/${proposal_pk}`).then(function (response) {
+        return response.json()
+    }).then(function (jsonData) {
+        const averageRate = +jsonData.average_rating
+        const eDiv = document.getElementById('rating')
+        for (let i = 1; i <= 5; i++) {
+            const eSpan = document.createElement('span')
+            eSpan.id = `star-${i}`
+            eSpan.classList = 'rating__star'
+            if (i <= averageRate) eSpan.classList.add('active')
+            eSpan.innerText = '⭐'
+            eDiv.append(eSpan)
+        }
+    })
+}
     fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
         return response.json()
     }).then(function (jsonData) {
