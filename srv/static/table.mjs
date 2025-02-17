@@ -27,7 +27,15 @@ function createRow(headers, row, baseURL) {
                 break
 
             case 'avg(rating)':
-                if (null == v) break
+                const pk = row[headers.indexOf('pk')]
+                const rateLink = document.createElement('a')
+                if (null == v){
+                    console.log(pk)
+                    rateLink.innerText = `Rate this proposal`
+                    rateLink.href = `${baseURL}/action/${pk}`
+                    eTd.append(rateLink)
+                }
+                    
                 let stars = '';
                 for (let i = 0; i < 5; i++) {
                     if (i < v) {
