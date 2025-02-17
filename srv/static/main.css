@@ -163,6 +163,28 @@ input[type="number"]::-webkit-inner-spin-button {
   margin: 0;
 }
 
+/* Dashboard styles */
+.dash-info-bar .dash-title{
+    font-size: 30px;
+    font-weight: bold;
+}
+.dash-info-bar .page-title{
+    font-size: 22px;
+    padding-left: 10px;
+}
+.dash-info-bar .desc{
+    margin-top: 15px;
+    padding-left: 10px;
+    border-left: 5px solid gray;
+    border-bottom: 1px solid maroon;
+    font-style: italic;
+    font-size: 18px;
+}
+.admin-content{
+    padding-top: 20px;
+}
+
+
 @media (max-width: 420px) {
     .countDown {
         grid-template-columns: repeat(2, 1fr) !important;
