@@ -21,6 +21,7 @@
 
             <div class="nav-options">
                 <ul class="nav-list">
+                    <li class="nav-item"><a href="/dash">Dashboard</a></li>
                     <li class="nav-item"><a href="/proposals">Proposals</a></li>
                     <li class="nav-item"><a href="/attendees">Attendees</a></li>
                     <li class="nav-item admin">
@@ -57,6 +58,7 @@
             <div class="hamburger-options">
                 <button class="close-btn">X</button>
                 <ul class="nav-list">
+                    <li class="nav-item"><a href="/dash">Dashboard</a></li>
                     <li class="nav-item"><a href="/proposals">Proposals</a></li>
                     <li class="nav-item"><a href="/attendees">Attendees</a></li>
                     <li class="nav-item admin">
