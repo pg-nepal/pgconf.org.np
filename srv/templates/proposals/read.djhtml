@@ -1,62 +1,48 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle= '/ Proposals' %}
+{% set pageTitle = 'Proposal / Details' %}
+{% set pageDesc  = 'details of the proposal submitted by - {}'.format(row.name) %}
 
-
-{% block head %}
-    {{super()}}
-    <style>
-        .comment-section{
-            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
-            border-radius: 6px;
-            overflow-y: auto;
-            display: flex;
-            flex-direction: column;
-            padding: 3%;
-        }
-
-        .headings{
-            font-weight: bold;
-        }
-
-        .rating__star {
-            font-size: 30px;
-            cursor: pointer;
-            filter: grayscale(1);
-            transition: color 0.3s;
-        }
-
-        .small_star{
-            font-size: 15px;
-        }
-
-        .rating__star.active {
-            filter: grayscale(0);
-        }
-    </style>
-{% endblock %}
-
-
-{% block main %}
-    <div class="content-container">
-        <div>
-            <h2>{{row.title}}</h2>
-            <p><strong>Name: </strong>{{row.name}}</p>
-            <p><strong>Email: </strong>{{row.email}}</p>
-            <p><strong>Country: </strong>{{row.country}}</p>
-            <p><strong>Submitted on: </strong>{{row.createdOn.strftime('%B %d %Y')}}</p>
-            <p><strong>Session Type: </strong>{{row.session}}</p>
-            <p><strong>Abstract:</strong></p>
-            <p>{{row.abstract}}</p>
+{% block admin_content %}
+    <h3>{{row.title}}</h3>
+    <strong>Metadata</strong>
+    <div class="info-table">
+        <div class="info-row">
+            <div class="info-label">Name</div>
+            <div class="info-value">{{ row.name }}</div>
         </div>
-
-        <p>Overall ratings for this proposal: </p>
-        <div id="rating" class="rating" style="display: flex;">
+        <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value">{{ row.email }}</div>
         </div>
-
-        <div class="review">
-            <h2>Comments</h2>
-            <div id="comment-section" class="comment-section"></div>
+        <div class="info-row">
+            <div class="info-label">Country</div>
+            <div class="info-value">{{ row.country }}</div>
         </div>
+        <div class="info-row">
+            <div class="info-label">Submitted On</div>
+            <div class="info-value">
+                {{ row.createdOn.strftime('%B %d %Y') }}
+            </div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Session Type</div>
+            <div class="info-value">{{ row.session }}</div>
+        </div>
+    </div>
+    <div style="margin-top: 20px;">
+        <strong>Proposed Abstract</strong>
+        <p>{{row.abstract}}</p>
+    </div>
+    
+    <hr/>
+    <div>
+        <strong>Overall ratings<sup>*</sup> for this proposal</strong>
+        <div id="rating" class="rating" style="padding-top:20px; display: flex;"></div>
+        <p>* - average rating of all available ratings</p>
+    </div>
+    <div class="review">
+        <h3>Comments</h3>
+        <div id="comment-section" class="comment-section"></div>
     </div>
 {% endblock %}
 
