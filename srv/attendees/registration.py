@@ -13,6 +13,13 @@ import uploads
 from srv import app
 
 
+FILE_MAGIC_NUMBERS = {
+    b'%PDF-'                : 'application/pdf',
+    b'\xFF\xD8\xFF'         : 'image/jpeg',
+    b'\x89PNG\r\n\x1a\n'    : 'image/png',
+}
+
+
 @app.get('/registered/form')
 def registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
@@ -102,6 +109,15 @@ def registered_read(slug):
 
 @app.post('/registered/<slug>')
 def registered_update(slug):
+    receiptFile = flask.request.files['receiptFile']
+    
+    if not receiptFile:
+        return 'File not uploaded', 400
+    
+    mimetype = receiptFile.content_type
+    if mimetype not in FILE_MAGIC_NUMBERS.values():
+        return 'Invalid file format. Please upload jpeg, png or pdf file', 400
+    
     receiptBlob = flask.request.files['receiptFile'].read()
     
     query = sa.update(
