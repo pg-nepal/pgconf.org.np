@@ -135,3 +135,20 @@ def registered_update(slug):
         traceback.print_exc()
         return 'Something went wrong while saving file. Try again later.', 400
 
+
+@app.get('/registered/payment_receipt_check/<slug>')
+def registered_payment_receipt_file_check(slug):
+    query = sa.select(
+        db.events.Attendee.pk
+    ).where(
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+        db.events.Attendee.paymentReceiptFile.isnot(None),
+    )
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+        if row is None:
+            return 'File Not Found', 404
+        return 'File exists', 200
+
+
