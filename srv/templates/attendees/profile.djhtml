@@ -167,4 +167,9 @@
             })
         })
     </script>
+
+    <script type="module">
+        import * as attendees from '/static/attendees/read.mjs'
+        attendees.checkPaymentReceipt(`{{row.slug}}`)
+    </script>
 {% endblock %}
