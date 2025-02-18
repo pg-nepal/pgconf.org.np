@@ -42,4 +42,4 @@ class Attendee(db.Base):
     fee            = sa.Column(sa.Integer)
     ticket         = sa.Column(sa.String(500))
     status         = sa.Column(p_attendees_status, server_default='pending')
-    receiptPath    = sa.Column(sa.String(256))
+    receiptBlob    = sa.Column(sa.LargeBinary, comment='payment receipt')
