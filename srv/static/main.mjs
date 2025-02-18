@@ -1,3 +1,11 @@
+function getFlagEmoji(countryCode) {
+    const codePoints = countryCode.split('').map(function(char) {
+        return 127397 + char.charCodeAt()
+    })
+    return String.fromCodePoint(...codePoints)
+}
+
+
 export function add_countries_opts(datalist) {
     const A = 65
     const Z = 90
@@ -10,6 +18,7 @@ export function add_countries_opts(datalist) {
             if (code !== name) {
                 const option = document.createElement('option')
                 option.value = name
+                option.innerText = `${getFlagEmoji(code)} ${name}`
                 datalist.appendChild(option)
             }
         }
