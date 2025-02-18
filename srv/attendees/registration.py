@@ -131,3 +131,21 @@ def registered_update(slug):
     with db.SessionMaker.begin() as session:
         cursor = session.execute(query)
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+
+
+@app.get('/registered/payment_receipt_check/<slug>')
+def registered_payment_receipt_file_check(slug):
+    query = sa.select(
+        db.events.Attendee.pk,
+    ).where(
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+        db.events.Attendee.receiptBlob.isnot(None),
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+        if row is None:
+            return 'File Not Found', 404
+
+        return 'File exists', 200
