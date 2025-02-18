@@ -18,6 +18,8 @@
             in English.
             Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
         </p>
+        <h3>Key Dates</h3>
+        <p>Proposal Submission Deadline: <strong>30 April, 2025</strong></p>
 
         <button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size:120%">
             Submit Your Proposal
