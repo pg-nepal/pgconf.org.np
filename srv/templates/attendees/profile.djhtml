@@ -29,6 +29,10 @@
 {% block main_content %}
     <h1>Your Registration Status</h1>
 
+    <p>
+        Thank you for showing your interest on the 3rd PostgreSQL Conference Nepal.
+    </p>
+
     <table>
         <thead>
             <tr>
@@ -47,36 +51,56 @@
         </tbody>
     </table>
 
-    <p>
-        <strong>Your Total:</strong> NRs. {{row.fee}}
-    </p>
-
-    <div>
-        <p>Chose your payment options</p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
-            <button id="esewa-btn" class="btn">
-                Esewa
-            </button>
-
-            <button id="bank-btn" class="btn">
-                Bank
-            </button>
+    {% if row.country.lower() != 'nepal' %}
+        <h3>&#128712; International Participantion</h3>
+        <div class="alert alert-danger">
+            For International Participants, we only accept the bank transfer or on-site registration.
+            <p>For further details please write us to: <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></p>
+        </div>
+        <h3>&#127974; Bank Details</h3>
+        <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+        <p><b>Bank Account Number:</b> 00501030250009</p>
+        <p><b>Bank Account Name:</b> Kathmandu University</p>
+        <p><b>Branch:</b> Banepa, Nepal</p>
+        <p><b>Swift Code:</b> NIBLNPKT</p>
+    {% else %}
+        <h3>&#128712; Domestic Participants Payment</h3>
+        <div class="alert alert-info">
+            You can pay via. direct bank transfer or through wallet. In both case you need to submit the proof of payment.
+            <ul>
+                <li>For direct bank transfer <a href="https://login.connectips.com/" target="_blank">connect IPS</a> is highly recommended.</li>
+                <li>Mention your name on the remarks field</li>
+                <li>For any other information please contact us at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></li>
+            </ul>
         </div>
 
-        <div id='esewa' style="display:none; text-align:center">
-            <h2>Scan the QRcode</h2>
-            <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
-        </div>
+        <div>
+            <p>Chose your payment options</p>
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
+                <button id="esewa-btn" class="btn">
+                    Esewa
+                </button>
 
-        <div id='bank' style="display:none; text-align:center">
-            <h1>Bank Details</h1>
-            <p><b>Bank Account Name:</b> Kathmandu University</p>
-            <p><b>Bank Account Number:</b> 00501030250009</p>
-            <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
-            <p><b>Branch:</b> Banepa, Nepal</p>
-            <p><b>Swift Code:</b> NIBLNPKT</p>
+                <button id="bank-btn" class="btn">
+                    Bank
+                </button>
+            </div>
+
+            <div id='esewa' style="display:none; text-align:center">
+                <h2>Scan the QRcode</h2>
+                <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+            </div>
+
+            <div id='bank' style="display:none; text-align:center">
+                <h1>Bank Details</h1>
+                <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+                <p><b>Bank Account Name:</b> Kathmandu University</p>
+                <p><b>Bank Account Number:</b> 00501030250009</p>
+                <p><b>Branch:</b> Banepa, Nepal</p>
+                <p><b>Swift Code:</b> NIBLNPKT</p>
+            </div>
         </div>
-    </div>
+    {% endif %}
 
     <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
         <form id="receipt-submission" style="display:none" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
