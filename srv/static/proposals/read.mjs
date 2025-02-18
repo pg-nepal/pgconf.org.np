@@ -94,7 +94,6 @@ export function reviewReadMine(proposal_pk){
     fetch(`/api/review/mine/list/${proposal_pk}`).then(function (response){
         return response.json()
     }).then(function(jsonData){
-        console.log('mero review:',jsonData)
         const eDiv_root = document.getElementById('comment-section')
         for (let [pk, comment, user, date] of jsonData.data) {
             const eDiv = document.createElement('div')
