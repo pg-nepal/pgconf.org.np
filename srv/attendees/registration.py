@@ -94,9 +94,9 @@ def registered_read(slug):
             '/attendees/profile.djhtml',
             row  = row,
             show = {
-                'name'    : row.name,
-                'country' : row.country,
-                'status'  : row.status,
+                'Name'    : row.name,
+                'Country' : row.country,
+                'Status'  : row.status,
             },
         )
 
