@@ -138,6 +138,8 @@ export function reviewReadMine(proposal_pk){
 
 
 export function reviewDelete(pk){
+    if (!confirm('Do you really want to delete this comment?')) return
+
     fetch(`/reviews/delete/${pk}`, {
         method: 'DELETE'
     }).then(function(response){
