@@ -50,6 +50,37 @@ def proposal_create():
         return flask.redirect('/pages/call-for-proposal')
 
 
+@app.get('/api/proposals/<int:pk>')
+def proposal_read(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        db.programs.Proposal.pk,
+
+        db.programs.Proposal.title,
+        db.programs.Proposal.abstract,
+
+        db.programs.Proposal.name,
+        db.programs.Proposal.email,
+        db.programs.Proposal.country,
+        db.programs.Proposal.createdOn,
+        db.programs.Proposal.session,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return 'Invalid Pk', 400
+
+        return flask.jsonify(row._asdict())
+
+
 @app.post('/proposals/<int:pk>')
 def proposal_update(pk):
     isAdmin = srv.auth.isValid(flask.request)
