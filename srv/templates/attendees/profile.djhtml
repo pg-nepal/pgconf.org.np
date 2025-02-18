@@ -105,10 +105,13 @@
     <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
         <h3>&#129534; Upload your proof of payment</h3>
 
+        <div id="exising-receipt"></div>
+
         <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
+            System accept pdf, png or jpeg file only.
             <div class="fields">
-                <input id="receipt-url" name="receiptFile" type="file">
-                <button class="button">Send receipt</button>
+                <input id="receiptFile" name="receiptFile" type="file">
+                <button id="submit-receiptFile" class="button">Send receipt</button>
             </div>
         </form>
 
@@ -135,6 +138,14 @@
         form.addEventListener('submit', function (event) {
             event.preventDefault()
             const formData = new FormData(form)
+
+            const file = formData.get('receiptFile')
+            const validMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+            if(!validMimeTypes.includes(file.type)) {
+                alert("Invalid file type. Please upload jpeg, png or pdf file")
+                return
+            }
+
             fetch(`/registered/{{row.slug}}`, {
                 method : 'POST',
                 body   : formData,
