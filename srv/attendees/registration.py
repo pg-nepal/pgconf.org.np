@@ -1,4 +1,5 @@
 import random
+import io
 import traceback
 
 import flask
@@ -152,3 +153,34 @@ def registered_payment_receipt_file_check(slug):
         return 'File exists', 200
 
 
+@app.get('/registered/payment_receipt_download/<slug>')
+def registered_payment_receipt_file_download(slug):
+    query = sa.select(
+        db.events.Attendee.paymentReceiptFile
+    ).where(
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+        db.events.Attendee.paymentReceiptFile.isnot(None),
+    )
+
+    with db.engine.connect() as connection:
+        row = connection.execute(query).first()
+        
+        if row is None:
+            return 'File Not Found', 404
+        
+        paymentReceiptFile = row[0]
+        
+        for magic, mime_type in FILE_MAGIC_NUMBERS.items():
+            if paymentReceiptFile.startswith(magic): break
+            else: mime_type = 'application/octet-stream'
+        
+        download_name = 'payment-receipt-{slug}.{ext}'.format(
+            slug = slug,
+            ext = mime_type.split('/')[1]
+        )
+        return flask.send_file(
+            io.BytesIO(paymentReceiptFile),
+            as_attachment       = True,
+            download_name       = download_name,
+            mimetype            = mime_type,
+        ),200
