@@ -1,5 +1,6 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle= 'Attendees' %}
+{% set pageTitle= 'Attendees / Details' %}
+{% set pageDesc  = 'Details of the registration submitted by - {}'.format(row.name) %}
 
 
 {% block main %}
