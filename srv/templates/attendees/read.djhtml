@@ -1,6 +1,13 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle= '/ Proposals' %}
-
+{% set pageTitle= 'Attendees / Details' %}
+{% set pageDesc  = 'Details of the registration submitted by - {}'.format(row.name) %}
+{% set metaData = {
+    'Name'         : row.name,
+    'Email'        : row.email,
+    'Country'      : row.country,
+    'Submitted On' : row.createdOn.strftime('%B %d %Y'),
+    'Category'     : row.category
+} %}
 
 {% block header %}
     <link rel="stylesheet" href="/static/css/form.css">
