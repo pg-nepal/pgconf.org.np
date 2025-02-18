@@ -102,18 +102,20 @@ def registered_read(slug):
 
 @app.post('/registered/<slug>')
 def registered_update(slug):
-    fileData = flask.request.files
-
-    fullpath = uploads.save(fileData, 'receiptPath')
-
+    receiptBlob = flask.request.files['receiptFile'].read()
+    
     query = sa.update(
         db.events.Attendee,
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
     ).values(
-        receiptPath = fullpath,
+        paymentReceiptFile = receiptBlob,
     )
+    try:
+        with db.SessionMaker.begin() as session:
+            cursor = session.execute(query)
+            return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+    except Exception as e:
+        traceback.print_exc()
+        return 'Something went wrong while saving file. Try again later.', 400
 
-    with db.SessionMaker.begin() as session:
-        cursor = session.execute(query)
-        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
