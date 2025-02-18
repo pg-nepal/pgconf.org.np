@@ -21,13 +21,15 @@
 {% endblock %}
 
 
-{% block main %}
-    <div class="content-container">
-        <p><strong class="field">Submitted on:</strong> {{row.createdOn.strftime('%B %d %Y')}}</p>
-        <p><strong class="field">Name:</strong> {{row.name}}</p>
-        <p><strong class="field">Email:</strong> {{row.email}}</p>
-        <p><strong class="field">Country:</strong> {{row.country}}</p>
-        <p><strong class="field">Profession:</span> {{row.category}}</p>
+    <strong>Metadata</strong>
+    <div class="info-table">
+        {% for key, value in metaData.items() %}
+            <div class="info-row">
+                <div class="info-label">{{ key }}</div>
+                <div class="info-value">{{ value }}</div>
+            </div>
+        {% endfor %}
+    </div>
         {% if row.receiptPath %}
         {% set filename = row.receiptPath.split('/')[-1] %}
         <a href="{{ url_for('files_srv_receipt', filename=filename) }}" download>Download Receipt</a>
