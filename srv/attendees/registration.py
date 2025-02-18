@@ -8,9 +8,15 @@ import sqlalchemy as sa
 import db
 import db.conf
 import srv.captcha
-import uploads
 
 from srv import app
+
+
+FILE_MAGIC_NUMBERS = {
+    b'%PDF-'                : 'application/pdf',
+    b'\xFF\xD8\xFF'         : 'image/jpeg',
+    b'\x89PNG\r\n\x1a\n'    : 'image/png',
+}
 
 
 @app.get('/registered/form')
@@ -103,16 +109,23 @@ def registered_read(slug):
 
 @app.post('/registered/<slug>')
 def registered_update(slug):
-    fileData = flask.request.files
+    receiptFile = flask.request.files['receiptFile']
 
-    fullpath = uploads.save(fileData, 'receiptPath')
+    if not receiptFile:
+        return 'File not uploaded', 400
+
+    mimetype = receiptFile.content_type
+    if mimetype not in FILE_MAGIC_NUMBERS.values():
+        return 'Invalid file format. Please upload jpeg, png or pdf file', 400
+
+    receiptBlob = flask.request.files['receiptFile'].read()
 
     query = sa.update(
         db.conf.Attendee,
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
     ).values(
-        receiptPath = fullpath,
+        receiptBlob = receiptBlob,
     )
 
     with db.SessionMaker.begin() as session:
