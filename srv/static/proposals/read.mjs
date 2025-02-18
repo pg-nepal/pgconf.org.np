@@ -121,11 +121,11 @@ export function reviewReadMine(proposal_pk){
             eSpan.style.fontWeight = 200
 
             const options = document.createElement('div')
-            const updatebtn = document.createElement('button')
-            updatebtn.classList = 'button'
-            updatebtn.innerText = 'Delete'
-            updatebtn.setAttribute('onClick', `reviewDelete(${pk})`)
-            options.append(updatebtn)
+            const deleteBtn = document.createElement('button')
+            deleteBtn.classList = 'button'
+            deleteBtn.innerText = 'Delete'
+            deleteBtn.addEventListener('click', () => reviewDelete(pk));
+            options.append(deleteBtn)
 
             fd.append(eSpan)
             fd.append(options)
