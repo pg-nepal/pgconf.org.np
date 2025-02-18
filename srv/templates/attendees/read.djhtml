@@ -21,6 +21,7 @@
 {% endblock %}
 
 
+{% block admin_content %}
     <strong>Metadata</strong>
     <div class="info-table">
         {% for key, value in metaData.items() %}
@@ -30,9 +31,8 @@
             </div>
         {% endfor %}
     </div>
-        {% if row.receiptPath %}
-        {% set filename = row.receiptPath.split('/')[-1] %}
-        <a href="{{ url_for('files_srv_receipt', filename=filename) }}" download>Download Receipt</a>
-        {% endif %}
-    </div>
+    {% if row.receiptPath %}
+    {% set filename = row.receiptPath.split('/')[-1] %}
+    <a href="{{ url_for('files_srv_receipt', filename=filename) }}" download>Download Receipt</a>
+    {% endif %}
 {% endblock %}
