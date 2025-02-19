@@ -56,3 +56,25 @@ def rate_update_or_insert(proposal_pk):
             updatedBy   = isAdmin,
         ))
         return 'Ratings created successfully', 201
+
+
+@app.get('/api/rates/summary/<int:proposal_pk>')
+def rate_summary(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    count = sa.func.count(db.programs.Rate.pk)
+    avg   = sa.func.avg(db.programs.Rate.value)
+
+    query = sa.select(
+        count.label('count'),
+        avg.label('avg'),
+        sa.func.round(avg / 5 * 100, 2).label('percent'),
+    ).where(
+        db.programs.Rate.proposal_pk == proposal_pk,
+    )
+
+    with db.engine.connect() as connection:
+        row = connection.execute(query).first()
+        return flask.jsonify(row._asdict())
