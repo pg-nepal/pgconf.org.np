@@ -2,6 +2,7 @@ import os
 import sys
 import json
 import pathlib
+from functools import wraps
 from http import HTTPStatus
 
 import flask
@@ -53,6 +54,18 @@ def respondInValid():
     response = flask.make_response(status.description, status.value)
     response.headers['WWW-Authenticate'] = 'Basic'
     return response
+
+
+def auth_required(role='admin'):
+    def decorator(f):
+        @wraps(f)
+        def decorated_function(*args, **kwargs):
+            isAuthorized = isLoggedIn(flask.request)
+            if not isAuthorized:
+                return respondInValid()
+            return f(*args, **kwargs)
+        return decorated_function
+    return decorator
 
 
 @app.route('/logout/basic')
