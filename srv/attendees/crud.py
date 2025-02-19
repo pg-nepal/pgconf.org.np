@@ -77,6 +77,7 @@ def attendee_create():
 
 
 @app.get('/attendees/<int:pk>')
+@srv.auth.auth_required()
 def attendee_read(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -98,7 +99,7 @@ def attendee_read(pk):
         return flask.render_template(
             '/attendees/read.djhtml',
             row     = row,
-            isAdmin = isAdmin,
+            isAdmin = srv.auth.loggedInUser(flask.request),
         )
 
 
