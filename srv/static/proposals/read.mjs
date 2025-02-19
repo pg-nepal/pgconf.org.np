@@ -125,3 +125,15 @@ function proposalLoad(row) {
         element.innerHTML = val
     }
 }
+
+
+export function init(pk) {
+    fetch(`/api/proposals/${pk}`, {
+    }).then(function (response) {
+        return response.json()
+    }).then(function (json) {
+        proposalLoad(json)
+        rateRead_summary(json.pk)
+        reviewReadAll(json.pk)
+    })
+}
