@@ -1,3 +1,7 @@
+import enum
+import decimal as d
+import datetime as dt
+
 import flask
 import jinja2
 
@@ -11,6 +15,21 @@ app.jinja_env.undefined = jinja2.StrictUndefined
 
 class CustomJSONEncoder(flask.json.provider.DefaultJSONProvider):
     sort_keys = False
+
+    def default(self, obj):
+        if isinstance(obj, dt.date)  : return obj.isoformat()
+        if isinstance(obj, dt.time)  : return obj.isoformat()
+        if isinstance(obj, enum.Enum): return obj.name
+        if isinstance(obj, d.Decimal): return float(obj)
+
+        try:
+            iterable = iter(obj)
+        except TypeError:
+            pass
+        else:
+            return tuple(iterable)
+
+        return super().default(obj)
 
 
 app.json = CustomJSONEncoder(app)
