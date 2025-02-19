@@ -194,10 +194,11 @@ input[type="number"]::-webkit-inner-spin-button {
 .info-table {
     display: flex;
     flex-direction: column;
-    max-width: 600px;
+    max-width: 750px;
     border: 1px solid #a3b3cb;
     border-radius: 5px;
     overflow: hidden;
+    white-space: nowrap;
 }
 
 .info-row {
