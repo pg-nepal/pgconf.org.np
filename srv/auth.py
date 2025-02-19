@@ -35,6 +35,19 @@ def isValid(request):
     return keys.get(auth, False)
 
 
+def isLoggedIn(request): # replacement of isValid
+    auth = request.headers.get('Authorization')
+    if auth is None: return False
+    return True if keys.get(auth,False) else False
+
+
+def loggedInUser(request):
+    auth = request.headers.get('Authorization')
+    if auth is None:
+        return False
+    return keys.get(auth, False)
+
+
 def respondInValid():
     status = HTTPStatus.UNAUTHORIZED
     response = flask.make_response(status.description, status.value)
