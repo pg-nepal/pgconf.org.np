@@ -79,10 +79,6 @@ def attendee_create():
 @app.get('/attendees/<int:pk>')
 @srv.auth.auth_required()
 def attendee_read(pk):
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
-
     query = sa.select(
         db.events.Attendee,
     ).where(
@@ -100,6 +96,13 @@ def attendee_read(pk):
             '/attendees/read.djhtml',
             row     = row,
             isAdmin = srv.auth.loggedInUser(flask.request),
+            show    = {
+                'Name'         : row.name,
+                'Email'        : row.email,
+                'Country'      : row.country,
+                'Registered On' : row.createdOn.strftime('%B %d %Y'),
+                'Category'     : row.category,
+            },
         )
 
 
