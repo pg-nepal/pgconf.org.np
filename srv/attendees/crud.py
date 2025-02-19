@@ -68,4 +68,11 @@ def attendee_read(pk):
             '/attendees/read.djhtml',
             isAdmin = srv.auth.loggedInUser(flask.request),
             row     = row,
+            show    = {
+                'Name'          : row.name,
+                'Email'         : row.email,
+                'Country'       : row.country,
+                'Registered On' : row.createdOn.strftime('%B %d %Y'),
+                'Category'      : row.category,
+            },
         )
