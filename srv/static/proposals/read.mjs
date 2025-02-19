@@ -114,3 +114,14 @@ export function reviewDelete(pk){
         location.reload()
     })
 }
+
+
+function proposalLoad(row) {
+    document.getElementById('createdOn.local').innerText = (new Date(row.createdOn)).toString()
+
+    for (let [key, val] of Object.entries(row)) {
+        const element = document.getElementById(`row.${key}`)
+        if (null === element) continue
+        element.innerHTML = val
+    }
+}
