@@ -1,3 +1,20 @@
+export function rateRead_summary(proposal_pk) {
+    fetch(`/api/rates/summary/${proposal_pk}`).then(function (response) {
+        return response.json()
+    }).then(function (json) {
+        document.getElementById('rating-avg').innerText = json.avg.toFixed(2)
+        document.getElementById('rating-count').innerText = json.count
+        const stars = document.getElementById('rating-avg-star')
+
+        Object.assign(stars.style, {
+            'background'              : `linear-gradient(to right, #fc0 0% ${json.percent}%, gray ${json.percent}% 100%)`,
+            '-webkit-background-clip' : 'text',
+            '-webkit-text-fill-color' : 'transparent',
+        })
+    })
+}
+
+
 function rateUpdate(proposal_pk, value) {
     fetch(`/api/rates/mine/${proposal_pk}`, {
         method  : 'POST',
