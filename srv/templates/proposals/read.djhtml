@@ -1,6 +1,27 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle = 'Proposal / Details' %}
-{% set pageDesc  = 'details of the proposal submitted by - {}'.format(row.name) %}
+
+
+{% block head  %}
+    <style>
+        .comment-section{
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 6px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            padding: 3%;
+        }
+
+        .rating-star {
+            padding : 0 0.3rem;
+            letter-spacing: 0.3rem;
+            background: gray;
+
+            transition: all 0.4s ease-in-out;
+        }
+    </style>
+{% endblock %}
 
 
 {% block head %}
@@ -19,29 +40,50 @@
 
 
 {% block admin_content %}
-    <h3>{{row.title}}</h3>
+    <h3 id="row.title"></h3>
 
-    <div class="info-table">
-        {% for key, value in meta.items() %}
-            <div class="info-row">
-                <div class="info-label">{{ key }}</div>
-                <div class="info-value">{{ value }}</div>
-            </div>
-        {% endfor %}
+    <p>
+        <span id="rating-avg">loading...</span>
+        <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
+        (<span id="rating-count">loading...</span> ratings)
+        <button class="btn">Rate this Proposal</button>
+    </p>
+
+    <div class="info-table" style="margin-bottom: 20px">
+        <div class="info-row">
+            <div class="info-label">Name</div>
+            <div class="info-value" id="row.name"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Email</div>
+            <div class="info-value" id="row.email"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Country</div>
+            <div class="info-value" id="row.country"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Submitted On</div>
+            <div class="info-value" id="createdOn.local"></div>
+        </div>
+
+        <div class="info-row">
+            <div class="info-label">Session Type</div>
+            <div class="info-value" id="row.session"></div>
+        </div>
     </div>
 
-    <div style="margin-top: 20px;">
+    <div style="margin-bottom: 20px;">
         <strong>Proposed Abstract</strong>
-        <p>{{row.abstract}}</p>
+        <p id="row.abstract"></p>
     </div>
 
     <hr/>
 
-    <div style="padding-top:20px;">
-        <div id="rating" class="rating" style="display: flex;"></div>
-    </div>
-
-    <div class="review">
+    <div class="reviews">
         <h3>Comments</h3>
         <div id="comment-section" class="comment-section"></div>
         <button id="comment-add" class="button">Add</button>
@@ -53,8 +95,8 @@
 {% block tail %}
     <script type="module">
         import * as proposals from '/static/proposals/read.mjs'
-        proposals.rateRead({{row.pk}})
-        proposals.reviewReadAll({{row.pk}})
+
+        proposals.init({{pk}})
 
         const eDialog = document.getElementById('dialog-comment')
         document.getElementById('comment-add').onclick = function (event) {
