@@ -14,5 +14,19 @@ export function checkPaymentReceipt(slug) {
     })
 }
 
+// registration_thanks
+export function sendEmail(slug, emailType) {
+    fetch(
+        `/api/mbox/queue_email`, {
+            method  : 'POST',
+            headers : { 'Content-Type' : 'application/json' },
+            body    : JSON.stringify({
+                slug : slug,
+                type : emailType
+            })
+    }).then(function (response) {
+        response.json().then(function(jsonResponse){
+            alert(jsonResponse.message)
+        })
     })
 }
