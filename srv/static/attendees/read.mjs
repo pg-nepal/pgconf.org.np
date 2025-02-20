@@ -8,7 +8,11 @@ export function checkPaymentReceipt(slug) {
                 "Payment receipt file  &#11147;"+
                 " <a href='/registered/payment_receipt_download/" + slug + "'>Download</a>"+
                 "</div>"
-            document.getElementById('submit-receiptFile').innerText = "Update receipt"
+            const btn = document.getElementById('submit-receiptFile')
+            if(btn) btn.innerText = "Update receipt"
         }
+    })
+}
+
     })
 }
