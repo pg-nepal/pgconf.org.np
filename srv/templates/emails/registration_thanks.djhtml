@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Thank you</title>
+</head>
+<body>
+    <h1>Hello, {{ name }}!</h1>
+    <p>Thank you for the registration</p>
+    <p>Best regards,<br>Organizing Team<br>PostgreSQL Conference, 2025</p>
+</body>
+</html>
