@@ -5,7 +5,8 @@ import sqlalchemy as sa
 import db
 import db.users
 import db.events
-import db.proposals
+import db.programs
+import db.mbox
 
 
 def main(schemas):
