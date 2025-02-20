@@ -11,6 +11,7 @@ import srv.attendees
 import srv.reviews
 import srv.rates
 import srv.dash
+import srv.mbox
 
 import jinja2
 
