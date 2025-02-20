@@ -3,6 +3,7 @@
 import sqlalchemy as sa
 
 import db
+import db.mbox
 import db.conf
 import db.programs
 
