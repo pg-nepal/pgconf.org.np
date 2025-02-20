@@ -20,6 +20,15 @@
             Payment details not found
         </div>
     </div>
+
+
+    <h3>&#128231; Communication</h3>
+    <div>
+        <button id="emailRegistrationThanks" data-type="registration_thanks" data-slug="{{row.slug}}">
+            Queue Welcome email
+        </button>
+    </div>
+
 {% endblock %}
 
 
@@ -28,5 +37,14 @@
         import * as attendees from '/static/attendees/read.mjs'
 
         attendees.checkPaymentReceipt('{{row.slug}}')
+
+        document.getElementById('emailRegistrationThanks').addEventListener('click', function () {
+            if (!confirm('Are you sure to queue the email?')) return
+
+            const btn = this
+            const emailType = this.getAttribute('data-type')
+            const slug      = this.getAttribute('data-slug')
+            attendees.sendEmail(slug, emailType)
+        })
     </script>
 {% endblock %}
