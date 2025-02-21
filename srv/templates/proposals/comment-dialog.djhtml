@@ -29,7 +29,9 @@
         <button class="button">Submit</button>
     </form>
 
-    <script>
+    <script type="module">
+        import * as proposals from '/static/proposals/read.mjs'
+
         const dialog = document.getElementById('dialog-comment')
         dialog.addEventListener('click', function (event) {
             if ('DIALOG' != event.target.tagName) return
