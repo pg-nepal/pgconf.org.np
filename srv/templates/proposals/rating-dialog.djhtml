@@ -118,4 +118,21 @@
 
             eDiv_dialogContainer.insertBefore(eDiv_ratingWrapper, elm.nextSibling)
         }
+
+        function changeStar(e, elm) {
+            const parent = e.target.parentElement
+            const childrenList = Array.prototype.slice.call(parent.children)
+            const clickedOn = e.target.getAttribute('data-value')
+            
+            for(let i=0; i<childrenList.length; i++) {
+                childrenList[i].classList.remove('active')
+                if(i < clickedOn) {
+                    childrenList[i].classList.add('active')
+                }
+            }
+
+            const activeStar = Array.from(parent.children).filter(span => span.classList.contains('active')).length
+            const questionIndex = Array.from(eDiv_dialogContainer.querySelectorAll('p')).indexOf(elm)
+            ratings[questionIndex] = activeStar
+        }
 </script>
