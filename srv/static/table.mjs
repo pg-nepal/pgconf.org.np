@@ -31,8 +31,7 @@ function createRow(headers, row, baseURL) {
                 const rateLink = document.createElement('a')
                 if (null == v){
                     console.log(pk)
-                    rateLink.innerText = `Rate this proposal`
-                    rateLink.href = `${baseURL}/action/${pk}`
+                    rateLink.innerText = `No Ratings`
                     eTd.append(rateLink)
                 }
                     
@@ -45,13 +44,8 @@ function createRow(headers, row, baseURL) {
                     }
                 }
                 const ed = document.createElement('div')
-                ed.style.display = 'flex'
                 ed.style.justifyContent = 'space-between'
-                ed.append(stars)
-                rateLink.innerText = `Rate this proposal`
-                rateLink.href = `${baseURL}/action/${pk}`
-                ed.append(rateLink)
-                eTd.append(ed)
+                eTd.append(stars)
                 break
 
             default:
