@@ -36,17 +36,17 @@ export function rateRead(proposal_pk) {
     fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
         return response.json()
     }).then(function (jsonData) {
-        const eDiv = document.getElementById('rating')
-        for (let i = 1; i <= 5; i++) {
-            const eSpan = document.createElement('span')
-            eSpan.id = `star-${i}`
-            eSpan.onclick = function () {
-                rateUpdate(proposal_pk, i)
+        const eDiv_dialogContainer = document.querySelector('.dialog-container')
+        const eDiv_rating = eDiv_dialogContainer.querySelectorAll('.rating')
+
+        const ratings = jsonData[1]
+        
+        for(let [idx, elem] of eDiv_rating.entries()) {
+            for(let i=0; i<elem.children.length; i++) {
+                if(i < ratings[idx]) {
+                    elem.children[i].classList.add('active')
+                }
             }
-            eSpan.classList = 'rating__star'
-            if (i <= jsonData) eSpan.classList.add('active')
-            eSpan.innerText = '⭐'
-            eDiv.append(eSpan)
         }
     })
 }
