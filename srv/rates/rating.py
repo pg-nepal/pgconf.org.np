@@ -36,6 +36,7 @@ def rate_read_mine(proposal_pk):
 
     query = sa.select(
         db.programs.Rate.value,
+        db.programs.Rate.score,
     ).where(
         db.programs.Rate.proposal_pk == proposal_pk,
         db.programs.Rate.createdBy   == isAdmin,
