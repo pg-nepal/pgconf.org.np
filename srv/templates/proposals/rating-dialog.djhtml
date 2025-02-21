@@ -1,0 +1,28 @@
+<dialog id="dialog-rating" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
+    </header>
+
+    <form id="form" method="dialog" style="padding-top:1.5rem">
+        <fieldset>
+            <div class="dialog-container">
+                
+                <p>How compelling was this proposal's title</p>
+                
+
+                <p>How concise was this proposal's abstract</p>
+
+
+                <p>How was the proposal's learning objective</p>
+
+
+                <p>How relevant was this proposal</p>
+            </div>
+        </fieldset>
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <button id="submit-btn" class="button">Submit</button>
+        </div>
+    </form>
+
+</dialog>
