@@ -65,7 +65,7 @@ def rate_update_or_insert(proposal_pk):
     if not ratings:
         return 'Ratings not provided', 400
 
-    avg = round(sum(ratings) / 4 * 100, 2)
+    avg = round(sum(ratings) / 4 * 100, 2) if ratings else 0
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
