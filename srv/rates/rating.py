@@ -57,7 +57,7 @@ def rate_update_or_insert(proposal_pk):
     jsonData = flask.request.json
     score = jsonData.get('score', {})
 
-    if not isinstance('score', dict) or not score:
+    if not isinstance(score, dict) or not score:
         return 'Invalid score format', 400
 
     ratings = [value for key, value in score.items()]
@@ -74,7 +74,8 @@ def rate_update_or_insert(proposal_pk):
             db.programs.Rate.proposal_pk == proposal_pk,
             db.programs.Rate.createdBy   == isAdmin,
         ).values(
-            value     = flask.request.json['value'],
+            value     = avg,
+            score     = score,
             updatedBy = isAdmin,
         ))
 
