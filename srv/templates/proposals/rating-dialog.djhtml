@@ -1,3 +1,46 @@
+<style>
+    dialog::backdrop {
+        backdrop-filter: contrast(50%);
+        }
+
+        #dialog-rating textarea {
+            width: 100%;
+            min-height: 100px;
+            border: 1px solid lightgray;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        
+        #dialog-rating fieldset{
+            border: none;
+            border: none;
+        }
+        
+        .rating__star{
+            font-size: 30px;
+            padding : 0 0.3rem;
+            letter-spacing: 0.3rem;
+            filter: grayscale(1);
+            cursor: pointer;
+        }
+
+        .rating__star.active{
+            filter: grayscale(0);
+        }
+
+        .dialog-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container{
+            display: flex;
+        }
+
+</style>
+
 <dialog id="dialog-rating" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
     <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
