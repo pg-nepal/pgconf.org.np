@@ -86,4 +86,36 @@
             dialog_rating.close()
         }
     })
+    
+    proposals.rateRead({{pk}})
+
+    const ratings = []
+
+    const eDiv_dialogContainer = document.querySelector('.dialog-container')
+        const eP_question = eDiv_dialogContainer.querySelectorAll('p')
+
+        for(let elm of eP_question) {
+            const eDiv_ratingWrapper = document.createElement('div')
+            eDiv_ratingWrapper.classList = 'rating-wrapper'
+            const eDiv_rating = document.createElement('div')
+            eDiv_rating.classList = 'rating'
+
+            eDiv_ratingWrapper.appendChild(eDiv_rating)
+
+            for(let i=1; i<=5; i++) {
+                const eSpan = document.createElement('span')
+                eSpan.id = `star-${i}`
+                eSpan.setAttribute('data-value', i)
+                eSpan.classList = 'rating__star'
+                eSpan.innerText = '⭐'
+
+                eSpan.onclick = function(e) {
+                    changeStar(e, elm)
+                }
+
+                eDiv_rating.appendChild(eSpan)
+            }
+
+            eDiv_dialogContainer.insertBefore(eDiv_ratingWrapper, elm.nextSibling)
+        }
 </script>
