@@ -8,6 +8,26 @@ import srv.auth
 from srv import app
 
 
+@app.get('/api/rates/mine/list/<int:proposal_pk>')
+def rate_list_mine(proposal_pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        db.Programs.Rate,
+    ).where(
+        db.programs.Rate.proposal_pk == proposal_pk,
+        db.programs.Rate.createdBy == isAdmin,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        return flask.jsonify(
+            [list(row) for row in cursor],
+        )
+
+
 @app.get('/api/rates/mine/<int:proposal_pk>')
 def rate_read_mine(proposal_pk):
     isAdmin = srv.auth.isValid(flask.request)
