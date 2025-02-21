@@ -54,3 +54,4 @@ class Rate(db.Base):
 
     proposal_pk    = sa.Column(sa.Integer, sa.ForeignKey(Proposal.pk, ondelete='CASCADE'))
     value          = sa.Column(sa.Integer, comment='average value of all the rates')
+    score          = sa.Column(sa.JSON, comment='JSON data of all the ratings for a proposal')
