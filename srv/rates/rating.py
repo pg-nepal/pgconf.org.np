@@ -85,7 +85,8 @@ def rate_update_or_insert(proposal_pk):
         session.execute(sa.insert(
             db.programs.Rate,
         ).values(
-            value       = flask.request.json['value'],
+            value       = avg,
+            score       = score,
             proposal_pk = proposal_pk,
             createdBy   = isAdmin,
             updatedBy   = isAdmin,
