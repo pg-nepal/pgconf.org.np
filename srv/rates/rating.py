@@ -54,6 +54,19 @@ def rate_update_or_insert(proposal_pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
+    jsonData = flask.request.json
+    score = jsonData.get('score', {})
+
+    if not isinstance(score, dict) or not score:
+        return 'Invalid score format', 400
+
+    ratings = [value for key, value in score.items()]
+
+    if not ratings:
+        return 'Ratings not provided', 400
+
+    avg = round(sum(ratings) / 4 * 100, 2) if ratings else 0
+
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
             db.programs.Rate,
@@ -61,7 +74,8 @@ def rate_update_or_insert(proposal_pk):
             db.programs.Rate.proposal_pk == proposal_pk,
             db.programs.Rate.createdBy   == isAdmin,
         ).values(
-            value     = flask.request.json['value'],
+            value     = avg,
+            score     = score,
             updatedBy = isAdmin,
         ))
 
@@ -71,7 +85,8 @@ def rate_update_or_insert(proposal_pk):
         session.execute(sa.insert(
             db.programs.Rate,
         ).values(
-            value       = flask.request.json['value'],
+            value       = avg,
+            score       = score,
             proposal_pk = proposal_pk,
             createdBy   = isAdmin,
             updatedBy   = isAdmin,
