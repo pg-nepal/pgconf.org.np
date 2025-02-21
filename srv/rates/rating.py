@@ -45,7 +45,7 @@ def rate_read_mine(proposal_pk):
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
         row = cursor.first()
-        return flask.jsonify(row and row.value)
+        return flask.jsonify(row)
 
 
 @app.post('/api/rates/mine/<int:proposal_pk>')
