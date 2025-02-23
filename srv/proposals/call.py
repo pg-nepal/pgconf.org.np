@@ -6,6 +6,7 @@ import sqlalchemy as sa
 import db
 import db.programs
 import srv.captcha
+import srv.mbox.out
 
 from srv import app
 
@@ -36,9 +37,29 @@ def proposal_call_create():
     ).values(
         **formData,
         createdBy = email,
+    ).returning(
+        db.programs.Proposal.pk,
     )
 
     with db.SessionMaker.begin() as session:
-        session.execute(query)
+        cursor = session.execute(query)
 
-    return flask.redirect('/pages/call-for-proposal')
+        emailBody = flask.render_template (
+            '/emails/cfp_thanks.djhtml',
+            name      = formData['name'],
+            email     = email,
+            title     = formData['title'],
+            session   = formData['session'],
+            abstract  = formData['abstract'],
+        )
+
+        srv.mbox.out.queue(
+            ref     = cursor.scalar(),
+            to      = email,
+            cc      = None,
+            subject = 'Thank You for submitting the proposal',
+            body    = emailBody,
+            note    = 'talk submission',
+        )
+
+        return flask.redirect('/pages/call-for-proposal')
