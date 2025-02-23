@@ -9,6 +9,8 @@ import sqlalchemy as sa
 import db
 import db.conf
 import srv.captcha
+import srv.mbox.out
+
 
 from srv import app
 
@@ -52,14 +54,17 @@ def registered_create():
 
     discount_student = 2000 if category == 'student' else 0
     discount_early = 2000 if count < 20 else 0
+    fee = 7000 - discount_student - discount_early
+    status = 'pending'
+    ticket = 'ticket'
 
     query = sa.insert(
         db.conf.Attendee,
     ).values(
         **formData,
-        fee    = 7000 - discount_student - discount_early,
-        status = 'pending',
-        ticket = 'ticket',
+        fee    = fee,
+        status = status,
+        ticket = ticket,
     ).returning(
         db.conf.Attendee.slug,
     )
@@ -67,8 +72,22 @@ def registered_create():
     try:
         with db.SessionMaker.begin() as session:
             cursor = session.execute(query)
+            slug = cursor.scalar()
+
+            emailBody = flask.render_template(
+                'emails/registration_thanks.djhtml',
+                name     = formData['name'],
+                email    = formData['email'],
+                fee      = fee,
+                category = category,
+                status   = status,
+                slug     = slug,
+            )
+            subject = 'Thank You for registering for the PostgreSQL Conference - Next Steps'
+            to      = formData['email']
+            srv.mbox.out.queue(slug, to, None, subject, emailBody)
             # not returning 201 because of redirection
-            return flask.redirect('/registered/{}'.format(cursor.scalar()))
+            return flask.redirect('/registered/{}'.format(slug))
     except sa.exc.IntegrityError as e:
         if isinstance(e.orig, psycopg.errors.UniqueViolation):
             return 'email in used has already been registered', 400
