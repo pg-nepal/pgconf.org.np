@@ -1,11 +1,37 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Thank you</title>
-</head>
-<body>
-    <h1>Hello, {{ name }}!</h1>
-    <p>Thank you for the registration</p>
-    <p>Best regards,<br>Organizing Team<br>PostgreSQL Conference, 2025</p>
-</body>
-</html>
+{% extends "emails/base.djhtml" %}
+{% block main %}
+    <h3>Registration</h3>
+    <p>Dear {{name}},</p>
+    <p>Thank you for registering for the 3rd PostgreSQL Conference Name! We are excited to have you join us for this insightful event.</p>
+
+    <h3>Registration Details: {{status}}</h3>
+    <div class="details">
+        <p><strong>Full Name:</strong> {{name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Category:</strong> {{category}}</p>
+        <p><strong>Conference Date:</strong> 5-6 May, 2025</p>
+        <p><strong>Pre-Conference Training Date:</strong> 3-4 May, 2025</p>
+    </div>
+
+    <h3>Payment Information</h3>
+    <p>Total registration fee: Rs. {{fee}} </p>
+    <p>To confirm your participation, please complete your payment at your earliest convenience. You can review your registration details and process the payment via the following link[1]:</p>
+    <a href="https://pgconf.org.np/registered/{{slug}}" class="button">Profile</a>
+    <br>
+    <br>
+    [1]: https://pgconf.org.np/registered/{{slug}}
+
+    <p>Note for International participants: we only support wire transfer. For the details contact us via email.</p>
+    <p>
+        If you have already completed the payment, kindly disregard this message. If you have any questions or need assistance, please feel free to contact us at info@pgconf.org.np.
+    </p>
+
+    <p>We look forward to welcoming you to the conference!</p>
+
+    <p>
+        Best regards,<br>
+        Conference Organizing Team<br>
+        info@pgconf.org.np<br>
+    </p>
+
+{% endblock %}
