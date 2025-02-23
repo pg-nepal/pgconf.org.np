@@ -1,0 +1,32 @@
+{% extends "emails/base.djhtml" %}
+{% block main %}
+    <h3>Call for proposal submission</h3>
+    <p>Dear {{name}},</p>
+    <p>Thank you for submitting your talk proposal. We appreciate your interest and contribution.</p>
+    <p>Here are the details of your submission:</p>
+
+    <h3>Talk Details:</h3>
+    <div class="details">
+        <p><strong>Speaker Name:</strong> {{name}}</p>
+        <p><strong>Email:</strong> {{email}}</p>
+        <p><strong>Session:</strong> {{session}}</p>
+        <p><strong>Title:</strong> {{title}}</p>
+    </div>
+
+    <p><strong>Abstract:</strong></p>
+    <p>{{abstract}}</p>
+
+    <h3>Selection Procedure</h3>
+    <p>
+        Talk Selection Comittee, will review all submissions, and we will contact you soon regarding the selection result. If you have any questions in the meantime, feel free to reach out.
+    </p>
+
+    <p>We look forward to welcoming you to the conference!</p>
+
+    <p>
+        Best regards,<br>
+        Conference Organizing Team<br>
+        info@pgconf.org.np<br>
+    </p>
+
+{% endblock %}
