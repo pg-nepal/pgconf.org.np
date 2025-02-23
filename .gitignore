@@ -5,3 +5,4 @@ venv
 
 # files
 users.json
+email_config.py
