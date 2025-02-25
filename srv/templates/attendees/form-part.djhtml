@@ -24,3 +24,15 @@
         <option value="professional">Professional</option>
     </select>
 </div>
+
+<div class="fields" style="margin-top: 10px;">
+    <label><b>Registration for</b> <sup>*</sup></label>
+    <div>
+        <input type="checkbox" id="isMainConference" name="isMainConference" checked />
+        <label for="isMainConference">Main Conference</label>
+    </div>
+    <div>
+        <input type="checkbox" id="isTraining" name="isTraining" />
+        <label for="isTraining">Pre-Conference Training</label>
+    </div>
+</div>
