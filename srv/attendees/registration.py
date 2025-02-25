@@ -78,11 +78,15 @@ def registered_create():
             db.events.Attendee.category == category,
         ))
 
-        count = cursor.scalar()
+        limit_count = cursor.scalar()
 
-    discount_student = 2000 if category == 'student' else 0
-    discount_early = 2000 if count < 20 else 0
-    fee = 7000 - discount_student - discount_early
+    isMainConference = formData.get('isMainConference')
+    if isMainConference: formData.pop('isMainConference')
+    isTraining = formData.get('isTraining')
+    if isTraining: formData.pop('isTraining')
+
+    totalFee, tickets = generate_ticket(isMainConference, isTraining, category, limit_count)
+
     status = 'pending'
     ticket = 'ticket'
 
@@ -90,25 +94,47 @@ def registered_create():
         db.events.Attendee,
     ).values(
         **formData,
-        fee    = fee,
+        isMainConference = True if isMainConference else False,
+        isTraining       = True if isTraining else False,
+        fee    = totalFee,
         status = status,
         ticket = ticket,
     ).returning(
+        db.events.Attendee.pk,
         db.events.Attendee.slug,
     )
 
     try:
         with db.SessionMaker.begin() as session:
             cursor = session.execute(query)
-            slug = cursor.scalar()
+
+            attendees = cursor.mappings().fetchall()
+            slug = attendees[0]['slug']
+            attendees_pk = attendees[0]['pk']
+
+            # insert into the tickets
+            tickets = [{**ticket, 'paidAmt' : 0, 'attendees_pk': attendees_pk} for ticket in tickets]
+
+            query_ticket = sa.insert (
+                db.events.Ticket,
+            ).values (
+                tickets,
+            ).returning (
+                db.events.Ticket.ticketType,
+                db.events.Ticket.fee,
+            )
+            cursor = session.execute(query_ticket)
+
+            tickets = [list(row) for row in cursor]
 
             emailBody = flask.render_template(
                 'emails/registration_thanks.djhtml',
                 name     = formData['name'],
                 email    = formData['email'],
-                fee      = fee,
+                fee      = totalFee,
                 category = category,
                 status   = status,
+                tickets  = [list(row) for row in cursor],
                 slug     = slug,
             )
             subject = 'Thank You for registering for the PostgreSQL Conference - Next Steps'
