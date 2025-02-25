@@ -21,7 +21,7 @@
         <h3>Key Dates</h3>
         <p>Proposal Submission Deadline: <strong>30 April, 2025</strong></p>
 
-        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size:120%">
+        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'" style="font-size:120%">
             Submit Your Proposal
         </button>
 
