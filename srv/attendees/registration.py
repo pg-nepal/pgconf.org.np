@@ -257,3 +257,24 @@ def registered_payment_receipt_file_download(slug):
             download_name = download_name,
             mimetype      = mime_type,
         )
+
+
+@app.get('/registered/ticket/<slug>')
+def registered_ticket_read(slug):
+    query = sa.select(
+        sa.cast(db.events.Ticket.ticketType, sa.String).label('ticketType'),
+        db.events.Ticket.fee,
+        db.events.Ticket.paymentStatus,
+    ).join(
+        db.events.Attendee,
+        db.events.Attendee.pk == db.events.Ticket.attendees_pk,
+    ).where(
+        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+    )
+
+    with db.engine.connect() as connection:
+        rows = connection.execute(query).all()
+
+        return flask.jsonify(
+            data = rows,
+        )
