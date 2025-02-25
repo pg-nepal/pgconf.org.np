@@ -51,6 +51,26 @@
         </tbody>
     </table>
 
+    <h3>Ticket</h3>
+    <table id="ticket-table" style="display: none;" >
+        <thead id ="table-head">
+            <tr>
+                <th>Ticket</th>
+                <th>Rate</th>
+                <th>Payment Status</th>
+            </tr>
+        </thead>
+        <tbody id="table-body"></tbody>
+    </table>
+
+    <template id="row-template">
+        <tr>
+            <td class="ticket"></td>
+            <td class="rate"></td>
+            <td class="status"></td>
+        </tr>
+    </template>
+
     {% if row.country.lower() != 'nepal' %}
         <h3>&#128712; International Participantion</h3>
         <div class="alert alert-danger">
@@ -171,5 +191,6 @@
     <script type="module">
         import * as attendees from '/static/attendees/read.mjs'
         attendees.checkPaymentReceipt(`{{row.slug}}`)
+        attendees.getTicketDetails(`{{row.slug}}`)
     </script>
 {% endblock %}
