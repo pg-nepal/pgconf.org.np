@@ -37,6 +37,9 @@ class Attendee(db.Base):
     phone          = sa.Column(sa.String(10))
 
     country        = sa.Column(sa.String(30), nullable=False)
+    bio            = sa.Column(sa.Text(), comment='basic intro')
+    affiliation    = sa.Column(sa.String(256), comment='affiliation & position')
+    photoBlob      = sa.Column(sa.LargeBinary)
 
     forMain        = sa.Column(sa.Boolean, comment='main conference')
     forPre         = sa.Column(sa.Boolean, comment='pre confrence')
