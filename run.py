@@ -8,6 +8,7 @@ import datetime as dt
 import srv.pages
 import srv.proposals
 import srv.attendees
+import srv.programs
 import srv.reviews
 import srv.rates
 import srv.dash
