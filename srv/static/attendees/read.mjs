@@ -13,6 +13,28 @@ export function checkPaymentReceipt(slug) {
 }
 
 
+export function getTicketDetails(slug) {
+    fetch(`/registered/ticket/${slug}`).then(function (response) {
+        if (response.status == 200) {
+            const tableBody = document.getElementById('table-body')
+            const template = document.getElementById('row-template')
+            response.json().then(function (json){
+                json.data.forEach(function (ticket) {
+                    const row = template.content.cloneNode(true)
+                    row.querySelector('.ticket').textContent = ticket[0]
+                    row.querySelector('.rate').textContent   = ticket[1]
+                    row.querySelector('.status').textContent = ticket[2]
+                    tableBody.appendChild(row)
+                })
+                document.getElementById('ticket-table').style = ''
+            })
+        } else {
+            document.getElementById('ticket-table').style.display = 'none'
+        }
+    })
+}
+
+
 // registration_thanks
 export function sendEmail(slug, emailType) {
     fetch(
