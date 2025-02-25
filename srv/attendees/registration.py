@@ -22,6 +22,34 @@ FILE_MAGIC_NUMBERS = {
 }
 
 
+def generate_ticket(isMainConference, isTraining, category, limit):
+    confFee     = 7000
+    trainingFee = 10000
+    tickets = []
+
+    if isMainConference:
+        discount_student = 2000 if category == 'student' else 0
+        discount_early = 2000 if limit < 20 else 0
+        confFee = confFee - discount_student - discount_early
+
+        tickets.append({
+            'ticketType'    : 'Main Conference',
+            'fee'           : confFee,
+            'paymentStatus' : 'unpaid',
+        })
+
+    totalFee = confFee
+    if isTraining:
+        totalFee = totalFee + trainingFee
+        tickets.append({
+            'ticketType'    : 'Pre-Conference Training',
+            'fee'           : trainingFee,
+            'paymentStatus' : 'unpaid',
+        })
+
+    return totalFee, tickets
+
+
 @app.get('/registered/form')
 def registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
