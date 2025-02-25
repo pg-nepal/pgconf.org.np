@@ -38,6 +38,9 @@ class Attendee(db.Base):
 
     country        = sa.Column(sa.String(30), nullable=False)
 
+    forMain        = sa.Column(sa.Boolean, comment='main conference')
+    forPre         = sa.Column(sa.Boolean, comment='pre confrence')
+
     category       = sa.Column(sa.String(100), nullable=False, comment='participant category for discount')
     fee            = sa.Column(sa.Integer)
     ticket         = sa.Column(sa.String(500))
