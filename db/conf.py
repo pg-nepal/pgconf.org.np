@@ -46,3 +46,39 @@ class Attendee(db.Base):
     ticket         = sa.Column(sa.String(500))
     status         = sa.Column(p_attendees_status, server_default='pending')
     receiptBlob    = sa.Column(sa.LargeBinary, comment='payment receipt')
+
+
+ticket_types = (
+    'Main Conference',
+    'Pre-Conference Training',
+)
+e_ticket_type = enum.IntEnum('ticket_types', ticket_types)
+p_ticket_type = sa.Enum(
+    e_ticket_type,
+    schema   = 'conf25',
+    metadata = db.meta,
+)
+
+
+class Ticket(db.Base):
+    __tablename__  = 'tickets'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'conference registrations tickets',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    attendees_pk   = sa.Column(sa.Integer, nullable=False)
+
+    ticketType     = sa.Column(p_ticket_type, server_default='Main Conference')
+    fee            = sa.Column(sa.Numeric(10,2))
+
+    paidAmt            = sa.Column(sa.Numeric(10,2))
+    paymentReceiptFile = sa.Column(sa.LargeBinary)
+    paymentLinkedTo    = sa.Column(sa.Integer) # self reference; workout needed for case of the multiple self reference
+
+    paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
+    paymentNote    = sa.Column(sa.Text)
+
+    ticketNumber   = sa.Column(sa.String(256))
+    ticketNote     = sa.Column(sa.Text)
