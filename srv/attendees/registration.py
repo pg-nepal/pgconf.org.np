@@ -242,7 +242,7 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
-        sa.cast(db.events.Ticket.type, sa.String).label('ticketType'),
+        db.events.Ticket.type,
         db.events.Ticket.fee,
         db.events.Ticket.paymentStatus,
     ).join(
