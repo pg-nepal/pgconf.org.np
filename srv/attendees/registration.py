@@ -183,10 +183,13 @@ def registered_update(slug):
 @app.get('/registered/payment_receipt_check/<slug>')
 def registered_payment_receipt_file_check(slug):
     query = sa.select(
-        db.events.Attendee.pk,
+        db.events.Ticket.pk,
+    ).join(
+        db.events.Attendee,
+        db.events.Ticket.attendee_pk == db.events.Attendee.pk
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
-        db.events.Attendee.receiptBlob.isnot(None),
+        db.events.Ticket.receiptBlob.isnot(None),
     )
 
     with db.engine.connect() as connection:
