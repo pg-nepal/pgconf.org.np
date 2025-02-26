@@ -53,23 +53,9 @@
 
     <h3>Ticket</h3>
     <table id="ticket-table" style="display: none;" >
-        <thead id ="table-head">
-            <tr>
-                <th>Ticket</th>
-                <th>Rate</th>
-                <th>Payment Status</th>
-            </tr>
-        </thead>
-        <tbody id="table-body"></tbody>
+        <thead><tr><tr></thead>
+        <tbody></tbody>
     </table>
-
-    <template id="row-template">
-        <tr>
-            <td class="ticket"></td>
-            <td class="rate"></td>
-            <td class="status"></td>
-        </tr>
-    </template>
 
     <p>Total Amount: <strong id="total-amount"></span></strong></p>
 
