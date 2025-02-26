@@ -70,84 +70,42 @@ def registered_form():
 
 @app.post('/registered/add')
 def registered_create():
-    formData = flask.request.form.to_dict()
+    jsonData = flask.request.json
 
-    idx = int(formData.pop('idx'))
-    answer = formData.pop('answer').upper()
-
+    idx = jsonData.pop('idx')
+    answer = jsonData.pop('answer').upper()
     if answer != srv.captcha.questions[idx][1]:
         return 'Incorrect answer', 400
 
-    category = formData.get('category')
-    with db.engine.connect() as connection:
-        # why this?
-        cursor = connection.execute(sa.select(
-            sa.func.count().label('count'),
-        ).where(
-            db.conf.Attendee.category == category,
-        ))
-
-        limit_count = cursor.scalar()
-
-    isMainConference = formData.get('isMainConference')
-    if isMainConference: formData.pop('isMainConference')
-    isTraining = formData.get('isTraining')
-    if isTraining: formData.pop('isTraining')
-
-    totalFee, tickets = generate_ticket(isMainConference, isTraining, category, limit_count)
-
-    status = 'pending'
-    ticket = 'ticket'
-
-    query = sa.insert(
-        db.conf.Attendee,
-    ).values(
-        **formData,
-        isMainConference = True if isMainConference else False,
-        isTraining       = True if isTraining else False,
-        fee    = totalFee,
-        status = status,
-        ticket = ticket,
-    ).returning(
-        db.conf.Attendee.pk,
-        db.conf.Attendee.slug,
-    )
+    events = jsonData.pop('events')
 
     try:
         with db.SessionMaker.begin() as session:
-            cursor = session.execute(query)
+            cursor = session.execute(sa.insert(
+                db.conf.Attendee,
+            ).values(
+                **jsonData,
+            ).returning(
+                db.conf.Attendee.pk,
+                db.conf.Attendee.slug,
+                db.conf.Attendee.email,
+                db.conf.Attendee.category,
+            ))
 
-            attendees = cursor.mappings().fetchall()
-            slug = attendees[0]['slug']
-            attendees_pk = attendees[0]['pk']
+            attendee = cursor.mappings().first()
 
-            query_ticket = sa.insert (
+            cursor = session.execute(sa.insert(
                 db.conf.Ticket,
-            ).values([{
-                **ticket,
-                'paidAmt'      : 0,
-                'attendees_pk' : attendees_pk,
-            } for t in tickets]).returning(
-                db.conf.Ticket.ticketType,
+            ).values(
+                tickets_generate(attendee, events),
+            ).returning(
+                db.conf.Ticket.type,
                 db.conf.Ticket.fee,
-            )
-            cursor = session.execute(query_ticket)
+            ))
 
-            emailBody = flask.render_template(
-                'emails/registration_thanks.djhtml',
-                name     = formData['name'],
-                email    = formData['email'],
-                fee      = totalFee,
-                category = category,
-                status   = status,
-                tickets  = [list(row) for row in cursor],
-                slug     = slug,
-            )
-            subject = 'Thank You for registering for the PostgreSQL Conference - Next Steps'
-            to      = formData['email']
-            srv.mbox.out.queue(slug, to, None, subject, emailBody)
+            # srv.mbox.queue.after_registration(attendee)
             # not returning 201 because of redirection
-            return flask.redirect('/registered/{}'.format(slug))
+            return flask.redirect('/registered/{}'.format(attendee.slug))
     except sa.exc.IntegrityError as e:
         if isinstance(e.orig, psycopg.errors.UniqueViolation):
             return 'email in used has already been registered', 400
@@ -161,10 +119,10 @@ def registered_read(slug):
         db.conf.Attendee.name,
         db.conf.Attendee.email,
         db.conf.Attendee.country,
-        db.conf.Attendee.fee,
         db.conf.Attendee.slug,
-        db.conf.Attendee.receiptPath,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
+
+        # db.conf.Tickets.fee,
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
     )
