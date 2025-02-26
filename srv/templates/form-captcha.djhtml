@@ -13,12 +13,12 @@
 
 {% block main_content %}
     <div class="headings">
-        <h1></h1>
+        <h1>{{pageTitle}}</h1>
     </div>
 
     <form id="wtf-form" method="POST" enctype="multipart/form-data">
         <fieldset>
-            {% include {{fields}} %}
+            {% include fields %}
         </fieldset>
 
         <fieldset>
@@ -40,6 +40,10 @@
 
 {% block scripts %}
     <script type="module">
+        import * as form from '{{script}}'
+
+        form.init()
+
         document.getElementById('wtf-form').addEventListener('submit', function (event) {
             event.preventDefault()
             event.stopPropagation()
@@ -49,7 +53,22 @@
             submitBtn.disabled = true
             submitBtn.innerText = 'Processing ...'
 
-            fetch('/', {
+            const formData = new FormData(event.target)
+            form.post(formData, {{idx}}).then(function (response) {
+                if (500 <= response.status) {
+                    throw new Error(response.statusText)
+                }
+
+                if (200 > response.status || 300 <= response.status) {
+                    return response.text().then(function (text) {
+                        alert(text)
+                    })
+                }
+
+                if (true == response.redirected) {
+                    alert('submitted successfully')
+                    window.location = response.url
+                }
             }).catch(function (error) {
                 console.error(error)
                 alert('Oops! something went wrong')
