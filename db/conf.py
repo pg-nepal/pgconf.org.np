@@ -45,6 +45,7 @@ class Attendee(db.Base):
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
     slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
+    type           = sa.Column(p_attendees_type, server_default=e_attendees_type.participant.name)
 
     name           = sa.Column(sa.String(50), nullable=False)
     email          = sa.Column(sa.String(256), unique=True, nullable=False)
