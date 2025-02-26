@@ -74,7 +74,7 @@
     <p>Total Amount: <strong id="total-amount"></span></strong></p>
 
     {% if row.country.lower() != 'nepal' %}
-        <h3>&#128712; International Participantion</h3>
+        <h3>&#128712; International Participants Payment</h3>
         <div class="alert alert-danger">
             For International Participants, we only accept the bank transfer or on-site registration.
             <p>For further details please write us to: <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></p>
