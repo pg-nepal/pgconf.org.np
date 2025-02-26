@@ -21,6 +21,20 @@ p_attendees_status = sa.Enum(
     metadata = db.meta,
 )
 
+attendees_type = (
+    'organizer',
+    'volunteers',
+    'participant',
+    'speaker',
+    'guest',
+)
+e_attendees_type = enum.IntEnum('attendees_type', attendees_type)
+p_attendees_type = sa.Enum(
+    e_attendees_type,
+    schema   = 'conf25',
+    metadata = db.meta,
+)
+
 
 class Attendee(db.Base):
     __tablename__  = 'attendees'
