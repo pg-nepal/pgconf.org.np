@@ -255,9 +255,10 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
-        db.conf.Ticket.type,
-        db.conf.Ticket.fee,
-        db.conf.Ticket.paymentStatus,
+        db.conf.Ticket.type.label('Event'),
+        db.conf.Ticket.currency.label('Currency'),
+        db.conf.Ticket.fee.label('Amount'),
+        db.conf.Ticket.paymentStatus.label('Payment Status'),
     ).join(
         db.conf.Attendee,
         db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
@@ -266,8 +267,8 @@ def registered_ticket_read(slug):
     )
 
     with db.engine.connect() as connection:
-        rows = connection.execute(query).all()
-
+        cursor = connection.execute(query)
         return flask.jsonify(
-            data = rows,
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [list(row) for row in cursor],
         )
