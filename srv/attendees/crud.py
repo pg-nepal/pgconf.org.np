@@ -41,8 +41,7 @@ def attendee_list_api():
         db.conf.Attendee.name,
         db.conf.Attendee.email,
         db.conf.Attendee.category,
-        db.conf.Attendee.fee,
-        db.conf.Attendee.slug,
+        sa.cast(db.conf.Attendee.type, sa.String).label('type'),
         db.conf.Attendee.createdOn,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
     )
