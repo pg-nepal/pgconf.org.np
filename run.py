@@ -18,8 +18,6 @@ import jinja2
 
 from srv import app
 
-from config.analytics import G_TAG
-
 
 app.jinja_env.globals.update({
     'eventOn_pre' : dt.datetime(2025, 5, 3),
@@ -79,9 +77,9 @@ def main():
         srv.app.jinja_env.undefined = jinja2.StrictUndefined
 
     if sysArgs.debug is False:
-        app.jinja_env.globals.update({
-            'G_TAG'   : G_TAG,
-        })
+        if os.path.exists('config/analytics.py'):
+            analytics = importlib.import_module('config.analytics')
+            app.jinja_env.globals['G_TAG'] = analytics.G_TAG
 
         print('live at http://{}:{}'.format(sysArgs.expose, sysArgs.port))
         corn = importlib.import_module('corn')
