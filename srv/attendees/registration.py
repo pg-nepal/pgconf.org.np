@@ -108,7 +108,8 @@ def registered_create():
             return flask.redirect('/registered/{}'.format(attendee.slug))
     except sa.exc.IntegrityError as e:
         if isinstance(e.orig, psycopg.errors.UniqueViolation):
-            return 'email in used has already been registered', 400
+            if e.orig.diag.constraint_name == 'attendees_email_key':
+                return 'email in used has already been registered', 400
         traceback.print_exc()
         raise e
 
