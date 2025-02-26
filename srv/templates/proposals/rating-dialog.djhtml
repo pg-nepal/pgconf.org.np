@@ -24,19 +24,37 @@
         cursor: pointer;
     }
 
-    .rating__star.active{
-        filter: grayscale(0);
+    #dialog-rating fieldset{
+        border: none;
+        border: none;
+    }
+
+    .rating_symbol{
+        font-size: 40px;
+        padding : 0 0.5rem;
+        letter-spacing: 0.2rem;
+        color: black;
+        cursor: pointer;
+    }
+
+    .rating_symbol.active{
+        color: orange;
     }
 
     .dialog-container{
-        display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
     }
 
-    .container{
+    .dialog-container th,td{
+        max-width: 100% !important;
+    }
+
+    .overall-wrapper{
         display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 40px;
     }
 
 </style>
@@ -46,20 +64,24 @@
         <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
     </header>
 
-    <form id="form" method="dialog" style="padding-top:1.5rem">
+    <form id="ratings" method="dialog" style="padding-top:1.5rem">
         <fieldset>
             <div class="dialog-container">
-
-                <p>How compelling was this proposal's title</p>
-
-
-                <p>How concise was this proposal's abstract</p>
-
-
-                <p>How was the proposal's learning objective</p>
-
-
-                <p>How relevant was this proposal</p>
+                <table class="table-container">
+                    <thead>
+                        <tr>
+                            <th rowspan="2">Topic</th>
+                            <th rowspan="1" colspan="5">Ratings</th>
+                        </tr>
+                        <tr>
+                            <th>1</th>
+                            <th>2</th>
+                            <th>3</th>
+                            <th>4</th>
+                            <th>5</th>
+                        </tr>
+                    </thead>
+                </table>
             </div>
         </fieldset>
 
@@ -72,6 +94,8 @@
 
 <script type="module">
     import * as proposals from '/static/proposals/read.mjs'
+
+    const ratingDialogBtn = document.getElementById('rating-dialog-btn')
     const dialog_rating = document.getElementById('dialog-rating')
     dialog_rating.addEventListener('click', function (event) {
         if ('DIALOG' != event.target.tagName) return
@@ -86,53 +110,24 @@
             dialog_rating.close()
         }
     })
-    
-    proposals.rateRead({{pk}})
 
-    const ratings = []
+    proposals.rateRead('{{pk}}')
 
-    const eDiv_dialogContainer = document.querySelector('.dialog-container')
-        const eP_question = eDiv_dialogContainer.querySelectorAll('p')
+    const submitBtn = document.getElementById('submit-btn')
+    submitBtn.onclick = submitRating
 
-        for(let elm of eP_question) {
-            const eDiv_ratingWrapper = document.createElement('div')
-            eDiv_ratingWrapper.classList = 'rating-wrapper'
-            const eDiv_rating = document.createElement('div')
-            eDiv_rating.classList = 'rating'
+    function submitRating() {
+        fetch('/api/rates/mine/{{pk}}', {
+            method: 'POST',
+            headers: { 'content-type': 'application/json' },
+            body: JSON.stringify({
+                score   : Object.fromEntries(new FormData(document.getElementById('ratings'))),
+                value   : document.getElementById('star-value').getAttribute('data-value') || 0,
+            })
+        }).then(function(response) {
+            alert('Rating submitted successfully')
+            location.reload()
+        })
+    }
 
-            eDiv_ratingWrapper.appendChild(eDiv_rating)
-
-            for(let i=1; i<=5; i++) {
-                const eSpan = document.createElement('span')
-                eSpan.id = `star-${i}`
-                eSpan.setAttribute('data-value', i)
-                eSpan.classList = 'rating__star'
-                eSpan.innerText = '⭐'
-
-                eSpan.onclick = function(e) {
-                    changeStar(e, elm)
-                }
-
-                eDiv_rating.appendChild(eSpan)
-            }
-
-            eDiv_dialogContainer.insertBefore(eDiv_ratingWrapper, elm.nextSibling)
-        }
-
-        function changeStar(e, elm) {
-            const parent = e.target.parentElement
-            const childrenList = Array.prototype.slice.call(parent.children)
-            const clickedOn = e.target.getAttribute('data-value')
-            
-            for(let i=0; i<childrenList.length; i++) {
-                childrenList[i].classList.remove('active')
-                if(i < clickedOn) {
-                    childrenList[i].classList.add('active')
-                }
-            }
-
-            const activeStar = Array.from(parent.children).filter(span => span.classList.contains('active')).length
-            const questionIndex = Array.from(eDiv_dialogContainer.querySelectorAll('p')).indexOf(elm)
-            ratings[questionIndex] = activeStar
-        }
 </script>
