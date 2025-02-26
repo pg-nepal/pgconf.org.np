@@ -85,6 +85,7 @@ class Ticket(db.Base):
     attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
 
     type           = sa.Column(p_tickets_type, server_default=e_tickets_type.main.name)
+    currency       = sa.Column(sa.String(10), server_default='NRs.')
     fee            = sa.Column(sa.Numeric(10, 2))
 
     paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
