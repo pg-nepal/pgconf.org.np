@@ -20,6 +20,9 @@ from srv import app
 
 
 app.jinja_env.globals.update({
+    'eventOn_pre' : dt.datetime(2025, 5, 3),
+    'eventTo_pre' : dt.datetime(2025, 5, 4),
+
     'eventOn' : dt.datetime(2025, 5, 5),
     'eventTo' : dt.datetime(2025, 5, 6),
 })
