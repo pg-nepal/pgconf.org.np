@@ -61,11 +61,11 @@ class Attendee(db.Base):
     status         = sa.Column(p_attendees_status, server_default='pending')
 
 
-tickets_type = (
-    'main',
-    'pre',
-)
-e_tickets_type = enum.IntEnum('tickets_type', tickets_type)
+tickets_type = {
+    'main' : 'Main Conference',
+    'pre'  : 'Pre Conference Traning',
+}
+e_tickets_type = enum.StrEnum('tickets_type', tickets_type)
 p_tickets_type = sa.Enum(
     e_tickets_type,
     schema   = 'conf25',
