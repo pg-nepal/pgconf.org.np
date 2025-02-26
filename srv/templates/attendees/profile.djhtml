@@ -71,6 +71,8 @@
         </tr>
     </template>
 
+    <p>Total Amount: <strong id="total-amount"></span></strong></p>
+
     {% if row.country.lower() != 'nepal' %}
         <h3>&#128712; International Participantion</h3>
         <div class="alert alert-danger">
