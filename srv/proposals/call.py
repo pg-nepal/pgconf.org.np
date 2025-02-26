@@ -15,6 +15,15 @@ from srv import app
 def proposal_call_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
     return flask.render_template(
+        '/form-captcha.djhtml',
+        pageTitle = '/ Call for Proposal',
+        fields    = '/proposals/form-part.djhtml',
+        script    = '/static/proposals/form.mjs',
+        question  = srv.captcha.questions[idx][0],
+        idx       = idx,
+    )
+
+    return flask.render_template(
         '/proposals/form.djhtml',
         idx      = idx,
         question = srv.captcha.questions[idx][0],
@@ -23,19 +32,18 @@ def proposal_call_form():
 
 @app.post('/proposals/call/add')
 def proposal_call_create():
-    formData = flask.request.form.to_dict()
-    email = formData['email']
+    jsonData = flask.request.json
+    email = jsonData['email']
 
-    idx = int(formData.pop('idx'))
-    answer = formData.pop('answer').upper()
-
+    idx = jsonData.pop('idx')
+    answer = jsonData.pop('answer').upper()
     if answer != srv.captcha.questions[idx][1]:
         return 'Incorrect answer', 400
 
     query = sa.insert(
         db.programs.Proposal,
     ).values(
-        **formData,
+        **jsonData,
         createdBy = email,
     ).returning(
         db.programs.Proposal.pk,
@@ -46,11 +54,11 @@ def proposal_call_create():
 
         emailBody = flask.render_template (
             '/emails/cfp_thanks.djhtml',
-            name      = formData['name'],
+            name      = jsonData['name'],
             email     = email,
-            title     = formData['title'],
-            session   = formData['session'],
-            abstract  = formData['abstract'],
+            title     = jsonData['title'],
+            session   = jsonData['session'],
+            abstract  = jsonData['abstract'],
         )
 
         srv.mbox.out.queue(
