@@ -70,84 +70,42 @@ def registered_form():
 
 @app.post('/registered/add')
 def registered_create():
-    formData = flask.request.form.to_dict()
+    jsonData = flask.request.json
 
-    idx = int(formData.pop('idx'))
-    answer = formData.pop('answer').upper()
-
+    idx = jsonData.pop('idx')
+    answer = jsonData.pop('answer').upper()
     if answer != srv.captcha.questions[idx][1]:
         return 'Incorrect answer', 400
 
-    category = formData.get('category')
-    with db.engine.connect() as connection:
-        # why this?
-        cursor = connection.execute(sa.select(
-            sa.func.count().label('count'),
-        ).where(
-            db.events.Attendee.category == category,
-        ))
-
-        limit_count = cursor.scalar()
-
-    isMainConference = formData.get('isMainConference')
-    if isMainConference: formData.pop('isMainConference')
-    isTraining = formData.get('isTraining')
-    if isTraining: formData.pop('isTraining')
-
-    totalFee, tickets = generate_ticket(isMainConference, isTraining, category, limit_count)
-
-    status = 'pending'
-    ticket = 'ticket'
-
-    query = sa.insert(
-        db.events.Attendee,
-    ).values(
-        **formData,
-        isMainConference = True if isMainConference else False,
-        isTraining       = True if isTraining else False,
-        fee    = totalFee,
-        status = status,
-        ticket = ticket,
-    ).returning(
-        db.events.Attendee.pk,
-        db.events.Attendee.slug,
-    )
+    events = jsonData.pop('events')
 
     try:
         with db.SessionMaker.begin() as session:
-            cursor = session.execute(query)
+            cursor = session.execute(sa.insert(
+                db.events.Attendee,
+            ).values(
+                **jsonData,
+            ).returning(
+                db.events.Attendee.pk,
+                db.events.Attendee.slug,
+                db.events.Attendee.email,
+                db.events.Attendee.category,
+            ))
 
-            attendees = cursor.mappings().fetchall()
-            slug = attendees[0]['slug']
-            attendees_pk = attendees[0]['pk']
+            attendee = cursor.mappings().first()
 
-            query_ticket = sa.insert (
+            cursor = session.execute(sa.insert(
                 db.events.Ticket,
-            ).values([{
-                **ticket,
-                'paidAmt'      : 0,
-                'attendees_pk' : attendees_pk,
-            } for t in tickets]).returning(
-                db.events.Ticket.ticketType,
+            ).values(
+                tickets_generate(attendee, events),
+            ).returning(
+                db.events.Ticket.type,
                 db.events.Ticket.fee,
-            )
-            cursor = session.execute(query_ticket)
+            ))
 
-            emailBody = flask.render_template(
-                'emails/registration_thanks.djhtml',
-                name     = formData['name'],
-                email    = formData['email'],
-                fee      = totalFee,
-                category = category,
-                status   = status,
-                tickets  = [list(row) for row in cursor],
-                slug     = slug,
-            )
-            subject = 'Thank You for registering for the PostgreSQL Conference - Next Steps'
-            to      = formData['email']
-            srv.mbox.out.queue(slug, to, None, subject, emailBody)
+            # srv.mbox.queue.after_registration(attendee)
             # not returning 201 because of redirection
-            return flask.redirect('/registered/{}'.format(slug))
+            return flask.redirect('/registered/{}'.format(attendee.slug))
     except sa.exc.IntegrityError as e:
         if isinstance(e.orig, psycopg.errors.UniqueViolation):
             return 'email in used has already been registered', 400
@@ -160,10 +118,10 @@ def registered_read(slug):
         db.events.Attendee.name,
         db.events.Attendee.email,
         db.events.Attendee.country,
-        db.events.Attendee.fee,
         db.events.Attendee.slug,
-        db.events.Attendee.receiptPath,
         sa.cast(db.events.Attendee.status, sa.String).label('status'),
+
+        # db.events.Tickets.fee,
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
     )
@@ -268,7 +226,7 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
-        sa.cast(db.events.Ticket.ticketType, sa.String).label('ticketType'),
+        sa.cast(db.events.Ticket.type, sa.String).label('ticketType'),
         db.events.Ticket.fee,
         db.events.Ticket.paymentStatus,
     ).join(
