@@ -70,4 +70,15 @@
     </body>
 
     {% block tail %}{% endblock %}
+
+    {% if G_TAG %}
+        <!-- Google tag (gtag.js) -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id={{G_TAG}}"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '{{G_TAG}}');
+        </script>
+    {% endif %}
 </html>
