@@ -92,6 +92,18 @@
                 <button id="bank-btn" class="btn">
                     Bank
                 </button>
+
+                <script>
+                    document.getElementById('esewa-btn').addEventListener('click', function(event) {
+                        document.getElementById('bank').style.display = 'none'
+                        document.getElementById('esewa').style.display = 'block'
+                    })
+
+                    document.getElementById('bank-btn').addEventListener('click', function(event) {
+                        document.getElementById('esewa').style.display = 'none'
+                        document.getElementById('bank').style.display = 'block'
+                    })
+                </script>
             </div>
 
             <div id='esewa' style="display:none; text-align:center">
@@ -132,16 +144,6 @@
 
 {% block tail %}
     <script>
-        document.getElementById('esewa-btn').addEventListener('click', function(event) {
-            document.getElementById('bank').style.display = 'none'
-            document.getElementById('esewa').style.display = 'block'
-        })
-
-        document.getElementById('bank-btn').addEventListener('click', function(event) {
-            document.getElementById('esewa').style.display = 'none'
-            document.getElementById('bank').style.display = 'block'
-        })
-
         const form = document.getElementById('receipt-submission')
         form.addEventListener('submit', function (event) {
             event.preventDefault()
