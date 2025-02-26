@@ -62,9 +62,12 @@ def tickets_generate(attendee, events):
 def registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
     return flask.render_template(
-        '/attendees/form-registration.djhtml',
-        idx      = idx,
-        question = srv.captcha.questions[idx][0],
+        '/form-captcha.djhtml',
+        pageTitle = '/ Registration',
+        fields    = '/attendees/form-part.djhtml',
+        script    = '/static/attendees/form.mjs',
+        question  = srv.captcha.questions[idx][0],
+        idx       = idx,
     )
 
 
