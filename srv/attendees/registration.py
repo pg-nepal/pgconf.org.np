@@ -22,32 +22,40 @@ FILE_MAGIC_NUMBERS = {
 }
 
 
-def generate_ticket(isMainConference, isTraining, category, limit):
-    confFee     = 7000
-    trainingFee = 10000
-    tickets = []
+def ticket_cost_pre(category, fee=10_000):
+    return fee
 
-    if isMainConference:
-        discount_student = 2000 if category == 'student' else 0
-        discount_early = 2000 if limit < 20 else 0
-        confFee = confFee - discount_student - discount_early
 
-        tickets.append({
-            'ticketType'    : 'Main Conference',
-            'fee'           : confFee,
-            'paymentStatus' : 'unpaid',
+def ticket_cost_main(category, fee=7_000, limit=20):
+    with db.engine.connect() as connection:
+        # count tickets early discount
+        cursor = connection.execute(sa.select(
+            sa.func.count().label('count'),
+        ).where(
+            db.conf.Attendee.category == category,
+        ))
+        count = cursor.scalar()
+
+    discount_student = 2_000 if category == 'student' else 0
+    discount_early = 2_000 if count < limit else 0
+    return fee - discount_student - discount_early
+
+
+def tickets_generate(attendee, events):
+    func = {
+        db.conf.e_tickets_type.pre.name  : ticket_cost_pre,
+        db.conf.e_tickets_type.main.name : ticket_cost_main,
+    }
+
+    ticket_list = []
+    for e in events:
+        ticket_list.append({
+            'attendee_pk' : attendee.pk,
+            'type'        : e,
+            'fee'         : func[e](attendee.category),
         })
 
-    totalFee = confFee
-    if isTraining:
-        totalFee = totalFee + trainingFee
-        tickets.append({
-            'ticketType'    : 'Pre-Conference Training',
-            'fee'           : trainingFee,
-            'paymentStatus' : 'unpaid',
-        })
-
-    return totalFee, tickets
+    return ticket_list
 
 
 @app.get('/registered/form')
@@ -72,6 +80,7 @@ def registered_create():
 
     category = formData.get('category')
     with db.engine.connect() as connection:
+        # why this?
         cursor = connection.execute(sa.select(
             sa.func.count().label('count'),
         ).where(
@@ -112,20 +121,17 @@ def registered_create():
             slug = attendees[0]['slug']
             attendees_pk = attendees[0]['pk']
 
-            # insert into the tickets
-            tickets = [{**ticket, 'paidAmt' : 0, 'attendees_pk': attendees_pk} for ticket in tickets]
-
             query_ticket = sa.insert (
                 db.conf.Ticket,
-            ).values (
-                tickets,
-            ).returning (
+            ).values([{
+                **ticket,
+                'paidAmt'      : 0,
+                'attendees_pk' : attendees_pk,
+            } for t in tickets]).returning(
                 db.conf.Ticket.ticketType,
                 db.conf.Ticket.fee,
             )
             cursor = session.execute(query_ticket)
-
-            tickets = [list(row) for row in cursor]
 
             emailBody = flask.render_template(
                 'emails/registration_thanks.djhtml',
@@ -259,14 +265,14 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
-        sa.cast(db.events.Ticket.ticketType, sa.String).label('ticketType'),
-        db.events.Ticket.fee,
-        db.events.Ticket.paymentStatus,
+        sa.cast(db.conf.Ticket.ticketType, sa.String).label('ticketType'),
+        db.conf.Ticket.fee,
+        db.conf.Ticket.paymentStatus,
     ).join(
-        db.events.Attendee,
-        db.events.Attendee.pk == db.events.Ticket.attendees_pk,
+        db.conf.Attendee,
+        db.conf.Attendee.pk == db.conf.Ticket.attendees_pk,
     ).where(
-        sa.cast(db.events.Attendee.slug, sa.String) == slug,
+        sa.cast(db.conf.Attendee.slug, sa.String) == slug,
     )
 
     with db.engine.connect() as connection:
