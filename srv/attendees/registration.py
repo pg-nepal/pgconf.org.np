@@ -180,10 +180,13 @@ def registered_update(slug):
 @app.get('/registered/payment_receipt_check/<slug>')
 def registered_payment_receipt_file_check(slug):
     query = sa.select(
-        db.conf.Attendee.pk,
+        db.conf.Ticket.pk,
+    ).join(
+        db.conf.Attendee,
+        db.conf.Ticket.attendee_pk == db.conf.Attendee.pk
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
-        db.conf.Attendee.receiptBlob.isnot(None),
+        db.conf.Ticket.receiptBlob.isnot(None),
     )
 
     with db.engine.connect() as connection:
