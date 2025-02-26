@@ -158,10 +158,16 @@ def registered_update(slug):
 
     receiptBlob = flask.request.files['receiptFile'].read()
 
-    query = sa.update(
-        db.conf.Attendee,
+    subquery = sa.select(
+        db.conf.Attendee.pk,
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
+    ).scalar_subquery()
+
+    query = sa.update(
+        db.conf.Ticket,
+    ).where(
+        db.conf.Ticket.attendee_pk == subquery,
     ).values(
         receiptBlob = receiptBlob,
     )
