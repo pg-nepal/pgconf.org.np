@@ -33,21 +33,8 @@ function rateUpdate(proposal_pk, value) {
 
 
 export function rateRead(proposal_pk) {
-    fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
+    return fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
         return response.json()
-    }).then(function (jsonData) {
-        const eDiv_dialogContainer = document.querySelector('.dialog-container')
-        const eDiv_rating = eDiv_dialogContainer.querySelectorAll('.rating')
-
-        const ratings = jsonData[1]
-        
-        for(let [idx, elem] of eDiv_rating.entries()) {
-            for(let i=0; i<elem.children.length; i++) {
-                if(i < ratings[idx]) {
-                    elem.children[i].classList.add('active')
-                }
-            }
-        }
     })
 }
 
