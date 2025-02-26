@@ -30,7 +30,7 @@
         <span id="rating-avg">loading...</span>
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
         (<span id="rating-count">loading...</span> ratings)
-        <button class="btn">Rate this Proposal</button>
+        <button id="rating-dialog-btn" class="btn">Rate this Proposal</button>
     </p>
 
     <div class="info-table" style="margin-bottom: 20px">
@@ -73,6 +73,7 @@
         <button id="comment-add" class="button">Add</button>
     </div>
     {% include '/proposals/comment-dialog.djhtml' %}
+    {% include '/proposals/rating-dialog.djhtml' %}
 {% endblock %}
 
 
@@ -86,5 +87,11 @@
         document.getElementById('comment-add').onclick = function (event) {
             eDialog.showModal()
         }
+
+        const eDialog_ = document.getElementById('dialog-rating')
+        document.getElementById('rating-dialog-btn').onclick = function() {
+            eDialog_.showModal()
+        }
+
     </script>
 {% endblock %}
