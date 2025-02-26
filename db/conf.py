@@ -57,23 +57,17 @@ class Attendee(db.Base):
     affiliation    = sa.Column(sa.String(256), comment='affiliation & position')
     photoBlob      = sa.Column(sa.LargeBinary)
 
-    forMain        = sa.Column(sa.Boolean, comment='main conference')
-    forPre         = sa.Column(sa.Boolean, comment='pre confrence')
-
     category       = sa.Column(sa.String(100), nullable=False, comment='participant category for discount')
-    fee            = sa.Column(sa.Integer)
-    ticket         = sa.Column(sa.String(500))
     status         = sa.Column(p_attendees_status, server_default='pending')
-    receiptBlob    = sa.Column(sa.LargeBinary, comment='payment receipt')
 
 
-ticket_types = (
-    'Main Conference',
-    'Pre-Conference Training',
+tickets_type = (
+    'main',
+    'pre',
 )
-e_ticket_type = enum.IntEnum('ticket_types', ticket_types)
-p_ticket_type = sa.Enum(
-    e_ticket_type,
+e_tickets_type = enum.IntEnum('tickets_type', tickets_type)
+p_tickets_type = sa.Enum(
+    e_tickets_type,
     schema   = 'conf25',
     metadata = db.meta,
 )
@@ -87,17 +81,16 @@ class Ticket(db.Base):
     }
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
-    attendees_pk   = sa.Column(sa.Integer, nullable=False)
 
-    ticketType     = sa.Column(p_ticket_type, server_default='Main Conference')
-    fee            = sa.Column(sa.Numeric(10,2))
+    attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
 
-    paidAmt            = sa.Column(sa.Numeric(10,2))
-    paymentReceiptFile = sa.Column(sa.LargeBinary)
-    paymentLinkedTo    = sa.Column(sa.Integer) # self reference; workout needed for case of the multiple self reference
+    type           = sa.Column(p_tickets_type, server_default=e_tickets_type.main.name)
+    fee            = sa.Column(sa.Numeric(10, 2))
+
+    paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
+    receiptBlob    = sa.Column(sa.LargeBinary)
+    paymentRef     = sa.Column(sa.Integer)  # self reference; workout needed for case of the multiple self reference
 
     paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
     paymentNote    = sa.Column(sa.Text)
-
-    ticketNumber   = sa.Column(sa.String(256))
     ticketNote     = sa.Column(sa.Text)
