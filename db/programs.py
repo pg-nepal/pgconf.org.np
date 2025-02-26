@@ -13,6 +13,7 @@ class Proposal(db.Base):
     }
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    attendee_pk    = sa.Column(sa.Integer)
 
     name           = sa.Column(sa.String(256), nullable=False)
     email          = sa.Column(sa.String(256))
