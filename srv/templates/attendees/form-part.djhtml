@@ -26,13 +26,19 @@
 </div>
 
 <div class="fields" style="margin-top: 10px;">
-    <label><b>Registration for</b> <sup>*</sup></label>
-    <div>
-        <input type="checkbox" id="isMainConference" name="isMainConference" checked />
-        <label for="isMainConference">Main Conference</label>
-    </div>
-    <div>
-        <input type="checkbox" id="isTraining" name="isTraining" />
-        <label for="isTraining">Pre-Conference Training</label>
-    </div>
+    <label>Registration for Events <sup>*</sup></label>
+
+    <select id="wtf-event" name="events" multiple required>
+        <option value="pre">
+            [{{eventOn_pre.strftime('%Y %B %_d')}} - {{eventTo_pre.strftime('%_d')}}]
+            Pre-Conference Training
+        </option>
+        <option value="main">
+            [{{eventOn.strftime('%Y %B %_d')}} - {{eventTo.strftime('%_d')}}]
+            Main Conference
+        </option>
+    </select>
+    <span style="margin-top:0.5rem; color:gray">
+        Multiple option can be selected (drag or use <kbd>Shit</kbd> while selecting), Pre-Conference Training <a href="/pages/training" target="_blank">Details</a>
+    </span>
 </div>
