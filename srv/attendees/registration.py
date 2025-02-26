@@ -243,7 +243,7 @@ def registered_ticket_read(slug):
         db.events.Ticket.paymentStatus,
     ).join(
         db.events.Attendee,
-        db.events.Attendee.pk == db.events.Ticket.attendees_pk,
+        db.events.Ticket.attendee_pk == db.events.Attendee.pk,
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
     )
