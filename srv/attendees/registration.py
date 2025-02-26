@@ -22,23 +22,36 @@ FILE_MAGIC_NUMBERS = {
 }
 
 
-def ticket_cost_pre(category, fee=10_000):
-    return fee
+def ticket_cost_pre(attendee):
+    if attendee.country.lower() == 'nepal':
+        currency, fee, student = ('NRs.', 10_000, 0)
+    else:
+        currency, fee, student = ('USD', 200, 0)
+
+    discount  = 0
+    discount += student if attendee.category == 'student' else 0
+    return currency, fee - discount
 
 
-def ticket_cost_main(category, fee=7_000, limit=20):
+def ticket_cost_main(attendee, limit=20):
+    if attendee.country.lower() == 'nepal':
+        currency, fee, early, student = ('NRs.', 7_000, 2_000, 2_000)
+    else:
+        currency, fee, early, student = ('USD', 300, 100, 0)
+
     with db.engine.connect() as connection:
         # count tickets early discount
         cursor = connection.execute(sa.select(
             sa.func.count().label('count'),
         ).where(
-            db.events.Attendee.category == category,
+            db.events.Attendee.category == attendee.category,
         ))
         count = cursor.scalar()
 
-    discount_student = 2_000 if category == 'student' else 0
-    discount_early = 2_000 if count < limit else 0
-    return fee - discount_student - discount_early
+    discount  = 0
+    discount += student if attendee.category == 'student' else 0
+    discount += early if count < limit else 0
+    return currency, fee - discount
 
 
 def tickets_generate(attendee, events):
@@ -49,10 +62,12 @@ def tickets_generate(attendee, events):
 
     ticket_list = []
     for e in events:
+        currency, fee = func[e](attendee)
         ticket_list.append({
             'attendee_pk' : attendee.pk,
             'type'        : e,
-            'fee'         : func[e](attendee.category),
+            'currency'    : currency,
+            'fee'         : fee,
         })
 
     return ticket_list
@@ -92,10 +107,11 @@ def registered_create():
                 db.events.Attendee.pk,
                 db.events.Attendee.slug,
                 db.events.Attendee.email,
+                db.events.Attendee.country,
                 db.events.Attendee.category,
             ))
 
-            attendee = cursor.mappings().first()
+            attendee = cursor.first()
 
             cursor = session.execute(sa.insert(
                 db.events.Ticket,
@@ -211,7 +227,7 @@ def registered_payment_receipt_file_download(slug):
         db.events.Ticket.receiptBlob,
     ).join(
         db.events.Attendee,
-        db.events.Ticket.attendee_pk == db.events.Attendee.pk
+        db.events.Ticket.attendee_pk == db.events.Attendee.pk,
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
         db.events.Ticket.receiptBlob.isnot(None),
