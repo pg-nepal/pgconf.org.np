@@ -20,8 +20,8 @@
     <label for="wtf-category">Category <sup>*</sup></label>
     <select id="wtf-category" name="category" placeholder="Email Address" required>
         <option value="">Select Category</option>
-        <option value="student">Student</option>
         <option value="professional">Professional</option>
+        <option value="student">Student</option>
     </select>
 </div>
 
