@@ -201,10 +201,13 @@ def registered_payment_receipt_file_check(slug):
 @app.get('/registered/payment_receipt_download/<slug>')
 def registered_payment_receipt_file_download(slug):
     query = sa.select(
-        db.conf.Attendee.receiptBlob,
+        db.conf.Ticket.receiptBlob,
+    ).join(
+        db.conf.Attendee,
+        db.conf.Ticket.attendee_pk == db.conf.Attendee.pk
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
-        db.conf.Attendee.receiptBlob.isnot(None),
+        db.conf.Ticket.receiptBlob.isnot(None),
     )
 
     with db.engine.connect() as connection:
