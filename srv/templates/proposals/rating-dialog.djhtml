@@ -10,12 +10,12 @@
             border-radius: 8px;
             font-size: 1rem;
         }
-        
+
         #dialog-rating fieldset{
             border: none;
             border: none;
         }
-        
+
         .rating__star{
             font-size: 30px;
             padding : 0 0.3rem;
@@ -34,7 +34,7 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         .container{
             display: flex;
         }
@@ -49,17 +49,6 @@
     <form id="form" method="dialog" style="padding-top:1.5rem">
         <fieldset>
             <div class="dialog-container">
-                
-                <p>How compelling was this proposal's title</p>
-                
-
-                <p>How concise was this proposal's abstract</p>
-
-
-                <p>How was the proposal's learning objective</p>
-
-
-                <p>How relevant was this proposal</p>
             </div>
         </fieldset>
 
@@ -72,6 +61,8 @@
 
 <script type="module">
     import * as proposals from '/static/proposals/read.mjs'
+
+    const ratingDialogBtn = document.getElementById('rating-dialog-btn')
     const dialog_rating = document.getElementById('dialog-rating')
     dialog_rating.addEventListener('click', function (event) {
         if ('DIALOG' != event.target.tagName) return
@@ -86,21 +77,23 @@
             dialog_rating.close()
         }
     })
-    
-    proposals.rateRead({{pk}})
-
-    const ratings = []
 
     const eDiv_dialogContainer = document.querySelector('.dialog-container')
-        const eP_question = eDiv_dialogContainer.querySelectorAll('p')
+    const eP_question = eDiv_dialogContainer.querySelectorAll('p')
 
-        for(let elm of eP_question) {
+    async function readRatings() {
+        let ratingData = await proposals.rateRead('{{pk}}')
+
+        for(let [title, element] of Object.entries(ratingData[1])){
             const eDiv_ratingWrapper = document.createElement('div')
             eDiv_ratingWrapper.classList = 'rating-wrapper'
-            const eDiv_rating = document.createElement('div')
-            eDiv_rating.classList = 'rating'
+            eDiv_ratingWrapper.id = title
+            eDiv_ratingWrapper.setAttribute('data-value', element.value)
 
-            eDiv_ratingWrapper.appendChild(eDiv_rating)
+            const eDiv_label = document.createElement('div')
+            eDiv_label.innerText = element.label
+
+            const eDiv_starWrapper = document.createElement('div')
 
             for(let i=1; i<=5; i++) {
                 const eSpan = document.createElement('span')
@@ -109,21 +102,79 @@
                 eSpan.classList = 'rating__star'
                 eSpan.innerText = '⭐'
 
-                eSpan.onclick = function(e) {
-                    changeStar(e, elm)
+                if(element.value >= i) {
+                    eSpan.classList.add('active')
                 }
 
-                eDiv_rating.appendChild(eSpan)
+                eSpan.onclick = function(e) {
+                    changeStar(e, element)
+                }
+
+                eDiv_starWrapper.appendChild(eSpan)
             }
 
-            eDiv_dialogContainer.insertBefore(eDiv_ratingWrapper, elm.nextSibling)
+            eDiv_ratingWrapper.appendChild(eDiv_label)
+            eDiv_ratingWrapper.appendChild(eDiv_starWrapper)
+
+            eDiv_dialogContainer.appendChild(eDiv_ratingWrapper)
         }
 
-        function changeStar(e, elm) {
+        const eDiv_ratingWrapper = document.createElement('div')
+        eDiv_ratingWrapper.classList = 'acceptance-wrapper'
+        eDiv_ratingWrapper.id = 'value'
+        eDiv_ratingWrapper.setAttribute('data-value', ratingData[0])
+
+        const eDiv_label = document.createElement('div')
+        eDiv_label.innerText = 'Overall Score'
+
+        const eDiv_starWrapper = document.createElement('div')
+
+        for(let i=1; i<=5; i++) {
+            const eSpan = document.createElement('span')
+            eSpan.id = `star-${i}`
+            eSpan.setAttribute('data-value', i)
+            eSpan.classList = 'rating__star'
+            eSpan.innerText = '⭐'
+
+            if(ratingData[0] >= i) {
+                eSpan.classList.add('active')
+            }
+
+            eSpan.onclick = function(e) {
+                const parent = e.target.parentElement
+                const childrenList = Array.prototype.slice.call(parent.children)
+                const clickedOn = e.target.getAttribute('data-value')
+
+                parent.parentElement.setAttribute('data-value', clickedOn)
+
+                for(let i=0; i<childrenList.length; i++) {
+                    childrenList[i].classList.remove('active')
+                    if(i < clickedOn) {
+                        childrenList[i].classList.add('active')
+                    }
+                }
+
+                const activeStar = Array.from(parent.children).filter(span => span.classList.contains('active')).length
+            }
+
+            eDiv_starWrapper.appendChild(eSpan)
+        }
+
+        eDiv_ratingWrapper.appendChild(eDiv_label)
+        eDiv_ratingWrapper.appendChild(eDiv_starWrapper)
+
+        eDiv_dialogContainer.appendChild(eDiv_ratingWrapper)
+
+    }
+    readRatings()
+
+        function changeStar(e, element) {
             const parent = e.target.parentElement
             const childrenList = Array.prototype.slice.call(parent.children)
             const clickedOn = e.target.getAttribute('data-value')
-            
+
+            parent.parentElement.setAttribute('data-value', clickedOn)
+
             for(let i=0; i<childrenList.length; i++) {
                 childrenList[i].classList.remove('active')
                 if(i < clickedOn) {
@@ -132,7 +183,44 @@
             }
 
             const activeStar = Array.from(parent.children).filter(span => span.classList.contains('active')).length
-            const questionIndex = Array.from(eDiv_dialogContainer.querySelectorAll('p')).indexOf(elm)
-            ratings[questionIndex] = activeStar
+            element.value = activeStar
         }
+
+        const submitBtn = document.getElementById('submit-btn')
+        submitBtn.onclick = submitRating
+
+        function submitRating(){
+            const parameters = eDiv_dialogContainer.querySelectorAll('.rating-wrapper')
+            const acceptanceParameter = eDiv_dialogContainer.querySelectorAll('.acceptance-wrapper')
+
+            let acceptanceValue;
+
+            for(let a of acceptanceParameter){
+                acceptanceValue = a.getAttribute('data-value')
+            }
+
+            let score = {}
+
+            for (let p of parameters) {
+                score[p.id] = {
+                    label : p.children[0].innerText,
+                    value : p.getAttribute('data-value')
+                }
+            }
+
+            fetch('/api/rates/mine/{{pk}}', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({
+                    score   : score,
+                    value   : acceptanceValue,
+
+            })
+            }).then(function(response) {
+                alert('Rating submitted successfully')
+            })
+        }
+
 </script>
