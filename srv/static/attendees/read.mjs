@@ -15,22 +15,37 @@ export function checkPaymentReceipt(slug) {
 
 export function getTicketDetails(slug) {
     fetch(`/registered/ticket/${slug}`).then(function (response) {
-        if (response.status == 200) {
-            const tableBody = document.getElementById('table-body')
-            const template = document.getElementById('row-template')
-            response.json().then(function (json){
-                json.data.forEach(function (ticket) {
-                    const row = template.content.cloneNode(true)
-                    row.querySelector('.ticket').textContent = ticket[0]
-                    row.querySelector('.rate').textContent   = ticket[1]
-                    row.querySelector('.status').textContent = ticket[2]
-                    tableBody.appendChild(row)
-                })
-                document.getElementById('ticket-table').style = ''
-            })
-        } else {
-            document.getElementById('ticket-table').style.display = 'none'
+        if (200 == response.status) {
+            return response.json()
         }
+    }).then(function (json) {
+        const eTable = document.getElementById('ticket-table')
+
+        json.headers.forEach(function (h) {
+            const eTh = document.createElement('th')
+            eTh.innerHTML = h
+            eTable.children[0].children[0].append(eTh)
+        })
+
+        let total = 0
+        let currency = ''
+        json.data.forEach(function (row) {
+            const eTr = document.createElement('tr')
+            row.forEach(function (cell, i) {
+                const eTd = document.createElement('td')
+                eTd.innerHTML = cell
+                if (json.headers[i] == 'Currency') currency = cell
+                if (json.headers[i] == 'Amount') {
+                    total += cell
+                    eTd.innerHTML = cell.toLocaleString()
+                }
+                eTr.append(eTd)
+            })
+            eTable.children[1].append(eTr)
+        })
+
+        eTable.style.display = ''
+        document.getElementById('total-amount').innerText = `${currency} ${total.toLocaleString()}`
     })
 }
 
