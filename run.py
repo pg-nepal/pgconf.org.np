@@ -25,9 +25,9 @@ app.jinja_env.globals.update({
 
     'eventOn' : dt.datetime(2025, 5, 5),
     'eventTo' : dt.datetime(2025, 5, 6),
-
-    'G_TAG'   : None,
 })
+
+
 
 
 def get_sysArgs():
@@ -77,10 +77,6 @@ def main():
         srv.app.jinja_env.undefined = jinja2.StrictUndefined
 
     if sysArgs.debug is False:
-        if os.path.exists('config/analytics.py'):
-            analytics = importlib.import_module('config.analytics')
-            app.jinja_env.globals['G_TAG'] = analytics.G_TAG
-
         print('live at http://{}:{}'.format(sysArgs.expose, sysArgs.port))
         corn = importlib.import_module('corn')
         corn.Unicorn(
