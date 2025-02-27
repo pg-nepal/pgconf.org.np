@@ -28,6 +28,22 @@ app.jinja_env.globals.update({
 })
 
 
+def load_config():
+    config_dir  = "config"
+
+    for fileName in os.listdir(config_dir):
+        if fileName.endswith('.sample.json') or not fileName.endswith('.json'):
+            continue
+
+        filePath  = os.path.join(config_dir, fileName)
+        configKey = fileName.replace('.json', "")
+
+        try:
+            with open(filePath) as FILE:
+                print('LOADING CONFIG: {}'.format(filePath))
+                app.jinja_env.globals["config"][configKey] = json.load(FILE)
+        except json.JSONDecodeError as e:
+            print('LOADING CONFIG (ERROR): {}: {}'.format(filePath, str(e)))
 
 
 def get_sysArgs():
