@@ -4,6 +4,7 @@ import os
 import argparse
 import importlib
 import datetime as dt
+import json
 
 import srv.pages
 import srv.proposals
@@ -91,6 +92,8 @@ def main():
 
     if sysArgs.debug or (sysArgs.unstrict is False):
         srv.app.jinja_env.undefined = jinja2.StrictUndefined
+
+    load_config()
 
     if sysArgs.debug is False:
         print('live at http://{}:{}'.format(sysArgs.expose, sysArgs.port))
