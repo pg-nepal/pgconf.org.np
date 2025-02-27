@@ -1,0 +1,5 @@
+# ignore actual config file
+*.json
+
+# but do not ignore sample config file
+!*.sample.json
