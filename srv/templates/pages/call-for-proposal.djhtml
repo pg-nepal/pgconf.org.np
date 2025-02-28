@@ -39,7 +39,7 @@
             <li><p><strong class="heading">Technical Requirements: </strong>Specify any equipment or setup needed for your session</p></li>
         </ol>
 
-        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size:120%">
+        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'" style="font-size:120%">
             Submit Your Proposal
         </button>
 
