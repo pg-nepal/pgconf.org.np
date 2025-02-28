@@ -1,0 +1,17 @@
+<div class="news-container">
+    <div class="news-heading">Updates</div>
+    <div class="news">
+        <a href="/pages/call-for-proposal" class="news-single active">
+            Call for proposal is open for everyone
+        </a>
+        <a href="pages/registration" class="news-single">
+            Dont miss the conference! Register now!!
+        </a>
+        <a href="/pages/training" class="news-single">
+            2 days pre-conference training has been added
+        </a>
+        <a href="/programs/speakers" class="news-single">
+            Check out keynote speakers
+        </a>
+    </div>
+</div>
