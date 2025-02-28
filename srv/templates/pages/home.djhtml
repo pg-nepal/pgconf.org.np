@@ -69,21 +69,10 @@
                         This year we are planning two events.
                     </p>
 
-                    <div class="event-container">
-                        <div class="event-box">
-                            <h3>Main Conference</h3>
-                            <p>The primary event is scheduled for May 5-6, 2025, and will feature a keynote address, a workshop, and technical presentations by leading experts.</p>
-                            <p>
-                                <a class="button button-secondary" href="/pages/call-for-proposal">Submit a proposal</a>
-                                <a class="button button-secondary" href="/pages/registration">Register</a>
-                            </p>
-                        </div>
-                        <div class="event-box">
-                            <h3>Pre-Conference Training</h3>
-                            <p>The pre-conference training is scheduled for May 3-4, 2025. A PostgreSQL expert from the industry will conduct the training, featuring hands-on exercises.</p>
-                            <p>For more details check: <strong><a href="/pages/training">Click here</a></strong></p>
-                        </div>
-                    </div>
+                    {% with showLinks=true %}
+                        {% include "parts/events.djhtml" %}
+                    {% endwith %}
+
                 </section>
 
                 <section class="home-content mt-1">
