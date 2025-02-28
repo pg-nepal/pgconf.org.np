@@ -18,3 +18,27 @@ function init(containerId, interval=3000, direction=1) {
 
     setInterval(slider, interval)
 }
+
+
+function initNewsTicker(){
+    const newsSingleAll = document.querySelectorAll(".news-container .news-single")
+
+    let currentActive = 0
+    const totalNews = newsSingleAll.length
+    const duration = 5000 // 5 sec
+
+    const removeAllActive = () => {
+        newsSingleAll.forEach((n) => {
+            n.classList.remove("active")
+        })
+    }
+
+    const changeNews = () => {
+        if (currentActive >= totalNews - 1)  currentActive = 0
+        else currentActive += 1
+        removeAllActive()
+        newsSingleAll[currentActive].classList.add("active")
+    }
+
+    setInterval(changeNews, duration)
+}
