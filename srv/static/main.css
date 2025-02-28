@@ -510,3 +510,9 @@ input[type="number"]::-webkit-inner-spin-button {
         width: 85%
     }
 }
+
+@media (max-width: 400px) {
+    .sidebar{
+        width: 80%
+    }
+}
