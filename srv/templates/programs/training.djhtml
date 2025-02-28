@@ -14,9 +14,9 @@
     <div>
         <p><strong>Prerequisites:</strong></p>
         <ul>
-            <li>SQL fundamentals</li>
-            <li>experience with any procedural programming language</li>
-            <li>basic knowledge of Unix OS</li>
+            <li><p>SQL fundamentals</p></li>
+            <li><p>experience with any procedural programming language</p></li>
+            <li><p>basic knowledge of Unix OS</p></li>
         </ul>
         The detailed course materials will be available upon the registation.
     </div>
@@ -24,11 +24,11 @@
     <div>
         <p><strong>Skills to be gained:</strong></p>
         <ul>
-            <li>general information about PostgreSQL architecture</li>
-            <li>working with the main database objects: tables, indexes, views</li>
-            <li>programming in SQL and PL/pgSQL on the server side</li>
-            <li>using the main data types, including records and arrays</li>
-            <li>setting up client-server communication</li>
+            <li><p>general information about PostgreSQL architecture</p></li>
+            <li><p>working with the main database objects: tables, indexes, views</p></li>
+            <li><p>programming in SQL and PL/pgSQL on the server side</p></li>
+            <li><p>using the main data types, including records and arrays</p></li>
+            <li><p>setting up client-server communication</p></li>
         </ul>
     </div>
 
