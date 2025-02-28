@@ -18,20 +18,20 @@
     {% endwith %}
 
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <button class="button" onclick="window.location.href='/registered/form'" style="font-size:120%">
+        <a class="button" href="/registered/form" target="_blank" style="font-size:120%">
             Register
-        </button>
+        </a>
     </div>
 
     <div style="padding:1rem 0">
-        <h2>Ticket Categories and Pricing</h2>
+        <h2>Main Conference ticket categories and pricing</h2>
         <p>
             We are excited to announce the ticket categories and pricing for this year’s conference! Please review the
             details below:
         </p>
     </div>
 
-    <h3>Ticket Categories</h3>
+    <h3>Categories</h3>
     <ul>
         <div style="padding:1rem 0">
             <li>
