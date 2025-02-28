@@ -35,11 +35,15 @@
                 <button class="close-btn">X</button>
                 <ul>
                     <li><a href="/">Home</a></li>
-                    <li><a href="/pages/call-for-proposal">Call for Proposal</a></li>
                     <li><a href="/pages/about">About</a></li>
+                    <li><a href="/pages/call-for-proposal">Call for Proposal</a></li>
+                    <li><a href="/pages/sponsors">Call for Sponsor</a></li>
                     <li><a href="/pages/registration">Registration</a></li>
                     <li><a href="/pages/training">Training</a></li>
                     <li><a href="/pages/schedule">Schedule</a></li>
+                    <li><a href="/programs/speakers">Speakers</a></li>
+                    <li><a href="/pages/schedule">Schedule</a></li>
+                    <li><a href="/pages/venue">Venue</a></li>
                 </ul>
             </div>
         </div>
