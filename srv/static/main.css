@@ -45,7 +45,6 @@ p{
 .button{
     margin: 1.5% 0 1.5% 0;
     font-family: 'DM Sans', sans-serif;
-    font-size: 20px;
     text-decoration: none;
     color: #c91818;
     border: 1px solid #c91818;
@@ -59,13 +58,14 @@ p{
     background-color: #c91818;
     box-shadow:  0 2px 4px rgba(255, 255, 255, 0.1);
     color: white;
-    transform: translateY(-3px);
 }
 
 
 .button-secondary{
     color: #336791;
     border: 1px solid #007BFF;
+}
+.button-block{
     display: block;
     overflow: hidden;
 }
@@ -73,7 +73,6 @@ p{
 .button-secondary:hover {
     background-color: #336791;
     color: antiquewhite;
-    border: 1px solid #007BFF;
 }
 
 
