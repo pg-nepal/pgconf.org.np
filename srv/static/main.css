@@ -101,6 +101,37 @@ p{
     padding: 1.5rem;
 }
 
+.sidebar ul {
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin: 10px 0;
+    display: block;
+    text-align: left;
+    padding: 10px;
+    border-end-end-radius: 5px;
+    border-bottom: 1px solid #ccc;
+}
+.sidebar ul li::before {
+    content: "☑";
+    color: #336791;
+}
+/* Sidebar links */
+.sidebar ul li a {
+    text-align: left;
+    text-decoration: none;
+    padding: 10px 15px;
+    color: #336791;
+
+}
+
+/* Hover effect */
+.sidebar ul li a:hover {
+    text-decoration: underline;
+}
+
+
 .image-container{
     width: 100%;
     height: 100%;
