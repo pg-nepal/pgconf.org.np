@@ -7,13 +7,15 @@
     <p>Register for the events</p>
 
     <div style="margin-bottom: 0.5rem;">
-        <p>Please register. Follow the steps below to complete your registration and secure your spot</p>
-
         <p>
-        Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling the form, you will be redicted to the payment processing page. Currently we accept (eSewa and direct bank payment). Preseve the URL for future reference.
-        Send your proof of payment.
+            Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling the form, you will be redicted to the payment processing page. Currently we accept (eSewa and direct bank payment). Preseve the URL for future reference.
+            Send your proof of payment.
         </p>
     </div>
+
+    {% with showLinks=false %}
+        {% include "parts/events.djhtml" %}
+    {% endwith %}
 
     <div style="display: flex; justify-content: space-between; align-items: center;">
         <button class="button" onclick="window.location.href='/registered/form'" style="font-size:120%">
