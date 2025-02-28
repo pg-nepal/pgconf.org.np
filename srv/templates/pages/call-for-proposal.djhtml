@@ -1,8 +1,12 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle= '/ Call for Proposals' %}
 
-
-{% block head %}
+{% block head  %}
+    <style>
+        .heading{
+            font-weight: 600;
+        }
+    </style>
 {% endblock %}
 
 
