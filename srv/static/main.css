@@ -75,6 +75,10 @@ p{
     color: antiquewhite;
 }
 
+.heading{
+    font-weight: 600;
+}
+
 
 .content{
     display: flex;
