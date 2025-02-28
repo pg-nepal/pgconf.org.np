@@ -35,37 +35,39 @@
     <div>
         <h3>Organizing Committee</h3>
         <ol>
-            <li>Prof. Dr. Bal Krishna Bal - Kathmandu University, Conference Chair</li>
-            <li>Dr. Oleg Bartunov - Postgres Professional, Co-Chair</li>
-            <li>Mr. Hempal Shrestha - Nepal ICT Foundation, Co-Chair</li>
-            <li>Mr. Ivan Pachenko - Postgres Professional, Co-Chair</li>
-            <li>Mr. Mark Rivkin - Postgres Professional, Member</li>
-            <li>Dr. Manoj Shakya - Assistant Professor, Kathmandu University, Member</li>
-            <li>Mr. Sagun Dhakhwa - Outlines Research & Development, Member</li>
-            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd., Member</li>
-            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd., Member</li>
+            <li><p><strong>Prof. Dr. Bal Krishna Bal</strong> - Kathmandu University, Conference Chair</p></li>
+            <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional, Co-Chair</p></li>
+            <li><p><strong>Mr. Hempal Shrestha</strong> - Nepal ICT Foundation, Co-Chair</p></li>
+            <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional, Co-Chair</p></li>
+            <li><p><strong>Mr. Mark Rivkin</strong> - Postgres Professional, Member</p></li>
+            <li><p><strong>Dr. Manoj Shakya</strong> - Assistant Professor, Kathmandu University, Member</p></li>
+            <li><p><strong>Mr. Sagun Dhakhwa</strong> - Outlines Research & Development, Member</p></li>
+            <li><p><strong>Mr. Rohit Man Amatya</strong> - Beta Analytics Pvt. Ltd., Member</p></li>
+            <li><p><strong>Mr. Rupak Raj Ghimire</strong> - Uniaxial Softwares Pvt. Ltd., Member</p></li>
         </ol>
     </div>
 
     <div>
         <h3>Program Committee/Talk Selection Committee</h3>
         <ol>
-            <li>Dr. Oleg Bartunov - Postgres Professional</li>
-            <li>Dr. Manoj Shakya - Kathmandu University</li>
-            <li>Mr. Sagun Dhakhwa - Outlines Research & Development</li>
-            <li>Mr. Mark Rivkin - Postgres Professional</li>
-            <li>Mr. Rohit Man Amatya - Beta Analytics Pvt. Ltd.</li>
-            <li>Mr. Rupak Raj Ghimire - Uniaxial Softwares Pvt. Ltd.</li>
+            <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional</p></li>
+            <li><p><strong>Dr. Manoj Shakya</strong> - Kathmandu University</p></li>
+            <li><p><strong>Mr. Sagun Dhakhwa</strong> - Outlines Research & Development</p></li>
+            <li><p><strong>Mr. Mark Rivkin</strong> - Postgres Professional</p></li>
+            <li><p><strong>Mr. Rohit Man Amatya</strong> - Beta Analytics Pvt. Ltd.</p></li>
+            <li><p><strong>Mr. Rupak Raj Ghimire</strong> - Uniaxial Softwares Pvt. Ltd.</p></li>
+
         </ol>
     </div>
 
     <div>
         <h3>Code of Conduct Committee</h3>
         <ol>
-            <li>Mr. Ivan Pachenko - Postgres Professional</li>
-            <li>Mr. Pavel Luzanov - Postgres Professional</li>
-            <li>Mr. Chris Travers</li>
-            <li>Dr. Prakash Poudyal - Kathmandu University</li>
+            <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional</p></li>
+            <li><p><strong>Mr. Pavel Luzanov</strong> - Postgres Professional</p></li>
+            <li><p><strong>Mr. Chris Travers</strong></p></li>
+            <li><p><strong>Dr. Prakash Poudyal</strong> - Kathmandu University</p></li>
+
         </ol>
     </div>
 
