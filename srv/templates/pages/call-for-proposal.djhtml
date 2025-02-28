@@ -12,7 +12,8 @@
 
 {% block main_content %}
     <div>
-        <h1>Call for Proposals</h1>
+        <h1>Call for Proposals - PostgreSQL Conference Nepal 2025</h1>
+        <h4>5-6 May 2025 | Kathmandu University, Dhulikhel, Nepal</h4>
         <h2>Talks and Workshop sessions</h2>
 
         <p>
@@ -22,10 +23,27 @@
             in English.
             Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
         </p>
+
+        <div class="alert alert-danger">
         <h3>Key Dates</h3>
         <p>Proposal Submission Deadline: <strong>30 April, 2025</strong></p>
+        </div>
 
-        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'" style="font-size:120%">
+        <h2>Submission Guidelines</h2>
+        <p>We are now accepting proposals for talks in English. Each session will last 50 minutes, and proposals can cover any aspect
+           of PostgreSQL. If you’re interested in hosting a workshop, please note that these will have a separate format.</p>
+
+        <h2>Proposal Requirements</h2>
+        <p>Please submit the following details for your proposal:</p>
+        <ol>
+            <li><p>Title of the talk or workshop</p></li>
+            <li><p><strong class="heading">Abstract (300-500 words): </strong>A brief overview of the session content</p></li>
+            <li><p><strong class="heading">Speaker Bio(s): </strong>A short biography highlighting relevant expertise</p></li>
+            <li><p><strong class="heading">Target Audience: </strong>Indicate whether the session is intended for beginners, intermediate, or advanced users</p></li>
+            <li><p><strong class="heading">Technical Requirements: </strong>Specify any equipment or setup needed for your session</p></li>
+        </ol>
+
+        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/form'" style="font-size:120%">
             Submit Your Proposal
         </button>
 
@@ -39,19 +57,36 @@
 
     <div>
         <h2>Suggested Topics</h2>
-        <b>These are the topics suggested but are not limited to:</b>
+        <p>These are the topics suggested but are not limited to:</p>
         <ol>
-            <li>Developing applications for PostgreSQL</li>
-            <li>Administering large scale PostgreSQL installations</li>
-            <li>Case studies and/or success stories of PostgreSQL deployments</li>
-            <li>PostgreSQL tools and utilities</li>
-            <li>PostgreSQL hacking</li>
-            <li>Community & user groups</li>
-            <li>Tuning the server</li>
-            <li>Migrating from other systems</li>
-            <li>Scaling/replication</li>
-            <li>Benchmarking & hardware</li>
-            <li>PostgreSQL related products</li>
-        </ol>
+            <li><p><strong class="heading">Developing Applications with PostgreSQL: </strong>Best practices, integration tips, and tools</p></li>
+            <li><p><strong class="heading">Administering Large-Scale PostgreSQL Installations: </strong>Insights into enterprise-level management and performance optimization</p></li>
+            <li><p><strong class="heading">Case Studies and Success Stories: </strong>Real-world PostgreSQL deployment experiences</p></li>
+            <li><p><strong class="heading">Tools & Utilities: </strong>Must-have tools for PostgreSQL users</p></li>
+            <li><p><strong class="heading">Hacking & Advanced Techniques: </strong>Advanced tips and tricks for power users</p></li>
+            <li><p><strong class="heading">Community & User Groups: </strong>Building and growing the PostgreSQL community</p></li>
+            <li><p><strong class="heading">Server Tuning and Performance Optimization: </strong>Techniques for better scalability and resource management</p></li>
+            <li><p><strong class="heading">Migrating from Other Database Systems: </strong>Challenges, best practices, and lessons learned</p></li>
+            <li><p><strong class="heading">Replication & Scaling: </strong>High availability, load balancing, and distributed systems</p></li>
+            <li><p><strong class="heading">Benchmarking & Hardware: </strong>How to assess performance and optimize for different hardware setups</p></li>
+            <li><p><strong class="heading">PostgreSQL-Related Products: </strong>Innovations and complementary tools in the PostgreSQL ecosystem</p></li>            
+          </ol>
+    </div>
+
+    <div>
+        <h2>Tips on How to Write a Successful Proposal</h2>
+        <p>To write a successful proposal for PostgreSQL Conference Nepal 2025, ensure that you focus on the following important parts:</p>
+        <div class="box">
+            <ol>
+            <li><p><strong class="heading">Compelling Title</strong>: Choose a title that is clear and grabs attention while accurately representing the core content of your session.</p></li>
+            <li><p><strong class="heading">Concise Abstract</strong>: Write a brief yet informative abstract that explains the problem your session will address, the solution or insights you'll present, and the value it offers to the audience.</p></li>
+            <li><p><strong class="heading">Target Audience</strong>: Clearly define whether your session is for beginners, intermediate users, or advanced professionals to help organizers gauge its relevance.</p></li>
+            <li><p><strong class="heading">Speaker Bio</strong>: Provide a short bio highlighting your relevant experience, expertise, and past speaking engagements to demonstrate your qualifications for the session.</p></li>
+            <li><p><strong class="heading">Learning Objectives</strong>: Outline what attendees will learn or be able to do after your session, showing how your content will provide tangible value.</p></li>
+            <li><p><strong class="heading">Technical Requirements</strong>: List any equipment, software, or other resources you'll need to successfully deliver your session.</p></li>
+            <li><p><strong class="heading">Relevance</strong>: Ensure your proposal aligns with the conference themes and the needs of the PostgreSQL community, addressing current trends or challenges.</p></li>
+            </ol>
+        </div>
+        <p>By focusing on these key parts, your proposal will have a higher chance of being selected and resonate with both the organizers and attendees.</p>
     </div>
 {% endblock %}
