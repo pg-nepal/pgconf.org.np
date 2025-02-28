@@ -37,9 +37,9 @@
             <li>
                 <strong>Student Tickets</strong>
                 <ul>
-                    <li>Discounted Rate: NRS 3,000</li>
-                    <li>Normal Rate: NRS 5,000</li>
-                    <li><em>Limited availability. Secure your spot early!</em></li>
+                    <li><p>Discounted Rate: NRS 3,000</p></li>
+                    <li><p>Normal Rate: NRS 5,000</p></li>
+                    <li><p><em>Limited availability. Secure your spot early!</em></p></li>
                 </ul>
             </li>
         </div>
@@ -48,8 +48,8 @@
             <li>
                 <strong>Professional Tickets</strong>
                 <ul>
-                    <li>Discounted Rate: NRS 5,000</li>
-                    <li>Normal Rate: NRS 7,000</li>
+                    <li><p>Discounted Rate: NRS 5,000</p></li>
+                    <li><p>Normal Rate: NRS 7,000</p></li>
                 </ul>
             </li>
         </div>
@@ -58,8 +58,8 @@
             <li>
                 <strong>International Tickets</strong>
                 <ul>
-                    <li>Discounted Rate: USD 200</li>
-                    <li>Normal Rate: USD 300</li>
+                    <li><p>Discounted Rate: USD 200</p></li>
+                    <li><p>Normal Rate: USD 300</p></li>
                     <li><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></li>
                 </ul>
             </li>
