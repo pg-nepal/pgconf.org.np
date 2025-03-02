@@ -22,11 +22,11 @@
         <span class="dialog-title">Drop your comment</span>
     </header>
 
-    <form id="form" method="dialog" style="padding-top:1.5rem">
+    <form id="comment-submission" method="dialog" style="padding-top:1.5rem">
         <fieldset>
-            <textarea name="comment"></textarea>
+            <textarea name="comment" id ="comment"></textarea>
         </fieldset>
-        <button class="button">Submit</button>
+        <button id="cmt-submit-button" class="button">Submit</button>
     </form>
 
     <script type="module">
@@ -45,6 +45,21 @@
             ) {
                 dialog.close()
             }
+        })
+
+        const form = document.getElementById('comment-submission')
+
+        form.addEventListener('submit', function (event) {
+            event.preventDefault()
+            const formData = new FormData(form)
+
+            fetch('/reviews/add/{{pk}}', {
+                method: 'POST',
+                body: formData
+            }).then(function(response) {
+                dialog.close()
+                location.reload()
+            })
         })
     </script>
 </dialog>
