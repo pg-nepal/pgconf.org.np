@@ -1,12 +1,20 @@
 <style>
     .admin{
-        color: maroon;
+        color: white;
     }
     .admin a:hover{
         color: maroon;
     }
     .login-identifier-line {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         border-bottom: 2px solid red;
+    }
+
+    .navbar-area{
+        border: 0.5px solid red;
     }
 </style>
 <nav class="nav">
