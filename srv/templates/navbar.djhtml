@@ -1,7 +1,13 @@
 <nav class="nav">
     <div class="headers">
-            </div>
+            <a href="/">
+                <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+            </a>
 
+            <div class="updates-container" style="width: 30%;">
+                {% include "parts/ticker.djhtml" %}
+            </div>
+    </div>
             <div class="nav-options">
                 <ul class="nav-list">
                     <li class="nav-item"><a href="/">Home</a></li>
