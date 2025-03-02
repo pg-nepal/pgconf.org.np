@@ -31,7 +31,10 @@
 
             <!-- Mobile Hamburger Icon -->
             <div class="hamburger-menu" id="hamburger-menu">
-                <span>&#9776;</span> <!-- Hamburger icon -->
+                    <a href="/">
+                        <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+                    </a>
+                <span style="color: white;">&#9776;</span> <!-- Hamburger icon -->
             </div>
 
             <div class="hamburger-options">
