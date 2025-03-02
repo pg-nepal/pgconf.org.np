@@ -28,15 +28,14 @@
 <div class="fields" style="margin-top: 10px;">
     <label>Registration for Events <sup>*</sup></label>
 
+
     <select id="wtf-event" name="events" multiple required>
-        <option value="pre">
-            [{{eventOn_pre.strftime('%Y %B %_d')}} - {{eventTo_pre.strftime('%_d')}}]
-            Pre-Conference Training
-        </option>
-        <option value="main">
-            [{{eventOn.strftime('%Y %B %_d')}} - {{eventTo.strftime('%_d')}}]
-            Main Conference
-        </option>
+        {% for row in cursor %}
+            <option value="{{row.pk}}">
+            {{row.eventOn.strftime('%Y %B %_d')}} - {{row.eventTo.strftime('%_d')}}
+            {{row.name}}
+            </option>
+        {% endfor %}
     </select>
     <span style="margin-top:0.5rem; color:gray">
         Multiple option can be selected (drag or use <kbd>Shit</kbd> while selecting), Pre-Conference Training <a href="/pages/training" target="_blank">Details</a>
