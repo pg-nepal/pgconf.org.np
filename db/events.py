@@ -73,6 +73,21 @@ p_tickets_type = sa.Enum(
 )
 
 
+class Event(db.Base):
+    __tablename__  = 'events'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'list of events in the conference',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+
+    type           = sa.Column(sa.String(20))
+    name           = sa.Column(sa.String(256))
+    eventOn        = sa.Column(sa.DateTime())
+    eventTo        = sa.Column(sa.DateTime())
+
+
 class Ticket(db.Base):
     __tablename__  = 'tickets'
     __table_args__ = {
@@ -83,7 +98,7 @@ class Ticket(db.Base):
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
     attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
 
-    type           = sa.Column(p_tickets_type, server_default=e_tickets_type.main.name)
+    event_pk       = sa.Column(sa.Integer, sa.ForeignKey(Event.pk))
     currency       = sa.Column(sa.String(10), server_default='NRs.')
     fee            = sa.Column(sa.Numeric(10, 2))
 
