@@ -67,11 +67,25 @@
 
     <hr/>
 
+    <script>
+        function reviewDelete(pk){
+            if (!confirm('Do you really want to delete this comment?')) return
+
+            fetch(`/reviews/delete/${pk}`, {
+                method : 'DELETE'
+            }).then(function(response){
+                alert('Comment deleted successfully.')
+                location.reload()
+            })
+        }
+    </script>
+
     <div class="reviews">
         <h3>Comments</h3>
         <div id="comment-section" class="comment-section"></div>
         <button id="comment-add" class="button">Add</button>
     </div>
+
     {% include '/proposals/comment-dialog.djhtml' %}
     {% include '/proposals/rating-dialog.djhtml' %}
 {% endblock %}
