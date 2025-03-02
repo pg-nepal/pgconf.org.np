@@ -9,15 +9,8 @@
         border-bottom: 2px solid red;
     }
 </style>
-<nav class="login-identifier-line">
-    <div class="navbar-area">
-        <div class="navbar-container">
-            <div class="headers">
-                <a href="/">
-                    <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
-                </a>
-            </div>
-            <span class="admin">Logged In as <strong>{{isAdmin}}</strong></span>
+<nav class="nav">
+    <div class="headers">
 
             <div class="nav-options">
                 <ul class="nav-list">
