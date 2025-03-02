@@ -1,4 +1,5 @@
 {
+    "editor.defaultFormatter": null,
     "files.trimTrailingWhitespace": true,
     "files.insertFinalNewline": true,
     "files.associations": {
