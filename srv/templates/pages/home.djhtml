@@ -36,7 +36,7 @@
                 </div>
             </div>
 
-            <a href="/pages/registration" class="btn main-btns">Register Now</a>
+            <a href="/pages/registration" class="button">Register Now</a>
         </div>
     </div>
 
