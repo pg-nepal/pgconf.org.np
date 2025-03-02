@@ -1,11 +1,13 @@
 /* Reset some default styles */
 
 /* Navbar Styling */
-.navbar-area {
-  background-color: white;
-  padding: 20px 0;
+.nav{
+  width: 100%;
+  gap: 1em;
+  padding: 1%;
+  flex-direction: column;
+  justify-content: center;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   position: relative;
   box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1), 0px -4px 12px rgba(0, 0, 0, 0.1);
