@@ -138,6 +138,10 @@
   transform: scale(1.1);  /* Slight zoom effect on hover */
 }
 
+.nav-options .admin-links:hover{
+  color: maroon;
+}
+
 /* Underline effect on hover */
 .nav-options a::after {
   content: '';
