@@ -1,5 +1,5 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = '/ Training' %}
+{% set pageTitle = 'Training' %}
 
 
 {% block main_content %}
