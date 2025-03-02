@@ -96,7 +96,13 @@
 
 .nav-options .nav-list {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
   list-style-type: none;
+  width: 100%;
+  padding-inline-start: 0;
+  padding: 0.5% 2% 0.5% 2%;
+  margin: 0;
 }
 
 .nav-options .nav-list .nav-item:not(:last-of-type) {
