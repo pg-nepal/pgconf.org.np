@@ -186,7 +186,7 @@
   position: absolute;
   background-color: #333;
   min-width: 160px;
-  z-index: 2;
+  z-index: 1;
   top: 100%;
   left: 0;
 }
