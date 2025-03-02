@@ -11,18 +11,11 @@
 </style>
 <nav class="nav">
     <div class="headers">
-
-            <div class="nav-options">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="/dash">Dashboard</a></li>
-                    <li class="nav-item"><a href="/proposals">Proposals</a></li>
-                    <li class="nav-item"><a href="/attendees">Attendees</a></li>
-                    <li class="nav-item admin">
-                        <a href="/" class="logout" 
-                        onclick="logout();return false;">Logout</a>
-                    </li>
-                </ul>
-            </div>
+            <a href="/">
+                <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+            </a>
+        <span class="admin">Logged In as <strong>{{isAdmin}}</strong></span>
+    </div>
 
             <script>
                 const dropdownNavItems = document.querySelectorAll('.navbar-area .nav-list .nav-item.dropdown')
