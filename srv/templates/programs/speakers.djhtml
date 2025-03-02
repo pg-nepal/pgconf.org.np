@@ -5,7 +5,7 @@
 {% block head %}
     <style>
         .speaker-profile { display: flex; flex-wrap: wrap; gap: 20px; }
-        .speaker-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; }
+        .speaker-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center; }
         .speaker-details { flex: 1; min-width: 300px; }
         .speaker-name { margin:0px; font-size: 24px; font-weight: bold; color: #007bff; }
         .speaker-title { font-size: 16px; color: #666; }
