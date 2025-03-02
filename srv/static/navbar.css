@@ -71,7 +71,6 @@
 }
 
 .navbar-container {
-  width: 80%;
   margin: 0 auto; /* Center it horizontally */
   padding: 0 20px; /* Add some padding on the sides */
   display: block;
@@ -113,15 +112,6 @@
   position: relative;
 }
 
-.nav-options .nav-list .nav-item .dropdown-item {
-  background: white;
-  padding: 1rem !important;
-  position: absolute;
-  top: 150%;
-  left: 0;
-  padding: 0;
-  list-style-type: none;
-}
 
 .nav-options a {
   font-family: 'DM Sans', sans-serif;
@@ -142,18 +132,6 @@
   color: maroon;
 }
 
-/* Underline effect on hover */
-.nav-options a::after {
-  content: '';
-  position: absolute;
-  width: 0;
-  height: 3px;
-  background-color: #27259d;
-  left: 50%;
-  bottom: -5px;
-  transition: width 0.3s ease, left 0.3s ease;
-}
-
 .nav-options a:hover::after {
   width: 100%;
   left: 0;
@@ -167,7 +145,6 @@
 
 .nav-options .dropdown {
   position: relative;
-  display: inline-block;
 }
 
 /* .nav-options .dropdown .dropbtn { */
@@ -270,12 +247,48 @@
   }
 }
 
+@media (max-width: 1000px){
+  .nav-options a {
+    font-size: 10px;
+  }
+
+  .nav-options .dropdown .dropbtn{
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 800px){
+  .nav-options a {
+    font-size: 8px;
+  }
+
+  .nav-options .dropdown .dropbtn{
+    font-size: 8px;
+  }
+}
+
 /* Hamburger icon styles */
 
-@media (max-width: 1100px){
+@media (max-width: 700px){
+  .nav{
+    padding: 0;
+  }
+
+  .headers {
+    display: none;
+  }
+
+  .navbar-area {
+    width: 100%;
+    border-radius: 0;
+
+  }
 
   .hamburger-menu {
-    display: block; /* Always show the hamburger icon */
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-size: 30px;
     cursor: pointer;
     padding: 10px;
@@ -291,5 +304,4 @@
   .hamburger-options.active ul{
     display: block;
   }
-
 }
