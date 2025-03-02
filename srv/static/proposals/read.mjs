@@ -1,3 +1,11 @@
+const ratingTemplate = {
+    'relevance'   : 'Relevance and Alignment with Conference Themes',
+    'clarity'     : 'Deliverable Clarity on the abstract',
+    'engagement'  : 'Impact and Audience Engagement possibilities',
+    'content'     : 'Technicality of content',
+}
+
+
 export function rateRead_summary(proposal_pk) {
     fetch(`/api/rates/summary/${proposal_pk}`).then(function (response) {
         return response.json()
@@ -35,7 +43,87 @@ function rateUpdate(proposal_pk, value) {
 export function rateRead(proposal_pk) {
     return fetch(`/api/rates/mine/${proposal_pk}`).then(function (response) {
         return response.json()
+    }).then(function (json) {
+        const eDiv_tableContainer = document.querySelector('.table-container')
+        const eDiv_dialogContainer = document.querySelector('.dialog-container')
+
+        for(let [key, value] of Object.entries(ratingTemplate)) {
+            const eDiv_ratingWrapper = document.createElement('tr')
+            eDiv_ratingWrapper.classList = 'rating-wrapper'
+            eDiv_ratingWrapper.id = key
+
+            const eDiv_label = document.createElement('td')
+            eDiv_label.innerText = value
+            eDiv_ratingWrapper.appendChild(eDiv_label)
+
+            for(let i=1; i<=5; i++) {
+                const eDiv_starWrapper = document.createElement('td')
+                const eInput = document.createElement('input')
+
+                eInput.id = `star-${i}`
+                eInput.type = 'radio'
+                eInput.value = i
+                eInput.name = key
+
+                if(json.score != null) {
+                    eInput.checked = (i == json.score[key])
+                }
+
+                eDiv_starWrapper.appendChild(eInput)
+                eDiv_ratingWrapper.appendChild(eDiv_starWrapper)
+            }
+
+            eDiv_tableContainer.appendChild(eDiv_ratingWrapper)
+        }
+
+        const eDiv_ratingWrapper = document.createElement('div')
+        eDiv_ratingWrapper.classList = 'overall-wrapper'
+        eDiv_ratingWrapper.id = 'star-value'
+
+        if (json != null){
+            eDiv_ratingWrapper.setAttribute('data-value', json.value)
+        }
+
+        const eDiv_label = document.createElement('div')
+        eDiv_label.innerText = 'Overall Score'
+
+        const eDiv_starWrapper = document.createElement('div')
+
+        for(let i=1; i<=5; i++) {
+            const eSpan = document.createElement('span')
+            eSpan.id = `star-${i}`
+            eSpan.setAttribute('data-value', i)
+            eSpan.classList = 'rating__star'
+            eSpan.innerText = '⭐'
+
+            if(json != null && json.value >= i) {
+                eSpan.classList.add('active')
+            }
+
+            eSpan.onclick = changeStar
+            eDiv_starWrapper.appendChild(eSpan)
+        }
+
+        eDiv_ratingWrapper.appendChild(eDiv_label)
+        eDiv_ratingWrapper.appendChild(eDiv_starWrapper)
+        eDiv_dialogContainer.appendChild(eDiv_ratingWrapper)
+
     })
+}
+
+function changeStar(e) {
+    const parent = e.target.parentElement
+    const childrenList = Array.prototype.slice.call(parent.children)
+    const clickedOn = e.target.getAttribute('data-value')
+
+    parent.parentElement.setAttribute('data-value', clickedOn)
+
+    for(let i=0; i<childrenList.length; i++) {
+        childrenList[i].classList.remove('active')
+        if(i < clickedOn) {
+            childrenList[i].classList.add('active')
+        }
+    }
 }
 
 
@@ -77,8 +165,7 @@ export function reviewReadAll(proposal_pk) {
 }
 
 
-export function reviewUpdate(eForm, proposal_pk) {
-    event.preventDefault()
+function reviewUpdate(proposal_pk) {
     fetch(`/reviews/add/${proposal_pk}`, {
         method : 'POST',
         body   : new FormData(eForm),
@@ -90,8 +177,7 @@ export function reviewUpdate(eForm, proposal_pk) {
     })
 }
 
-
-export function reviewDelete(pk){
+function reviewDelete(pk){
     if (!confirm('Do you really want to delete this comment?')) return
 
     fetch(`/reviews/delete/${pk}`, {
