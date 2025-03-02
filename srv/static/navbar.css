@@ -87,9 +87,11 @@
 }
 
 .nav-options {
-  margin-left: none;
   display: flex;
+  justify-content: center;
+  align-items: center;
   list-style-type: none;
+  width: 100%;
 }
 
 .nav-options .nav-list {
