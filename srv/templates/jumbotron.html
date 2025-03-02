@@ -1,3 +1,49 @@
+<style>
+    .jumbotron {
+        position: relative;
+        z-index: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-image: url('/static/images/annapurna.jpg');
+        background-size: cover;
+        background-position: top;
+        width: 100% !important;
+        height: 300px;
+        background-size: cover;
+        background-position: center;
+        padding: 1.5rem 0;
+        margin-bottom: 1rem;
+    }
+
+    .jumbotron .jumbotron-page-title {
+        position: relative;
+        color: white;
+        z-index: 2;
+        font-weight: 600;
+    }
+
+    .jumbotron .dark-wash {
+        background: #00000083;
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .jumbotron .container {
+        width: 80%;
+    }
+    
+    @media (max-width: 700px) {
+        .jumbotron {
+            height: 200px;
+        }
+    }
+</style>
+
 <div class="jumbotron">
     <div class="dark-wash"></div>
     <div class="container">
