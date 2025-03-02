@@ -43,9 +43,6 @@
     <div class="content-container">
         <div class="content">
             <div class="left-content">
-
-                {% include "parts/ticker.djhtml" %}
-
                 <section id="intro" class="home-content">
                     <p>
                         We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
@@ -147,6 +144,5 @@
 
             setTimeout(countDown, 1000)
         })()
-        initNewsTicker()
     </script>
 {% endblock %}
