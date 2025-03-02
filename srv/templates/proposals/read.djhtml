@@ -72,6 +72,7 @@
         <div id="comment-section" class="comment-section"></div>
         <button id="comment-add" class="button">Add</button>
     </div>
+
     {% include '/proposals/comment-dialog.djhtml' %}
     {% include '/proposals/rating-dialog.djhtml' %}
 {% endblock %}
@@ -92,6 +93,18 @@
         document.getElementById('rating-dialog-btn').onclick = function() {
             eDialog_.showModal()
         }
+    </script>
 
+    <script>
+        function reviewDelete(pk){
+            if (!confirm('Do you really want to delete this comment?')) return
+
+            fetch(`/reviews/delete/${pk}`, {
+                method : 'DELETE'
+            }).then(function(response){
+                alert('Comment deleted successfully.')
+                location.reload()
+            })
+        }
     </script>
 {% endblock %}
