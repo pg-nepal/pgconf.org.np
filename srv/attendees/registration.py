@@ -56,8 +56,8 @@ def ticket_cost_main(attendee, limit=20):
 
 def tickets_generate(attendee, events):
     func = {
-        db.events.e_tickets_type.pre.name  : ticket_cost_pre,
-        db.events.e_tickets_type.main.name : ticket_cost_main,
+        "1" : ticket_cost_pre,
+        "2" : ticket_cost_main,
     }
 
     ticket_list = []
@@ -65,7 +65,7 @@ def tickets_generate(attendee, events):
         currency, fee = func[e](attendee)
         ticket_list.append({
             'attendee_pk' : attendee.pk,
-            'type'        : e,
+            'event_pk'    : e,
             'currency'    : currency,
             'fee'         : fee,
         })
@@ -76,6 +76,18 @@ def tickets_generate(attendee, events):
 @app.get('/registered/form')
 def registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
+
+    query = sa.select(
+        db.events.Event.pk,
+        db.events.Event.type,
+        db.events.Event.name,
+        db.events.Event.eventOn,
+        db.events.Event.eventTo,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
     return flask.render_template(
         '/form-captcha.djhtml',
         pageTitle = '/ Registration',
@@ -83,6 +95,7 @@ def registered_form():
         script    = '/static/attendees/form.mjs',
         question  = srv.captcha.questions[idx][0],
         idx       = idx,
+        cursor    = cursor,
     )
 
 
@@ -118,7 +131,7 @@ def registered_create():
             ).values(
                 tickets_generate(attendee, events),
             ).returning(
-                db.events.Ticket.type,
+                db.events.Ticket.event_pk,
                 db.events.Ticket.fee,
             ))
 
@@ -258,13 +271,16 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
-        db.events.Ticket.type.label('Event'),
+        db.events.Event.name.label('Event'),
         db.events.Ticket.currency.label('Currency'),
         db.events.Ticket.fee.label('Amount'),
         db.events.Ticket.paymentStatus.label('Payment Status'),
     ).join(
         db.events.Attendee,
         db.events.Ticket.attendee_pk == db.events.Attendee.pk,
+    ).join(
+        db.events.Event,
+        db.events.Ticket.event_pk == db.events.Event.pk,
     ).where(
         sa.cast(db.events.Attendee.slug, sa.String) == slug,
     )
