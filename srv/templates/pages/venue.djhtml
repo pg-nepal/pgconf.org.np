@@ -1,11 +1,11 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = '/ Venue' %}
+{% set pageTitle = 'Venue' %}
 
 
 {% block main_content %}
     <div id="venue">
         <section id="top-section" class="hero">
-            <h2 class="section-header">Venue (Kathmandu University)</h2>
+            <h2 class="section-header">Kathmandu University</h2>
             <p>
                 Like previous year, 2025 Conference will be held in <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a>, Dhulikhel, Nepal.
             </p>
