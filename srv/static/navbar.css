@@ -74,7 +74,7 @@
   width: 80%;
   margin: 0 auto; /* Center it horizontally */
   padding: 0 20px; /* Add some padding on the sides */
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
 }
