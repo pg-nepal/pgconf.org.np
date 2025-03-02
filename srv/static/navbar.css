@@ -115,7 +115,7 @@
 
 .nav-options a {
   font-family: 'DM Sans', sans-serif;
-  color: rgb(253, 253, 253);
+  color: rgb(187, 187, 187);
   text-decoration: none;
   text-transform: capitalize;
   font-weight: 500;
@@ -124,7 +124,7 @@
 }
 
 .nav-options a:hover {
-  color: #2248af;  /* Warm accent color for hover effect */
+  color: #ffffff;  /* Warm accent color for hover effect */
   transform: scale(1.1);  /* Slight zoom effect on hover */
 }
 
