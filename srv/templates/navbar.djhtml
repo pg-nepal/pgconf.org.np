@@ -21,7 +21,6 @@
                     <ul class="dropdown" id="dropdown">
                         <a class="dropbtn">Programs</a>
                             <div class="dropdown-content">
-                                <a href="/programs/speakers">Speakers</a>
                                 <a href="/pages/schedule">Schedule</a>
                                 <a href="/pages/venue">Venue</a>
                             </div>
