@@ -1,10 +1,5 @@
-<nav>
-    <div class="navbar-area">
-        <div class="navbar-container">
-            <div class="headers">
-                <a href="/">
-                    <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
-                </a>
+<nav class="nav">
+    <div class="headers">
             </div>
 
             <div class="nav-options">
