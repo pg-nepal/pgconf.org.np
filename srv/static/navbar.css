@@ -125,10 +125,10 @@
 
 .nav-options a {
   font-family: 'DM Sans', sans-serif;
-  color: #000000;
+  color: rgb(253, 253, 253);
   text-decoration: none;
-  text-transform: uppercase;
-  font-weight: 540;
+  text-transform: capitalize;
+  font-weight: 500;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
 }
