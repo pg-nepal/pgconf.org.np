@@ -16,6 +16,7 @@
                     <li class="nav-item"><a href="/pages/call-for-proposal">Call for Proposal</a></li>
                     <li class="nav-item"><a href="/pages/sponsors">Call for Sponsor</a></li>
                     <li class="nav-item"><a href="/pages/registration">Registration</a></li>
+                    <li class="nav-item"><a href="/programs/speakers">Speakers</a></li>
                     <li class="nav-item"><a href="/pages/training">Training</a></li>
                     <ul class="dropdown" id="dropdown">
                         <a class="dropbtn">Programs</a>
