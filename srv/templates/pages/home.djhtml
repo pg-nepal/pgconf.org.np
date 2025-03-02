@@ -1,3 +1,4 @@
+{% set showJumbotron = false %}
 {% extends 'base.djhtml' %}
 {% set pageTitle = '/ Home' %}
 
