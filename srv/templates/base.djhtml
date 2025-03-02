@@ -15,7 +15,7 @@
     </head>
 
     <body>
-        <header>
+        <header class="header">
             {% if isAdmin %}
                 {% include '/navbar-dash.djhtml' %}
             {% else %}
