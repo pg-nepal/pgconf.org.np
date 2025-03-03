@@ -100,7 +100,7 @@
   list-style-type: none;
   width: 100%;
   padding-inline-start: 0;
-  padding: 0.5% 2% 0.5% 2%;
+  padding: 1% 2% 1% 2%;
   margin: 0;
 }
 
@@ -118,7 +118,7 @@
   color: rgb(187, 187, 187);
   text-decoration: none;
   text-transform: capitalize;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
   transition: color 0.3s ease, transform 0.3s ease;
 }
