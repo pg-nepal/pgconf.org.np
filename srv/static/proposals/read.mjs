@@ -184,7 +184,7 @@ function reviewUpdate(proposal_pk) {
 function reviewDelete(pk){
     if (!confirm('Do you really want to delete this comment?')) return
 
-    fetch(`/reviews/delete/${pk}`, {
+    fetch(`/api/reviews/mine/delete/${pk}`, {
         method : 'DELETE'
     }).then(function(response){
         alert('Comment deleted successfully.')
