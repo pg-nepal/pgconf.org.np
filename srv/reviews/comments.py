@@ -30,3 +30,21 @@ def review_read_mine(proposal_pk):
             headers = tuple(c['name'] for c in query.column_descriptions),
             data    = [list(row) for row in cursor],
         )
+
+
+@app.delete('/api/reviews/mine/delete/<int:pk>')
+def review_delete_mine(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    with db.SessionMaker.begin() as session:
+
+        session.execute(sa.delete(
+            db.programs.Review,
+        ).where(
+            db.programs.Review.pk == pk,
+            db.programs.Review.createdBy == isAdmin,
+        ))
+        
+        return 'Comment deleted successfully', 200
