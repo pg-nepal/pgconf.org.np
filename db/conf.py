@@ -98,6 +98,7 @@ class Ticket(db.Base):
 
     event_pk       = sa.Column(sa.Integer, sa.ForeignKey(Event.pk, ondelete='CASCADE'))
     attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
+    attendee_slug  = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
 
     currency       = sa.Column(sa.String(10), server_default='NRs.')
     fee            = sa.Column(sa.Numeric(10, 2))
