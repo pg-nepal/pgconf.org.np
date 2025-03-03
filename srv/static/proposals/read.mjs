@@ -211,6 +211,5 @@ export function init(pk) {
     }).then(function (json) {
         proposalLoad(json)
         rateRead_summary(json.pk)
-        reviewReadAll(json.pk)
     })
 }
