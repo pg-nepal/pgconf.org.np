@@ -61,6 +61,17 @@ p{
     transition: border-color 0.2s, box-shadow 0.2s, transform 0.3s ease;
 }
 
+.button.delete {
+    color: white;
+    background-color: #ff030b;
+    border: 1px solid #ff0000;
+    
+}
+
+.button.delete:hover{
+    background-color: #d90303;
+}
+
 .button:hover{
     background-color: #0056b3;
 }
