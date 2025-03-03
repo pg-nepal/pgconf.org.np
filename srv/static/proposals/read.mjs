@@ -127,7 +127,7 @@ function changeStar(e) {
 }
 
 
-export function reviewReadAll(proposal_pk) {
+export function reviewReadAll (isAdmin, proposal_pk) {
     fetch(`/api/reviews/mine/${proposal_pk}`).then(function (response) {
         return response.json()
     }).then(function (json) {
