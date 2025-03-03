@@ -55,19 +55,20 @@ def ticket_cost_main(attendee, limit=20):
 
 
 def tickets_generate(attendee, events):
+    ticket_list = []
+
     func = {
         '1' : ticket_cost_pre,
         '2' : ticket_cost_main,
     }
-
-    ticket_list = []
     for e in events:
         currency, fee = func[e](attendee)
         ticket_list.append({
-            'attendee_pk' : attendee.pk,
-            'event_pk'    : e,
-            'currency'    : currency,
-            'fee'         : fee,
+            'attendee_pk'   : attendee.pk,
+            'attendee_slug' : attendee.slug,
+            'event_pk'      : e,
+            'currency'      : currency,
+            'fee'           : fee,
         })
 
     return ticket_list
@@ -272,14 +273,12 @@ def registered_ticket_read(slug):
         db.conf.Ticket.currency.label('Currency'),
         db.conf.Ticket.fee.label('Amount'),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
-    ).join(
-        db.conf.Attendee,
-        db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
-    ).join(
-        db.conf.Event,
-        db.conf.Ticket.event_pk == db.conf.Event.pk,
-    ).where(
-        sa.cast(db.conf.Attendee.slug, sa.String) == slug,
+    ).outerjoin(
+        db.conf.Ticket,
+        sa.and_(
+            db.conf.Ticket.event_pk == db.conf.Event.pk,
+            sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
+        ),
     )
 
     with db.engine.connect() as connection:
