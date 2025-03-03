@@ -153,16 +153,20 @@ export function reviewReadAll (isAdmin, proposal_pk) {
             eSpan.style.fontWeight = 200
             eDiv_bottom.append(eSpan)
 
-            const eButton = document.createElement('button')
-            eButton.classList = 'button'
-            eButton.innerText = 'Delete'
-            eButton.setAttribute('onClick', `reviewDelete(${pk})`)
-            eDiv_bottom.append(eButton)
+            if (user === isAdmin) {
+                const eButton = document.createElement('button');
+                eButton.classList.add('button', 'delete');
+                eButton.innerText = 'Delete your comment';
+                eButton.addEventListener('click', function () {
+                    reviewDelete(pk);
+                });
+                eDiv_bottom.append(eButton);
+            }
 
             eDiv_root.append(eDiv)
-        }
-    })
-}
+            }
+        })
+    }
 
 
 function reviewUpdate(proposal_pk) {
