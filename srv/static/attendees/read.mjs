@@ -36,8 +36,12 @@ export function getTicketDetails(slug) {
                 eTd.innerHTML = cell
                 if (json.headers[i] == 'Currency') currency = cell
                 if (json.headers[i] == 'Amount') {
-                    total += cell
-                    eTd.innerHTML = cell.toLocaleString()
+                    if (null === cell) {
+
+                    } else {
+                        total += cell
+                        eTd.innerHTML = cell.toLocaleString()
+                    }
                 }
                 eTr.append(eTd)
             })
