@@ -82,6 +82,8 @@
     <script type="module">
         import * as proposals from '/static/proposals/read.mjs'
 
+        const isAdmin = {{ isAdmin|tojson }};
+        proposals.reviewReadAll(isAdmin, {{pk}})
         proposals.init({{pk}})
 
         const eDialog = document.getElementById('dialog-comment')
