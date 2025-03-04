@@ -70,7 +70,7 @@
         </ol>
     </div>
 
-    <div>
+    <div class="alert">
         <h3>Financial Disclosure</h3>
         <p>
             Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal. It is hereby stipulated that
