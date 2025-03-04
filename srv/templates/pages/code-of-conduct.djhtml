@@ -1,11 +1,8 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = '/ Code of Conduct' %}
+{% set pageTitle = 'Code of Conduct' %}
 
 
 {% block main_content %}
-    <div class="headings">
-        <h1>Code of Conduct</h1>
-    </div>
 
     The PostgreSQL code of conduct has been adopted by the Conference (PgConf Nepal).
 
