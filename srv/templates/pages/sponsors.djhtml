@@ -3,9 +3,8 @@
 
 
 {% block main_content %}
-    <h3>let's contribute to grow the community</h3>
-
-    <div class="support-event">
+<div class="alert">
+        <h3>Let's contribute to grow the community</h3>
         <p>
             We invite proposals for sponsorships for the event PgConfNepal 2025. Benefits and prices of sponsorships
             are as mentioned below.
@@ -13,10 +12,10 @@
         <p>For more details please feel free to write: <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a></p>
     </div>
 
-    <div class="platinum-sponsorship">
+    <div>
         <h1>Platinum Sponsorship</h1>
         <div class="box">
-            <h3>Benefits:</h3>
+            <h3><em>Benefits:</em></h3>
             <ol>
                 <li><p>
                     Permission for the Business to use the following endorsement: “Platinum Partner of PostgreSQL
@@ -48,15 +47,15 @@
                 </p></li>
             </ol>
 
-            <h4>Cost of sponsorship - <b>USD 5000</b></h4>
-            <p>Up to one platinum sponsor may be accepted, on a first come, first served basis.</p>
+            <h4 style="color: #007bff;"><em>Cost of sponsorship - <b>USD 5000</b></em></h4>
+            <p><em>Up to one platinum sponsor may be accepted, on a first come, first served basis.</em></p>
         </div>
     </div>
 
-    <div class="gold-sponsorship">
+    <div>
         <h1>Gold Sponsorship</h1>
         <div class="box">
-            <h3>Benefits:</h3>
+            <h3><em>Benefits:</em></h3>
             <ol>
                 <li><p>
                     Permission for the Business to use the following endorsement: “Gold Partner of PostgreSQL
@@ -84,15 +83,15 @@
                 <li><p>Inclusion of one small Business promotional giveaway in the conference packs for registered attendees, such as a pen, USB
                     memory stick or pin (the giveaway to be provided by Business).</p></li>
             </ol>
-            <h4>Cost of sponsorship - <b>USD 2000</b> </h4>
-            <p>Up to two platinum sponsor may be accepted, on a first come, first served basis.</p>
+            <h4 style="color: #007bff;"><em>Cost of sponsorship - <b>USD 2000</b></em></h4>
+            <p><em>Up to two platinum sponsor may be accepted, on a first come, first served basis.</em></p>
         </div>
     </div>
 
-    <div class="silver-sponsorship">
+    <div>
         <h1>Silver Sponsorship</h1>
         <div class="box">
-            <h3>Benefits:</h3>
+            <h3><em>Benefits:</em></h3>
 
             <ol>
                 <li><p>
@@ -113,14 +112,14 @@
                     to availability (registration required, seats are not reserved until registration is completed).
                 </p></li>
             </ol>
-            <h4>Cost of sponsorship - <b>USD 1000</b> </h4>
+            <h4 style="color: #007bff;"><em>Cost of sponsorship - <b>USD 1000</b></em></h4>
         </div>
     </div>
 
-    <div class="bronze-sposorship">
+    <div>
         <h1>Bronze Sponsorship</h1>
         <div class="box">
-            <h4>Benefits:</h4>
+            <h4><em>Benefits:</em></h4>
 
             <ol>
                 <li><p>
@@ -137,7 +136,7 @@
                     to availability (registration required, seats are not reserved until registration is completed).
                 </p></li>
             </ol>
-            <h4>Cost of sponsorship - <b>USD 850</b> </h4>
+            <h4 style="color: #007bff;"><em>Cost of sponsorship - <b>USD 850</b></em></h4>
         </div>
     </div>
 {% endblock %}
