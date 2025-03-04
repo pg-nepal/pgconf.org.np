@@ -51,6 +51,21 @@
         </tbody>
     </table>
 
+    <script>
+        function addEvent(json){
+            fetch('/registered/addevent', {
+                method  : 'POST',
+                headers : { 'content-type': 'application/json' },
+                body    : JSON.stringify(json),
+            }).then(function (response) {
+                return response.json()
+            }).then(function (json) {
+                confirm("Are you sure? This action cannot be undone")
+                location.reload()
+            })
+        }
+    </script>
+
     <h3>Ticket</h3>
     <table id="ticket-table" style="display: none;" >
         <thead><tr><tr></thead>
