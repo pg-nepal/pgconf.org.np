@@ -38,6 +38,6 @@
         {% endfor %}
     </select>
     <span style="margin-top:0.5rem; color:gray">
-        Multiple option can be selected (drag or use <kbd>Shit</kbd> while selecting), Pre-Conference Training <a href="/pages/training" target="_blank">Details</a>
+        Multiple option can be selected (drag or use <kbd>Shift</kbd> while selecting), Pre-Conference Training <a href="/pages/training" target="_blank">Details</a>
     </span>
 </div>
