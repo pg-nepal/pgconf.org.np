@@ -16,21 +16,25 @@
         .rating-star {
             padding : 0 0.3rem;
             letter-spacing: 0.3rem;
-            background: gray;
             transition: all 0.4s ease-in-out;
+            filter: grayscale(1);
+        }
+
+        .rating-star.active{
+            filter: grayscale(0);
         }
     </style>
 {% endblock %}
 
 
 {% block admin_content %}
-    <h3 id="row.title"></h3>
+    <h1 id="row.title"></h3>
 
     <p>
-        <span id="rating-avg">loading...</span>
+        <span id="rating-avg">Not Rated</span>
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
-        (<span id="rating-count">loading...</span> ratings)
-        <button id="rating-dialog-btn" class="btn">Rate this Proposal</button>
+        (<span id="rating-count">0</span> ratings)
+        <button id="rating-dialog-btn" class="button">Rate this Proposal</button>
     </p>
 
     <div class="info-table" style="margin-bottom: 20px">
