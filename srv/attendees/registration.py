@@ -264,3 +264,45 @@ def registered_payment_receipt_file_download(slug):
             download_name = download_name,
             mimetype      = mime_type,
         )
+
+
+@app.post('/registered/addevent')
+def registered_add_event():
+    jsonData = flask.request.json
+
+    for item in jsonData['data']:
+        if item[1] is None:
+            query = sa.select(
+                db.conf.Event.pk,
+            ).where(
+                db.conf.Event.name == item[0],
+            )
+
+            with db.engine.connect() as connection:
+                cursor = connection.execute(query).first()
+                events = str(cursor[0])
+
+                attendee_cursor = connection.execute(
+                    sa.select(
+                        db.conf.Attendee.pk,
+                        db.conf.Attendee.slug,
+                        db.conf.Attendee.email,
+                        db.conf.Attendee.country,
+                        db.conf.Attendee.category,
+                    ).where(
+                        db.conf.Attendee.pk == jsonData['attendee_pk'],
+                    )
+                )
+
+                attendee = attendee_cursor.first()
+
+                for row in cursor:
+                    connection.execute(sa.insert(
+                        db.conf.Ticket,
+                    ).values(
+                        tickets_generate(attendee, events),
+                    ))
+
+                    connection.commit()
+
+    return(jsonData)
