@@ -9,7 +9,9 @@
             min-height: 100px;
             border: 1px solid lightgray;
             border-radius: 8px;
+            font-family: 'DM Sans';
             font-size: 1rem;
+            outline: none;
         }
 
         #dialog-comment fieldset{
