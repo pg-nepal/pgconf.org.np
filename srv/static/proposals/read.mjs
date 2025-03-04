@@ -13,6 +13,7 @@ export function rateRead_summary(proposal_pk) {
         document.getElementById('rating-avg').innerText = json.avg.toFixed(2)
         document.getElementById('rating-count').innerText = json.count
         const stars = document.getElementById('rating-avg-star')
+        stars.classList.add('active')
 
         Object.assign(stars.style, {
             'background'              : `linear-gradient(to right, #fc0 0% ${json.percent}%, gray ${json.percent}% 100%)`,
