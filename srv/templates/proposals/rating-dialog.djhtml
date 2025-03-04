@@ -125,9 +125,12 @@
                 value   : document.getElementById('star-value').getAttribute('data-value') || 0,
             })
         }).then(function(response) {
-            alert('Rating submitted successfully')
-            location.reload()
+            if(response.ok){
+                alert('Rating submitted successfully.')
+                location.reload()
+            } else{
+                alert('Overall score is required')
+            }
         })
     }
-
 </script>
