@@ -24,7 +24,7 @@
 
     <h3>&#128231; Communication</h3>
     <div>
-        <button id="emailRegistrationThanks" data-type="registration_thanks" data-slug="{{row.slug}}">
+        <button class="button" id="emailRegistrationThanks" data-type="registration_thanks" data-slug="{{row.slug}}">
             Queue Welcome email
         </button>
     </div>
