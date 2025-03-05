@@ -217,7 +217,7 @@ def registered_payment_receipt_file_check(slug):
         db.conf.Ticket.pk,
     ).join(
         db.conf.Attendee,
-        db.conf.Ticket.attendee_pk == db.conf.Attendee.pk
+        db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
         db.conf.Ticket.receiptBlob.isnot(None),
@@ -270,6 +270,8 @@ def registered_payment_receipt_file_download(slug):
 def registered_ticket_read(slug):
     query = sa.select(
         db.conf.Event.name.label('Event'),
+        db.conf.Event.eventOn.label('Date From'),
+        db.conf.Event.eventTo.label('Date To'),
         db.conf.Ticket.currency.label('Currency'),
         db.conf.Ticket.fee.label('Amount'),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
@@ -303,36 +305,58 @@ def registered_add_event():
     jsonData = flask.request.json
 
     for item in jsonData['data']:
-        if(item[1] is None):
-            query = sa.select(
+        query = sa.select(
                 db.conf.Event.pk,
             ).where(
                 db.conf.Event.name == item[0],
             )
 
-            with db.engine.connect() as connection:
-                cursor = connection.execute(query).first()
-                events = str(cursor[0])
+        with db.engine.connect() as connection:
+            cursor = connection.execute(query).first()
+            events = str(cursor[0])
 
-                attendee_cursor = connection.execute(sa.select(
-                            db.conf.Attendee.pk,
-                            db.conf.Attendee.slug,
-                            db.conf.Attendee.email,
-                            db.conf.Attendee.country,
-                            db.conf.Attendee.category,
-                        ).where(
-                            db.conf.Attendee.pk == jsonData['attendee_pk'],
+            attendee_cursor = connection.execute(sa.select(
+                                db.conf.Attendee.pk,
+                                db.conf.Attendee.slug,
+                                db.conf.Attendee.email,
+                                db.conf.Attendee.country,
+                                db.conf.Attendee.category,
+                            ).where(
+                                db.conf.Attendee.pk == int(jsonData['attendee_pk']),
+                            ))
+
+            attendee = attendee_cursor.first()
+            attendee_pk = str(attendee[0])
+
+            ticket_cursor = connection.execute(sa.select(
+                                db.conf.Ticket.pk,
+                            ).where(
+                                db.conf.Ticket.event_pk == int(events),
+                                db.conf.Ticket.attendee_pk == int(attendee_pk),
+                            ),
+                            )
+
+            ticket = ticket_cursor.first()
+
+            if(ticket is None):
+                if(item[1] == "selected"):
+                    for row in cursor:
+                        connection.execute(sa.insert(
+                            db.conf.Ticket,
+                        ).values(
+                            tickets_generate(attendee, events),
                         ))
 
-                attendee = attendee_cursor.first()
+                        connection.commit()
 
-                for row in cursor:
-                    connection.execute(sa.insert(
-                        db.conf.Ticket,
-                    ).values(
-                        tickets_generate(attendee, events),
-                    ))
+            elif(item[1] == ""):
+                connection.execute(sa.delete(
+                    db.conf.Ticket,
+                ).where(
+                    db.conf.Ticket.event_pk == int(events),
+                    db.conf.Ticket.attendee_pk == int(attendee_pk),
+                ))
 
-                    connection.commit()
+                connection.commit()
 
     return(jsonData)
