@@ -150,6 +150,7 @@ def registered_create():
 @app.get('/registered/<slug>')
 def registered_read(slug):
     query = sa.select(
+        db.conf.Attendee.pk,
         db.conf.Attendee.name,
         db.conf.Attendee.email,
         db.conf.Attendee.country,
@@ -275,7 +276,6 @@ def registered_ticket_read(slug):
         db.conf.Ticket.currency.label('Currency'),
         db.conf.Ticket.fee.label('Amount'),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
-        db.conf.Ticket.attendee_pk.label('Attendee_pk'),
     ).outerjoin(
         db.conf.Ticket,
         sa.and_(
@@ -285,18 +285,11 @@ def registered_ticket_read(slug):
     ).order_by(db.conf.Event.pk)
 
     with db.engine.connect() as connection:
-        attendee_cursor = connection.execute(query)
-
-        for row in attendee_cursor:
-            if(row[4] is not None):
-                attendee_pk = row[4]
-
         cursor = connection.execute(query)
 
         return flask.jsonify(
             headers = tuple(c['name'] for c in query.column_descriptions),
             data    = [list(row) for row in cursor],
-            attendee_pk = attendee_pk,
         )
 
 
@@ -312,62 +305,53 @@ def registered_add_event():
             db.conf.Attendee.country,
             db.conf.Attendee.category,
         ).where(
-            db.conf.Attendee.pk == int(jsonData['attendee_pk']),
+            db.conf.Attendee.slug == jsonData['slug'],
         )).first()
-
-        attendee = row_attendee
-        attendee_pk = attendee.pk
 
         cursor = connection.execute(sa.select(
             db.conf.Ticket.pk,
+            db.conf.Ticket.event_pk,
             db.conf.Event.name,
         ).outerjoin(
             db.conf.Event,
-            db.conf.Ticket.event_pk == db.conf.Event.pk, # noqa: E501
+            db.conf.Ticket.event_pk == db.conf.Event.pk,
         ).where(
-            db.conf.Ticket.attendee_pk == int(jsonData['attendee_pk']), # noqa: E501
+            db.conf.Ticket.attendee_slug == jsonData['slug'],
         ))
 
         for row in cursor:
-            if (row.name not in jsonData['data']):
-                events_cursor = connection.execute(sa.select(
-                        db.conf.Event.pk,
-                    ).where(
-                        db.conf.Event.name == row[1],
-                    )).first()
-                events = str(events_cursor[0])
-
+            if (row.name not in jsonData['events']):
                 connection.execute(sa.delete(
                     db.conf.Ticket,
                 ).where(
-                    db.conf.Ticket.event_pk == int(events),
-                    db.conf.Ticket.attendee_pk == attendee_pk,
+                    db.conf.Ticket.event_pk == row.event_pk,
+                    db.conf.Ticket.attendee_slug == jsonData['slug'],
                     db.conf.Ticket.paymentStatus != 'paid',
                 ))
                 connection.commit()
 
 
-        for item in jsonData['data']:
+        for item in jsonData['events']:
+
             events_cursor = connection.execute(sa.select(
                 db.conf.Event.pk,
             ).where(
                 db.conf.Event.name == item,
             )).first()
-            events = str(events_cursor[0])
+            events = str(events_cursor.pk)
 
             tickets_cursor = connection.execute(sa.select(
                 db.conf.Ticket.pk,
-                db.conf.Ticket.paymentStatus,
             ).where(
                 db.conf.Ticket.event_pk == int(events),
-                db.conf.Ticket.attendee_pk == attendee_pk,
+                db.conf.Ticket.attendee_slug == jsonData['slug'],
             )).first()
 
             if(tickets_cursor is None):
                 connection.execute(sa.insert(
                     db.conf.Ticket,
                 ).values(
-                    tickets_generate(attendee, events),
+                    tickets_generate(row_attendee, events),
                 ))
                 connection.commit()
 
