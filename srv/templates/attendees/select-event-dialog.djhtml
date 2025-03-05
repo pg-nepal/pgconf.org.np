@@ -1,0 +1,61 @@
+<dialog id="dialog-ticket" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Select events </h2>
+    </header>
+
+    <select id="edit-event-select" name="events" multiple required style="width: 100%;">
+    </select>
+
+    <button id="save-events" class="button">Save</button>
+</dialog>
+
+<script type="module">
+    const ticketDialogBtn = document.getElementById('edit-ticket-btn')
+    const dialog_ticket = document.getElementById('dialog-ticket')
+    dialog_ticket.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_ticket.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_ticket.close()
+        }
+    })
+
+    const saveEventsBtn = document.getElementById('save-events')
+    saveEventsBtn.onclick = saveEvents
+
+    function saveEvents() {
+        const selectEditEvent = document.getElementById('edit-event-select')
+
+        let selectedData = []
+
+        for (var i = 0; i < selectEditEvent.options.length; i++) {
+            if (selectEditEvent.options[i].selected) {
+                selectedData.push(selectEditEvent.options[i].value);
+            }
+        }
+
+        let jsonData =  {
+            "events" : selectedData,
+        }
+
+        fetch('/registered/addevent', {
+                method  : 'POST',
+                headers : { 'content-type': 'application/json' },
+                body    : JSON.stringify({
+                    ...jsonData,
+                    slug : '{{row.slug}}',
+                }),
+            }).then(function (response) {
+                return response.json()
+            }).then(function (json) {
+                confirm("Are you sure? This action cannot be undone")
+                location.reload()
+            })
+    }
+</script>
