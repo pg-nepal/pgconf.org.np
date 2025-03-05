@@ -89,10 +89,16 @@ class Event(db.Base):
 
 class Ticket(db.Base):
     __tablename__  = 'tickets'
-    __table_args__ = {
-        'schema'  : 'conf25',
-        'comment' : 'conference registrations tickets',
-    }
+    __table_args__ = (
+        # https://docs.sqlalchemy.org/en/20/orm/declarative_tables.html#orm-declarative-table-configuration
+        # keyword arguments can be specified using last argument as a dictionary
+        sa.UniqueConstraint('attendee_pk', 'event_pk', name='uq_one_ticket_per_event'),
+        {
+            'schema'  : 'conf25',
+            'comment' : 'conference registrations tickets',
+
+        },
+    )
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
 
