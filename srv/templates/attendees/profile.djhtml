@@ -164,21 +164,6 @@
         }
     </script>
 
-    <!-- <script>
-        function addEvent(json){
-            fetch('/registered/addevent', {
-                method  : 'POST',
-                headers : { 'content-type': 'application/json' },
-                body    : JSON.stringify(json),
-            }).then(function (response) {
-                return response.json()
-            }).then(function (json) {
-                confirm("Are you sure? This action cannot be undone")
-                location.reload()
-            })
-        }
-    </script> -->
-
     <script>
         const form = document.getElementById('receipt-submission')
         form.addEventListener('submit', function (event) {
@@ -244,20 +229,12 @@
         const selectEditEvent = document.getElementById('edit-event-select')
         const attendee_pk = selectEditEvent.getAttribute('attendee_pk')
 
-        var selectedData = []
+        let selectedData = []
 
         for (var i = 0; i < selectEditEvent.options.length; i++) {
-            var selectedOptions = [];
-
             if (selectEditEvent.options[i].selected) {
-                selectedOptions.push(selectEditEvent.options[i].value);
-                selectedOptions.push("selected");
+                selectedData.push(selectEditEvent.options[i].value);
             }
-            else {
-                selectedOptions.push(selectEditEvent.options[i].value);
-                selectedOptions.push("");
-            }
-            selectedData.push(selectedOptions);
         }
 
         let jsonData =  {
