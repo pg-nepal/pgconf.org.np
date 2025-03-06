@@ -22,6 +22,26 @@
             color: white;
             background-color: rgb(138, 95, 154);
         }
+
+    .status {
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+        text-align: center;
+        display: inline-block;
+    }
+
+    .status-pending{
+        color: red;
+    }
+
+    .status-confirmed{
+        color: green;
+    }
+
+    .status-paid{
+        color: blue;
+    }
     </style>
 {% endblock %}
 
