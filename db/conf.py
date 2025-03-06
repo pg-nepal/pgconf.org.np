@@ -86,6 +86,15 @@ class Event(db.Base):
     eventOn        = sa.Column(sa.DateTime(), nullable=False)
     eventTo        = sa.Column(sa.DateTime(), nullable=False)
 
+    feeGlobal      = sa.Column(sa.Numeric(10, 2), comment='currency in USD')
+    feeLocal       = sa.Column(sa.Numeric(10, 2), comment='currency in NPR')
+
+    studentGlobal  = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in USD')
+    studentLocal   = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in NPR')
+
+    earlyGlobal    = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in USD')
+    earlyLocal     = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in NPR')
+
 
 class Ticket(db.Base):
     __tablename__  = 'tickets'
