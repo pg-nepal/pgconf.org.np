@@ -86,15 +86,16 @@
 
     <h2>🎫 Ticket</h2>
 
-    <button id="edit-ticket-btn" class="button">Edit selection</button>
 
-    {% include '/attendees/select-event-dialog.djhtml' %}
 
     <table id="ticket-table" style="display: none;" >
         <thead><tr><tr></thead>
         <tbody></tbody>
     </table>
+    
+    <button id="edit-ticket-btn" class="button">Edit selection</button>
 
+    {% include '/attendees/select-event-dialog.djhtml' %}
 
     <h4 style="color: #007bff;"><em>Total Amount: <strong id="total-amount"></span></strong></em></h4>
     </div>
