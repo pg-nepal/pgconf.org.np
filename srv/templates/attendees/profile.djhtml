@@ -62,8 +62,20 @@
 
         <tbody>
             <tr>
-                {% for e in show.values() %}
-                    <td>{{e}}</td>
+                {% for key, value in show.items() %}
+                    {% if key.lower() == "status" %}
+                        <td>
+                            <span class="status 
+                                {% if value.lower() == 'pending' %}status-pending
+                                {% elif value.lower() == 'confirmed' %}status-confirmed
+                                {% elif value.lower() == 'paid' %}status-paid
+                                {% endif %}">
+                                {{ value }}
+                            </span>
+                        </td>
+                    {% else %}
+                        <td>{{ value }}</td>
+                    {% endif %}
                 {% endfor %}
             </tr>
         </tbody>
