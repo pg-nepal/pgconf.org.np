@@ -9,7 +9,7 @@
 {% block main_content %}
     <div>
         <h4><em>5-6 May 2025 | Kathmandu University, Dhulikhel, Nepal</em></h4>
-        <h2>Talks and Workshop sessions</h2>
+        <h2>🐘 Talks and Workshop sessions</h2>
 
         <p>
             PostgreSQL Conference Nepal 2025 will be held on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in
@@ -20,7 +20,7 @@
         </p>
 
         <div class="alert alert-danger">
-        <h3>Key Dates</h3>
+        <h3>🗓️ Key Dates</h3>
         <p><em>Proposal Submission Deadline: <strong>30 April, 2025</strong></em></p>
         </div>
 
@@ -28,7 +28,8 @@
         <p>We are now accepting proposals for talks in English. Each session will last 50 minutes, and proposals can cover any aspect
            of PostgreSQL. If you’re interested in hosting a workshop, please note that these will have a separate format.</p>
 
-        <h2>Proposal Requirements</h2>
+        <div class="alert">
+        <h2>📝 Proposal Requirements</h2>
         <p>Please submit the following details for your proposal:</p>
         <ol>
             <li><p>Title of the talk or workshop</p></li>
@@ -37,21 +38,23 @@
             <li><p><strong class="heading">Target Audience: </strong>Indicate whether the session is intended for beginners, intermediate, or advanced users</p></li>
             <li><p><strong class="heading">Technical Requirements: </strong>Specify any equipment or setup needed for your session</p></li>
         </ol>
+        
 
         <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'" style="font-size:120%">
             Submit Your Proposal
         </button>
+        </div>
 
-        <p>
+        <p style="color: #007bff;"><em>
             For any problem please write us to :
             <a href="mailto:info@pgconf.org.np">
                 info@pgconf.org.np
             </a>
-        </p>
+        </em></p>
     </div>
 
-    <div>
-        <h2><em>Suggested Topics</em></h2>
+    <div class="alert">
+        <h2>Suggested Topics</h2>
         <p>These are the topics suggested but are not limited to:</p>
         <ol>
             <li><p><strong class="heading">Developing Applications with PostgreSQL: </strong>Best practices, integration tips, and tools</p></li>
@@ -68,7 +71,7 @@
           </ol>
     </div>
 
-    <div>
+    <div class="alert">
         <h2><em>Tips on How to Write a Successful Proposal</em></h2>
         <p>To write a successful proposal for PostgreSQL Conference Nepal 2025, ensure that you focus on the following important parts:</p>
         <div class="box">
