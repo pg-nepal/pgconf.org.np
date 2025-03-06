@@ -1,19 +1,31 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle = 'Call for Sponsor' %}
 
+{% block head %}
+<style>
+    .alert a {
+        color: white;
+    }
+
+    .alert a:visited {
+        color: rgb(255, 255, 255);
+    }
+</style>
+{% endblock %}
 
 {% block main_content %}
-<div class="alert">
+<div class="alert alert-emphasis">
         <h3>Let's contribute to grow the community</h3>
         <p>
             We invite proposals for sponsorships for the event PgConfNepal 2025. Benefits and prices of sponsorships
             are as mentioned below.
         </p>
-        <p>For more details please feel free to write: <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a></p>
+        <p>For more details please feel free to write: <em><a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a></em></p>
     </div>
 
-    <div>
-        <h1>Platinum Sponsorship</h1>
+    <div class="alert">
+        <h1>🏆 <span> Platinum Sponsorship</span>
+            </h1>
         <div class="box">
             <h3><em>Benefits:</em></h3>
             <ol>
@@ -52,8 +64,8 @@
         </div>
     </div>
 
-    <div>
-        <h1>Gold Sponsorship</h1>
+    <div class="alert">
+        <h1>🥇Gold Sponsorship</h1>
         <div class="box">
             <h3><em>Benefits:</em></h3>
             <ol>
@@ -88,8 +100,8 @@
         </div>
     </div>
 
-    <div>
-        <h1>Silver Sponsorship</h1>
+    <div class="alert">
+        <h1>🥈Silver Sponsorship</h1>
         <div class="box">
             <h3><em>Benefits:</em></h3>
 
@@ -116,8 +128,8 @@
         </div>
     </div>
 
-    <div>
-        <h1>Bronze Sponsorship</h1>
+    <div class="alert">
+        <h1>🥉Bronze Sponsorship</h1>
         <div class="box">
             <h4><em>Benefits:</em></h4>
 
