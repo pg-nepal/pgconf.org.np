@@ -1,7 +1,7 @@
 <div class="event-container">
     <div class="event-box">
-        <h3>Main Conference</h3>
-        <p>
+        <h2 style="color: #007bff;">🐘 Main Conference</h2>
+        <p style="text-align: left;">
             The primary event is scheduled for May 5-6, 2025, and will feature a keynote address, a workshop, and technical presentations by leading experts.
         </p>
         {% if showLinks %}
@@ -12,8 +12,8 @@
         {% endif %}
     </div>
     <div class="event-box">
-        <h3>Pre-Conference Training</h3>
-        <p>
+        <h2 style="color: #007bff;">🎓 Pre-Conference Training</h2>
+        <p style="text-align: left;">
             The pre-conference training is scheduled for May 3-4, 2025. A PostgreSQL expert from the industry will conduct the training, featuring hands-on exercises.
         </p>
         {% if showLinks %}
