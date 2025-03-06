@@ -3,7 +3,7 @@
 
 
 {% block main_content %}
-    <p>Register for the events</p>
+<!-- <div class="content-container"> -->
 
     <div style="margin-bottom: 0.5rem;">
         <p>
@@ -22,7 +22,7 @@
         </a>
     </div>
 
-    <div style="padding:1rem 0">
+    <div>
         <h2>Main Conference ticket categories and pricing</h2>
         <p>
             We are excited to announce the ticket categories and pricing for this year’s conference! Please review the
@@ -30,60 +30,52 @@
         </p>
     </div>
 
-    <h3>Categories</h3>
-    <ul>
-        <div style="padding:1rem 0">
-            <li>
-                <strong>Student Tickets</strong>
-                <ul>
+    <h2>Categories</h2>
+        <div class="alert">
+                <h2>🎓 Student Tickets</h2>
+                <ol>
                     <li><p>Discounted Rate: NRS 3,000</p></li>
                     <li><p>Normal Rate: NRS 5,000</p></li>
-                    <li><p><em>Limited availability. Secure your spot early!</em></p></li>
-                </ul>
-            </li>
+                    <h4 style="color: #007bff;"><em>Limited availability. Secure your spot early!</em></h4>
+                </ol>
         </div>
 
-        <div style="padding:1rem 0">
-            <li>
-                <strong>Professional Tickets</strong>
-                <ul>
+        <div class="alert">
+                <h2>💻 Professional Tickets</h2>
+                <ol>
                     <li><p>Discounted Rate: NRS 5,000</p></li>
                     <li><p>Normal Rate: NRS 7,000</p></li>
-                </ul>
-            </li>
+                </ol>
         </div>
 
-        <div style="padding:1rem 0">
-            <li>
-                <strong>International Tickets</strong>
-                <ul>
+        <div class="alert">
+                <h2>🌐 International Tickets</h2>
+                <ol>
                     <li><p>Discounted Rate: USD 200</p></li>
                     <li><p>Normal Rate: USD 300</p></li>
-                    <li><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></li>
-                </ul>
-            </li>
+                    <h4 style="color: #007bff;"><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></h4>
+                </ol>
         </div>
-    </ul>
-    <b>Note:</b> Discount are limited and will be available based on first-come-first-served basis.
 
-    <div style="padding:1rem 0">
-        <h3>Supporter Category</h3>
+    <h4 style="color: #007bff;"><em>Note: Discount are limited and will be available based on first-come-first-served basis.</em></h4>
+
+
+    <div class="alert">
+        <h2>❤️ Supporter Category</h2>
         <p>
-            We've introduced a new <strong>Supporter Category</strong> for companies. This premium category comes with
+            We've introduced a new <strong style="color: #007bff;">Supporter Category</strong> for companies. This premium category comes with
             exclusive benefits and is priced at a higher rate. Stay tuned for more details!
         </p>
-    </div>
 
-    <div style="padding:1rem 0">
-        <h3>Early Bird Registration</h3>
+
+
+        <h2>🦅 Early Bird Registration</h2>
         <p>
             Take advantage of discounted rates by registering early! Early bird tickets are limited in number, so don’t miss
             this opportunity.
         </p>
-    </div>
 
-    <div style="padding:1rem 0">
-        <h3>Sponsorship Goals</h3>
+        <h2>✅ Sponsorship Goals</h2>
         <p>
             Last year, we successfully covered the gala and hotel expenses through sponsorships. This year, we aim to set
             even higher sponsorship targets to elevate the conference experience. Join us as a sponsor and be part of this
@@ -91,5 +83,6 @@
         </p>
     </div>
 
-    <p><strong>For sponsorship inquiries or ticket purchases, please contact us!</strong></p>
+    <h4 style="color: #007bff;"><em>For sponsorship inquiries or ticket purchases, please contact us!</em></h4>
+<!-- </div> -->
 {% endblock %}
