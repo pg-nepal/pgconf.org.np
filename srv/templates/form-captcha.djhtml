@@ -7,6 +7,10 @@
         #wtf-answer {
             text-transform: uppercase;
         }
+
+        fieldset {
+            padding: 0;
+        }
     </style>
 {% endblock %}
 
