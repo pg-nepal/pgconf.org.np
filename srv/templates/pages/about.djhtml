@@ -27,12 +27,12 @@
         provide an international platform to the community members.
     </p>
 
-    <p>
+    <p><em>
         Please check our <a href="/pages/code-of-conduct">Code of Conduct</a>.
-    </p>
+    </em></p>
 
-    <div>
-        <h3>Organizing Committee</h3>
+    <div class="alert">
+        <h3>Organizing Committee 🏛️</h3>
         <ol>
             <li><p><strong>Prof. Dr. Bal Krishna Bal</strong> - Kathmandu University, Conference Chair</p></li>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional, Co-Chair</p></li>
@@ -46,8 +46,8 @@
         </ol>
     </div>
 
-    <div>
-        <h3>Program Committee/Talk Selection Committee</h3>
+    <div class="alert">
+        <h3>Program Committee/Talk Selection Committee ✔️</h3>
         <ol>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional</p></li>
             <li><p><strong>Dr. Manoj Shakya</strong> - Kathmandu University</p></li>
@@ -59,8 +59,8 @@
         </ol>
     </div>
 
-    <div>
-        <h3>Code of Conduct Committee</h3>
+    <div class="alert">
+        <h3>Code of Conduct Committee 🛑</h3>
         <ol>
             <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional</p></li>
             <li><p><strong>Mr. Pavel Luzanov</strong> - Postgres Professional</p></li>
@@ -70,8 +70,8 @@
         </ol>
     </div>
 
-    <div class="alert">
-        <h3>Financial Disclosure</h3>
+    <div class="alert alert-emphasis">
+        <h3>🐘 Financial Disclosure</h3>
         <p>
             Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal. It is hereby stipulated that
             the expenses associated with the conference shall be covered by our sponsors, and any surplus funds shall be allocated
