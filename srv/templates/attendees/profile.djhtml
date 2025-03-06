@@ -1,5 +1,5 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = '/ Registration Status' %}
+{% set pageTitle = 'Registration Status' %}
 
 
 {% block head %}
@@ -46,10 +46,13 @@
 {% endblock %}
 
 
-{% block main_content %}
-    <h1>Your Registration Status</h1>
+{% block main %}
+<div class="content-container">
 
-    <h3>🪪️ Personal Details</h3>
+    <p><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
+
+    <div class="alert" style="overflow-x:auto;">
+    <h2>📝 Your Registration Status</h2>
 
     <table>
         <thead>
@@ -65,7 +68,7 @@
                 {% for key, value in show.items() %}
                     {% if key.lower() == "status" %}
                         <td>
-                            <span class="status 
+                            <span class="status
                                 {% if value.lower() == 'pending' %}status-pending
                                 {% elif value.lower() == 'confirmed' %}status-confirmed
                                 {% elif value.lower() == 'paid' %}status-paid
@@ -81,7 +84,9 @@
         </tbody>
     </table>
 
-    <h3>🎫️ Ticket</h3>
+    <h2>🎫 Ticket</h2>
+
+    <button id="edit-ticket-btn" class="button">Edit selection</button>
 
     {% include '/attendees/select-event-dialog.djhtml' %}
 
@@ -90,24 +95,27 @@
         <tbody></tbody>
     </table>
 
-    <p>Total Amount: <strong id="total-amount"></span></strong></p>
-    <button id="edit-ticket-btn" class="button">Edit selection</button>
 
+    <h4 style="color: #007bff;"><em>Total Amount: <strong id="total-amount"></span></strong></em></h4>
+    </div>
 
     {% if row.country.lower() != 'nepal' %}
-        <h3>&#128712; International Participants Payment</h3>
+        <h3>🌐 International Participants Payment</h3>
         <div class="alert alert-danger">
             For International Participants, we only accept the bank transfer or on-site registration.
             <p>For further details please write us to: <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></p>
         </div>
+
+        <div class="alert alert-info">
         <h3>&#127974; Bank Details</h3>
         <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
         <p><b>Bank Account Number:</b> 00501030250009</p>
         <p><b>Bank Account Name:</b> Kathmandu University</p>
         <p><b>Branch:</b> Banepa, Nepal</p>
         <p><b>Swift Code:</b> NIBLNPKT</p>
+    </div>
     {% else %}
-        <h3>&#128712; Domestic Participants Payment</h3>
+        <h2>🇳🇵 Domestic Participants Payment</h2>
         <div class="alert alert-info">
             You can pay via. direct bank transfer or through wallet. In both case you need to submit the proof of payment.
             <ul>
@@ -157,7 +165,7 @@
         </div>
     {% endif %}
 
-    <div id="receipt-container" class="receipt-container" style="margin-top: 10%;">
+    <div id="receipt-container" class="alert">
         <h3>&#129534; Upload your proof of payment</h3>
 
         <div id="exising-receipt"></div>
@@ -174,6 +182,7 @@
             &#129534; Send us the payment recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
         </p>
     </div>
+<!-- </div> -->
 {% endblock %}
 
 
