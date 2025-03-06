@@ -40,9 +40,7 @@ export function getTicketDetails(slug) {
                     }
                 }
                 if (json.headers[i] == 'Amount') {
-                    if (null === cell) {
-
-                    } else {
+                    if (null !== cell) {
                         total += cell
                         eTd.innerHTML = cell.toLocaleString()
                     }
