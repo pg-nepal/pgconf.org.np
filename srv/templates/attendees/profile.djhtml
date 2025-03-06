@@ -1,5 +1,5 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = '/ Registration Form' %}
+{% set pageTitle = '/ Registration Status' %}
 
 
 {% block head %}
@@ -29,9 +29,7 @@
 {% block main_content %}
     <h1>Your Registration Status</h1>
 
-    <p>
-        Thank you for showing your interest on the 3rd PostgreSQL Conference Nepal.
-    </p>
+    <h3>🪪️ Personal Details</h3>
 
     <table>
         <thead>
@@ -51,9 +49,7 @@
         </tbody>
     </table>
 
-    <h3>Ticket</h3>
-
-    <button id="edit-ticket-btn" class="button">Edit selection</button>
+    <h3>🎫️ Ticket</h3>
 
     {% include '/attendees/select-event-dialog.djhtml' %}
 
@@ -63,6 +59,8 @@
     </table>
 
     <p>Total Amount: <strong id="total-amount"></span></strong></p>
+    <button id="edit-ticket-btn" class="button">Edit selection</button>
+
 
     {% if row.country.lower() != 'nepal' %}
         <h3>&#128712; International Participants Payment</h3>
@@ -150,6 +148,7 @@
 {% block tail %}
     <script>
         const eDialog_ = document.getElementById('dialog-ticket')
+        getTicketDetails('{{row.slug}}')
         document.getElementById('edit-ticket-btn').onclick = function() {
             eDialog_.showModal()
         }
