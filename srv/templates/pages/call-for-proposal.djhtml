@@ -54,7 +54,7 @@
     </div>
 
     <div class="alert">
-        <h2>Suggested Topics</h2>
+        <h2>🤔 Suggested Topics</h2>
         <p>These are the topics suggested but are not limited to:</p>
         <ol>
             <li><p><strong class="heading">Developing Applications with PostgreSQL: </strong>Best practices, integration tips, and tools</p></li>
@@ -72,7 +72,7 @@
     </div>
 
     <div class="alert">
-        <h2><em>Tips on How to Write a Successful Proposal</em></h2>
+        <h2>💡 <em>Tips on How to Write a Successful Proposal</em></h2>
         <p>To write a successful proposal for PostgreSQL Conference Nepal 2025, ensure that you focus on the following important parts:</p>
         <div class="box">
             <ol>
