@@ -6,44 +6,44 @@
     This training is intended for entry to mid-level developers and DBAs who have some experience but lack deep knowledge of inner workings of the server.
 
     <div>
-        <h2>About the course</h2>
-        <p><strong>Duration:</strong> 2 days (14 Hours)</p>
-        <p><strong>Date:</strong> 3-4 May, 2025</p>
+        <h2 style="color: #007bff;">About the course</h2>
+        <p><strong>⏳ Duration:</strong> 2 days (14 Hours)</p>
+        <p><strong>🗓️ Date:</strong> 3-4 May, 2025</p>
     </div>
 
-    <div>
-        <p><strong>Prerequisites:</strong></p>
-        <ul>
+    <div class="alert">
+        <h3>⚠️ Prerequisites</h3>
+        <ol>
             <li><p>SQL fundamentals</p></li>
             <li><p>experience with any procedural programming language</p></li>
             <li><p>basic knowledge of Unix OS</p></li>
-        </ul>
-        The detailed course materials will be available upon the registation.
+        </ol>
+        <h3 style="color: #007bff;"><em>The detailed course materials will be available upon the registation.</em></h3>
     </div>
 
-    <div>
-        <p><strong>Skills to be gained:</strong></p>
-        <ul>
+    <div class="alert">
+        <h3>💡 Skills to be gained</h3>
+        <ol>
             <li><p>general information about PostgreSQL architecture</p></li>
             <li><p>working with the main database objects: tables, indexes, views</p></li>
             <li><p>programming in SQL and PL/pgSQL on the server side</p></li>
             <li><p>using the main data types, including records and arrays</p></li>
             <li><p>setting up client-server communication</p></li>
-        </ul>
+        </ol>
     </div>
 
-    <div>
-        <h2>Registration</h2>
-        Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.
+    <div class="alert">
+        <h2>📝 Registration</h2>
+        <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p>
 
-        <p><strong>Registration Fee: NRs. 10,000.00</strong> (student discount available)</p>
         <p>
             Registration will cover: Transportation (from pickup point to Kathmandu University), Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit
         </p>
+        <h3 style="color: #007bff;">Registration Fee: <em>NRs. 10,000.00 (student discount available)</em></h3>
     </div>
 
-    <div>
-        <h2>Venue</h2>
+    <div class="alert">
+        <h2>📍 Venue</h2>
         Kathmandu University<br>
         Dhulikhel, Nepal<br>
     </div>
