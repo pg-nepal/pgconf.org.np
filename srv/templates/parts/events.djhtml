@@ -1,3 +1,18 @@
+<style>
+    .event-box div {
+        box-sizing: border-box;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 400px) {
+        .event-box div {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+</style>
+
 <div class="event-container">
     <div class="event-box">
         <h2 style="color: #007bff;">🐘 Main Conference</h2>
@@ -5,10 +20,10 @@
             The primary event is scheduled for May 5-6, 2025, and will feature a keynote address, a workshop, and technical presentations by leading experts.
         </p>
         {% if showLinks %}
-            <p>
+        <div>
                 <a class="button button-secondary" href="/pages/call-for-proposal">Submit a proposal</a>
                 <a class="button button-secondary" href="/pages/registration">Register</a>
-            </p>
+        </div>
         {% endif %}
     </div>
     <div class="event-box">
@@ -17,10 +32,10 @@
             The pre-conference training is scheduled for May 3-4, 2025. A PostgreSQL expert from the industry will conduct the training, featuring hands-on exercises.
         </p>
         {% if showLinks %}
-            <p>
-                <a class="button button-secondary" href="/pages/training">About the course</a>
-                <a class="button button-secondary" href="/pages/registration">Register</a>
-            </p>
+        <div>
+            <a class="button button-secondary" href="/pages/training">About the course</a>
+            <a class="button button-secondary" href="/pages/registration">Register</a>
+        </div>
         {% endif %}
     </div>
 </div>
