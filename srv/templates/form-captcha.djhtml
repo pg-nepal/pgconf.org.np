@@ -7,14 +7,15 @@
         #wtf-answer {
             text-transform: uppercase;
         }
+
+        fieldset{
+            padding: 0;
+        }
     </style>
 {% endblock %}
 
 
 {% block main_content %}
-    <div class="headings">
-    </div>
-
     <form id="wtf-form" method="POST" enctype="multipart/form-data">
         <fieldset>
             {% include fields %}
