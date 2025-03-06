@@ -32,7 +32,7 @@
     </em></p>
 
     <div class="alert">
-        <h3>Organizing Committee 🏛️</h3>
+        <h3>🏛️ Organizing Committee</h3>
         <ol>
             <li><p><strong>Prof. Dr. Bal Krishna Bal</strong> - Kathmandu University, Conference Chair</p></li>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional, Co-Chair</p></li>
@@ -47,7 +47,7 @@
     </div>
 
     <div class="alert">
-        <h3>Program Committee/Talk Selection Committee ✔️</h3>
+        <h3>✔️ Program Committee/Talk Selection Committee</h3>
         <ol>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional</p></li>
             <li><p><strong>Dr. Manoj Shakya</strong> - Kathmandu University</p></li>
@@ -60,7 +60,7 @@
     </div>
 
     <div class="alert">
-        <h3>Code of Conduct Committee 🛑</h3>
+        <h3>🛑 Code of Conduct Committee</h3>
         <ol>
             <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional</p></li>
             <li><p><strong>Mr. Pavel Luzanov</strong> - Postgres Professional</p></li>
