@@ -3,6 +3,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
 }
 
 fieldset {
@@ -19,6 +20,8 @@ sup {
 }
 
 input {
+    width: 100%;
+    box-sizing: border-box;
     margin-top: 10px;
     font-size: 18px;
     border: solid 0.5px rgb(175, 172, 172);
@@ -29,6 +32,7 @@ input {
 }
 
 select{
+    box-sizing: border-box;
     font-size: 18px;
     margin-top: 10px;
     background-color: white;
@@ -37,9 +41,16 @@ select{
     outline: none;
     padding: 15px;
     outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
 }
 
 textarea {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
     height: 200px;
     font-size: 18px;
     margin-top: 10px;
@@ -57,4 +68,16 @@ textarea {
 
 input:focus, select:focus{
     border: solid 0.5px #3b56a0;
+}
+
+@media (max-width: 600px) {
+    input, select {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 400px) {
+    input, select {
+        font-size: 10px;
+    }
 }
