@@ -1,7 +1,37 @@
+<style>
+    select{
+    box-sizing: border-box;
+    font-size: 18px;
+    margin-top: 10px;
+    background-color: white;
+    border: solid 0.5px rgb(175, 172, 172);
+    border-radius: 4px;
+    outline: none;
+    padding: 15px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+}
+
+@media (max-width: 700px) {
+    span{
+        display: none;
+    }
+}
+</style>
+
 <dialog id="dialog-ticket" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
-    <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+    <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <h2 class="dialog-title" style="text-align: center;">Select events </h2>
     </header>
+
+    <span style="color:gray">
+        Multiple option can be selected (drag or use <kbd>Shift</kbd> while selecting)
+    </span>
+
+    <p>Please select atleast one event for registration.</p>
+    <p style="color: red;"><em>Note: After clicking save, this action will be irreversible</em></p>
 
     <form id="form-event-select" method="dialog">
         <select id="edit-event-select" name="events" multiple required style="width: 100%;">
