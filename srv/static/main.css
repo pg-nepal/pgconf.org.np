@@ -111,7 +111,6 @@ p{
 }
 
 .sidebar{
-    width: 80%;
     border: 0.5px solid rgb(197, 197, 197);
     border-radius: 8px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -135,7 +134,6 @@ p{
     border-bottom: 1px solid #ccc;
 }
 .sidebar ul li::before {
-    content: "✔️";
     color: #336791;
 }
 /* Sidebar links */
@@ -172,7 +170,8 @@ img{
 
 table {
     width: 100%;
-    border-collapse: collapse; /* Ensures borders are collapsed between cells */
+    border-collapse: collapse;
+    overflow-x:scroll;
 }
 
 th, td {
@@ -480,17 +479,8 @@ input[type="number"]::-webkit-inner-spin-button {
     p {
         font-size: 15px;
     }
-
-    .sidebar{
-        width: 80%;
-    }
 }
 
-@media (max-width: 900px) {
-    .sidebar{
-        width: 70%;
-    }
-}
 
 @media (max-width: 800px) {
     h1{
@@ -526,34 +516,16 @@ input[type="number"]::-webkit-inner-spin-button {
     .right-content{
         width: 100%;
     }
-
-    .sidebar{
-        width: 90%
-    }
 }
 
 @media (max-width: 600px) {
     h1{
         font-size: 18px;
     }
-
-    .sidebar{
-        width: 85%
-    }
 }
 
 @media (max-width: 500px) {
     h1{
         font-size: 15px;
-    }
-
-    .sidebar{
-        width: 85%
-    }
-}
-
-@media (max-width: 400px) {
-    .sidebar{
-        width: 80%
     }
 }
