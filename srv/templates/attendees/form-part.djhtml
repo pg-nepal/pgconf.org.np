@@ -1,3 +1,37 @@
+<style>
+    .fields span{
+        @media (max-width: 700px) {
+            display: none;
+        }
+    }
+
+    #wtf-event {
+        box-sizing: border-box;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        background-color: #fff;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        cursor: pointer;
+        overflow-y: auto;
+    }
+
+    #wtf-event[multiple] {
+        height: auto;
+        min-height: 100px;
+    }
+
+    @media (max-width: 600px) {
+        #wtf-event {
+            font-size: 12px;
+        }
+    }
+</style>
+
 <div class="fields">
     <div class="fields">
         <label for="wtf-name">Name <sup>*</sup></label>
