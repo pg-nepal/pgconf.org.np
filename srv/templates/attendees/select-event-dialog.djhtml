@@ -3,14 +3,15 @@
         <h2 class="dialog-title" style="text-align: center;">Select events </h2>
     </header>
 
-    <select id="edit-event-select" name="events" multiple required style="width: 100%;">
-    </select>
+    <form id="form-event-select" method="dialog">
+        <select id="edit-event-select" name="events" multiple required style="width: 100%;">
+        </select>
 
-    <button id="save-events" class="button">Save</button>
+        <button class="button">Save</button>
+    </form>
 </dialog>
 
 <script type="module">
-    const ticketDialogBtn = document.getElementById('edit-ticket-btn')
     const dialog_ticket = document.getElementById('dialog-ticket')
     dialog_ticket.addEventListener('click', function (event) {
         if ('DIALOG' != event.target.tagName) return
@@ -25,37 +26,45 @@
             dialog_ticket.close()
         }
     })
+</script>
 
-    const saveEventsBtn = document.getElementById('save-events')
-    saveEventsBtn.onclick = saveEvents
-
-    function saveEvents() {
-        const selectEditEvent = document.getElementById('edit-event-select')
-
-        let selectedData = []
-
-        for (var i = 0; i < selectEditEvent.options.length; i++) {
-            if (selectEditEvent.options[i].selected) {
-                selectedData.push(selectEditEvent.options[i].value);
-            }
-        }
-
-        let jsonData =  {
-            "events" : selectedData,
-        }
-
-        fetch('/registered/addevent', {
-                method  : 'POST',
-                headers : { 'content-type': 'application/json' },
-                body    : JSON.stringify({
-                    ...jsonData,
-                    slug : '{{row.slug}}',
-                }),
-            }).then(function (response) {
+<script>
+    function getTicketDetails(slug) {
+        fetch(`/registered/ticket/${slug}`).then(function (response) {
+            if (200 == response.status) {
                 return response.json()
-            }).then(function (json) {
-                confirm("Are you sure? This action cannot be undone")
-                location.reload()
+            }
+        }).then(function (json) {
+            const eSelect = document.getElementById('edit-event-select')
+            json.data.forEach(function (row) {
+                const eOption = document.createElement('option')
+                eOption.value = row[0]
+                eOption.innerHTML = row[1]
+                eOption.selected = (row[6] != null)
+                eSelect.append(eOption)
             })
+        })
     }
+
+    document.getElementById('form-event-select').addEventListener('submit', function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        event.target.reportValidity()
+
+        const formData = new FormData(event.target)
+
+        if (!confirm('Are you sure? This action cannot be undone')) return
+        fetch('/registered/addevent', {
+            method  : 'POST',
+            headers : { 'content-type': 'application/json' },
+            body    : JSON.stringify({
+                events : formData.getAll('events'),
+                slug   : '{{row.slug}}',
+            }),
+        }).then(function (response) {
+            if (202 == response.status) {
+                location.reload()
+            }
+        })
+    })
 </script>
