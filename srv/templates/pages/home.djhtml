@@ -45,6 +45,9 @@
         <div class="content">
             <div class="left-content">
                 <section id="intro" class="home-content">
+
+                    <h2>🐘<span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
+
                     <p>
                         We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
                         Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May
@@ -58,11 +61,11 @@
                         two days of knowledge sharing, networking, and collaboration.
                     </p>
 
-                    <p>
+                    <h4><em>
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
-                    </p>
+                    </em></h4>
 
-                    <h2>Events</h2>
+                    <h2>🗓️Events</h2>
                     <p>
                         This year we are planning two events.
                     </p>
@@ -74,13 +77,14 @@
                 </section>
 
                 <section class="home-content mt-1">
-                    <h2>Second Conference Conclusion</h2>
+                    <h2>🐘 Second Conference Conclusion</h2>
+                    <p>Here's a glimpse of the second PostgreSQL Conference Nepal:</p>
                     <div id="img-slider" class="img-slider conference-image-container">
                         <div class="slides show">
-                            <img src="/static/main_conference.jpg" alt="main conference">
+                            <img class="slide-image" src="/static/main_conference.jpg" alt="main conference">
                         </div>
                         <div class="slides">
-                            <img src="/static/training3.jpeg" alt="training">
+                            <img class="slide-image" src="/static/training3.jpeg" alt="training">
                         </div>
                     </div>
                 </section>
@@ -97,7 +101,7 @@
 
         <section id="sponsors" class="home-content mt-1">
             <h2 class="section-header">
-                Co-Organizer
+                🐘 Co-Organizer
             </h2>
 
             <div class="sponsors-logos">
@@ -106,7 +110,7 @@
         </section>
         <section id="sponsors" class="home-content mt-1">
             <h2 class="section-header">
-                Sponsors
+                🐘 Sponsors
             </h2>
             Call for the Sponsorship is open.
             <a class="button" href="/pages/sponsors">
