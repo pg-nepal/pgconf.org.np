@@ -34,7 +34,11 @@ export function getTicketDetails(slug) {
             row.forEach(function (cell, i) {
                 const eTd = document.createElement('td')
                 eTd.innerHTML = cell
-                if (json.headers[i] == 'Currency') currency = cell
+                if (json.headers[i] == 'Currency') {
+                    if (null !== cell) {
+                        currency = cell
+                    }
+                }
                 if (json.headers[i] == 'Amount') {
                     if (null === cell) {
 
