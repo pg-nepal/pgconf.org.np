@@ -3,9 +3,8 @@
 
 
 {% block main_content %}
-    <div id="venue">
-        <section id="top-section" class="hero">
-            <h2 class="section-header">Kathmandu University</h2>
+        <div>
+            <h2>Kathmandu University</h2>
             <p>
                 Like previous year, 2025 Conference will be held in <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a>, Dhulikhel, Nepal.
             </p>
@@ -21,9 +20,11 @@
                 is located in Dhulikhel and it offers undergraduate and graduate programs in various disciplines such as Engineering, Management,
                 Medicine, Science, and Humanities.
             </p>
-            <img id="ktm-uni" src="/static/images/Kathmandu_University.jpg" class="img-responsive">
-        </section>
+        </div>
 
+        <div>
+            <img id="ktm-uni" src="/static/images/Kathmandu_University.jpg" class="img-responsive">
+        </div>
 
         <section id="visa">
             <h2 class="section-header">Visa</h2>
@@ -36,7 +37,6 @@
             </p>
         </section>
 
-        <section id="travel">
             <h2 class="section-header">Travel</h2>
             <p>Airport:</p>
             <p>
@@ -44,10 +44,13 @@
                 <a href="https://www.tiairport.com.np/">Tribhuwan International Airport</a>.
             </p>
 
+            <div>
             <a href="https://www.google.com/maps/dir/Tribhuvan+International+Airport+(KTM),+Ring+Rd,+Kathmandu+44600/Kathmandu+University,+Kathmandu+University,+Dhulikhel/@27.6521762,85.4740708,13z/data=!4m13!4m12!1m5!1m1!1s0x39eb1a266b342bc5:0x73bbfa829a89af1b!2m2!1d85.3592231!2d27.6980899!1m5!1m1!1s0x39eb092082d99e3b:0xe509dafa47685dba!2m2!1d85.5386417!2d27.6195482?hl=en" target="_blank">
                 <img src="/static/images/tia-ku.png" class="img-responsive">
             </a>
+            </div>
 
+            <div class="alert">
             <p>
                 There are several ways to reach Kathmandu University (KU) from Tribhuwan International Airport (TIA) in Kathmandu.
             </p>
@@ -67,12 +70,11 @@
                     and comfortable but it will be more expensive than taking a taxi or a bus.
                 </p></li>
             </ol>
-        </section>
+        </div>
 
 
         <section id="hospitality-partner">
             <h2 class="section-header">Hospitality Partner</h2>
             {% include 'comingSoon.djhtml' %}
         </section>
-    </div>
 {% endblock %}
