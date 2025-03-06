@@ -45,6 +45,19 @@ export function getTicketDetails(slug) {
                         eTd.innerHTML = cell.toLocaleString()
                     }
                 }
+
+                switch (json.headers[i]) {
+
+                case 'Ordered Date':
+                case 'Updated Date':
+                case 'Date From':
+                case 'Date To':
+                    if (null !== cell) {
+                        const d = new Date(cell)
+                        eTd.innerHTML = d.toString()
+                    }
+                }
+
                 eTr.append(eTd)
             })
             eTable.children[1].append(eTr)
