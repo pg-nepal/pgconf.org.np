@@ -5,6 +5,7 @@ import traceback
 import flask
 import psycopg.errors
 import sqlalchemy as sa
+import sqlalchemy.dialects.postgresql
 
 import db
 import db.conf
@@ -80,7 +81,6 @@ def registered_form():
 
     query = sa.select(
         db.conf.Event.pk,
-        db.conf.Event.type,
         db.conf.Event.name,
         db.conf.Event.eventOn,
         db.conf.Event.eventTo,
@@ -271,8 +271,8 @@ def registered_payment_receipt_file_download(slug):
 def registered_add_event():
     jsonData = flask.request.json
 
-    with db.engine.connect() as connection:
-        row_attendee = connection.execute(sa.select(
+    with db.SessionMaker.begin() as session:
+        row_attendee = session.execute(sa.select(
             db.conf.Attendee.pk,
             db.conf.Attendee.slug,
             db.conf.Attendee.email,
@@ -282,7 +282,7 @@ def registered_add_event():
             db.conf.Attendee.slug == jsonData['slug'],
         )).first()
 
-        cursor = connection.execute(sa.select(
+        cursor = session.execute(sa.select(
             db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
             db.conf.Event.name,
@@ -294,39 +294,22 @@ def registered_add_event():
         ))
 
         for row in cursor:
-            if (row.name not in jsonData['events']):
-                connection.execute(sa.delete(
-                    db.conf.Ticket,
-                ).where(
-                    db.conf.Ticket.event_pk == row.event_pk,
-                    db.conf.Ticket.attendee_slug == jsonData['slug'],
-                    db.conf.Ticket.paymentStatus != 'paid',
-                ))
-                connection.commit()
+            if row.event_pk in jsonData['events']:
+                jsonData['events'].pop(row.event_pk)
+                continue
 
-
-        for item in jsonData['events']:
-
-            events_cursor = connection.execute(sa.select(
-                db.conf.Event.pk,
+            session.execute(sa.delete(
+                db.conf.Ticket,
             ).where(
-                db.conf.Event.name == item,
-            )).first()
-            events = str(events_cursor.pk)
-
-            tickets_cursor = connection.execute(sa.select(
-                db.conf.Ticket.pk,
-            ).where(
-                db.conf.Ticket.event_pk == int(events),
+                db.conf.Ticket.event_pk      == row.event_pk,
                 db.conf.Ticket.attendee_slug == jsonData['slug'],
-            )).first()
+                db.conf.Ticket.paymentStatus != 'paid',
+            ))
 
-            if(tickets_cursor is None):
-                connection.execute(sa.insert(
-                    db.conf.Ticket,
-                ).values(
-                    tickets_generate(row_attendee, events),
-                ))
-                connection.commit()
+        session.execute(sa.dialects.postgresql.insert(
+            db.conf.Ticket,
+        ).values(
+            tickets_generate(row_attendee, jsonData['events']),
+        ).on_conflict_do_nothing())
 
-    return(jsonData)
+    return 'updated', 202
