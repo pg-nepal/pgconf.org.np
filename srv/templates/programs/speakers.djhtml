@@ -4,7 +4,7 @@
 
 {% block head %}
     <style>
-        .speaker-profile { display: flex; flex-wrap: wrap; gap: 20px; }
+        .speaker-profile { display: flex; flex-wrap: wrap; gap: 30px; }
         .speaker-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center; }
         .speaker-details { flex: 1; min-width: 300px; }
         .speaker-name { margin:0px; font-size: 24px; font-weight: bold; color: #007bff; }
@@ -20,26 +20,28 @@
 
 {% block main %}
     <div class="content-container">
-        <h2 style="font-size: 28px; color: #333; margin-bottom: 20px;">
+        <h2 style="color: #333; margin-bottom: 20px;">
             Keynote Speakers
         </h2>
 
         <section class="keynote-section" style="margin-bottom: 40px;">
             {% for row in cursor %}
-                <div class="speaker-profile" style="margin-bottom: 20px;">
+                <div class="speaker-profile" style="margin-bottom: 40px;">
                     <div class="speaker-photo">
                         <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
                     </div>
 
                     <div class="speaker-details">
-                        <h3 class="speaker-name">{{row.name}}</h3>
-                        <p class="speaker-title">{{row.affiliation}}</p>
+                        <h3 class="speaker-name">🎤 {{row.name}}</h3>
+                        <p class="speaker-title">🔴 {{row.affiliation}}</p>
 
                         <p class="bio">{{row.bio}}</p>
 
+                        <div class="alert">
                         <div class="talk-details">
-                            <p class="talk-title"><em>{{row.title}}</em></p>
+                            <p class="talk-title"><em>🐘{{row.title}}</em></p>
                             <p class="abstract">{{row.abstract}}</p>
+                        </div>
                         </div>
 
                         <a href="/pages/schedule#{{row.title}}" class="cta-button">
