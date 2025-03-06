@@ -64,15 +64,13 @@ img{
 }
 
 .text {
+    margin-top: 120px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80%;
-    color: white; /* Text color white */
-    padding: 20px;
-    /* text-align: center; */
-    border-radius: 8px; /* Optional: rounded corners */
+    color: white;
     top: 10%;
     z-index: 0;
 }
