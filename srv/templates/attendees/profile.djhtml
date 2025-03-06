@@ -5,44 +5,36 @@
 {% block head %}
     {{super()}}
     <style>
-        #esewa-btn{
+
+        .button.esewa {
+            background-color: rgba(0, 193, 32, 0.6);
             color: green;
-            font-size:110%;
-        }
-        #esewa-btn:hover{
-            color: white;
-            background-color: rgb(82, 160, 82);
         }
 
-        #bank-btn{
-            color: purple;
-            font-size:110%;
-        }
-        #bank-btn:hover{
-            color: white;
-            background-color: rgb(138, 95, 154);
+        .button.esewa:hover {
+            background-color:  rgba(2, 155, 27, 0.6);
         }
 
-    .status {
-        font-weight: bold;
-        padding: 5px 10px;
-        border-radius: 5px;
-        text-align: center;
-        display: inline-block;
-    }
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-align: center;
+            display: inline-block;
+        }
 
-    .status-pending{
-        color: red;
-    }
+        .status-pending{
+            color: red;
+        }
 
-    .status-confirmed{
-        color: green;
-    }
+        .status-confirmed{
+            color: green;
+        }
 
-    .status-paid{
-        color: blue;
-    }
-    </style>
+        .status-paid{
+            color: blue;
+        }
+</style>
 {% endblock %}
 
 
@@ -129,11 +121,11 @@
         <div>
             <p>Chose your payment options</p>
             <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
-                <button id="esewa-btn" class="btn">
+                <button id="esewa-btn" class="button esewa">
                     Esewa
                 </button>
 
-                <button id="bank-btn" class="btn">
+                <button id="bank-btn" class="button">
                     Bank
                 </button>
 
