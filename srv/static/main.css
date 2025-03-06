@@ -118,7 +118,10 @@ p{
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
-    padding: 1.5rem;
+}
+
+.sidebar:hover{
+    transform: translate(0, -5px);
 }
 
 .sidebar ul {
