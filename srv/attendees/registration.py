@@ -34,7 +34,7 @@ def getTicketDetails(attendee, events):
             db.conf.Event.studentLocal,
             db.conf.Event.earlyGlobal,
             db.conf.Event.earlyLocal,
-            db.conf.Event.earlyBird,
+            db.conf.Event.earlyLimit,
         ).where(
             db.conf.Event.pk.in_(list(map(int, events))),
         ))
