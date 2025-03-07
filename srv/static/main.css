@@ -468,6 +468,10 @@ input[type="number"]::-webkit-inner-spin-button {
         text-align: left;
     }
 
+    h3{
+        font-size: 20px;
+    }
+
     p{
         font-size: 18px;
     }
@@ -494,6 +498,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
     h2{
         font-size: 22px;
+    }
+
+    h3{
+        font-size: 18px;
     }
 
     p{
@@ -530,6 +538,10 @@ input[type="number"]::-webkit-inner-spin-button {
     h2{
         font-size: 18px;
     }
+
+    h3{
+        font-size: 16px;
+    }
     .content{
         display: block;
     }
@@ -548,6 +560,10 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 
     h2{
+        font-size: 15px;
+    }
+
+    h3{
         font-size: 15px;
     }
 
@@ -572,6 +588,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
     p{
         font-size: 10px;
+    }
+
+    h3{
+        font-size: 12px;
     }
 
     em {
