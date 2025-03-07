@@ -11,6 +11,12 @@
   align-items: center;
 }
 
+.logo {
+  max-height: 50px;
+  object-fit: cover;
+  background-position: center;
+}
+
 
 .news-container {
   font-size: 16px;
