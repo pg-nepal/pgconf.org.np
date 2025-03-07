@@ -95,6 +95,8 @@ class Event(db.Base):
     earlyGlobal    = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in USD')
     earlyLocal     = sa.Column(sa.Numeric(10, 2), server_default='0', comment='student discount in NPR')
 
+    earlyLimit     = sa.Column(sa.Integer, comment='number of people that get early discount')
+
 
 class Ticket(db.Base):
     __tablename__  = 'tickets'
