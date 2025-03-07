@@ -76,6 +76,19 @@ transform: scale(1);
 opacity: 1;
 }
 
+dialog::backdrop {
+    backdrop-filter: contrast(50%);
+}
+
+dialog header {
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #333;
+}
+
 @media (max-width: 600px) {
     select {
         font-size: 14px;
