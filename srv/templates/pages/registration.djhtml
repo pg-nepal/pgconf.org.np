@@ -17,7 +17,7 @@
     {% endwith %}
 
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <a class="button" href="/registered/form" target="_blank" style="font-size:120%">
+        <a class="button" href="/registered/form" target="_blank">
             Register
         </a>
     </div>
