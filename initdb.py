@@ -23,17 +23,29 @@ def main(schemas):
             db.conf.Event,
         ).values([
             {
-                'pk'      : 1,
-                'name'    : 'Pre Conference Traning',
-                'eventOn' : dt.datetime(2025, 5, 3),
-                'eventTo' : dt.datetime(2025, 5, 4),
+                'pk'           : 1,
+                'name'         : 'Pre Conference Training',
+                'eventOn'      : dt.datetime(2025, 5, 3),
+                'eventTo'      : dt.datetime(2025, 5, 4),
+                'feeGlobal'    : 200,
+                'feeLocal'     : 10000,
+                'studentLocal' : 0,
+                'earlyGlobal'  : 0,
+                'earlyLocal'   : 0,
+                'earlyLimit'   : 0,
             },
 
             {
-                'pk'      : 2,
-                'name'    : 'Main Conference',
-                'eventOn' : dt.datetime(2025, 5, 5),
-                'eventTo' : dt.datetime(2025, 5, 6),
+                'pk'           : 2,
+                'name'         : 'Main Conference',
+                'eventOn'      : dt.datetime(2025, 5, 5),
+                'eventTo'      : dt.datetime(2025, 5, 6),
+                'feeGlobal'    : 300,
+                'feeLocal'     : 7000,
+                'studentLocal' : 2000,
+                'earlyGlobal'  : 100,
+                'earlyLocal'   : 2000,
+                'earlyLimit'   : 20,
             },
         ]).on_conflict_do_nothing())
 
