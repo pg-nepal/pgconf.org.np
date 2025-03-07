@@ -551,6 +551,21 @@ input[type="number"]::-webkit-inner-spin-button {
     ol li{
         font-size: 16px;
     }
+
+    .button {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 1200px) {
+    h2{
+        font-size: 22px;
+        text-align: left;
+    }
+
+    .button {
+        font-size: 12px;
+    }
 }
 
 @media (max-width: 1000px) {
