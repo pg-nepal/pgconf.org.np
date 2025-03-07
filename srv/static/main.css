@@ -14,6 +14,7 @@ html, body{
     text-align: justify;
 }
 
+
 @media (max-width: 500px) {
     html, body{
         text-align: left;
@@ -49,7 +50,7 @@ select:focus {
 }
 
 select:hover {
-    background-color: #ffffff;
+    background-color: #b3d2ee;
 }
 
 select[multiple] {
@@ -537,7 +538,7 @@ input[type="number"]::-webkit-inner-spin-button {
     }
 
     h2{
-        font-size: 25px;
+        font-size: 28px;
         text-align: left;
     }
 
@@ -573,8 +574,13 @@ input[type="number"]::-webkit-inner-spin-button {
         font-size: 15px;
     }
 
+    h2{
+        font-size: 18px;
+        text-align: left;
+    }
+
     .button {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
@@ -606,10 +612,6 @@ input[type="number"]::-webkit-inner-spin-button {
 
     ol li{
         font-size: 12px;
-    }
-
-    .button {
-        font-size: 10px;
     }
 }
 
