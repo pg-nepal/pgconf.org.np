@@ -23,6 +23,55 @@ FILE_MAGIC_NUMBERS = {
 }
 
 
+def getTicketDetails(attendee, events):
+    ticketList = []
+    with db.engine.connect() as connection:
+        cursor = connection.execute(sa.select(
+            db.conf.Event.pk,
+            db.conf.Event.feeGlobal,
+            db.conf.Event.feeLocal,
+            db.conf.Event.studentGlobal,
+            db.conf.Event.studentLocal,
+            db.conf.Event.earlyGlobal,
+            db.conf.Event.earlyLocal,
+            db.conf.Event.earlyBird,
+        ).where(
+            db.conf.Event.pk.in_(list(map(int, events))),
+        ))
+
+        for row in cursor:
+            cursor_count = connection.execute(sa.select(
+                sa.func.count(),
+            ).where(
+                db.conf.Ticket.event_pk == row.pk,
+            ))
+
+            count = cursor_count.scalar()
+            discount = 0
+
+            if attendee.country.lower() == 'nepal':
+                currency = 'NRs.'
+                discount += row.studentLocal if attendee.category == 'student' else 0
+                discount += row.earlyLocal if count <= row.earlyBird else 0
+                fee = row.feeLocal - discount
+
+            else:
+                currency = 'USD'
+                discount += row.studentGlobal if attendee.category == 'student' else 0
+                discount += row.earlyGlobal if count <= row.earlyBird else 0
+                fee = row.feeGlobal - discount
+
+            ticketList.append({
+                'attendee_pk'   : attendee.pk,
+                'attendee_slug' : attendee.slug,
+                'event_pk'      : row.pk,
+                'currency'      : currency,
+                'fee'           : fee,
+            })
+
+    return ticketList
+
+
 @app.get('/registered/form')
 def registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
@@ -75,35 +124,11 @@ def registered_create():
 
             attendee = cursor.first()
 
-            for event_pk in events:
-                cursor_ticket = session.execute(
-                    sa.select(db.conf.Ticket.event_pk).where(db.conf.Ticket.event_pk == int(event_pk))
-                ).fetchall()
-
-                row_event = session.execute(sa.select(
-                    db.conf.Event.pk,
-                    db.conf.Event.feeGlobal,
-                    db.conf.Event.feeLocal,
-                    db.conf.Event.studentGlobal,
-                    db.conf.Event.studentLocal,
-                    db.conf.Event.earlyGlobal,
-                    db.conf.Event.earlyLocal,
-                ).where(
-                    db.conf.Event.pk == int(event_pk),
-                )).first()
-
-                currency, fee = getTicketDetails(attendee, row_event, cursor_ticket)
-
-                cursor = session.execute(sa.insert(
-                    db.conf.Ticket,
-                ).values(
-                    attendee_pk     = attendee.pk,
-                    attendee_slug   = attendee.slug,
-                    event_pk        = event_pk,
-                    currency        = currency,
-                    fee             = fee,
-                    paymentStatus   = 'unpaid',
-                ))
+            cursor = session.execute(sa.insert(
+                db.conf.Ticket,
+            ).values(
+                getTicketDetails(attendee, events),
+            ))
 
             # srv.mbox.queue.after_registration(attendee)
             # not returning 201 because of redirection
@@ -273,34 +298,10 @@ def registered_add_event():
                 db.conf.Ticket.paymentStatus != 'paid',
             ))
 
-        for event_pk in jsonData['events']:
-            cursor_ticket = session.execute(
-                sa.select(db.conf.Ticket.event_pk).where(db.conf.Ticket.event_pk == int(event_pk))
-            ).fetchall()
-
-            row_event = session.execute(sa.select(
-                db.conf.Event.pk,
-                db.conf.Event.feeGlobal,
-                db.conf.Event.feeLocal,
-                db.conf.Event.studentGlobal,
-                db.conf.Event.studentLocal,
-                db.conf.Event.earlyGlobal,
-                db.conf.Event.earlyLocal,
-            ).where(
-                db.conf.Event.pk == int(event_pk),
-            )).first()
-
-            currency, fee = getTicketDetails(row_attendee, row_event, cursor_ticket)
-
-            session.execute(sa.dialects.postgresql.insert(
-                db.conf.Ticket,
-            ).values(
-                attendee_pk     = row_attendee.pk,
-                attendee_slug   = row_attendee.slug,
-                event_pk        = event_pk,
-                currency        = currency,
-                fee             = fee,
-                paymentStatus   = 'unpaid',
-            ).on_conflict_do_nothing())
+        session.execute(sa.dialects.postgresql.insert(
+            db.conf.Ticket,
+        ).values(
+            getTicketDetails(row_attendee, jsonData['events']),
+        ).on_conflict_do_nothing())
 
     return 'updated', 202
