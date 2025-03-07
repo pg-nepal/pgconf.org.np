@@ -52,13 +52,13 @@ def getTicketDetails(attendee, events):
             if attendee.country.lower() == 'nepal':
                 currency = 'NRs.'
                 discount += row.studentLocal if attendee.category == 'student' else 0
-                discount += row.earlyLocal if count <= row.earlyBird else 0
+                discount += row.earlyLocal if count <= row.earlyLimit else 0
                 fee = row.feeLocal - discount
 
             else:
                 currency = 'USD'
                 discount += row.studentGlobal if attendee.category == 'student' else 0
-                discount += row.earlyGlobal if count <= row.earlyBird else 0
+                discount += row.earlyGlobal if count <= row.earlyLimit else 0
                 fee = row.feeGlobal - discount
 
             ticketList.append({
