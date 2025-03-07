@@ -504,6 +504,9 @@ input[type="number"]::-webkit-inner-spin-button {
         font-size: 14px;
     }
 
+    ol{
+        padding-inline-start: 20px;
+    }
 
     ol li{
         font-size: 12px;
@@ -556,6 +559,10 @@ input[type="number"]::-webkit-inner-spin-button {
         font-size: 12px;
     }
 
+    ol{
+        padding-inline-start: 10px;
+    }
+
 }
 
 @media (max-width: 500px) {
@@ -569,6 +576,10 @@ input[type="number"]::-webkit-inner-spin-button {
 
     em {
         font-size: 8px;
+    }
+
+    ol{
+        padding-inline-start: 5px;
     }
 
 }
