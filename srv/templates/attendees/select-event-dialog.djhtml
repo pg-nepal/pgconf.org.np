@@ -1,24 +1,27 @@
 <style>
-    select{
-    box-sizing: border-box;
+    #dialog-ticket header {
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
     font-size: 18px;
-    margin-top: 10px;
-    background-color: white;
-    border: solid 0.5px rgb(175, 172, 172);
-    border-radius: 4px;
-    outline: none;
-    padding: 15px;
-    outline: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-}
-
-@media (max-width: 700px) {
-    span{
-        display: none;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #333;
     }
-}
+
+    #dialog-ticket p {
+        font-size: 14px;
+        color: #555;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #dialog-ticket span {
+        display: block;
+        color: gray;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
 </style>
 
 <dialog id="dialog-ticket" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
