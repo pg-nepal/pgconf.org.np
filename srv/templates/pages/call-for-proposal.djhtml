@@ -40,7 +40,7 @@
         </ol>
         
 
-        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'" style="font-size:120%">
+        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
             Submit Your Proposal
         </button>
         </div>
