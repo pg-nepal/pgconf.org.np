@@ -76,6 +76,14 @@ transform: scale(1);
 opacity: 1;
 }
 
+@media (max-width: 600px) {
+    select {
+        font-size: 14px;
+        padding: 10px;
+    }
+}
+
+
 .content-container{
     padding: 1%;
     width: 80%;
