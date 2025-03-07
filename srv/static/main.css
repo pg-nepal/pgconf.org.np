@@ -24,6 +24,39 @@ p{
     font-size: 20px;
 }
 
+select {
+    outline: none;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #aaa;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    cursor: pointer;
+    overflow-y: auto;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+select:focus {
+    border-color: #007bff;
+    background-color: #ffffff;
+    box-shadow: 0px 3px 6px rgba(0, 123, 255, 0.2);
+}
+
+select:hover {
+    background-color: #ffffff;
+}
+
+select[multiple] {
+    height: auto;
+    min-height: 120px;
+}
+
 .content-container{
     padding: 1%;
     width: 80%;
