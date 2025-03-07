@@ -75,7 +75,9 @@
             </tr>
         </tbody>
     </table>
+    </div>
 
+    <div class="alert">
     <h2>🎫 Ticket</h2>
 
     <table id="ticket-table" style="display: none;" >
