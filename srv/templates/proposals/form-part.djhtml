@@ -27,7 +27,7 @@
 
 <div class="fields">
     <label for="wtf-title">Title <sup>*</sup></label>
-    <input id="wtf-title" name="title" placeholder="Session Title" required>
+    <input id="wtf-title" name="title" placeholder="Session Title" maxlength=100 required >
 </div>
 
 <div class="fields">
