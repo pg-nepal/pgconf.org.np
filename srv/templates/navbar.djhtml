@@ -1,7 +1,7 @@
 <nav class="nav">
     <div class="headers">
             <a href="/">
-                <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+                <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
             </a>
 
             <div class="updates-container" style="width: 30%;">
@@ -31,7 +31,7 @@
             <!-- Mobile Hamburger Icon -->
             <div class="hamburger-menu" id="hamburger-menu">
                     <a href="/">
-                        <img class="logo-img" src="/static/images/np-pug-logo.png" alt="Logo">
+                        <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
                     </a>
                 <span style="color: white;">&#9776;</span> <!-- Hamburger icon -->
             </div>
