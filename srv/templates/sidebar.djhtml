@@ -8,10 +8,10 @@
 </div>
 <div class="sidebar">
     <ul>
-        <li><p><a href="/pages/registration">✔️ Main conference registration</a></p></li>
-        <li><p><a href="/pages/training">✔️ Pre-Conference training</a></p></li>
-        <li><p><a href="/pages/schedule">✔️ Schedule</a></p></li>
-        <li><p><a href="/programs/speakers">✔️ Checkout talks and speakers</a></p></li>
-        <li><p><a href="/pages/venue">✔️ Venue and travel</a></p></li>
+        <li><p><a href="/pages/registration">☑️ Main conference registration</a></p></li>
+        <li><p><a href="/pages/training">☑️ Pre-Conference training</a></p></li>
+        <li><p><a href="/pages/schedule">☑️ Schedule</a></p></li>
+        <li><p><a href="/programs/speakers">☑️ Checkout talks and speakers</a></p></li>
+        <li><p><a href="/pages/venue">☑️ Venue and travel</a></p></li>
     </ul>
 </div>
