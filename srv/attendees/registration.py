@@ -266,6 +266,7 @@ def registered_payment_receipt_file_download(slug):
 @app.get('/registered/ticket/<slug>')
 def registered_ticket_read(slug):
     query = sa.select(
+        db.conf.Event.pk.label('pk'),
         db.conf.Event.name.label('Event'),
         db.conf.Event.eventOn.label('Date From'),
         db.conf.Event.eventTo.label('Date To'),
