@@ -87,6 +87,11 @@
 
     <button id="edit-ticket-btn" class="button">Edit selection</button>
 
+    <h4 style="color: red;"><em>Unpaid Amount: <strong id="total-amount"></span></strong></em></h4>
+    <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount"></span></strong></em></h4>
+    <h4 style="color: green;"><em>Paid Amount: <strong id="paid-amount"></span></strong></em></h4>
+    </div>
+
     {% include '/attendees/select-event-dialog.djhtml' %}
 
     {% if row.country.lower() != 'nepal' %}
