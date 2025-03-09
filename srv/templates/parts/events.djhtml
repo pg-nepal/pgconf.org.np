@@ -2,7 +2,7 @@
     .event-box div {
         box-sizing: border-box;
         display: flex;
-        justify-content: space-between;
+        gap: 2%;
     }
 
     @media (max-width: 400px) {
@@ -21,8 +21,8 @@
         </p>
         {% if showLinks %}
         <div>
-                <a class="button button-secondary" href="/pages/call-for-proposal">Submit a proposal</a>
-                <a class="button button-secondary" href="/pages/registration">Register</a>
+                <a class="button" href="/pages/call-for-proposal">Submit a proposal</a>
+                <a class="button" href="/pages/registration">Register</a>
         </div>
         {% endif %}
     </div>
@@ -33,8 +33,8 @@
         </p>
         {% if showLinks %}
         <div>
-            <a class="button button-secondary" href="/pages/training">About the course</a>
-            <a class="button button-secondary" href="/pages/registration">Register</a>
+            <a class="button" href="/pages/training">About the course</a>
+            <a class="button" href="/pages/registration">Register</a>
         </div>
         {% endif %}
     </div>
