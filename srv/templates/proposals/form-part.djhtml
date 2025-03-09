@@ -1,3 +1,17 @@
+<style>
+    .wrapper{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    @media (max-width: 1024px) {
+        .wrapper{
+            display: block;
+        }
+    }
+</style>
+
 <div class="fields">
     <div class="fields">
         <label for="wtf-name">Name <sup>*</sup></label>
@@ -31,9 +45,12 @@
 </div>
 
 <div class="fields">
-    <label for="wtf-abstract">Abstract <sup>*</sup><em style="color: #ff0000;"> (Note: The abstract should not exceed 500 words.)</em></label>
+    <label for="wtf-abstract">Abstract <sup>*</sup></label>
     <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" oninput="checkWordCount(this);" required></textarea>
-    <label id="wordcount-label" style="color: #006eff;"><em>Total word count: <span id="word-count">0</span>/500</em></label>
+    <div class="wrapper">
+        <p><em style="color: #ff0000;"> (Note: The abstract should not exceed 500 words.)</em></p>
+        <label id="wordcount-label" style="color: #006eff;"><em>Total word count: <span id="word-count">0</span>/500</em></label>
+    </div>
 </div>
 
 
@@ -48,7 +65,7 @@
 
         wordCountElement.textContent = wordCount;
 
-        if(wordCount >= maxWords){
+        if(wordCount > maxWords){
             document.getElementById('wordcount-label').style.color = 'red'
             alert('Word limit reached')
             let trimmedText = words.slice(0, maxWords).join(" ");
