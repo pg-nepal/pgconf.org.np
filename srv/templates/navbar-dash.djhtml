@@ -91,6 +91,7 @@
     }
 
     function logout() {
+        if (!confirm('Do you want to logout?')) return
         const xhr = new XMLHttpRequest();
         xhr.open('GET', '/logout/basic', false, 'false', 'false');
         xhr.send();
