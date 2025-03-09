@@ -77,7 +77,7 @@
     </table>
     </div>
 
-    <div class="alert">
+    <div class="alert" style="overflow-x:auto;">
     <h2>🎫 Ticket</h2>
 
     <div id="ticket-container" style="display: none;">
