@@ -64,12 +64,10 @@
         </div>
     </div>
 
-    <div style="margin-bottom: 20px;">
+    <div class="alert">
         <strong>Proposed Abstract</strong>
         <p id="row.abstract"></p>
     </div>
-
-    <hr/>
 
     <div class="reviews">
         <h3>Comments</h3>
