@@ -33,4 +33,5 @@
 <div class="fields">
     <label for="wtf-abstract">Abstract <sup>*</sup></label>
     <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
+    <label><em style="color: gray;">Please try to limit your abstract upto 500 words</em></label>
 </div>
