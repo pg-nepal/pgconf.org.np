@@ -89,7 +89,7 @@
 
         const formData = new FormData(event.target)
 
-        if (!confirm('Are you sure? This action cannot be undone')) return
+        if (!confirm('Are you sure about your selection?')) return
         fetch('/registered/addevent', {
             method  : 'POST',
             headers : { 'content-type': 'application/json' },
