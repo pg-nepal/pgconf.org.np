@@ -26,7 +26,7 @@
 </div>
 
 <div class="fields">
-    <label for="wtf-title">Title <sup>*</sup><em style="color: #ff0000;"> (Note: The abstract should not should exceed more than 500 words.)</em></label>
+    <label for="wtf-title">Title <sup>*</sup><em style="color: #ff0000;"> (Note: The abstract should not should exceed more than 100 characters.)</em></label>
     <input id="wtf-title" name="title" placeholder="Session Title" required maxlength="100">
 </div>
 
