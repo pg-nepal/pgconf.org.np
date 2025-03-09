@@ -74,6 +74,9 @@
                 eOption.value = row[0]
                 eOption.innerHTML = row[1]
                 eOption.selected = (row[6] != null)
+                if(row[6] == 'paid'){
+                    eOption.setAttribute('style', 'color:red')
+                }
                 eSelect.append(eOption)
             })
         })
