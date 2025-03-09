@@ -1,5 +1,5 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle= 'Call for Proposals - PostgreSQL Conference Nepal 2025' %}
+{% set pageTitle= 'Call for Proposal' %}
 
 
 {% block head %}
