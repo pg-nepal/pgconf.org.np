@@ -26,14 +26,14 @@
 </div>
 
 <div class="fields">
-    <label for="wtf-title">Title <sup>*</sup></label>
-    <input id="wtf-title" name="title" placeholder="Session Title" required>
+    <label for="wtf-title">Title <sup>*</sup><em style="color: #ff0000;"> (Note: The abstract should not should exceed more than 500 words.)</em></label>
+    <input id="wtf-title" name="title" placeholder="Session Title" required maxlength="100">
 </div>
 
 <div class="fields">
-    <label for="wtf-abstract">Abstract <sup>*</sup></label>
-    <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" oninput="checkWordCount(this);" required></textarea>
-    <p>Total word count: <span id="word-count">0</span>/500</p>
+    <label for="wtf-abstract">Abstract <sup>*</sup><em style="color: #ff0000;"> (Note: The abstract should not exceed 500 words.)</em></label>
+    <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
+    <label id="wordcount-label" style="color: #006eff;"><em>Total word count: <span id="word-count">0</span>/500</em></label>
 </div>
 
 
@@ -48,7 +48,8 @@
 
         wordCountElement.textContent = wordCount;
 
-        if(wordCount > maxWords){
+        if(wordCount >= maxWords){
+            document.getElementById('wordcount-label').style.color = 'red'
             alert('Word limit reached')
             let trimmedText = words.slice(0, maxWords).join(" ");
             obj.value = trimmedText
@@ -59,16 +60,4 @@
         obj,oldvalue = obj.value
         return true
     }
-
-    abstract.addEventListener('input', function () {
-        checkWordCount(this)
-    })
-
-    document.getElementById('wtf-form').addEventListener('submit', function (event) {
-        let words = abstract.value.trim().split(/\s+/).filter(word => word.length > 0)
-        if(words.length > maxWords){
-            event.preventDefault()
-            alert('Abstract word count cannot exceed more than 500 words.')
-        }
-    })
 </script>
