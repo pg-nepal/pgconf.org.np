@@ -81,16 +81,13 @@
     <h2>🎫 Ticket</h2>
 
     <table id="ticket-table" style="display: none;" >
-        <thead><tr><tr></thead>
+        <thead><tr></tr></thead>
         <tbody></tbody>
     </table>
-    
+
     <button id="edit-ticket-btn" class="button">Edit selection</button>
 
     {% include '/attendees/select-event-dialog.djhtml' %}
-
-    <h4 style="color: #007bff;"><em>Total Amount: <strong id="total-amount"></span></strong></em></h4>
-    </div>
 
     {% if row.country.lower() != 'nepal' %}
         <h3>🌐 International Participants Payment</h3>
@@ -158,74 +155,29 @@
         </div>
     {% endif %}
 
-    <div id="receipt-container" class="alert">
-        <h3>&#129534; Upload your proof of payment</h3>
+    <h2>🎫 Upload receipt</h2>
 
-        <div id="exising-receipt"></div>
+    <p>System accepts pdf, png or jpeg file only.</p>
 
-        <form id="receipt-submission" action="/register/update/{{row.slug}}" method="POST" enctype="multipart/form-data">
-            System accept pdf, png or jpeg file only.
-            <div class="fields">
-                <input id="receiptFile" name="receiptFile" type="file">
-                <button id="submit-receiptFile" class="button">Send receipt</button>
-            </div>
-        </form>
-
-        <p style="color:red; display:none;">
-            &#129534; Send us the payment recipt at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a>
-        </p>
-    </div>
-<!-- </div> -->
+    <table id="receipt-table" style="display: none;" >
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+    </table>
+</div>
 {% endblock %}
 
 
 {% block tail %}
     <script>
-        const eDialog_ = document.getElementById('dialog-ticket')
+        const eDialogTicket = document.getElementById('dialog-ticket')
         getTicketDetails('{{row.slug}}')
         document.getElementById('edit-ticket-btn').onclick = function() {
-            eDialog_.showModal()
+            eDialogTicket.showModal()
         }
-    </script>
-
-    <script>
-        const form = document.getElementById('receipt-submission')
-        form.addEventListener('submit', function (event) {
-            event.preventDefault()
-            const formData = new FormData(form)
-
-            const file = formData.get('receiptFile')
-            const validMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-            if(!validMimeTypes.includes(file.type)) {
-                alert("Invalid file type. Please upload jpeg, png or pdf file")
-                return
-            }
-
-            fetch(`/registered/{{row.slug}}`, {
-                method : 'POST',
-                body   : formData,
-            }).then(function (response) {
-                if (500 <= response.status) {
-                    throw new Error(response.statusText)
-                }
-
-                if (200 > response.status || 300 <= response.status) {
-                    return response.text().then(function (text) {
-                        alert(text)
-                    })
-                }
-
-                alert('Receipt submitted successfully')
-                location.reload()
-            }).catch(function (error) {
-                console.error(error)
-            })
-        })
     </script>
 
     <script type="module">
         import * as attendees from '/static/attendees/read.mjs'
-        attendees.checkPaymentReceipt(`{{row.slug}}`)
         attendees.getTicketDetails(`{{row.slug}}`)
     </script>
 
