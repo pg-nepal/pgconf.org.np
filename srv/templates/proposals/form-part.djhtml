@@ -59,16 +59,4 @@
         obj,oldvalue = obj.value
         return true
     }
-
-    abstract.addEventListener('input', function () {
-        checkWordCount(this)
-    })
-
-    document.getElementById('wtf-form').addEventListener('submit', function (event) {
-        let words = abstract.value.trim().split(/\s+/).filter(word => word.length > 0)
-        if(words.length > maxWords){
-            event.preventDefault()
-            alert('Abstract word count cannot exceed more than 500 words.')
-        }
-    })
 </script>
