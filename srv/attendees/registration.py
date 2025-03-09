@@ -1,3 +1,4 @@
+import base64
 import io
 import random
 import traceback
@@ -296,6 +297,7 @@ def registered_add_event():
                 db.conf.Ticket.event_pk      == row.event_pk,
                 db.conf.Ticket.attendee_slug == jsonData['slug'],
                 db.conf.Ticket.paymentStatus != 'paid',
+                db.conf.Ticket.paymentStatus != 'in review',
             ))
 
         session.execute(sa.dialects.postgresql.insert(
@@ -305,3 +307,52 @@ def registered_add_event():
         ).on_conflict_do_nothing())
 
     return 'updated', 202
+
+
+@app.post('/registered/receipt_upload/<slug>')
+def receipt_upload(slug):
+    receiptFile = flask.request.files['file']
+    event_pk = flask.request.form.get('event_pk')
+
+    if not receiptFile:
+        return 'File not uploaded', 400
+
+    mimetype = receiptFile.content_type
+    if mimetype not in FILE_MAGIC_NUMBERS.values():
+        return 'Invalid file format. Please upload jpeg, png or pdf file', 400
+
+    receiptBlob = receiptFile.read()
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.update(
+            db.conf.Ticket,
+        ).where(
+            db.conf.Ticket.event_pk == int(event_pk),
+            sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
+        ).values(
+            receiptBlob   = receiptBlob,
+            receiptType   = mimetype,
+            paymentStatus = 'in review',
+        ))
+        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+
+
+@app.post('/registered/receipt_view/<slug>')
+def receipt_view(slug):
+    event_pk = flask.request.json['event_pk']
+
+    with db.SessionMaker.begin() as session:
+        row = session.execute(sa.select(
+            db.conf.Ticket.receiptBlob,
+            db.conf.Ticket.receiptType,
+        ).where(
+            db.conf.Ticket.event_pk == int(event_pk),
+            sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
+        )).first()
+
+        encoded_image = base64.b64encode(row.receiptBlob).decode('utf-8')
+
+        return flask.jsonify({
+            'image'       : encoded_image,
+            'receiptType' : row.receiptType,
+        })
