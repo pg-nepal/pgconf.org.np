@@ -4,9 +4,25 @@
 
 {% block main_content %}
 
-    The PostgreSQL code of conduct has been adopted by the Conference (PgConf Nepal).
+<div class="alert alert-info">
+    <p>
+        The PostgreSQL Code of Conduct has been officially adopted by the PgConf Nepal conference to ensure a welcoming, inclusive, and professional environment for all participants. This adoption reinforces the commitment to fostering a respectful and harassment-free experience for attendees, speakers, sponsors, and organizers.
+   </p>
 
-    <div class="box">
-        Learn more about <a href="https://www.postgresql.org/about/policies/coc/" target="_blank"> PostgreSQL Code of Conduct</a>
+   <p>
+        The PostgreSQL Code of Conduct outlines expected behavior, unacceptable conduct, and procedures for reporting and addressing violations. By adhering to these principles, PgConf Nepal aims to promote collaboration, open discussion, and a positive atmosphere for the PostgreSQL community. 
+   </p>
+   
+   <p>
+        To learn more about the PostgreSQL Code of Conduct and its guidelines, please visit the official documentation or contact the conference organizers for further details.
+    </p>
+</div>
+
+    <div class="alert">
+        <p>
+            <em>
+                Learn more about <a href="https://www.postgresql.org/about/policies/coc/" target="_blank"> PostgreSQL Code of Conduct</a>
+            </em>
+        </p>
     </div>
 {% endblock %}
