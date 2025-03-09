@@ -145,14 +145,13 @@ export function reviewReadAll (isAdmin, proposal_pk) {
             eDiv.append(eP)
 
             const eDiv_bottom = document.createElement('div')
-            eDiv_bottom.style.display = 'flex'
-            eDiv_bottom.style.justifyContent = 'space-between'
+            eDiv_bottom.style.display = 'block'
             eDiv.append(eDiv_bottom)
 
-            const eSpan = document.createElement('span')
-            eSpan.innerText = (new Date(date)).toString()
-            eSpan.style.fontWeight = 200
-            eDiv_bottom.append(eSpan)
+            const eP_date = document.createElement('p')
+            eP_date.innerText = (new Date(date)).toString()
+            eP_date.style.fontWeight = 200
+            eDiv_bottom.append(eP_date)
 
             if (user === isAdmin) {
                 const eButton = document.createElement('button');
