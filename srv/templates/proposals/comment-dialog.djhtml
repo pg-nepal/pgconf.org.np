@@ -1,9 +1,5 @@
 <dialog id="dialog-comment" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
     <style>
-        dialog::backdrop {
-            backdrop-filter: contrast(50%);
-        }
-
         #dialog-comment textarea {
             width: 100%;
             min-height: 100px;
@@ -28,7 +24,9 @@
         <fieldset>
             <textarea name="comment" id ="comment"></textarea>
         </fieldset>
-        <button id="cmt-submit-button" class="button">Submit</button>
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button id="cmt-submit-button" class="button">Submit</button>
+        </div>
     </form>
 
     <script type="module">
