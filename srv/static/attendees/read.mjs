@@ -2,96 +2,13 @@
 export function getTicketDetails(slug) {
     fetch(`/registered/ticket/${slug}`).then(function (response) {
         if (200 == response.status) {
-            return response.json()
+            response.text()
+            .then(function(data) {
+               const ticketContainer = document.getElementById('ticket-container')
+               ticketContainer.innerHTML = data
+            })
         }
-    }).then( function(json){
-        updateTicketTable (json)
-        updateReceiptTable (slug, json)
     })
-}
-
-
-function updateTicketTable(json){
-    const ticketContainer = document.getElementById('ticket-container')
-    ticketContainer.innerHTML = ''
-
-    let total = 0
-    let paid = 0
-    let inReview = 0
-    let currency = ''
-
-    json.data.forEach(function (row) {
-        const ticketDiv = document.createElement('div')
-        ticketDiv.className = 'ticket'
-
-        const ticketFieldContainer = document.createElement('div')
-        ticketFieldContainer.className = 'field-container'
-
-        const wrapperContainer = document.createElement('div')
-        wrapperContainer.className = 'wrapper'
-
-        const ticketLogo = document.createElement('img')
-        ticketLogo.src = '/static/images/pgconf_logo.png'
-        ticketLogo.className = 'ticket-logo'
-
-        row.forEach(function (cell, i) {
-    
-            const fieldName = json.headers[i]
-    
-            const fieldDiv = document.createElement('div')
-            fieldDiv.className = 'ticket-field'
-
-            if(fieldName !=='pk'){
-                if (fieldName === 'Amount') {
-                    if (cell !== null) {
-                                 total += cell
-                        cell = cell.toLocaleString()
-                             }
-                         }
-         
-                if (fieldName === 'Currency' && cell !== null) {
-                    currency = cell
-                }
-
-
-                switch (fieldName === 'Payment Status') {
-                    case 'unpaid':
-                        total += cell
-                        eTd.innerHTML = cell.toLocaleString()
-                        break
-                    case 'in review':
-                        inReview += cell
-                        eTd.innerHTML = cell.toLocaleString()
-                        break
-                    case 'paid':
-                        paid += cell
-                        eTd.innerHTML = cell.toLocaleString()
-                        break
-                }
-        
-                if (['Ordered Date', 'Updated Date', 'Date From', 'Date To'].includes(fieldName) && cell !== null) {
-                    const date = new Date(cell)
-                    cell = date.toDateString()
-                         }
-
-                         fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
-                         ticketFieldContainer.appendChild(fieldDiv)
-            }
-    
-                 })
-            ticketDiv.append(ticketFieldContainer)
-            ticketContainer.appendChild(ticketDiv)
-            wrapperContainer.appendChild(ticketLogo)
-            ticketDiv.appendChild(wrapperContainer)
-    })
-
-    ticketContainer.style.display = 'block'
-
-    document.getElementById('total-amount').innerText = `${currency} ${total.toLocaleString()}`
-    document.getElementById('in-review-amount').innerText = `${currency} ${inReview.toLocaleString()}`
-    document.getElementById('paid-amount').innerText = `${currency} ${paid.toLocaleString()}`
-
-    return json
 }
 
 
