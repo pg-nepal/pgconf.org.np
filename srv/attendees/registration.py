@@ -289,10 +289,14 @@ def registered_ticket_read(slug):
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
+        # return flask.jsonify(
+        #     headers = tuple(c['name'] for c in query.column_descriptions),
+        #     data    = [list(row) for row in cursor],
+        # )
 
-        return flask.jsonify(
-            headers = tuple(c['name'] for c in query.column_descriptions),
-            data    = [list(row) for row in cursor],
+        return flask.render_template(
+            '/parts/ticket.djhtml',
+            events = [row._asdict() for row in cursor],
         )
 
 
