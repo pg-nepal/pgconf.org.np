@@ -1,6 +1,6 @@
 
 export function getTicketDetails(slug) {
-    fetch(`/registered/ticket/${slug}`).then(function (response) {
+    fetch(`/tickets/${slug}`).then(function (response) {
         if (200 == response.status) {
             response.text()
             .then(function(data) {
@@ -8,6 +8,17 @@ export function getTicketDetails(slug) {
                ticketContainer.innerHTML = data
             })
         }
+    })
+}
+
+
+export function getReceiptDetails(slug) {
+    fetch(`/registered/ticket/${slug}`).then(function (response) {
+        if (200 == response.status) {
+            return response.json()
+        }
+    }).then( function(json){
+        updateReceiptTable (slug, json)
     })
 }
 
