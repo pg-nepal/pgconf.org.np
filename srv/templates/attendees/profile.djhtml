@@ -263,6 +263,7 @@
     <script type="module">
         import * as attendees from '/static/attendees/read.mjs'
         attendees.getTicketDetails(`{{row.slug}}`)
+        attendees.getReceiptDetails('{{row.slug}}')
     </script>
 
     <script>
