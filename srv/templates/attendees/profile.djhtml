@@ -37,14 +37,36 @@
 
         .ticket {
             display: flex;
+            gap: 2%;
             align-items: center;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
             padding: 15px;
             margin: 10px 0;
             border-radius: 10px;
             background-color: #336791;
             position: relative;
         }
+
+        /* Circular Cutouts */
+        .ticket::before,
+        .ticket::after {
+            content: "";
+            width: 30px;
+            height: 30px;
+            background-color: whitesmoke;
+            border-radius: 50%;
+            position: absolute;
+            left: 70%;
+            transform: translateX(-50%);
+        }
+
+        .ticket::before {
+            top: -15px;
+        }
+
+        .ticket::after {
+            bottom: -15px;
+        }
+
 
         .field-container {
             width: 70%;
@@ -94,6 +116,12 @@
                 background-color: white;
                 box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
             }
+
+            .ticket::before,
+            .ticket::after {
+                display: none;
+            }
+
         }
 </style>
 {% endblock %}
@@ -148,10 +176,6 @@
     <div id="ticket-container">
 
     </div>
-
-    <h4 style="color: red;"><em>Unpaid Amount: <strong id="total-amount"></span></strong></em></h4>
-    <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount"></span></strong></em></h4>
-    <h4 style="color: #006eff;"><em>Paid Amount: <strong id="paid-amount"></span></strong></em></h4>
 
     <button id="edit-ticket-btn" class="button">Edit selection</button>
     </div>
@@ -247,6 +271,10 @@
             {% endif %}
         {% endif %}
     {% endfor %}
+
+    <h4 style="color: red;"><em>Unpaid Amount: <strong id="total-amount"></span></strong></em></h4>
+    <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount"></span></strong></em></h4>
+    <h4 style="color: #006eff;"><em>Paid Amount: <strong id="paid-amount"></span></strong></em></h4>
 </div>
 {% endblock %}
 
