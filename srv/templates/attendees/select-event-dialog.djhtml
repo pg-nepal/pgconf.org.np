@@ -62,7 +62,7 @@
 </script>
 
 <script>
-    function getTicketDetails(slug) {
+    function selectEvents(slug) {
         fetch(`/registered/ticket/${slug}`).then(function (response) {
             if (200 == response.status) {
                 return response.json()
