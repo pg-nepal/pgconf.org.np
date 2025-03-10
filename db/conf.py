@@ -113,17 +113,18 @@ class Ticket(db.Base):
     )
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
+
     attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
     attendee_slug  = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
-
     event_pk       = sa.Column(sa.Integer, sa.ForeignKey(Event.pk, ondelete='CASCADE'))
+
     currency       = sa.Column(sa.String(10), server_default='NRs.')
     fee            = sa.Column(sa.Numeric(10, 2))
-
     paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
+
     receiptBlob    = sa.Column(sa.LargeBinary)
     receiptType    = sa.Column(sa.String(20), comment='file type of the uploaded receipt')
-    paymentRef     = sa.Column(sa.Integer)  # self reference; workout needed for case of the multiple self reference
 
     paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
     paymentNote    = sa.Column(sa.Text)
