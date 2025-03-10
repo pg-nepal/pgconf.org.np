@@ -54,46 +54,42 @@ function updateTicketTable(json){
             const fieldDiv = document.createElement('div')
             fieldDiv.className = 'ticket-field'
 
-            if (fieldName === 'Amount') {
-                if (cell !== null) {
-                    total += cell
-                    cell = cell.toLocaleString()
-                }
-            }
-
-            fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
-            ticketFieldContainer.appendChild(fieldDiv)
-        })
-
-        ticketDiv.append(ticketFieldContainer)
-        ticketContainer.appendChild(ticketDiv)
-        wrapperContainer.appendChild(ticketLogo)
-        ticketDiv.appendChild(wrapperContainer)
-    
-            const fieldName = json.headers[i]
-    
-            const fieldDiv = document.createElement('div')
-            fieldDiv.className = 'ticket-field'
-    
-            if (fieldName === 'Amount') {
-                if (cell !== null) {
-                             total += cell
-                    cell = cell.toLocaleString()
+                if (fieldName === 'Amount') {
+                    if (cell !== null) {
+                                 total += cell
+                        cell = cell.toLocaleString()
+                             }
                          }
-                     }
-     
-            if (fieldName === 'Currency' && cell !== null) {
-                currency = cell
+         
+                if (fieldName === 'Currency' && cell !== null) {
+                    currency = cell
+                }
+
+
+                switch (fieldName === 'Payment Status') {
+                    case 'unpaid':
+                        total += cell
+                        eTd.innerHTML = cell.toLocaleString()
+                        break
+                    case 'in review':
+                        inReview += cell
+                        eTd.innerHTML = cell.toLocaleString()
+                        break
+                    case 'paid':
+                        paid += cell
+                        eTd.innerHTML = cell.toLocaleString()
+                        break
+                }
+        
+                if (['Ordered Date', 'Updated Date', 'Date From', 'Date To'].includes(fieldName) && cell !== null) {
+                    const date = new Date(cell)
+                    cell = date.toDateString()
+                         }
+
+                         fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
+                         ticketFieldContainer.appendChild(fieldDiv)
             }
-     
     
-            if (['Ordered Date', 'Updated Date', 'Date From', 'Date To'].includes(fieldName) && cell !== null) {
-                const date = new Date(cell)
-                cell = date.toDateString()
-                     }
-     
-            fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
-            ticketFieldContainer.appendChild(fieldDiv)
                  })
             ticketDiv.append(ticketFieldContainer)
             ticketContainer.appendChild(ticketDiv)
