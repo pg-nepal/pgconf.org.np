@@ -80,10 +80,13 @@
     <div class="alert">
     <h2>🎫 Ticket</h2>
 
-    <table id="ticket-table" style="display: none;" >
+    <div id="ticket-container" style="display: none;">
+
+    </div>
+    <!-- <table id="ticket-table" style="display: none;" >
         <thead><tr></tr></thead>
         <tbody></tbody>
-    </table>
+    </table> -->
 
     <button id="edit-ticket-btn" class="button">Edit selection</button>
 
