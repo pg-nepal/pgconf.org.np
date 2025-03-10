@@ -12,18 +12,8 @@ export function getTicketDetails(slug) {
 
 
 function updateTicketTable(json){
-    const eTable = document.getElementById('ticket-table')
-    const iMap = {}
-
-    json.headers.forEach(function (h, i) {
-        iMap[h] = i
-
-        if(h != 'pk'){
-            const eTh = document.createElement('th')
-            eTh.innerHTML = h
-            eTable.children[0].children[0].append(eTh)
-        }
-    })
+    const ticketContainer = document.getElementById('ticket-container')
+    ticketContainer.innerHTML = ''
 
     let total = 0
     let paid = 0
@@ -31,54 +21,45 @@ function updateTicketTable(json){
     let currency = ''
 
     json.data.forEach(function (row) {
-        const eTr = document.createElement('tr')
+        const ticketDiv = document.createElement('div')
+        ticketDiv.className = 'ticket'
+
+        const ticketFieldContainer = document.createElement('div')
+        ticketFieldContainer.className = 'field-container'
+
+        const wrapperContainer = document.createElement('div')
+        wrapperContainer.className = 'wrapper'
+
+        const ticketLogo = document.createElement('img')
+        ticketLogo.src = '/static/images/pgconf_logo.png'
+        ticketLogo.className = 'ticket-logo'
+
         row.forEach(function (cell, i) {
-            if(json.headers[i] != 'pk'){
-                const eTd = document.createElement('td')
-                eTd.innerHTML = cell
-                if (json.headers[i] == 'Currency') {
-                    if (null !== cell) {
-                        currency = cell
-                    }
-                }
-                if (json.headers[i] == 'Amount') {
-                    if(null !== cell){
-                        switch (row[iMap['Payment Status']]) {
-                        case 'unpaid':
-                            total += cell
-                            eTd.innerHTML = cell.toLocaleString()
-                            break
-                        case 'in review':
-                            inReview += cell
-                            eTd.innerHTML = cell.toLocaleString()
-                            break
-                        case 'paid':
-                            paid += cell
-                            eTd.innerHTML = cell.toLocaleString()
-                            break
-                        }
-                    }
 
-                }
+            const fieldName = json.headers[i]
 
-                switch (json.headers[i]) {
-                case 'Ordered Date':
-                case 'Updated Date':
-                case 'Date From':
-                case 'Date To':
-                    if (null !== cell) {
-                        const d = new Date(cell)
-                        eTd.innerHTML = d.toString()
-                    }
-                }
+            const fieldDiv = document.createElement('div')
+            fieldDiv.className = 'ticket-field'
 
-                eTr.append(eTd)
+            if (fieldName === 'Amount') {
+                if (cell !== null) {
+                    total += cell
+                    cell = cell.toLocaleString()
+                }
             }
+
+            fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
+            ticketFieldContainer.appendChild(fieldDiv)
         })
-        eTable.children[1].append(eTr)
+
+        ticketDiv.append(ticketFieldContainer)
+        ticketContainer.appendChild(ticketDiv)
+        wrapperContainer.appendChild(ticketLogo)
+        ticketDiv.appendChild(wrapperContainer)
     })
 
-    eTable.style.display = ''
+    ticketContainer.style.display = 'block'
+
     document.getElementById('total-amount').innerText = `${currency} ${total.toLocaleString()}`
     document.getElementById('in-review-amount').innerText = `${currency} ${inReview.toLocaleString()}`
     document.getElementById('paid-amount').innerText = `${currency} ${paid.toLocaleString()}`
