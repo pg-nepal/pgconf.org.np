@@ -150,6 +150,8 @@ def registered_read(slug):
         db.conf.Attendee.email,
         db.conf.Attendee.country,
         db.conf.Attendee.slug,
+        db.conf.Attendee.category,
+        db.conf.Attendee.idProofBlob,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
     ).where(
         sa.cast(db.conf.Attendee.slug, sa.String) == slug,
@@ -166,9 +168,11 @@ def registered_read(slug):
             '/attendees/profile.djhtml',
             row  = row,
             show = {
-                'Name'    : row.name,
-                'Country' : row.country,
-                'Status'  : row.status,
+                'Name'        : row.name,
+                'Country'     : row.country,
+                'Status'      : row.status,
+                'Category'    : row.category,
+                'idProofBlob' : row.idProofBlob,
             },
         )
 
@@ -355,4 +359,45 @@ def receipt_view(slug):
         return flask.jsonify({
             'image'       : encoded_image,
             'receiptType' : row.receiptType,
+        })
+
+
+@app.post('/registered/student_id_upload/<slug>')
+def student_id_upload(slug):
+    idFile = flask.request.files['file']
+
+    if idFile in None:
+        return 'File not uploaded', 400
+
+    mimetype = idFile.content_type
+    if mimetype not in FILE_MAGIC_NUMBERS.values():
+        return 'Invalid file format. Please upload jpeg, png or pdf file', 400
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.update(
+            db.conf.Attendee,
+        ).where(
+            sa.cast(db.conf.Attendee.slug, sa.String) == slug,
+        ).values(
+            idProofBlob = idFile.read(),
+        ))
+        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+
+
+@app.post('/registered/student_id_view/<slug>')
+def student_id_view(slug):
+
+    with db.SessionMaker.begin() as session:
+        row = session.execute(sa.select(
+            db.conf.Attendee.idProofBlob,
+            db.conf.Attendee.idProofType,
+        ).where(
+            sa.cast(db.conf.Attendee.slug, sa.String) == slug,
+        )).first()
+
+        encoded_image = base64.b64encode(row.idProofBlob).decode('utf-8')
+
+        return flask.jsonify({
+            "image"         : encoded_image,
+            "idProofType"   : row.idProofType,
         })
