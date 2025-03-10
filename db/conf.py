@@ -124,7 +124,6 @@ class Ticket(db.Base):
     paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
     receiptBlob    = sa.Column(sa.LargeBinary)
     receiptType    = sa.Column(sa.String(20), comment='file type of the uploaded receipt')
-    paymentRef     = sa.Column(sa.Integer)  # self reference; workout needed for case of the multiple self reference
 
     paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
     paymentNote    = sa.Column(sa.Text)
