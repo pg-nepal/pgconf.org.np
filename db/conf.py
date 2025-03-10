@@ -51,6 +51,7 @@ class Attendee(db.Base):
     email          = sa.Column(sa.String(256), unique=True, nullable=False)
     phone          = sa.Column(sa.String(10))
     idProofBlob    = sa.Column(sa.LargeBinary, comment='id-card for discount')
+    idProofType    = sa.Column(sa.String(20), comment='file type of the uploaded ID card')
 
     country        = sa.Column(sa.String(30), nullable=False)
     bio            = sa.Column(sa.Text(), comment='basic intro')
