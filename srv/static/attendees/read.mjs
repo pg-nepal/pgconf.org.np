@@ -34,6 +34,19 @@ function updateTicketTable(json){
         ticketLogo.src = '/static/images/pgconf_logo.png'
         ticketLogo.className = 'ticket-logo'
 
+        const ticketDiv = document.createElement('div')
+        ticketDiv.className = 'ticket'
+
+        const ticketFieldContainer = document.createElement('div')
+        ticketFieldContainer.className = 'field-container'
+
+        const wrapperContainer = document.createElement('div')
+        wrapperContainer.className = 'wrapper'
+
+        const ticketLogo = document.createElement('img')
+        ticketLogo.src = '/static/images/pgconf_logo.png'
+        ticketLogo.className = 'ticket-logo'
+
         row.forEach(function (cell, i) {
 
             const fieldName = json.headers[i]
@@ -56,6 +69,36 @@ function updateTicketTable(json){
         ticketContainer.appendChild(ticketDiv)
         wrapperContainer.appendChild(ticketLogo)
         ticketDiv.appendChild(wrapperContainer)
+    
+            const fieldName = json.headers[i]
+    
+            const fieldDiv = document.createElement('div')
+            fieldDiv.className = 'ticket-field'
+    
+            if (fieldName === 'Amount') {
+                if (cell !== null) {
+                             total += cell
+                    cell = cell.toLocaleString()
+                         }
+                     }
+     
+            if (fieldName === 'Currency' && cell !== null) {
+                currency = cell
+            }
+     
+    
+            if (['Ordered Date', 'Updated Date', 'Date From', 'Date To'].includes(fieldName) && cell !== null) {
+                const date = new Date(cell)
+                cell = date.toDateString()
+                     }
+     
+            fieldDiv.innerHTML = `<p><strong>${fieldName}:</strong> ${cell}</p>`
+            ticketFieldContainer.appendChild(fieldDiv)
+                 })
+            ticketDiv.append(ticketFieldContainer)
+            ticketContainer.appendChild(ticketDiv)
+            wrapperContainer.appendChild(ticketLogo)
+            ticketDiv.appendChild(wrapperContainer)
     })
 
     ticketContainer.style.display = 'block'
