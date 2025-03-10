@@ -254,7 +254,8 @@
 {% block tail %}
     <script>
         const eDialogTicket = document.getElementById('dialog-ticket')
-        getTicketDetails('{{row.slug}}')
+        selectEvents('{{row.slug}}')
+
         document.getElementById('edit-ticket-btn').onclick = function() {
             eDialogTicket.showModal()
         }
