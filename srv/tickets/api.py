@@ -39,5 +39,5 @@ def ticket_read(slug):
 
         return flask.render_template(
             '/parts/ticket.djhtml',
-            events = [row._asdict() for row in cursor],
+            cursor = cursor,
         )
