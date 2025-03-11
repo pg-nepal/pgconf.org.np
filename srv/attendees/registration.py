@@ -366,7 +366,7 @@ def receipt_view(slug):
 def student_id_upload(slug):
     idFile = flask.request.files['file']
 
-    if idFile in None:
+    if idFile is None:
         return 'File not uploaded', 400
 
     idProofType = idFile.content_type
