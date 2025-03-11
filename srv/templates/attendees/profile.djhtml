@@ -135,7 +135,7 @@
     <div class="alert" style="overflow-x:auto;">
     <h2>📝 Your Registration Status</h2>
 
-    <table>
+    <table style="overflow-x:auto;">
         <thead>
             <tr>
                 {% for h in show.keys() %}
