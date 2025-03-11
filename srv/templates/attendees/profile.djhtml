@@ -316,11 +316,10 @@
                         return
                     }
 
-                    if (5 <= Math.round((file.size / 1024 / 1024))) {
-                        if (!confirm('Recommened file size limited to 5 MB. Do you want to continue ?')) {
-                            eRoot.remove()
-                            return
-                        }
+                    if (2 <= Math.round((file.size / 1024 / 1024))) {
+                        alert('Please upload file less than 2 MB')
+                        eRoot.remove()
+                        return
                     }
 
                     const formData = new FormData()
