@@ -22,6 +22,17 @@
         <tbody></tbody>
     </table>
 
+    <h3>&#129534; Student ID</h3>
+    {% for key, value in show.items() %}
+        {% if key.lower() == "category" and value == "student" %}
+            {% if "idProofBlob" in show %}
+                {% if show['idProofBlob'] is not none %}
+                    <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% endfor %}
+
 
     <h3>&#128231; Communication</h3>
     <div>
@@ -48,4 +59,29 @@
             attendees.sendEmail(slug, emailType)
         })
     </script>
+
+<script>
+    idView = document.getElementById('student-id-view')
+    slug = '{{row.slug}}'
+
+    if(idView != null){
+        idView.onclick = function(){
+            fetch(`/registered/student_id_view/${slug}`, {
+                method   : 'POST',
+            }).then(function (response){
+                return response.json()
+            }).then(function (json){
+                const studentId = 'data:'+ json.idProofType +';base64,' + json.image;
+                const newWindow = window.open();
+
+                if(json.idProofType == 'application/pdf'){
+                    newWindow.document.write('<embed src="' + studentId + '" width="100%" height="100%" type="application/pdf">');
+                }
+                else{
+                    newWindow.document.write('<img src="' + studentId + '" />');
+                }
+            })
+        }
+    }
+</script>
 {% endblock %}
