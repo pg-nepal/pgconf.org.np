@@ -5,6 +5,15 @@
         gap: 2%;
     }
 
+    .event-box {
+        transition: transform 0.4s;
+        cursor: pointer;
+    }
+
+    .event-box:hover {
+        transform: translateY(-5px);
+    }
+
     @media (max-width: 400px) {
         .event-box div {
             display: flex;
@@ -14,7 +23,7 @@
 </style>
 
 <div class="event-container">
-    <div class="event-box">
+    <div class="event-box" onclick="window.location.href='/registered/form'">
         <h2 style="color: #007bff;">🐘 Main Conference</h2>
         <p style="text-align: left;">
             The primary event is scheduled for May 5-6, 2025, and will feature a keynote address, a workshop, and technical presentations by leading experts.
@@ -26,7 +35,7 @@
         </div>
         {% endif %}
     </div>
-    <div class="event-box">
+    <div class="event-box" onclick="window.location.href='/registered/form'">
         <h2 style="color: #007bff;">🎓 Pre-Conference Training</h2>
         <p style="text-align: left;">
             The pre-conference training is scheduled for May 3-4, 2025. A PostgreSQL expert from the industry will conduct the training, featuring hands-on exercises.
