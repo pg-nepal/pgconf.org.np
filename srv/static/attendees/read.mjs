@@ -13,7 +13,7 @@ export function getTicketDetails(slug) {
 
 
 export function getReceiptDetails(slug) {
-    fetch(`/registered/ticket/${slug}`).then(function (response) {
+    fetch(`/registered/receipt/${slug}`).then(function (response) {
         if (200 == response.status) {
             return response.json()
         }
