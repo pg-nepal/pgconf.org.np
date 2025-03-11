@@ -24,6 +24,8 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
+    status         = sa.Column(sa.String(10), server_default='pending', comment='Acceptance status for a proposal')
+
 
 class Review(db.Base):
     __tablename__  = 'reviews'
