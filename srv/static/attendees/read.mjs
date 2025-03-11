@@ -13,12 +13,40 @@ export function getTicketDetails(slug) {
 
 
 export function getReceiptDetails(slug) {
+    let unpaidAmount = 0
+    let reviewAmount = 0
+    let paidAmount = 0
+    let currency = ''
+
     fetch(`/registered/receipt/${slug}`).then(function (response) {
         if (200 == response.status) {
             return response.json()
         }
     }).then( function(json){
-        updateReceiptTable (slug, json)
+        updateReceiptTable(slug, json)
+
+        json.data.forEach(function (row) {
+            if(row[4] !== null){
+                currency = row[4]
+            }
+
+            const amount = parseFloat(row[5])
+            const paymentStatus = row[6]
+
+            if(!isNaN(amount)){
+                if(paymentStatus === 'unpaid'){
+                    unpaidAmount += amount
+                } else if (paymentStatus === 'in review'){
+                    reviewAmount += amount
+                } else {
+                    paidAmount += amount
+                }
+            }
+        })
+
+        document.getElementById('total-amount').innerText = `${currency} ${unpaidAmount.toFixed(2)}`
+        document.getElementById('in-review-amount').innerText = `${currency} ${reviewAmount.toFixed(2)}`
+        document.getElementById('paid-amount').innerText = `${currency} ${paidAmount.toFixed(2)}`
     })
 }
 
