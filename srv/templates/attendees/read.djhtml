@@ -2,24 +2,25 @@
 {% set pageTitle= 'Attendees / Details' %}
 {% set pageDesc  = 'Registration Details of {}'.format(row.name) %}
 
-
 {% block admin_content %}
     <div class="info-table">
         {% for key, value in show.items() %}
-            <div class="info-row">
-                <div class="info-label">{{key}}</div>
-                <div class="info-value">{{value}}</div>
-            </div>
+            {% if key != "idProofBlob" and key != 'idProofType' and key != 'photoBlob'%}
+                <div class="info-row">
+                    <div class="info-label">{{key}}</div>
+                    <div class="info-value">{{value}}</div>
+                </div>
+            {% endif %}
         {% endfor %}
     </div>
 
 
     <h3>&#129534; Payment Information</h3>
-    <div id="exising-receipt">
-        <div class="alert alert-danger">
-            Payment details not found
-        </div>
-    </div>
+
+    <table id="receipt-table" style="display: none;" >
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+    </table>
 
 
     <h3>&#128231; Communication</h3>
@@ -36,7 +37,7 @@
     <script type="module">
         import * as attendees from '/static/attendees/read.mjs'
 
-        attendees.checkPaymentReceipt('{{row.slug}}')
+        attendees.getReceiptDetails('{{row.slug}}')
 
         document.getElementById('emailRegistrationThanks').addEventListener('click', function () {
             if (!confirm('Are you sure to queue the email?')) return
