@@ -369,19 +369,26 @@ def student_id_upload(slug):
     if idFile in None:
         return 'File not uploaded', 400
 
-    mimetype = idFile.content_type
-    if mimetype not in FILE_MAGIC_NUMBERS.values():
+    idProofType = idFile.content_type
+    if idProofType not in FILE_MAGIC_NUMBERS.values():
         return 'Invalid file format. Please upload jpeg, png or pdf file', 400
 
-    with db.SessionMaker.begin() as session:
-        cursor = session.execute(sa.update(
-            db.conf.Attendee,
-        ).where(
-            sa.cast(db.conf.Attendee.slug, sa.String) == slug,
-        ).values(
-            idProofBlob = idFile.read(),
-        ))
-        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+    idProofBlob = idFile.read()
+
+    try:
+        with db.SessionMaker.begin() as session:
+            cursor = session.execute(sa.update(
+                db.conf.Attendee,
+            ).where(
+                sa.cast(db.conf.Attendee.slug, sa.String) == slug,
+            ).values(
+                idProofBlob = idProofBlob,
+                idProofType = idProofType,
+            ))
+            return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+    except Exception:
+        traceback.print_exc()
+        return 'Something went wrong. Try again later.', 400
 
 
 @app.post('/registered/student_id_view/<slug>')
