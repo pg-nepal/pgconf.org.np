@@ -101,6 +101,7 @@ class Ticket(db.Base):
     )
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
 
     event_pk       = sa.Column(sa.Integer, sa.ForeignKey(Event.pk, ondelete='CASCADE'))
     attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
