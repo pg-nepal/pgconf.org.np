@@ -19,9 +19,11 @@
             Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
         </p>
 
-        <div class="alert alert-danger">
-        <h3>🗓️ Key Dates</h3>
-        <p><em>Proposal Submission Deadline: <strong>30 April, 2025</strong></em></p>
+        <div class="alert alert-info">
+            <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
+                Submit Your Proposal
+            </button>
+            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 30</strong></em></p>
         </div>
 
         <h2>Submission Guidelines</h2>
@@ -38,11 +40,6 @@
             <li><p><strong class="heading">Target Audience: </strong>Indicate whether the session is intended for beginners, intermediate, or advanced users</p></li>
             <li><p><strong class="heading">Technical Requirements: </strong>Specify any equipment or setup needed for your session</p></li>
         </ol>
-        
-
-        <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
-            Submit Your Proposal
-        </button>
         </div>
 
         <p style="color: #007bff;"><em>
@@ -67,7 +64,7 @@
             <li><p><strong class="heading">Migrating from Other Database Systems: </strong>Challenges, best practices, and lessons learned</p></li>
             <li><p><strong class="heading">Replication & Scaling: </strong>High availability, load balancing, and distributed systems</p></li>
             <li><p><strong class="heading">Benchmarking & Hardware: </strong>How to assess performance and optimize for different hardware setups</p></li>
-            <li><p><strong class="heading">PostgreSQL-Related Products: </strong>Innovations and complementary tools in the PostgreSQL ecosystem</p></li>            
+            <li><p><strong class="heading">PostgreSQL-Related Products: </strong>Innovations and complementary tools in the PostgreSQL ecosystem</p></li>
           </ol>
     </div>
 
