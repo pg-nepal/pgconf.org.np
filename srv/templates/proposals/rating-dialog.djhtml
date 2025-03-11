@@ -57,6 +57,10 @@
         margin: 40px;
     }
 
+        .table-container th {
+            text-align: center;
+        }
+
 </style>
 
 <dialog id="dialog-rating" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
