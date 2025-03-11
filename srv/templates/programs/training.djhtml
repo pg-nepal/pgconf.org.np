@@ -3,7 +3,7 @@
 
 
 {% block main_content %}
-    This training is intended for entry to mid-level developers and DBAs who have some experience but lack deep knowledge of inner workings of the server.
+    <p>This training will help you mastering SQL and PL/pgSQL server-side development. It includes a series of practical assignments based on the Bookstore sample application: from designing a database schema to creating tables, views, functions, and triggers.</p>
 
     <div>
         <h2 style="color: #007bff;">About the course</h2>
