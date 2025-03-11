@@ -248,14 +248,17 @@
         </div>
     {% endif %}
 
-    <h2>🎫 Upload receipt</h2>
+    <div class="alert" style="overflow-x:scroll;">
+        <h2>🎫 Upload receipt</h2>
+    
+        <p>System accepts pdf, png or jpeg file only.</p>
+    
+        <table id="receipt-table" style="display: none;">
+            <thead><tr></tr></thead>
+            <tbody></tbody>
+        </table>
 
-    <p>System accepts pdf, png or jpeg file only.</p>
-
-    <table id="receipt-table" style="display: none;" >
-        <thead><tr></tr></thead>
-        <tbody></tbody>
-    </table>
+    </div>
 
     {% for key, value in show.items() %}
         {% if key.lower() == "category" and value == "student" %}
