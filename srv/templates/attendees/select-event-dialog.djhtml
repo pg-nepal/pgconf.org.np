@@ -30,15 +30,13 @@
     </header>
 
     <p>Please select atleast one event for registration.</p>
-    <span style="color:gray">
-        Multiple option can be selected (drag or use <kbd>Shift</kbd> while selecting)
-    </span>
 
     <form id="form-event-select" method="dialog">
         <select class="wtf-event" id="edit-event-select" name="events" multiple required style="width: 100%;">
         </select>
-        <p style="color: red;"><em>Note: After clicking save, this action will be irreversible</em></p>
-        <div style="display: flex; justify-content: center; align-items: center;">
+        <p style="color:gray">
+            Multiple option can be selected (drag or use <kbd>Shift</kbd> while selecting)
+        </p>        <div style="display: flex; justify-content: center; align-items: center;">
             <button class="button" style="text-align: center;">Save</button>
         </div>
     </form>
