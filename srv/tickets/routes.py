@@ -7,15 +7,20 @@ import db.conf
 from srv import app
 
 
-@app.get('/receipts/<slug>')
-def receipt_read(slug):
+
+@app.get('/tickets/receipt/<slug>')
+def registered_receipt_read(slug):
     query = sa.select(
         db.conf.Event.pk.label('pk'),
         db.conf.Event.name.label('Event'),
+        db.conf.Event.eventOn.label('Date From'),
+        db.conf.Event.eventTo.label('Date To'),
         db.conf.Ticket.currency.label('Currency'),
         db.conf.Ticket.fee.label('Amount'),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
-    ).join(
+        db.conf.Ticket.createdOn.label('Ordered Date'),
+        db.conf.Ticket.updatedOn.label('Updated Date'),
+    ).outerjoin(
         db.conf.Ticket,
         sa.and_(
             db.conf.Ticket.event_pk == db.conf.Event.pk,
@@ -26,7 +31,7 @@ def receipt_read(slug):
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
 
-        return flask.render_template(
-            '/parts/receipt.djhtml',
-            cursor = cursor,
+        return flask.jsonify(
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [list(row) for row in cursor],
         )
