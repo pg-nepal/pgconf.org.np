@@ -1,6 +1,6 @@
 
 export function getTicketDetails(slug) {
-    fetch(`/tickets/${slug}`).then(function (response) {
+    fetch(`/registered/ticket/${slug}`).then(function (response) {
         if (200 == response.status) {
             response.text()
             .then(function(data) {
