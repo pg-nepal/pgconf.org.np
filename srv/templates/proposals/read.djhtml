@@ -35,6 +35,7 @@
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
         (<span id="rating-count">0</span> ratings)
         <button id="rating-dialog-btn" class="button">Rate this Proposal</button>
+        <button id="create-attendee-btn" class="button">Copy to attendee table</button>
     </p>
 
     <div class="info-table" style="margin-bottom: 20px">
