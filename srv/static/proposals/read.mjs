@@ -1,3 +1,6 @@
+import * as main from '/static/main.mjs'
+
+
 const ratingTemplate = {
     'relevance'   : 'Relevance and Alignment with Conference Themes',
     'clarity'     : 'Deliverable Clarity on the abstract',
@@ -201,6 +204,22 @@ function proposalLoad(row) {
         if (null === element) continue
         element.innerHTML = val
     }
+}
+
+
+export function createAttendee(row) {
+    if (!confirm('Are you sure?')) return
+
+    const formData = new FormData()
+    formData.append('name', row.name)
+    formData.append('type', 'speaker')
+    formData.append('email', row.email)
+    formData.append('country', row.country)
+
+    main.ajax(fetch('/api/attendees/add', {
+        method : 'POST',
+        body   : formData,
+    }))
 }
 
 
