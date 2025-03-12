@@ -1,7 +1,7 @@
 <style>
     .field-container .ticket-unpaid{
         height: 100%;
-        width: 100%;
+        width: 70%;
         position: absolute;
         top: 0;
         left: 0;
