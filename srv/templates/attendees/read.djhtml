@@ -3,6 +3,12 @@
 {% set pageDesc  = 'Registration Details of {}'.format(row.name) %}
 
 {% block admin_content %}
+
+    {% if "photoBlob" in show %}
+        <img src="data:image/jpeg;base64,{{ show.photoBlob }}" style="height: 200px; width: 200px;" alt="{{show.Name}}">
+    {% endif %}
+
+
     <div class="info-table">
         {% for key, value in show.items() %}
             {% if key != "idProofBlob" and key != 'idProofType' and key != 'photoBlob'%}
