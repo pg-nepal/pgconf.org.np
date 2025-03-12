@@ -1,4 +1,7 @@
+import traceback
+
 import flask
+import psycopg.errors
 import sqlalchemy as sa
 
 import db
@@ -48,6 +51,36 @@ def attendee_list_api():
         headers = tuple(c['name'] for c in query.column_descriptions),
         data    = [list(row) for row in cursor],
     )
+
+
+@app.post('/api/attendees/add')
+def attendee_create():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    formData = flask.request.form
+
+    query = sa.insert(
+        db.conf.Attendee,
+    ).values(
+        **formData,
+        createdBy = isAdmin,
+    )
+
+    with db.SessionMaker.begin() as session:
+        try:
+            cursor = session.execute(query)
+        except sa.exc.IntegrityError as e:
+            if isinstance(e.orig, psycopg.errors.UniqueViolation):
+                if e.orig.diag.constraint_name == 'attendees_email_key':
+                    return 'email in used has already been registered', 400
+                traceback.print_exc()
+                raise e
+
+        return flask.jsonify(
+            pk = cursor.inserted_primary_key[0],
+        )
 
 
 @app.get('/attendees/<int:pk>')
