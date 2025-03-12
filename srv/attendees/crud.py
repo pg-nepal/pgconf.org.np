@@ -37,6 +37,8 @@ def attendee_list_api():
         sa.cast(db.conf.Attendee.type, sa.String).label('type'),
         db.conf.Attendee.createdOn,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
+    ).order_by(
+        db.conf.Attendee.pk,
     )
 
     with db.engine.connect() as connection:
