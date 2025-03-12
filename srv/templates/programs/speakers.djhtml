@@ -38,10 +38,10 @@
                         <p class="bio">{{row.bio}}</p>
 
                         <div class="alert">
-                        <div class="talk-details">
-                            <p class="talk-title"><em>🐘{{row.title}}</em></p>
-                            <p class="abstract">{{row.abstract}}</p>
-                        </div>
+                            <div class="talk-details">
+                                <h3 class="talk-title"><em>{{row.title}}</em></h3>
+                                <p class="abstract">{{row.abstract}}</p>
+                            </div>
                         </div>
 
                         <a href="/pages/schedule#{{row.title}}" class="cta-button">
