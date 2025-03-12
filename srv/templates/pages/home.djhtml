@@ -61,8 +61,7 @@
     <div class="content-container">
         <div class="content">
             <div class="left-content">
-                <section id="intro" class="home-content">
-
+                <section>
                     <h2>🐘<span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
 
                     <p>
@@ -90,7 +89,6 @@
                     {% with showLinks=true %}
                         {% include "parts/events.djhtml" %}
                     {% endwith %}
-
                 </section>
 
                 <section class="home-content mt-1">
@@ -109,31 +107,34 @@
                 <script>
                     init('img-slider')
                 </script>
+
+            <div class="alert">
+                <section id="sponsors" class="home-content mt-1">
+                    <h2 class="section-header">
+                        🐘 Co-Organizer
+                    </h2>
+
+                    <div class="sponsors-logos">
+                        <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
+                    </div>
+                </section>
+            </div>
+
+            <div class="alert">
+                <h2 class="section-header">
+                    🐘 Sponsors
+                </h2>
+                <p>Call for the Sponsorship is open.</p>
+                    <a class="button" href="/pages/sponsors">
+                        Learn more
+                    </a>
+            </div>
             </div>
 
             <div class="right-content">
                 {% include '/sidebar.djhtml' %}
             </div>
         </div>
-
-        <section id="sponsors" class="home-content mt-1">
-            <h2 class="section-header">
-                🐘 Co-Organizer
-            </h2>
-
-            <div class="sponsors-logos">
-                <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
-            </div>
-        </section>
-        <section id="sponsors" class="home-content mt-1">
-            <h2 class="section-header">
-                🐘 Sponsors
-            </h2>
-            Call for the Sponsorship is open.
-            <a class="button" href="/pages/sponsors">
-                Learn more
-            </a>
-        </section>
 
     </div>
 {% endblock %}
