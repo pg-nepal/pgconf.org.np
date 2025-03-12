@@ -24,3 +24,26 @@ export function add_countries_opts(datalist) {
         }
     }
 }
+
+
+export function ajax(fetch_promise, onPass, onFail) {
+    fetch_promise.then(function (response) {
+        if (500 <= response.status) {
+            throw new Error(response.statusText)
+        }
+
+        if (200 > response.status || 300 <= response.status) {
+            return response.text().then(function (text) {
+                alert(text)
+            })
+        }
+
+        if (true == response.redirected) {
+            alert('submitted successfully')
+            window.location = response.url
+        }
+    }).catch(function (error) {
+        console.error(error)
+        alert('Oops! something went wrong')
+    })
+}
