@@ -2,8 +2,20 @@
 {% set pageTitle= 'Attendees / Details' %}
 {% set pageDesc  = 'Registration Details of {}'.format(row.name) %}
 
+
+{% block head %}
+    <style>
+        .attendee-photo { display: flex; flex-wrap: wrap; gap: 30px;}
+        .attendee-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center;    border-radius: 50%;}
+    </style>
+{% endblock %}
+
+
 {% block admin_content %}
-    <img src="/attendees/{{row.pk}}.photo" style="height: 200px; width: 200px;" alt="{{row.name}}">
+    <div class="attendee-photo">
+        <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
+    </div>
+
     <button id="change-profile-pic" class="button" style="width: 20%;"> Change profile pic </button>
 
     <div class="info-table">
