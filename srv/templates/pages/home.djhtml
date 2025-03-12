@@ -60,7 +60,7 @@
     <div class="content-container">
         <div class="content">
             <div class="left-content">
-                <section id="intro" class="home-content">
+                <section>
                     <h2><span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
 
                     <p>
@@ -110,7 +110,7 @@
                     </script>
                 </section>
 
-                <section id="sponsors" class="home-content mt-1">
+                <section id="sponsors" class="alert home-content mt-1">
                     <h2 class="section-header">
                         Organizers
                     </h2>
