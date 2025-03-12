@@ -1,10 +1,4 @@
 <style>
-    .admin{
-        color: white;
-    }
-    .admin a:hover{
-        color: maroon;
-    }
     .login-identifier-line {
         width: 100%;
         display: flex;
