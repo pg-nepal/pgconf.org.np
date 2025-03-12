@@ -100,7 +100,11 @@
 
         const isAdmin = {{ isAdmin|tojson }};
         proposals.reviewReadAll(isAdmin, {{pk}})
-        proposals.init({{pk}})
+        proposals.init({{pk}}).then(function (json) {
+            document.getElementById('create-attendee-btn').onclick = function() {
+                proposals.createAttendee(json)
+            }
+        })
 
         const eDialog = document.getElementById('dialog-comment')
         document.getElementById('comment-add').onclick = function (event) {
