@@ -57,6 +57,7 @@ class Attendee(db.Base):
     bio            = sa.Column(sa.Text(), comment='basic intro')
     affiliation    = sa.Column(sa.String(256), comment='affiliation & position')
     photoBlob      = sa.Column(sa.LargeBinary)
+    photoMime      = sa.Column(sa.String(32))
 
     category       = sa.Column(sa.String(100), comment='participant category for discount')
     status         = sa.Column(p_attendees_status, server_default='pending')
