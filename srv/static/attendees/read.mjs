@@ -44,9 +44,21 @@ export function getReceiptDetails(slug) {
             }
         })
 
-        document.getElementById('total-amount').innerText = `${currency} ${unpaidAmount.toFixed(2)}`
-        document.getElementById('in-review-amount').innerText = `${currency} ${reviewAmount.toFixed(2)}`
-        document.getElementById('paid-amount').innerText = `${currency} ${paidAmount.toFixed(2)}`
+        const totalAmountElement = document.getElementById('total-amount');
+        const inReviewAmountElement = document.getElementById('in-review-amount');
+        const paidAmountElement = document.getElementById('paid-amount');
+
+        if (document.getElementById('total-amount')) {
+            document.getElementById('total-amount').innerText = `${currency} ${unpaidAmount.toFixed(2)}`;
+        }
+
+        if (document.getElementById('in-review-amount')) {
+            document.getElementById('in-review-amount').innerText = `${currency} ${reviewAmount.toFixed(2)}`;
+        }
+
+        if (document.getElementById('paid-amount')) {
+            document.getElementById('paid-amount').innerText = `${currency} ${paidAmount.toFixed(2)}`;
+        }
     })
 }
 
