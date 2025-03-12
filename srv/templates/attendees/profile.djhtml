@@ -159,6 +159,23 @@
         </div>
     {% endif %}
 
+    {% for key, value in show.items() %}
+        {% if key.lower() == "category" and value == "student" %}
+        <div class="alert" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+            <h2>🪪 Upload student ID card</h2>
+            <p>System accepts pdf, png or jpeg file only.</p>
+
+            {% if "idProofBlob" in show %}
+                {% if show['idProofBlob'] is none %}
+                    <button id="student-id-upload" class="button" style="width: 20%;">Upload ID proof</button>
+                {% else %}
+                    <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
+                {% endif %}
+            {% endif %}
+        </div>
+        {% endif %}
+    {% endfor %}
+
     <div class="alert" style="overflow-x:scroll;">
         <h2>🎫 Upload receipt</h2>
     
@@ -170,26 +187,11 @@
         </table>
 
     </div>
-
-    {% for key, value in show.items() %}
-        {% if key.lower() == "category" and value == "student" %}
-            <h2>🎫 Upload student ID card</h2>
-            <p>System accepts pdf, png or jpeg file only.</p>
-
-            {% if "idProofBlob" in show %}
-                {% if show['idProofBlob'] is none %}
-                    <button id="student-id-upload" class="button" style="width: 20%;">Upload ID proof</button>
-                {% else %}
-                    <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
-                {% endif %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
     <h4 style="color: red;"><em>Note: After registration, the funds will be non-refundable.</em></h4>
 
-    <h4 style="color: red;"><em>Unpaid Amount: <strong id="total-amount"></span></strong></em></h4>
-    <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount"></span></strong></em></h4>
-    <h4 style="color: #006eff;"><em>Paid Amount: <strong id="paid-amount"></span></strong></em></h4>
+    <h4 style="color: grey;"><em>Unpaid Amount: <strong id="total-amount" style="color: black;"></span></strong></em></h4>
+    <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount" style="color: black;"></span></strong></em></h4>
+    <h4 style="color: #3d91ff;"><em>Paid Amount: <strong id="paid-amount" style="color: #006eff;"></span></strong></em></h4>
 </div>
 {% endblock %}
 
