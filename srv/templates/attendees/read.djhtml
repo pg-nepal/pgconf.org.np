@@ -25,11 +25,12 @@
         <tbody></tbody>
     </table>
 
-    <h3>&#129534; Student ID</h3>
+
     {% for key, value in show.items() %}
         {% if key.lower() == "category" and value == "student" %}
             {% if "idProofBlob" in show %}
                 {% if show['idProofBlob'] is not none %}
+                    <h3>&#129534; Student ID</h3>
                     <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
                 {% endif %}
             {% endif %}
