@@ -6,6 +6,23 @@
 {% block head %}
     <link rel="stylesheet" href="/static/css/home.css">
     <script src="/static/js/slider.js"></script>
+
+    <style>
+        @media (max-width: 700px) {
+            .alert {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                padding: 1.5rem;
+            }
+
+            .alert .button {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
 {% endblock %}
 
 
