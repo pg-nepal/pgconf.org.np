@@ -134,10 +134,6 @@
   transform: scale(1.1);  /* Slight zoom effect on hover */
 }
 
-.nav-options .admin-links:hover{
-  color: maroon;
-}
-
 .nav-options a:hover::after {
   width: 100%;
   left: 0;
