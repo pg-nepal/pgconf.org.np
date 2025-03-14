@@ -11,6 +11,24 @@ import srv.auth
 from srv import app
 
 
+@app.get('/attendees/form')
+def attendee_form():
+    query = sa.select(
+        db.conf.Event.pk,
+        db.conf.Event.name,
+        db.conf.Event.eventOn,
+        db.conf.Event.eventTo,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
+    return flask.render_template(
+        '/attendees/form.djhtml',
+        cursor = cursor,
+    )
+
+
 @app.get('/attendees')
 def attendee_list():
     isAdmin = srv.auth.isValid(flask.request)
