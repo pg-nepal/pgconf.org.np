@@ -8,6 +8,7 @@ import db.programs
 from srv import app
 
 
+@app.route('/pages/training')
 @app.route('/programs/training')
 def programs_training_page():
     query = sa.select(
