@@ -2,6 +2,17 @@
 {% set pageTitle = 'Pre Conference Training' %}
 
 
+{% block head %}
+    <style>
+        .speaker-profile { display: flex; flex-wrap: wrap; gap: 30px; }
+        .speaker-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center; }
+        .speaker-details { flex: 1; min-width: 300px; }
+        .speaker-name { margin:0px; font-size: 24px; font-weight: bold; color: #007bff; }
+        .bio { font-size: 16px; line-height: 1.5; color: #333; }
+    </style>
+{% endblock %}
+
+
 {% block main_content %}
     <p>This training will help you mastering SQL and PL/pgSQL server-side development. It includes a series of practical assignments based on the Bookstore sample application: from designing a database schema to creating tables, views, functions, and triggers.</p>
 
@@ -9,6 +20,24 @@
         <h2 style="color: #007bff;">About the course</h2>
         <p><strong>⏳ Duration:</strong> 2 days (14 Hours)</p>
         <p><strong>🗓️ Date:</strong> 3-4 May, 2025</p>
+    </div>
+
+    <div class="alert">
+        <h3>🎓️ Meet your Trainers</h3>
+        <div>
+            {% for row in cursor %}
+                <div class="speaker-profile" style="margin-bottom: 40px;">
+                    <div class="speaker-photo">
+                        <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+                    </div>
+
+                    <div class="speaker-details">
+                        <h3 class="speaker-name"> {{row.name}}</h3>
+                        <p class="bio">{{row.bio}}</p>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <div class="alert">
