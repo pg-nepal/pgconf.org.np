@@ -216,10 +216,19 @@ export function createAttendee(row) {
     formData.append('email', row.email)
     formData.append('country', row.country)
 
-    main.ajax(fetch('/api/attendees/add', {
+    fetch('/api/attendees/add', {
         method : 'POST',
         body   : formData,
-    }))
+    }).then(function (response){
+        return response.json()
+    }).then(function (json){
+        fetch(`/proposals/${json['attendee_pk']}`, {
+            method : 'POST',
+            body   : formData,
+        }).then(
+            window.location.href = `/attendees/${json['attendee_pk']}`
+        )
+    })
 }
 
 
