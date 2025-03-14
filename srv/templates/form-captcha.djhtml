@@ -17,6 +17,12 @@
             justify-content: center;
             align-items: center;
         }
+
+        @media (max-width: 700px) {
+            .sidebar {
+                display: none;
+            }
+        }
     </style>
 {% endblock %}
 
