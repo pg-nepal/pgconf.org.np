@@ -148,7 +148,9 @@ def attendee_update(pk):
         ).where(
             db.conf.Attendee.pk == pk,
         ).values(
-            photoBlob     = file_photoBlob.read(),
-            photoMime     = file_photoBlob.content_type,
+            bio         = flask.request.form['bio'],
+            affiliation = flask.request.form['affiliation'],
+            photoBlob   = file_photoBlob.read(),
+            photoMime   = file_photoBlob.content_type,
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
