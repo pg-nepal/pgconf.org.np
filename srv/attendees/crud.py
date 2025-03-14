@@ -132,12 +132,17 @@ def attendee_read(pk):
 
 
 @app.post('/attendees/<int:pk>')
-@srv.auth.auth_required()
 def attendee_update(pk):
-    file_photoBlob = flask.request.files['photoBlob']
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
 
-    if file_photoBlob is None:
-        return 'File not uploaded', 400
+    values = flask.request.form.to_dict()
+
+    file_photoBlob = flask.request.files['photoBlob']
+    if file_photoBlob.filename != '':
+        values['photoBlob'] = file_photoBlob.read()
+        values['photoMime'] = file_photoBlob.content_type
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
@@ -145,9 +150,7 @@ def attendee_update(pk):
         ).where(
             db.conf.Attendee.pk == pk,
         ).values(
-            bio         = flask.request.form['bio'],
-            affiliation = flask.request.form['affiliation'],
-            photoBlob   = file_photoBlob.read(),
-            photoMime   = file_photoBlob.content_type,
+            **values,
+            updatedBy = isAdmin,
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
