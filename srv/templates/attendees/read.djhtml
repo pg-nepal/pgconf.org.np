@@ -16,7 +16,9 @@
         <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
     </div>
 
-    <button id="change-profile-pic" class="button" style="width: 20%;"> Change profile pic </button>
+    <button id="edit-profile" class="button" style="width: 20%;"> Edit profile </button>
+
+    {% include '/attendees/edit-profile-dialog.djhtml' %}
 
     <div class="info-table">
         {% for key, value in show.items() %}
@@ -94,43 +96,9 @@
 </script>
 
 <script>
-    profilePic = document.getElementById('change-profile-pic')
-    pk = '{{row.pk}}'
-
-    if(profilePic != null){
-        profilePic.onclick = function(){
-            const eID_file = document.createElement('input')
-            eID_file.type = 'file'
-            eID_file.id = 'profilePic'
-            eID_file.click()
-
-            eID_file.onchange = function(event){
-                const file = event.target.files[0]
-                if (undefined === file) return
-
-                const validMimeTypes = ['image/jpeg', 'image/png'];
-                if(!validMimeTypes.includes(file.type)) {
-                    alert("Invalid file type. Please upload jpeg, png file")
-                    return
-                }
-
-                if (2 <= Math.round((file.size / 1024 / 1024))) {
-                    alert('Please upload file less than 2 MB')
-                    eRoot.remove()
-                    return
-                }
-
-                const formData = new FormData()
-                formData.append('photoBlob', file)
-
-                fetch(`/attendees/${pk}`, {
-                    method   : 'POST',
-                    body : formData,
-                }).then(function (response){
-                    location.reload()
-                })
-            }
-        }
+    const eDialog = document.getElementById('dialog-edit-profile')
+    document.getElementById('edit-profile').onclick = function (event) {
+        eDialog.showModal()
     }
 </script>
 {% endblock %}
