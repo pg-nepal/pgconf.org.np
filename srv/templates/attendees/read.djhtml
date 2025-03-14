@@ -20,12 +20,10 @@
 
     <div class="info-table">
         {% for key, value in show.items() %}
-            {% if key != "idProofBlob" and key != 'idProofType' and key != 'photoBlob'%}
-                <div class="info-row">
-                    <div class="info-label">{{key}}</div>
-                    <div class="info-value">{{value}}</div>
-                </div>
-            {% endif %}
+            <div class="info-row">
+                <div class="info-label">{{key}}</div>
+                <div class="info-value">{{value}}</div>
+            </div>
         {% endfor %}
     </div>
 
@@ -38,16 +36,10 @@
     </table>
 
 
-    {% for key, value in show.items() %}
-        {% if key.lower() == "category" and value == "student" %}
-            {% if "idProofBlob" in show %}
-                {% if show['idProofBlob'] is not none %}
-                    <h3>&#129534; Student ID</h3>
-                    <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
-                {% endif %}
-            {% endif %}
-        {% endif %}
-    {% endfor %}
+    {% if row.idProofBlob is not none %}
+        <h3>&#129534; Student ID</h3>
+        <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
+    {% endif %}
 
 
     <h3>&#128231; Communication</h3>
