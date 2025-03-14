@@ -1,4 +1,3 @@
-
 <dialog id="dialog-edit-profile" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
     <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <h2 class="dialog-title" style="text-align: center;">Enter the following details </h2>
@@ -7,23 +6,23 @@
     <form id="form-edit-profile" method="dialog">
         <div class="fields">
             <label for="affiliation">Affiliation </label>
-            <input id="affiliation" name="affiliation" value="{{row.affiliation}}">
+            <input id="affiliation" name="affiliation" value="{{row.affiliation or ""}}">
         </div>
 
         <div class="fields">
             <label for="bio">Bio </label>
-            <textarea id="bio" name="bio" autofocus>{{row.bio}}</textarea>
+            <textarea id="bio" name="bio" autofocus>{{row.bio or ""}}</textarea>
         </div>
 
         <div class="fields">
             <label for="profilePic">Upload Profile Picture:</label>
-            <input type="file" id="profilePic" />
+            <input id="profilePic" name="photoBlob" type="file">
         </div>
 
         <button class="button" style="text-align: center;">Save</button>
-        </div>
     </form>
 </dialog>
+
 
 <script type="module">
     const dialog_ticket = document.getElementById('dialog-edit-profile')
@@ -42,47 +41,26 @@
     })
 </script>
 
-<script>
-    pk = '{{row.pk}}'
-    document.getElementById('form-edit-profile').addEventListener('submit', function (event) {
 
+<script type="module">
+    import * as main from '/static/main.mjs'
+
+    document.getElementById('form-edit-profile').addEventListener('submit', function (event) {
         event.preventDefault()
         event.stopPropagation()
         event.target.reportValidity()
 
-        const bio = document.getElementById('bio').value;
-        const affiliation = document.getElementById('affiliation').value;
-
-        const fileInput = document.getElementById('profilePic');
-        const photoBlob = fileInput.files[0];
-
-        if (photoBlob === undefined){
-            alert("Select a profile picture");
-            return;
-        }
-
-        const validMimeTypes = ['image/jpeg', 'image/png'];
-        if (!validMimeTypes.includes(photoBlob.type)) {
-            alert("Invalid file type. Please upload jpeg, png file.");
-            return;
-        }
-
+        const formData = new FormData(event.target)
+        const photoBlob = formData.get('photoBlob')
         if (photoBlob.size / 1024 / 1024 > 2) {
-            alert('Please upload a file less than 2 MB');
-            return;
+            alert('Please upload a file less than 2 MB')
+            return
         }
-
-        const formData = new FormData();
-        formData.append('bio', bio);
-        formData.append('affiliation', affiliation);
-        formData.append('photoBlob', photoBlob);
 
         if (!confirm('Are you sure?')) return
-        fetch(`/attendees/${pk}`, {
-            method   : 'POST',
-            body : formData,
-        }).then(function (response){
-            location.reload()
-        })
+        main.ajax(fetch('/attendees/{{row.pk}}', {
+            method : 'POST',
+            body   : formData,
+        }))
     })
 </script>
