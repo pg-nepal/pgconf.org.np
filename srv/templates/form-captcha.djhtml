@@ -11,6 +11,12 @@
         fieldset {
             padding: 0;
         }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
     </style>
 {% endblock %}
 
@@ -31,9 +37,11 @@
         <!-- Prevent implicit submission of the form -->
         <!-- https://www.w3.org/TR/2018/SPSD-html5-20180327/forms.html#implicit-submission -->
         <button type="submit" disabled style="display: none" aria-hidden="true"></button>
-        <button id="submitBtn" class="button" style="font-size:110%;">
-            Submit
-        </button>
+        <div class="btn-wrapper">
+            <button id="submitBtn" class="button" style="font-size:110%;">
+                Submit
+            </button>
+        </div>
     </form>
 {% endblock %}
 
