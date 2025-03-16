@@ -48,6 +48,9 @@
 
 
 {% block admin_content %}
+
+    <p id="count"></p>
+
     <div class="box" style="overflow-x:auto;">
         <table id="my-table" class="table">
             <thead>
