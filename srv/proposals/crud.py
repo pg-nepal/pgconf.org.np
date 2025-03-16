@@ -43,6 +43,7 @@ def proposal_list_api():
         db.programs.Proposal.country,
         db.programs.Proposal.session,
         db.programs.Proposal.createdOn,
+        sa.cast(db.programs.Proposal.status, sa.String),
         sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
     ).outerjoin(
         db.programs.Rate,
