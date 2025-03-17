@@ -21,23 +21,23 @@ def proposal_read_view(pk):
     )
 
 
-@app.get('/proposals/accept')
-def proposal_accept_view():
+@app.get('/proposals/evaluation')
+def proposal_evaluation_view():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
 
     return flask.render_template(
-        '/proposals/accept.djhtml',
-        pageTitle = 'Accept Proposals',
+        '/proposals/evaluation.djhtml',
+        pageTitle = 'Evaluate Proposals',
         pageDesc  = 'List of all submitted proposals',
-        baseURL   = '/proposals/accept',
+        baseURL   = '/proposals/evaluation',
         isAdmin   = isAdmin,
     )
 
 
-@app.get('/api/proposals/accept')
-def proposal_accept_list_api():
+@app.get('/api/proposals/evaluation')
+def proposal_evaluation_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
@@ -71,8 +71,8 @@ def proposal_accept_list_api():
         )
 
 
-@app.get('/proposals/accept/<int:pk>')
-def proposal_accept(pk):
+@app.get('/proposals/evaluation/<int:pk>')
+def proposal_evaluation(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
