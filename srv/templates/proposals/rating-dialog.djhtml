@@ -24,6 +24,11 @@
         cursor: pointer;
     }
 
+    .rating__star.active{
+        filter: grayscale(0);
+    }
+
+
     #dialog-rating fieldset{
         border: none;
         border: none;
