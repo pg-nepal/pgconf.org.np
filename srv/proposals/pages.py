@@ -79,6 +79,7 @@ def proposal_evaluation_view():
 
 
 @app.get('/api/proposals/evaluation')
+@app.post('/api/proposals/evaluation')
 def proposal_evaluation_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -103,6 +104,12 @@ def proposal_evaluation_list_api():
     ).order_by(
         db.programs.Proposal.pk,
     )
+
+    if flask.request.method == 'POST':
+        json = flask.request.json
+        if(json['status'] != 'all'):
+            query = query.where(db.programs.Proposal.status == json['status'])
+
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
