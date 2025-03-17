@@ -48,6 +48,11 @@
 
 
 {% block admin_content %}
+    <label for="proposal_status">Status:</label>
+    <select id="proposal_status" name="proposal_status">
+        <option value="all">All</option>
+    </select>
+
     <div class="box" style="overflow-x:auto;">
         <table id="my-table" class="table">
             <thead>
@@ -64,7 +69,31 @@
 {% block tail %}
     <script type="module">
         import * as table from '/static/proposals/evaluation.mjs'
-        // table.loadDropdown('{{baseURL}}')
+        table.loadDropdown('{{baseURL}}')
         table.load('my-table', '{{baseURL}}')
+    </script>
+
+    <script type="module">
+        import * as table from '/static/table.mjs'
+        const proposal_status = document.getElementById('proposal_status')
+
+        if(proposal_status !== null){
+            proposal_status.addEventListener("change", function(event){
+                document.getElementById('count').innerHTML = ''
+
+                fetch('/api/proposals/evaluation',{
+                    method : 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body : JSON.stringify({
+                        status : event.target.value,
+                    })
+                }).then(function (response) {
+                    return response.json()
+                }).then(function(json){
+                    document.getElementById('my-table').innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
+                    table.loadTable(json)
+                })
+            })
+        }
     </script>
 {% endblock %}
