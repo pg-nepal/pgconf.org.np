@@ -21,48 +21,6 @@ def proposal_read_view(pk):
     )
 
 
-@app.post('/api/proposals/filter')
-def proposal_filter():
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
-
-    json = flask.request.json
-
-    query = sa.select(
-        db.programs.Proposal.pk,
-        db.programs.Proposal.title,
-        db.programs.Proposal.name,
-        db.programs.Proposal.session,
-        db.programs.Proposal.createdOn,
-        db.programs.Proposal.status,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
-    ).outerjoin(
-        db.programs.Rate,
-        db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
-    )
-
-    if(json['session'] != 'all'):
-        query = query.where(db.programs.Proposal.session == json['session'])
-
-    if(json['status'] != 'all'):
-        query = query.where(db.programs.Proposal.status == json['status'])
-
-    query = query.group_by(
-                db.programs.Proposal.pk,
-            ).order_by(
-                db.programs.Proposal.pk,
-            )
-
-    with db.engine.connect() as connection:
-        cursor = connection.execute(query)
-
-        return flask.jsonify(
-            headers = tuple(c['name'] for c in query.column_descriptions),
-            data    = [ list(row) for row in cursor ],
-        )
-
-
 @app.get('/proposals/evaluation')
 def proposal_evaluation_view():
     isAdmin = srv.auth.isValid(flask.request)
