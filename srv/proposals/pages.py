@@ -42,20 +42,11 @@ def proposal_filter():
         db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
     )
 
-    if(json['session'] == 'all' and json['status'] == 'all'):
-        query = query
-
-    elif(json['session'] == 'all'):
-        query = query.where(db.programs.Proposal.status == json['status'])
-
-    elif(json['status'] == 'all'):
+    if(json['session'] != 'all'):
         query = query.where(db.programs.Proposal.session == json['session'])
 
-    else:
-        query = query.where(
-            db.programs.Proposal.status == json['status'],
-            db.programs.Proposal.session == json['session'],
-        )
+    if(json['status'] != 'all'):
+        query = query.where(db.programs.Proposal.status == json['status'])
 
     query = query.group_by(
                 db.programs.Proposal.pk,
