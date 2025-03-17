@@ -63,8 +63,7 @@ export function load(id, baseURL) {
             count += 1
         }
 
-        const eP = document.createElement('p')
+        const eP = document.getElementById('count')
         eP.innerHTML = `${count} rows`
-        eTable.after(eP)
     })
 }
