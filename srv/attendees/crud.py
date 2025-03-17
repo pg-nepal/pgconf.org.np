@@ -44,7 +44,7 @@ def attendee_list():
     )
 
 
-@app.get('/api/attendees')
+@app.post('/api/attendees')
 def attendee_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
@@ -61,6 +61,17 @@ def attendee_list_api():
     ).order_by(
         db.conf.Attendee.pk,
     )
+
+    json = flask.request.json
+
+    if json.get('category') != 'all' and json.get('category') is not None:
+        query = query.where(db.conf.Attendee.category == json.get('category'))
+
+    if json.get('type') != 'all' and json.get('type') is not None:
+        query = query.where(db.conf.Attendee.type == json.get('type'))
+
+    if json.get('status') != 'all' and json.get('status') is not None:
+        query = query.where(db.conf.Attendee.status == json.get('status'))
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
