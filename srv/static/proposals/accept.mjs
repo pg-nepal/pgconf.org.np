@@ -32,6 +32,8 @@ function createRow(headers, row, baseURL) {
                 eButton.classList = 'button'
                 eButton.innerText = 'Accept'
                 eButton.onclick = function(){
+                    if(!confirm('Do you want to accept this proposal?')){return}
+
                     fetch(`/proposals/accept/${row[0]}`).then(function (response){
                         if (!response.ok) {
                             throw new Error('Error');
