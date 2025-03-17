@@ -40,7 +40,7 @@ function createRow(headers, row, baseURL) {
                         }
                         return response.text();
                     }).then(function(text){
-                        alert(text)
+                        location.reload()
                     })
                 }
                 eTd.append(eButton)
