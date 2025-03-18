@@ -2,30 +2,19 @@
 <label for="proposal_status">Status:</label>
 <select id="proposal_status" name="proposal_status">
     <option value="all">All</option>
+    <option value="accepted">Accepted</option>
+    <option value="pending">Pending</option>
+    <option value="Rejected">Rejected</option>
 </select>
 
 {% block tail %}
     <script type="module">
-        import * as evaluation_table from '/static/proposals/evaluation.mjs'
-        import * as table from '/static/table.mjs'
-
-        evaluation_table.loadDropdown('{{baseURL}}')
+        const sp = new URLSearchParams(location.search)
+        const eSelect = document.getElementById('proposal_status')
+        eSelect.value = sp.get('status')
 
         document.getElementById('proposal_status').addEventListener("change", function(event){
-            document.getElementById('count').innerHTML = ''
-
-            fetch('/api/proposals/evaluation',{
-                method : 'POST',
-                headers: { 'content-type': 'application/json' },
-                body : JSON.stringify({
-                    status : event.target.value,
-                })
-            }).then(function (response) {
-                return response.json()
-            }).then(function(json){
-                document.getElementById('my-table').innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
-                table.loadTable(json)
-            })
+            location.search = `?status=${event.target.value}`
         })
     </script>
 {% endblock %}
