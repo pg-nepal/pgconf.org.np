@@ -75,7 +75,30 @@ export function load(id, baseURL) {
         for (const h of json.headers) {
             const eTh = document.createElement('th')
             eTable.children[0].children[0].append(eTh)
-            eTh.innerHTML = h
+            const eA = document.createElement('a')
+            eTh.append(eA)
+            eA.innerText = h
+
+            if (h in json?.filters) {
+                eA.href = '#'
+                eA.onclick = function (event) {
+                    const eForm = document.getElementById('dt-params')
+
+                    const eSelect = document.createElement('select')
+                    eForm.replaceChildren(eSelect)
+                    eSelect.addEventListener('change', function (event) {
+                        location.search = `?${h}=${eSelect.value}`
+                    })
+
+                    for (let o of json.filters[h]) {
+                        const eOption = document.createElement('option')
+                        eOption.innerText = o
+                        eSelect.appendChild(eOption)
+                    }
+
+                    document.getElementById('dialog-filter').showModal()
+                }
+            }
         }
 
         let count = 0
