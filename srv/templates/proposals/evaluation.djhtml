@@ -22,25 +22,22 @@
         table.loadDropdown('{{baseURL}}')
         table.load('my-table', '{{baseURL}}')
 
-        const proposal_status = document.getElementById('proposal_status')
+        document.getElementById('proposal_status').addEventListener("change", function(event){
+            document.getElementById('count').innerHTML = ''
 
-        if(proposal_status !== null){
-            proposal_status.addEventListener("change", function(event){
-                document.getElementById('count').innerHTML = ''
-
-                fetch('/api/proposals/evaluation',{
-                    method : 'POST',
-                    headers: { 'content-type': 'application/json' },
-                    body : JSON.stringify({
-                        status : event.target.value,
-                    })
-                }).then(function (response) {
-                    return response.json()
-                }).then(function(json){
-                    document.getElementById('my-table').innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
-                    table.loadTable(json)
+            fetch('/api/proposals/evaluation',{
+                method : 'POST',
+                headers: { 'content-type': 'application/json' },
+                body : JSON.stringify({
+                    status : event.target.value,
                 })
+            }).then(function (response) {
+                return response.json()
+            }).then(function(json){
+                document.getElementById('my-table').innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
+                table.loadTable(json)
             })
-        }
+        })
+
     </script>
 {% endblock %}
