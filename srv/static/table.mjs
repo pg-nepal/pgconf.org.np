@@ -41,9 +41,30 @@ function createRow(headers, row, baseURL) {
 }
 
 
+function filterFromURL(search) {
+    const sp = new URLSearchParams(search)
+    const body = {}
+    for (let k of sp.keys()) {
+        let vals = sp.getAll(k)
+        if (1 < vals.length) {
+            body[k] = vals.map(function (e) { return ('' == e) ? null : e })
+        } else {
+            body[k] = ('' == vals[0]) ? null : vals[0]
+        }
+    }
+    return body
+}
+
+
 export function load(id, baseURL) {
     const api = `/api${baseURL}`
-    fetch(api).then(function (response) {
+    fetch(api, {
+        method  : 'POST',
+        headers : { 'content-type' : 'application/json' },
+        body    : JSON.stringify({
+            filter : filterFromURL(location.search),
+        })
+    }).then(function (response) {
         if (!response.ok) {
             alert(`${response.status} ${response.statusText} `)
         }
