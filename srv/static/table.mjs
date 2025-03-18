@@ -95,6 +95,28 @@ export function load(id, baseURL) {
             const eTh = document.createElement('th')
             eTable.children[0].children[0].append(eTh)
             eTh.innerHTML = h
+
+            if (h in json?.filters) {
+                eTh.style.textDecoration = 'underline'
+                eTh.style.cursor = 'pointer'
+                eTh.onclick = function (event) {
+                    const eForm = document.getElementById('dt-params')
+
+                    const eSelect = document.createElement('select')
+                    eForm.replaceChildren(eSelect)
+                    eSelect.addEventListener('change', function (event) {
+                        location.search = `?${h}=${eSelect.value}`
+                    })
+
+                    for (let o of json.filters[h]) {
+                        const eOption = document.createElement('option')
+                        eOption.innerText = o
+                        eSelect.appendChild(eOption)
+                    }
+
+                    document.getElementById('dialog-filter').showModal()
+                }
+            }
         }
 
         let count = 0
