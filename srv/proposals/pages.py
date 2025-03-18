@@ -66,7 +66,7 @@ def proposal_evaluation_list_api():
     if flask.request.method == 'POST':
         json = flask.request.json
         if json.get('status') != 'all':
-            query = query.where(db.programs.Proposal.status == json['status'])
+            query = query.where(db.programs.Proposal.status == json.get('status'))
 
 
     with db.engine.connect() as connection:
