@@ -53,7 +53,7 @@ def proposal_evaluation_list_api():
         sa.func.coalesce(sa.func.round(sa.func.avg(sa.func.cast(sa.func.json_extract_path_text(db.programs.Rate.score, 'content'), sa.Integer)), 2)).label('Content'),
         sa.func.count(db.programs.Rate.proposal_pk).label('Rated by'),
         db.programs.Proposal.status.label('Status'),
-        sa.literal(None).label('Action'),
+        db.programs.Proposal.status.label('Action'),
     ).outerjoin(
         db.programs.Rate,
         db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
