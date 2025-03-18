@@ -50,6 +50,8 @@ def attendee_list_api():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
+    jsonData = flask.request.json
+
     query = sa.select(
         db.conf.Attendee.pk,
         db.conf.Attendee.name,
@@ -58,23 +60,16 @@ def attendee_list_api():
         sa.cast(db.conf.Attendee.type, sa.String).label('type'),
         db.conf.Attendee.createdOn,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
-    ).order_by(
-        db.conf.Attendee.pk,
     )
 
-    json = flask.request.json
-
-    if json.get('category') != 'all' and json.get('category') is not None:
-        query = query.where(db.conf.Attendee.category == json.get('category'))
-
-    if json.get('type') != 'all' and json.get('type') is not None:
-        query = query.where(db.conf.Attendee.type == json.get('type'))
-
-    if json.get('status') != 'all' and json.get('status') is not None:
-        query = query.where(db.conf.Attendee.status == json.get('status'))
-
     with db.engine.connect() as connection:
-        cursor = connection.execute(query)
+        cursor = connection.execute(query.where(*[
+            c['expr'] == jsonData['filter'][c['name']]
+            for c in query.column_descriptions
+            if jsonData['filter'].get(c['name'], 'all') != 'all'
+        ]).order_by(
+            db.conf.Attendee.pk,
+        ))
 
     return flask.jsonify(
         headers = tuple(c['name'] for c in query.column_descriptions),
