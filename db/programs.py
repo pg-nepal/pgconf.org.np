@@ -1,8 +1,20 @@
 # flake8: noqa:E501
-
+import enum
 import sqlalchemy as sa
 
 import db
+
+proposal_status = (
+    'accepted',
+    'pending',
+    'rejected',
+)
+e_proposal_status = enum.IntEnum('proposal_status', proposal_status)
+p_proposal_status = sa.Enum(
+    e_proposal_status,
+    schema   = 'conf25',
+    metadata = db.meta,
+)
 
 
 class Proposal(db.Base):
@@ -24,7 +36,7 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
-    status         = sa.Column(sa.String(10), server_default='pending', comment='Acceptance status for a proposal')
+    status         = sa.Column(p_proposal_status, server_default='pending', comment='Acceptance status for a proposal')
 
 
 class Review(db.Base):
