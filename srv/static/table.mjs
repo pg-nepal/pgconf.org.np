@@ -32,6 +32,27 @@ function createRow(headers, row, baseURL) {
                 eTd.append(stars)
                 break
 
+            case 'Action':
+                if(v != 'accepted'){
+                    const eButton = document.createElement('button')
+                    eButton.classList = 'button'
+                    eButton.innerText = 'Accept'
+                    eButton.onclick = function(){
+                        if(!confirm('Do you want to accept this proposal?')){return}
+
+                        fetch(`/proposals/evaluation/${row[0]}`).then(function (response){
+                            if (!response.ok) {
+                                throw new Error('Error');
+                            }
+                            return response.text();
+                        }).then(function(text){
+                            location.reload()
+                        })
+                    }
+                    eTd.append(eButton)
+                }
+                break
+
             default:
                 eTd.innerHTML = v
         }
