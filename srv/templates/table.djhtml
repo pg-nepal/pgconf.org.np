@@ -60,6 +60,13 @@
         </table>
     </div>
 
+    <dialog id="dialog-filter" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+        <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+            <h2 class="dialog-title" style="text-align: center">Filter</h2>
+        </header>
+
+        <form id="dt-params" method="dialog"></form>
+    </dialog>
 {% endblock %}
 
 
@@ -67,5 +74,22 @@
     <script type="module">
         import * as table from '/static/table.mjs'
         table.load('my-table', '{{baseURL}}')
+    </script>
+
+    <script type="module">
+        const dialog_filter = document.getElementById('dialog-filter')
+        dialog_filter.addEventListener('click', function (event) {
+            if ('DIALOG' != event.target.tagName) return
+
+            const pos = dialog_filter.getBoundingClientRect()
+            if (
+                event.clientX < pos.left ||
+                event.clientX > pos.right ||
+                event.clientY < pos.top ||
+                event.clientY > pos.bottom
+            ) {
+                dialog_filter.close()
+            }
+        })
     </script>
 {% endblock %}
