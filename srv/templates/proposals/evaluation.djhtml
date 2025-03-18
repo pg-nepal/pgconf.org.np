@@ -21,10 +21,7 @@
         import * as table from '/static/proposals/evaluation.mjs'
         table.loadDropdown('{{baseURL}}')
         table.load('my-table', '{{baseURL}}')
-    </script>
 
-    <script type="module">
-        import * as table from '/static/proposals/evaluation.mjs'
         const proposal_status = document.getElementById('proposal_status')
 
         if(proposal_status !== null){
