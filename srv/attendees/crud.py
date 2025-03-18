@@ -74,6 +74,11 @@ def attendee_list_api():
     return flask.jsonify(
         headers = tuple(c['name'] for c in query.column_descriptions),
         data    = [list(row) for row in cursor],
+        filters = {
+            'category' : ('all', 'professional', 'student'),
+            'type'     : ('all', *db.conf.attendees_type),
+            'status'   : ('all', *db.conf.attendees_status),
+        },
     )
 
 
