@@ -3,47 +3,6 @@
 
 {% block head %}
     {{super()}}
-    <style>
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #fff;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        thead {
-            color: white;
-        }
-
-        thead th {
-            padding: 12px;
-            text-align: left;
-            font-weight: bold;
-            font-family: 'Courier New', monospace;
-        }
-
-        tbody td {
-            font-family: 'Courier New', monospace;
-            padding: 10px;
-            border-bottom: 1px solid #ddd;
-        }
-
-        tbody tr:nth-child(even) {
-            background: whitesmoke;
-        }
-
-        tbody tr:hover {
-            background: #d4d5d5;
-            color: black;
-        }
-
-        .box {
-            overflow-x: auto;
-            padding: 10px;
-        }
-    </style>
 {% endblock %}
 
 
@@ -53,16 +12,7 @@
         <option value="all">All</option>
     </select>
 
-    <div class="box" style="overflow-x:auto;">
-        <table id="my-table" class="table">
-            <thead>
-                <tr></tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
-    <p id="count"></p>
+    {% include 'table.djhtml' %}
 {% endblock %}
 
 
