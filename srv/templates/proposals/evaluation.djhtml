@@ -1,26 +1,15 @@
-{% extends 'base.djhtml' %}
 
-
-{% block head %}
-    {{super()}}
-{% endblock %}
-
-
-{% block admin_content %}
-    <label for="proposal_status">Status:</label>
-    <select id="proposal_status" name="proposal_status">
-        <option value="all">All</option>
-    </select>
-
-    {% include 'table.djhtml' %}
-{% endblock %}
-
+<label for="proposal_status">Status:</label>
+<select id="proposal_status" name="proposal_status">
+    <option value="all">All</option>
+</select>
 
 {% block tail %}
     <script type="module">
-        import * as table from '/static/proposals/evaluation.mjs'
-        table.loadDropdown('{{baseURL}}')
-        table.load('my-table', '{{baseURL}}')
+        import * as evaluation_table from '/static/proposals/evaluation.mjs'
+        import * as table from '/static/table.mjs'
+
+        evaluation_table.loadDropdown('{{baseURL}}')
 
         document.getElementById('proposal_status').addEventListener("change", function(event){
             document.getElementById('count').innerHTML = ''
@@ -38,6 +27,5 @@
                 table.loadTable(json)
             })
         })
-
     </script>
 {% endblock %}
