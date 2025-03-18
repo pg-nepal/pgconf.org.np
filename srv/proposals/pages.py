@@ -66,7 +66,7 @@ def proposal_evaluation_list_api():
 
     if flask.request.method == 'POST':
         json = flask.request.json
-        if json.get('status') != 'all':
+        if json.get('status') != 'all' and json.get('status') is not None:
             query = query.where(db.programs.Proposal.status == json.get('status'))
 
 
