@@ -8,7 +8,7 @@
     <form id="form-edit-profile" method="dialog">
         <div class="fields">
             <label for="affiliation">Affiliation </label>
-            <input id="affiliation" name="affiliation" value="{{row.affiliation or ""}}">
+            <input id="affiliation" name="affiliation" value="{{row.affiliation or ''}}">
         </div>
 
         <div class="fields">
@@ -18,7 +18,7 @@
 
         <div class="fields">
             <label for="profilePic">Upload Profile Picture:</label>
-            <input id="profilePic" name="photoBlob" type="file">
+            <input id="profilePic" name="photoBlob" type="file" accept=".jpg, .jpeg, .png">
         </div>
 
         <button class="button" style="text-align: center;">Save</button>
