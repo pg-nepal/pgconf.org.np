@@ -150,10 +150,11 @@ def attendee_update(pk):
 
     values = flask.request.form.to_dict()
 
-    file_photoBlob = flask.request.files['photoBlob']
-    if file_photoBlob.filename != '':
-        values['photoBlob'] = file_photoBlob.read()
-        values['photoMime'] = file_photoBlob.content_type
+    if 'photoBlob' in flask.request.files:
+        file_photoBlob = flask.request.files['photoBlob']
+        if file_photoBlob.filename != '':
+            values['photoBlob'] = file_photoBlob.read()
+            values['photoMime'] = file_photoBlob.content_type
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
