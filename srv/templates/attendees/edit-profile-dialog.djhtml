@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="/static/css/form.css">
+
 <dialog id="dialog-edit-profile" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
     <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <h2 class="dialog-title" style="text-align: center;">Enter the following details </h2>
