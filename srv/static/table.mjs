@@ -90,6 +90,7 @@ export function load(id, baseURL) {
         return response.json()
     }).then(function (json) {
         const eTable = document.getElementById(id)
+        const searchParams = new URLSearchParams(location.search)
 
         for (const h of json.headers) {
             const eTh = document.createElement('th')
@@ -110,6 +111,7 @@ export function load(id, baseURL) {
 
                     for (let o of json.filters[h]) {
                         const eOption = document.createElement('option')
+                        eOption.selected = (o == searchParams.get(h))
                         eOption.innerText = o
                         eSelect.appendChild(eOption)
                     }
