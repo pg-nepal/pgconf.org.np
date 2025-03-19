@@ -48,6 +48,9 @@
     <div class="alert" style="overflow-x:auto;">
     <h2>📝 Your Registration Status</h2>
 
+
+    {% include '/attendees/edit-category.djhtml' %}
+
     <table style="overflow-x:auto;">
         <thead>
             <tr>
@@ -278,6 +281,13 @@
                 }
             })
         }
+    }
+</script>
+
+<script>
+    const eDialog = document.getElementById('dialog-edit-details')
+    document.getElementById('edit-details').onclick = function (event) {
+        eDialog.showModal()
     }
 </script>
 
