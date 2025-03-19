@@ -223,6 +223,7 @@
                 const eID_file = document.createElement('input')
                 eID_file.type = 'file'
                 eID_file.id = 'studentID'
+                eID_file.accept = '.jpg, .jpeg, .png, .pdf'
                 eID_file.click()
 
                 eID_file.onchange = function(event){
