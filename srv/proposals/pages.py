@@ -82,18 +82,20 @@ def proposal_evaluation_list_api():
         )
 
 
-@app.get('/proposals/evaluation/<int:pk>')
+@app.post('/proposals/evaluation/<int:pk>')
 def proposal_evaluation(pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
+
+    status = flask.request.json.get('status') or 'pending'
 
     query = sa.update(
         db.programs.Proposal,
     ).where(
         db.programs.Proposal.pk == pk,
     ).values(
-        status      = 'accepted',
+        status      = status,
         updatedBy   = isAdmin,
     )
 
