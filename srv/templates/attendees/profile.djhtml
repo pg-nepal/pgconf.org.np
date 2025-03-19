@@ -59,6 +59,7 @@
                         <th>{{h}}</th>
                     {% endif %}
                 {% endfor %}
+                <th>Action</th>
             </tr>
         </thead>
 
@@ -81,6 +82,8 @@
                         {% endif %}
                     {% endif %}
                 {% endfor %}
+                <td><button id="edit-details" class="button"> Edit category </button></td>
+
             </tr>
         </tbody>
     </table>
@@ -183,9 +186,9 @@
 
     <div class="alert" style="overflow-x:scroll;">
         <h2>🎫 Upload receipt</h2>
-    
+
         <p>System accepts pdf, png or jpeg file only.</p>
-    
+
         <table id="receipt-table" style="display: none;">
             <thead><tr></tr></thead>
             <tbody></tbody>
