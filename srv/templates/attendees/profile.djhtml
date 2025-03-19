@@ -4,6 +4,8 @@
 
 {% block head %}
     {{super()}}
+    <link rel="stylesheet" href="/static/css/form.css">
+
     <style>
 
         .button.esewa {
