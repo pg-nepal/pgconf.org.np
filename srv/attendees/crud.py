@@ -60,6 +60,13 @@ def attendee_list_api():
         sa.cast(db.conf.Attendee.type, sa.String).label('type'),
         db.conf.Attendee.createdOn,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
+        sa.func.count(db.conf.Ticket.receiptBlob).label('#'),
+    ).outerjoin(
+        db.conf.Ticket,
+        db.conf.Attendee.pk == db.conf.Ticket.attendee_pk,
+    ).group_by(
+        db.conf.Attendee.pk,
+        db.conf.Ticket.receiptBlob,
     )
 
     with db.engine.connect() as connection:
