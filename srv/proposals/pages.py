@@ -32,7 +32,6 @@ def proposal_evaluation_view():
         pageTitle = 'Evaluate Proposals',
         pageDesc  = 'List of all submitted proposals',
         baseURL   = '/proposals/evaluation',
-        dropdown  = '/proposals/evaluation.djhtml',
         isAdmin   = isAdmin,
     )
 
