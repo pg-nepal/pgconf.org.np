@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="/static/css/form.css">
+
+<dialog id="dialog-edit-details" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Enter the following details </h2>
+    </header>
+
+    <form id="form-edit-details" method="dialog">
+        <p>The discounts and ticket amounts may be recalculated.</p>
+
+        <div class="fields">
+            <label for="wtf-category">Category <sup>*</sup></label>
+            <select id="wtf-category" name="category" placeholder="Email Address" required>
+                <option value="">Select Category</option>
+                <option value="professional" {% if row.category == 'professional' %}selected{% endif %}>Professional</option>
+                <option value="student" {% if row.category == 'student' %}selected{% endif %}>Student</option>
+            </select>
+        </div>
+        <button class="button" style="text-align: center;">Save</button>
+    </form>
+</dialog>
+
+
+<script type="module">
+    const dialog_ticket = document.getElementById('dialog-edit-details')
+    dialog_ticket.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_ticket.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_ticket.close()
+        }
+    })
+</script>
+
+
+<script type="module">
+    import * as main from '/static/main.mjs'
+
+    document.getElementById('form-edit-details').addEventListener('submit', function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        event.target.reportValidity()
+
+        const formData = new FormData(event.target)
+
+        if (!confirm('Are you sure?')) return
+        fetch('/attendees/{{row.slug}}', {
+            method : 'POST',
+            body   : formData,
+        }).then(function () {
+            fetch('/registered/changecategory', {
+                method  : 'POST',
+                headers : { 'content-type': 'application/json' },
+                body    : JSON.stringify({
+                    slug : '{{row.slug}}',
+                }),
+            }).then(function (response) {
+                if (202 == response.status) {
+                    location.reload()
+                }
+            })
+        })
+    })
+</script>
