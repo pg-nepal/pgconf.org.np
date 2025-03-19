@@ -114,6 +114,7 @@ function updateReceiptTable(slug, json){
                     const eInput_file = document.createElement('input')
                     eInput_file.type = 'file'
                     eInput_file.id = row[iMap['pk']]
+                    eInput_file.accept = '.jpg, .jpeg, .png, .pdf'
                     eInput_file.click()
 
                     eInput_file.onchange = function (event) {
