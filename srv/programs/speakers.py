@@ -31,6 +31,8 @@ def programs_speaker_list_page():
     ).outerjoin(
         db.programs.Proposal,
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
+    ).order_by(
+        db.conf.Attendee.name,
     )
 
     with db.engine.connect() as connection:
