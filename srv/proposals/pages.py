@@ -36,12 +36,13 @@ def proposal_evaluation_view():
     )
 
 
-@app.get('/api/proposals/evaluation')
 @app.post('/api/proposals/evaluation')
 def proposal_evaluation_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
+
+    jsonData = flask.request.json
 
     query = sa.select(
         db.programs.Proposal.pk,
@@ -52,7 +53,7 @@ def proposal_evaluation_list_api():
         sa.func.coalesce(sa.func.round(sa.func.avg(sa.func.cast(sa.func.json_extract_path_text(db.programs.Rate.score, 'engagement'), sa.Integer)), 2)).label('Engagement'),
         sa.func.coalesce(sa.func.round(sa.func.avg(sa.func.cast(sa.func.json_extract_path_text(db.programs.Rate.score, 'content'), sa.Integer)), 2)).label('Content'),
         sa.func.count(db.programs.Rate.proposal_pk).label('Rated by'),
-        sa.cast(db.programs.Proposal.status, sa.String).label('Status'),
+        sa.cast(db.programs.Proposal.status, sa.String),
         db.programs.Proposal.status.label('Action'),
     ).outerjoin(
         db.programs.Rate,
@@ -63,18 +64,21 @@ def proposal_evaluation_list_api():
         db.programs.Proposal.pk,
     )
 
-    if flask.request.method == 'POST':
-        json = flask.request.json
-        if json.get('status') != 'all' and json.get('status') is not None:
-            query = query.where(db.programs.Proposal.status == json.get('status'))
-
-
     with db.engine.connect() as connection:
-        cursor = connection.execute(query)
+        cursor = connection.execute(query.where(*[
+            c['expr'] == jsonData[c['name']]
+            for c in query.column_descriptions
+            if jsonData.get(c['name'], 'all') != 'all'
+        ]).order_by(
+            db.programs.Proposal.pk,
+        ))
 
         return flask.jsonify(
             headers = tuple(c['name'] for c in query.column_descriptions),
             data    = [ list(row) for row in cursor ],
+            filters = {
+                'status' : ('all', *db.programs.proposal_status),
+            },
         )
 
 
