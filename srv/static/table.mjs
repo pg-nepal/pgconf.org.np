@@ -33,24 +33,52 @@ function createRow(headers, row, baseURL) {
                 break
 
             case 'Action':
-                if(v != 'accepted'){
-                    const eButton = document.createElement('button')
-                    eButton.classList = 'button'
-                    eButton.innerText = 'Accept'
-                    eButton.onclick = function(){
-                        if(!confirm('Do you want to accept this proposal?')){return}
+                const eAcceptButton = document.createElement('button')
+                eAcceptButton.classList = 'button'
+                eAcceptButton.innerText = 'Accept'
+                eAcceptButton.onclick = function(){
+                    if(!confirm('Do you want to accept this proposal?')){return}
 
-                        fetch(`/proposals/evaluation/${row[0]}`).then(function (response){
-                            if (!response.ok) {
-                                throw new Error('Error');
-                            }
-                            return response.text();
-                        }).then(function(text){
-                            location.reload()
+                    fetch(`/proposals/evaluation/${row[0]}`, {
+                        method  : 'POST',
+                        headers : { 'content-type': 'application/json' },
+                        body    : JSON.stringify({
+                            "status" : "accepted",
                         })
-                    }
-                    eTd.append(eButton)
+                    }).then(function (response){
+                        if (!response.ok) {
+                            throw new Error('Error');
+                        }
+                        return response.text();
+                    }).then(function(text){
+                        location.reload()
+                    })
                 }
+                eTd.append(eAcceptButton)
+
+                const eRejectButton = document.createElement('button')
+                eRejectButton.classList = 'button delete'
+                eRejectButton.innerText = 'Reject'
+                eRejectButton.onclick = function(){
+                    if(!confirm('Do you want to reject this proposal?')){return}
+
+                    fetch(`/proposals/evaluation/${row[0]}`, {
+                        method  : 'POST',
+                        headers : { 'content-type': 'application/json' },
+                        body    : JSON.stringify({
+                            "status" : "rejected",
+                        })
+                    }).then(function (response){
+                        if (!response.ok) {
+                            throw new Error('Error');
+                        }
+                        return response.text();
+                    }).then(function(text){
+                        location.reload()
+                    })
+                }
+                eTd.append(eRejectButton)
+
                 break
 
             default:
