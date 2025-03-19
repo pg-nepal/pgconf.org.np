@@ -23,7 +23,12 @@
         <div class="nav-options">
             <ul class="nav-list">
                 <li class="nav-item"><a class="admin-links" href="/dash">Dashboard</a></li>
-                <li class="nav-item"><a class="admin-links" href="/proposals">Proposals</a></li>
+                <ul class="dropdown" id="dropdown">
+                    <a class="admin-links" href="/proposals">Proposals</a>
+                    <div class="dropdown-content">
+                        <a href="/proposals/evaluation">Proposals Evaluation</a>
+                    </div>
+                </ul>
                 <li class="nav-item"><a class="admin-links" href="/attendees">Attendees</a></li>
                 <li class="nav-item admin">
                     <a href="/" class="logout" 
