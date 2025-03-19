@@ -30,11 +30,13 @@ def proposal_list():
     )
 
 
-@app.get('/api/proposals')
+@app.post('/api/proposals')
 def proposal_list_api():
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
+
+    jsonData = flask.request.json
 
     query = sa.select(
         db.programs.Proposal.pk,
@@ -50,16 +52,24 @@ def proposal_list_api():
         db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
     ).group_by(
         db.programs.Proposal.pk,
-    ).order_by(
-        db.programs.Proposal.pk,
     )
 
     with db.engine.connect() as connection:
-        cursor = connection.execute(query)
+        cursor = connection.execute(query.where(*[
+            c['expr'] == jsonData[c['name']]
+            for c in query.column_descriptions
+            if jsonData.get(c['name'], 'all') != 'all'
+        ]).order_by(
+            db.programs.Proposal.pk,
+        ))
 
         return flask.jsonify(
             headers = tuple(c['name'] for c in query.column_descriptions),
             data    = [ list(row) for row in cursor ],
+            filters = {
+                'session' : ('all', 'talk', 'workshop', 'keynote'),
+                'status'  : ('all', *db.programs.proposal_status),
+            },
         )
 
 
