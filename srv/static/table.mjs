@@ -88,7 +88,9 @@ export function load(id, baseURL) {
                     const eSelect = document.createElement('select')
                     eForm.replaceChildren(eSelect)
                     eSelect.addEventListener('change', function (event) {
-                        location.search = `?${h}=${eSelect.value}`
+                        const sp = new URLSearchParams(location.search)
+                        sp.set(h, eSelect.value)
+                        location.search = `?${sp.toString()}`
                     })
 
                     for (let o of json.filters[h]) {
