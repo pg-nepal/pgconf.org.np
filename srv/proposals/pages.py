@@ -80,3 +80,25 @@ def proposal_evaluation_list_api():
                 'status' : ('all', *db.programs.proposal_status),
             },
         )
+
+
+@app.post('/proposals/evaluation/<int:pk>')
+def proposal_evaluation(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    status = flask.request.json.get('status', 'pending')
+
+    query = sa.update(
+        db.programs.Proposal,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    ).values(
+        status    = status,
+        updatedBy = isAdmin,
+    )
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+        return 'Proposal accepted', 202
