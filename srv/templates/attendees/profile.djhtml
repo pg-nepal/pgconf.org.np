@@ -189,7 +189,7 @@
         </table>
 
     </div>
-    <h4 style="color: red;"><em>Note: After registration, the funds will be non-refundable.</em></h4>
+    <h4 style="color: red;"><em>Note: After payment, the funds will be non-refundable.</em></h4>
 
     <h4 style="color: grey;"><em>Unpaid Amount: <strong id="total-amount" style="color: black;"></span></strong></em></h4>
     <h4 style="color: gray;"><em>In Review Amount: <strong id="in-review-amount" style="color: black;"></span></strong></em></h4>
