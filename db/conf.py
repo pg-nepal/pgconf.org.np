@@ -35,6 +35,18 @@ p_attendees_type = sa.Enum(
     metadata = db.meta,
 )
 
+ticket_status = (
+    'booked',
+    'paid',
+    'cancelled',
+)
+e_ticket_status = enum.IntEnum('ticket_status', ticket_status)
+p_ticket_status = sa.Enum(
+    e_ticket_status,
+    schema   = 'conf25',
+    metadata = db.meta,
+)
+
 
 class Attendee(db.Base):
     __tablename__  = 'attendees'
