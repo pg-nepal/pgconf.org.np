@@ -12,21 +12,24 @@
 
 
 {% block admin_content %}
-    <div class="attendee-photo">
-        <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
-    </div>
-
-    <button id="edit-profile" class="button" style="width: 20%;"> Edit profile </button>
-
-    {% include '/attendees/edit-profile-dialog.djhtml' %}
-
-    <div class="info-table">
-        {% for key, value in show.items() %}
-            <div class="info-row">
-                <div class="info-label">{{key}}</div>
-                <div class="info-value">{{value}}</div>
+    <div class="profile-section">
+        <div class="attendee-photo">
+            <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
+        </div>
+        <div class="description-section">
+            <button id="edit-profile" class="button"> Edit profile </button>
+            {% include '/attendees/edit-profile-dialog.djhtml' %}
+            <div class="wrapper">
+                <div class="info-table">
+                    {% for key, value in show.items() %}
+                        <div class="info-row">
+                            <div class="info-label">{{key}}</div>
+                            <div class="info-value">{{value}}</div>
+                        </div>
+                    {% endfor %}
+                </div>
             </div>
-        {% endfor %}
+        </div>
     </div>
 
 
