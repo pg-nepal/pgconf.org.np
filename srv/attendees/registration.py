@@ -45,19 +45,12 @@ def getTicketDetails(attendee, events, category=None):
 
             ticket_cursor = connection.execute(sa.select(
                 db.conf.Ticket.pk,
+                db.conf.Ticket.queue,
                 sa.cast(db.conf.Ticket.status, sa.String),
             ).where(
                 db.conf.Ticket.event_pk == row.pk ,
                 db.conf.Ticket.attendee_slug == attendee.slug ,
             )).first()
-
-            if ticket_cursor is not None:
-                if category != 'changecategory':
-                    if ticket_cursor.status == 'booked':
-                        status = 'cancelled'
-
-                elif ticket_cursor.status == 'cancelled':
-                            status = 'cancelled'
 
             cursor_count = connection.execute(sa.select(
                 sa.func.count(),
@@ -65,7 +58,18 @@ def getTicketDetails(attendee, events, category=None):
                 db.conf.Ticket.event_pk == row.pk,
             ))
 
-            count = cursor_count.scalar()
+            if ticket_cursor is not None:
+                count = ticket_cursor.queue
+
+                if category != 'changecategory':
+                    if ticket_cursor.status == 'booked':
+                        status = 'cancelled'
+
+                elif ticket_cursor.status == 'cancelled':
+                            status = 'cancelled'
+
+            else:
+                count = cursor_count.scalar()
 
             if category not in ('update', 'changecategory'):
                 count = count+1
