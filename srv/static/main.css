@@ -124,6 +124,7 @@ dialog header {
 
 
 .button{
+    max-height: 40px;
     font-size: 18px;
     margin: 1.5% 0 1.5% 0;
     font-family: 'DM Sans', sans-serif;
