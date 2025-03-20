@@ -4,6 +4,7 @@
 
 
 {% block head %}
+    <link rel="stylesheet" href="/static/css/form.css">
     <style>
         .attendee-photo { display: flex; flex-wrap: wrap; gap: 30px;}
         .attendee-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center;    border-radius: 50%;}
