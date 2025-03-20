@@ -92,7 +92,7 @@
             method  : 'POST',
             headers : { 'content-type': 'application/json' },
             body    : JSON.stringify({
-                events : formData.getAll('events'),
+                events : formData.getAll('events').map(event => parseInt(event, 10)),
                 slug   : '{{row.slug}}',
             }),
         }).then(function (response) {
