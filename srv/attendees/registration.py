@@ -23,8 +23,7 @@ FILE_MAGIC_NUMBERS = {
     b'\x89PNG\r\n\x1a\n'    : 'image/png',
 }
 
-
-def getTicketDetails(attendee, events):
+def getTicketDetails(attendee, events, category=None):
     ticketList = []
     with db.engine.connect() as connection:
         cursor = connection.execute(sa.select(
@@ -41,6 +40,25 @@ def getTicketDetails(attendee, events):
         ))
 
         for row in cursor:
+            count = 0
+            status = 'booked'
+
+            ticket_cursor = connection.execute(sa.select(
+                db.conf.Ticket.pk,
+                sa.cast(db.conf.Ticket.status, sa.String),
+            ).where(
+                db.conf.Ticket.event_pk == row.pk ,
+                db.conf.Ticket.attendee_slug == attendee.slug ,
+            )).first()
+
+            if ticket_cursor is not None:
+                if category != 'changecategory':
+                    if ticket_cursor.status == 'booked':
+                        status = 'cancelled'
+
+                elif ticket_cursor.status == 'cancelled':
+                            status = 'cancelled'
+
             cursor_count = connection.execute(sa.select(
                 sa.func.count(),
             ).where(
@@ -48,6 +66,10 @@ def getTicketDetails(attendee, events):
             ))
 
             count = cursor_count.scalar()
+
+            if category not in ('update', 'changecategory'):
+                count = count+1
+
             discount = 0
 
             if attendee.country.lower() == 'nepal':
@@ -68,6 +90,8 @@ def getTicketDetails(attendee, events):
                 'event_pk'      : row.pk,
                 'currency'      : currency,
                 'fee'           : fee,
+                'queue'         : count,
+                'status'        : status,
             })
 
     return ticketList
