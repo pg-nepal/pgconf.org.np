@@ -264,6 +264,38 @@ def registered_payment_receipt_file_download(slug):
         )
 
 
+@app.post('/registered/changecategory')
+def registered_change_category():
+    jsonData = flask.request.json
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.select(
+            db.conf.Ticket.pk,
+            db.conf.Ticket.event_pk,
+            db.conf.Event.name,
+        ).outerjoin(
+            db.conf.Event,
+            db.conf.Ticket.event_pk == db.conf.Event.pk,
+        ).where(
+            db.conf.Ticket.attendee_slug == jsonData['slug'],
+        ))
+
+        for row in cursor:
+            session.execute(sa.update(
+                db.conf.Ticket,
+            ).where(
+                db.conf.Ticket.event_pk      == row.event_pk,
+                db.conf.Ticket.attendee_slug == jsonData['slug'],
+                db.conf.Ticket.paymentStatus != 'paid',
+                db.conf.Ticket.paymentStatus != 'in review',
+            ).values(
+                # getTicketDetails(row_attendee, [row.event_pk], 'changecategory')[0],
+                # make the diffirent function
+            ))
+
+    return 'updated', 202
+
+
 @app.post('/registered/addevent')
 def registered_add_event():
     jsonData = flask.request.json
