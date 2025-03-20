@@ -112,6 +112,9 @@ class Ticket(db.Base):
     currency       = sa.Column(sa.String(10), server_default='NRs.')
     fee            = sa.Column(sa.Numeric(10, 2))
 
+    status         = sa.Column(p_ticket_status, server_default='booked')
+    queue          = sa.Column(sa.Integer, comment='number in queue when user booked ticket')
+
     paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
     receiptBlob    = sa.Column(sa.LargeBinary)
     receiptType    = sa.Column(sa.String(20), comment='file type of the uploaded receipt')
