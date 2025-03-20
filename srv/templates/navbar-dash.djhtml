@@ -30,6 +30,7 @@
                     </div>
                 </ul>
                 <li class="nav-item"><a class="admin-links" href="/attendees">Attendees</a></li>
+                <li class="nav-item"><a class="admin-links" href="/tickets">Tickets</a></li>
                 <li class="nav-item admin">
                     <a href="/" class="logout" 
                     onclick="logout();return false;">Logout</a>
