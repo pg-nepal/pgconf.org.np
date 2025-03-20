@@ -149,8 +149,8 @@ def attendee_read(pk):
         )
 
 
-@app.post('/attendees/<int:pk>')
-def attendee_update(pk):
+@app.post('/attendees/<slug>')
+def attendee_update(slug):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
