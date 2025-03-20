@@ -282,7 +282,7 @@ def registered_add_event():
         cursor = session.execute(sa.select(
             db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
-            db.conf.Event.name,
+            sa.cast(db.conf.Ticket.status, sa.String),
         ).outerjoin(
             db.conf.Event,
             db.conf.Ticket.event_pk == db.conf.Event.pk,
@@ -291,24 +291,27 @@ def registered_add_event():
         ))
 
         for row in cursor:
-            if row.event_pk in jsonData['events']:
-                jsonData['events'].pop(row.event_pk)
+            if row.event_pk in jsonData.get('events') and row.status == 'booked':
+                jsonData.get('events').remove(row.event_pk)
                 continue
 
-            session.execute(sa.delete(
+            session.execute(sa.update(
                 db.conf.Ticket,
             ).where(
                 db.conf.Ticket.event_pk      == row.event_pk,
                 db.conf.Ticket.attendee_slug == jsonData['slug'],
                 db.conf.Ticket.paymentStatus != 'paid',
                 db.conf.Ticket.paymentStatus != 'in review',
+            ).values(
+                getTicketDetails(row_attendee, [row.event_pk], 'update')[0],
             ))
 
-        session.execute(sa.dialects.postgresql.insert(
-            db.conf.Ticket,
-        ).values(
-            getTicketDetails(row_attendee, jsonData['events']),
-        ).on_conflict_do_nothing())
+        if jsonData.get('events') != []:
+            session.execute(sa.dialects.postgresql.insert(
+                db.conf.Ticket,
+            ).values(
+                getTicketDetails(row_attendee, jsonData.get('events')),
+            ).on_conflict_do_nothing())
 
     return 'updated', 202
 
