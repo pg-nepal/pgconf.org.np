@@ -8,6 +8,12 @@ import sqlalchemy.dialects.postgresql
 
 import db
 
+attendees_category = (
+    'professional',
+    'student',
+    'speaker',
+)
+e_attendees_category = enum.IntEnum('attendees_category', attendees_category)
 
 attendees_status = (
     'pending',
