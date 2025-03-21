@@ -59,7 +59,7 @@ def ticket_list_api():
             for c in query.column_descriptions
             if jsonData['filter'].get(c['name'], 'all') != 'all'
         ]).order_by(
-            db.conf.Attendee.pk,
+            db.conf.Ticket.pk,
         ))
 
     return flask.jsonify(
