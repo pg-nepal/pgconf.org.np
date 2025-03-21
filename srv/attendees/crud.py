@@ -151,25 +151,14 @@ def attendee_read(pk):
 
 @app.post('/attendees/<slug>')
 def attendee_update(slug):
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
-
     values = flask.request.form.to_dict()
-
-    if 'photoBlob' in flask.request.files:
-        file_photoBlob = flask.request.files['photoBlob']
-        if file_photoBlob.filename != '':
-            values['photoBlob'] = file_photoBlob.read()
-            values['photoMime'] = file_photoBlob.content_type
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
             db.conf.Attendee,
         ).where(
-            db.conf.Attendee.pk == pk,
+            db.conf.Attendee.slug == slug,
         ).values(
-            **values,
-            updatedBy = isAdmin,
+            category = values.get('category'),
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
