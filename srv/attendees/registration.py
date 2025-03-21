@@ -23,6 +23,20 @@ FILE_MAGIC_NUMBERS = {
     b'\x89PNG\r\n\x1a\n'    : 'image/png',
 }
 
+def calculateFee(currency, category, count, row):
+    discount = 0
+    if currency == 'NRs.':
+        discount += row.studentLocal if category == 'student' else 0
+        discount += row.earlyLocal if count <= row.earlyLimit else 0
+        fee = row.feeLocal - discount
+
+    else:
+        discount += row.studentGlobal if category == 'student' else 0
+        discount += row.earlyGlobal if count <= row.earlyLimit else 0
+        fee = row.feeGlobal - discount
+
+    return fee
+
 def getTicketDetails(attendee, events, category=None):
     ticketList = []
     with db.engine.connect() as connection:
@@ -74,19 +88,9 @@ def getTicketDetails(attendee, events, category=None):
             if category not in ('update', 'changecategory'):
                 count = count+1
 
-            discount = 0
+            currency = 'NRs.' if attendee.country.lower() == 'nepal' else 'USD'
 
-            if attendee.country.lower() == 'nepal':
-                currency = 'NRs.'
-                discount += row.studentLocal if attendee.category == 'student' else 0
-                discount += row.earlyLocal if count <= row.earlyLimit else 0
-                fee = row.feeLocal - discount
-
-            else:
-                currency = 'USD'
-                discount += row.studentGlobal if attendee.category == 'student' else 0
-                discount += row.earlyGlobal if count <= row.earlyLimit else 0
-                fee = row.feeGlobal - discount
+            fee = calculateFee(currency, attendee.category, count, row)
 
             ticketList.append({
                 'attendee_pk'   : attendee.pk,
