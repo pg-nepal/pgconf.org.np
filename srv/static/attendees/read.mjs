@@ -18,7 +18,7 @@ export function getReceiptDetails(slug) {
     let paidAmount = 0
     let currency = ''
 
-    fetch(`/registered/receipt/${slug}`).then(function (response) {
+    fetch(`/tickets/receipt/${slug}`).then(function (response) {
         if (200 == response.status) {
             return response.json()
         }
