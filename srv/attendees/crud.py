@@ -66,7 +66,6 @@ def attendee_list_api():
         db.conf.Attendee.pk == db.conf.Ticket.attendee_pk,
     ).group_by(
         db.conf.Attendee.pk,
-        db.conf.Ticket.receiptBlob,
     )
 
     with db.engine.connect() as connection:
