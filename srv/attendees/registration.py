@@ -72,20 +72,16 @@ def getTicketDetails(attendee, events, category=None):
                 db.conf.Ticket.event_pk == row.pk,
             ))
 
-            if ticket_cursor is not None:
+            if ticket_cursor:
                 count = ticket_cursor.queue
 
-                if category != 'changecategory':
-                    if ticket_cursor.status == 'booked':
-                        status = 'cancelled'
-
-                elif ticket_cursor.status == 'cancelled':
-                            status = 'cancelled'
+                if ticket_cursor.status == 'booked':
+                    status = 'cancelled'
 
             else:
                 count = cursor_count.scalar()
 
-            if category not in ('update', 'changecategory'):
+            if category != 'update':
                 count = count+1
 
             currency = 'NRs.' if attendee.country.lower() == 'nepal' else 'USD'
