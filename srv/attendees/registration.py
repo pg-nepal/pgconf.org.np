@@ -296,22 +296,8 @@ def registered_change_category():
     jsonData = flask.request.json
 
     with db.SessionMaker.begin() as session:
-        cursor_events = session.execute(sa.select(
-            db.conf.Event.pk,
-            db.conf.Event.feeGlobal,
-            db.conf.Event.feeLocal,
-            db.conf.Event.studentGlobal,
-            db.conf.Event.studentLocal,
-            db.conf.Event.earlyGlobal,
-            db.conf.Event.earlyLocal,
-            db.conf.Event.earlyLimit,
-        ))
-        map_events = { row.pk : row for row in cursor_events }
-
         cursor = session.execute(sa.select(
-            db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
-            db.conf.Ticket.attendee_pk,
             db.conf.Ticket.currency,
             db.conf.Ticket.queue,
             db.conf.Attendee.category,
@@ -324,13 +310,26 @@ def registered_change_category():
         ))
 
         for row in cursor:
+            event_cursor = session.execute(sa.select(
+                db.conf.Event.feeGlobal,
+                db.conf.Event.feeLocal,
+                db.conf.Event.studentGlobal,
+                db.conf.Event.studentLocal,
+                db.conf.Event.earlyGlobal,
+                db.conf.Event.earlyLocal,
+                db.conf.Event.earlyLimit,
+            ).where(
+                db.conf.Event.pk == row.event_pk,
+            )).first()
+
+            fee = calculateFee(row.currency, row.category, row.queue, event_cursor)
+
             session.execute(sa.update(
                 db.conf.Ticket,
             ).where(
-                db.conf.Ticket.pk == row.pk,
+                db.conf.Ticket.event_pk == row.event_pk,
             ).values(
-                fee       = calculateFee(row.currency, row.category, row.queue, map_events[row.event_pk]),  # noqa:E501
-                updatedBy = row.attendee_pk,
+                fee = fee,
             ))
 
     return 'updated', 202
