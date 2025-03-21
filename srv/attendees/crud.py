@@ -148,16 +148,4 @@ def attendee_read(pk):
         )
 
 
-@app.post('/attendees/<slug>')
-def attendee_update(slug):
-    values = flask.request.form.to_dict()
 
-    with db.SessionMaker.begin() as session:
-        cursor = session.execute(sa.update(
-            db.conf.Attendee,
-        ).where(
-            db.conf.Attendee.slug == slug,
-        ).values(
-            category = values.get('category'),
-        ))
-        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
