@@ -11,7 +11,6 @@
         <div class="fields">
             <label for="wtf-category">Category <sup>*</sup></label>
             <select id="wtf-category" name="category" placeholder="Email Address" required>
-                <option value="">Select Category</option>
                 <option value="professional" {% if row.category == 'professional' %}selected{% endif %}>Professional</option>
                 <option value="student" {% if row.category == 'student' %}selected{% endif %}>Student</option>
             </select>
