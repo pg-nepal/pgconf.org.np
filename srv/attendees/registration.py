@@ -272,6 +272,8 @@ def registered_add_event():
             db.conf.Ticket.event_pk == db.conf.Event.pk,
         ).where(
             db.conf.Ticket.attendee_slug == jsonData['slug'],
+            db.conf.Ticket.paymentStatus != 'paid',
+            db.conf.Ticket.paymentStatus != 'in review',
         ))
 
         for row in cursor:
