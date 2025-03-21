@@ -6,7 +6,6 @@ import traceback
 import flask
 import psycopg.errors
 import sqlalchemy as sa
-import sqlalchemy.dialects.postgresql
 
 import db
 import db.conf
