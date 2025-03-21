@@ -93,11 +93,11 @@
 
 {% for row in cursor %}
     <div id="ticket" class="ticket" style="position: relative;">
-        <div class="field-container" {% if row.status == None %}style="filter: blur(3px)"{% endif %}">
+        <div class="field-container" {% if row.paymentStatus == None %}style="filter: blur(3px)"{% endif %}">
 
             <h2>{{row.name}}</h2>
             <p><strong>Amount: </strong>{{row.currency}} {{'{:,.2f}'.format(row.fee or 0)}}</p>
-            <p><strong>Payment Status: </strong>{{row.status}}</p>
+            <p><strong>Payment Status: </strong>{{row.paymentStatus}}</p>
             <p><strong>Ordered On: </strong>
                 {% if row.createdOn != None %}
                     {{row.createdOn.strftime('%Y %B %d')}}
