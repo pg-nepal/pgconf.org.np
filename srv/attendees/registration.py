@@ -369,10 +369,7 @@ def registered_add_event():
             session.execute(sa.update(
                 db.conf.Ticket,
             ).where(
-                db.conf.Ticket.event_pk      == row.event_pk,
-                db.conf.Ticket.attendee_slug == jsonData['slug'],
-                db.conf.Ticket.paymentStatus != 'paid',
-                db.conf.Ticket.paymentStatus != 'in review',
+                db.conf.Ticket.pk == row.pk,
             ).values(
                 getTicketDetails(row_attendee, [row.event_pk], 'update')[0],
             ))
