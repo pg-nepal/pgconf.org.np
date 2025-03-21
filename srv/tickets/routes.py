@@ -24,7 +24,7 @@ def ticket_show_mine(slug):
         db.conf.Ticket,
         sa.and_(
             db.conf.Ticket.event_pk == db.conf.Event.pk,
-            db.conf.Ticket.status   == 'booked',
+            db.conf.Ticket.status   != 'cancelled',
             sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
         ),
     ).order_by(db.conf.Event.pk)
@@ -54,6 +54,7 @@ def receipt_read(slug):
         db.conf.Ticket,
         sa.and_(
             db.conf.Ticket.event_pk == db.conf.Event.pk,
+            db.conf.Ticket.status   != 'cancelled',
             sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
         ),
     ).order_by(db.conf.Event.pk)
