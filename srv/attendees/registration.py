@@ -297,7 +297,6 @@ def registered_change_category():
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.select(
-            db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
             db.conf.Ticket.currency,
             db.conf.Ticket.queue,
