@@ -299,6 +299,23 @@ def registered_add_event():
     return 'updated', 202
 
 
+@app.post('/registered/<slug>')
+def registered_update(slug):
+    values = flask.request.form.to_dict()
+    if values.get('category'):
+        return 'Invalid category', 400
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.update(
+            db.conf.Attendee,
+        ).where(
+            db.conf.Attendee.slug == slug,
+        ).values(
+            category = values.get('category'),
+        ))
+        return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
+
+
 @app.post('/registered/receipt_upload/<slug>')
 def receipt_upload(slug):
     receiptFile = flask.request.files['file']
