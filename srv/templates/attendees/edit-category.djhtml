@@ -49,7 +49,7 @@
         const formData = new FormData(event.target)
 
         if (!confirm('Are you sure?')) return
-        fetch('/attendees/{{row.slug}}', {
+        fetch('/registered/{{row.slug}}', {
             method : 'POST',
             body   : formData,
         }).then(function () {
