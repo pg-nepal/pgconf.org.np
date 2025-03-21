@@ -300,10 +300,8 @@ def registered_change_category():
         cursor = session.execute(sa.select(
             db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
-            db.conf.Event.name,
-        ).outerjoin(
-            db.conf.Event,
-            db.conf.Ticket.event_pk == db.conf.Event.pk,
+            db.conf.Ticket.currency,
+            db.conf.Ticket.queue,
         ).where(
             db.conf.Ticket.attendee_slug == jsonData['slug'],
         ))
@@ -312,10 +310,7 @@ def registered_change_category():
             session.execute(sa.update(
                 db.conf.Ticket,
             ).where(
-                db.conf.Ticket.event_pk      == row.event_pk,
-                db.conf.Ticket.attendee_slug == jsonData['slug'],
-                db.conf.Ticket.paymentStatus != 'paid',
-                db.conf.Ticket.paymentStatus != 'in review',
+                db.conf.Ticket.event_pk == row.event_pk,
             ).values(
                 # getTicketDetails(row_attendee, [row.event_pk], 'changecategory')[0],
                 # make the diffirent function
