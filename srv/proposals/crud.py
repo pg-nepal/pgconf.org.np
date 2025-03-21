@@ -30,6 +30,49 @@ def proposal_list():
     )
 
 
+@app.post('/api/proposals')
+def proposal_list_api():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    jsonData = flask.request.json
+
+    query = sa.select(
+        db.programs.Proposal.pk,
+        db.programs.Proposal.title,
+        db.programs.Proposal.name,
+        db.programs.Proposal.country,
+        db.programs.Proposal.session,
+        db.programs.Proposal.createdOn,
+        sa.cast(db.programs.Proposal.status, sa.String),
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
+    ).outerjoin(
+        db.programs.Rate,
+        db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
+    ).group_by(
+        db.programs.Proposal.pk,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query.where(*[
+            c['expr'] == jsonData['filter'][c['name']]
+            for c in query.column_descriptions
+            if jsonData['filter'].get(c['name'], 'all') != 'all'
+        ]).order_by(
+            db.programs.Proposal.pk,
+        ))
+
+        return flask.jsonify(
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [ list(row) for row in cursor ],
+            filters = {
+                'session' : ('all', 'talk', 'workshop', 'keynote'),
+                'status'  : ('all', *db.programs.proposal_status),
+            },
+        )
+
+
 @app.post('/api/proposals/add')
 def proposal_create():
     isAdmin = srv.auth.isValid(flask.request)
