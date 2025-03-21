@@ -28,7 +28,7 @@ def proposal_evaluation_view():
         return srv.auth.respondInValid()
 
     return flask.render_template(
-        '/proposals/evaluation.djhtml',
+        '/table.djhtml',
         pageTitle = 'Evaluate Proposals',
         pageDesc  = 'List of all submitted proposals',
         baseURL   = '/proposals/evaluation',
