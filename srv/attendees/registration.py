@@ -301,7 +301,7 @@ def registered_add_event():
 @app.post('/registered/<slug>')
 def registered_update(slug):
     values = flask.request.form.to_dict()
-    if values.get('category'):
+    if values.get('category') not in db.conf.attendees_category:
         return 'Invalid category', 400
 
     with db.SessionMaker.begin() as session:
