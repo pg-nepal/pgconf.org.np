@@ -306,18 +306,36 @@ def registered_change_category():
             db.conf.Ticket.event_pk,
             db.conf.Ticket.currency,
             db.conf.Ticket.queue,
+            db.conf.Attendee.category,
+        ).outerjoin(
+            db.conf.Attendee,
+            db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
         ).where(
             db.conf.Ticket.attendee_slug == jsonData['slug'],
+            db.conf.Ticket.paymentStatus == 'unpaid',
         ))
 
         for row in cursor:
+            event_cursor = session.execute(sa.select(
+                db.conf.Event.feeGlobal,
+                db.conf.Event.feeLocal,
+                db.conf.Event.studentGlobal,
+                db.conf.Event.studentLocal,
+                db.conf.Event.earlyGlobal,
+                db.conf.Event.earlyLocal,
+                db.conf.Event.earlyLimit,
+            ).where(
+                db.conf.Event.pk == row.event_pk,
+            )).first()
+
+            fee = calculateFee(row.currency, row.category, row.queue, event_cursor)
+
             session.execute(sa.update(
                 db.conf.Ticket,
             ).where(
                 db.conf.Ticket.event_pk == row.event_pk,
             ).values(
-                # getTicketDetails(row_attendee, [row.event_pk], 'changecategory')[0],
-                # make the diffirent function
+                fee = fee,
             ))
 
     return 'updated', 202
