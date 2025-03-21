@@ -61,7 +61,7 @@
 
 <script>
     function selectEvents(slug) {
-        fetch(`/registered/receipt/${slug}`).then(function (response) {
+        fetch(`/tickets/receipt/${slug}`).then(function (response) {
             if (200 == response.status) {
                 return response.json()
             }
