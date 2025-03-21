@@ -60,7 +60,7 @@ def proposal_list_api():
             for c in query.column_descriptions
             if jsonData['filter'].get(c['name'], 'all') != 'all'
         ]).order_by(
-            db.conf.Attendee.pk,
+            db.programs.Proposal.pk,
         ))
 
         return flask.jsonify(
