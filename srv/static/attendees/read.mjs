@@ -70,16 +70,9 @@ function updateReceiptTable(slug, json){
 
     json.headers.forEach(function (h, i) {
         iMap[h] = i
-
-        switch (h) {
-        case 'Event':
-        case 'Currency':
-        case 'Amount':
-        case 'Payment Status':
-            const eTh = document.createElement('th')
-            eTh.innerHTML = h
-            eReceiptTable.children[0].children[0].append(eTh)
-        }
+        const eTh = document.createElement('th')
+        eTh.innerText = h
+        eReceiptTable.children[0].children[0].append(eTh)
     })
     const eTh = document.createElement('th')
     eTh.innerHTML = 'Action'
