@@ -131,49 +131,42 @@ function updateReceiptTable(slug, json){
         }
 })}
 
-                    eInput_file.onchange = function (event) {
-                        const event_pk = document.getElementById('event'+row[iMap['pk']]).value
+function uploadReceipt (event_pk){
+    const eInput_file = document.createElement('input')
+    eInput_file.type = 'file'
+    eInput_file.id = event_pk
+    eInput_file.accept = '.jpg, .jpeg, .png, .pdf'
+    eInput_file.click()
 
-                        const file = event.target.files[0]
-                        if (undefined === file) return
+    eInput_file.onchange = function (event) {
 
-                        const validMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
-                        if(!validMimeTypes.includes(file.type)) {
-                            alert("Invalid file type. Please upload jpeg, png or pdf file")
-                            return
-                        }
+        const file = event.target.files[0]
+        if (undefined === file) return
 
-                        if (2 <= Math.round((file.size / 1024 / 1024))) {
-                            alert('Please upload file less than 2 MB')
-                            eRoot.remove()
-                            return
-                        }
+        const validMimeTypes = ['image/jpeg', 'image/png', 'application/pdf'];
+        if(!validMimeTypes.includes(file.type)) {
+            alert("Invalid file type. Please upload jpeg, png or pdf file")
+            return
+        }
 
-                        const formData = new FormData()
-                        formData.append('file', file)
-                        formData.append('event_pk', event_pk)
+        if (2 <= Math.round((file.size / 1024 / 1024))) {
+            alert('Please upload file less than 2 MB')
+            eRoot.remove()
+            return
+        }
 
-                        fetch(`/registered/receipt_upload/${slug}`, {
-                            method   : 'POST',
-                            body : formData,
-                        }).then(function (response){
-                            location.reload()
-                        })
-                    }
-                }
-                eTd.append(eButton)
-                eTr.append(eTd)
-                eReceiptTable.children[1].append(eTr)
-            }
-            else{
-                const eButton = document.createElement('button')
-                eButton.id = 'event'+row[iMap['pk']]
-                eButton.value = row[iMap['pk']]
-                eButton.classList = 'button'
-                eButton.innerHTML = 'View Receipt'
+        const formData = new FormData()
+        formData.append('file', file)
+        formData.append('event_pk', event_pk)
 
-                eButton.onclick = function () {
-                    const event_pk = document.getElementById('event'+row[iMap['pk']]).value
+        fetch(`/registered/receipt_upload/${slug}`, {
+            method   : 'POST',
+            body : formData,
+        }).then(function (response){
+            location.reload()
+        })
+    }
+}
 
                     fetch(`/registered/receipt_view/${slug}`, {
                         method   : 'POST',
