@@ -168,33 +168,30 @@ function uploadReceipt (event_pk){
     }
 }
 
-                    fetch(`/registered/receipt_view/${slug}`, {
-                        method   : 'POST',
-                        headers : { 'Content-Type' : 'application/json' },
-                        body : JSON.stringify({
-                            event_pk : event_pk,
-                        }),
-                    }).then(function (response){
-                        return response.json()
-                    }).then(function (json){
-                        const receipt = 'data:'+ json.receiptType +';base64,' + json.image;
-                        const newWindow = window.open();
+function viewReceipt (event_pk){
+    const eButton = document.createElement('button')
+    eButton.classList = 'button'
+    eButton.innerHTML = 'View Receipt'
 
-                        if(json.receiptType == 'application/pdf'){
-                            newWindow.document.write('<embed src="' + receipt + '" width="100%" height="100%" type="application/pdf">');
-                        }
-                        else{
-                            newWindow.document.write('<img src="' + receipt + '" />');
-                        }
-                    })
-                }
-                eTd.append(eButton)
-                eTr.append(eTd)
-                eReceiptTable.children[1].append(eTr)
-            }
+    fetch(`/registered/receipt_view/${slug}`, {
+        method   : 'POST',
+        headers : { 'Content-Type' : 'application/json' },
+        body : JSON.stringify({
+            event_pk : event_pk,
+        }),
+    }).then(function (response){
+        return response.json()
+    }).then(function (json){
+        const receipt = 'data:'+ json.receiptType +';base64,' + json.image;
+        const newWindow = window.open();
+
+        if(json.receiptType == 'application/pdf'){
+            newWindow.document.write('<embed src="' + receipt + '" width="100%" height="100%" type="application/pdf">');
+        }
+        else{
+            newWindow.document.write('<img src="' + receipt + '" />');
         }
     })
-    eReceiptTable.style.display = ''
 }
 
 
