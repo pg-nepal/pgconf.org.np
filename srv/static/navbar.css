@@ -17,6 +17,9 @@
   background-position: center;
 }
 
+.updates-container{
+  width: 30rem;
+}
 
 .news-container {
   font-size: 16px;
@@ -237,6 +240,12 @@
 
 .hamburger-options a:hover {
   background-color: #333; /* Hover effect */
+}
+
+@media (max-width: 1600px) {
+  .updates-container{
+    width: 32rem;
+  }
 }
 
 @media (max-width: 1300px){
