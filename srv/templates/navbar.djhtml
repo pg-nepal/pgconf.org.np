@@ -4,7 +4,7 @@
                 <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
             </a>
 
-            <div class="updates-container" style="width: 30%;">
+            <div class="updates-container">
                 {% include "parts/ticker.djhtml" %}
             </div>
     </div>
