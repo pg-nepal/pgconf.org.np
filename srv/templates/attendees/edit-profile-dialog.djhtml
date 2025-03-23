@@ -8,12 +8,12 @@
     <form id="form-edit-profile" method="dialog">
         <div class="fields">
             <label for="affiliation">Affiliation </label>
-            <input id="affiliation" name="affiliation" value="{{row.affiliation or ''}}">
+            <input id="affiliation" name="affiliation" value="{{row.affiliation or ''}}" autofocus>
         </div>
 
         <div class="fields">
             <label for="bio">Bio </label>
-            <textarea id="bio" name="bio" autofocus>{{row.bio or ""}}</textarea>
+            <textarea id="bio" name="bio">{{row.bio or ""}}</textarea>
         </div>
 
         <div class="fields">
@@ -60,9 +60,14 @@
         }
 
         if (!confirm('Are you sure?')) return
-        main.ajax(fetch('/attendees/{{row.pk}}', {
+        fetch('/attendees/{{row.pk}}', {
             method : 'POST',
             body   : formData,
-        }))
+        }).then(function(response){
+            if (response.status != 202) {
+                alert('Update failed')
+            }
+            location.reload()
+        })
     })
 </script>
