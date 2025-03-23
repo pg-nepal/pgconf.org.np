@@ -26,12 +26,12 @@ export function getReceiptDetails(slug) {
         updateReceiptTable(slug, json)
 
         json.data.forEach(function (row) {
-            if(row[4] !== null){
-                currency = row[4]
+            if(row['Currency'] !== null){
+                currency = row['Currency']
             }
 
-            const amount = parseFloat(row[5])
-            const paymentStatus = row[6]
+            const amount = parseFloat(row['Amount'])
+            const paymentStatus = row['Payment Status']
 
             if(!isNaN(amount)){
                 if(paymentStatus === 'unpaid'){
