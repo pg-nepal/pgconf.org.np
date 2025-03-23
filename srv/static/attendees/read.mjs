@@ -74,9 +74,6 @@ function updateReceiptTable(slug, json){
         eTh.innerText = h
         eReceiptTable.children[0].children[0].append(eTh)
     })
-    const eTh = document.createElement('th')
-    eTh.innerHTML = 'Action'
-    eReceiptTable.children[0].children[0].append(eTh)
 
     json.data.forEach(function (row) {
         if(row['Payment Status'] !== null) {
