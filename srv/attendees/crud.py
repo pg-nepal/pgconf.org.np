@@ -140,10 +140,12 @@ def attendee_read(pk):
             row     = row,
             show    = {
                 'Name'          : row.name,
+                'Affiliation'   : row.affiliation,
                 'Email'         : row.email,
                 'Country'       : row.country,
                 'Registered On' : row.createdOn.strftime('%B %d %Y'),
                 'Category'      : row.category,
+                'Bio'           : row.bio,
             },
         )
 
