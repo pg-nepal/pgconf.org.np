@@ -65,9 +65,9 @@
         <h2>📝 Registration</h2>
         <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p>
 
-        <p>
-            Registration will cover: Transportation (from pickup point to Kathmandu University), Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit
-        </p>
+        <h3 style="color: #007bff;">
+            Registration will cover: <em>Transportation (from pickup point to Kathmandu University), Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
+        </h3>
         <h3 style="color: #007bff;">Registration Fee: <em>NRs. 10,000.00 (student discount available)</em></h3>
     </div>
 
