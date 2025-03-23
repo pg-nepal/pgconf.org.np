@@ -410,69 +410,6 @@ input[type="number"]::-webkit-inner-spin-button {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
 }
 
-
-.news-container {
-    font-size: 16px;
-    /* background: #00000079; */
-    color: #020e16;
-    padding: 10px 32px;
-    display: flex;
-    overflow: hidden;
-    border-radius: 5px;
-}
-
-.news-container::after {
-    content: "";
-    bottom: 0;
-    left: 0;
-    right: 0;
-    height: 10px;
-}
-
-.news-container .news-heading {
-    font-weight: bold;
-    padding-right: 20px;
-    margin-right: 20px;
-    border-right: 1px solid #0e2e63;
-}
-
-.news-container .news {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-}
-
-.news-container .news-single {
-    text-decoration: none;
-    font-weight: normal;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateY(-8px);
-    transition: all 400ms ease;
-    pointer-events: none;
-}
-
-.news-container .news-single.active {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-@media (max-width: 700px) {
-    .news-container {
-        padding: 5px;
-        height: 20px;
-    }
-    .news-container .news-heading {
-        display: none;
-    }
-    .news-container .news-single {
-        font-size: 13px;
-    }
-}
-
 .event-container {
     display: flex;
     gap: 20px;
