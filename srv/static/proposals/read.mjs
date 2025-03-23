@@ -220,14 +220,14 @@ export function createAttendee(row) {
         method : 'POST',
         body   : formData,
     }).then(function (response){
-        return response.json()
+        if(response.status != 200){
+            alert("Failed to copy")
+        }
+        else{
+            return response.json()
+        }
     }).then(function (json){
-        fetch(`/proposals/${json['attendee_pk']}`, {
-            method : 'POST',
-            body   : formData,
-        }).then(
-            window.location.href = `/attendees/${json['attendee_pk']}`
-        )
+        window.location.href = `/attendees/${json['pk']}`
     })
 }
 
