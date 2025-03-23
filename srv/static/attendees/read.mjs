@@ -79,36 +79,57 @@ function updateReceiptTable(slug, json){
     eReceiptTable.children[0].children[0].append(eTh)
 
     json.data.forEach(function (row) {
-        const eTr = document.createElement('tr')
-        row.forEach(function (cell, i) {
-
-            switch (json.headers[i]) {
-            case 'Event':
-            case 'Currency':
-            case 'Amount':
-            case 'Payment Status':
+        if(row['Payment Status'] !== null) {
+            const eTr = document.createElement('tr')
+            Object.entries(row).forEach(function ([k,v]) {
                 const eTd = document.createElement('td')
-                eTd.innerHTML = cell
+    
+                if (k == 'Action') {
+                    const uploadBtn = document.createElement('button')
+                    uploadBtn.innerText = 'Upload Receipt'
+                    uploadBtn.classList = 'button'
+                    uploadBtn.style.margin = '1%'
+                    json.pk.forEach(function (pk_row) {
+                        if(row['Event'] === pk_row.Name) {
+                            uploadBtn.onclick = function () {
+                                uploadReceipt(pk_row.pk)  
+                            }
+                        }
+                    })
+    
+                    const viewBtn = document.createElement('button')
+                    viewBtn.innerText = 'View Receipt'
+                    viewBtn.classList = 'button'
+                    viewBtn.style.margin = '1%'
+                    json.pk.forEach(function (pk_row) {
+                        if(row['Event'] === pk_row.Name) {
+                            viewBtn.onclick = function () {
+                                viewReceipt(pk_row.pk)  
+                            }
+                        }
+                    })
+    
+                    if (row['Payment Status'] == 'unpaid') {
+                        eTd.append(uploadBtn)
+                    } else if (row['Payment Status'] == 'in review') {
+                        eTd.append(uploadBtn)
+                        eTd.append(viewBtn)
+                    }
+                    else if (row['Payment Status'] == 'paid') {
+                        eTd.append(viewBtn)
+                    }
+                } else {
+                    eTd.innerText = k=='Ordered Date'
+                     ?
+                      (v ? new Date(v).toDateString() : '') : 
+                      (v ? v : '') //Assuming ordered date in 4th index`
+                }
                 eTr.append(eTd)
-            }
-        })
-
-        const eTd = document.createElement('td')
-
-        if(row[iMap['Payment Status']] != null){
-            if(row[iMap['Payment Status']] == 'unpaid'){
-                const eButton = document.createElement('button')
-                eButton.id = 'event'+row[iMap['pk']]
-                eButton.value = row[iMap['pk']]
-                eButton.classList = 'button'
-                eButton.innerHTML = 'Upload Receipt'
-
-                eButton.onclick = function () {
-                    const eInput_file = document.createElement('input')
-                    eInput_file.type = 'file'
-                    eInput_file.id = row[iMap['pk']]
-                    eInput_file.accept = '.jpg, .jpeg, .png, .pdf'
-                    eInput_file.click()
+                eReceiptTable.children[1].append(eTr)
+            })       
+        eReceiptTable.style.display = ''
+        }
+})}
 
                     eInput_file.onchange = function (event) {
                         const event_pk = document.getElementById('event'+row[iMap['pk']]).value
