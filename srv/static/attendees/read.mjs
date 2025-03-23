@@ -23,7 +23,7 @@ export function getReceiptDetails(slug) {
             return response.json()
         }
     }).then( function(json){
-        updateReceiptTable(slug, json)
+        updateReceiptTable(json)
 
         json.data.forEach(function (row) {
             if(row['Currency'] !== null){
@@ -44,10 +44,6 @@ export function getReceiptDetails(slug) {
             }
         })
 
-        const totalAmountElement = document.getElementById('total-amount');
-        const inReviewAmountElement = document.getElementById('in-review-amount');
-        const paidAmountElement = document.getElementById('paid-amount');
-
         if (document.getElementById('total-amount')) {
             document.getElementById('total-amount').innerText = `${currency} ${unpaidAmount.toFixed(2)}`;
         }
@@ -63,13 +59,10 @@ export function getReceiptDetails(slug) {
 }
 
 
-function updateReceiptTable(slug, json){
+function updateReceiptTable(json){
     const eReceiptTable = document.getElementById('receipt-table')
 
-    const iMap = {}
-
     json.headers.forEach(function (h, i) {
-        iMap[h] = i
         const eTh = document.createElement('th')
         eTh.innerText = h
         eReceiptTable.children[0].children[0].append(eTh)
@@ -80,7 +73,7 @@ function updateReceiptTable(slug, json){
             const eTr = document.createElement('tr')
             Object.entries(row).forEach(function ([k,v]) {
                 const eTd = document.createElement('td')
-    
+
                 if (k == 'Action') {
                     const uploadBtn = document.createElement('button')
                     uploadBtn.innerText = 'Upload Receipt'
@@ -89,11 +82,11 @@ function updateReceiptTable(slug, json){
                     json.pk.forEach(function (pk_row) {
                         if(row['Event'] === pk_row.Name) {
                             uploadBtn.onclick = function () {
-                                uploadReceipt(pk_row.pk)  
+                                uploadReceipt(pk_row.pk)
                             }
                         }
                     })
-    
+
                     const viewBtn = document.createElement('button')
                     viewBtn.innerText = 'View Receipt'
                     viewBtn.classList = 'button'
@@ -101,31 +94,33 @@ function updateReceiptTable(slug, json){
                     json.pk.forEach(function (pk_row) {
                         if(row['Event'] === pk_row.Name) {
                             viewBtn.onclick = function () {
-                                viewReceipt(pk_row.pk)  
+                                viewReceipt(pk_row.pk)
                             }
                         }
                     })
-    
+
                     if (row['Payment Status'] == 'unpaid') {
                         eTd.append(uploadBtn)
-                    } else if (row['Payment Status'] == 'in review') {
+                    }
+                    else if (row['Payment Status'] == 'in review') {
                         eTd.append(uploadBtn)
                         eTd.append(viewBtn)
                     }
                     else if (row['Payment Status'] == 'paid') {
                         eTd.append(viewBtn)
                     }
-                } else {
+                }
+                else {
                     eTd.innerText = k=='Ordered Date'
                      ?
-                      (v ? new Date(v).toDateString() : '') : 
-                      (v ? v : '') //Assuming ordered date in 4th index`
+                      (v ? new Date(v).toDateString() : '') :
+                      (v ? v : '')
                 }
                 eTr.append(eTd)
                 eReceiptTable.children[1].append(eTr)
-            })       
+            })
         eReceiptTable.style.display = ''
-        }
+    }
 })}
 
 function uploadReceipt (event_pk){
@@ -148,7 +143,7 @@ function uploadReceipt (event_pk){
 
         if (2 <= Math.round((file.size / 1024 / 1024))) {
             alert('Please upload file less than 2 MB')
-            eRoot.remove()
+            eInput_file.remove()
             return
         }
 
