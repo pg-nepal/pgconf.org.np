@@ -29,10 +29,17 @@
                         <a href="/proposals/evaluation">Proposals Evaluation</a>
                     </div>
                 </ul>
-                <li class="nav-item"><a class="admin-links" href="/attendees">Attendees</a></li>
+                <ul class="dropdown" id="dropdown">
+                    <a class="admin-links" href="/attendees">Attendees</a>
+                    <div class="dropdown-content">
+                        <a href="/attendees?type=organizer">Organizer</a>
+                        <a href="/attendees?type=participant">Participant</a>
+                        <a href="/attendees?type=speaker">Speaker</a>
+                    </div>
+                </ul>
                 <li class="nav-item"><a class="admin-links" href="/tickets">Tickets</a></li>
                 <li class="nav-item admin">
-                    <a href="/" class="logout" 
+                    <a href="/" class="logout"
                     onclick="logout();return false;">Logout</a>
                 </li>
             </ul>
@@ -72,7 +79,7 @@
                     <li class="nav-item"><a href="/proposals">Proposals</a></li>
                     <li class="nav-item"><a href="/attendees">Attendees</a></li>
                     <li class="nav-item admin">
-                        <a href="/" class="logout" 
+                        <a href="/" class="logout"
                         onclick="logout();return false;">Logout</a>
                     </li>
                 <!-- </ul> -->
