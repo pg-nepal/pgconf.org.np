@@ -89,6 +89,7 @@ def receipt_read_client(slug):
     pk_query = sa.select(
         db.conf.Event.pk.label('pk'),
         db.conf.Event.name.label('Name'),
+        db.conf.Ticket.paymentStatus.label('Payment Status'),
     ).outerjoin(
         db.conf.Ticket,
         sa.and_(
