@@ -41,6 +41,9 @@
 
     <h3>&#129534; Payment Information</h3>
 
+    <button id="view-receipt-history" class="button"> View receipt history </button>
+    {% include '/attendees/view-receipt-history.djhtml' %}
+
     <table id="receipt-table" style="display: none;" >
         <thead><tr></tr></thead>
         <tbody></tbody>
