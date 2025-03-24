@@ -61,18 +61,18 @@
 
 <script>
     function selectEvents(slug) {
-        fetch(`/tickets/receipt/${slug}`).then(function (response) {
+        fetch(`/registered/tickets/receipt/${slug}`).then(function (response) {
             if (200 == response.status) {
                 return response.json()
             }
         }).then(function (json) {
             const eSelect = document.getElementById('edit-event-select')
-            json.data.forEach(function (row) {
+            json.pk.forEach(function (row) {
                 const eOption = document.createElement('option')
-                eOption.value = row[0]
-                eOption.innerHTML = row[1]
-                eOption.selected = (row[6] != null)
-                if(row[6] == 'paid'){
+                eOption.value = row.pk
+                eOption.innerHTML = row.Name
+                eOption.selected = (row['Payment Status'] != null)
+                if(row['Payment Status'] == 'paid'){
                     eOption.setAttribute('style', 'color:red')
                 }
                 eSelect.append(eOption)
