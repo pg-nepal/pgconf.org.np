@@ -301,3 +301,29 @@ function receiptHistory(json){
         })
     })
 }
+
+function viewReceiptFromHistory(receipt_pk){
+    const eButton = document.createElement('button')
+    eButton.classList = 'button'
+    eButton.innerHTML = 'View Receipt'
+
+    fetch(`/ticket/receipt_view/${receipt_pk}`, {
+        method   : 'POST',
+        headers : { 'Content-Type' : 'application/json' },
+        body : JSON.stringify({
+            receipt_pk : receipt_pk,
+        }),
+    }).then(function (response){
+        return response.json()
+    }).then(function (json){
+        const receipt = 'data:'+ json.receiptType +';base64,' + json.image;
+        const newWindow = window.open();
+
+        if(json.receiptType == 'application/pdf'){
+            newWindow.document.write('<embed src="' + receipt + '" width="100%" height="100%" type="application/pdf">');
+        }
+        else{
+            newWindow.document.write('<img src="' + receipt + '" />');
+        }
+    })
+}
