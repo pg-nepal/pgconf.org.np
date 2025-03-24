@@ -23,7 +23,7 @@
             <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
                 Submit Your Proposal
             </button>
-            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 30</strong></em></p>
+            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 04</strong></em></p>
         </div>
 
         <h2>Submission Guidelines</h2>
