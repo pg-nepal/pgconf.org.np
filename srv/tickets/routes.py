@@ -68,6 +68,30 @@ def receipt_read(slug):
         )
 
 
+@app.get('/tickets/receipt/history/<int:pk>')
+def receipt_history(pk):
+    query = sa.select(
+        db.conf.Receipt.pk,
+        db.conf.Receipt.ticket_pk,
+        db.conf.Receipt.event_pk,
+        db.conf.Receipt.attendee_pk,
+        db.conf.Receipt.paymentStatus,
+        db.conf.Receipt.paymentNote,
+        db.conf.Receipt.updatedOn,
+        sa.literal('').label('View Receipt'),
+    ).where(
+        db.conf.Receipt.attendee_pk == pk,
+    ).order_by(db.conf.Receipt.pk)
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
+        return flask.jsonify(
+            headers = tuple(c['name'] for c in query.column_descriptions),
+            data    = [row._asdict() for row in cursor],
+        )
+
+
 @app.get('/registered/tickets/receipt/<slug>')
 def receipt_read_client(slug):
     query = sa.select(
