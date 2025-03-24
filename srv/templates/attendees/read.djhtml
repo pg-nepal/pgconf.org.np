@@ -112,10 +112,18 @@
     }
 </script>
 
-<script>
+<script type="module">
+    import * as attendees from '/static/attendees/read.mjs'
+
     const eDialog = document.getElementById('dialog-edit-profile')
     document.getElementById('edit-profile').onclick = function (event) {
         eDialog.showModal()
+    }
+
+    const eReceiptDialog = document.getElementById('dialog-receipt-history')
+    document.getElementById('view-receipt-history').onclick = function (event) {
+        attendees.getReceiptHistory('{{row.pk}}')
+        eReceiptDialog.showModal()
     }
 </script>
 {% endblock %}
