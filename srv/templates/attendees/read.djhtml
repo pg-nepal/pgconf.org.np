@@ -46,6 +46,7 @@
         <tbody></tbody>
     </table>
 
+    {% include '/attendees/change-status-dialog.djhtml' %}
 
     {% if row.category == 'student' %}
         <h3>&#129534; Student ID</h3>
