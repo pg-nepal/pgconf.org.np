@@ -24,37 +24,6 @@ export function getReceiptDetails(slug) {
         }
     }).then( function(json){
         updateReceiptTable(json)
-
-        json.data.forEach(function (row) {
-            if(row['Currency'] !== null){
-                currency = row['Currency']
-            }
-
-            const amount = parseFloat(row['Amount'])
-            const paymentStatus = row['Payment Status']
-
-            if(!isNaN(amount)){
-                if(paymentStatus === 'unpaid'){
-                    unpaidAmount += amount
-                } else if (paymentStatus === 'in review'){
-                    reviewAmount += amount
-                } else {
-                    paidAmount += amount
-                }
-            }
-        })
-
-        if (document.getElementById('total-amount')) {
-            document.getElementById('total-amount').innerText = `${currency} ${unpaidAmount.toFixed(2)}`;
-        }
-
-        if (document.getElementById('in-review-amount')) {
-            document.getElementById('in-review-amount').innerText = `${currency} ${reviewAmount.toFixed(2)}`;
-        }
-
-        if (document.getElementById('paid-amount')) {
-            document.getElementById('paid-amount').innerText = `${currency} ${paidAmount.toFixed(2)}`;
-        }
     })
 }
 
