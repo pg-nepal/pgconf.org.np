@@ -42,15 +42,14 @@ def ticket_show_mine(slug):
 @app.get('/tickets/receipt/<slug>')
 def receipt_read(slug):
     query = sa.select(
-        db.conf.Event.pk.label('pk'),
+        db.conf.Event.pk,
         db.conf.Event.name.label('Event'),
-        db.conf.Event.eventOn.label('Date From'),
-        db.conf.Event.eventTo.label('Date To'),
-        db.conf.Ticket.currency.label('Currency'),
-        db.conf.Ticket.fee.label('Amount'),
+        sa.func.concat(db.conf.Ticket.currency, ' ', db.conf.Ticket.fee).label('Amount'),
+        sa.cast(db.conf.Ticket.status.label('Ticket Status'), sa.String),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
         db.conf.Ticket.createdOn.label('Ordered Date'),
-        db.conf.Ticket.updatedOn.label('Updated Date'),
+        sa.literal('').label('Action'),
+        sa.literal('').label('Change Status'),
     ).outerjoin(
         db.conf.Ticket,
         sa.and_(
@@ -65,7 +64,7 @@ def receipt_read(slug):
 
         return flask.jsonify(
             headers = tuple(c['name'] for c in query.column_descriptions),
-            data    = [list(row) for row in cursor],
+            data    = [row._asdict() for row in cursor],
         )
 
 
