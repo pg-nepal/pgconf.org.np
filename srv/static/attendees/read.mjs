@@ -259,3 +259,45 @@ export function sendEmail(slug, emailType) {
         })
     })
 }
+
+
+export function getReceiptHistory(slug) {
+    fetch(`/tickets/receipt/history/${slug}`).then(function (response) {
+        if (200 == response.status) {
+            return response.json()
+        }
+    }).then( function(json){
+        receiptHistory(json)
+    })
+}
+
+function receiptHistory(json){
+    const eReceiptTable = document.getElementById('receipt-history-table')
+    eReceiptTable.innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
+
+    json.headers.forEach(function (h, i) {
+        const eTh = document.createElement('th')
+        eTh.innerText = h
+        eReceiptTable.children[0].children[0].append(eTh)
+    })
+
+    json.data.forEach(function (row) {
+        const eTr = document.createElement('tr')
+        Object.entries(row).forEach(function ([k,v]) {
+            const eTd = document.createElement('td')
+            eTd.innerHTML = v
+
+            if (k == 'View Receipt') {
+                const viewBtn = document.createElement('button')
+                viewBtn.innerText = 'View Receipt'
+                viewBtn.classList = 'button'
+                viewBtn.style.margin = '1%'
+                viewBtn.onclick = function () { viewReceiptFromHistory(row.pk) }
+                eTd.append(viewBtn)
+            }
+
+            eTr.append(eTd)
+            eReceiptTable.children[1].append(eTr)
+        })
+    })
+}
