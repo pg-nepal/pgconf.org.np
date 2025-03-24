@@ -72,8 +72,7 @@ def receipt_read(slug):
 def receipt_read_client(slug):
     query = sa.select(
         db.conf.Event.name.label('Event'),
-        db.conf.Ticket.currency.label('Currency'),
-        db.conf.Ticket.fee.label('Amount'),
+        sa.func.concat(db.conf.Ticket.currency, ' ', db.conf.Ticket.fee).label('Amount'),
         sa.cast(db.conf.Ticket.status.label('Ticket Status'), sa.String),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
         db.conf.Ticket.createdOn.label('Ordered Date'),
