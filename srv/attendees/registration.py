@@ -357,6 +357,17 @@ def receipt_upload(slug):
             receiptType   = mimetype,
             paymentStatus = 'submitted',
         ))
+
+        session.execute(sa.insert(
+            db.conf.Receipt,
+        ).values(
+            ticket_pk     = row.pk,
+            event_pk      = row.event_pk,
+            attendee_pk   = row.attendee_pk,
+            receiptBlob   = receiptBlob,
+            receiptType   = mimetype,
+            paymentStatus = 'submitted',
+        ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
 
