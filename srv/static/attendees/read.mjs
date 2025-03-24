@@ -83,11 +83,11 @@ function updateReceiptTable(json){
                     if (row['Payment Status'] == 'unpaid') {
                         eTd.append(uploadBtn)
                     }
-                    else if (row['Payment Status'] == 'in review') {
+                    if (row['Payment Status'] == 'submitted' || row['Payment Status'] == 'rejected') {
                         eTd.append(uploadBtn)
                         eTd.append(viewBtn)
                     }
-                    else if (row['Payment Status'] == 'paid') {
+                    if (row['Payment Status'] == 'in review' || row['Payment Status'] == 'paid') {
                         eTd.append(viewBtn)
                     }
                 }
