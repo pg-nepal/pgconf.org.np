@@ -1,3 +1,4 @@
+import base64
 import flask
 import sqlalchemy as sa
 
@@ -150,3 +151,20 @@ def receipt_changestatus(pk):
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
+
+@app.post('/ticket/receipt_view/<int:pk>')
+def receipt_view_history(pk):
+    with db.SessionMaker.begin() as session:
+        row = session.execute(sa.select(
+            db.conf.Receipt.receiptBlob,
+            db.conf.Receipt.receiptType,
+        ).where(
+            db.conf.Receipt.pk == pk,
+        )).first()
+
+        encoded_image = base64.b64encode(row.receiptBlob).decode('utf-8')
+
+        return flask.jsonify({
+            'image'       : encoded_image,
+            'receiptType' : row.receiptType,
+        })
