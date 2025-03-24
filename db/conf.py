@@ -53,6 +53,15 @@ p_ticket_status = sa.Enum(
     metadata = db.meta,
 )
 
+payment_status = (
+    'unpaid',
+    'submitted',
+    'in review',
+    'paid',
+    'rejected',
+)
+e_payment_status= enum.IntEnum('payment_status', payment_status)
+
 
 class Attendee(db.Base):
     __tablename__  = 'attendees'
