@@ -13,11 +13,6 @@ export function getTicketDetails(slug) {
 
 
 export function getReceiptDetails(slug) {
-    let unpaidAmount = 0
-    let reviewAmount = 0
-    let paidAmount = 0
-    let currency = ''
-
     fetch(`/registered/tickets/receipt/${slug}`).then(function (response) {
         if (200 == response.status) {
             return response.json()
@@ -29,7 +24,6 @@ export function getReceiptDetails(slug) {
 
 
 export function getReceiptDetailsAdmin(slug) {
-
     fetch(`/tickets/receipt/${slug}`).then(function (response) {
         if (200 == response.status) {
             return response.json()
