@@ -149,3 +149,25 @@ class Ticket(db.Base):
     paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
     paymentNote    = sa.Column(sa.Text)
     ticketNote     = sa.Column(sa.Text)
+
+
+class Receipt(db.Base):
+    __tablename__  = 'receipts'
+    __table_args__ = {
+        'schema'  : 'conf25',
+        'comment' : 'list of receipts',
+    }
+
+    pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
+
+    ticket_pk      = sa.Column(sa.Integer, sa.ForeignKey(Ticket.pk, ondelete='CASCADE'))
+    event_pk       = sa.Column(sa.Integer, sa.ForeignKey(Event.pk, ondelete='CASCADE'))
+    attendee_pk    = sa.Column(sa.Integer, sa.ForeignKey(Attendee.pk, ondelete='CASCADE'))
+
+    paidAmount     = sa.Column(sa.Numeric(10, 2), server_default='0')
+    receiptBlob    = sa.Column(sa.LargeBinary)
+    receiptType    = sa.Column(sa.String(20), comment='file type of the uploaded receipt')
+
+    paymentStatus  = sa.Column(sa.String(10), server_default='unpaid')
+    paymentNote    = sa.Column(sa.Text)
