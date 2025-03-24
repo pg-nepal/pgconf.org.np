@@ -319,6 +319,10 @@ def registered_update(slug):
 def receipt_upload(slug):
     receiptFile = flask.request.files['file']
     event_pk = flask.request.form.get('event_pk')
+    paymentStatus = flask.request.form.get('paymentStatus')
+
+    if paymentStatus not in ('unpaid', 'submitted', 'rejected'):
+        return 'Invalid payment status', 400
 
     if not receiptFile:
         return 'File not uploaded', 400
@@ -330,6 +334,19 @@ def receipt_upload(slug):
     receiptBlob = receiptFile.read()
 
     with db.SessionMaker.begin() as session:
+        row = session.execute(sa.select(
+            db.conf.Ticket.pk,
+            db.conf.Ticket.event_pk,
+            db.conf.Ticket.attendee_pk,
+            db.conf.Ticket.paymentStatus,
+        ).where(
+            db.conf.Ticket.event_pk == int(event_pk),
+            sa.cast(db.conf.Ticket.attendee_slug, sa.String) == slug,
+        )).first()
+
+        if row.paymentStatus not in ('unpaid', 'submitted', 'rejected'):
+            return 'Invalid payment status', 400
+
         cursor = session.execute(sa.update(
             db.conf.Ticket,
         ).where(
@@ -338,7 +355,7 @@ def receipt_upload(slug):
         ).values(
             receiptBlob   = receiptBlob,
             receiptType   = mimetype,
-            paymentStatus = 'in review',
+            paymentStatus = 'submitted',
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
