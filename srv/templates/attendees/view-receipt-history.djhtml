@@ -1,0 +1,30 @@
+<link rel="stylesheet" href="/static/css/form.css">
+
+<dialog id="dialog-receipt-history" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Receipt History</h2>
+    </header>
+
+    <table id="receipt-history-table">
+        <thead><tr></tr></thead>
+        <tbody></tbody>
+    </table>
+</dialog>
+
+
+<script type="module">
+    const dialog_ticket = document.getElementById('dialog-receipt-history')
+    dialog_ticket.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_ticket.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_ticket.close()
+        }
+    })
+</script>
