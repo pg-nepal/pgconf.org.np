@@ -63,7 +63,7 @@ function updateReceiptTable(json){
                     json.pk.forEach(function (pk_row) {
                         if(row['Event'] === pk_row.Name) {
                             uploadBtn.onclick = function () {
-                                uploadReceipt(pk_row.pk)
+                                uploadReceipt(pk_row.pk, row['Payment Status'])
                             }
                         }
                     })
@@ -104,7 +104,7 @@ function updateReceiptTable(json){
     }
 })}
 
-function uploadReceipt (event_pk){
+function uploadReceipt (event_pk, paymentStatus){
     const eInput_file = document.createElement('input')
     eInput_file.type = 'file'
     eInput_file.id = event_pk
@@ -131,11 +131,17 @@ function uploadReceipt (event_pk){
         const formData = new FormData()
         formData.append('file', file)
         formData.append('event_pk', event_pk)
+        formData.append('paymentStatus', paymentStatus)
 
         fetch(`/registered/receipt_upload/${slug}`, {
             method   : 'POST',
             body : formData,
         }).then(function (response){
+            if(response.status === 400){
+                response.text().then(responseText => {
+                    alert(responseText);
+                });
+            }
             location.reload()
         })
     }
