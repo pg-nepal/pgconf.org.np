@@ -1,0 +1,78 @@
+<link rel="stylesheet" href="/static/css/form.css">
+
+<dialog id="dialog-change-status" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Change status of the receipt</h2>
+    </header>
+
+    <form id="form-change-status" method="dialog">
+        <div class="fields">
+            <label for="event_pk">Event Pk</label>
+            <input id="event_pk" name="event_pk" disabled>
+        </div>
+        <div class="fields">
+            <label for="wtf-category">Ticket Status<sup>*</sup></label>
+            <select id="wtf-category" name="ticket-status" placeholder="Status" required>
+                <option value="booked">Booked</option>
+                <option value="paid">Paid</option>
+                <option value="cancelled">Cancelled</option>
+            </select>
+        </div>
+        <div class="fields">
+            <label for="wtf-category">Receipt Status<sup>*</sup></label>
+            <select id="wtf-category" name="receipt-status" placeholder="Status" required>
+                <option value="unpaid">Unpaid</option>
+                <option value="submitted">Submitted</option>
+                <option value="in review">In review</option>
+                <option value="paid">Paid</option>
+                <option value="rejected">Rejected</option>
+            </select>
+        </div>
+        <div class="fields">
+            <label for="note">Note</label>
+            <textarea id="note" name="note"></textarea>
+        </div>
+        <button class="button" style="text-align: center;">Save</button>
+    </form>
+</dialog>
+
+
+<script type="module">
+    const dialog_ticket = document.getElementById('dialog-change-status')
+    dialog_ticket.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_ticket.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_ticket.close()
+        }
+    })
+</script>
+
+
+<script type="module">
+    document.getElementById('form-change-status').addEventListener('submit', function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        event.target.reportValidity()
+
+        document.getElementById('event_pk').disabled = false
+        const formData = new FormData(event.target)
+
+        if (!confirm('Are you sure?')) return
+        fetch('/tickets/receipt/changestatus/{{row.pk}}', {
+            method : 'POST',
+            body   : formData,
+        }).then(function(response){
+            if (response.status != 202) {
+                alert('Update failed')
+            }
+            location.reload()
+        })
+    })
+</script>
