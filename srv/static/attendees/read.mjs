@@ -28,6 +28,18 @@ export function getReceiptDetails(slug) {
 }
 
 
+export function getReceiptDetailsAdmin(slug) {
+
+    fetch(`/tickets/receipt/${slug}`).then(function (response) {
+        if (200 == response.status) {
+            return response.json()
+        }
+    }).then( function(json){
+        updateReceiptTableAdmin(json)
+    })
+}
+
+
 function updateReceiptTable(json){
     const eReceiptTable = document.getElementById('receipt-table')
 
