@@ -49,6 +49,7 @@ def receipt_read(slug):
         sa.cast(db.conf.Ticket.status.label('Ticket Status'), sa.String),
         db.conf.Ticket.paymentStatus.label('Payment Status'),
         db.conf.Ticket.createdOn.label('Ordered Date'),
+        db.conf.Ticket.receiptType.label('Receipt'),
         sa.literal('').label('Action'),
         sa.literal('').label('Change Status'),
     ).outerjoin(
