@@ -105,8 +105,13 @@ function filterFromURL(search) {
 }
 
 
-export function load(id, baseURL) {
-    const api = `/api${baseURL}`
+export function load(id, baseURL, extendedURL) {
+    let api = `/api${baseURL}`
+
+    if(extendedURL !== 'None'){
+        api = `/api${baseURL}`+`${extendedURL}`
+    }
+
     fetch(api, {
         method  : 'POST',
         headers : { 'content-type' : 'application/json' },
