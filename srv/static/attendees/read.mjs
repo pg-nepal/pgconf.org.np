@@ -79,7 +79,7 @@ function updateReceiptTable(json){
                     }
                     else if (k == 'Payment Status') {
                         if (v === 'rejected') {
-                            eTd.innerHTML = v + " &#x2139;"
+                            eTd.innerHTML = v + " ℹ️"
                             eTd.title = row['Note']
                         }
                         else{
