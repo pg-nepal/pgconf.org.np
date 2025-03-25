@@ -128,25 +128,31 @@ def receipt_changestatus(pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    event_pk = flask.request.form.get('event_pk')
+    event_name = flask.request.form.get('event_name')
     ticketStatus = flask.request.form.get('ticket-status')
     paymentStatus = flask.request.form.get('receipt-status')
     paymentNote = flask.request.form.get('note')
 
     with db.SessionMaker.begin() as session:
+        row_event = session.execute(sa.select(
+            db.conf.Event.pk,
+        ).where(
+            db.conf.Event.name == event_name,
+        )).first()
+
         row = session.execute(sa.select(
             db.conf.Ticket.pk,
             db.conf.Ticket.receiptBlob,
             db.conf.Ticket.receiptType,
         ).where(
-            db.conf.Ticket.event_pk == int(event_pk),
+            db.conf.Ticket.event_pk == row_event.pk,
             db.conf.Ticket.attendee_pk == pk,
         )).first()
 
         cursor = session.execute(sa.update(
             db.conf.Ticket,
         ).where(
-            db.conf.Ticket.event_pk == int(event_pk),
+            db.conf.Ticket.event_pk == row_event.pk,
             db.conf.Ticket.attendee_pk == pk,
         ).values(
             status          = ticketStatus,
@@ -159,7 +165,7 @@ def receipt_changestatus(pk):
             db.conf.Receipt,
         ).values(
             ticket_pk     = row.pk,
-            event_pk      = int(event_pk),
+            event_pk      = row_event.pk,
             attendee_pk   = pk,
             receiptBlob   = row.receiptBlob,
             receiptType   = row.receiptType,
