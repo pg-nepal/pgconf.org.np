@@ -6,6 +6,7 @@ import db
 import db.conf
 
 from srv import app
+import srv
 
 
 @app.get('/ticket/<slug>')
@@ -136,6 +137,10 @@ def receipt_read_client(slug):
 
 @app.post('/tickets/receipt/changestatus/<int:pk>')
 def receipt_changestatus(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     event_pk = flask.request.form.get('event_pk')
     ticketStatus = flask.request.form.get('ticket-status')
     paymentStatus = flask.request.form.get('receipt-status')
@@ -159,6 +164,7 @@ def receipt_changestatus(pk):
         ).values(
             status          = ticketStatus,
             paymentStatus   = paymentStatus,
+            updatedBy       = isAdmin,
         ))
 
         cursor_receipt = session.execute(sa.insert(
@@ -171,6 +177,7 @@ def receipt_changestatus(pk):
             receiptType   = row.receiptType,
             paymentStatus = paymentStatus,
             paymentNote   = paymentNote,
+            createdBy     = isAdmin,
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
