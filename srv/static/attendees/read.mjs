@@ -38,7 +38,7 @@ function updateReceiptTable(json){
     const eReceiptTable = document.getElementById('receipt-table')
 
     json.headers.forEach(function (h, i) {
-        if(h != 'pk'){
+        if(h != 'pk' && h!= 'Note'){
             const eTh = document.createElement('th')
             eTh.innerText = h
             eReceiptTable.children[0].children[0].append(eTh)
@@ -49,7 +49,7 @@ function updateReceiptTable(json){
         if(row['Payment Status'] !== null) {
             const eTr = document.createElement('tr')
             Object.entries(row).forEach(function ([k,v]) {
-                if(k != 'pk'){
+                if(k != 'pk' && k != 'Note'){
                     const eTd = document.createElement('td')
 
                     if (k == 'Action') {
@@ -75,6 +75,15 @@ function updateReceiptTable(json){
                                 viewReceipt(row.pk)
                             }
                             eTd.append(viewBtn)
+                        }
+                    }
+                    else if (k == 'Payment Status') {
+                        if (v === 'rejected') {
+                            eTd.innerHTML = v + " &#x2139;"
+                            eTd.title = row['Note']
+                        }
+                        else{
+                            eTd.innerHTML = v
                         }
                     }
                     else if (k =='Ordered Date') {
