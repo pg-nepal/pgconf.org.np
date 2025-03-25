@@ -73,7 +73,7 @@
 {% block tail %}
     <script type="module">
         import * as table from '/static/table.mjs'
-        table.load('my-table', '{{baseURL}}')
+        table.load('my-table', '{{baseURL}}', '{{extendedURL | default(None)}}')
     </script>
 
     <script type="module">
