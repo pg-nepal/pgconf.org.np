@@ -29,10 +29,11 @@ def proposal_evaluation_view():
 
     return flask.render_template(
         '/table.djhtml',
-        pageTitle = 'Evaluate Proposals',
-        pageDesc  = 'List of all submitted proposals',
-        baseURL   = '/proposals/evaluation',
-        isAdmin   = isAdmin,
+        pageTitle   = 'Evaluate Proposals',
+        pageDesc    = 'List of all submitted proposals',
+        baseURL     = '/proposals',
+        extendedURL = '/evaluation',
+        isAdmin     = isAdmin,
     )
 
 
