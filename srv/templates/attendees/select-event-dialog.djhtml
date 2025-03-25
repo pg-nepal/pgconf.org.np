@@ -67,10 +67,10 @@
             }
         }).then(function (json) {
             const eSelect = document.getElementById('edit-event-select')
-            json.pk.forEach(function (row) {
+            json.data.forEach(function (row) {
                 const eOption = document.createElement('option')
                 eOption.value = row.pk
-                eOption.innerHTML = row.Name
+                eOption.innerHTML = row.Event
                 eOption.selected = (row['Payment Status'] != null)
                 if(row['Payment Status'] == 'paid'){
                     eOption.setAttribute('style', 'color:red')
