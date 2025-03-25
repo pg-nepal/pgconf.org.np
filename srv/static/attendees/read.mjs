@@ -151,8 +151,7 @@ function updateReceiptTableAdmin(json){
 
                         const eStatusDialog = document.getElementById('dialog-change-status')
                         eButton.onclick = function () {
-                            const id = eButton.id
-                            document.getElementById("event_pk").value = id
+                            document.getElementById("event_name").value = row['Event']
                             eStatusDialog.showModal()
                         }
 
