@@ -73,13 +73,11 @@ def receipt_read(slug):
 def receipt_history(pk):
     query = sa.select(
         db.conf.Receipt.pk,
-        db.conf.Receipt.ticket_pk,
-        db.conf.Receipt.event_pk,
-        db.conf.Receipt.attendee_pk,
-        db.conf.Receipt.paymentStatus,
-        db.conf.Receipt.paymentNote,
-        db.conf.Receipt.updatedOn,
-        sa.literal('').label('View Receipt'),
+        db.conf.Receipt.event_pk.label('Event'),
+        db.conf.Receipt.paymentStatus.label('Status'),
+        db.conf.Receipt.paymentNote.label('Note'),
+        db.conf.Receipt.updatedOn.label('Updated On'),
+        sa.literal('').label('Receipt'),
     ).where(
         db.conf.Receipt.attendee_pk == pk,
     ).order_by(db.conf.Receipt.pk)
