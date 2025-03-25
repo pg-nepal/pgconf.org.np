@@ -7,8 +7,8 @@
 
     <form id="form-change-status" method="dialog">
         <div class="fields">
-            <label for="event_pk">Event Pk</label>
-            <input id="event_pk" name="event_pk" disabled>
+            <label for="event_name">Event</label>
+            <input id="event_name" name="event_name" disabled>
         </div>
         <div class="fields">
             <label for="wtf-category">Ticket Status<sup>*</sup></label>
@@ -61,7 +61,7 @@
         event.stopPropagation()
         event.target.reportValidity()
 
-        document.getElementById('event_pk').disabled = false
+        document.getElementById('event_name').disabled = false
         const formData = new FormData(event.target)
 
         if (!confirm('Are you sure?')) return
