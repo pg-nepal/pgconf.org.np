@@ -151,6 +151,7 @@ def receipt_changestatus(pk):
         ).values(
             status          = ticketStatus,
             paymentStatus   = paymentStatus,
+            paymentNote     = paymentNote,
             updatedBy       = isAdmin,
         ))
 
