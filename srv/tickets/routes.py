@@ -145,7 +145,7 @@ def receipt_changestatus(pk):
             db.conf.Event.name == event_name,
         )).first()
 
-        row = session.execute(sa.select(
+        row_ticket = session.execute(sa.select(
             db.conf.Ticket.pk,
             db.conf.Ticket.receiptBlob,
             db.conf.Ticket.receiptType,
@@ -166,14 +166,14 @@ def receipt_changestatus(pk):
             updatedBy       = isAdmin,
         ))
 
-        cursor_receipt = session.execute(sa.insert(
+        session.execute(sa.insert(
             db.conf.Receipt,
         ).values(
-            ticket_pk     = row.pk,
+            ticket_pk     = row_ticket.pk,
             event_pk      = row_event.pk,
             attendee_pk   = pk,
-            receiptBlob   = row.receiptBlob,
-            receiptType   = row.receiptType,
+            receiptBlob   = row_ticket.receiptBlob,
+            receiptType   = row_ticket.receiptType,
             paymentStatus = paymentStatus,
             paymentNote   = paymentNote,
             createdBy     = isAdmin,
