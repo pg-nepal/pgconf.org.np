@@ -271,28 +271,42 @@ function receiptHistory(json){
     eReceiptTable.innerHTML = '<thead><tr></tr></thead><tbody></tbody>'
 
     json.headers.forEach(function (h, i) {
-        const eTh = document.createElement('th')
-        eTh.innerText = h
-        eReceiptTable.children[0].children[0].append(eTh)
+        if(h != 'pk'){
+            const eTh = document.createElement('th')
+            eTh.innerText = h
+            eReceiptTable.children[0].children[0].append(eTh)
+        }
     })
 
     json.data.forEach(function (row) {
         const eTr = document.createElement('tr')
         Object.entries(row).forEach(function ([k,v]) {
-            const eTd = document.createElement('td')
-            eTd.innerHTML = v
+            if(k != 'pk'){
+                const eTd = document.createElement('td')
 
-            if (k == 'View Receipt') {
-                const viewBtn = document.createElement('button')
-                viewBtn.innerText = 'View Receipt'
-                viewBtn.classList = 'button'
-                viewBtn.style.margin = '1%'
-                viewBtn.onclick = function () { viewReceiptFromHistory(row.pk) }
-                eTd.append(viewBtn)
-            }
+                if (k == 'Receipt') {
+                    const viewBtn = document.createElement('button')
+                    viewBtn.innerText = 'View'
+                    viewBtn.classList = 'button'
+                    viewBtn.style.margin = '1%'
+                    viewBtn.onclick = function () { viewReceiptFromHistory(row.pk) }
+                    eTd.append(viewBtn)
+                }
 
-            eTr.append(eTd)
+                else if (k =='Updated On') {
+                    if (v) {
+                        eTd.innerText = new Date(v).toDateString();
+                    } else {
+                        eTd.innerText = '';
+                    }
+                }
+
+                else{
+                    eTd.innerHTML = v
+                }
+                eTr.append(eTd)
             eReceiptTable.children[1].append(eTr)
+            }
         })
     })
 }
