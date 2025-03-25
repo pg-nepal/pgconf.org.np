@@ -86,7 +86,7 @@ def receipt_history(pk):
         ),
     ).where(
         db.conf.Receipt.attendee_pk == pk,
-    ).order_by(db.conf.Receipt.pk)
+    ).order_by(sa.desc(db.conf.Receipt.pk))
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
