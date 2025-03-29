@@ -22,7 +22,7 @@
 
     <form id="comment-submission" method="dialog" style="padding-top:1.5rem">
         <fieldset>
-            <textarea name="comment" id ="comment"></textarea>
+            <textarea name="comment" id ="comment" rows="15" cols="70"></textarea>
         </fieldset>
         <div style="display: flex; justify-content: center; align-items: center;">
             <button id="cmt-submit-button" class="button">Submit</button>
