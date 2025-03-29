@@ -62,4 +62,15 @@
             })
         })
     </script>
+    <script>
+        function insertTemplate() {
+            document.getElementById("comment").value =
+                "Relevance:\n> \n" +
+                "Clarity on abstract:\n> \n" +
+                "Impact of title:\n> \n" +
+                "Technicality of content:\n> \n" +
+                "This talk fits in <DBA | Developer> Track"
+            return false
+        }
+    </script>
 </dialog>
