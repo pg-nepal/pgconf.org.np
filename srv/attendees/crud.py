@@ -142,6 +142,7 @@ def attendee_read(pk):
                 'Name'          : row.name,
                 'Affiliation'   : row.affiliation,
                 'Email'         : row.email,
+                'Phone'         : row.phone,
                 'Country'       : row.country,
                 'Registered On' : row.createdOn.strftime('%B %d %Y'),
                 'Category'      : row.category,
