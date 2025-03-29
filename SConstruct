@@ -12,6 +12,7 @@ env = Environment(
         'BAUTH' : 'Basic {}'.format(
             base64.b64encode('root:0'.encode()).decode()
         ),
+        'PG_USER' : 'postgres'
     }
 )
 

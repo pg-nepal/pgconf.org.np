@@ -45,6 +45,14 @@
 </div>
 
 <div class="fields">
+    <label for="wtf-phone">Mobile Number <sup>*</sup></label>
+    <input id="wtf-phone" name="phone" placeholder="98xxxxxxxxxx" required>
+    <span style="margin-top:0.5rem; color:gray">
+        Phone number will be used for the domestic communication
+    </span>
+</div>
+ 
+<div class="fields">
     <label for="wtf-country">Country <sup>*</sup></label>
     <input list="countries" id="wtf-country" name="country" placeholder="Country" required>
     <datalist id="countries" style="display: none;"></datalist>
