@@ -150,4 +150,23 @@
             eTextArea.style.display = this.value ? 'block' : 'none'
         })
 
+        document.getElementById('status-update-form').addEventListener('submit', function(event){
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            const formData = new FormData(event.target)
+
+            if (!confirm('Do you want to change the proposal status?')) return
+            fetch('/proposals/{{pk}}', {
+                method : 'POST',
+                body   : formData,
+            }).then(function (response){
+                if (202 == response.status) {
+                    alert('Proposal Status updated successfully.')
+                    location.reload()
+                }
+            })
+        })
+    </script>
 {% endblock %}
