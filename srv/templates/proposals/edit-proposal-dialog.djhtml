@@ -1,0 +1,95 @@
+<link rel="stylesheet" href="/static/css/form.css">
+<style>
+    #dialog-proposal header {
+    border-bottom: 1px solid #ddd;
+    font-weight: 600;
+    font-size: 18px;
+    padding-bottom: 10px;
+    text-align: center;
+    color: #333;
+    }
+
+    #dialog-proposal p {
+        font-size: 14px;
+        color: #555;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    #dialog-proposal span {
+        display: block;
+        color: gray;
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+</style>
+
+<dialog id="dialog-proposal" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Edit Proposal</h2>
+    </header>
+
+    <form id="form-event-select" method="dialog">
+        <div class="fields">
+            <label for="session">Session <sup>*</sup></label>
+            <select id="wtf-session" name="session" required>
+                <option value="">Select Session</option>
+                <option value="talk">Talk</option>
+                <option value="workshop">Workshop</option>
+            </select>
+        </div>
+
+        <div class="fields">
+            <label for="title">Title <sup>*</sup></label>
+            <input id="title" name="title" value="{{row.title}}" placeholder="Session Title" maxlength=100 required >
+        </div>
+        
+        <div class="fields">
+            <label for="abstract">Abstract <sup>*</sup></label>
+            <textarea id="abstract" name="abstract" placeholder="Abstract of your session" required>{{row.abstract}}</textarea>
+            <label><em style="color: gray;">Please try to limit your abstract upto 500 words</em></label>
+        </div>
+
+        <div style="display: flex; justify-content: center; align-items: center;">
+            <button class="button">Save</button>
+        </div>
+    </form>
+</dialog>
+
+<script type="module">
+    const dialog_proposal = document.getElementById('dialog-proposal')
+    dialog_proposal.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_proposal.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_proposal.close()
+        }
+    })
+</script>
+
+<script>
+    document.getElementById('form-event-select').addEventListener('submit', function (event) {
+        event.preventDefault()
+        event.stopPropagation()
+        event.target.reportValidity()
+
+        const formData = new FormData(event.target)
+
+        if (!confirm('Are you sure about this proposal update?')) return
+        fetch('/submitted/{{row.slug}}', {
+            method : 'POST',
+            body   : formData,
+        }).then(function (response) {
+            if (202 == response.status) {
+                    location.reload()
+                }
+        })
+    })
+</script>
