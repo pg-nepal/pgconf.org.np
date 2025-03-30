@@ -126,9 +126,6 @@ def proposal_read(pk):
 
 @app.get('/api/submitted/<slug>')
 def client_proposal_read(slug):
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
 
     query = sa.select(
         db.programs.Proposal.pk,
