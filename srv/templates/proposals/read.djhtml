@@ -3,6 +3,7 @@
 
 
 {% block head  %}
+<link rel="stylesheet" href="/static/css/form.css">
     <style>
         .comment-section{
             box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
@@ -51,7 +52,6 @@
 
 {% block admin_content %}
     <h1 id="row.title"></h3>
-
     <p>
         <span id="rating-avg">Not Rated</span>
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
@@ -65,7 +65,6 @@
             <div class="info-label">Name</div>
             <div class="info-value" id="row.name"></div>
         </div>
-
         <div class="info-row">
             <div class="info-label">Email</div>
             <div class="info-value" id="row.email"></div>
