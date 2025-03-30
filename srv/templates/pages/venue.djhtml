@@ -74,7 +74,36 @@
 
 
         <section id="hospitality-partner">
-            <h2 class="section-header">Hospitality Partner</h2>
-            {% include 'comingSoon.djhtml' %}
+            {% include "parts/partners-hotels.djhtml" %}
         </section>
+
+        <div class="alert">
+            <h2 class="section-header">
+                🐘 Accomodation
+            </h2>
+            <p>
+                <strong>
+                    Hotel booking
+                </strong><br>
+
+                Contact <a href="mailto:prakash@ku.edu.np">prakash@ku.edu.np</a>
+                for hotel booking, reservation and other accomodation realted
+                queries. 
+            </p>
+            <p>
+                <strong>
+                    Planning a short tour and trek?
+                </strong><br>
+                Contact 
+                <a href="https://iconicholidaynepal.com/" target="_blank">
+                    Iconic Holiday Nepal Tour and Trek Pvt. Ltd.
+                </a>
+            </p>
+            <p>
+                <img
+                    src="https://media.iconicholidaynepal.com/themes/images/logo.svg"
+                    style="width:200px;"/>
+            </p>
+        </div>
+
 {% endblock %}
