@@ -140,4 +140,14 @@
             eDialog_.showModal()
         }
     </script>
+
+    <script>
+        document.getElementById('wtf-status').addEventListener('change', function () {
+            const eButton = document.getElementById('save-btn')
+            eButton.style.display = this.value ? 'block' : 'none'
+
+            const eTextArea = document.getElementById('note-textarea')
+            eTextArea.style.display = this.value ? 'block' : 'none'
+        })
+
 {% endblock %}
