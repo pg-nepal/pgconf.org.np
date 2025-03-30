@@ -48,7 +48,6 @@
 {% endblock %}
 
 {% set status_messages = {
-    'pending': 'Your proposal status is pending. You can make changes to you proposal.',
     'submitted': 'Your Proposal has been submitted✅. Please wait for your proposal remark.',
     'in review': 'Your proposal is being reviewed⏳. After the reviewing process, please update your proposal according to the proposal remarks.',
     'accepted': 'Congratulations! Your proposal has been accepted 🎊. If have pending proposals please wait for the proposal remarks.',
@@ -56,7 +55,6 @@
 } %}
 
 {% set status_icons = {
-    'pending': '🟡',
     'submitted': '📩',
     'in review': '⏳',
     'accepted': '🟢',
