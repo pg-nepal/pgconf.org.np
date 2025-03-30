@@ -88,6 +88,9 @@ def rate_summary(proposal_pk):
     isAdmin = srv.auth.isValid(flask.request)
     if isAdmin is False:
         return srv.auth.respondInValid()
+    
+    return rating_summary(proposal_pk)
+
 @app.get('/api/submitted/rates/summary/<int:proposal_pk>')
 def client_rating_summary(proposal_pk):
     return rating_summary(proposal_pk)
