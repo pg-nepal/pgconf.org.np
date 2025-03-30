@@ -270,12 +270,12 @@ export function init(pk) {
     })
 }
 
-export function proposal_Evaluation(pk) {
-    return fetch(`/api/proposals/${pk}`, {
+export function proposal_Evaluation(slug) {
+    return fetch(`/api/submitted/${slug}`, {
     }).then(function (response) {
         return response.json()
     }).then(function (json) {
-        rateRead_summary(json.pk)
+        client_rateRead_summary(json.pk)
         return json
     })
 }
