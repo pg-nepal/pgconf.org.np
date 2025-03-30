@@ -134,7 +134,7 @@ def proposal_evaluation(pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    status = flask.request.json.get('status', 'pending')
+    status = flask.request.json.get('status', 'submitted')
 
     query = sa.update(
         db.programs.Proposal,
