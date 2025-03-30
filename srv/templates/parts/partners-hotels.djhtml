@@ -1,0 +1,15 @@
+<div class="alert">
+    <h2 class="section-header">
+        Hospitality Partner
+    </h2>
+    <p>
+        <a href="https://www.himalayadrishyaresort.com/" target = "_blank">
+            <img src="/static/hospitality_drisya.jpg" style="width:150px;!" />
+        </a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="#" target = "_blank">
+            <img src="/static/hospitality_princess.jpg" width="150"
+                style="width:150px;!" />
+        </a>
+    </p>
+</div>
