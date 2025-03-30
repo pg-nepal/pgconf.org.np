@@ -163,7 +163,9 @@
 {% block tail %}
 <script>
     const eDialog = document.getElementById('dialog-proposal')
-
+    document.getElementById('edit-proposal-btn').onclick = function() {
+        eDialog.showModal()
+        }
 </script>
 
 
