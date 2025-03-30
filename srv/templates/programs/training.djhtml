@@ -65,10 +65,20 @@
         <h2>📝 Registration</h2>
         <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p>
 
-        <h3 style="color: #007bff;">
+        <p style="color: #007bff;">
             Registration will cover: <em>Transportation (from pickup point to Kathmandu University), Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
+        </p>
+        <h3 style="color: #007bff;">
+            Registration Fee: <em>NRs. 10,000.00 </em>
         </h3>
-        <h3 style="color: #007bff;">Registration Fee: <em>NRs. 10,000.00 (student discount available)</em></h3>
+        <p>
+            - Student discount available<br>
+            - Group enrollment discount available<br>
+            For discount related information contact:
+            <a href="mailto:info@pgconf.org.np">
+                info@pgconf.org.np
+            </a>
+        </p>
     </div>
 
     <div class="alert">
