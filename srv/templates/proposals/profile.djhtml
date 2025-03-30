@@ -125,7 +125,7 @@
                         <th>{{h}}</th>
                     {% endif %}
                 {% endfor %}
-                {% if row.status == 'pending' or row.status == 'rejected' %}
+                {% if row.status == 'pending' %}
                 <th>Action</th>
                 {% endif %}
             </tr>
@@ -139,7 +139,7 @@
                 {% endif %}
                 {% endfor %}
 
-                {% if row.status == 'pending' or row.status == 'rejected' %}
+                {% if row.status == 'pending' %}
                 <td><button id="edit-proposal-btn" class="button"> Edit Proposal </button></td>
                 {% endif %}
 
