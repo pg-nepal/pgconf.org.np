@@ -92,6 +92,7 @@
     <div class="alert">
     <h2>🎫 Ticket</h2>
 
+    {% if row.category != 'speaker' %}
     <div id="ticket-container">
 
     </div>
@@ -196,6 +197,7 @@
 
     </div>
     <h4 style="color: red;"><em>Note: After payment, the funds will be non-refundable.</em></h4>
+    {% endif %}
 </div>
 {% endblock %}
 
