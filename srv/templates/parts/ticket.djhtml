@@ -1,95 +1,4 @@
-<style>
-    .ticket {
-        display: flex;
-        gap: 2%;
-        align-items: center;
-        padding: 15px;
-        margin: 10px 0;
-        border-radius: 10px;
-        background-color: #336791;
-        position: relative;
-        cursor: pointer;
-    }
-
-
-    /* Circular Cutouts */
-    .ticket::before,
-    .ticket::after {
-        content: "";
-        width: 30px;
-        height: 30px;
-        background-color: whitesmoke;
-        border-radius: 50%;
-        position: absolute;
-        left: 70%;
-        transform: translateX(-50%);
-    }
-
-    .ticket::before {
-        top: -15px;
-    }
-
-    .ticket::after {
-        bottom: -15px;
-    }
-
-
-    .field-container {
-        width: 70%;
-        background-color: whitesmoke;
-        border: 2px dashed black;
-        padding: 1%;
-        border-radius: 6px
-    }
-
-    .wrapper {
-        width: 30%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .ticket-logo {
-        object-fit: cover;
-        height: 100%;
-        width: 30%;
-    }
-
-    .ticket-texts{
-        color: white;
-    }
-
-    .ticket-field {
-        display: block;
-    }
-
-    @media (max-width: 600px) {
-        .ticket {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            background-image: linear-gradient(to bottom, white 50%, #336791 70%);
-        }
-
-        .ticket-logo {
-            min-height: 25px;
-            width: 100%;
-        }
-
-        .field-container {
-            border: none;
-            background-color: white;
-            box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .ticket::before,
-        .ticket::after {
-            display: none;
-        }
-
-    }
-</style>
+<link rel="stylesheet" href="/static/css/ticket.css">
 
 {% for row in cursor %}
     <div id="ticket" class="ticket" style="position: relative;">
@@ -105,7 +14,7 @@
             </p>
         </div>
 
-        <div class="wrapper">
+        <div class="ticket-wrapper">
             <img class="ticket-logo" src="/static/images/pgconf_logo.png" alt="logo">
             <div class="ticket-texts">
                 <h2>{{row.name}}</h2>
