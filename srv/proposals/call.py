@@ -33,6 +33,7 @@ def proposal_call_form():
 @app.post('/proposals/call/add')
 def proposal_call_create():
     jsonData = flask.request.json
+    print("/proposals/call/add : ",jsonData)
     email = jsonData['email']
 
     idx = jsonData.pop('idx')
@@ -129,7 +130,7 @@ def submitted_update(slug):
             db.programs.Proposal,
         ).where(
             db.programs.Proposal.slug == slug,
-            db.programs.Proposal.status.in_(['pending']),
+            db.programs.Proposal.status.in_(['submitted']),
         ).values(
             session   = values.get('session'),
             title     = values.get('title'),
