@@ -245,3 +245,14 @@ export function init(pk) {
         return json
     })
 }
+
+export function proposal_Evaluation(pk) {
+    return fetch(`/api/proposals/${pk}`, {
+    }).then(function (response) {
+        return response.json()
+    }).then(function (json) {
+        rateRead_summary(json.pk)
+        return json
+    })
+}
+
