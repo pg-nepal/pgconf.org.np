@@ -59,15 +59,23 @@ def proposal_call_create():
         cursor = session.execute(query)
         proposal = cursor.first()
 
-        emailBody = flask.render_template (
-            '/emails/cfp_thanks.djhtml',
-            name      = jsonData['name'],
-            email     = email,
-            title     = jsonData['title'],
-            session   = jsonData['session'],
-            abstract  = jsonData['abstract'],
-        )
+        # emailBody = flask.render_template (
+        #     '/emails/cfp_thanks.djhtml',
+        #     name      = jsonData['name'],
+        #     email     = email,
+        #     title     = jsonData['title'],
+        #     session   = jsonData['session'],
+        #     abstract  = jsonData['abstract'],
+        # )
 
+        # srv.mbox.out.queue(
+        #     ref     = cursor.scalar(),
+        #     to      = email,
+        #     cc      = None,
+        #     subject = 'Thank You for submitting the proposal',
+        #     body    = emailBody,
+        #     note    = 'talk submission',
+        # )
 
         return flask.redirect('/submitted/{}'.format(proposal.slug))
 
