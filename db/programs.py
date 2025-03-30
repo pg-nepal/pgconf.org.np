@@ -27,6 +27,8 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
+    note           = sa.Column(sa.Text())
+
 
 class Review(db.Base):
     __tablename__  = 'reviews'
