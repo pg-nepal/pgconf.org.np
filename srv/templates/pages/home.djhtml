@@ -124,6 +124,28 @@
                         </a>
                     </div>
                 </section>
+
+                <section id="hospitality-partner">
+                    {% include "/parts/partners-hotels.djhtml" %}
+                </section>
+
+                <section id="sponsors" class="alert home-content mt-1">
+                    <h2 class="section-header">
+                        Supported By
+                    </h2>
+
+                    <div class="sponsors-logos">
+                        <a href="https://beta-analytics.com" target="_blank">
+                            <img src="https://beta-analytics.com/img/logo-medium-comp.png" alt="Beta Analytics">
+                        </a>
+                        <a href="https://uxlsoft.com" target="_blank">
+                            <img src="/static/sponsors/uxl-soft.png" alt="Uniaxial Softwares">
+                        </a>
+                        <a href="https://outlines-rnd.com" target="_blank">
+                            <img style="width: 200px;" src="/static/outlines.jpeg" alt="Outlines RND">
+                        </a>
+                    </div>
+                </section>
             </div>
 
             <div class="right-content">
