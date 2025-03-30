@@ -182,7 +182,6 @@ function reviewUpdate(proposal_pk) {
     }).then(function (response) {
         return response.text()
     }).then(function (textData) {
-        console.log(textData)
         location.reload()
     })
 }
@@ -206,6 +205,11 @@ function proposalLoad(row) {
         const element = document.getElementById(`row.${key}`)
         if (null === element) continue
         element.innerHTML = val
+    }
+
+    const selectElement = document.getElementById('wtf-status')
+    if(selectElement){
+        selectElement.value = row.status
     }
 }
 
