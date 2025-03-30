@@ -1,0 +1,28 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= '/ Previous Conference' %}
+
+
+{% block head %}
+    <style>
+  </style>
+{% endblock %}
+
+{% block main %}
+
+    <div class="content-container">
+        <h2>🐘 Third <span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
+        <h4><em>Kathmandu University, Dhulikhel, Nepal</em></h4>
+
+        <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
+        padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
+        border-radius: 8px; will-change: transform;">
+            <iframe loading="lazy" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none; padding: 0;margin: 0;"
+                src="https://www.canva.com/design/DAGhrXQCm5c/2aLNhkFkfwJKe1eI8E5ZFg/view?embed" allowfullscreen="allowfullscreen" allow="fullscreen">
+            </iframe>
+        </div>
+            <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAGhrXQCm5c&#x2F;2aLNhkFkfwJKe1eI8E5ZFg&#x2F;view?utm_content=DAGhrXQCm5c&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link" target="_blank" rel="noopener"></a>
+            <p>The 2023 conference featured captivating talks and hands on training by internationally renowned PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for two days of knowledge sharing, networking, and collaboration.</p>
+        </div>
+
+
+{% endblock %}
