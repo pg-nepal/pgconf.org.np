@@ -77,4 +77,41 @@ def proposal_call_create():
             note    = 'talk submission',
         )
 
-        return flask.redirect('/pages/call-for-proposal')
+@app.get('/submitted/<slug>')
+def submitted_proposal_read(slug):
+    query = sa.select(
+        db.programs.Proposal.slug,
+        db.programs.Proposal.pk,
+        db.programs.Proposal.name,
+        db.programs.Proposal.email,
+        db.programs.Proposal.country,
+        db.programs.Proposal.session,
+        db.programs.Proposal.title,
+        db.programs.Proposal.abstract,
+        db.programs.Proposal.note,
+        sa.cast(db.programs.Proposal.status, sa.String).label('status'),
+        sa.literal('').label('Action'),
+    ).where(
+        sa.cast(db.programs.Proposal.slug, sa.String) == slug,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return 'Invalid uuid', 400
+
+        return flask.render_template(
+            '/proposals/profile.djhtml',
+            row  = row,
+            show = {
+                'Name'        : row.name,
+                'Email'       : row.email,
+                'Country'     : row.country,
+                'Session'     : row.session,
+                'title'       : row.title,
+                'abstract'    : row.abstract, 
+                'Status'      : row.status,
+            },
+        )
