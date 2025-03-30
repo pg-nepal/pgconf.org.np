@@ -11,7 +11,6 @@ proposal_status = (
     'pending',
     'in review',
     'accepted',
-    'pending',
     'rejected',
 )
 e_proposal_status = enum.IntEnum('proposal_status', proposal_status)
@@ -43,6 +42,7 @@ class Proposal(db.Base):
     abstract       = sa.Column(sa.Text())
 
     status         = sa.Column(p_proposal_status, server_default='pending', comment='Acceptance status for a proposal')
+    note           = sa.Column(sa.Text())
 
 
 class Review(db.Base):
