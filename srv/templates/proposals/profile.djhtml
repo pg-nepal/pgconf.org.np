@@ -1,0 +1,220 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = 'Proposal Status' %}
+
+
+{% block head %}
+    <style>
+        .alert.evaluation{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .rating-star {
+            padding : 0 0.3rem;
+            letter-spacing: 0.3rem;
+            transition: all 0.4s ease-in-out;
+            filter: grayscale(1);
+            font-size: 50px;
+        }
+
+        .rating-star.active{
+            filter: grayscale(0);
+        }
+
+        .status-wrapper{
+            width: 50%;
+        }
+
+        .wrapper{
+            text-align: left;
+        }
+
+        @media (max-width: 1800px) {
+            .status-wrapper{
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            .status-wrapper{
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .status-wrapper{
+                width: 100%;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% set status_messages = {
+    'submitted': 'Your Proposal has been submitted✅. Please wait for your proposal remark.',
+    'in review': 'Your proposal is being reviewed⏳. After the reviewing process, please update your proposal according to the proposal remarks.',
+    'accepted': 'Congratulations! Your proposal has been accepted 🎊. If have pending proposals please wait for the proposal remarks.',
+    'rejected': 'Your proposal has been rejected😕. Better luck next time.'
+} %}
+
+{% set status_icons = {
+    'submitted': '📩',
+    'in review': '⏳',
+    'accepted': '🟢',
+    'rejected': '🔴'
+} %}
+
+{% block main %}
+    <div class="content-container">
+        <div id="evaluation-container"></div>
+        <div class="alert">
+            {% if row.status in status_messages %}
+                <h2>{{ status_icons.get(row.status, '❓') }} Proposal Status</h2>
+                <p>{{ status_messages[row.status] }}</p>
+            {% endif %}
+        </div>
+
+        {% if row.status == 'accepted' or row.status == 'rejected' %}
+            <div class="alert evaluation">
+                <h2>Proposal Evaluation</h2>
+                <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
+
+                <p>Your proposal received a rating of <span id="rating-avg">Not Rated</span> stars out of 5.00 stars</p>
+
+                <h2>Proposal Evaluation Overview</h2>
+                <p>See how you proposal performed from the table below:</p>
+                <table id="evaluation-table" style="overflow-x:auto;">
+                    <thead>
+                        <tr>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            {% if row.note %}
+                <div class="alert">
+                    <h2>✍️ Proposal Remarks</h2>
+                    <p>{{ row.note }}</p>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if row.status == 'accepted' %}
+            <div class="alert">
+                <p>You can submit your {{row.session}} slides here</p>
+                <form id="slide-updload-form">
+                    <input id="slide" name="slideBlob" value="{{row.name}}.file" type="file" accept=".zip,application/zip,.pdf,application/pdf" multiple>
+                    <button class="button" type="submit">Submit</button>
+                </form>
+            </div>
+            <p>As a selected speaker, you are no longer required to register for registration. <span><strong>Thank you</strong></span> for your amazing proposal.</p>
+            <div class="alert">
+                {% include '/parts/speaker-ticket.djhtml' %}
+            </div>
+        {% endif %}
+
+        <div class="alert" style="overflow-x:auto;">
+            <h2>📝 Your Proposal Status</h2>
+
+            {% include '/proposals/edit-proposal-dialog.djhtml' %}
+
+            <table style="overflow-x:auto;">
+                <thead>
+                    <tr>
+                        {% for h in show.keys() %}
+                            {% if h != 'title' and h != 'abstract' %}
+                                <th>{{h}}</th>
+                            {% endif %}
+                        {% endfor %}
+                        {% if row.status == 'proposed' %}
+                            <th>Action</th>
+                        {% endif %}
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        {% for key, value in show.items() %}
+                            {% if key != 'title' and key != 'abstract' %}
+                                <td>{{ value }}</td>
+                            {% endif %}
+                        {% endfor %}
+
+                        {% if row.status == 'proposed' %}
+                            <td><button id="edit-proposal-btn" class="button"> Edit Proposal </button></td>
+                        {% endif %}
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="alert">
+            <h2>📜 Proposal Overview</h2>
+
+            <div class="wrapper">
+                <h2>{{row.title}}</h2>
+                <p>{{row.abstract}}</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block tail %}
+    <script>
+        const eDialog = document.getElementById('dialog-proposal')
+        document.getElementById('edit-proposal-btn').onclick = function() {
+            eDialog.showModal()
+        }
+    </script>
+
+    <script>
+        document.getElementById('slide-updload-form').addEventListener('submit', function(event){
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            const formData = new FormData(event.target)
+            formData.append('name', '{{row.name}}')
+
+
+            if(!confirm('Are you sure you want to upload this?')) return
+            fetch('/api/proposals/{{row.pk}}', {
+                method: 'POST',
+                body  : formData,
+            }).then(function (response) {
+                if(202 == response.status){
+                    alert('Slides uploaded successfully.')
+                    location.reload()
+                }
+            })
+        })
+    </script>
+
+
+    <script type="module">
+        import * as proposals from '/static/proposals/read.mjs'
+
+        fetch(`/api/proposals/evaluation/{{row.slug}}`).then(function(response) {
+            return response.json()
+        }).then(function (json) {
+            const eTable = document.querySelector('#evaluation-table')
+            Object.entries(json.data).forEach(function(element){
+                const eTh = document.createElement('th')
+                const eTd = document.createElement('td')
+                eTh.innerText = element[0]
+                eTd.innerText = element[1]
+
+                eTable.querySelector('thead tr').append(eTh)
+                eTable.querySelector('tbody tr').append(eTd)
+            })
+        })
+    </script>
+{% endblock %}
