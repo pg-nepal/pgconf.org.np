@@ -124,6 +124,37 @@ def proposal_read(pk):
         return flask.jsonify(row._asdict())
 
 
+@app.get('/api/submitted/<slug>')
+def client_proposal_read(slug):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    query = sa.select(
+        db.programs.Proposal.pk,
+
+        db.programs.Proposal.title,
+        db.programs.Proposal.abstract,
+
+        db.programs.Proposal.name,
+        db.programs.Proposal.email,
+        db.programs.Proposal.country,
+        db.programs.Proposal.createdOn,
+        db.programs.Proposal.session,
+    ).where(
+        sa.cast(db.programs.Proposal.slug, sa.String) == slug,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+        row = cursor.first()
+
+        if row is None:
+            return 'Invalid Pk', 400
+
+        return flask.jsonify(row._asdict())
+
+
 @app.post('/proposals/<int:pk>')
 def proposal_update(pk):
     isAdmin = srv.auth.isValid(flask.request)
