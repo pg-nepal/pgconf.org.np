@@ -1,3 +1,4 @@
+import os
 import base64
 
 from SCons.Script import (
@@ -8,10 +9,10 @@ from SCons.Script import (
 
 env = Environment(
     ENV = {
-        'DEBUG' : True,
-        'BAUTH' : 'Basic {}'.format(
-            base64.b64encode('root:0'.encode()).decode()
-        ),
+        k : os.getenv(k, v) for k, v in [
+            ('DEBUG', True),
+            ('BAUTH', 'Basic {}'.format(base64.b64encode('root:0'.encode()).decode())),
+        ]
     }
 )
 
