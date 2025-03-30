@@ -14,7 +14,10 @@ export function rateRead_summary(proposal_pk) {
         return response.json()
     }).then(function (json) {
         document.getElementById('rating-avg').innerText = json.avg.toFixed(2)
-        document.getElementById('rating-count').innerText = json.count
+        const count = document.getElementById('rating-count')
+        if(count){
+            count.innerHTML = json.count
+        }
         const stars = document.getElementById('rating-avg-star')
         stars.classList.add('active')
 
