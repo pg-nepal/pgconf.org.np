@@ -115,3 +115,24 @@ def submitted_proposal_read(slug):
                 'Status'      : row.status,
             },
         )
+
+
+@app.post('/submitted/<slug>')
+def submitted_update(slug):
+    values = flask.request.form.to_dict()
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.update(
+            db.programs.Proposal,
+        ).where(
+            db.programs.Proposal.slug == slug,
+            db.programs.Proposal.status.in_(['pending']),
+        ).values(
+            session   = values.get('session'),
+            title     = values.get('title'),
+            abstract  = values.get('abstract'),
+            updatedBy = values.get('name'),
+            status    = 'submitted',
+            note      = '',
+        ))
+        return 'Update Row', 202 if cursor.rowcount > 0 else 400
