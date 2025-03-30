@@ -1,4 +1,4 @@
-<div class="sidebar" style="margin-bottom: 10px;">
+<div class="sidebar">
     <h3>Main Conference</h3>
     <p id="start-date">
         {{eventOn.strftime('%Y %b %d (%a)')}} ~ {{eventTo.strftime('%d (%a)')}}
