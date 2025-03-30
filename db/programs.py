@@ -41,7 +41,7 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
-    status         = sa.Column(p_proposal_status, server_default='pending', comment='Acceptance status for a proposal')
+    status         = sa.Column(p_proposal_status, server_default='submitted', comment='Acceptance status for a proposal')
     note           = sa.Column(sa.Text())
 
 
