@@ -1,10 +1,25 @@
 # flake8: noqa:E501
 
+import enum
 import uuid
 
 import sqlalchemy as sa
 
 import db
+
+
+proposal_status = (
+    'submitted',
+    'in review',
+    'accepted',
+    'rejected',
+)
+e_proposal_status = enum.IntEnum('proposal_status', proposal_status)
+p_proposal_status = sa.Enum(
+    e_proposal_status,
+    schema   = 'conf25',
+    metadata = db.meta,
+)
 
 
 class Proposal(db.Base):
@@ -27,6 +42,7 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
+    status         = sa.Column(p_proposal_status, server_default='submitted', comment='Acceptance status for a proposal')
     note           = sa.Column(sa.Text())
 
 
