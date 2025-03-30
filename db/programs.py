@@ -8,7 +8,6 @@ import db
 
 proposal_status = (
     'submitted',
-    'pending',
     'in review',
     'accepted',
     'rejected',
