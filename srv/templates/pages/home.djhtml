@@ -116,6 +116,7 @@
 
                     <div class="sponsors-logos">
                         <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
+                        <img src="/static/sponsors/ku-logo.png" alt="Kathmandu University">
                     </div>
                 </section>
             </div>
@@ -129,6 +130,29 @@
                         Learn more
                     </a>
             </div>
+
+            <section id="hospitality-partner">
+                {% include "parts/partners-hotels.djhtml" %}
+            </section>
+            
+            <div class="alert">
+                <section id="sponsors" class="home-content mt-1">
+                    <h2 class="section-header">
+                        🐘 Supported By
+                    </h2>
+
+                    <div class="sponsors-logos">
+                        <a href="https://beta-analytics.com" target="_blank"> 
+                            <img src="https://beta-analytics.com/img/logo-medium-comp.png"
+                                alt="Beta Analytics">
+                        </a>
+                        <a href="http://uxlsoft.com" target="_blank">
+                            <img src="/static/sponsors/uxl-soft.png" 
+                                alt="Uniaxial Softwares">
+                    </div>
+                </section>
+            </div>
+
             </div>
 
             <div class="right-content">
