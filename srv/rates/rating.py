@@ -91,6 +91,9 @@ def rate_summary(proposal_pk):
 @app.get('/api/submitted/rates/summary/<int:proposal_pk>')
 def client_rating_summary(proposal_pk):
     return rating_summary(proposal_pk)
+
+def rating_summary(proposal_pk):
+
     count = sa.func.count(db.programs.Rate.pk)
     avg   = sa.func.avg(db.programs.Rate.value)
 
