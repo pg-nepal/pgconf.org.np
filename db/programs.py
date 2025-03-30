@@ -5,6 +5,9 @@ import sqlalchemy as sa
 import db
 
 proposal_status = (
+    'submitted',
+    'pending',
+    'in review',
     'accepted',
     'pending',
     'rejected',
