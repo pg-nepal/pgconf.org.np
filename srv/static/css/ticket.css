@@ -1,0 +1,172 @@
+.ticket {
+    display: flex;
+    gap: 2%;
+    align-items: center;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 10px;
+    background-color: #336791;
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* Circular Cutouts */
+.ticket::before,
+.ticket::after {
+    content: "";
+    width: 30px;
+    height: 30px;
+    background-color: whitesmoke;
+    border-radius: 50%;
+    position: absolute;
+    left: 70%;
+    transform: translateX(-50%);
+}
+
+.ticket::before {
+    top: -15px;
+}
+
+.ticket::after {
+    bottom: -15px;
+}
+
+.ticket.speaker {
+    background-color: #13367b;
+}
+
+
+.field-container {
+    height: 200px;
+    width: 70%;
+    background-color: whitesmoke;
+    border: 2px dashed black;
+    padding: 1%;
+    border-radius: 6px
+}
+
+.field-container.speaker {
+    display: flex;
+    justify-content: space-between;
+}
+
+.ticket-wrapper {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ticket-logo {
+    object-fit: cover;
+    height: 100%;
+    width: 30%;
+}
+
+.ticket-texts{
+    color: white;
+}
+
+.ticket-field {
+    display: block;
+}
+
+.stamp {
+        width: 150px;
+        height: 150px;
+        border: 5px solid red;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        font-size: 14px;
+        font-weight: bold;
+        color: red;
+        text-transform: uppercase;
+        position: relative;
+        transform: rotate(-15deg);
+    }
+
+    .stamp::before {
+        content: "";
+        position: absolute;
+        width: 95%;
+        height: 95%;
+        border: 2px dashed red;
+        border-radius: 50%;
+    }
+
+    .stamp-text {
+        max-width: 80%;
+    }
+
+@media (max-width: 1200px) {
+    .stamp {
+        width: 100px;
+        height: 100px;
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .ticket {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-image: linear-gradient(to bottom, white 50%, #336791 70%);
+    }
+
+    .ticket.speaker {
+        background-image: linear-gradient(to bottom, white 40%, #13367b 70%);
+    }
+
+    .ticket-logo {
+        min-height: 25px;
+        width: 100%;
+    }
+
+    .stamp {
+            width: 70px;
+            height: 70px;
+            border: 2px solid red;
+            font-size: 8px;
+        }
+
+    .stamp::before {
+        border: 0.5px dashed red;
+    }
+
+    .field-container {
+        height: 150px;
+        border: 1px dashed black;
+        background-color: white;
+        box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .stamp-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .field-container.speaker {
+        padding: 2%;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-self: center;
+    }
+
+    .texts {
+        text-align: center;
+    }
+
+    .ticket::before,
+    .ticket::after {
+        display: none;
+    }
+}
