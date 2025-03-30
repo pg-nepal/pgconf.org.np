@@ -65,6 +65,30 @@
         </div>
     </div>
 
+   <form id="status-update-form">
+       <div class="status-wrapper" id="status-update">
+        <div class="fields">
+            <label for="status">Status</label>
+            <select id="wtf-status" name="status" required>
+             <option value="submitted" style="display: none;">Not Reviewed</option>
+             <option value="pending">Pending</option>            
+             <option value="in review">In Review</option>
+             <option value="accepted">Accepted</option>
+             <option value="rejected">Rejected</option>
+            </select>
+        </div>
+
+           <div class="fields" id="note-textarea" style="display: none;">
+                <p for="note">Write your reason for this status update.</p>
+                <textarea name="note" id="note" required></textarea>
+            </div>
+        </div>
+
+           <button class="button" id="save-btn" style="display: none;">Save</button>
+   </form>
+   
+
+
     <div class="alert">
         <strong>Proposed Abstract</strong>
         <p id="row.abstract"></p>
