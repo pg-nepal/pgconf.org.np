@@ -91,8 +91,7 @@
         <div class="fields">
             <label for="status">Status</label>
             <select id="wtf-status" name="status" required>
-             <option value="submitted" style="display: none;">Not Reviewed</option>
-             <option value="pending">Pending</option>            
+             <option value="submitted">Not Reviewed (Allows proposal writer to update the proposal)</option>         
              <option value="in review">In Review</option>
              <option value="accepted">Accepted</option>
              <option value="rejected">Rejected</option>
