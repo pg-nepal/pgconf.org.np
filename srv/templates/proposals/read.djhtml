@@ -23,6 +23,28 @@
         .rating-star.active{
             filter: grayscale(0);
         }
+
+        .status-wrapper{
+            width: 50%;
+        }
+
+        @media (max-width: 1800px) {
+            .status-wrapper{
+                width: 60%;
+            }
+        }
+
+        @media (max-width: 1600px) {
+            .status-wrapper{
+                width: 80%;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .status-wrapper{
+                width: 100%;
+            }
+        }
     </style>
 {% endblock %}
 
