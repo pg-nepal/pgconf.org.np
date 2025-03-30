@@ -167,7 +167,7 @@ export function reviewReadAll (isAdmin, proposal_pk) {
             eDiv.append(eP_user)
 
             const eP = document.createElement('p')
-            eP.innerHTML = comment
+            eP.innerHTML = comment.replace(/\n/g, '<br>');
             eDiv.append(eP)
 
             const eDiv_bottom = document.createElement('div')
