@@ -1,5 +1,7 @@
 # flake8: noqa:E501
 
+import uuid
+
 import sqlalchemy as sa
 
 import db
@@ -13,6 +15,7 @@ class Proposal(db.Base):
     }
 
     pk             = sa.Column(sa.Integer, autoincrement=True, primary_key=True)
+    slug           = sa.Column(sa.dialects.postgresql.UUID, index=True, default=uuid.uuid4)
     attendee_pk    = sa.Column(sa.Integer)
 
     name           = sa.Column(sa.String(256), nullable=False)
