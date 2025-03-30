@@ -31,31 +31,31 @@
     </div>
 
     <h2>Categories</h2>
-        <div class="alert">
-                <h2>🎓 Student Tickets</h2>
-                <ol>
-                    <li><p>Discounted Rate: NRS 3,000</p></li>
-                    <li><p>Normal Rate: NRS 5,000</p></li>
-                    <h4 style="color: #007bff;"><em>Limited availability. Secure your spot early!</em></h4>
-                </ol>
-        </div>
+    <div class="alert">
+        <h2>🎓 Student Tickets</h2>
+        <ol>
+            <li><p><s>Discounted Rate: NRS 3,000</s> <span style="color:red;">SOLD OUT</span></p></li>
+            <li><p>Normal Rate: NRS 5,000</p></li>
+            <h4 style="color: #007bff;"><em>Limited availability. Secure your spot early!</em></h4>
+        </ol>
+    </div>
 
-        <div class="alert">
-                <h2>🚀 Professional Tickets</h2>
-                <ol>
-                    <li><p>Discounted Rate: NRS 5,000</p></li>
-                    <li><p>Normal Rate: NRS 7,000</p></li>
-                </ol>
-        </div>
+    <div class="alert">
+        <h2>🚀 Professional Tickets</h2>
+        <ol>
+            <li><p><s>Discounted Rate: NRS 5,000</s>  <span style="color:red;">SOLD OUT</span></p></li>
+            <li><p>Normal Rate: NRS 7,000</p></li>
+        </ol>
+    </div>
 
-        <div class="alert">
-                <h2>🛫 International Tickets</h2>
-                <ol>
-                    <li><p>Discounted Rate: USD 200</p></li>
-                    <li><p>Normal Rate: USD 300</p></li>
-                    <h4 style="color: #007bff;"><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></h4>
-                </ol>
-        </div>
+    <div class="alert">
+        <h2>🛫 International Tickets</h2>
+        <ol>
+            <li><p><s>Discounted Rate: USD 200</s> <span style="color:red;">SOLD OUT</span></p></li>
+            <li><p>Normal Rate: USD 300</p></li>
+            <h4 style="color: #007bff;"><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></h4>
+        </ol>
+    </div>
 
     <h4 style="color: #007bff;"><em>Note: Discount are limited and will be available based on first-come-first-served basis.</em></h4>
 
