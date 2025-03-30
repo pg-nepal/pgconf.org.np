@@ -1,0 +1,29 @@
+<link rel="stylesheet" href="/static/css/ticket.css">
+
+        <div id="ticket" class="ticket speaker" style="position: relative;">
+            <div class="field-container speaker">
+                <div class="texts">
+                    <h2>
+                        <span style="color: #007bff;">PostgreSQL </span>
+                        Conference Nepal</h2>
+                    <p style="color: #007bff; font-weight: bold;">Congratulations! Your proposal {{row.title}} has been selected.🎉 </p>
+                    <p><strong>You are invited to speak at the event.</strong></p>
+                </div>
+
+                <div class="stamp-container">
+                    <div class="stamp">
+                        <div class="stamp-text">
+                            **Speaker's pass**
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div class="ticket-wrapper">
+                <img class="ticket-logo" src="/static/images/pgconf_logo.png" alt="logo">
+                <div class="ticket-texts">
+                    <p>5-6 May, 2025</p>
+                    <p><i>Kathmandu University, Dhulikhel, Nepal.</i></p>
+                </div>
+            </div>
+        </div>
