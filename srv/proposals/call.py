@@ -47,10 +47,17 @@ def proposal_call_create():
         createdBy = email,
     ).returning(
         db.programs.Proposal.pk,
+        db.programs.Proposal.slug,
+        db.programs.Proposal.email,
+        db.programs.Proposal.country,
+        db.programs.Proposal.session,
+        db.programs.Proposal.title,
+        db.programs.Proposal.abstract,
     )
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(query)
+        proposal = cursor.first()
 
         emailBody = flask.render_template (
             '/emails/cfp_thanks.djhtml',
