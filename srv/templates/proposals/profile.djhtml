@@ -170,7 +170,7 @@
 <script type="module">
     import * as proposals from '/static/proposals/read.mjs'
 
-    proposals.proposal_Evaluation('{{row.slug}}')
+    proposals.proposalEvaluation('{{row.slug}}')
 
     fetch(`/api/proposals/evaluation/{{row.slug}}`).then(function(response) {
         return response.json()
