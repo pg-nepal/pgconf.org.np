@@ -270,7 +270,7 @@ export function init(pk) {
     })
 }
 
-export function proposal_Evaluation(slug) {
+export function proposalEvaluation(slug) {
     return fetch(`/api/submitted/${slug}`, {
     }).then(function (response) {
         return response.json()
