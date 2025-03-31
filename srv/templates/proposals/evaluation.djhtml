@@ -1,11 +1,71 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = 'Proposals / Evaluation' %}
 
-<label for="proposal_status">Status:</label>
-<select id="proposal_status" name="proposal_status">
-    <option value="all">All</option>
-    <option value="accepted">Accepted</option>
-    <option value="pending">Pending</option>
-    <option value="Rejected">Rejected</option>
-</select>
+
+{% block head  %}
+<style>
+    .reviews-data{
+        display: flex;
+        justify-content: center;
+
+    }
+
+    .header-data {
+        width: 70%;
+    }
+
+    .rating-star {
+        margin: auto 0;
+        padding : 0 0.3rem;
+        letter-spacing: 0.3rem;
+        transition: all 0.4s ease-in-out;
+        filter: grayscale(1);
+        font-size: 30px;
+    }
+
+    .rating-star.active{
+        filter: grayscale(0);
+    }
+
+</style>
+{% endblock %}
+
+
+{% block admin_content %}
+    {% for proposal in data %}
+    <div style="display: flex; justify-content: space-between;">
+        <h2>{{proposal.title}}</h2>
+        <p>{{proposal['Average Rating']}}</p>
+    </div>
+
+    <div class="alert">{{proposal.abstract}}</div>
+    <div class="ratings">
+        <table border="1" style="margin-bottom: 2%;">
+            <thead>
+                <tr>
+                    <th>Rated By</th>
+                    <th>Relevance</th>
+                    <th>Clarity</th>
+                    <th>Engagement</th>
+                    <th>Content</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for rating in proposal['Rating Details'] %}
+                <tr>
+                    <td>{{rating.createdBy}}</td>
+                    <td>{{ rating.score.relevance }}</td>
+                    <td>{{ rating.score.clarity }}</td>
+                    <td>{{ rating.score.engagement }}</td>
+                    <td>{{ rating.score.content }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% endfor %}
+{% endblock %}
+
 
 {% block tail %}
     <script type="module">
