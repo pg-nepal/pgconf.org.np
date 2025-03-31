@@ -20,6 +20,15 @@ def ticket_list():
         pageDesc  = 'List of all registered tickets',
         baseURL   = '/tickets',
         isAdmin   = srv.auth.loggedInUser(flask.request),
+        actions   = {
+            'pk' : {
+                'url'    : '/attendees/{pk}',
+                'target' : '_blank',
+            },
+            'Name' : {
+                'url'    : '/attendees/{pk}'
+            }
+        },
     )
 
 
