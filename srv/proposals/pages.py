@@ -69,6 +69,7 @@ def evaluation_list():
         return flask.render_template(
             '/proposals/evaluation.djhtml',
             data = proposal_data,
+            isAdmin   = isAdmin,
         )
 
 
