@@ -28,8 +28,6 @@ def evaluation_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    jsonData = flask.request.json
-
     query = sa.select(
         db.programs.Proposal.pk,
         db.programs.Proposal.title,
@@ -47,8 +45,30 @@ def evaluation_list():
     )
 
     with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
+        proposal_data = []
+
+        for row in cursor:
+            proposal = row._asdict()
+            proposal['Rating Details'] = []
+
+            rating_query = sa.select(
+                db.programs.Rate.score,
+                db.programs.Rate.createdBy,
+            ).where(
+                db.programs.Rate.proposal_pk == proposal['pk'],
+            )
+
+            ratings_cursor = connection.execute(rating_query)
+            for rating in ratings_cursor:
+                proposal['Rating Details'].append(rating._asdict())
+
+            proposal_data.append(proposal)
+
         return flask.render_template(
             '/proposals/evaluation.djhtml',
+            data = proposal_data,
         )
 
 
