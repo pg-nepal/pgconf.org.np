@@ -38,8 +38,6 @@ def ticket_list_api():
         db.conf.Attendee.pk,
         db.conf.Attendee.name,
         db.conf.Attendee.category,
-        # db.conf.Attendee.type,
-        sa.cast(db.conf.Ticket.attendee_type, sa.String),
         sa.func.aggregate_strings(db.conf.Event.name, ", ").label('events'),
         sa.cast(db.conf.Ticket.status, sa.String).label('status'),
         db.conf.Ticket.currency,
