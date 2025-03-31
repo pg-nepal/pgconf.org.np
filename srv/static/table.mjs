@@ -1,43 +1,55 @@
-function createRow(headers, row, baseURL) {
+function createRow(headers, row, baseURL, actionList) {
     const eTr = document.createElement('tr')
 
     for (const [i, v] of Object.entries(row)) {
         const eTd = document.createElement('td')
 
-        switch (headers[i]) {
-            case 'pk':
-                const eA = document.createElement('a')
-                eA.innerText = v
-                eA.href = `${baseURL}/${v}`
-                eTd.append(eA)
-                break
-
-            case 'createdOn':
-                if (null == v) break
-                const date = new Date(v)
-                eTd.innerHTML = date.toString().substring(0, 24)
-                break
-
-            case 'avg(rating)':
-                if (null == v) break
-                let stars = '';
-                for (let i = 0; i < 5; i++) {
-                    if (i < v) {
-                        stars += '⭐'
-                    } else {
-                        stars += ''
-                    }
-                }
-
-                eTd.append(stars)
-                break
-
-            default:
-                eTd.innerHTML = v
+        if (headers[i] in actionList) {
+            const action = actionList[headers[i]]
+            const eA = document.createElement('a')
+            eA.href = headers.reduce((url, header, i) => url.replace('{' + header + '}', row[i]), action.url);
+            eA.target = action.target ?? '_self'
+            eA.innerText = v
+            eTd.append(eA)
+        } else if (headers[i] == 'pk') {
+            const eA = document.createElement('a')
+            eA.innerText = v
+            eA.href = `${baseURL}/${v}`
+            eTd.append(eA)
+        } else if (headers[i] == 'createdOn') {
+            eTd.innerHTML = getLocalDate(v)
+        } else if (headers[i] == 'avg(rating)') {
+            eTd.innerHTML = getRating(v)
+        } else {
+            eTd.innerHTML = v
         }
+
         eTr.append(eTd)
+
     }
+
     return eTr
+}
+
+
+function getLocalDate(v) {
+    if (null == v) return ''
+    const date = new Date(v)
+    return date.toString().substring(0, 24)
+}
+
+
+function getRating(v) {
+    if (null == v) return ''
+    let stars = '';
+    for (let i = 0; i < 5; i++) {
+        if (i < v) {
+            stars += '⭐'
+        } else {
+            stars += ''
+        }
+    }
+    return stars
 }
 
 
@@ -56,7 +68,7 @@ function filterFromURL(search) {
 }
 
 
-export function load(id, baseURL) {
+export function load(id, baseURL, actions) {
     const api = `/api${baseURL}`
     fetch(api, {
         method  : 'POST',
@@ -106,8 +118,11 @@ export function load(id, baseURL) {
         }
 
         let count = 0
+
+        const actionList = JSON.parse(actions)
+
         for (const row of json.data) {
-            eTable.children[1].append(createRow(json.headers, row, baseURL))
+            eTable.children[1].append(createRow(json.headers, row, baseURL, actionList))
             count += 1
         }
 
