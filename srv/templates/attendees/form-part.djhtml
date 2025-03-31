@@ -46,9 +46,9 @@
 
 <div class="fields">
     <label for="wtf-phone">Mobile Number <sup>*</sup></label>
-    <input id="wtf-phone" name="phone" placeholder="98xxxxxxxxxx" required>
+    <input id="wtf-phone" name="phone" placeholder="+977 98xxxxxxxxxx" required>
     <span style="margin-top:0.5rem; color:gray">
-        Phone number will be used for the domestic communication
+        eg. +&lt;country-code &gt; &lt;mobile-number&gt;
     </span>
 </div>
  
