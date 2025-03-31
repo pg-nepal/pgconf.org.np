@@ -53,7 +53,6 @@ def programs_speaker_photoBlob(name):
         db.conf.Attendee.photoBlob,
     ).where(
         db.conf.Attendee.name == name,
-        db.conf.Attendee.type == db.conf.e_attendees_type.speaker,
     )
 
     with db.engine.connect() as connection:
