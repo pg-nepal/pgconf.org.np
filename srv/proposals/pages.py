@@ -28,6 +28,21 @@ def evaluation_list():
     if isAdmin is False:
         return srv.auth.respondInValid()
 
+    return flask.render_template(
+        '/table.djhtml',
+        pageTitle   = 'Evaluate Proposals',
+        pageDesc    = 'List of all submitted proposals',
+        baseURL     = '/proposals',
+        isAdmin     = isAdmin,
+    )
+
+
+@app.post('/api/proposals/evaluation')
+def proposal_evaluation_list_api():
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
     query = sa.select(
         db.programs.Proposal.pk,
         db.programs.Proposal.title,
