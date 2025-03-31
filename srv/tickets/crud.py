@@ -72,7 +72,10 @@ def ticket_list_api():
         ))
 
     return flask.jsonify(
-        headers = tuple(c['name'] for c in query.column_descriptions),
+        headers = (
+            'pk', 'Name', 'Category', 'Registered for', 'Ticket Status',
+            'Currency', 'Fees', 'Total', 'Payment Status'
+        ),
         data    = [list(row) for row in cursor],
         filters = {
 
