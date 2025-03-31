@@ -35,23 +35,32 @@ def ticket_list_api():
     jsonData = flask.request.json
 
     query = sa.select(
-        db.conf.Ticket.pk,
-        db.conf.Ticket.event_pk,
+        db.conf.Attendee.pk,
         db.conf.Attendee.name,
         db.conf.Attendee.category,
+        # db.conf.Attendee.type,
         sa.cast(db.conf.Ticket.attendee_type, sa.String),
-        db.conf.Ticket.currency,
-        db.conf.Ticket.fee,
-        db.conf.Ticket.createdOn,
+        sa.func.aggregate_strings(db.conf.Event.name, ", ").label('events'),
         sa.cast(db.conf.Ticket.status, sa.String).label('status'),
-    ).outerjoin(
-        db.conf.Attendee,
+        db.conf.Ticket.currency,
+        sa.func.aggregate_strings(sa.cast(sa.cast(db.conf.Ticket.fee, sa.Integer), sa.String), ' + ').label('fees'),
+        sa.func.sum(db.conf.Ticket.fee).label('total'),
+        sa.func.aggregate_strings(db.conf.Ticket.paymentStatus, ', ').label('payment_status'),
+    ).join(
+        db.conf.Ticket,
         db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
+    ).join(
+        db.conf.Event,
+        db.conf.Event.pk == db.conf.Ticket.event_pk,
     ).group_by(
-        db.conf.Ticket.pk,
+        db.conf.Attendee.pk,
         db.conf.Attendee.name,
         db.conf.Attendee.category,
+        db.conf.Ticket.attendee_type,
+        db.conf.Ticket.status,
+        db.conf.Ticket.currency,
     )
+
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query.where(*[
@@ -59,7 +68,7 @@ def ticket_list_api():
             for c in query.column_descriptions
             if jsonData['filter'].get(c['name'], 'all') != 'all'
         ]).order_by(
-            db.conf.Ticket.pk,
+            db.conf.Attendee.pk,
         ))
 
     return flask.jsonify(
