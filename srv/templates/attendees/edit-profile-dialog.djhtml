@@ -73,7 +73,12 @@
         event.target.reportValidity()
 
         const formData = new FormData(event.target)
+        const category = formData.get('category')
         const photoBlob = formData.get('photoBlob')
+        const oldcategory = '{{row.category}}'
+        const newCategory = document.getElementById('wtf-category')
+        const changedCategory = oldcategory !== newCategory
+
         if (photoBlob.size / 1024 / 1024 > 2) {
             alert('Please upload a file less than 2 MB')
             return
@@ -87,7 +92,27 @@
             if (response.status != 202) {
                 alert('Update failed')
             }
-            location.reload()
+
+            if(changedCategory){
+            fetch('/registered/{{row.slug}}', {
+                method : 'POST',
+                body   : category,
+            }).then(function () {
+                fetch('/registered/changecategory', {
+                    method  : 'POST',
+                    headers : { 'content-type': 'application/json' },
+                    body    : JSON.stringify({
+                        slug : '{{row.slug}}',
+                    }),
+                }).then(function (response) {
+                    if (202 == response.status) {
+                        location.reload()
+                    }
+                })
+            })
+            } else {
+                location.reload()
+            }
         })
     })
 </script>
