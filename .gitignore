@@ -2,6 +2,7 @@
 .sconsign.dblite
 dist
 venv
+__pycache__
 
 # files
 users.json
