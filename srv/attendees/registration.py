@@ -173,11 +173,15 @@ def registered_create():
 def registered_read(slug):
     query = sa.select(
         db.conf.Attendee.pk,
+        db.conf.Attendee.slug,
         db.conf.Attendee.name,
+        db.conf.Attendee.phone,
         db.conf.Attendee.email,
+        db.conf.Attendee.bio,
         db.conf.Attendee.country,
         db.conf.Attendee.slug,
         db.conf.Attendee.category,
+        db.conf.Attendee.affiliation,
         db.conf.Attendee.idProofBlob,
         sa.cast(db.conf.Attendee.status, sa.String).label('status'),
     ).where(
