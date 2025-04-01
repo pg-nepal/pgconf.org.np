@@ -55,18 +55,6 @@
             text-align: center;
             display: inline-block;
         }
-
-        .status-pending{
-            color: red;
-        }
-
-        .status-confirmed{
-            color: green;
-        }
-
-        .status-paid{
-            color: #336791;
-        }
 </style>
 {% endblock %}
 
@@ -96,10 +84,13 @@
             </div>
         </div>
 
-            </tr>
-        </tbody>
-    </table>
-    </div>
+        <div class="alert">
+            <p>{{row.bio}}</p>
+        </div>
+        
+        
+        <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
+
 
     <div class="alert">
     <h2>🎫 Ticket</h2>
@@ -186,12 +177,10 @@
             <h2>🪪 Upload student ID card</h2>
             <p>System accepts pdf, png or jpeg file only.</p>
 
-            {% if "idProofBlob" in show %}
-                {% if show['idProofBlob'] is none %}
+            {% if row.idProofBlob is none %}
                     <button id="student-id-upload" class="button" style="width: 20%;">Upload ID proof</button>
                 {% else %}
                     <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
-                {% endif %}
             {% endif %}
         </div>
         {% endif %}
