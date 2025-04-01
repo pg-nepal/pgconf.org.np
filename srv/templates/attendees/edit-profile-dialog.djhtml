@@ -7,6 +7,21 @@
 
     <form id="form-edit-profile" method="dialog">
         <div class="fields">
+            <label for="profilePic">Upload Profile Picture:</label>
+            <input id="profilePic" name="photoBlob" type="file" accept=".jpg, .jpeg, .png">
+        </div>
+
+        <div class="fields">
+            <label for="affiliation">name </label>
+            <input id="name" name="name" value="{{row.name or ''}}" autofocus>
+        </div>
+
+        <div class="fields">
+            <label for="affiliation">Phone Number </label>
+            <input id="phone" name="phone" value="{{row.phone or ''}}" autofocus>
+        </div>
+
+        <div class="fields">
             <label for="affiliation">Affiliation </label>
             <input id="affiliation" name="affiliation" value="{{row.affiliation or ''}}" autofocus>
         </div>
