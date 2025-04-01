@@ -73,47 +73,28 @@
 
 {% block main %}
 <div class="content-container">
+    
+    <div class="profile-section">
+        <div class="attendee-photo">
+            <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
+            <button id="edit-profile" class="button"> Edit profile </button>
+        </div>
+        <div class="description-section">
+            <p class="status-text {{ status_color[row.status] }}">{{row.status}}</p>
+            {% include '/attendees/edit-profile-dialog.djhtml' %}
 
-    <p><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
-
-    <div class="alert" style="overflow-x:auto;">
-    <h2>📝 Your Registration Status</h2>
-
-
-    {% include '/attendees/edit-category.djhtml' %}
-
-    <table style="overflow-x:auto;">
-        <thead>
-            <tr>
-                {% for h in show.keys() %}
-                    {% if h != "idProofBlob" %}
-                        <th>{{h}}</th>
-                    {% endif %}
-                {% endfor %}
-                <th>Action</th>
-            </tr>
-        </thead>
-
-        <tbody>
-            <tr>
-                {% for key, value in show.items() %}
-                    {% if key != "idProofBlob" %}
-                        {% if key.lower() == "status" %}
-                            <td>
-                                <span class="status
-                                    {% if value.lower() == 'pending' %}status-pending
-                                    {% elif value.lower() == 'confirmed' %}status-confirmed
-                                    {% elif value.lower() == 'paid' %}status-paid
-                                    {% endif %}">
-                                    {{ value }}
-                                </span>
-                            </td>
-                        {% else %}
-                            <td>{{ value }}</td>
-                        {% endif %}
-                    {% endif %}
-                {% endfor %}
-                <td><button id="edit-details" class="button"> Edit category </button></td>
+            <div class="wrapper">
+                <div class="info-table">
+                    {% for key, value in show.items() %}
+                        <div class="info-row">
+                            <div class="info-label">{{key}}</div>
+                            <div class="info-value">{{value}}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
 
             </tr>
         </tbody>
