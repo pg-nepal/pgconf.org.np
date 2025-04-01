@@ -10,7 +10,6 @@
         .attendee-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center;    border-radius: 50%;}
         .profile-section { display: flex; justify-content: space-between;}
         .description-section{ width: 50%; display: flex; flex-direction: column; margin: 20px 0 20px 0;}
-        #edit-profile { align-self: flex-end; margin: 0 0 20px 0;}
         .wrapper { width: 100%;}
         @media ( max-width: 800px ) { .profile-section { display: flex; flex-direction: column; justify-content: center; align-items: center; } .attendee-photo img {width: 200px; height: 200px;} #edit-profile {align-self: center;} .description-section{width: 100%;} .info-table{ width: 100%; } }
     </style>
@@ -23,8 +22,6 @@
             <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
         </div>
         <div class="description-section">
-            <button id="edit-profile" class="button"> Edit profile </button>
-            {% include '/attendees/edit-profile-dialog.djhtml' %}
             <div class="wrapper">
                 <div class="info-table">
                     {% for key, value in show.items() %}
@@ -36,6 +33,10 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    <div class="alert">
+        <p>{{row.bio}}</p>
     </div>
 
 
@@ -114,11 +115,6 @@
 
 <script type="module">
     import * as attendees from '/static/attendees/read.mjs'
-
-    const eDialog = document.getElementById('dialog-edit-profile')
-    document.getElementById('edit-profile').onclick = function (event) {
-        eDialog.showModal()
-    }
 
     const eReceiptDialog = document.getElementById('dialog-receipt-history')
     document.getElementById('view-receipt-history').onclick = function (event) {
