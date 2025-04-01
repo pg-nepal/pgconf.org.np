@@ -108,7 +108,7 @@ function updateReceiptTableAdmin(json){
     const eReceiptTable = document.getElementById('receipt-table')
 
     json.headers.forEach(function (h, i) {
-        if(h != 'pk'){
+        if(h != 'pk' && h !== 'Action'){
             const eTh = document.createElement('th')
             eTh.innerText = h
             eReceiptTable.children[0].children[0].append(eTh)
@@ -153,6 +153,9 @@ function updateReceiptTableAdmin(json){
                         } else {
                             eTd.innerText = '';
                         }
+                    }
+                    else if (k == 'Action') {
+                        return
                     }
                     else{
                         eTd.innerHTML = v
