@@ -82,9 +82,12 @@ def proposal_evaluation_list_api():
             proposal_data.append(proposal)
 
         return flask.render_template(
-            '/proposals/evaluation.djhtml',
+            '/proposals/evaluation_report.djhtml',
             data = proposal_data,
-            isAdmin   = isAdmin,
+            pageTitle   = 'Proposal Evaluation',
+            pageDesc    = 'Detailed report of proposal evaluation',
+            baseURL     = '/proposals',
+            isAdmin     = srv.auth.loggedInUser(flask.request),
         )
 
 
