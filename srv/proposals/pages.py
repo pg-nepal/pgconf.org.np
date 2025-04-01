@@ -21,40 +21,34 @@ def proposal_read_view(pk):
     )
 
 
-@app.get('/proposals/evaluation')
-def evaluation_list():
-
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
-
+@app.get('/proposals/evaluation/summary')
+@srv.auth.auth_required()
+def evaluation_summary():
     return flask.render_template(
-        '/table.djhtml',
-        pageTitle   = 'Evaluate Proposals',
-        pageDesc    = 'List of all submitted proposals',
-        baseURL     = '/proposals',
-        isAdmin     = isAdmin,
+            '/table.djhtml',
+            pageTitle   = 'Evaluate Proposals',
+            pageDesc    = 'List of all submitted proposals',
+            baseURL     = '/proposals/evaluation/summary',  # '/proposals',
+            isAdmin     = srv.auth.loggedInUser(flask.request),
+            actions   = {
+                'pk' : {
+                    'url'    : '/proposals/{pk}',
+                    'target' : '_blank',
+                },
+            },
     )
 
 
-@app.post('/api/proposals/evaluation')
-def proposal_evaluation_list_api():
-    isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
-
+@app.get('/proposals/evaluation/report')
+@srv.auth.auth_required()
+def evaluation_report():
     query = sa.select(
         db.programs.Proposal.pk,
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
-        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('Average Rating'),
-    ).join(
-        db.programs.Rate,
-        db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
-    ).group_by(
-        db.programs.Proposal.pk,
-        db.programs.Proposal.title,
-        db.programs.Proposal.abstract,
+        db.programs.Proposal.session,
+        db.programs.Proposal.name,
+        db.programs.Proposal.createdOn,
     ).order_by(
         db.programs.Proposal.pk,
     )
