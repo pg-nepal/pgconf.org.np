@@ -146,7 +146,6 @@ def attendee_read(pk):
                 'Country'       : row.country,
                 'Registered On' : row.createdOn.strftime('%B %d %Y'),
                 'Category'      : row.category,
-                'Bio'           : row.bio,
             },
         )
 
