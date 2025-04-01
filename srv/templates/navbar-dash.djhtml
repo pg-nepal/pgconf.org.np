@@ -26,7 +26,12 @@
                 <ul class="dropdown" id="dropdown">
                     <a class="admin-links" href="/proposals">Proposals</a>
                     <div class="dropdown-content">
-                        <a href="/proposals/evaluation">Proposals Evaluation</a>
+                        <a href="/proposals/evaluation/summary">
+                            Evaluation Summary
+                        </a>
+                        <a href="/proposals/evaluation/report">
+                            Evaluation Report
+                        </a>
                     </div>
                 </ul>
                 <ul class="dropdown" id="dropdown">
