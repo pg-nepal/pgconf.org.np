@@ -1,0 +1,98 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = 'Proposals / Evaluation' %}
+
+
+{% block head  %}
+<style>
+    .proposal_container {
+        display: flex;
+    }
+
+    .proposal_container .left {
+        flex: 60%;
+    }
+
+    .proposal_container .right {
+        flex: 40%;
+        padding-left: 20px;
+    }
+    .proposal_container table td,th{
+        text-align: center;
+    }
+
+    @media (max-width: 768px) {
+        .proposal_container {
+            flex-direction: column;
+        }
+
+        .proposal_container .left, .right {
+            flex: 100%;
+        }
+    }
+
+</style>
+{% endblock %}
+
+
+{% block admin_content %}
+    <div>
+        {% for proposal in data %}
+            <div class="proposal_container">
+                <div class="left">
+                    <h3>✍️ {{proposal.title}}</h3>
+                    <span style="display:block; padding-left:20px;">
+                        [<b>{{proposal.session}}</b>]
+                        👤 {{proposal.name}}
+                    </span>
+                    <p>
+                        {{ proposal.abstract | truncate(800, True, ' ... ') }}
+                        <a href="/proposals/{{proposal.pk}}" target="_blank">
+                            view
+                        </a>
+                    </p>
+                </div>
+                <div class="right">
+                        <h3>⏳ Reviews</h3>
+                    <table style="margin-bottom: 2%;">
+                        <thead>
+                            <tr>
+                    <th rowspan="2">#</th>
+                    <th colspan="4">Rating</th>
+                    <th rowspan="2">Overall Score</th>
+                            </tr>
+                            <tr>
+                                <th>Relevance</th>
+                                <th>Clarity</th>
+                                <th>Engagement</th>
+                                <th>Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% set total = proposal['Rating Details'] | sum(attribute='value') %}
+                            {% set count = proposal['Rating Details'] | length %}
+                            {% for rating in proposal['Rating Details'] %}
+                                {% set total = total + rating.value | int %}
+                                {% set count = count + 1 %}
+                                <tr>
+                                    <td>{{rating.createdBy}}</td>
+                                    <td>{{ rating.score.relevance }}</td>
+                                    <td>{{ rating.score.clarity }}</td>
+                                    <td>{{ rating.score.engagement }}</td>
+                                    <td>{{ rating.score.content }}</td>
+                                    <td>{{ rating.value }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan=5><em>Average of Overall Rating</em></td>
+                                <td><em><b> {{ (total / count) | round(2) if count > 0 else 0 }}</b></em></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+            <hr>
+    {% endfor %}
+</div>
+{% endblock %}
