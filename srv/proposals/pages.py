@@ -71,9 +71,10 @@ def proposal_evaluation_list_api():
             rating_query = sa.select(
                 db.programs.Rate.score,
                 db.programs.Rate.createdBy,
-            ).where(
+                db.programs.Rate.value,
+            ).filter(
                 db.programs.Rate.proposal_pk == proposal['pk'],
-            )
+            ) 
 
             ratings_cursor = connection.execute(rating_query)
             for rating in ratings_cursor:
@@ -89,7 +90,6 @@ def proposal_evaluation_list_api():
             baseURL     = '/proposals',
             isAdmin     = srv.auth.loggedInUser(flask.request),
         )
-
 
 
 @app.get('/api/proposals/evaluation/<slug>')
