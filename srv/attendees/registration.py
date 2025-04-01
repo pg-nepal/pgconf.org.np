@@ -179,7 +179,6 @@ def registered_read(slug):
         db.conf.Attendee.email,
         db.conf.Attendee.bio,
         db.conf.Attendee.country,
-        db.conf.Attendee.slug,
         db.conf.Attendee.category,
         db.conf.Attendee.affiliation,
         db.conf.Attendee.idProofBlob,
@@ -200,10 +199,12 @@ def registered_read(slug):
             row  = row,
             show = {
                 'Name'        : row.name,
+                'Email'       : row.email,
+                'Phone Number': row.phone,
+                'Affiliation' : row.affiliation,
                 'Country'     : row.country,
                 'Status'      : row.status,
                 'Category'    : row.category,
-                'idProofBlob' : row.idProofBlob,
             },
         )
 
