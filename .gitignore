@@ -3,7 +3,9 @@
 dist
 venv
 __pycache__
+out
 
 # files
 users.json
 email_config.py
+
