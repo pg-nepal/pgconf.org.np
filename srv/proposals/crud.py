@@ -124,6 +124,49 @@ def proposal_read(pk):
         return flask.jsonify(row._asdict())
 
 
+@app.post('/api/proposals/evaluation/summary')
+@srv.auth.auth_required()
+def proposal_evaluation_summary_api():
+    jsonData = flask.request.json
+
+    query = sa.select(
+        db.programs.Proposal.pk,
+        db.programs.Proposal.title,
+        db.programs.Proposal.name,
+        db.programs.Proposal.country,
+        db.programs.Proposal.session,
+        sa.func.count(db.programs.Rate.pk).label('rates'),
+        sa.func.coalesce(sa.func.round(sa.func.avg(db.programs.Rate.value), 0)).label('avg(rating)'),  # noqa:E501
+    ).outerjoin(
+        db.programs.Rate,
+        db.programs.Proposal.pk == db.programs.Rate.proposal_pk,
+    ).group_by(
+        db.programs.Proposal.pk,
+    ).order_by(
+        sa.nulls_last(sa.desc(sa.func.avg(db.programs.Rate.value)))
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query.where(*[
+            c['expr'] == jsonData['filter'][c['name']]
+            for c in query.column_descriptions
+            if jsonData['filter'].get(c['name'], 'all') != 'all'
+        ]).order_by(
+            db.programs.Proposal.pk,
+        ))
+
+        return flask.jsonify(
+            headers = (
+                'pk', 'Title', 'Proposed By', 'Country', 'session',
+                'No of rates', 'avg(rating)',
+            ),
+            data    = [ list(row) for row in cursor ],
+            filters = {
+                'session' : ('all', 'talk', 'workshop', 'keynote'),
+            },
+        )
+
+
 @app.get('/api/submitted/<slug>')
 def client_proposal_read(slug):
 
