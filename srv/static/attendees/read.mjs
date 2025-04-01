@@ -122,17 +122,7 @@ function updateReceiptTableAdmin(json){
                 if(k != 'pk'){
                     const eTd = document.createElement('td')
 
-                    if (k == 'Action') {
-                        const uploadBtn = document.createElement('button')
-                        uploadBtn.innerText = 'Upload Receipt'
-                        uploadBtn.classList = 'button'
-                        uploadBtn.style.margin = '1%'
-                        uploadBtn.onclick = function () { uploadReceipt(row.pk, row['Payment Status']) }
-                        if (row['Payment Status'] !== 'in review' && row['Payment Status'] !== 'paid') {
-                            eTd.append(uploadBtn)
-                        }
-                    }
-                    else if (k == 'Receipt') {
+                    if (k == 'Receipt') {
                         if(v != null){
                             const viewBtn = document.createElement('button')
                             viewBtn.innerText = 'View'
