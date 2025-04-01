@@ -269,7 +269,7 @@ td {
     max-width: 200px;
 }
 
-tr:hover{
+tbody tr:hover{
     background-color: #2e507724;
 }
 
