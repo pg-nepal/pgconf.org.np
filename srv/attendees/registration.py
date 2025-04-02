@@ -310,6 +310,13 @@ def registered_update(slug):
     if values.get('category') not in db.conf.attendees_category:
         return 'Invalid category', 400
 
+    if 'photoBlob' in flask.request.files:
+        file_photoBlob = flask.request.files['photoBlob']
+        if file_photoBlob.filename != '':
+            values['photoBlob'] = file_photoBlob.read()
+            values['photoMime'] = file_photoBlob.content_type
+
+
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.update(
             db.conf.Attendee,
