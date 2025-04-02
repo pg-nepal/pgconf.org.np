@@ -11,6 +11,7 @@
         .profile-section { display: flex; justify-content: space-between;}
         .description-section{ width: 50%; display: flex; flex-direction: column; margin: 20px 0 20px 0;}
         .wrapper { width: 100%;}
+        .button.profileView { align-self: flex-end; }
         @media ( max-width: 800px ) { .profile-section { display: flex; flex-direction: column; justify-content: center; align-items: center; } .attendee-photo img {width: 200px; height: 200px;} #edit-profile {align-self: center;} .description-section{width: 100%;} .info-table{ width: 100%; } }
     </style>
 {% endblock %}
@@ -22,6 +23,9 @@
             <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
         </div>
         <div class="description-section">
+            <a class="button profileView" href="/registered/{{row.slug}}">
+                Learn more
+            </a>
             <div class="wrapper">
                 <div class="info-table">
                     {% for key, value in show.items() %}
