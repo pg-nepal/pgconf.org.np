@@ -306,6 +306,7 @@ def registered_add_event():
 @app.post('/registered/<slug>')
 def registered_update(slug):
     values = flask.request.form.to_dict()
+    email = values.get('email')
     if values.get('category') not in db.conf.attendees_category:
         return 'Invalid category', 400
 
@@ -315,7 +316,8 @@ def registered_update(slug):
         ).where(
             db.conf.Attendee.slug == slug,
         ).values(
-            category = values.get('category'),
+            **values,
+            updatedBy = email,
         ))
         return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
