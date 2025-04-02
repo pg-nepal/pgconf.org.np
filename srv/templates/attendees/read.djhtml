@@ -24,7 +24,7 @@
         </div>
         <div class="description-section">
             <a class="button profileView" href="/registered/{{row.slug}}">
-                Learn more
+                View Profile
             </a>
             <div class="wrapper">
                 <div class="info-table">
