@@ -84,23 +84,27 @@
             </div>
         </div>
 
+        {% if row.bio %}
         <div class="alert">
+            <strong>About {{row.name}}</strong>
             <p>{{row.bio}}</p>
         </div>
+        {% endif %}
         
         
         <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
 
 
     <div class="alert">
-    <h2>🎫 Ticket</h2>
+    <div style="display: flex; justify-content: space-between;">
+        <h2>🎫 Ticket</h2>
+        <button id="edit-ticket-btn" class="button">Edit selection</button>
+    </div>
 
     {% if row.category != 'speaker' %}
     <div id="ticket-container">
 
     </div>
-
-    <button id="edit-ticket-btn" class="button">Edit selection</button>
     </div>
 
     {% include '/attendees/select-event-dialog.djhtml' %}
