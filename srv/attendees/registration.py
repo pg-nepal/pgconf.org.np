@@ -219,7 +219,7 @@ def registered_change_category():
             db.conf.Ticket.currency,
             db.conf.Ticket.queue,
             db.conf.Attendee.category,
-        ).outerjoin(
+        ).join(
             db.conf.Attendee,
             db.conf.Ticket.attendee_pk == db.conf.Attendee.pk,
         ).where(
