@@ -10,7 +10,6 @@ from srv import app
 
 
 @app.route('/attendees/<int:pk>.photo')
-@srv.auth.auth_required()
 def attendee_read_photo(pk):
     query = sa.select(
         db.conf.Attendee.photoBlob,
