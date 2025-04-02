@@ -76,8 +76,7 @@
         const category = formData.get('category')
         const photoBlob = formData.get('photoBlob')
         const oldcategory = '{{row.category}}'
-        const newCategory = document.getElementById('wtf-category')
-        const changedCategory = oldcategory !== newCategory
+        const changedCategory = oldcategory !== category
 
         if (photoBlob.size / 1024 / 1024 > 2) {
             alert('Please upload a file less than 2 MB')
