@@ -84,7 +84,7 @@
         }
 
         if (!confirm('Are you sure?')) return
-        fetch('/attendees/{{row.pk}}', {
+        fetch('/registered/{{row.slug}}', {
             method : 'POST',
             body   : formData,
         }).then(function(response){
@@ -93,10 +93,6 @@
             }
 
             if(changedCategory){
-            fetch('/registered/{{row.slug}}', {
-                method : 'POST',
-                body   : category,
-            }).then(function () {
                 fetch('/registered/changecategory', {
                     method  : 'POST',
                     headers : { 'content-type': 'application/json' },
@@ -107,7 +103,6 @@
                     if (202 == response.status) {
                         location.reload()
                     }
-                })
             })
             } else {
                 location.reload()
