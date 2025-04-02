@@ -68,7 +68,9 @@
 
 </style>
 
-<dialog id="dialog-rating" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+<dialog id="dialog-rating" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;left: 100%;
+transform: translate(-100%, -50%);
+top: 100%; ">
     <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
         <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
     </header>
