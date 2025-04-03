@@ -74,11 +74,11 @@
                                 {% set total = total + rating.value | int %}
                                 {% set count = count + 1 %}
                                 <tr>
-                                    <td>{{rating.createdBy}}</td>
-                                    <td>{{ rating.score.relevance }}</td>
-                                    <td>{{ rating.score.clarity }}</td>
-                                    <td>{{ rating.score.engagement }}</td>
-                                    <td>{{ rating.score.content }}</td>
+                                    <td>{{ rating.createdBy }}</td>
+                                    <td>{{ rating.score.get('relevance','NA') }}</td>
+                                    <td>{{ rating.score.get('clarity','NA') }}</td>
+                                    <td>{{ rating.score.get('engagement','NA') }}</td>
+                                    <td>{{ rating.score.get('content', 'NA') }}</td>
                                     <td>{{ rating.value }}</td>
                                 </tr>
                             {% endfor %}
