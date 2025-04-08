@@ -45,7 +45,7 @@
                         👤 {{proposal.name}}
                     </span>
                     <p>
-                        {{ proposal.abstract | truncate(800, True, ' ... ') }}
+                        {{ proposal.abstract | replace('\n','<br>') | truncate(800, True, ' ... ') }}
                         <a href="/proposals/{{proposal.pk}}" target="_blank">
                             view
                         </a>
