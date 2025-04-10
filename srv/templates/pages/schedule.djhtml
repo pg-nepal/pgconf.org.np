@@ -2,10 +2,11 @@
 {% set pageTitle = 'Schedule' %}
 
 
-{% block main_content %}
+{% block main %}
+<div class="content-container">
     <h2>Talks and workshop sessions</h2>
 
-    <div class="alert alert-info">
+    <div class="alert">
         <h2>Training Schedule</h2>
         {% include '/parts/schedule-table.djhtml' %}
     </div>
@@ -15,5 +16,6 @@
         <div class="box">
             {% include 'comingSoon.djhtml' %}
         </div>
+    </div>
     </div>
 {% endblock %}
