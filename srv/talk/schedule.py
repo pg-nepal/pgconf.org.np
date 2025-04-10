@@ -15,4 +15,7 @@ if FILE.exists():
         
 @app.get('/schedule_data')
 def schedule_data():
-    return flask.jsonify(schedule)        
+    if FILE.exists():
+        with FILE.open() as fp:
+            schedule = json.load(fp)
+    return flask.jsonify(schedule)
