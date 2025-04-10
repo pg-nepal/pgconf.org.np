@@ -150,6 +150,7 @@
 
 .nav-options .dropdown {
   position: relative;
+  cursor: pointer;
 }
 
 /* .nav-options .dropdown .dropbtn { */
