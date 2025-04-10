@@ -1,7 +1,7 @@
 {
     "Pre-Conf Training": [
         {
-            "Day 1": [
+            "May 3": [
                 {"time": "9:00-10:00", "event": "Registration"},
                 {"time": "10:00-12:00", "event": "Session 1"},
                 {"time": "12:00-1:00", "event": "Lunch"},
@@ -10,7 +10,7 @@
             ]
         },
         {
-            "Day 2": [
+            "May 4": [
                 {"time": "10:00-12:00", "event": "Session 3"},
                 {"time": "12:00-1:00", "event": "Lunch"},
                 {"time": "1:00-4:00", "event": "Session 4"},
@@ -20,8 +20,8 @@
     ],
     "Main conference": [
         {
-            "Day 1": [
-                {"time": "9:00-11:00", "event": "Registration"},
+            "May 5": [
+                {"time": "9:00-11:00", "event": "Registration, Coffee Formal Event(Opening)"},
                 {"time": "11:00-12:00", "event": "Keynote 1, Keynote 2"},
                 {"time": "12:00-1:00", "event": "Lunch"},
                 {"time": "1:00-2:00", "event": "Talk 1.1, Talk 1.2"},
@@ -31,7 +31,7 @@
             ]
         },
         {
-            "Day 2": [
+            "May 6": [
                 {"time": "9:00-10:00", "event": "Keynote 3"},
                 {"time": "10:00-11:00", "event": "Keynote 4"},
                 {"time": "11:00-12:00", "event": "Talk 5.1, Talk 5.2"},
