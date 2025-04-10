@@ -15,6 +15,7 @@ import srv.rates
 import srv.dash
 import srv.mbox
 import srv.tickets
+import srv.talk
 
 import jinja2
 
