@@ -7,15 +7,9 @@
     <h2>Talks and workshop sessions</h2>
 
     <div class="alert">
-        <h2>Training Schedule</h2>
+        <h2>Schedule</h2>
         {% include '/parts/schedule-table.djhtml' %}
     </div>
-
-    <div class="alert alert-info">
-        <h2>Conference Schedule</h2>
-        <div class="box">
-            {% include 'comingSoon.djhtml' %}
-        </div>
     </div>
     </div>
 {% endblock %}
