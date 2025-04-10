@@ -7,7 +7,7 @@
 
     <div class="alert alert-info">
         <h2>Training Schedule</h2>
-        {% include 'comingSoon.djhtml' %}
+        {% include '/parts/schedule-table.djhtml' %}
     </div>
 
     <div class="alert alert-info">
