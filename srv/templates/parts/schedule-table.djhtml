@@ -1,0 +1,109 @@
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #999;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        .event-type {
+            padding: 15px;
+            font-weight: bold;
+            background-color: #145090;
+            color: white;
+        }
+    </style>
+
+<div class="alert">
+    <table id="schedule-table">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+<script>
+    fetch('/schedule_data')
+        .then(res => res.json())
+        .then(data => renderSchedule(data))
+
+    function renderSchedule(data) {
+        const hours = [
+            '9:00-10:00', '10:00-11:00', '11:00-12:00',
+            '12:00-1:00', '1:00-2:00', '2:00-3:00',
+            '3:00-4:00', '4:00-5:00'
+        ]
+
+        const thead = document.querySelector('#schedule-table thead')
+        const tbody = document.querySelector('#schedule-table tbody')
+
+        const headerRow = document.createElement('tr')
+        headerRow.appendChild(createCell('Type', 'th'))
+        headerRow.appendChild(createCell('Day', 'th'))
+        hours.forEach(hour => headerRow.appendChild(createCell(hour, 'th')))
+        thead.appendChild(headerRow)
+
+        for (const [eventType, days] of Object.entries(data)) {
+            days.forEach(dayBlock => {
+                const dayName = Object.keys(dayBlock)[0]
+                const events = dayBlock[dayName]
+
+                const row = document.createElement('tr')
+                row.appendChild(createCell(eventType, 'td', 'event-type'))
+                row.appendChild(createCell(dayName, 'td'))
+
+                let hourIndex = 0
+
+                while (hourIndex < hours.length) {
+                    const currentHour = hours[hourIndex]
+
+                    const evt = events.find(e => e.time.split('-')[0] === currentHour.split('-')[0])
+
+                    if (evt) {
+                        const [start, end] = evt.time.split('-')
+                        const span = countHourSpan(start, end, hours)
+                        const td = createCell(evt.event, 'td')
+                        td.colSpan = span
+                        if(evt.event == 'Break'){
+                            td.classList = 'break-cell'
+                        }
+
+                        row.appendChild(td)
+                        hourIndex += span
+                    } else {
+                        row.appendChild(createCell('', 'td'))
+                        hourIndex++
+                    }
+                }
+                tbody.appendChild(row)
+            })
+        }
+    }
+
+    function countHourSpan(start, end, hours) {
+        let count = 0
+        let found = false
+
+        for (const hour of hours) {
+            const [hStart, hEnd] = hour.split('-')
+            if (hStart === start) found = true
+            if (found) count++
+            if (hEnd === end) break
+        }
+        return count
+    }
+
+
+    function createCell(content, type = 'td', className = '') {
+        const cell = document.createElement(type)
+        cell.textContent = content
+        if (className) cell.classList.add(className)
+        return cell
+    }
+</script>
