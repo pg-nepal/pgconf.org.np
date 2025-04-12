@@ -68,9 +68,10 @@
         <p style="color: #007bff;">
             Registration will cover: <em>Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
         </p>
-        <h3 style="color: #007bff;">
-            Registration Fee: <em>NRs. 10,000.00 </em>
-        </h3>
+        <p style="color: #007bff;">
+            Registration Fee: NRs. <s style='color:red;'>10,000.00</s>
+            <em><b>7,000.00</b></em>
+        </p>
         <p>
             - Student discount available<br>
             - Group enrollment discount available<br>
