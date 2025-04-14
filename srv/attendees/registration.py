@@ -10,7 +10,7 @@ import sqlalchemy as sa
 import db
 import db.conf
 import srv.captcha
-import srv.mbox.out
+import srv.mbox.queue
 
 
 from srv import app
