@@ -6,7 +6,7 @@ import sqlalchemy as sa
 import db
 import db.programs
 import srv.captcha
-import srv.mbox.out
+import srv.mbox.queue
 
 from srv import app
 
@@ -115,7 +115,7 @@ def submitted_proposal_read(slug):
                 'Country'     : row.country,
                 'Session'     : row.session,
                 'title'       : row.title,
-                'abstract'    : row.abstract, 
+                'abstract'    : row.abstract,
                 'Status'      : row.status,
             },
         )
