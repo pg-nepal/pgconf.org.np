@@ -7,22 +7,17 @@ import datetime as dt
 
 import email.utils
 from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
-
 import psycopg2
 
-from mbox_sender.email_config import SMTP_CONFIG, DB_CONFIG
+from email_config import SMTP_CONFIG, DB_CONFIG
 
 
 def compose(to, subject, body, cc =None, bcc=None):
     try:
-        msg = MIMEMultipart()
+        msg = MIMEText(body, 'plain') # MIMEMultipart()
         msg['Subject']  = subject
         msg['From']     = email.utils.formataddr(SMTP_CONFIG['SENDER'])
         msg['To']       = to
-
-        html_part = MIMEText(body, 'html')
-        msg.attach(html_part)
         return msg
     except Exception as ex:
         log("Compose ERROR: "+ str(ex))
