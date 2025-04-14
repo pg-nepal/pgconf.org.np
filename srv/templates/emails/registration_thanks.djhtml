@@ -14,8 +14,12 @@
     </div>
 
     <h3>Payment Information</h3>
-    <p>Total registration fee: Rs. {{fee}} </p>
-    <p>To confirm your participation, please complete your payment at your earliest convenience. You can review your registration details and process the payment via the following link[1]:</p>
+    <p>
+        To confirm your participation, please complete your payment by 20 April,
+        2025.
+        You can review your registration, ticket details and
+        process the payment via the following link[1]:
+    </p>
     <a href="https://pgconf.org.np/registered/{{slug}}" class="button">Profile</a>
     <br>
     <br>
@@ -23,7 +27,7 @@
 
     <p>Note for International participants: we only support wire transfer. For the details contact us via email.</p>
     <p>
-        If you have already completed the payment, kindly disregard this message. If you have any questions or need assistance, please feel free to contact us at info@pgconf.org.np.
+        If you have already completed the payment, kindly ignore this message. If you have any questions or need assistance, please feel free to contact us at info@pgconf.org.np.
     </p>
 
     <p>We look forward to welcoming you to the conference!</p>
