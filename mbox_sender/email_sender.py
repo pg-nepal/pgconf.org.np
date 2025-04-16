@@ -18,6 +18,7 @@ def compose(to, subject, body, cc =None, bcc=None):
         msg['Subject']  = subject
         msg['From']     = email.utils.formataddr(SMTP_CONFIG['SENDER'])
         msg['To']       = to
+        msg['Bcc']      = 'info.pgconf@gmail.com'
         return msg
     except Exception as ex:
         log("Compose ERROR: "+ str(ex))
