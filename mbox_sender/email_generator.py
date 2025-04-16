@@ -20,16 +20,13 @@ if __name__ == '__main__':
                 '''
                     SELECT pk, slug, "type", "name", "email", status, category
                     FROM conf25.attendees
-                    WHERE  email = 'rughimire@gmail.com'
+                    WHERE "type" = 'participant'
                 '''
-                # WHERE -- "type" = 'participant' and
             )
             for attendee in cursor.fetchall():
                 pk, slug, _type, name, email, status, category = attendee
-
-
                 emailBody = templates.registration(slug, _type, name, email, status, category)
-                subject = 'PostgreSQL Conference - Registration (Next Steps)'
+                subject = 'PostgreSQL Conference Nepal - Registration (Next Steps)'
                 to      = email
                 add(slug, to, None, subject, emailBody,)
                 print(pk, slug, _type, name, email, status)
