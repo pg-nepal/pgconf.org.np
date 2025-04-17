@@ -1,24 +1,33 @@
+from datetime import datetime, timedelta
 import sqlalchemy as sa
 
 import db
 import db.mbox
-import psycopg2
+import mbox_sender.templates
 
-from mbox_sender.email_config import DB_CONFIG
-from mbox_sender.templates import registration
+def add(attendee):
+    # deadline is next day
+    deadline = (datetime.today() + timedelta(days=1)).strftime('%d %B, %Y')
+    subject   = 'PostgreSQL Conference Nepal - Registration (Next Step)'
+    emailBody = mbox_sender.templates.registration (
+        attendee.slug,
+        attendee.type,
+        attendee.name,
+        attendee.email,
+        'pending',
+        attendee.category,
+        deadline
+    )
 
-
-def add(ref, to, cc, subject, body, type='email', note=None):
     query = sa.insert (
         db.mbox.MBox,
-    ).values(
-        type      = type,
-        ref       = ref,
-        to        = to,
-        cc        = cc if cc != '' else None,
+    ).values (
+        type      = 'email',
+        ref       = attendee.slug,
+        to        = attendee.email,
+        bcc       = 'info.pgconf@gmail.com',
         subject   = subject,
-        body      = body,
-        note      = note,
+        body      = emailBody,
         createdBy = 'background',
     )
 
@@ -27,32 +36,3 @@ def add(ref, to, cc, subject, body, type='email', note=None):
         return True, {
             'message' : 'Email Queued for scheduled sending',
         }
-
-
-def generate_emails():
-    print('==Email generation ===')
-    try:
-        with psycopg2.connect(**DB_CONFIG) as connection:
-            cursor = connection.cursor()
-            print('Reading registrations')
-            cursor.execute (
-                '''
-                    SELECT pk, slug, "type", "name", "email", status, category
-                    FROM conf25.attendees where "email" = 'rughimire@gmail.com'
-                '''
-                    # WHERE "type" = 'participant'
-
-            )
-            for attendee in cursor.fetchall():
-                pk, slug, _type, name, email, status, category = attendee
-                emailBody = registration(slug, _type, name, email, status, category)
-                subject   = 'PostgreSQL Conference - registration'
-                to        = email
-
-                add(slug, to, None, subject, emailBody)
-
-                print("Email generated ", pk, slug, _type, name, email, status)
-    except Exception as e:
-        print('ERROR : {}'.format(str(e)))
-    finally:
-        print("====== DONE ========")
