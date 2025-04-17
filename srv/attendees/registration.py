@@ -145,9 +145,12 @@ def registered_create():
             ).returning(
                 db.conf.Attendee.pk,
                 db.conf.Attendee.slug,
+                db.conf.Attendee.name,
                 db.conf.Attendee.email,
                 db.conf.Attendee.country,
                 db.conf.Attendee.category,
+                db.conf.Attendee.type,
+                db.conf.Attendee.status,
             ))
 
             attendee = cursor.first()
@@ -158,8 +161,8 @@ def registered_create():
                 getTicketDetails(attendee, events),
             ))
 
-            # srv.mbox.queue.after_registration(attendee)
-            # not returning 201 because of redirection
+            srv.mbox.queue.add(attendee)
+
         return flask.redirect('/registered/{}'.format(attendee.slug))
     except sa.exc.IntegrityError as e:
         if isinstance(e.orig, psycopg.errors.UniqueViolation):
