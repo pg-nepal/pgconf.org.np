@@ -15,7 +15,7 @@ More detail: visit official website  https://pgconf.org.np/ [1]
 
 Other Information:
 To confirm your participation, please complete your payment
-by 20 April, 2025. You can access your registration, ticket details
+by {deadline}. You can access your registration, ticket details
 and process the payment via the link: https://pgconf.org.np/registered/{slug} [2]
 
 Tickets are sold on a first-come, first-served basis, so payments
@@ -45,11 +45,12 @@ Contact us at info@pgconf.org.np[4]
 [4] info@pgconf.org.np
 '''
 
-def registration(slug, _type, name, email, status, category):
+def registration(slug, _type, name, email, status, category, deadline = '30 April, 2025'):
     return PARTICIPANTS_REG.format(
         slug = slug,
         category = category,
         name = name,
         status = status,
-        email = email
+        email = email,
+        deadline = deadline,
     )
