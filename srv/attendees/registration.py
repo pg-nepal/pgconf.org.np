@@ -218,6 +218,7 @@ def registered_change_category():
 
     with db.SessionMaker.begin() as session:
         cursor = session.execute(sa.select(
+            db.conf.Ticket.pk,
             db.conf.Ticket.event_pk,
             db.conf.Ticket.currency,
             db.conf.Ticket.queue,
@@ -249,7 +250,7 @@ def registered_change_category():
                 db.conf.Ticket,
             ).where(
                 db.conf.Ticket.event_pk == row.event_pk,
-                db.conf.Ticket.attendee_slug == jsonData['slug'],
+                db.conf.Ticket.pk == row.pk
             ).values(
                 fee = fee,
             ))
