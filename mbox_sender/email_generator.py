@@ -3,6 +3,8 @@
 import os
 import sys
 import psycopg2
+import psycopg2.extras
+from types import SimpleNamespace
 from email_config import DB_CONFIG
 import templates
 
@@ -14,7 +16,7 @@ if __name__ == '__main__':
     print('==Email generation ===')
     try:
         with psycopg2.connect(**DB_CONFIG) as connection:
-            cursor = connection.cursor()
+            cursor = connection.cursor(cursor_factory = psycopg2.extras.RealDictCursor)
             print('Reading registrations')
             cursor.execute (
                 '''
@@ -24,12 +26,9 @@ if __name__ == '__main__':
                 '''
             )
             for attendee in cursor.fetchall():
-                pk, slug, _type, name, email, status, category = attendee
-                emailBody = templates.registration(slug, _type, name, email, status, category)
-                subject = 'PostgreSQL Conference Nepal - Registration (Next Steps)'
-                to      = email
-                add(slug, to, None, subject, emailBody,)
-                print(pk, slug, _type, name, email, status)
+                att = SimpleNamespace(dict(attendee))
+                add(attendee)
+                print('Added: ', str(attendee))
     except Exception as e:
         print('ERROR : {}'.format(str(e)))
     finally:
