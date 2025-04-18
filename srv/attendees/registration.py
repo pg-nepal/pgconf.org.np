@@ -249,6 +249,7 @@ def registered_change_category():
                 db.conf.Ticket,
             ).where(
                 db.conf.Ticket.event_pk == row.event_pk,
+                db.conf.Ticket.attendee_slug == jsonData['slug'],
             ).values(
                 fee = fee,
             ))
