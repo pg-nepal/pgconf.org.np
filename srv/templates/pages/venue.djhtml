@@ -4,7 +4,21 @@
 
 {% block main_content %}
         <div>
-            <h2>Kathmandu University</h2>
+            <h2>Training (3-4 May) - Kathmandu University (KUSoM)</h2>
+            <p>
+                School of Management<br>
+                Kathmanu University<br>
+                Balkumarui, Lalitpur, Nepal
+            </p>
+            <p>
+                Location:
+                <a href='https://maps.app.goo.gl/W2Fc5Li2vWhq9rZE6'
+                    target ="_blank">
+                    Google Map
+                </a>
+            </p>
+            <hr>
+            <h2>Conference (5-6 May) - Kathmandu University (Dhulikhel)</h2>
             <p>
                 Like previous year, 2025 Conference will be held in <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a>, Dhulikhel, Nepal.
             </p>
@@ -88,13 +102,13 @@
 
                 Contact <a href="mailto:prakash@ku.edu.np">prakash@ku.edu.np</a>
                 for hotel booking, reservation and other accomodation realted
-                queries. 
+                queries.
             </p>
             <p>
                 <strong>
                     Planning a short tour and trek?
                 </strong><br>
-                Contact 
+                Contact
                 <a href="https://iconicholidaynepal.com/" target="_blank">
                     Iconic Holiday Nepal Tour and Trek Pvt. Ltd.
                 </a>
