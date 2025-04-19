@@ -1,0 +1,21 @@
+<div class="speaker-profile" style="margin-bottom: 40px;">
+    <div class="speaker-photo">
+        <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+    </div>
+
+    <div class="speaker-details">
+        <h3 class="speaker-name"> {{row.name}}</h3>
+        <p class="speaker-title"> {{row.affiliation}}</p>
+
+        <p class="bio">{{row.bio}}</p>
+
+        <div class="alert">
+            <div class="talk-details">
+                <h3 class="talk-title"><em>{{row.title}}</em></h3>
+                <p class="abstract">{{row.abstract}}</p>
+            </div>
+        </div>
+
+   </div>
+</div>
+
