@@ -1,57 +1,58 @@
 <nav class="nav">
     <div class="headers">
-            <a href="/">
-                <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
-            </a>
+        <a href="/">
+            <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
+        </a>
 
-            <div class="updates-container">
-                {% include "parts/ticker.djhtml" %}
-            </div>
+        <div class="updates-container">
+            {% include "parts/ticker.djhtml" %}
+        </div>
     </div>
     <div class="navbar-area">
-            <div class="nav-options">
-                <ul class="nav-list">
-                    <li class="nav-item"><a href="/">Home</a></li>
-                    <li class="nav-item"><a href="/pages/about">About</a></li>
-                    <li class="nav-item"><a href="/pages/call-for-proposal">Call for Proposal</a></li>
-                    <li class="nav-item"><a href="/pages/sponsors">Call for Sponsor</a></li>
-                    <li class="nav-item"><a href="/pages/registration">Registration</a></li>
-                    <li class="nav-item"><a href="/programs/speakers">Speakers</a></li>
-                    <li class="nav-item"><a href="/pages/training">Training</a></li>
-                    <ul class="dropdown" id="dropdown">
-                        <a class="dropbtn">Programs</a>
-                            <div class="dropdown-content">
-                                <a href="/pages/schedule">Schedule</a>
-                                <a href="/pages/venue">Venue</a>
-                            </div>
-                    </ul>
-                </ul>
-            </div>
+        <div class="nav-options">
+            <ul class="nav-list">
+                <li class="nav-item"><a href="/">Home</a></li>
+                <li class="nav-item"><a href="/pages/registration">Registration</a></li>
+                <li class="nav-item"><a href="/programs/speakers">Speakers</a></li>
+                <li class="nav-item"><a href="/pages/schedule">Schedule</a></li>
+                <li class="nav-item"><a href="/pages/training">Training</a></li>
+                <li class="nav-item"><a href="/pages/venue">Venue</a></li>
 
-            <!-- Mobile Hamburger Icon -->
-            <div class="hamburger-menu" id="hamburger-menu">
-                    <a href="/">
-                        <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
-                    </a>
-                <span style="color: white;">&#9776;</span> <!-- Hamburger icon -->
-            </div>
-
-            <div class="hamburger-options">
-                <button class="close-btn">X</button>
-                <ul>
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/pages/about">About</a></li>
-                    <li><a href="/pages/call-for-proposal">Call for Proposal</a></li>
-                    <li><a href="/pages/sponsors">Call for Sponsor</a></li>
-                    <li><a href="/pages/registration">Registration</a></li>
-                    <li><a href="/pages/training">Training</a></li>
-                    <li><a href="/pages/schedule">Schedule</a></li>
-                    <li><a href="/programs/speakers">Speakers</a></li>
-                    <li><a href="/pages/schedule">Schedule</a></li>
-                    <li><a href="/pages/venue">Venue</a></li>
+                <ul class="dropdown" id="dropdown">
+                    <a class="dropbtn">Call</a>
+                    <div class="dropdown-content">
+                        <a href="/pages/call-for-proposal">Call for Proposal</a>
+                        <a href="/pages/sponsors">Call for Sponsor</a>
+                    </div>
                 </ul>
-            </div>
+                <li class="nav-item"><a href="/pages/about">About</a></li>
+
+            </ul>
         </div>
+
+        <!-- Mobile Hamburger Icon -->
+        <div class="hamburger-menu" id="hamburger-menu">
+                <a href="/">
+                    <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
+                </a>
+            <span style="color: white;">&#9776;</span> <!-- Hamburger icon -->
+        </div>
+
+        <div class="hamburger-options">
+            <button class="close-btn">X</button>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/pages/about">About</a></li>
+                <li><a href="/pages/registration">Registration</a></li>
+                <li><a href="/programs/speakers">Speakers</a></li>
+                <li><a href="/pages/schedule">Schedule</a></li>
+                <li><a href="/pages/training">Training</a></li>
+                <li><a href="/pages/venue">Venue</a></li>
+                <li><a href="/pages/call-for-proposal">Call for Proposal</a></li>
+                <li><a href="/pages/sponsors">Call for Sponsor</a></li>
+            </ul>
+        </div>
+    </div>
 </nav>
 
 <script>
