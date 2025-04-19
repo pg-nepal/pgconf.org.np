@@ -94,6 +94,7 @@
 
     <div>
         <h2>Schedule</h2>
-        {% include 'comingSoon.djhtml' %}
+        <img src='/static/agenda-training.png' style="width:80%" /><br>
+        <em>Note: Trainers can change the schedule and session order</em>
     </div>
 {% endblock %}
