@@ -1,15 +1,24 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = 'Schedule' %}
+{% set pageTitle = 'Schedule / Agendas' %}
 
 
 {% block main %}
 <div class="content-container">
-    <h2>Talks and workshop sessions</h2>
+    <h2>Conference Schedule</h2>
+    <b>Venue</b>
+    <p>
+        Kathmandu University<br>
+        Dhulikhel, Nepal<br>
+    </p>
+    <img src='/static/agenda-conference.png' style="width:70%" />
 
-    <div class="alert">
-        <h2>Schedule</h2>
-        {% include '/parts/schedule-table.djhtml' %}
-    </div>
-    </div>
-    </div>
+    <h2>Training Schedule</h2>
+    <b>Venue</b>
+    <p>
+        Kathmandu University<br>
+        School of Management (KUSoM)<br>
+        Balkumari, Lalitpur<br>
+    </p>
+    <img src='/static/agenda-training.png' style="width:70%" />
+</div>
 {% endblock %}
