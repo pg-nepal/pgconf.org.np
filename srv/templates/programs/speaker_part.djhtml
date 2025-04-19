@@ -1,13 +1,13 @@
 <div class="speaker-profile" style="margin-bottom: 40px;">
     <div class="speaker-photo">
-        <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+        <img src="/programs/speakers/{{row.name | default('avatar.png')}}" alt="{{row.name}}">
     </div>
 
     <div class="speaker-details">
         <h3 class="speaker-name"> {{row.name}}</h3>
-        <p class="speaker-title"> {{row.affiliation}}</p>
+        <p class="speaker-title"> {{row.affiliation | default('')}}</p>
 
-        <p class="bio">{{row.bio}}</p>
+        <p class="bio">{{row.bio | default('')}}</p>
 
         <div class="alert">
             <div class="talk-details">
