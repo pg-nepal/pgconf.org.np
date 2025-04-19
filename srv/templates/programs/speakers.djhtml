@@ -4,6 +4,7 @@
 
 {% block head %}
     <style>
+        .session-type {color: #333; margin-bottom: 20px;}
         .speaker-profile { display: flex; flex-wrap: wrap; gap: 30px; }
         .speaker-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center; }
         .speaker-details { flex: 1; min-width: 300px; }
@@ -13,6 +14,7 @@
         .abstract, .bio { font-size: 16px; line-height: 1.5; color: #333; }
         .cta-button { display: inline-block; padding: 10px 20px; background: #007bff; color: #fff; text-decoration: none; border-radius: 4px; }
         .cta-button:hover { background: #0056b3; }
+        .session-section{margin-bottom:40px;}
         @media (max-width: 768px) { .speaker-profile { flex-direction: column; align-items: center; } }
     </style>
 {% endblock %}
@@ -20,37 +22,28 @@
 
 {% block main %}
     <div class="content-container">
-        <h2 style="color: #333; margin-bottom: 20px;">
-            Keynote Speakers
-        </h2>
-
-        <section class="keynote-section" style="margin-bottom: 40px;">
-            {% for row in cursor %}
-                <div class="speaker-profile" style="margin-bottom: 40px;">
-                    <div class="speaker-photo">
-                        <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
-                    </div>
-
-                    <div class="speaker-details">
-                        <h3 class="speaker-name"> {{row.name}}</h3>
-                        <p class="speaker-title"> {{row.affiliation}}</p>
-
-                        <p class="bio">{{row.bio}}</p>
-
-                        <div class="alert">
-                            <div class="talk-details">
-                                <h3 class="talk-title"><em>{{row.title}}</em></h3>
-                                <p class="abstract">{{row.abstract}}</p>
-                            </div>
-                        </div>
-
-                        <a href="/pages/schedule#{{row.title}}" class="cta-button">
-                            Check the Schedule
-                        </a>
-                    </div>
-                </div>
+        <h2 class="session-type">Keynotes</h2>
+        <section class="session-section">
+            {% for row in speakers | selectattr('session', 'equalto', 'keynote') %}
+                {% include "programs/speaker_part.djhtml" %}
             {% endfor %}
         </section>
+
+        <h2 class="session-type">Workshops</h2>
+        <section class="session-section">
+            {% for row in speakers | selectattr('session', 'equalto', 'workshop') %}
+                {% include "programs/speaker_part.djhtml" %}
+            {% endfor %}
+        </section>
+
+        <h2 class="session-type">Talks</h2>
+        <section class="session-section">
+            {% for row in speakers | selectattr('session', 'equalto', 'talk') %}
+                {% include "programs/speaker_part.djhtml" %}
+            {% endfor %}
+        </section>
+
+
     </div>
 {% endblock %}
 
