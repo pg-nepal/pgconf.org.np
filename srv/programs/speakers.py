@@ -61,6 +61,10 @@ def programs_speaker_photoBlob(name):
         blob = connection.execute(query).scalar()
 
         if blob is None:
+            return flask.send_file (
+                'static/speaker-avatar.png',
+                mimetype = 'image/png',
+            )
             return 'File Not Found', 404
 
         mimetype, ext = 'application/octet-stream', ''
