@@ -26,8 +26,9 @@ def programs_speaker_list_page():
 
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
+        db.programs.Proposal.session,
     ).where(
-        db.programs.Proposal.session == 'keynote',
+        db.programs.Proposal.status == 'accepted',
     ).outerjoin(
         db.programs.Proposal,
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
@@ -37,13 +38,14 @@ def programs_speaker_list_page():
 
     with db.engine.connect() as connection:
         cursor = connection.execute(query)
+        speakers = [dict(row) for row in cursor.mappings()]
 
     return flask.render_template(
         '/programs/speakers.djhtml',
         pageTitle = 'Speakers',
         pageDesc  = 'List of all submitted speakers',
         baseURL   = '/speakers',
-        cursor    = cursor,
+        speakers  = speakers,
     )
 
 
