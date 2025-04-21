@@ -36,3 +36,23 @@ def add(attendee):
         return True, {
             'message' : 'Email Queued for scheduled sending',
         }
+
+
+def create_queue(ref, to, subject, body):
+    query = sa.insert (
+        db.mbox.MBox,
+    ).values (
+        type      = 'email',
+        ref       = ref,
+        to        = to,
+        bcc       = 'info.pgconf@gmail.com',
+        subject   = subject,
+        body      = body,
+        createdBy = 'background',
+    )
+
+    with db.SessionMaker.begin() as session:
+        session.execute(query)
+        return True, {
+            'message' : 'Email Queued for scheduled sending',
+        }
