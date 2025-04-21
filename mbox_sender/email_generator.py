@@ -4,12 +4,11 @@ import os
 import sys
 import psycopg2
 import psycopg2.extras
-from types import SimpleNamespace
 from email_config import DB_CONFIG
 import templates
 
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-from srv.mbox.queue import add
+from srv.mbox.queue import create_queue
 
 
 if __name__ == '__main__':
@@ -22,13 +21,21 @@ if __name__ == '__main__':
                 '''
                     SELECT pk, slug, "type", "name", "email", status, category
                     FROM conf25.attendees
-                    WHERE "type" = 'participant'
+                    WHERE "type" = 'participant' and "status" = 'pending'
                 '''
             )
+            subject   = 'PostgreSQL Conference Nepal - Complete Registration'
+
             for attendee in cursor.fetchall():
-                att = SimpleNamespace(dict(attendee))
-                add(attendee)
-                print('Added: ', str(attendee))
+                body = templates.PARTICIPANTS_PAYMENT_FOLLOWUP.format(
+                    slug = attendee['slug'],
+                    category = attendee['category'],
+                    name = attendee['name'],
+                    status = attendee['status'],
+                    email = attendee['email'],
+                )
+                create_queue(attendee['slug'], attendee['email'], subject, body)
+                print('Added: ', str(attendee['email']))
     except Exception as e:
         print('ERROR : {}'.format(str(e)))
     finally:
