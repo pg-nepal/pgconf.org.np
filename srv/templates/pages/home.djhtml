@@ -62,7 +62,7 @@
         <div class="content">
             <div class="left-content">
                 <section>
-                    <h2>🐘<span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
+                    <h2>🐘 <span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
 
                     <p>
                         We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
@@ -81,7 +81,7 @@
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </em></h4>
 
-                    <h2>🗓️Events</h2>
+                    <h2>🗓️ Events</h2>
                     <p>
                         This year we are planning two events.
                     </p>
@@ -134,7 +134,7 @@
             <section id="hospitality-partner">
                 {% include "parts/partners-hotels.djhtml" %}
             </section>
-            
+
             <div class="alert">
                 <section id="sponsors" class="home-content mt-1">
                     <h2 class="section-header">
@@ -142,12 +142,12 @@
                     </h2>
 
                     <div class="sponsors-logos">
-                        <a href="https://beta-analytics.com" target="_blank"> 
+                        <a href="https://beta-analytics.com" target="_blank">
                             <img src="https://beta-analytics.com/img/logo-medium-comp.png"
                                 alt="Beta Analytics">
                         </a>
                         <a href="http://uxlsoft.com" target="_blank">
-                            <img src="/static/sponsors/uxl-soft.png" 
+                            <img src="/static/sponsors/uxl-soft.png"
                                 alt="Uniaxial Softwares">
                         </a>
                     </div>
