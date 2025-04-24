@@ -68,7 +68,7 @@
             <button id="edit-profile" class="button"> Edit profile </button>
         </div>
         <div class="description-section">
-            <p class="status-text {{ status_color[row.status] }}">{{row.status}}</p>
+            <p class="status-text {{ status_color.get(row.status, 'N/A') }}">{{row.status}}</p>
             {% include '/attendees/edit-profile-dialog.djhtml' %}
 
             <div class="wrapper">
