@@ -8,4 +8,4 @@ out
 # files
 users.json
 email_config.py
-
+*_followup.json
