@@ -16,7 +16,7 @@ def ticket_show_mine(slug):
         db.conf.Event.name,
         db.conf.Event.eventOn,
         db.conf.Event.eventTo,
-        db.conf.Ticket.status,
+        sa.cast(db.conf.Ticket.status, sa.String).label('status'),
         db.conf.Ticket.currency,
         db.conf.Ticket.fee,
         db.conf.Ticket.paymentStatus,
