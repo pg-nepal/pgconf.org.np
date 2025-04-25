@@ -109,6 +109,8 @@ def registered_form():
         db.conf.Event.name,
         db.conf.Event.eventOn,
         db.conf.Event.eventTo,
+    ).where(
+        db.conf.Event.pk == 2
     )
 
     with db.engine.connect() as connection:
