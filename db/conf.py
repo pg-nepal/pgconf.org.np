@@ -45,6 +45,7 @@ ticket_status = (
     'booked',
     'paid',
     'cancelled',
+    'confirmed',
 )
 e_ticket_status = enum.IntEnum('ticket_status', ticket_status)
 p_ticket_status = sa.Enum(
