@@ -61,7 +61,7 @@
 
 {% block main %}
 <div class="content-container">
-    
+
     <div class="profile-section">
         <div class="attendee-photo">
             <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
@@ -90,8 +90,8 @@
             <p>{{row.bio}}</p>
         </div>
         {% endif %}
-        
-        
+
+
         <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
 
 
@@ -194,6 +194,8 @@
         <h2>🎫 Upload receipt</h2>
 
         <p>System accepts pdf, png or jpeg file only.</p>
+        <p style='color:red;'>For Pre-Conference Training, if your ticket status is not <b>confirmed</b>,
+    please contact organizers before payment.</p>
 
         <table id="receipt-table" style="display: none;">
             <thead><tr></tr></thead>
@@ -201,7 +203,11 @@
         </table>
 
     </div>
-    <h4 style="color: red;"><em>Note: After payment, the funds will be non-refundable.</em></h4>
+    <h4 style="color: red;">
+        <em>
+            Note: Once payment is made, the funds will be non-refundable.
+        </em>
+    </h4>
     {% endif %}
 </div>
 {% endblock %}
