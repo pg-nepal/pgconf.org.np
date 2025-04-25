@@ -51,7 +51,7 @@
         eg. +&lt;country-code &gt; &lt;mobile-number&gt;
     </span>
 </div>
- 
+
 <div class="fields">
     <label for="wtf-country">Country <sup>*</sup></label>
     <input list="countries" id="wtf-country" name="country" placeholder="Country" required>
@@ -80,6 +80,8 @@
     </select>
 
     <span style="margin-top:0.5rem; color:gray">
-        Multiple option can be selected (drag or use <kbd>Shift</kbd> while selecting), Pre-Conference Training <a href="/pages/training" target="_blank">Details</a>
+        Multiple option can be selected (drag or use <kbd>Shift</kbd> while
+        selecting)<br>
+Pre-Conference Training - <em style="color:red;">SOLD OUT</em> <a href="/pages/training" target="_blank">Details</a>
     </span>
 </div>
