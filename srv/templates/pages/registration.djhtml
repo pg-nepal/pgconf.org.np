@@ -35,7 +35,7 @@
         <h2>🎓 Student Tickets</h2>
         <ol>
             <li><p><s>Discounted Rate: NRS 3,000</s> <span style="color:red;">SOLD OUT</span></p></li>
-            <li><p>Normal Rate: NRS 5,000</p></li>
+        <li><p><s>Normal Rate: NRS 5,000</s> <span style="color:red;">SOLD OUT</span> </p></li>
             <h4 style="color: #007bff;"><em>Limited availability. Secure your spot early!</em></h4>
         </ol>
     </div>
@@ -45,6 +45,14 @@
         <ol>
             <li><p><s>Discounted Rate: NRS 5,000</s>  <span style="color:red;">SOLD OUT</span></p></li>
             <li><p>Normal Rate: NRS 7,000</p></li>
+            <h4 style="color: #007bff;">
+                <em>
+                    Includes a 1-night Bed and Breakfast
+                    stay at the conference hotel, food, goodies, access to all talk and
+                    workshops.
+                </em>
+        </h4>
+
         </ol>
     </div>
 
@@ -52,8 +60,21 @@
         <h2>🛫 International Tickets</h2>
         <ol>
             <li><p><s>Discounted Rate: USD 200</s> <span style="color:red;">SOLD OUT</span></p></li>
-            <li><p>Normal Rate: USD 300</p></li>
-            <h4 style="color: #007bff;"><em>Includes a 2-night Bed and Breakfast stay at the conference hotel.</em></h4>
+            <li>
+                <p>
+                    <s>Normal Rate: USD 300</s>
+                    <span style="color:red;">
+                         Contact info@pgconf.org.np
+                    </span>
+                </p>
+            </li>
+            <h4 style="color: #007bff;">
+                <em>
+                    Includes a 2-night Bed and Breakfast
+                    stay at the conference hotel, food, goodies, access to all talk and
+                    workshops.
+                </em>
+            </h4>
         </ol>
     </div>
 
@@ -63,8 +84,8 @@
     <div class="alert">
         <h2>❤️ Supporter Category</h2>
         <p>
-            We've introduced a new <strong style="color: #007bff;">Supporter Category</strong> for companies. 
-            This premium category comes with exclusive benefits and 
+            We've introduced a new <strong style="color: #007bff;">Supporter Category</strong> for companies.
+            This premium category comes with exclusive benefits and
             is priced at a higher rate. For more details please contact
             <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a>
         </p>
