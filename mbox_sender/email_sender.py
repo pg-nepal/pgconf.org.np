@@ -14,11 +14,12 @@ from email_config import SMTP_CONFIG, DB_CONFIG
 
 def compose(to, subject, body, cc =None, bcc=None):
     try:
-        msg = MIMEText(body, 'plain') # MIMEMultipart()
+        msg             = MIMEText(body, 'plain') # MIMEMultipart()
         msg['Subject']  = subject
         msg['From']     = email.utils.formataddr(SMTP_CONFIG['SENDER'])
         msg['To']       = to
         msg['Bcc']      = 'info.pgconf@gmail.com'
+        if cc is not None: msg['Cc'] = cc
         return msg
     except Exception as ex:
         log("Compose ERROR: "+ str(ex))
