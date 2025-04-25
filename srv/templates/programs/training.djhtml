@@ -70,7 +70,8 @@
         </p>
         <p style="color: #007bff;">
             Registration Fee: NRs. <s style='color:red;'>10,000.00</s>
-            <em><b>7,000.00</b></em>
+            <em><s>7,000.00</s></em>
+            <span style='color:red;font-weight:bold;'>SOLD OUT</span>
         </p>
         <p>
             - Student discount available<br>
