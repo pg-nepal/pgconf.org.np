@@ -6,7 +6,7 @@
 
             <h2>{{row.name}}</h2>
             <p><strong>Amount: </strong>{{row.currency}} {{'{:,.2f}'.format(row.fee or 0)}}</p>
-            <p><strong>Payment Status: </strong>{{row.paymentStatus}}</p>
+            <p><strong>Ticket Status: </strong>{{row.status}}</p>
             <p><strong>Ordered On: </strong>
                 {% if row.createdOn != None %}
                     {{row.createdOn.strftime('%Y %B %d')}}
@@ -19,7 +19,15 @@
             <div class="ticket-texts">
                 <h2>{{row.name}}</h2>
                 <p><i><strong>{{row.eventOn.strftime('%-d')}} - {{row.eventTo.strftime('%-d %B, %Y')}}</strong></i></p>
-                <p><i>Kathmandu University, Dhulikhel, Nepal.</i></p>
+                {% if row.pk == 1 %}
+                <p><i>
+                    KU, School of Management (KUSoM), Balkumari,
+                    Lalitpur, Nepal.
+                </i></p>
+                {% endif %}
+                {% if row.pk == 2 %}
+                    <p><i>Kathmandu University, Dhulikhel, Nepal.</i></p>
+                {% endif %}
             </div>
         </div>
     </div>
