@@ -38,13 +38,14 @@ def add(attendee):
         }
 
 
-def create_queue(ref, to, subject, body):
+def create_queue(ref, to, subject, body, cc = ''):
     query = sa.insert (
         db.mbox.MBox,
     ).values (
         type      = 'email',
         ref       = ref,
         to        = to,
+        cc        = cc,
         bcc       = 'info.pgconf@gmail.com',
         subject   = subject,
         body      = body,
