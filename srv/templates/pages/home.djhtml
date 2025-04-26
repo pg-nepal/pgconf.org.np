@@ -80,6 +80,9 @@
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </h4>
 
+                    <h2> Selected Talks</h2>
+                    {% include "/parts/talks.djhtml" %}
+
                     <h2>Events 🗓️</h2>
 
                     <p>
