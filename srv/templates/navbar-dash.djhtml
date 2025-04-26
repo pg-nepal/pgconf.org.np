@@ -7,101 +7,119 @@
         border-bottom: 2px solid red;
     }
 
-    .navbar-area{
-        border: 0.5px solid red;
+    .navbar-area-admin {
+        padding: 10px;
+        border-radius: 5px;
+        background: #00000079;
+        display: flex;
+        justify-content: flex-end;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-list {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        gap: 20px;
+    }
+
+    .nav-item {
+        margin: 0;
+        position: relative;
+    }
+
+    .admin-links {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+        display: block;
+    }
+
+    .admin-links:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+
+    .submenu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #00000079;
+        border-radius: 5px;
+        padding: 10px;
+        min-width: 200px;
+        display: none;
+        box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-item:hover .submenu {
+        display: block;
+    }
+
+    .submenu a {
+        color: white;
+        text-decoration: none;
+        padding: 5px 10px;
+        display: block;
+        white-space: nowrap;
+    }
+
+    .submenu a:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 3px;
+    }
+    .dash-title {
+        font-size: 30px;
+        font-weight: bold;
+    }
+    .nav-list-dash {
+        background-color: gray;
+        color: aliceblue;
+        border-radius: 5px;
+        padding: 5px 10px;
     }
 </style>
+
 <nav class="nav">
     <div class="headers">
-            <a href="/">
-                <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
-            </a>
+        <a href="/">
+            <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
+        </a>
         <span class="admin">Logged In as <strong>{{isAdmin}}</strong></span>
     </div>
 
-    <div class="navbar-area">
-        <div class="nav-options">
-            <ul class="nav-list">
-                <li class="nav-item"><a class="admin-links" href="/dash">Dashboard</a></li>
-                <ul class="dropdown" id="dropdown">
-                    <a class="admin-links" href="/proposals">Proposals</a>
-                    <div class="dropdown-content">
-                        <a href="/proposals/evaluation/summary">
-                            Evaluation Summary
-                        </a>
-                        <a href="/proposals/evaluation/report">
-                            Evaluation Report
-                        </a>
-                    </div>
-                </ul>
-                <ul class="dropdown" id="dropdown">
-                    <a class="admin-links" href="/attendees">Attendees</a>
-                    <div class="dropdown-content">
-                        <a href="/attendees?type=organizer">Organizer</a>
-                        <a href="/attendees?type=participant">Participant</a>
-                        <a href="/attendees?type=speaker">Speaker</a>
-                    </div>
-                </ul>
-                <li class="nav-item"><a class="admin-links" href="/tickets">Tickets</a></li>
-                <li class="nav-item admin">
-                    <a href="/" class="logout"
-                    onclick="logout();return false;">Logout</a>
-                </li>
-            </ul>
-        </div>
+    <div class="headers">
+        <span class="dash-title">Conference Management System</span>
+        <ul class="nav-list nav-list-dash">
+            <li class="nav-item"><a class="admin-links" href="/dash">Dashboard</a></li>
 
-            <script>
-                const dropdownNavItems = document.querySelectorAll('.navbar-area .nav-list .nav-item.dropdown')
+            <li class="nav-item">
+                <a class="admin-links" href="/proposals">Proposals</a>
+                <div class="submenu">
+                    <a href="/proposals/evaluation/summary">Evaluation Summary</a>
+                    <a href="/proposals/evaluation/report">Evaluation Report</a>
+                </div>
+            </li>
 
-                for (let e of dropdownNavItems) {
-                    const dropTarget = e.getAttribute('drop-target')
+            <li class="nav-item">
+                <a class="admin-links" href="/attendees">Attendees</a>
+                <div class="submenu">
+                    <a href="/attendees?type=organizer">Organizer</a>
+                    <a href="/attendees?type=participant">Participant</a>
+                    <a href="/attendees?type=speaker">Speaker</a>
+                </div>
+            </li>
 
-                    e.onclick = function () {
-                        const dropDown = document.querySelector(`#${dropTarget}`)
-                        const isShown = dropDown.style.display == 'block'
-
-                        if (isShown) {
-                            dropDown.style.display = 'none'
-                        } else {
-                            dropDown.style.display = 'block'
-                        }
-                    }
-                }
-            </script>
-
-            <!-- Mobile Hamburger Icon -->
-            <div class="hamburger-menu" id="hamburger-menu">
-                <a href="/">
-                    <img class="logo" src="/static/images/pgconf_logo.png" alt="Logo">
-                </a>
-                <span>&#9776;</span> <!-- Hamburger icon -->
-            </div>
-
-            <div class="hamburger-options">
-                <button class="close-btn">X</button>
-                <!-- <ul class="nav-list"> -->
-                    <li class="nav-item"><a href="/dash">Dashboard</a></li>
-                    <li class="nav-item"><a href="/proposals">Proposals</a></li>
-                    <li class="nav-item"><a href="/attendees">Attendees</a></li>
-                    <li class="nav-item admin">
-                        <a href="/" class="logout"
-                        onclick="logout();return false;">Logout</a>
-                    </li>
-                <!-- </ul> -->
-            </div>
-        </div>
+            <li class="nav-item"><a class="admin-links" href="/tickets">Tickets</a></li>
+            <li class="nav-item">
+                <a href="/" class="admin-links logout" onclick="logout();return false;">Logout</a>
+            </li>
+        </ul>
+    </div>
 </nav>
 
 <script>
-    const navOptions = document.querySelector('.hamburger-options')
-    document.getElementById('hamburger-menu').addEventListener('click', function () {
-        navOptions.classList.toggle('active')
-    })
-
-    navOptions.querySelector('.close-btn').onclick = function () {
-        navOptions.classList.toggle('active')
-    }
-
     function logout() {
         if (!confirm('Do you want to logout?')) return
         const xhr = new XMLHttpRequest();
