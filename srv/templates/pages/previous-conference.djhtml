@@ -1,12 +1,9 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle= '/ Previous Conference' %}
 
-
 {% block head %}
-    <style>
-  </style>
+    <script src="/static/js/slider.js"></script>
 {% endblock %}
-
 {% block main %}
 
     <div class="content-container">
@@ -15,6 +12,19 @@
             Nepal, 2023
         </h2>
         <h4><em>Kathmandu University, Dhulikhel, Nepal</em></h4>
+
+        <section class="home-content mt-1">
+            <h2>🐘 Second Conference Conclusion</h2>
+            <p>Here's a glimpse of the second PostgreSQL Conference Nepal:</p>
+            <div id="img-slider" class="img-slider conference-image-container">
+                <div class="slides show">
+                    <img class="slide-image" src="/static/main_conference.jpg" alt="main conference">
+                </div>
+                <div class="slides">
+                    <img class="slide-image" src="/static/training3.jpeg" alt="training">
+                </div>
+            </div>
+        </section>
 
         <div style="position: relative; width: 100%; height: 0; padding-top: 56.2500%;
         padding-bottom: 0; box-shadow: 0 2px 8px 0 rgba(63,69,81,0.16); margin-top: 1.6em; margin-bottom: 0.9em; overflow: hidden;
@@ -29,4 +39,9 @@
         </div>
 
 
+{% endblock %}
+{% block scripts %}
+    <script>
+        init('img-slider')
+    </script>
 {% endblock %}
