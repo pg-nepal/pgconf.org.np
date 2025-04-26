@@ -141,7 +141,7 @@ dialog header {
     color: white;
     background-color: #ff030b;
     border: 1px solid #ff0000;
-    
+
 }
 
 .button.delete:hover{
@@ -632,4 +632,22 @@ input[type="number"]::-webkit-inner-spin-button {
         padding-inline-start: 5px;
     }
 
+}
+
+.status-confirmed {
+    color: blue !important;
+    font-weight: bold;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.col{
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
