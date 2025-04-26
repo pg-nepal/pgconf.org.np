@@ -16,6 +16,10 @@
         margin-bottom: 1rem;
     }
 
+    .jumbotron-dash{
+        background-color: white;
+        background-image: none !important;
+    }
     .jumbotron .jumbotron-page-title {
         position: relative;
         color: white;
@@ -33,16 +37,19 @@
         z-index: 1;
     }
 
+    .jumbotron-dash .dark-wash {
+        background: white !important;
+    }
     .jumbotron .container {
         width: 80%;
         z-index: 1;
     }
 
     .dash-info-bar {
-        color: white;
+        color: black;
         margin-top: 10%;
     }
-    
+
     @media (max-width: 700px) {
         .jumbotron {
             height: 200px;
@@ -56,19 +63,18 @@
     }
 </style>
 
-<div class="jumbotron">
+<div class="{% if isAdmin %}jumbotron jumbotron-dash{% else %}jumbotron{% endif %}">
     <div class="dark-wash"></div>
     <div class="container">
         {% if isAdmin %}
-        <div class="dash-info-bar">
-            <span class="dash-title">🐘 Conference Management</span>
-            <span class="page-title">&#x232A; {{pageTitle}}</span>
-            {% if pageDesc is defined %}
-                <div class="desc">🛈 {{pageDesc}}</div>
-            {% endif %}
-        </div>
+            <div class="dash-info-bar">
+                <span class="page-title">&#x232A; {{pageTitle}}</span>
+                {% if pageDesc is defined %}
+                    <div class="desc">🛈 {{pageDesc}}</div>
+                {% endif %}
+            </div>
         {% else %}
-      <h1 class="jumbotron-page-title" style="margin-top: 10%;">{{pageTitle}}</h1>
-      {% endif %}
+            <h1 class="jumbotron-page-title" style="margin-top: 10%;">{{pageTitle}}</h1>
+        {% endif %}
     </div>
 </div>
