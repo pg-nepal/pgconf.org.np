@@ -1,7 +1,50 @@
 {% extends 'base.djhtml' %}
 {% set pageTitle = 'Dashboard' %}
-{% set pageDesc = 'some thing will come here' %}
+{% set pageDesc = 'conference factsheet' %}
 
 {% block admin_content %}
-    Some infographics will be here :-)
+<div class="row">
+    <div class="col">
+        <h3>Registration Tickets Status</h3>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>Ticket Status</th>
+                <th>Total Count</th>
+            </tr>
+            {% for row in registration_tickets_status %}
+            <tr>
+                <td>{{row.event_name}}</td>
+                <td>
+                    <span class="{{'status-confirmed' if row.ticket_status == 'confirmed' else ''}}">
+                        {{row.ticket_status}}
+                    </span>
+                </td>
+                    <td>{{row.total}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="col">
+        <h3>Registration Payment Status</h3>
+        <table>
+            <tr>
+                <th>Event Name</th>
+                <th>payment Status</th>
+                <th>Total Count</th>
+            </tr>
+            {% for row in registration_payment_status %}
+            <tr>
+                <td>{{row.event_name}}</td>
+                <td>
+                    <span class="{{'status-confirmed' if row.payment_status == 'paid' else ''}}">
+                        {{row.payment_status}}
+                    </span>
+                </td>
+                    <td>{{row.total}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 {% endblock %}
