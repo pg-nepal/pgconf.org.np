@@ -1,0 +1,70 @@
+<table>
+    <tr>
+        <th width="30%">Speaker</th>
+        <th>Talk Title</th>
+    </tr>
+    <tr class="odd">
+        <td>Abhinav (India)</td>
+        <td>Building Resilient PostgreSQL Systems: HA and Load Balancing Techniques</td>
+    </tr>
+    <tr>
+        <td>Bruce Momjian (United States)</td>
+        <td>Making Postgres Central in Your Data Center</td>
+    </tr>
+    <tr class="odd">
+        <td>Christopher Travers (Indonesia)</td>
+        <td>A Guided Tour of PostgreSQL Architecture and Source</td>
+    </tr>
+    <tr>
+        <td>Christopher Travers (United States)</td>
+        <td>The Future of Postgres in a Changing World</td>
+    </tr>
+    <tr class="odd">
+        <td>Dev Raj Gautam (Nepal)</td>
+        <td>Protecting PII and AI Workloads in PostgreSQL</td>
+    </tr>
+    <tr>
+        <td>Egor Rogov (Russia)</td>
+        <td>Why can’t we continue a transaction after an error?</td>
+    </tr>
+    <tr class="odd">
+        <td>Ekaterina Sokolova (Russia)</td>
+        <td>PostgreSQL Tools for Hunting Down and Fixing Non-Optimal Queries</td>
+    </tr>
+    <tr>
+        <td>Ivan Panchenko (Russia)</td>
+        <td>PL/* programming</td>
+    </tr>
+    <tr class="odd">
+        <td>Michael Zhilin (Russia)</td>
+        <td>How PostgreSQL Can Hurt When You Don't Expect It To</td>
+    </tr>
+    <tr>
+        <td>Oleg Bartunov (Russia)</td>
+        <td>PostgreSQL: The Perfect Database for Nepal – Building a Community for the Future</td>
+    </tr>
+    <tr class="odd">
+        <td>Pavel Luzanov (Russia)</td>
+        <td>What's new in PostgreSQL 18</td>
+    </tr>
+    <tr>
+        <td>Premnath (India)</td>
+        <td>Addressing Scalability Challenges in PostgreSQL Sharding: Key Issues and Solutions</td>
+    </tr>
+    <tr class="odd">
+        <td>Rupak Raj Ghimire (Nepal)</td>
+        <td>SQL Sorcery: Writing Less Code with More PostgreSQL</td>
+    </tr>
+    <tr>
+        <td>Semab Tariq (Pakistan)</td>
+        <td>Boost Postgres Performance &amp; Reduce Operational Costs</td>
+    </tr>
+    <tr class="odd">
+        <td>Swastik Gurung (Nepal)</td>
+        <td>Extensions in PostgreSQL, and how to develop one</td>
+    </tr>
+    <tr>
+        <td>Yogesh Jain (India)</td>
+        <td>Unified Observability: Monitoring Postgres Anywhere with OpenTelemetry</td>
+    </tr>
+</table>

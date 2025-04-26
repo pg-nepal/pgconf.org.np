@@ -81,6 +81,10 @@
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </em></h4>
 
+                    <h2> Selected Talks</h2>
+                    {% include "parts/talks.djhtml" %}
+
+
                     <h2>🗓️ Events</h2>
                     <p>
                         This year we are planning two events.
@@ -91,22 +95,7 @@
                     {% endwith %}
                 </section>
 
-                <section class="home-content mt-1">
-                    <h2>🐘 Second Conference Conclusion</h2>
-                    <p>Here's a glimpse of the second PostgreSQL Conference Nepal:</p>
-                    <div id="img-slider" class="img-slider conference-image-container">
-                        <div class="slides show">
-                            <img class="slide-image" src="/static/main_conference.jpg" alt="main conference">
-                        </div>
-                        <div class="slides">
-                            <img class="slide-image" src="/static/training3.jpeg" alt="training">
-                        </div>
-                    </div>
-                </section>
 
-                <script>
-                    init('img-slider')
-                </script>
 
             <div class="alert">
                 <section id="sponsors" class="home-content mt-1">
@@ -115,8 +104,12 @@
                     </h2>
 
                     <div class="sponsors-logos">
-                        <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
-                        <img src="/static/sponsors/ku-logo.png" alt="Kathmandu University">
+                        <a href="https://postgrespro.com" target="_blank">
+                            <img src="/static/sponsors/PostgresPro_logo.png" alt="Postgres Professional">
+                        </a>
+                        <a href="https://ku.edu.np" target="_blank">
+                            <img src="/static/sponsors/ku-logo.png" alt="Kathmandu University">
+                        </a>
                     </div>
                 </section>
             </div>
@@ -125,10 +118,11 @@
                 <h2 class="section-header">
                     🐘 Sponsors
                 </h2>
-                <p>Call for the Sponsorship is open.</p>
-                    <a class="button" href="/pages/sponsors">
-                        Learn more
+                <p>
+                    <a href="https://uba-solutions.com" target="_blank">
+                        <img style="width: 200px;" src="https://mlypcnbva5cu.i.optimole.com/w:auto/h:auto/q:mauto/f:best/https://uba-solutions.com/wp-content/uploads/2023/05/main-logo.png?1744024829" alt="Uba Solutions">
                     </a>
+                </p>
             </div>
 
             <section id="hospitality-partner">
@@ -146,9 +140,13 @@
                             <img src="https://beta-analytics.com/img/logo-medium-comp.png"
                                 alt="Beta Analytics">
                         </a>
-                        <a href="http://uxlsoft.com" target="_blank">
+                        <a href="https://uxlsoft.com" target="_blank">
                             <img src="/static/sponsors/uxl-soft.png"
                                 alt="Uniaxial Softwares">
+                        </a>
+                        <a href="https://outlines-rnd.com" target="_blank">
+                            <img style="width: 200px;"  src="https://outlines-rnd.com/assets/images/logo.png"
+                                alt="Outlines RND">
                         </a>
                     </div>
                 </section>
