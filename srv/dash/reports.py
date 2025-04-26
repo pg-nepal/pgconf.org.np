@@ -19,6 +19,13 @@ def reports_registration_status():
     )
 
 
+def get_data(sql):
+    with db.engine.connect() as conn:
+        with conn.execute(sa.text(sql)) as cursor:
+            result = [row._asdict() for row in cursor.fetchall()]
+            return result
+
+
 def get_registration_tickets_status():
     sql = """
         select e."name" event_name , t.status ticket_status, count(t.status) as total
@@ -27,10 +34,7 @@ def get_registration_tickets_status():
         group by event_name, ticket_status
         order by event_name, ticket_status
     """
-    with db.engine.connect() as conn:
-        with conn.execute(sa.text(sql)) as cursor:
-            result = [row._asdict() for row in cursor.fetchall()]
-            return result
+    return get_data(sql)
 
 
 def get_registration_payment_status():
@@ -41,7 +45,13 @@ def get_registration_payment_status():
         group by event_name, payment_status
         order by event_name, payment_status
     """
-    with db.engine.connect() as conn:
-        with conn.execute(sa.text(sql)) as cursor:
-            result = [row._asdict() for row in cursor.fetchall()]
-            return result
+    return get_data(sql)
+
+def get_accepted_proposals():
+    sql = """
+        select pk, name || ' (' || country || ')' as speaker ,
+                email, title
+        from conf25.proposals where status ='accepted'
+        order by speaker asc
+    """
+    return get_data(sql)

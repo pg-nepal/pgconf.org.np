@@ -47,4 +47,25 @@
         </table>
     </div>
 </div>
+<div class="row">
+    <div class="col">
+        <h3>Accepted Proposals</h3>
+        <table>
+            <tr>
+                <th style="width: 30%;">Speaker</th>
+                <th>Title</th>
+            </tr>
+            {% for row in accepted_proposals %}
+            <tr>
+                <td>
+                    <a href="/proposals/{{row.pk}}" target="_blank">
+                        {{row.speaker}}
+                    </a>
+                </td>
+                <td>{{row.title}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
 {% endblock %}

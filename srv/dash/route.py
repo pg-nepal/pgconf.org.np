@@ -15,4 +15,5 @@ def dash_index():
         isAdmin = srv.auth.loggedInUser(flask.request),
         registration_tickets_status = srv.dash.reports.get_registration_tickets_status(),
         registration_payment_status = srv.dash.reports.get_registration_payment_status(),
+        accepted_proposals = srv.dash.reports.get_accepted_proposals(),
     )
