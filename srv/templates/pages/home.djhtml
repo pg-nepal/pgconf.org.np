@@ -128,6 +128,22 @@
                     </div>
                 </section>
 
+                <section id="sponsors" class="alert home-content mt-1">
+                    <h2 class="section-header">
+                        Sponsors
+                    </h2>
+
+                    <p>
+                        <a href="https://uba-solutions.com" target="_blank">
+                            <img style="width: 250px;" src="/static/uba-logo.png" alt="Uba Solutions">
+                        </a>
+
+                        <a href="https://nchl.com.np" target="_blank">
+                            <img style="width: 230px;" src="/static/clearing-house.jpeg" alt="NCHL">
+                        </a>
+                    </p>
+                </section>
+
                 <section id="hospitality-partner">
                     {% include "/parts/partners-hotels.djhtml" %}
                 </section>
