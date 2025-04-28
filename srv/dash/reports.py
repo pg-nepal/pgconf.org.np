@@ -49,9 +49,9 @@ def get_registration_payment_status():
 
 def get_accepted_proposals():
     sql = """
-        select pk, name || ' (' || country || ')' as speaker ,
+        select pk, name || ' (' || country || ')' as speaker , session,
                 email, title
         from conf25.proposals where status ='accepted'
-        order by speaker asc
+        order by session, speaker asc
     """
     return get_data(sql)
