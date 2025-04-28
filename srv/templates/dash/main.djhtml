@@ -53,6 +53,7 @@
         <table>
             <tr>
                 <th style="width: 30%;">Speaker</th>
+                <th>Session</th>
                 <th>Title</th>
             </tr>
             {% for row in accepted_proposals %}
@@ -62,6 +63,7 @@
                         {{row.speaker}}
                     </a>
                 </td>
+                <td>{{row.session}}</td>
                 <td>{{row.title}}</td>
             </tr>
             {% endfor %}
