@@ -83,6 +83,9 @@
 
                     <h2> Selected Talks</h2>
                     {% include "parts/talks.djhtml" %}
+                    <p>
+                        Download Detailed schedule <a href="/static/pgconf2025-agenda-main-conference.pdf" target="_blank">here</a>
+                    </p>
 
 
                     <h2>🗓️ Events</h2>
