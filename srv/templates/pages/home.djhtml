@@ -122,6 +122,9 @@
                     <a href="https://uba-solutions.com" target="_blank">
                         <img style="width: 250px;" src="/static/uba-logo.png" alt="Uba Solutions">
                     </a>
+                    <a href="https://nchl.com.np" target="_blank">
+                        <img style="width: 230px;" src="/static/clearing-house.jpeg" alt="NCHL">
+                    </a>
                 </p>
             </div>
 
@@ -145,7 +148,7 @@
                                 alt="Uniaxial Softwares">
                         </a>
                         <a href="https://outlines-rnd.com" target="_blank">
-                            <img style="width: 200px;"  src="https://outlines-rnd.com/assets/images/logo.png"
+                            <img style="width: 200px;"  src="/static/outlines.jpeg"
                                 alt="Outlines RND">
                         </a>
                     </div>
