@@ -12,13 +12,9 @@
         </p>
     </div>
 
-    {% with showLinks=false %}
-        {% include "parts/events.djhtml" %}
-    {% endwith %}
-
     <div style="display: flex; justify-content: space-between; align-items: center;">
-        <a class="button" href="/registered/form" target="_blank">
-            Register
+        <a class="button delete" href="/registered/form" target="_blank">
+            Registration Closed for 2025
         </a>
     </div>
 
