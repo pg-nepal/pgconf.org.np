@@ -155,6 +155,7 @@ def registered_create():
                 db.conf.Attendee.status,
             ))
 
+            return 'Registration has been closed for 2025, see you next time'
             attendee = cursor.first()
 
             cursor = session.execute(sa.insert(
