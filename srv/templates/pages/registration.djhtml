@@ -40,7 +40,8 @@
         <h2>🚀 Professional Tickets</h2>
         <ol>
             <li><p><s>Discounted Rate: NRS 5,000</s>  <span style="color:red;">SOLD OUT</span></p></li>
-            <li><p>Normal Rate: NRS 7,000</p></li>
+            <li><p><s>Normal Rate: NRS 7,000</s> <span style="color:red;">SOLD OUT</span></p></li>
+
             <h4 style="color: #007bff;">
                 <em>
                     Includes a 1-night Bed and Breakfast
