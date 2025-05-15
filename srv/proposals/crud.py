@@ -101,7 +101,7 @@ def proposal_read(pk):
 
     query = sa.select(
         db.programs.Proposal.pk,
-
+        db.programs.Proposal.slug,
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
 
@@ -110,6 +110,7 @@ def proposal_read(pk):
         db.programs.Proposal.country,
         db.programs.Proposal.createdOn,
         db.programs.Proposal.session,
+        sa.cast(db.programs.Proposal.status, sa.String),
     ).where(
         db.programs.Proposal.pk == pk,
     )
