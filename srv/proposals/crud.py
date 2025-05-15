@@ -219,6 +219,10 @@ def proposal_update(pk):
         **formData,
         updatedBy = name,
     )
+
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(query)
+        return 'Updated Row', 202 if cursor.rowcount > 0 else 400
         updatedBy = isAdmin,
     )
 
