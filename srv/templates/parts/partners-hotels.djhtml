@@ -7,9 +7,9 @@
             <img src="/static/hospitality_drisya.jpg" style="width:150px;!" />
         </a>
         &nbsp;&nbsp;&nbsp;
-        <a href="#" target = "_blank">
-            <img src="/static/hospitality_princess.jpg" width="150"
-                style="width:150px;!" />
+        <a href="http://www.mountprincess.com/about-us" target = "_blank">
+            <img src="/static/MPH_LOGO.png" width="150"
+                style="width:150px;! mix-blend-mode:multiply;" />
         </a>
     </p>
 </div>
