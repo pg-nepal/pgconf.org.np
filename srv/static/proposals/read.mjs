@@ -235,8 +235,6 @@ function proposalLoad(row) {
 
 
 export function createAttendee(row) {
-    if (!confirm('Are you sure?')) return
-
     const formData = new FormData()
     formData.append('name', row.name)
     formData.append('type', 'speaker')
@@ -254,6 +252,22 @@ export function createAttendee(row) {
             return response.json()
         }
     }).then(function (json){
+        const pk = row.pk
+        const attendeePk = json['pk']
+        fetch(`/api/proposals/update/${pk}`, {
+            method : 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body   : JSON.stringify({attendeePk})
+        }).then(function(response){
+            if(response.status != 200){
+                alert("Failed to update")
+            } else {
+                alert('Copied to attendee table successfully.')
+                return response.text()
+            }
+        })
         window.location.href = `/attendees/${json['pk']}`
     })
 }
