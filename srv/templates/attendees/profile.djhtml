@@ -64,7 +64,7 @@
 
     <div class="profile-section">
         <div class="attendee-photo">
-            <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
+            <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
             <button id="edit-profile" class="button"> Edit profile </button>
         </div>
         <div class="description-section">
