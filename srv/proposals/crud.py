@@ -223,9 +223,26 @@ def proposal_update(pk):
     with db.SessionMaker.begin() as session:
         cursor = session.execute(query)
         return 'Updated Row', 202 if cursor.rowcount > 0 else 400
+
+
+@app.post('/api/proposals/update/<int:pk>')
+def proposal_attendee_pk_update(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    jsonData = flask.request.json
+
+    query = sa.update(
+        db.programs.Proposal,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    ).values(
+        attendee_pk = jsonData['attendeePk'],
         updatedBy = isAdmin,
     )
 
     with db.SessionMaker.begin() as session:
         session.execute(query)
-        return flask.redirect('/proposals'), 202
+        return 'Copied to attendee table successfully', 200
+
