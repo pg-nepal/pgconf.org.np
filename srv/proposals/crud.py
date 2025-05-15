@@ -148,6 +148,12 @@ def proposal_update(pk):
     formData = flask.request.form.to_dict()
     name = formData.get('name') or isAdmin
 
+    if 'slideBlob' in flask.request.files:
+        file_slideBlob = flask.request.files['slideBlob']
+        if file_slideBlob.filename != '':
+            formData['slideBlob'] = file_slideBlob.read()
+            formData['slideMime'] = file_slideBlob.content_type
+
     query = sa.update(
         db.programs.Proposal,
     ).where(
