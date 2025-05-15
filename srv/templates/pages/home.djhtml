@@ -1,4 +1,3 @@
-{% set showJumbotron = false %}
 {% extends 'base.djhtml' %}
 {% set pageTitle = '/ Home' %}
 
@@ -33,30 +32,8 @@
     <div class="banner-container">
         <div class="overlay"></div>
         <div class="text">
-            <h1>Third <span style="color: #007bff; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
-            <h2>{{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}}</h2>
-            <div class="countdown-container">
-                <div class="countDown">
-                    <div class="countdown-cells">
-                        Days <br>
-                        <span id="days" class="countdown-numbers">115</span>
-                    </div>
-                    <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        Hours <br>
-                        <span id="hours" class="countdown-numbers">13</span>
-                    </div>
-                    <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        Minutes <br>
-                        <span id="minutes" class="countdown-numbers">2</span>
-                    </div>
-                    <div class="countdown-cells" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-                        Seconds <br>
-                        <span id="seconds" class="countdown-numbers">42</span>
-                    </div>
-                </div>
-            </div>
-
-            <a href="/pages/registration" class="button">Register Now</a>
+            <h1><span style="color: #007bff; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
+            <p>Thank You All For Participating ❤️</p>
         </div>
     </div>
 
@@ -175,37 +152,4 @@
             </div>
         </div>
     </div>
-{% endblock %}
-
-
-{% block scripts%}
-    <script>
-        (function countDown() {
-            const now = new Date()
-            const eventDate = new Date('{{eventOn.isoformat()}}')
-            const currentTime = now.getTime()
-            const eventTime = eventDate.getTime()
-
-            const remTime = Math.max(eventTime - currentTime, 0)
-            let s = Math.floor(remTime / 1000)
-            let m = Math.floor(s / 60)
-            let h = Math.floor(m / 60)
-            const d = Math.floor(h / 24)
-
-            h %= 24
-            m %= 60
-            s %= 60
-
-            h = h < 10 ? `0${h}` : h
-            m = m < 10 ? `0${m}` : m
-            s = s < 10 ? `0${s}` : s
-
-            document.getElementById('days').textContent = d;
-            document.getElementById('hours').textContent = h;
-            document.getElementById('minutes').textContent = m;
-            document.getElementById('seconds').textContent = s;
-
-            if (remTime > 0) {setTimeout(countDown, 1000)}
-        })()
-    </script>
 {% endblock %}
