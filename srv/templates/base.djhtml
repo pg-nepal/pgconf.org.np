@@ -24,11 +24,9 @@
         </header>
 
         <main class="main_background">
-            {% if showJumbotron is not defined %}
-                {% block jumbotron %}
-                    {% include '/jumbotron.html' %}
-                {% endblock %}
-            {% endif %}
+            {% block jumbotron %}
+                {% include '/jumbotron.html' %}
+            {% endblock %}
 
             {% block main %}
                 <div class="content-container">
