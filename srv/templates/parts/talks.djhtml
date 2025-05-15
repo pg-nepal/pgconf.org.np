@@ -1,3 +1,13 @@
+<style>
+    .talk-table{
+        display: block;
+    }
+
+    .data-row{
+        cursor: pointer;
+    }
+</style>
+
 <table id="talk-table">
     <thead>
         <tr id="header-row">
