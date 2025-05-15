@@ -20,7 +20,7 @@
 {% block admin_content %}
     <div class="profile-section">
         <div class="attendee-photo">
-            <img src="/attendees/{{row.pk}}.photo" alt="{{row.name}}">
+            <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
         </div>
         <div class="description-section">
             <a class="button profileView" href="/registered/{{row.slug}}">
