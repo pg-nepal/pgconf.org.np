@@ -17,3 +17,42 @@
         </tr>
     </thead>
 </table>
+
+
+<script>
+    fetch('/talks').then(function (response) {
+        if(200 == response.status){
+            return response.json()
+        }
+    }).then(function (json) {
+        const table = document.getElementById('talk-table')
+        const tBody = document.createElement('tbody')
+        json.forEach(talk => {
+            const dataRow = document.createElement('tr')
+            dataRow.addEventListener('click', function () {
+            const form = document.createElement('form')
+            form.method = 'POST'
+            form.action = '/talks'
+
+            const hiddenInput = document.createElement('input')
+            hiddenInput.type = 'hidden'
+            hiddenInput.name = 'slug'
+            hiddenInput.value = talk.slug
+
+            form.appendChild(hiddenInput)
+            document.body.appendChild(form)
+            form.submit()
+        })
+
+            dataRow.classList = 'data-row'
+            for (const key in talk) {
+                if (key === 'slug') continue;
+                const cell = document.createElement('td')
+                cell.innerText = talk[key]
+                dataRow.appendChild(cell)
+            }
+            tBody.appendChild(dataRow)
+            table.appendChild(tBody)
+        });
+    })
+</script>
