@@ -26,6 +26,9 @@
 {% endblock %}
 
 
+{% block jumbotron %}{% endblock %}
+
+
 {% block main %}
     <div class="banner-container">
         <div class="overlay"></div>
