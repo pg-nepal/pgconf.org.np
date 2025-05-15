@@ -57,13 +57,16 @@
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
         (<span id="rating-count">0</span> ratings)
         <button id="rating-dialog-btn" class="button">Rate this Proposal</button>
-        <button id="create-attendee-btn" class="button">Copy to attendee table</button>
     </p>
 
     <div class="info-table" style="margin-bottom: 20px">
         <div class="info-row">
             <div class="info-label">Name</div>
             <div class="info-value" id="row.name"></div>
+        </div>
+        <div class="info-row">
+            <div class="info-label">Slug</div>
+            <div class="info-value" id="row.slug"></div>
         </div>
         <div class="info-row">
             <div class="info-label">Email</div>
@@ -88,25 +91,23 @@
 
    <form id="status-update-form">
        <div class="status-wrapper" id="status-update">
-        <div class="fields">
-            <label for="status">Status</label>
+           <div class="fields">
             <select id="wtf-status" name="status" required>
-             <option value="submitted">Not Reviewed (Allows proposal writer to update the proposal)</option>         
+            <label for="status">Status</label>
+             <option value="submitted">Not Reviewed (Allows proposal writer to update the proposal)</option>
              <option value="in review">In Review</option>
              <option value="accepted">Accepted</option>
              <option value="rejected">Rejected</option>
             </select>
         </div>
 
-           <div class="fields" id="note-textarea" style="display: none;">
-                <p for="note">Write your reason for this status update.</p>
-                <textarea name="note" id="note" required></textarea>
-            </div>
         </div>
 
-           <button class="button" id="save-btn" style="display: none;">Save</button>
+        <div class="wrapper">
+            <button class="button" id="save-btn" style="display: none;">Save</button>
+        </div>
    </form>
-   
+
 
 
     <div class="alert">
@@ -145,9 +146,32 @@
         const isAdmin = {{ isAdmin|tojson }};
         proposals.reviewReadAll(isAdmin, {{pk}})
         proposals.init({{pk}}).then(function (json) {
-            document.getElementById('create-attendee-btn').onclick = function() {
-                proposals.createAttendee(json)
-            }
+
+            document.getElementById('status-update-form').addEventListener('submit', function(event){
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            const formData = new FormData(event.target)
+            const status = formData.get('status')
+
+            if (!confirm('Do you want to change the proposal status?')) return
+            fetch('/proposals/{{pk}}', {
+                method : 'POST',
+                body   : formData,
+            }).then(function (response){
+                if(status == 'accepted'){
+                    if (!confirm('Accepting the proposal will copy the writer to the attendee table.')) return
+                    proposals.createAttendee(json)
+                } else {
+                    if (202 == response.status) {
+                        alert('Proposal Status updated successfully.')
+                        location.reload()
+                    }
+                }
+
+            })
+        })
         })
 
         const eDialog = document.getElementById('dialog-comment')
@@ -159,34 +183,10 @@
         document.getElementById('rating-dialog-btn').onclick = function() {
             eDialog_.showModal()
         }
-    </script>
 
-    <script>
         document.getElementById('wtf-status').addEventListener('change', function () {
             const eButton = document.getElementById('save-btn')
             eButton.style.display = this.value ? 'block' : 'none'
-
-            const eTextArea = document.getElementById('note-textarea')
-            eTextArea.style.display = this.value ? 'block' : 'none'
-        })
-
-        document.getElementById('status-update-form').addEventListener('submit', function(event){
-            event.preventDefault()
-            event.stopPropagation()
-            event.target.reportValidity()
-
-            const formData = new FormData(event.target)
-
-            if (!confirm('Do you want to change the proposal status?')) return
-            fetch('/proposals/{{pk}}', {
-                method : 'POST',
-                body   : formData,
-            }).then(function (response){
-                if (202 == response.status) {
-                    alert('Proposal Status updated successfully.')
-                    location.reload()
-                }
-            })
         })
     </script>
 {% endblock %}
