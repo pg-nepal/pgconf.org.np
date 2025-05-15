@@ -217,6 +217,8 @@ def proposal_update(pk):
         db.programs.Proposal.pk == pk,
     ).values(
         **formData,
+        updatedBy = name,
+    )
         updatedBy = isAdmin,
     )
 
