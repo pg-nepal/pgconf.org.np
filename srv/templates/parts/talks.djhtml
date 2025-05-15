@@ -1,102 +1,46 @@
-<table>
-    <tr>
-        <th width='20%'>Speaker</th>
-        <th width='20%'>Session</th>
-        <th width='60%'>Talk</th>
-    </tr>
-    <tr class="odd">
-        <td>Bruce Momjian</td>
-        <td>keynote</td>
-        <td>Making Postgres Central in Your Data Center</td>
-    </tr>
-    <tr>
-        <td>Christopher Travers</td>
-        <td>keynote</td>
-        <td>The Future of Postgres in a Changing World</td>
-    </tr>
-    <tr class="odd">
-        <td>Oleg Bartunov</td>
-        <td>keynote</td>
-        <td>PostgreSQL: The Perfect Database for Nepal – Building a Community for the Future</td>
-    </tr>
-    <tr>
-        <td>Abhinav</td>
-        <td>talk</td>
-        <td>Building Resilient PostgreSQL Systems: HA and Load Balancing Techniques</td>
-    </tr>
-    <tr class="odd">
-        <td>Alexandr Gonchar</td>
-        <td>talk</td>
-        <td>The hidden traps of Debezium and PostgreSQL: How big tables ruin your CDC pipelines</td>
-    </tr>
-    <tr>
-        <td>Christopher Travers</td>
-        <td>talk</td>
-        <td>A Guided Tour of PostgreSQL Architecture and Source</td>
-    </tr>
-    <tr class="odd">
-        <td>Dev Raj Gautam</td>
-        <td>talk</td>
-        <td>Protecting PII and AI Workloads in PostgreSQL</td>
-    </tr>
-    <tr>
-        <td>Ekaterina Sokolova</td>
-        <td>talk</td>
-        <td>PostgreSQL Tools for Hunting Down and Fixing Non-Optimal Queries</td>
-    </tr>
-    <tr class="odd">
-        <td>Ivan Panchenko</td>
-        <td>talk</td>
-        <td>PL/* programming</td>
-    </tr>
-    <tr>
-        <td>Michael Zhilin</td>
-        <td>talk</td>
-        <td>How PostgreSQL Can Hurt When You Don't Expect It To</td>
-    </tr>
-    <tr class="odd">
-        <td>Nikolay Shaplov</td>
-        <td>talk</td>
-        <td>Creating own extension. First step to become Postgres Developer</td>
-    </tr>
-    <tr>
-        <td>Pavel Luzanov</td>
-        <td>talk</td>
-        <td>What's new in PostgreSQL 18</td>
-    </tr>
-    <tr class="odd">
-        <td>Prabin Silwal</td>
-        <td>talk</td>
-        <td>Using PostgreSQL in the AI Era</td>
-    </tr>
-    <tr>
-        <td>Premnath</td>
-        <td>talk</td>
-        <td>Addressing Scalability Challenges in PostgreSQL Sharding: Key Issues and Solutions</td>
-    </tr>
-    <tr class="odd">
-        <td>Rupak Raj Ghimire</td>
-        <td>talk</td>
-        <td>SQL Sorcery: Writing Less Code with More PostgreSQL</td>
-    </tr>
-    <tr>
-        <td>Semab Tariq</td>
-        <td>talk</td>
-        <td>Boost Postgres Performance &amp; Reduce Operational Costs</td>
-    </tr>
-    <tr class="odd">
-        <td>Yogesh Jain</td>
-        <td>talk</td>
-        <td>Unified Observability: Monitoring Postgres Anywhere with OpenTelemetry</td>
-    </tr>
-    <tr>
-        <td>Egor Rogov</td>
-        <td>workshop</td>
-        <td>Why can’t we continue a transaction after an error?</td>
-    </tr>
-    <tr class="odd">
-        <td>Swastik Gurung</td>
-        <td>workshop</td>
-        <td>Extensions in PostgreSQL, and how to develop one</td>
-    </tr>
+<style>
+    .talk-table{
+        display: block;
+    }
+
+    .data-row{
+        cursor: pointer;
+    }
+</style>
+
+
+<table id="talk-table">
+    <thead>
+        <tr id="header-row">
+            <th width="20%">Name</th>
+            <th width="20%">Session</th>
+            <th width="60%">Title</th>
+        </tr>
+    </thead>
 </table>
+
+
+<script>
+    fetch('/api/talks').then(function (response) {
+        return response.json()
+    }).then(function (json) {
+        const table = document.getElementById('talk-table')
+        const tBody = document.createElement('tbody')
+        json.forEach(function (row) {
+            const dataRow = document.createElement('tr')
+            dataRow.addEventListener('click', function () {
+                window.location = `/talks/${row.slug}`
+            })
+
+            dataRow.classList = 'data-row'
+            for (const key in row) {
+                if (key === 'slug') continue;
+                const cell = document.createElement('td')
+                cell.innerText = row[key]
+                dataRow.appendChild(cell)
+            }
+            tBody.appendChild(dataRow)
+            table.appendChild(tBody)
+        });
+    })
+</script>
