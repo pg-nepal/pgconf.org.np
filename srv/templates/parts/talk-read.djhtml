@@ -1,0 +1,40 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = 'Talk' %}
+
+{% block head %}
+<style>
+    .attendee-photo { display: flex; flex-direction: column; }
+    .attendee-photo img { width: 300px; height: 300px; object-fit: cover; border: 1px solid #ddd; background-position: center;    border-radius: 50%;}
+    .nameType{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    @media (max-width: 500px){
+        .nameType{
+            display: block;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block main %}
+<div class="content-container">
+    <div class="attendee-photo">
+        <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+    </div>
+    <div class="alert">
+    <h2 style="color: #007bff;">{{row.title}}</h2>
+        <em>By <strong>{{row.name}}</strong></em>
+        <p>{{row.abstract}}</p>
+        {% if row.slideBlob %}
+        <a href="/api/proposals/{{ row.pk }}.slide" download>Download Slide</a>
+        {% endif %}
+    </div>
+
+
+</div>
+{% endblock %}
+
+{% block tail %}
+{% endblock %}
