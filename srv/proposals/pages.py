@@ -1,3 +1,4 @@
+import io
 import flask
 import sqlalchemy as sa
 
@@ -86,6 +87,29 @@ def evaluation_report():
         )
 
 
+@app.route('/api/proposals/<int:pk>.slide')
+def proposal_read_slide(pk):
+    query = sa.select(
+        db.programs.Proposal.slideBlob,
+        db.programs.Proposal.slideMime,
+    ).where(
+        db.programs.Proposal.pk == pk,
+    )
+
+    with db.engine.connect() as connection:
+        row = connection.execute(query).first()
+
+        if row is None:
+            return 'File Not Found', 404
+
+        return flask.send_file(
+            io.BytesIO(row.slideBlob),
+            mimetype = row.slideMime or 'pdf',
+            as_attachment=True,
+            download_name='pgconf2025_slide.pdf',
+        )
+
+
 @app.get('/api/proposals/evaluation/<slug>')
 def submitted_evaluation_mine(slug):
 
@@ -126,7 +150,7 @@ def submitted_evaluation_mine(slug):
                 'Content'   : row.Content,
                 'Rated by'  : row._mapping['Rated by'],
                 'Status'    : row.status,
-            }, 
+            },
         )
 
 
