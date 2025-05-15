@@ -1,0 +1,38 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = row.session %}
+
+
+{% block head %}
+    <style>
+        @media (max-width: 500px){
+            .nameType{
+                display: block;
+            }
+        }
+    </style>
+{% endblock %}
+
+
+{% block main %}
+    <div class="content-container">
+        <div class="attendee-photo">
+            <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+        </div>
+
+        <div class="alert">
+            <h2 style="color: #007bff; margin: 0;">{{row.title}}</h2>
+            <em>By <strong>{{row.name}}</strong></em>
+            <p>{{row.abstract}}</p>
+
+            {% if row.slideBlob %}
+                <a class="button" href="/proposals/{{row.pk}}.slide" download>
+                    Download Slide
+                </a>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+
+{% block tail %}
+{% endblock %}
