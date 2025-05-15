@@ -108,7 +108,9 @@
             </div>
         </div>
 
-           <button class="button" id="save-btn" style="display: none;">Save</button>
+        <div class="wrapper">
+            <button class="button" id="save-btn" style="display: none;">Save</button>
+        </div>
    </form>
    
 
