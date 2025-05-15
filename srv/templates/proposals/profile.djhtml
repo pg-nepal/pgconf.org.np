@@ -27,6 +27,10 @@
             width: 50%;
         }
 
+        .wrapper{
+            text-align: left;
+        }
+
         @media (max-width: 1800px) {
             .status-wrapper{
                 width: 60%;
