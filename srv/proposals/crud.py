@@ -202,7 +202,8 @@ def proposal_update(pk):
     if isAdmin is False:
         return srv.auth.respondInValid()
 
-    formData = flask.request.form
+    formData = flask.request.form.to_dict()
+    name = formData.get('name') or isAdmin
 
     query = sa.update(
         db.programs.Proposal,
