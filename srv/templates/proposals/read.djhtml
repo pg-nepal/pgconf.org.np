@@ -66,6 +66,10 @@
             <div class="info-value" id="row.name"></div>
         </div>
         <div class="info-row">
+            <div class="info-label">Slug</div>
+            <div class="info-value" id="row.slug"></div>
+        </div>
+        <div class="info-row">
             <div class="info-label">Email</div>
             <div class="info-value" id="row.email"></div>
         </div>
