@@ -166,6 +166,28 @@
         }
 </script>
 
+<script>
+    document.getElementById('slide-updload-form').addEventListener('submit', function(event){
+        event.preventDefault()
+        event.stopPropagation()
+        event.target.reportValidity()
+
+        const formData = new FormData(event.target)
+        formData.append('name', '{{row.name}}')
+
+        if(!confirm('Are you sure you want to upload this?')) return
+        fetch('/proposals/{{row.pk}}', {
+            method: 'POST',
+            body  : formData,
+        }).then(function (response) {
+            if(202 == response.status){
+                alert('Slides uploaded successfully.')
+                location.reload()
+            }
+        })
+    })
+</script>
+
 
 <script type="module">
     import * as proposals from '/static/proposals/read.mjs'
