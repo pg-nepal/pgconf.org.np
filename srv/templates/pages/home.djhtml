@@ -25,6 +25,8 @@
     </style>
 {% endblock %}
 
+{% block jumbotron %}
+{% endblock %}
 
 {% block main %}
     <div class="banner-container">
