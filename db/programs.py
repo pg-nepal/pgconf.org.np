@@ -44,6 +44,8 @@ class Proposal(db.Base):
 
     status         = sa.Column(p_proposal_status, server_default='submitted', comment='Acceptance status for a proposal')
     note           = sa.Column(sa.Text())
+    slideBlob      = sa.Column(sa.LargeBinary)
+    slideMime      = sa.Column(sa.String(32))
 
 
 class Review(db.Base):
