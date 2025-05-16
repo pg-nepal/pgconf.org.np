@@ -93,7 +93,8 @@
 
                     <h2>🗓️ Events</h2>
                     <p>
-                        This year we are planning two events.
+                        In 2025, PostgreSQL Conference Nepal featured two major components, both successfully completed with active
+                        participation and positive feedback from attendees.
                     </p>
 
                     {% with showLinks=true %}
@@ -106,7 +107,7 @@
             <div class="alert">
                 <section id="sponsors" class="home-content mt-1">
                     <h2 class="section-header">
-                        🐘 Co-Organizer
+                        🐘 Co-Organizer 2025
                     </h2>
 
                     <div class="sponsors-logos">
@@ -122,7 +123,7 @@
 
             <div class="alert">
                 <h2 class="section-header">
-                    🐘 Sponsors
+                    🐘 Sponsors 2025
                 </h2>
                 <p>
                     <a href="https://uba-solutions.com" target="_blank">
@@ -141,7 +142,7 @@
             <div class="alert">
                 <section id="sponsors" class="home-content mt-1">
                     <h2 class="section-header">
-                        🐘 Supported By
+                        🐘 Supported By 2025
                     </h2>
 
                     <div class="sponsors-logos">
