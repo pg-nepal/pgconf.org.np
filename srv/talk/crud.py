@@ -16,6 +16,8 @@ def talks_list():
         db.programs.Proposal.title,
     ).where(
         db.programs.Proposal.status == 'accepted',
+    ).order_by(
+        db.programs.Proposal.session,
     )
 
     with db.engine.connect() as connection:
