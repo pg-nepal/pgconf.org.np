@@ -5,34 +5,41 @@
 {% block main_content %}
 
     <p>
-        Welcome to the third PostgreSQL Conference happening on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in Kathmandu University,
-        Dhulikhel, Kavre, Nepal. After the successful organization of the first-ever PostgreSQL Conference
-        Nepal in May 4-5, 2018, we are excited to announce this year’s conference. In the previous conference,
-        we had quite a few exciting talks from internationally renowned and prominent personalities from the PostgreSQL
-        community as well as from many local speakers. We hope to continue the trend for this year and have similar support
-        from the international community as well as locally.
+        PostgreSQL Conference Nepal is an ongoing initiative to bring together PostgreSQL professionals, enthusiasts, developers,
+        decision-makers, and advocates from both Nepal and around the world. The most recent edition of the conference was held
+        on May 5–6 at Kathmandu University, Dhulikhel, continuing the tradition of community-driven knowledge sharing and collaboration.
     </p>
     <p>
-        With the increased globalization trends in recent years, Nepal has continued to be one of the major attractions
-        not just because of its rich natural beauty but also because of the fact that it contributes significantly to the global
-        software development ecosystem through our talented pool of Nepali computer professionals. In this context, Open Source
-        applications and solutions like PostgreSQL have a lot of prospects in the overall development and prosperity of Nepal.
+        Since the successful launch of the first-ever PostgreSQL Conference Nepal in May 2018, the event has steadily grown in scale and impact.
+        Over the years, it has featured insightful talks and workshops from both internationally renowned PostgreSQL contributors and prominent
+        local experts. The conference serves as a vital platform to discuss technical innovations, real-world use cases, and community building.
     </p>
     <p>
-        One of the goals of PostgreSQL conferences in Nepal is to add momentum to the current use and adoption of PostgreSQL as a
-        first choice of the database, fuel the advocacy and awareness about the use and benefits among policymakers and implementation
-        agencies in the government, private and the public. This conference is an opportunity to bring together local and international
-        experts, novices, enthusiasts and the like to discuss technical, non-technical, social and other issues on PostgreSQL thus helping
-        to build a strong PostgreSQL community in Nepal which will not only be capable to solve the local technical problems locally but
-        provide an international platform to the community members.
+        Nepal’s growing presence in the global software development ecosystem—powered by a talented pool of Nepali IT professionals—makes it a natural
+        hub for open-source technologies like PostgreSQL. The conference supports this momentum by promoting PostgreSQL as a first-choice database solution,
+        encouraging its adoption across the government, private, and public sectors.
+    </p>
+    <p>
+        Beyond the code, PostgreSQL Conference Nepal is a space where technical, non-technical, and community discussions converge. Whether you’re
+        a seasoned developer or just getting started, it’s an opportunity to connect, learn, and contribute.
     </p>
 
-    <p><em>
-        Please check our <a href="/pages/code-of-conduct">Code of Conduct</a>.
-    </em></p>
+    <em>Please check our <a href="/pages/code-of-conduct">Code of Conduct</a>.</em>
+
+    <div class="alert alert-info">
+        <h2>🔮 Looking Ahead</h2>
+        <p>
+            With every successful edition, we’re laying the foundation for an even stronger PostgreSQL community in Nepal. Planning for future
+            conferences is already in motion, and we look forward to welcoming more voices, ideas, and innovations in the next edition.
+        </p>
+
+        <p>Stay tuned for updates on upcoming events.</p>
+    </div>
+
+    <em style="color: #007bff;">For collaborations, sponsorship, or speaking opportunities, reach out to info@pgconf.org.np.</em>
 
     <div class="alert">
-        <h3>🏛️ Organizing Committee</h3>
+        <h3>🏛️ Organizing Committee 2025</h3>
         <ol>
             <li><p><strong>Prof. Dr. Bal Krishna Bal</strong> - Kathmandu University, Conference Chair</p></li>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional, Co-Chair</p></li>
@@ -47,7 +54,7 @@
     </div>
 
     <div class="alert">
-        <h3>✔️ Program Committee/Talk Selection Committee</h3>
+        <h3>✔️ Program Committee/Talk Selection Committee 2025</h3>
         <ol>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional</p></li>
             <li><p><strong>Dr. Manoj Shakya</strong> - Kathmandu University</p></li>
@@ -60,7 +67,7 @@
     </div>
 
     <div class="alert">
-        <h3>🛑 Code of Conduct Committee</h3>
+        <h3>🛑 Code of Conduct Committee 2025</h3>
         <ol>
             <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional</p></li>
             <li><p><strong>Mr. Pavel Luzanov</strong> - Postgres Professional</p></li>
@@ -73,10 +80,22 @@
     <div class="alert alert-emphasis">
         <h3>🐘 Financial Disclosure</h3>
         <p>
-            Our sponsors have provided complete financial backing for the PostgreSQL Conference Nepal. It is hereby stipulated that
-            the expenses associated with the conference shall be covered by our sponsors, and any surplus funds shall be allocated
-            towards financing another conference. The financial statement shall be included into the conference completion report and
-            the report will be shared to all the sponsors.
+            The PostgreSQL Conference Nepal 2025 was made possible through the generous support of our sponsors, who
+            provided full financial backing for the event. All core expenses—venue, logistics, hospitality, speaker
+            accommodations, and materials—were covered entirely through sponsorship contributions.
+        </p>
+        <p>
+            In keeping with our commitment to transparency and responsible stewardship, any surplus funds from this
+            year’s conference will be allocated toward supporting future editions of PGConf Nepal and further
+            community-building initiatives.
+        </p>
+        <p>
+            A detailed financial statement is being included in the official conference completion report, which will
+             be shared with all sponsors as part of our accountability process.
+        </p>
+        <p>
+            We are deeply grateful to our sponsors for enabling this event and investing in the growth of the
+            open-source and PostgreSQL communities in Nepal.
         </p>
     </div>
 {% endblock %}
