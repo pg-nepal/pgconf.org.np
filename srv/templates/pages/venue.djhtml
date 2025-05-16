@@ -1,14 +1,17 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = 'Venue' %}
+{% set pageTitle = 'PostgreSQL Conference 2025 Venue' %}
 
 
 {% block main_content %}
         <div>
-            <h2>Training (3-4 May) - Kathmandu University (KUSoM)</h2>
+            <h2>Training</h2>
             <p>
-                School of Management<br>
-                Kathmanu University<br>
+                Kathmandu University School of Management (KUSoM)<br>
                 Balkumarui, Lalitpur, Nepal
+            </p>
+            <p>
+                We successfully conducted hands-on training sessions at KUSoM in Lalitpur as a lead-up to the main conference. Thanks to all the participants
+                who joined us for two days of intense learning and interaction.
             </p>
             <p>
                 Location:
@@ -18,11 +21,23 @@
                 </a>
             </p>
             <hr>
-            <h2>Conference (5-6 May) - Kathmandu University (Dhulikhel)</h2>
+            <h2>Main Conference</h2>
             <p>
-                Like previous year, 2025 Conference will be held in <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a>, Dhulikhel, Nepal.
+                Kathmandu University, Dhulikhel Campus<br>
+                Dhulikhel, Kavrepalanchok, Nepal
             </p>
+
             <p>
+                Just like in previous years, the 2025 edition of the conference took place at <a href="https://ku.edu.np/" target="_blank">Kathmandu University</a> in Dhulikhel. The scenic town
+                 of Dhulikhel—around 30 kilometers southeast of Kathmandu—is renowned for its panoramic Himalayan views and rich cultural heritage.
+            </p>
+
+            <p>
+                Participants enjoyed a full conference experience with access to talks, workshops, food, and accommodation. The KU campus, being one of the premier institutions in Nepal, provided
+                 the perfect academic and natural setting for the event.
+            </p>
+
+            <!-- <p>
                 Dhulikhel is a small town located in the Kavrepalanchok District of Nepal, about 30 kilometers southeast of Kathmandu. It is known
                 for its beautiful views of the Himalayan mountain range and its rich cultural heritage. There are several guesthouses and hotels in
                 Dhulikhel where you can stay, as well as many places to eat and shop. The town is also a popular starting point for trekking and
@@ -33,7 +48,7 @@
                 university in Nepal and one of the most prestigious institutions of higher education in the country. The main campus of the university
                 is located in Dhulikhel and it offers undergraduate and graduate programs in various disciplines such as Engineering, Management,
                 Medicine, Science, and Humanities.
-            </p>
+            </p> -->
         </div>
 
         <div>
@@ -118,6 +133,15 @@
                     src="https://media.iconicholidaynepal.com/themes/images/logo.svg"
                     style="width:200px;"/>
             </p>
+        </div>
+
+        <div class="alert">
+            <h2>🗓 What’s Next?</h2>
+            <p>Planning for the next edition of the conference is already underway.
+                 We aim to build on the success of 2025 and continue to improve the
+                 experience year over year. Keep an eye out for future announcements
+                 and early registration opportunities.</p>
+            <em style="color: #007bff;">For inquiries or suggestions, feel free to contact info@pgconf.org.np.</em>
         </div>
 
 {% endblock %}
