@@ -6,19 +6,24 @@
 <!-- <div class="content-container"> -->
 
     <div style="margin-bottom: 0.5rem;">
+        <h2>🛑 Registration Closed</h2>
         <p>
+            Thank you for your interest in the conference held on May 5–6, 2025. Registration is now closed,
+            and the event has successfully concluded. We appreciate everyone who participated and made the event a success!
+        </p>
+        <!-- <p>
             Fill up the registration form below. We advise you to fill up form correctly. This is important for determining the prices of the tickets. After filling the form, you will be redicted to the payment processing page. Currently we accept (eSewa and direct bank payment). Preseve the URL for future reference.
             Send your proof of payment.
-        </p>
+        </p> -->
     </div>
 
-    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <!-- <div style="display: flex; justify-content: space-between; align-items: center;">
         <a class="button delete" href="/registered/form" target="_blank">
             Registration Closed for 2025
         </a>
-    </div>
+    </div> -->
 
-    <div>
+    <!-- <div>
         <h2>Main Conference ticket categories and pricing</h2>
         <p>
             We are excited to announce the ticket categories and pricing for this year’s conference! Please review the
@@ -75,11 +80,11 @@
         </ol>
     </div>
 
-    <h4 style="color: #007bff;"><em>Note: Discount are limited and will be available based on first-come-first-served basis.</em></h4>
+    <h4 style="color: #007bff;"><em>Note: Discount are limited and will be available based on first-come-first-served basis.</em></h4> -->
 
 
-    <div class="alert">
-        <h2>❤️ Supporter Category</h2>
+    <div class="alert alert-info">
+        <!-- <h2>❤️ Supporter Category</h2>
         <p>
             We've introduced a new <strong style="color: #007bff;">Supporter Category</strong> for companies.
             This premium category comes with exclusive benefits and
@@ -100,7 +105,13 @@
             Last year, we successfully covered the gala and hotel expenses through sponsorships. This year, we aim to set
             even higher sponsorship targets to elevate the conference experience. Join us as a sponsor and be part of this
             impactful event!
-        </p>
+        </p> -->
+
+
+
+        <h2>🔮 Looking Ahead</h2>
+        <p>We're grateful for the incredible energy and turnout this year. Planning for next year is already underway, and
+            we aim to make it even bigger and better. Stay tuned for announcements about PGConf 2026!</p>
     </div>
 
     <h4 style="color: #007bff;"><em>For sponsorship inquiries or ticket purchases, please contact us!</em></h4>
