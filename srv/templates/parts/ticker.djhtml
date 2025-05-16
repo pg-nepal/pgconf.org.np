@@ -1,7 +1,7 @@
 <div class="news-container">
     <div class="news-heading">Updates</div>
     <div class="news">
-        <a href="/pages/call-for-proposal" class="news-single active">
+        <!-- <a href="/pages/call-for-proposal" class="news-single active">
             Call for proposal is open for everyone
         </a>
         <a href="pages/registration" class="news-single">
@@ -12,6 +12,9 @@
         </a>
         <a href="/programs/speakers" class="news-single">
             Check out keynote speakers
+        </a> -->
+        <a href="/" class="news-single active">
+            Thank you all for participating💙
         </a>
     </div>
 </div>
