@@ -11,24 +11,54 @@
         <h4><em>5-6 May 2025 | Kathmandu University, Dhulikhel, Nepal</em></h4>
         <h2>🐘 Talks and Workshop sessions</h2>
 
-        <p>
+        <!-- <p>
             PostgreSQL Conference Nepal 2025 will be held on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}} in
             Kathmandu University, Dhulikhel, Nepal. It will cover topics for PostgreSQL
             users, developers and contributors, as well as decision and policy makers. We are now accepting proposals for talks
             in English.
             Each session will last 50 minutes, and may be on any topic related to PostgreSQL.
+        </p> -->
+
+        <p>
+            PostgreSQL Conference Nepal 2025 successfully took place on {{eventOn.strftime('%_d')}} — {{eventTo.strftime('%_d %B, %Y')}},
+            at Kathmandu University, Dhulikhel. The event featured a diverse range of talks and workshops aimed at PostgreSQL users,
+            developers, contributors, and decision-makers.
+        </p>
+
+        <p>
+            Over two packed days, attendees explored PostgreSQL internals, performance tuning, deployment strategies, case studies, and
+            more—shared by speakers from both local and international communities.
+        </p>
+
+        <p>
+            We thank everyone who submitted proposals and presented at the conference. The Call for Proposals closed on April 4, 2025,
+            and we received an overwhelming number of high-quality submissions.
         </p>
 
         <div class="alert alert-info">
-            <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
+            <h2>🔮 Looking Ahead</h2>
+            <p>
+                Planning for future editions of PGConf Nepal is already in motion. Stay connected with us for updates on next year’s Call
+                for Proposals and event announcements.
+            </p>
+
+            <em style="color: #007bff;">For inquiries or to get involved, reach out to info@pgconf.org.np.</em>
+            <!-- <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
                 Submit Your Proposal
             </button>
-            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 04</strong></em></p>
+            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 04</strong></em></p> -->
         </div>
 
         <h2>Submission Guidelines</h2>
-        <p>We are now accepting proposals for talks in English. Each session will last 50 minutes, and proposals can cover any aspect
-           of PostgreSQL. If you’re interested in hosting a workshop, please note that these will have a separate format.</p>
+        <!-- <p>We are now accepting proposals for talks in English. Each session will last 50 minutes, and proposals can cover any aspect
+           of PostgreSQL. If you’re interested in hosting a workshop, please note that these will have a separate format.</p> -->
+
+        <p>
+            The Call for Proposals for PostgreSQL Conference Nepal 2025 is now closed. We appreciate all the individuals who took the
+            time to submit session proposals. Your contributions helped shape a strong and diverse conference program.
+        </p>
+
+        <p>For reference, the 2025 submission guidelines were as follows:</p>
 
         <div class="alert">
         <h2>📝 Proposal Requirements</h2>
