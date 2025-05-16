@@ -55,5 +55,6 @@ def talk_read():
         row = cursor.first()
         return flask.render_template(
             '/parts/talk-read.djhtml',
+            pageTitle=row.session,
             row = row,
         )
