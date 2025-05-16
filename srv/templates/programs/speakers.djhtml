@@ -1,5 +1,5 @@
 {% extends 'base.djhtml' %}
-{% set pageTitle = 'Speakers' %}
+{% set pageTitle = 'PostgreSQL 2025 Speakers' %}
 
 
 {% block head %}
