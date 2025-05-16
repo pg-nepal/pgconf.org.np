@@ -14,10 +14,14 @@
 
 
 {% block main_content %}
-    <p>This training will help you mastering SQL and PL/pgSQL server-side development. It includes a series of practical assignments based on the Bookstore sample application: from designing a database schema to creating tables, views, functions, and triggers.</p>
-
+    <p>
+        This training was designed to strengthen participants’ skills in PostgreSQL server-side development through hands-on exercises
+        and real-world application scenarios. It provided an immersive learning experience, guiding attendees through practical challenges
+        to build confidence in writing efficient and maintainable database logic. Whether participants were new to PostgreSQL or looking to
+        deepen their expertise, the training offered valuable insights and techniques applicable to real-world projects.
+    </p>
     <div>
-        <h2 style="color: #007bff;">About the course</h2>
+        <h2 style="color: #007bff;">Pre Conference Training 2025</h2>
         <p><strong>⏳ Duration:</strong> 2 days (14 Hours)</p>
         <p><strong>🗓️ Date:</strong> 3-4 May, 2025</p>
     </div>
@@ -63,10 +67,13 @@
 
     <div class="alert">
         <h2>📝 Registration</h2>
-        <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p>
+        <!-- <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p> -->
+
+        <p>Registration for the pre-conference training is now closed, with all seats sold
+            out. The event included tea/coffee, breakfast, lunch, and a basic stationery kit for all registered participants.</p>
 
         <p style="color: #007bff;">
-            Registration will cover: <em>Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
+            Registration covers: <em>Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
         </p>
         <p style="color: #007bff;">
             Registration Fee: NRs. <s style='color:red;'>10,000.00</s>
@@ -85,8 +92,8 @@
 
     <div class="alert">
         <h2>📍 Venue</h2>
-        School of Management, Kathmandu University<br>
-        Balkumari, Lalitpur, Nepal<br>
+        <p>School of Management, Kathmandu University</p>
+        <p>Balkumari, Lalitpur, Nepal</p>
 
         <a href="https://maps.app.goo.gl/dGCzDTCXqxpHH5kF6" target="_blank">
             Location
