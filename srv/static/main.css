@@ -383,7 +383,7 @@ input[type="number"]::-webkit-inner-spin-button {
 /* alert containers */
 .alert {
     text-align: left;
-    padding: 15px;
+    padding: 20px;
     margin-top: 15px;
     margin-bottom: 15px;
     background-color: whitesmoke;
