@@ -11,11 +11,11 @@
 
         <div class="alert">
             <div class="talk-details">
-                <h3 class="talk-title"><em>{{row.title}}</em></h3>
+                <h3 class="talk-title" style="margin: 0;"><em>{{row.title}}</em></h3>
                 <p class="abstract">{{row.abstract}}</p>
             </div>
 	   {% if row.slideBlob %}
-              <a href="/api/proposals/{{ row.proposal_pk }}.slide" download>Download Slide</a>
+              <a class="button" href="/api/proposals/{{ row.proposal_pk }}.slide" download>Download Slide</a>
            {% endif %}
         </div>
 
