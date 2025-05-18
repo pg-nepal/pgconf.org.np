@@ -24,9 +24,11 @@ def programs_speaker_list_page():
         db.conf.Attendee.bio,
         db.conf.Attendee.affiliation,
 
+        db.programs.Proposal.pk.label('proposal_pk'),
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
         db.programs.Proposal.session,
+        db.programs.Proposal.slideBlob,
     ).where(
         db.programs.Proposal.status == 'accepted',
     ).outerjoin(
