@@ -23,27 +23,31 @@
 </style>
 
 <div class="event-container">
-    <div class="event-box" onclick="window.location.href='/registered/form'">
+    <div class="event-box" onclick="window.location.href='/pages/previous-conference'">
         <h2 style="color: #007bff;">🐘 Main Conference</h2>
         <p style="text-align: left;">
-            The primary event is scheduled for May 5-6, 2025, and will feature a keynote address, a workshop, and technical presentations by leading experts.
+            The main conference was held on May 5–6, 2025, at Kathmandu University, Dhulikhel,
+            featuring a keynote, technical sessions, and workshops delivered by PostgreSQL experts from Nepal and abroad.
         </p>
         {% if showLinks %}
         <div>
-                <a class="button" href="/pages/call-for-proposal">Submit a proposal</a>
-                <a class="button" href="/pages/registration">Register</a>
+                <!-- <a class="button" href="/pages/call-for-proposal">Submit a proposal</a>
+                <a class="button" href="/pages/registration">Register</a> -->
+                <a class="button" href="/pages/previous-conference">View Gallery</a>
         </div>
         {% endif %}
     </div>
-    <div class="event-box" onclick="window.location.href='/registered/form'">
-        <h2 style="color: #007bff;">🎓 Pre-Conference Training</h2>
+    <div class="event-box" onclick="window.location.href='/pages/previous-conference'">
+        <h2 style="color: #007bff;">🎓 Pre-Conference Training 2025</h2>
         <p style="text-align: left;">
-            The pre-conference training is scheduled for May 3-4, 2025. A PostgreSQL expert from the industry will conduct the training, featuring hands-on exercises.
+            The pre-conference training took place on May 3–4, 2025, at KUSoM, Balkumari, and was led by an industry expert
+             with hands-on exercises focused on practical PostgreSQL skills.
         </p>
         {% if showLinks %}
         <div>
-            <a class="button" href="/pages/training">About the course</a>
-            <a class="button" href="/pages/registration">Register</a>
+            <!-- <a class="button" href="/pages/training">About the course</a>
+            <a class="button" href="/pages/registration">Register</a> -->
+            <a class="button" href="/pages/previous-conference">View Gallery</a>
         </div>
         {% endif %}
     </div>
