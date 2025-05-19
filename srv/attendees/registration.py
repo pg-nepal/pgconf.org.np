@@ -253,6 +253,7 @@ def registered_read(slug):
     query = sa.select(
         db.conf.Attendee.pk,
         db.conf.Attendee.slug,
+        sa.cast(db.conf.Attendee.type, sa.String),
         db.conf.Attendee.name,
         db.conf.Attendee.phone,
         db.conf.Attendee.email,
@@ -279,6 +280,7 @@ def registered_read(slug):
             show = {
                 'Name'        : row.name,
                 'Email'       : row.email,
+                'Type'        : row.type,
                 'Phone Number': row.phone,
                 'Affiliation' : row.affiliation,
                 'Country'     : row.country,
