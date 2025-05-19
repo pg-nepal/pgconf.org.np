@@ -1,0 +1,40 @@
+<div class="fields">
+    <div class="fields">
+        <label for="wtf-name">Name <sup>*</sup></label>
+        <input id="wtf-name" name="name" placeholder="Full Name" required autofocus>
+    </div>
+</div>
+
+<div class="fields">
+    <label for="wtf-email">Email <sup>*</sup></label>
+    <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
+</div>
+
+<div class="fields">
+    <label for="wtf-phone">Mobile Number <sup>*</sup></label>
+    <input id="wtf-phone" name="phone" placeholder="+977 98xxxxxxxxxx" required>
+    <span style="margin-top:0.5rem; color:gray">
+        eg. +&lt;country-code &gt; &lt;mobile-number&gt;
+    </span>
+</div>
+
+<div class="fields">
+    <label for="wtf-country">Country <sup>*</sup></label>
+    <input list="countries" id="wtf-country" name="country" placeholder="Country" required>
+    <datalist id="countries" style="display: none;"></datalist>
+</div>
+
+
+
+<div class="fields" style="margin-top: 10px;">
+    <!-- <label>Registration for Events <sup>*</sup></label> -->
+
+    <select id="wtf-event" name="events" multiple hidden>
+        {% for row in cursor %}
+            <option value="{{row.pk}}" selected>
+                [{{row.eventOn.strftime('%Y %B %_d')}} - {{row.eventTo.strftime('%_d')}}]
+                {{row.name}}
+            </option>
+        {% endfor %}
+    </select>
+</div>
