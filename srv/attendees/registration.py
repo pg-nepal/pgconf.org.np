@@ -126,6 +126,54 @@ def registered_form():
         cursor    = cursor,
     )
 
+@app.post('/volunteered/add')
+def volunteer_registered_create():
+    jsonData = flask.request.json
+
+    idx = jsonData.pop('idx')
+    answer = jsonData.pop('answer').upper()
+    if answer != srv.captcha.questions[idx][1]:
+        return 'Incorrect answer', 400
+
+    events = jsonData.pop('events')
+
+    try:
+        with db.SessionMaker.begin() as session:
+            cursor = session.execute(sa.insert(
+                db.conf.Attendee,
+            ).values(
+                **jsonData,
+                type = 2,
+            ).returning(
+                db.conf.Attendee.pk,
+                db.conf.Attendee.slug,
+                db.conf.Attendee.name,
+                db.conf.Attendee.email,
+                db.conf.Attendee.country,
+                db.conf.Attendee.category,
+                db.conf.Attendee.type,
+                db.conf.Attendee.status,
+            ))
+
+            return 'Registration has been closed for 2025, see you next time', 400
+            attendee = cursor.first()
+
+            cursor = session.execute(sa.insert(
+                db.conf.Ticket,
+            ).values(
+                getTicketDetails(attendee, events),
+            ))
+
+            srv.mbox.queue.add(attendee)
+
+        return flask.redirect('/volunteered/{}'.format(attendee.slug))
+    except sa.exc.IntegrityError as e:
+        if isinstance(e.orig, psycopg.errors.UniqueViolation):
+            if e.orig.diag.constraint_name == 'attendees_email_key':
+                return 'email in used has already been registered', 400
+        traceback.print_exc()
+        raise e
+
 
 @app.post('/registered/add')
 def registered_create():
