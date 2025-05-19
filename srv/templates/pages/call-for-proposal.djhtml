@@ -35,6 +35,10 @@
             and we received an overwhelming number of high-quality submissions.
         </p>
 
+        <button id="btn-submit" class="button delete" onclick="window.location.href='/proposals/call/form'">
+            Submission Closed for 2025
+        </button>
+
         <div class="alert alert-info">
             <h2>🔮 Looking Ahead</h2>
             <p>
