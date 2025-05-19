@@ -126,6 +126,31 @@ def registered_form():
         cursor    = cursor,
     )
 
+
+@app.get('/volunteered/form')
+def volunteer_registered_form():
+    idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
+
+    query = sa.select(
+        db.conf.Event.pk,
+        db.conf.Event.name,
+        db.conf.Event.eventOn,
+        db.conf.Event.eventTo,
+    )
+
+    with db.engine.connect() as connection:
+        cursor = connection.execute(query)
+
+    return flask.render_template(
+        '/form-captcha.djhtml',
+        pageTitle = '/ Volunteer Registration',
+        fields    = '/volunteer/form-part.djhtml',
+        script    = '/static/volunteers/form.mjs',
+        question  = srv.captcha.questions[idx][0],
+        idx       = idx,
+        cursor    = cursor,
+    )
+
 @app.post('/volunteered/add')
 def volunteer_registered_create():
     jsonData = flask.request.json
