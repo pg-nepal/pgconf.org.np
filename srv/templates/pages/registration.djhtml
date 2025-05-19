@@ -17,11 +17,11 @@
         </p> -->
     </div>
 
-    <!-- <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
         <a class="button delete" href="/registered/form" target="_blank">
             Registration Closed for 2025
         </a>
-    </div> -->
+    </div>
 
     <!-- <div>
         <h2>Main Conference ticket categories and pricing</h2>
