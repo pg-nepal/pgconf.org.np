@@ -62,14 +62,15 @@
 
 {% block main %}
 <div class="content-container">
-
     <div class="profile-section">
         <div class="attendee-photo">
             <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
             <button id="edit-profile" class="button"> Edit profile </button>
         </div>
         <div class="description-section">
+            {% if row.type != 'volunteers' %}
             <p class="status-text {{ status_color.get(row.status, 'N/A') }}">{{row.status}}</p>
+            {% endif %}
             {% include '/attendees/edit-profile-dialog.djhtml' %}
 
             <div class="wrapper">
@@ -92,7 +93,7 @@
         </div>
         {% endif %}
 
-
+        {% if row.type != 'volunteers' %}
         <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
 
 
@@ -209,6 +210,7 @@
             Note: Once payment is made, the funds will be non-refundable.
         </em>
     </h4>
+    {% endif %}
     {% endif %}
 </div>
 {% endblock %}
