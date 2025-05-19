@@ -108,6 +108,7 @@
                     <a href="/attendees?type=organizer">Organizer</a>
                     <a href="/attendees?type=participant">Participant</a>
                     <a href="/attendees?type=speaker">Speaker</a>
+                    <a href="/attendees?type=volunteers">Volunteer</a>
                 </div>
             </li>
 
