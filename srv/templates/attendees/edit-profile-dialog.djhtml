@@ -31,6 +31,7 @@
             <textarea id="bio" name="bio">{{row.bio or ""}}</textarea>
         </div>
 
+        {% if row.type != 'volunteers' %}
         {% if row.status == 'pending' %}
         <div class="fields">
             <label for="wtf-category">Category <sup>*</sup></label>
@@ -40,6 +41,7 @@
             </select>
             <label><em>Note: If you do change the category, The discounts and ticket amounts may be recalculated.</em></label>
         </div>
+        {% endif %}
         {% endif %}
         <button class="button" style="text-align: center;">Save</button>
     </form>
