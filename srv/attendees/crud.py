@@ -122,7 +122,17 @@ def attendee_create():
 @srv.auth.auth_required()
 def attendee_read(pk):
     query = sa.select(
-        db.conf.Attendee,
+        db.conf.Attendee.pk,
+        db.conf.Attendee.slug,
+        db.conf.Attendee.name,
+        db.conf.Attendee.affiliation,
+        db.conf.Attendee.bio,
+        db.conf.Attendee.email,
+        db.conf.Attendee.phone,
+        db.conf.Attendee.country,
+        db.conf.Attendee.createdOn,
+        db.conf.Attendee.category,
+        sa.cast(db.conf.Attendee.type, sa.String),
     ).where(
         db.conf.Attendee.pk == pk,
     )
