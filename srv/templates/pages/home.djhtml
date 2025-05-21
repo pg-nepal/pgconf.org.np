@@ -21,6 +21,9 @@
                 text-align: center;
             }
         }
+        .left-content > section > h2::before {
+            content : "🐘 ";
+        }
     </style>
 {% endblock %}
 
