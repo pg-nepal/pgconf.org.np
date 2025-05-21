@@ -92,16 +92,19 @@
    <form id="status-update-form">
        <div class="status-wrapper" id="status-update">
            <div class="fields">
-            <select id="wtf-status" name="status" required>
-            <label for="status">Status</label>
-             <option value="submitted">Not Reviewed (Allows proposal writer to update the proposal)</option>
-             <option value="in review">In Review</option>
-             <option value="accepted">Accepted</option>
-             <option value="rejected">Rejected</option>
-            </select>
-        </div>
+               <select id="wtf-status" name="status" required>
+                   <label for="status">Status</label>
+                   {% for s in status %}
+                       <option value="{{s}}">{{s}}</option>
+                   {% endfor %}
+               </select>
 
-        </div>
+               <blockquote>
+                   submitted: Not Reviewed (Allows proposal writer to update the proposal)
+               </blockquote>
+           </div>
+
+       </div>
 
         <div class="wrapper">
             <button class="button" id="save-btn" style="display: none;">Save</button>
