@@ -9,10 +9,13 @@ import db
 
 
 proposal_status = (
-    'submitted',
-    'in review',
-    'accepted',
-    'rejected',
+    'proposed',      # submitted
+    'reviewing',     # currently being evaluated
+    'reconsidered',  # being re-evaluated after prior decision
+    'accepted',      # accepted to the conference
+    'declined',      # rejected
+    'withdrawn',     # accepted but canceled by speaker
+    'no-show',       # accepted but speaker did not present
 )
 e_proposal_status = enum.IntEnum('proposal_status', proposal_status)
 p_proposal_status = sa.Enum(
@@ -42,7 +45,7 @@ class Proposal(db.Base):
     title          = sa.Column(sa.String(100))
     abstract       = sa.Column(sa.Text())
 
-    status         = sa.Column(p_proposal_status, server_default='submitted', comment='Acceptance status for a proposal')
+    status         = sa.Column(p_proposal_status, server_default='proposed', comment='Acceptance status for a proposal')
     note           = sa.Column(sa.Text())
     slideBlob      = sa.Column(sa.LargeBinary)
     slideMime      = sa.Column(sa.String(32))
