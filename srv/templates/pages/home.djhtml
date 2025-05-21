@@ -65,17 +65,6 @@
 
                     <h2> Selected Talks</h2>
                     {% include "/parts/talks.djhtml" %}
-
-                    <h2>Events 🗓️</h2>
-
-                    <p>
-                        This year we are planning two events.
-                    </p>
-
-                    {% with showLinks=true %}
-                        {% include "parts/events.djhtml" %}
-                    {% endwith %}
-
                 </section>
 
                 <section id="sponsors" class="alert home-content mt-1">
