@@ -124,8 +124,16 @@
                     </p>
                 </section>
 
-                <section id="hospitality-partner">
-                    {% include "/parts/partners-hotels.djhtml" %}
+                <section id="hospitality-partner" class="alert">
+                    <h2 class="section-header">
+                        Hospitality Partner
+                    </h2>
+
+                    <p>
+                        <a href="https://www.himalayadrishyaresort.com/" target = "_blank">
+                            <img src="/static/hospitality_drisya.jpg" style="width:150px; right-margin:1rem">
+                        </a>
+                    </p>
                 </section>
 
                 <section id="sponsors" class="alert home-content mt-1">
