@@ -11,6 +11,8 @@ from srv import app
 @app.route('/proposals/<int:pk>.slide')
 def proposal_read_slide(pk):
     query = sa.select(
+        db.programs.Proposal.name,
+        db.programs.Proposal.title,
         db.programs.Proposal.slideBlob,
         db.programs.Proposal.slideMime,
     ).where(
@@ -23,9 +25,14 @@ def proposal_read_slide(pk):
         if row is None:
             return 'File Not Found', 404
 
+        mime = row.slideMime
         return flask.send_file(
             io.BytesIO(row.slideBlob),
-            mimetype      = row.slideMime,
+            mimetype      = mime,
             as_attachment = True,
-            download_name = 'pgconf2025_slide.{}'.format(row.slideMime),
+            download_name = '{speaker} - {title}.{ext}'.format(
+                speaker = row.name.encode('ascii', 'ignore').decode(),
+                title   = ''.join(c for c in row.title if c.isalnum() or (c in '-_ ')),  # noqa:E501
+                ext     = mime.partition('/')[-1],
+            ),
         )
