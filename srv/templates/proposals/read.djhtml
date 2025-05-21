@@ -51,7 +51,12 @@
 
 
 {% block admin_content %}
-    <h1 id="row.title"></h3>
+    <div class="wrapper">
+        <h1 id="row.title"></h3>
+        <a id="profile-link" class="button">
+            View Profile
+        </a>
+    </div>
     <p>
         <span id="rating-avg">Not Rated</span>
         <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
