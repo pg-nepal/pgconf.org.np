@@ -159,7 +159,7 @@
             const status = formData.get('status')
 
             if (!confirm('Do you want to change the proposal status?')) return
-            fetch('/proposals/{{pk}}', {
+            fetch('/api/proposals/{{pk}}', {
                 method : 'POST',
                 body   : formData,
             }).then(function (response){
