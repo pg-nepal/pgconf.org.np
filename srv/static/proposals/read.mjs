@@ -227,6 +227,9 @@ function proposalLoad(row) {
         element.innerHTML = val.replaceAll('\n','<br>')
     }
 
+    const profileLink = document.getElementById('profile-link')
+    profileLink.href = `/submitted/${row.slug}`
+
     const selectElement = document.getElementById('wtf-status')
     if(selectElement){
         selectElement.value = row.status
