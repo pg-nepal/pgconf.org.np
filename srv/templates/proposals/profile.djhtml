@@ -113,10 +113,6 @@
                     <button class="button" type="submit">Submit</button>
                 </form>
             </div>
-            <p>As a selected speaker, you are no longer required to register for registration. <span><strong>Thank you</strong></span> for your amazing proposal.</p>
-            <div class="alert">
-                {% include '/parts/speaker-ticket.djhtml' %}
-            </div>
         {% endif %}
 
         <div class="alert" style="overflow-x:auto;">
