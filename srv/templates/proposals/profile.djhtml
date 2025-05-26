@@ -75,36 +75,6 @@
             {% endif %}
         </div>
 
-        {% if row.status == 'accepted' or row.status == 'rejected' %}
-            <div class="alert evaluation">
-                <h2>Proposal Evaluation</h2>
-                <span id="rating-avg-star" class="rating-star">⭐️⭐️⭐️⭐️⭐️</span>
-
-                <p>Your proposal received a rating of <span id="rating-avg">Not Rated</span> stars out of 5.00 stars</p>
-
-                <h2>Proposal Evaluation Overview</h2>
-                <p>See how you proposal performed from the table below:</p>
-                <table id="evaluation-table" style="overflow-x:auto;">
-                    <thead>
-                        <tr>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            {% if row.note %}
-                <div class="alert">
-                    <h2>✍️ Proposal Remarks</h2>
-                    <p>{{ row.note }}</p>
-                </div>
-            {% endif %}
-        {% endif %}
-
         {% if row.status == 'accepted' %}
             <div class="alert">
                 <p>You can submit your {{row.session}} slides here</p>
@@ -190,26 +160,6 @@
                     alert('Slides uploaded successfully.')
                     location.reload()
                 }
-            })
-        })
-    </script>
-
-
-    <script type="module">
-        import * as proposals from '/static/proposals/read.mjs'
-
-        fetch(`/api/proposals/evaluation/{{row.slug}}`).then(function(response) {
-            return response.json()
-        }).then(function (json) {
-            const eTable = document.querySelector('#evaluation-table')
-            Object.entries(json.data).forEach(function(element){
-                const eTh = document.createElement('th')
-                const eTd = document.createElement('td')
-                eTh.innerText = element[0]
-                eTd.innerText = element[1]
-
-                eTable.querySelector('thead tr').append(eTh)
-                eTable.querySelector('tbody tr').append(eTd)
             })
         })
     </script>
