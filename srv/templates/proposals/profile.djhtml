@@ -52,10 +52,10 @@
 {% endblock %}
 
 {% set status_messages = {
-    'submitted': 'Your Proposal has been submitted✅. Please wait for your proposal remark.',
-    'in review': 'Your proposal is being reviewed⏳. After the reviewing process, please update your proposal according to the proposal remarks.',
-    'accepted': 'Congratulations! Your proposal has been accepted 🎊. If have pending proposals please wait for the proposal remarks.',
-    'rejected': 'Your proposal has been rejected😕. Better luck next time.'
+    'proposed'  : 'Your proposal has been submitted successfully 📨️. Evaluation will commence soon. Please wait for feedback.',
+    'reviewing' : 'Your proposal is being reviewed ⏳. After the reviewing process, please update your proposal according to the proposal remarks.',
+    'accepted'  : 'Congratulations! Your proposal has been accepted 🎊. If have pending proposals please wait for the proposal remarks.',
+    'rejected'  : 'Your proposal has been rejected 😭️. Better Luck Next Time 🍀️.'
 } %}
 
 {% set status_icons = {
