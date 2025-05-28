@@ -21,8 +21,14 @@
 
         <div class="alert">
             <h2 style="color: #007bff; margin: 0;">{{row.title}}</h2>
-            <em>By <strong>{{row.name}}</strong></em>
-            <p>{{row.abstract}}</p>
+            <em>By <strong>{{row.name}}</strong></em><br>
+            <em>Co-authors:
+                {% if row.co_authors %}
+                    {% for author in row.co_authors %}
+                        <span><strong>{{ author.name }}{% if not loop.last %}, {% endif %}</strong></span>
+                    {% endfor %}</em>
+                <p>{{row.abstract}}</p>
+            {% endif %}
 
             {% if row.slideBlob %}
                 <a class="button" href="/proposals/{{row.pk}}.slide" download>
