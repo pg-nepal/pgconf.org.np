@@ -161,7 +161,7 @@ def proposal_update(pk):
         db.programs.Proposal.pk == pk,
     ).values(
         **formData,
-        updatedBy = isAdmin,
+        updatedBy = name,
     )
 
     with db.SessionMaker.begin() as session:
