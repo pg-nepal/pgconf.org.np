@@ -180,7 +180,12 @@
             const formData = new FormData(event.target)
             const status = formData.get('status')
 
-            if (!confirm('Do you want to change the proposal status?')) return
+            const message =
+            status === 'accepted'
+                ? 'Accepting the proposal will copy the writer to the attendee table.'
+                : 'Do you want to change the proposal status?'
+            if (!confirm(message)) return;
+
             fetch('/api/proposals/{{pk}}', {
                 method : 'POST',
                 body   : formData,
