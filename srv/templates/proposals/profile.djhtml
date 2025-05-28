@@ -31,6 +31,14 @@
             text-align: left;
         }
 
+        .withdraw-wrapper {
+            text-align: center;
+        }
+
+        .withdraw-btn{
+            cursor: pointer;
+        }
+
         @media (max-width: 1800px) {
             .status-wrapper{
                 width: 60%;
@@ -73,22 +81,26 @@
 
 {% block main %}
     <div class="content-container">
-        <div id="evaluation-container"></div>
-        <div class="alert">
-            {% if row.status in status_messages %}
-                <h2>{{ status_icons.get(row.status, '❓') }} Proposal Status</h2>
+        {% if row.status in status_messages %}
+            <div class="alert">
+                <div class="" style="display: flex; justify-content: space-between;">
+                    <h2>{{ status_icons.get(row.status, '❓') }} Proposal Status</h2>
+                    {% if row.status == 'accepted' %}
+                    <form id="withdraw-form">
+                        <button id="withdraw-btn" title="Withdraw from the session" class="button delete">Withdraw</button>
+                    </form>
+                    {% endif %}
+                </div>
                 <p>{{ status_messages[row.status] }}</p>
-            {% endif %}
-        </div>
 
         {% if row.status == 'accepted' %}
-            <div class="alert">
                 <p>You can submit your {{row.session}} slides here</p>
                 <form id="slide-updload-form">
                     <input id="slide" name="slideBlob" value="{{row.name}}.file" type="file" accept=".zip,application/zip,.pdf,application/pdf" multiple>
                     <button class="button" type="submit">Submit</button>
                 </form>
-            </div>
+        {% endif %}
+    </div>
         {% endif %}
 
         <div class="alert" style="overflow-x:auto;">
@@ -125,9 +137,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
 
-        <div class="alert">
             <h2>📜 Proposal Overview</h2>
 
             <div class="wrapper">
