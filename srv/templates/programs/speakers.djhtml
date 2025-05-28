@@ -29,6 +29,13 @@
             {% endfor %}
         </section>
 
+        <h2 class="session-type">Training</h2>
+        <section class="session-section">
+            {% for row in speakers | selectattr('session', 'equalto', 'training') %}
+                {% include "programs/speaker_part.djhtml" %}
+            {% endfor %}
+        </section>
+
         <h2 class="session-type">Workshops</h2>
         <section class="session-section">
             {% for row in speakers | selectattr('session', 'equalto', 'workshop') %}
