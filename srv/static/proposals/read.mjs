@@ -251,7 +251,7 @@ export function createAttendee(row) {
         method : 'POST',
         body   : formData,
     }).then(function (response){
-        if(response.status != 200){
+        if(response.status != 201){
             alert("Failed to copy")
         }
         else{
