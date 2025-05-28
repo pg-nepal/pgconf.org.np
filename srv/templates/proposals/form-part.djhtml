@@ -20,6 +20,7 @@
     <label for="wtf-session">Session <sup>*</sup></label>
     <select id="wtf-session" name="session" required>
         <option value="">Select Session</option>
+        <option value="training">Training</option>
         <option value="talk">Talk</option>
         <option value="workshop">Workshop</option>
     </select>
