@@ -187,3 +187,23 @@ def attendee_update(pk):
          ))
          return 'Updated Rows', 202 if cursor.rowcount > 0 else 400
 
+
+@app.delete('/attendees/delete/<int:pk>')
+@srv.auth.auth_required()
+def attendee_delete(pk):
+    isAdmin = srv.auth.isValid(flask.request)
+    if isAdmin is False:
+        return srv.auth.respondInValid()
+
+    with db.SessionMaker.begin() as session:
+        session.execute(
+            sa.delete(
+                db.conf.Attendee,
+            ).where(
+                db.conf.Attendee.pk == pk,
+            ),
+        )
+
+        return 'Attendee deleted successfully', 202
+
+
