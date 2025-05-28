@@ -124,6 +124,7 @@ def proposal_read(pk):
         db.programs.Proposal.country,
         db.programs.Proposal.createdOn,
         db.programs.Proposal.session,
+        db.programs.Proposal.co_authors,
         sa.cast(db.programs.Proposal.status, sa.String),
     ).where(
         db.programs.Proposal.pk == pk,
