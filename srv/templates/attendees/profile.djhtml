@@ -215,6 +215,19 @@
             <div class="alert">
                 {% include '/parts/speaker-ticket.djhtml' %}
             </div>
+        {% elif row.type == 'volunteers' %}
+            <p>Thank you for registering as a volunteer</p>
+            <p>
+            Thank you for signing up to volunteer at <span style="color: #007bff;">PostgreSQL Conference Nepal</span>.
+            We truly appreciate your willingness to support the event. Our team is currently reviewing registrations and
+            assigning roles. You’ll receive a follow-up email with your
+            specific responsibilities and schedule closer to the event.
+            </p>
+            <p>
+                In the meantime, feel free to reach out if you have any questions <a href="mailto:info@pgconf.org.np">info@pgconf.org.np</a><br>
+                Best Regards,<br>
+                The Organizing Team <br>
+            </p>
         {% endif %}
 </div>
 {% endblock %}
