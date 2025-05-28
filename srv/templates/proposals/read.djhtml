@@ -121,7 +121,7 @@
                    {% endfor %}
                </select>
 
-               <blockquote>
+               <blockquote style="margin: 15px 0px;">
                    submitted: Not Reviewed (Allows proposal writer to update the proposal)
                </blockquote>
            </div>
@@ -171,7 +171,6 @@
         const isAdmin = {{ isAdmin|tojson }};
         proposals.reviewReadAll(isAdmin, {{pk}})
         proposals.init({{pk}}).then(function (json) {
-
             document.getElementById('status-update-form').addEventListener('submit', function(event){
             event.preventDefault()
             event.stopPropagation()
@@ -191,8 +190,12 @@
                 body   : formData,
             }).then(function (response){
                 if(status == 'accepted'){
-                    if (!confirm('Accepting the proposal will copy the writer to the attendee table.')) return
                     proposals.createAttendee(json)
+                    if(json.co_authors){
+                        json.co_authors.forEach( function(author) {
+                            return proposals.createAttendee(author)
+                        })
+                    }
                 } else {
                     if (202 == response.status) {
                         alert('Proposal Status updated successfully.')
