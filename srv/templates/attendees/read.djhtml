@@ -39,7 +39,7 @@
         <p>{{row.bio}}</p>
     </div>
 
-    {% if row.type != 'volunteers' %}
+    {% if row.type != 'volunteers' and row.type != 'speaker' %}
     <h3>&#129534; Payment Information</h3>
 
     <button id="view-receipt-history" class="button"> View receipt history </button>
