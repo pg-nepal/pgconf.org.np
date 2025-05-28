@@ -151,6 +151,7 @@ def attendee_read(pk):
             row     = row,
             show    = {
                 'Name'          : row.name,
+                'Type'          : row.type,
                 'Affiliation'   : row.affiliation,
                 'Email'         : row.email,
                 'Phone'         : row.phone,
