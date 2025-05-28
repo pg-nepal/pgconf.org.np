@@ -54,6 +54,7 @@ def proposal_call_create():
         db.programs.Proposal.session,
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
+        db.programs.Proposal.co_authors,
     )
 
     with db.SessionMaker.begin() as session:
