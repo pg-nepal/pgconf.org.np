@@ -28,6 +28,7 @@ def programs_speaker_list_page():
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
         db.programs.Proposal.session,
+        db.programs.Proposal.co_authors,
         db.programs.Proposal.slideBlob,
     ).where(
         db.programs.Proposal.status == 'accepted',
