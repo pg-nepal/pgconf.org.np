@@ -260,13 +260,13 @@ export function createAttendee(row) {
     }).then(function (json){
         const pk = row.pk
         const attendeePk = json['pk']
-        if(!attendeePk){
+        if(attendeePk){
                 fetch(`/api/proposals/update/${pk}`, {
                     method : 'POST',
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                body   : JSON.stringify({attendeePk})
+                    body   : JSON.stringify({attendeePk})
                 }).then(function(response){
                     if(response.status != 200){
                         alert("Failed to update")
