@@ -18,6 +18,10 @@ def programs_training_page():
         db.conf.Attendee.affiliation,
         
         db.programs.Proposal.slideBlob,
+    ).outerjoin(
+        db.conf.Attendee,
+        db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
+        ).where(
     ).order_by(
         db.conf.Attendee.pk,
     )
