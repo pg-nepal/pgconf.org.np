@@ -32,6 +32,7 @@ attendees_type = (
     'volunteers',
     'participant',
     'speaker',
+    'trainer',
     'guest',
 )
 e_attendees_type = enum.IntEnum('attendees_type', attendees_type)
