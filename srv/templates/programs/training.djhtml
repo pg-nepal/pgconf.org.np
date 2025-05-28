@@ -37,7 +37,8 @@
 
                     <div class="speaker-details">
                         <h3 class="speaker-name"> {{row.name}}</h3>
-                        <p class="bio">{{row.bio}}</p>
+                        <em class="speaker-affiliation">Affiliation: {{row.affiliation}}</em>
+                        <p class="bio">Bio: {{row.bio}}</p>
                     </div>
                 </div>
             {% endfor %}
