@@ -230,14 +230,8 @@ function proposalLoad(row) {
     const profileLink = document.getElementById('profile-link')
     profileLink.href = `/submitted/${row.slug}`
 
-
-    let coAuthors = row.co_authors
-    if(typeof coAuthors == 'string'){
-        coAuthors = JSON.parse(coAuthors)
-    }
-
     const coAuthorsElement = document.getElementById('co_authors')
-    coAuthorsElement.textContent = row.co_authors?.length ? coAuthors.map(function(author){return author.name}).join(', ') : 'None'
+    coAuthorsElement.textContent = row.co_authors?.length ? row.co_authors.map(function(author){return author.name}).join(', ') : 'None'
 
     const selectElement = document.getElementById('wtf-status')
     if(selectElement){
