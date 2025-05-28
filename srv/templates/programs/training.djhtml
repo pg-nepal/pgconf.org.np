@@ -39,6 +39,11 @@
                         <h3 class="speaker-name"> {{row.name}}</h3>
                         <em class="speaker-affiliation">Affiliation: {{row.affiliation}}</em>
                         <p class="bio">Bio: {{row.bio}}</p>
+                        {% if row.slideBlob %}
+                            <a class="button" href="/proposals/{{row.pk}}.slide" download>
+                                Download Slide
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
             {% endfor %}
