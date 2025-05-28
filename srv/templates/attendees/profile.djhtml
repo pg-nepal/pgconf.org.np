@@ -61,30 +61,30 @@
 
 
 {% block main %}
-<div class="content-container">
-    <div class="profile-section">
-        <div class="attendee-photo">
-            <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
-            <button id="edit-profile" class="button"> Edit profile </button>
-        </div>
-        <div class="description-section">
-            {% if row.type != 'volunteers' %}
-            <p class="status-text {{ status_color.get(row.status, 'N/A') }}">{{row.status}}</p>
-            {% endif %}
-            {% include '/attendees/edit-profile-dialog.djhtml' %}
+    <div class="content-container">
+        <div class="profile-section">
+            <div class="attendee-photo">
+                <img src="/programs/speakers/{{row.name}}" alt="{{row.name}}">
+                <button id="edit-profile" class="button"> Edit profile </button>
+            </div>
+            <div class="description-section">
+                {% if row.type != 'volunteers' %}
+                    <p class="status-text {{ status_color.get(row.status, 'N/A') }}">{{row.status}}</p>
+                {% endif %}
+                {% include '/attendees/edit-profile-dialog.djhtml' %}
 
-            <div class="wrapper">
-                <div class="info-table">
-                    {% for key, value in show.items() %}
-                        <div class="info-row">
-                            <div class="info-label">{{key}}</div>
-                            <div class="info-value">{{value}}</div>
-                        </div>
+                <div class="wrapper">
+                    <div class="info-table">
+                        {% for key, value in show.items() %}
+                            <div class="info-row">
+                                <div class="info-label">{{key}}</div>
+                                <div class="info-value">{{value}}</div>
+                            </div>
                         {% endfor %}
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
         {% if row.bio %}
         <div class="alert">
@@ -94,124 +94,123 @@
         {% endif %}
 
         {% if row.type != 'volunteers' %}
-        <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
-
-
-    <div class="alert">
-    <div style="display: flex; justify-content: space-between;">
-        <h2>🎫 Ticket</h2>
-        <button id="edit-ticket-btn" class="button">Edit selection</button>
-    </div>
-
-    {% if row.category != 'speaker' %}
-    <div id="ticket-container">
-
-    </div>
-    </div>
-
-    {% include '/attendees/select-event-dialog.djhtml' %}
-
-    {% if row.country.lower() != 'nepal' %}
-        <h3>🌐 International Participants Payment</h3>
-        <div class="alert alert-danger">
-            For International Participants, we only accept the bank transfer or on-site registration.
-            <p>For further details please write us to: <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></p>
-        </div>
-
-        <div class="alert alert-info">
-        <h3>&#127974; Bank Details</h3>
-        <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
-        <p><b>Bank Account Number:</b> 00501030250009</p>
-        <p><b>Bank Account Name:</b> Kathmandu University</p>
-        <p><b>Branch:</b> Banepa, Nepal</p>
-        <p><b>Swift Code:</b> NIBLNPKT</p>
-    </div>
-    {% else %}
-        <h2>🇳🇵 Domestic Participants Payment</h2>
-        <div class="alert alert-info">
-            You can pay via. direct bank transfer or through wallet. In both case you need to submit the proof of payment.
-            <ul>
-                <li>For direct bank transfer <a href="https://login.connectips.com/" target="_blank">connect IPS</a> is highly recommended.</li>
-                <li>Mention your name on the remarks field</li>
-                <li>For any other information please contact us at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></li>
-            </ul>
-        </div>
-
-        <div>
-            <p>Chose your payment options</p>
-            <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
-                <button id="esewa-btn" class="button esewa">
-                    Esewa
-                </button>
-
-                <button id="bank-btn" class="button">
-                    Bank
-                </button>
-
-                <script>
-                    document.getElementById('esewa-btn').addEventListener('click', function(event) {
-                        document.getElementById('bank').style.display = 'none'
-                        document.getElementById('esewa').style.display = 'block'
-                    })
-
-                    document.getElementById('bank-btn').addEventListener('click', function(event) {
-                        document.getElementById('esewa').style.display = 'none'
-                        document.getElementById('bank').style.display = 'block'
-                    })
-                </script>
-            </div>
-
-            <div id='esewa' style="display:none; text-align:center">
-                <h2>Scan the QRcode</h2>
-                <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
-            </div>
-
-            <div id='bank' style="display:none; text-align:center">
-                <h1>Bank Details</h1>
-                <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
-                <p><b>Bank Account Name:</b> Kathmandu University</p>
-                <p><b>Bank Account Number:</b> 00501030250009</p>
-                <p><b>Branch:</b> Banepa, Nepal</p>
-                <p><b>Swift Code:</b> NIBLNPKT</p>
-            </div>
-        </div>
-    {% endif %}
-
-    {% for key, value in show.items() %}
-        {% if key.lower() == "category" and value == "student" %}
-        <div class="alert" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-            <h2>🪪 Upload student ID card</h2>
-            <p>System accepts pdf, png or jpeg file only.</p>
-
-            {% if row.idProofBlob is none %}
-                    <button id="student-id-upload" class="button" style="width: 20%;">Upload ID proof</button>
-                {% else %}
-                    <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
-            {% endif %}
-        </div>
+            <p style="text-align: center;"><strong><em>Thank you  </em></strong>💙 for showing your interest on the 3rd <span style="color: #007bff;">PostgreSQL</span> Conference Nepal.</p>
         {% endif %}
-    {% endfor %}
 
-    <div class="alert" style="overflow-x:scroll;">
-        <h2>🎫 Upload receipt</h2>
+        {% if row.type == 'participant' %}
+        <div class="alert">
+        <div style="display: flex; justify-content: space-between;">
+            <h2>🎫 Ticket</h2>
+            <button id="edit-ticket-btn" class="button">Edit selection</button>
+        </div>
 
-        <p>System accepts pdf, png or jpeg file only.</p>
-        <p style='color:red;'>For Pre-Conference Training, if your ticket status is not <b>confirmed</b>,
-    please contact organizers before payment.</p>
 
-        <table id="receipt-table" style="display: none;">
-            <thead><tr></tr></thead>
-            <tbody></tbody>
-        </table>
+            <div id="ticket-container">
 
-    </div>
-    <h4 style="color: red;">
-        <em>
-            Note: Once payment is made, the funds will be non-refundable.
-        </em>
-    </h4>
-    {% endif %}
-    {% endif %}
+            </div>
+            </div>
+
+            {% include '/attendees/select-event-dialog.djhtml' %}
+
+            {% if row.country.lower() != 'nepal' %}
+                <h3>🌐 International Participants Payment</h3>
+                <div class="alert alert-danger">
+                    For International Participants, we only accept the bank transfer or on-site registration.
+                    <p>For further details please write us to: <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></p>
+                </div>
+
+                <div class="alert alert-info">
+                    <h3>&#127974; Bank Details</h3>
+                    <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+                    <p><b>Bank Account Number:</b> 00501030250009</p>
+                    <p><b>Bank Account Name:</b> Kathmandu University</p>
+                    <p><b>Branch:</b> Banepa, Nepal</p>
+                    <p><b>Swift Code:</b> NIBLNPKT</p>
+                </div>
+            {% else %}
+                <h2>🇳🇵 Domestic Participants Payment</h2>
+                <div class="alert alert-info">
+                    You can pay via. direct bank transfer or through wallet. In both case you need to submit the proof of payment.
+                    <ul>
+                        <li>For direct bank transfer <a href="https://login.connectips.com/" target="_blank">connect IPS</a> is highly recommended.</li>
+                        <li>Mention your name on the remarks field</li>
+                        <li>For any other information please contact us at <a href='mailto:info@pgconf.org.np'>info@pgconf.org.np</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <p>Chose your payment options</p>
+                    <div style="display: flex; align-items: center; justify-content: center; gap: 10%;">
+                        <button id="esewa-btn" class="button esewa">
+                            Esewa
+                        </button>
+
+                        <button id="bank-btn" class="button">
+                            Bank
+                        </button>
+
+                        <script>
+                            document.getElementById('esewa-btn').addEventListener('click', function(event) {
+                                document.getElementById('bank').style.display = 'none'
+                                document.getElementById('esewa').style.display = 'block'
+                            })
+
+                            document.getElementById('bank-btn').addEventListener('click', function(event) {
+                                document.getElementById('esewa').style.display = 'none'
+                                document.getElementById('bank').style.display = 'block'
+                            })
+                        </script>
+                    </div>
+
+                    <div id='esewa' style="display:none; text-align:center">
+                        <h2>Scan the QRcode</h2>
+                        <img src="/static/qrcodes/esewaQRcode.png" alt="esewa QR code" style="height: 200px; width: 200px;">
+                    </div>
+
+                    <div id='bank' style="display:none; text-align:center">
+                        <h1>Bank Details</h1>
+                        <p><b>Bank Name:</b> Nepal Investment Mega Bank</p>
+                        <p><b>Bank Account Name:</b> Kathmandu University</p>
+                        <p><b>Bank Account Number:</b> 00501030250009</p>
+                        <p><b>Branch:</b> Banepa, Nepal</p>
+                        <p><b>Swift Code:</b> NIBLNPKT</p>
+                    </div>
+                </div>
+            {% endif %}
+
+            {% for key, value in show.items() %}
+                {% if key.lower() == "category" and value == "student" %}
+                    <div class="alert" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                        <h2>🪪 Upload student ID card</h2>
+                        <p>System accepts pdf, png or jpeg file only.</p>
+
+                        {% if row.idProofBlob is none %}
+                                <button id="student-id-upload" class="button" style="width: 20%;">Upload ID proof</button>
+                            {% else %}
+                                <button id="student-id-view" class="button" style="width: 20%;"> View ID </button>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+
+            <div class="alert" style="overflow-x:scroll;">
+                <h2>🎫 Upload receipt</h2>
+
+                <p>System accepts pdf, png or jpeg file only.</p>
+                <p style='color:red;'>For Pre-Conference Training, if your ticket status is not <b>confirmed</b>,
+                please contact organizers before payment.</p>
+
+                <table id="receipt-table" style="display: none;">
+                    <thead> <tr></tr></thead>
+                    <tbody></tbody>
+                </table>
+
+            </div>
+            <h4 style="color: red;">
+                <em>
+                    Note: Once payment is made, the funds will be non-refundable.
+                </em>
+            </h4>
 </div>
 {% endblock %}
 
