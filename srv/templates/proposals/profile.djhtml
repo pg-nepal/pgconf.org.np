@@ -62,10 +62,13 @@
 } %}
 
 {% set status_icons = {
-    'submitted': '📩',
-    'in review': '⏳',
-    'accepted': '🟢',
-    'rejected': '🔴'
+    'proposed'    : '📩',
+    'reviewing'   : '⏳',
+    'reconsidered': '🤔',
+    'accepted'    : '🟢',
+    'decline'     : '🔴',
+    'withdrawn'   : '😟',
+    'no-show'     : '🫤',
 } %}
 
 {% block main %}
