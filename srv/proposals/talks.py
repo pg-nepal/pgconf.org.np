@@ -47,7 +47,6 @@ def talk_read(slug):
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
     ).where(
         db.programs.Proposal.slug == slug,
-        db.programs.Proposal.status == 'accepted',
     )
 
     with db.engine.connect() as connection:
