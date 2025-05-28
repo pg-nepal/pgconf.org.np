@@ -211,6 +211,11 @@
                     Note: Once payment is made, the funds will be non-refundable.
                 </em>
             </h4>
+        {% elif row.type == 'speaker' %}
+            <div class="alert">
+                {% include '/parts/speaker-ticket.djhtml' %}
+            </div>
+        {% endif %}
 </div>
 {% endblock %}
 
