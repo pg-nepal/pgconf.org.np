@@ -31,7 +31,7 @@ def programs_speaker_list_page():
         db.programs.Proposal.co_authors,
         db.programs.Proposal.slideBlob,
     ).where(
-        db.programs.Proposal.status == 'accepted',
+        db.conf.Attendee.type == 'speaker',
     ).outerjoin(
         db.programs.Proposal,
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
