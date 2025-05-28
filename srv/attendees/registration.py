@@ -131,6 +131,21 @@ def registered_form():
 def volunteer_registered_form():
     idx = random.randrange(len(srv.captcha.questions))  # noqa:S311
 
+    with db.engine.connect() as connection:
+        count = connection.execute(
+            sa.select(
+                sa.func.count(),
+            ).select_from(
+                db.conf.Attendee,
+            ).where(
+                db.conf.Attendee.type == 'volunteers',
+            ),
+        )
+        result = count.scalar()
+
+        if result >= 20:
+            return 'We are no longer accepting volunteers.'
+
     query = sa.select(
         db.conf.Event.pk,
         db.conf.Event.name,
