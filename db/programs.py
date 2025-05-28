@@ -15,7 +15,7 @@ proposal_status = (
     'accepted',      # accepted to the conference
     'declined',      # rejected
     'withdrawn',     # accepted but canceled by speaker
-    'no-show',       # accepted but speaker did not present
+    'no-show',       # accepted but speaker did not present',       show',
 )
 e_proposal_status = enum.IntEnum('proposal_status', proposal_status)
 p_proposal_status = sa.Enum(
