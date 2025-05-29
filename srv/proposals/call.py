@@ -70,14 +70,14 @@ def proposal_call_create():
             abstract  = jsonData['abstract'],
         )
 
-        srv.mbox.out.queue(
-            ref     = proposal.pk,
-            to      = email,
-            cc      = None,
-            subject = 'Thank You for submitting the proposal',
-            body    = emailBody,
-            note    = 'talk submission',
-        )
+        # srv.mbox.out.queue(
+        #     ref     = proposal.pk,
+        #     to      = email,
+        #     cc      = None,
+        #     subject = 'Thank You for submitting the proposal',
+        #     body    = emailBody,
+        #     note    = 'talk submission',
+        # )
 
         return flask.redirect('/submitted/{}'.format(proposal.slug))
 
@@ -133,11 +133,12 @@ def submitted_update(slug):
             db.programs.Proposal.slug == slug,
             db.programs.Proposal.status.in_(['submitted']),
         ).values(
-            session   = values.get('session'),
             title     = values.get('title'),
             abstract  = values.get('abstract'),
             updatedBy = values.get('name'),
             status    = 'submitted',
-            note      = '',
         ))
         return 'Update Row', 202 if cursor.rowcount > 0 else 400
+
+
+
