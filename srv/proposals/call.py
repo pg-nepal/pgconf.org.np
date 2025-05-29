@@ -141,4 +141,15 @@ def submitted_update(slug):
         return 'Update Row', 202 if cursor.rowcount > 0 else 400
 
 
+@app.patch('/submitted/withdraw/<slug>')
+def submitted_status_update(slug):
+    with db.SessionMaker.begin() as session:
+        cursor = session.execute(sa.update(
+            db.programs.Proposal,
+        ).where(
+            db.programs.Proposal.slug == slug,
+        ).values(
+            status = 'withdrawn',
+        ))
+        return 'Update Row', 202 if cursor.rowcount > 0 else 400
 
