@@ -86,9 +86,7 @@
                 <div class="" style="display: flex; justify-content: space-between;">
                     <h2>{{ status_icons.get(row.status, '❓') }} Proposal Status</h2>
                     {% if row.status == 'accepted' %}
-                    <form id="withdraw-form">
                         <button id="withdraw-btn" title="Withdraw from the session" class="button delete">Withdraw</button>
-                    </form>
                     {% endif %}
                 </div>
                 <p>{{ status_messages[row.status] }}</p>
@@ -177,6 +175,24 @@
                     location.reload()
                 }
             })
+        })
+
+        document.getElementById('withdraw-btn').addEventListener('click', function(event){
+            event.preventDefault()
+            event.stopPropagation()
+            event.target.reportValidity()
+
+            if(!confirm('Are you sure you want to withdraw from the session? Withdrawing from the session will revoke your session tickets.')) return
+            fetch('/submitted/withdraw/{{row.slug}}', {
+                method : 'PATCH',
+            }).then(function (response) {
+                if(202 == response.status){
+                    alert('You have withdrawn from the session.')
+                    location.reaload()
+                    return response.text()
+                }
+            })
+
         })
     </script>
 {% endblock %}
