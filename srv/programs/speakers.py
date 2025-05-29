@@ -31,7 +31,10 @@ def programs_speaker_list_page():
         db.programs.Proposal.co_authors,
         db.programs.Proposal.slideBlob,
     ).where(
-        db.conf.Attendee.type == 'speaker',
+        sa.or_(
+            db.conf.Attendee.type == 'speaker',
+            db.conf.Attendee.type == 'trainer',
+        ),
     ).outerjoin(
         db.programs.Proposal,
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
