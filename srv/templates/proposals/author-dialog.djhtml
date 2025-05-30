@@ -1,0 +1,73 @@
+<dialog id="dialog-author" style="border: solid lightgray 1px; border-radius: 10px; min-width: 25%;">
+    <header style="padding:1rem 0; border-bottom: solid lightgray 1px; font-weight:600; font-size:110%;">
+        <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
+    </header>
+
+    <form id="authors-form" method="dialog" style="padding-top:1.5rem">
+        <div class="fields">
+                <label for="wtf-name">Name <sup>*</sup></label>
+                <input id="wtf-name" name="name" placeholder="Full Name" required  autofocus>
+        </div>
+
+        <div class="fields">
+            <label for="wtf-email">Email <sup>*</sup></label>
+            <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
+        </div>
+
+        <div class="fields">
+            <label for="wtf-country">Country <sup>*</sup></label>
+            <input list="countries" id="wtf-country" name="country" placeholder="Country" required>
+            <datalist id="countries" style="display: none"></datalist>
+        </div>
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <button id="author-submit-btn" type="button" class="button">Submit</button>
+        </div>
+    </form>
+</dialog>
+
+
+<script type="module">
+    import * as proposals from '/static/proposals/read.mjs'
+
+    const authorDialogBtn = document.getElementById('author-dialog-btn')
+    const dialog_author = document.getElementById('dialog-author')
+    const authorForm = document.getElementById('authors-form')
+
+    dialog_author.addEventListener('click', function (event) {
+        if ('DIALOG' != event.target.tagName) return
+
+        const pos = dialog_author.getBoundingClientRect()
+        if (
+            event.clientX < pos.left ||
+            event.clientX > pos.right ||
+            event.clientY < pos.top ||
+            event.clientY > pos.bottom
+        ) {
+            dialog_author.close()
+        }
+    })
+
+    document.getElementById('author-submit-btn').addEventListener('click', function () {
+        const name = document.getElementById('wtf-name').value.trim()
+        const email = document.getElementById('wtf-email').value.trim()
+        const country = document.getElementById('wtf-country').value.trim()
+
+        const row = document.createElement('tr')
+
+
+        if(name && email && country){
+            row.innerHTML = `
+                    <td>${name}</td>
+                    <td>${email}</td>
+                    <td>${country}</td>
+            `
+            const tBody = document.getElementById('table-body')
+            tBody.appendChild(row)
+            dialog_author.close()
+        } else {
+            alert('Fill the required fields. Atleast one author is required.')
+        }
+    })
+
+</script>
