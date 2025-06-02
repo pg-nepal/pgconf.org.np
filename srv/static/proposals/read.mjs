@@ -257,7 +257,7 @@ export function createAttendee(row) {
         method : 'POST',
         body   : formData,
     }).then(function (response){
-        if(response.status != 200){
+        if(response.status != 201){
             alert("Failed to copy")
         }
         else{
@@ -266,21 +266,26 @@ export function createAttendee(row) {
     }).then(function (json){
         const pk = row.pk
         const attendeePk = json['pk']
-        fetch(`/api/proposals/update/${pk}`, {
-            method : 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body   : JSON.stringify({attendeePk})
-        }).then(function(response){
-            if(response.status != 200){
-                alert("Failed to update")
-            } else {
-                alert('Copied to attendee table successfully.')
-                return response.text()
-            }
-        })
-        window.location.href = `/attendees/${json['pk']}`
+        if(attendeePk){
+                fetch(`/api/proposals/update/${pk}`, {
+                    method : 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body   : JSON.stringify({attendeePk})
+                }).then(function(response){
+                    if(response.status != 200){
+                        alert("Failed to update")
+                    } else {
+                        return response.text()
+                    }
+                })
+                alert('Writers added to attendee table.')
+                window.location.href = `/attendees`
+        } else {
+            alert('Writer added to attendee table. ')
+            window.location.href = `/attendees/${json['pk']}`
+        }
     })
 }
 
