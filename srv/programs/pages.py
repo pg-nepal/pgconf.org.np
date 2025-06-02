@@ -16,8 +16,13 @@ def programs_training_page():
         db.conf.Attendee.name,
         db.conf.Attendee.bio,
         db.conf.Attendee.affiliation,
-    ).where(
-        db.conf.Attendee.pk.in_([54, 55, 56]),
+        
+        db.programs.Proposal.slideBlob,
+    ).outerjoin(
+        db.conf.Attendee,
+        db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
+        ).where(
+        db.conf.Attendee.type == 'trainer',
     ).order_by(
         db.conf.Attendee.pk,
     )
