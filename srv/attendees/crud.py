@@ -113,9 +113,10 @@ def attendee_create():
                 traceback.print_exc()
                 raise e
 
-        return flask.jsonify(
-            pk = cursor.inserted_primary_key[0],
-        )
+        pk_value = cursor.inserted_primary_key[0] if cursor.inserted_primary_key else None  # noqa: E501
+
+        return flask.jsonify(pk=pk_value), 201
+
 
 
 @app.get('/attendees/<int:pk>')
