@@ -143,8 +143,6 @@ def proposal_read(pk):
 @app.post('/api/proposals/<int:pk>')
 def proposal_update(pk):
     isAdmin = srv.auth.isValid(flask.request)
-    if isAdmin is False:
-        return srv.auth.respondInValid()
 
     formData = flask.request.form.to_dict()
     name = formData.get('name') or isAdmin
