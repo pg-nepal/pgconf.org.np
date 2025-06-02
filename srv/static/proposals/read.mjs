@@ -249,7 +249,7 @@ function proposalLoad(row) {
 export function createAttendee(row) {
     const formData = new FormData()
     formData.append('name', row.name)
-    formData.append('type', 'speaker')
+    formData.append('type', row.session == 'training' ? 'trainer' : 'speaker')
     formData.append('email', row.email)
     formData.append('country', row.country)
 
