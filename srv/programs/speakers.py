@@ -29,7 +29,7 @@ def programs_speaker_list_page():
         db.programs.Proposal.abstract,
         db.programs.Proposal.session,
         db.programs.Proposal.co_authors,
-        db.programs.Proposal.slideBlob,
+        db.programs.Proposal.slideBlob.isnot(None).label(),
     ).where(
         sa.or_(
             db.conf.Attendee.type == 'speaker',
