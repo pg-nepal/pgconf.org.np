@@ -3,7 +3,6 @@
         <h2 class="dialog-title" style="text-align: center;">Rate this proposal</h2>
     </header>
 
-    <form id="authors-form" method="dialog" style="padding-top:1.5rem">
         <div class="fields">
                 <label for="wtf-name">Name <sup>*</sup></label>
                 <input id="wtf-name" name="name" placeholder="Full Name" required  autofocus>
@@ -23,7 +22,6 @@
         <div style="display: flex; align-items: center; justify-content: center;">
             <button id="author-submit-btn" type="button" class="button">Submit</button>
         </div>
-    </form>
 </dialog>
 
 
