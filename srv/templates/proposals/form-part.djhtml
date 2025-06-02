@@ -1,7 +1,37 @@
+<style>
+    .radio-btns {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .radio-btn-wrapper{
+        display: flex;
+    }
+
+    .radio-btn {
+        width: auto;
+    }
+</style>
+
 <div class="fields">
+    <label for="wtf-session">Select Session Type <sup>*</sup></label>
     <div class="fields">
-        <label for="wtf-name">Name <sup>*</sup></label>
-        <input id="wtf-name" name="name" placeholder="Full Name" required autofocus>
+        <div class="radio-btns">
+            <div class="radio-btn-wrapper">
+                <input id="talk" name="session" class="radio-btn"  type="radio" value="talk">
+                <label for="talk">talk</label>
+            </div>
+
+            <div class="radio-btn-wrapper">
+                <input id="workshop" name="session" class="radio-btn"  type="radio" value="workshop">
+                <label for="workshop">Workshop</label>
+            </div>
+
+            <div class="radio-btn-wrapper">
+                <input id="training" name="session" class="radio-btn"  type="radio" value="training">
+                <label for="training">Training</label>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -34,4 +64,28 @@
     <label for="wtf-abstract">Abstract <sup>*</sup></label>
     <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
     <label><em style="color: gray;">Please try to limit your abstract upto 500 words</em></label>
+</div>
+
+<div class="fields">
+    <label for="wtf-proposal">Keyword for this proposal <sup>*</sup></label>
+    <input id="wtf-title" name="title" placeholder="Session Title" maxlength=100 required >
+</div>
+
+<div class="fields">
+    <label for="wtf-author">Authors <sup>*</sup></label>
+    <table>
+        <thead id="authors-table">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Country</th>
+            </tr>
+        </thead>
+
+        <tbody id="table-body"></tbody>
+    </table>
+</div>
+
+<div class="" style="text-align: center;">
+    <button id="author-btn" type="button" class="button">Add Author</button>
 </div>
