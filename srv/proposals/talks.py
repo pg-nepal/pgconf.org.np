@@ -30,7 +30,7 @@ def talks_list():
 @app.get('/talks/<slug>')
 def talk_read(slug):
     query = sa.select(
-        db.programs.Proposal.pk,
+        db.programs.Proposal.pk.label('proposal_pk'),
         db.programs.Proposal.name,
         db.programs.Proposal.session,
         db.programs.Proposal.title,
