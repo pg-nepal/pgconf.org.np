@@ -15,7 +15,7 @@
                 <p class="abstract">{{row.abstract}}</p>
             </div>
 	   {% if row.has_slide %}
-              <a class="button" href="/api/proposals/{{ row.proposal_pk }}.slide" download>Download Slide</a>
+              <a class="button" href="/proposals/{{ row.proposal_pk }}.slide" download>Download Slide</a>
            {% endif %}
         </div>
 
