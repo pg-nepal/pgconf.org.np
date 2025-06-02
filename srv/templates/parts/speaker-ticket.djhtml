@@ -6,7 +6,8 @@
                     <h2>
                         <span style="color: #007bff;">PostgreSQL </span>
                         Conference Nepal</h2>
-                    <p style="color: #007bff; font-weight: bold;">Congratulations! Your proposal {{row.title}} has been selected.🎉 </p>
+                    <p style="color: #007bff; font-weight: bold;">Congratulations! Your proposal
+                         {{row.title}} has been selected.🎉 </p>
                     <p><strong>You are invited to speak at the event.</strong></p>
                 </div>
 
@@ -18,7 +19,7 @@
                     </div>
                 </div>
             </div>
-        
+
             <div class="ticket-wrapper">
                 <img class="ticket-logo" src="/static/images/pgconf_logo.png" alt="logo">
                 <div class="ticket-texts">
