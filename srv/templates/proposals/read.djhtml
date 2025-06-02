@@ -104,6 +104,11 @@
             <div class="info-label">Session Type</div>
             <div class="info-value" id="row.session"></div>
         </div>
+
+        <div class="info-row">
+            <div class="info-label">Co Authors</div>
+            <div class="info-value" id="co_authors"></div>
+        </div>
     </div>
 
    <form id="status-update-form">
