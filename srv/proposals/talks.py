@@ -37,7 +37,7 @@ def talk_read(slug):
         db.programs.Proposal.abstract,
         db.programs.Proposal.attendee_pk,
         db.programs.Proposal.co_authors,
-        db.programs.Proposal.slideBlob,
+        db.programs.Proposal.slideBlob.isnot(None).label('has_slide'),
 
         db.conf.Attendee.pk.label('attendee_pk'),
         db.conf.Attendee.bio,
