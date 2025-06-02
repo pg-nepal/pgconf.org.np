@@ -93,6 +93,7 @@ def submitted_proposal_read(slug):
         db.programs.Proposal.session,
         db.programs.Proposal.title,
         db.programs.Proposal.abstract,
+        db.programs.Proposal.co_authors,
         db.programs.Proposal.note,
         sa.cast(db.programs.Proposal.status, sa.String).label('status'),
         sa.literal('').label('Action'),
