@@ -1,0 +1,36 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= 'Call for Volunteer' %}
+
+
+{% block head %}
+{% endblock %}
+
+
+{% block main_content %}
+    <div>
+        <p>
+            The conference has successfully concluded, and we extend our heartfelt thanks to all the incredible volunteers who contributed
+            their time, energy, and dedication. Your support was instrumental in making the event run smoothly and creating a meaningful
+            experience for everyone involved. From behind-the-scenes logistics to on-the-ground coordination, your efforts truly made a
+            difference. As we wrap up this year’s success, we’re already looking ahead with excitement to what next year may bring.
+            Stay connected—we’ll be reaching out again as plans for the next edition begin to take shape!
+        </p>
+        <button id="btn-submit" class="button delete" onclick="window.location.href='/volunteered/form'">
+            Submission Closed for 2025
+        </button>
+
+        <div class="alert alert-info">
+            <h2>🔮 Looking Ahead</h2>
+            <p>
+                Planning for future editions of PGConf Nepal is already in motion. Stay connected with us for updates on next year’s Call
+                for Proposals and event announcements.
+            </p>
+
+            <em style="color: #007bff;">For inquiries or to get involved, reach out to info@pgconf.org.np.</em>
+            <!-- <button id="btn-submit" class="button" onclick="window.location.href='/proposals/call/form'">
+                Submit Your Proposal
+            </button>
+            <p><em>🗓️ Proposal Submission Deadline: <strong>2025 April 04</strong></em></p> -->
+        </div>
+    </div>
+{% endblock %}
