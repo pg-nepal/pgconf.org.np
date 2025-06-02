@@ -1,0 +1,26 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle= 'Call for Volunteer' %}
+
+
+{% block head %}
+{% endblock %}
+
+
+{% block main_content %}
+<p>
+    The conference has successfully concluded, and we want to express our sincere gratitude to all the volunteers
+    who made it possible. Your time, energy, and commitment were the backbone of the event—from registration and
+    setup to coordination and support throughout the sessions. Your contributions ensured everything ran smoothly
+    and that attendees had a memorable and enriching experience.
+</p>
+
+<a class="button delete" href="/volunteered/form">Registration Clonsed for 2025</a>
+
+<div class="alert alert-info">
+    <h2>🔮 Looking Ahead</h2>
+    As we reflect on this year's success, we’re already looking ahead. The momentum and enthusiasm from this event
+    have laid a strong foundation for what’s to come. We hope to see many of you return as part of our volunteer
+    team when we gather again next year. Stay tuned for updates—we're excited about what's on the horizon and can't
+    wait to build on this experience together.
+</div>
+{% endblock %}
