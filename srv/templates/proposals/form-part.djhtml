@@ -89,3 +89,12 @@
 <div class="" style="text-align: center;">
     <button id="author-btn" type="button" class="button">Add Author</button>
 </div>
+
+{% include '/proposals/author-dialog.djhtml' %}
+
+<script>
+    const eDialog = document.getElementById('dialog-author')
+    document.getElementById('author-btn').onclick = function() {
+        eDialog.showModal()
+    }
+</script>
