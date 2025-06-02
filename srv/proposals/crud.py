@@ -161,9 +161,10 @@ def proposal_update(pk):
         db.programs.Proposal.pk == pk,
     ).values(
         **formData,
-        updatedBy = isAdmin,
+        updatedBy = name,
     )
 
     with db.SessionMaker.begin() as session:
-        session.execute(query)
-        return flask.redirect('/proposals'), 202
+        cursor = session.execute(query)
+        return 'Update Row', 202 if cursor.rowcount > 0 else 400
+
