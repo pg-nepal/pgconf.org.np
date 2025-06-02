@@ -36,26 +36,6 @@
 </div>
 
 <div class="fields">
-    <label for="wtf-email">Email <sup>*</sup></label>
-    <input id="wtf-email" name="email" type="email" placeholder="Email Address" required>
-</div>
-
-<div class="fields">
-    <label for="wtf-country">Country <sup>*</sup></label>
-    <input list="countries" id="wtf-country" name="country" placeholder="Country" required>
-    <datalist id="countries" style="display: none;"></datalist>
-</div>
-
-<div class="fields">
-    <label for="wtf-session">Session <sup>*</sup></label>
-    <select id="wtf-session" name="session" required>
-        <option value="">Select Session</option>
-        <option value="talk">Talk</option>
-        <option value="workshop">Workshop</option>
-    </select>
-</div>
-
-<div class="fields">
     <label for="wtf-title">Title <sup>*</sup></label>
     <input id="wtf-title" name="title" placeholder="Session Title" maxlength=100 required >
 </div>
