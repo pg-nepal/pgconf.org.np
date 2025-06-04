@@ -36,19 +36,6 @@
                 Participants enjoyed a full conference experience with access to talks, workshops, food, and accommodation. The KU campus, being one of the premier institutions in Nepal, provided
                  the perfect academic and natural setting for the event.
             </p>
-
-            <!-- <p>
-                Dhulikhel is a small town located in the Kavrepalanchok District of Nepal, about 30 kilometers southeast of Kathmandu. It is known
-                for its beautiful views of the Himalayan mountain range and its rich cultural heritage. There are several guesthouses and hotels in
-                Dhulikhel where you can stay, as well as many places to eat and shop. The town is also a popular starting point for trekking and
-                hiking in the surrounding hills.
-            </p>
-            <p>
-                Kathmandu University (KU) is located in the Dhulikhel area, about 30 kilometers southeast of Kathmandu city. It is the third oldest
-                university in Nepal and one of the most prestigious institutions of higher education in the country. The main campus of the university
-                is located in Dhulikhel and it offers undergraduate and graduate programs in various disciplines such as Engineering, Management,
-                Medicine, Science, and Humanities.
-            </p> -->
         </div>
 
         <div>
@@ -100,11 +87,6 @@
                 </p></li>
             </ol>
         </div>
-
-
-        <section id="hospitality-partner">
-            {% include "parts/partners-hotels.djhtml" %}
-        </section>
 
         <div class="alert">
             <h2 class="section-header">
