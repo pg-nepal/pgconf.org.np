@@ -16,8 +16,8 @@ def programs_training_page():
         db.conf.Attendee.name,
         db.conf.Attendee.bio,
         db.conf.Attendee.affiliation,
-        
         db.programs.Proposal.slideBlob,
+        db.programs.Proposal.co_authors,
     ).outerjoin(
         db.conf.Attendee,
         db.programs.Proposal.attendee_pk == db.conf.Attendee.pk,
