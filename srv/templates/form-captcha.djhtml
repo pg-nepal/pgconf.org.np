@@ -63,9 +63,21 @@
             event.stopPropagation()
             event.target.reportValidity()
 
+            const title = document.querySelector('input[name="title"]').value.trim()
+            const abstract = document.querySelector('textarea[name="abstract"]').value.trim()
+            const answer = document.querySelector('input[name="answer"]').value.trim()
+            const session = document.querySelector('input[name="session"]:checked')?.value
+            if (!session) {
+                alert('Please select a session type.')
+                return
+            }
+
             const rows = document.querySelectorAll('#table-body tr')
             const coAuthors = []
             const firstAuthorRow = rows[0].querySelectorAll('td')
+            const name = firstAuthorRow[0].innerText.trim()
+            const email = firstAuthorRow[1].innerText.trim()
+            const country = firstAuthorRow[2].innerText.trim()
 
             rows.forEach(function (row, idx) {
                 if(idx === 0) return
