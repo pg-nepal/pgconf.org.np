@@ -2,15 +2,13 @@ import * as main from '/static/main.mjs'
 
 
 export function post(formData, idx) {
-    const jsonData = {
-        ...Object.fromEntries(formData),
-        idx : idx,
-    }
+    Object.assign(formData, { idx : idx})
+
 
     return fetch('/proposals/call/add', {
         method  : 'POST',
         headers : { 'content-type': 'application/json' },
-        body    : JSON.stringify(jsonData),
+        body    : JSON.stringify(formData),
     })
 }
 
