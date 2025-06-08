@@ -4,6 +4,7 @@ import enum
 import uuid
 
 import sqlalchemy as sa
+from sqlalchemy.dialects.postgresql import JSONB
 
 import db
 
@@ -49,7 +50,7 @@ class Proposal(db.Base):
     note           = sa.Column(sa.Text())
     slideBlob      = sa.Column(sa.LargeBinary)
     slideMime      = sa.Column(sa.String(32))
-    co_authors     = sa.Column(sa.JSON)
+    co_authors     = sa.Column(JSONB)
 
 
 class Review(db.Base):
