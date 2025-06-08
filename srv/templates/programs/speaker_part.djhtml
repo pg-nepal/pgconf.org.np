@@ -12,6 +12,11 @@
         <div class="alert">
             <div class="talk-details">
                 <h3 class="talk-title" style="margin: 0;"><em>{{row.title}}</em></h3>
+                <em style="font-weight: bold;"> Co-Authors:
+                    {% for author in row.co_authors %}
+                    {{author.name}}
+                    {% endfor %}
+                </em>
                 <p class="abstract">{{row.abstract}}</p>
             </div>
 	   {% if row.has_slide %}
