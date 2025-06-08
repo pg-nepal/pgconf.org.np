@@ -66,6 +66,10 @@
                     <td>${name}</td>
                     <td>${email}</td>
                     <td>${country}</td>
+                    <td>
+                    <button class="button edit">Edit</button>
+                    <button class="button delete">Remove</button>
+                    </td>
             `
             const tBody = document.getElementById('table-body')
             tBody.appendChild(row)
