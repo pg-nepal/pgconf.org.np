@@ -79,4 +79,27 @@
         }
     })
 
+      document.getElementById('table-body').addEventListener('click', function (event) {
+        const target = event.target
+        const row = target.closest('tr')
+
+        if (target.classList.contains('delete')) {
+            row.remove()
+        }
+
+        if (target.classList.contains('edit')) {
+            const name = row.children[0].textContent.trim()
+            const email = row.children[1].textContent.trim()
+            const country = row.children[2].textContent.trim()
+
+            document.getElementById('wtf-name').value = name
+            document.getElementById('wtf-email').value = email
+            document.getElementById('wtf-country').value = country
+
+            row.remove()
+
+            dialog_author.showModal()
+        }
+    })
+
 </script>
