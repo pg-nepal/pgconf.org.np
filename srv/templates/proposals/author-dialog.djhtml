@@ -12,7 +12,7 @@
 
         <div class="fields">
                 <label for="wtf-name">Name <sup>*</sup></label>
-                <input id="wtf-name" name="name" placeholder="Full Name" required  autofocus>
+                <input id="wtf-name" name="name" placeholder="Full Name" required>
         </div>
 
         <div class="fields">
