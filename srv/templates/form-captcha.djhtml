@@ -73,7 +73,7 @@
             }
 
             const rows = document.querySelectorAll('#table-body tr')
-            const coAuthors = []
+            const co_authors = []
             const firstAuthorRow = rows[0].querySelectorAll('td')
             const name = firstAuthorRow[0].innerText.trim()
             const email = firstAuthorRow[1].innerText.trim()
@@ -81,12 +81,13 @@
 
             rows.forEach(function (row, idx) {
                 if(idx === 0) return
-                const cells = row.querySelectorAll('td')
-                coAuthors.push({
-                    name: cells[0].innerText.trim(),
-                    email: cells[1].innerText.trim(),
-                    country: cells[2].innerText.trim(),
-                })
+                const firstAuthorRow = rows[0].querySelectorAll('td')
+                    const cells = row.querySelectorAll('td')
+                    co_authors.push({
+                        name: cells[0].innerText.trim(),
+                        email: cells[1].innerText.trim(),
+                        country: cells[2].innerText.trim(),
+                    })
             })
             const submitBtn = document.getElementById('submitBtn')
             submitBtn.disabled = true
