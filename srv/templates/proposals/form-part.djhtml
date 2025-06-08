@@ -14,6 +14,17 @@
 </style>
 
 <div class="fields">
+<div class="fields">
+    <label for="wtf-title">Title <sup>*</sup></label>
+    <input id="wtf-title" name="title" placeholder="Session Title" maxlength=100 required >
+</div>
+
+<div class="fields">
+    <label for="wtf-abstract">Abstract <sup>*</sup></label>
+    <textarea id="wtf-abstract" name="abstract" placeholder="Abstract of your session" required></textarea>
+    <label><em style="color: gray;">Please try to limit your abstract upto 500 words</em></label>
+</div>
+
     <label for="wtf-session">Select Session Type <sup>*</sup></label>
     <div class="fields">
         <div class="radio-btns">
