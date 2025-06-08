@@ -28,7 +28,7 @@
 
 
 {% block main_content %}
-    <form id="wtf-form" method="POST" enctype="multipart/form-data">
+    <form id="wtf-form" method="POST" enctype="multipart/form-data"">
         <fieldset>
             {% include fields %}
         </fieldset>
@@ -89,18 +89,25 @@
                         country: cells[2].innerText.trim(),
                     })
             })
+
+
             const submitBtn = document.getElementById('submitBtn')
             submitBtn.disabled = true
             submitBtn.innerText = 'Processing ...'
 
-            const formData = new FormData(event.target)
-            formData.append('name', firstAuthorRow[0].innerText.trim())
-            formData.append('email', firstAuthorRow[1].innerText.trim())
-            formData.append('country', firstAuthorRow[2].innerText.trim())
-            formData.append('co_authors', JSON.stringify(coAuthors))
+            const jsonData = {
+                title,
+                abstract,
+                session,
+                name,
+                email,
+                country,
+                co_authors,
+                answer,
+            }
 
 
-            form.post(formData, {{idx}}).then(function (response) {
+            form.post(jsonData, {{idx}}).then(function (response) {
                 if (500 <= response.status) {
                     throw new Error(response.statusText)
                 }
