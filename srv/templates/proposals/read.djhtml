@@ -191,12 +191,6 @@
             }).then(function (response){
                 if(status == 'accepted'){
                     proposals.createAttendee(json)
-                    if(json.co_authors){
-                        const coAuthors = JSON.parse(json.co_authors)
-                        coAuthors.forEach( function(author) {
-                            return proposals.createAttendee(author)
-                        })
-                    }
                 } else {
                     if (202 == response.status) {
                         alert('Proposal Status updated successfully.')
