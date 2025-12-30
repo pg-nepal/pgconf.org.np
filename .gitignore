@@ -4,6 +4,8 @@ dist
 venv
 __pycache__
 out
+*/qr/*
+scripts
 
 # files
 users.json
