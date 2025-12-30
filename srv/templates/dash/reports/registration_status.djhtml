@@ -1,0 +1,7 @@
+{% extends 'base.djhtml' %}
+{% set pageTitle = 'Report: Registration Status' %}
+{% set pageDesc = 'some thing will come here' %}
+
+{% block admin_content %}
+    Some infographics will be here :-)
+{% endblock %}
