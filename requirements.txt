@@ -2,3 +2,6 @@ flask
 psycopg
 sqlalchemy
 Flask-JWT-Extended
+pandas
+openpyxl
+Pillow
