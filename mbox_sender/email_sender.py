@@ -19,7 +19,7 @@ def compose(to, subject, body, cc =None, bcc=None):
         msg['From']     = email.utils.formataddr(SMTP_CONFIG['SENDER'])
         msg['To']       = to
         msg['Bcc']      = 'info.pgconf@gmail.com'
-        if cc is not None: msg['Cc'] = cc
+        # if cc is not None: msg['Cc'] = cc
         return msg
     except Exception as ex:
         log("Compose ERROR: "+ str(ex))
