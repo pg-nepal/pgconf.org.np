@@ -7,17 +7,18 @@
     <p>
         PostgreSQL Conference Nepal is an ongoing initiative to bring together PostgreSQL professionals, enthusiasts, developers,
         decision-makers, and advocates from both Nepal and around the world. The most recent edition of the conference was held
-        on May 5–6 at Kathmandu University, Dhulikhel, continuing the tradition of community-driven knowledge sharing and collaboration.
+        on <strong>Nov 18-21, 2026</strong> at Kathmandu University, Dhulikhel, continuing the tradition of
+        community-driven knowledge sharing and collaboration.
     </p>
     <p>
-        Since the successful launch of the first-ever PostgreSQL Conference Nepal in May 2018, the event has steadily grown in scale and impact.
+        Since the successful launch of the first-ever PostgreSQL Conference Nepal in Nov 2026, the event has steadily grown in scale and impact.
         Over the years, it has featured insightful talks and workshops from both internationally renowned PostgreSQL contributors and prominent
         local experts. The conference serves as a vital platform to discuss technical innovations, real-world use cases, and community building.
     </p>
     <p>
         Nepal’s growing presence in the global software development ecosystem—powered by a talented pool of Nepali IT professionals—makes it a natural
-        hub for open-source technologies like PostgreSQL. The conference supports this momentum by promoting PostgreSQL as a first-choice database solution,
-        encouraging its adoption across the government, private, and public sectors.
+        hub for open-source technologies like PostgreSQL. The conference supports this momentum by promoting PostgreSQL as a
+        first-choice database solution, encouraging its adoption across the government, private, and public sectors.
     </p>
     <p>
         Beyond the code, PostgreSQL Conference Nepal is a space where technical, non-technical, and community discussions converge. Whether you’re
@@ -39,7 +40,7 @@
     <em style="color: #007bff;">For collaborations, sponsorship, or speaking opportunities, reach out to info@pgconf.org.np.</em>
 
     <div class="alert">
-        <h3>🏛️ Organizing Committee 2025</h3>
+        <h3>🏛️ Organizing Committee 2026</h3>
         <ol>
             <li><p><strong>Prof. Dr. Bal Krishna Bal</strong> - Kathmandu University, Conference Chair</p></li>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional, Co-Chair</p></li>
@@ -49,25 +50,25 @@
             <li><p><strong>Dr. Manoj Shakya</strong> - Assistant Professor, Kathmandu University, Member</p></li>
             <li><p><strong>Mr. Sagun Dhakhwa</strong> - Outlines Research & Development, Member</p></li>
             <li><p><strong>Mr. Rohit Man Amatya</strong> - Beta Analytics Pvt. Ltd., Member</p></li>
+            <li><p><strong>Dr. Prakash Poudyal</strong> - Kathmandu University, Member</p></li>
             <li><p><strong>Mr. Rupak Raj Ghimire</strong> - Uniaxial Softwares Pvt. Ltd., Member</p></li>
         </ol>
     </div>
 
     <div class="alert">
-        <h3>✔️ Program Committee/Talk Selection Committee 2025</h3>
+        <h3>✔️ Program Committee/Talk Selection Committee 2026</h3>
         <ol>
             <li><p><strong>Dr. Oleg Bartunov</strong> - Postgres Professional</p></li>
             <li><p><strong>Dr. Manoj Shakya</strong> - Kathmandu University</p></li>
             <li><p><strong>Mr. Sagun Dhakhwa</strong> - Outlines Research & Development</p></li>
             <li><p><strong>Mr. Mark Rivkin</strong> - Postgres Professional</p></li>
             <li><p><strong>Mr. Rohit Man Amatya</strong> - Beta Analytics Pvt. Ltd.</p></li>
-            <li><p><strong>Mr. Rupak Raj Ghimire</strong> - Uniaxial Softwares Pvt. Ltd.</p></li>
-
+            <li><p><strong>Dr. Prakash Poudyal</strong> - Kathmandu University, Member</p></li>
         </ol>
     </div>
 
     <div class="alert">
-        <h3>🛑 Code of Conduct Committee 2025</h3>
+        <h3>🛑 Code of Conduct Committee 2026</h3>
         <ol>
             <li><p><strong>Mr. Ivan Pachenko</strong> - Postgres Professional</p></li>
             <li><p><strong>Mr. Pavel Luzanov</strong> - Postgres Professional</p></li>
@@ -80,22 +81,13 @@
     <div class="alert alert-emphasis">
         <h3>🐘 Financial Disclosure</h3>
         <p>
-            The PostgreSQL Conference Nepal 2025 was made possible through the generous support of our sponsors, who
-            provided full financial backing for the event. All core expenses—venue, logistics, hospitality, speaker
-            accommodations, and materials—were covered entirely through sponsorship contributions.
+            PostgreSQL Conference 2026 is funded entirely through sponsor contributions and ticket sales.
+            No other sources of funding will be used for organizing or delivering the event.
         </p>
         <p>
-            In keeping with our commitment to transparency and responsible stewardship, any surplus funds from this
-            year’s conference will be allocated toward supporting future editions of PGConf Nepal and further
-            community-building initiatives.
-        </p>
-        <p>
-            A detailed financial statement is being included in the official conference completion report, which will
-             be shared with all sponsors as part of our accountability process.
-        </p>
-        <p>
-            We are deeply grateful to our sponsors for enabling this event and investing in the growth of the
-            open-source and PostgreSQL communities in Nepal.
+            To ensure full transparency, a complete financial disclosure will be published on this website after
+            the conference concludes. This disclosure will include a summary of total sponsorship and ticket revenue,
+            major expense categories, and the final financial outcome of the event.
         </p>
     </div>
 {% endblock %}

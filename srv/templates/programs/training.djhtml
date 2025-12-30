@@ -15,18 +15,18 @@
 
 {% block main_content %}
     <p>
-        This training was designed to strengthen participants’ skills in PostgreSQL server-side development through hands-on exercises
-        and real-world application scenarios. It provided an immersive learning experience, guiding attendees through practical challenges
-        to build confidence in writing efficient and maintainable database logic. Whether participants were new to PostgreSQL or looking to
+        This training is designed to strengthen participants’ skills in PostgreSQL server-side development through hands-on exercises
+        and real-world application scenarios. It provides an immersive learning experience, guiding attendees through practical challenges
+        to build confidence in writing efficient and maintainable database logic. Whether participants are new to PostgreSQL or looking to
         deepen their expertise, the training offered valuable insights and techniques applicable to real-world projects.
     </p>
     <div>
-        <h2 style="color: #007bff;">Pre Conference Training 2025</h2>
+        <h2 style="color: #007bff;">Pre Conference Training 2026</h2>
         <p><strong>⏳ Duration:</strong> 2 days (14 Hours)</p>
-        <p><strong>🗓️ Date:</strong> 3-4 May, 2025</p>
+        <p><strong>🗓️ Date:</strong> Will be announced soon</p>
     </div>
 
-    <div class="alert">
+    {#<div class="alert">
         <h3>🎓️ Meet your Trainers</h3>
         <div>
             {% for row in cursor %}
@@ -48,7 +48,7 @@
                 </div>
             {% endfor %}
         </div>
-    </div>
+    </div>#}
 
     <div class="alert">
         <h3>⚠️ Prerequisites</h3>
@@ -73,27 +73,7 @@
 
     <div class="alert">
         <h2>📝 Registration</h2>
-        <!-- <p>Registration is required for the training. Follow the <a href="/pages/registration">registration</a> link to secure your seat. Very limited seats are available.</p> -->
-
-        <p>Registration for the pre-conference training is now closed, with all seats sold
-            out. The event included tea/coffee, breakfast, lunch, and a basic stationery kit for all registered participants.</p>
-
-        <p style="color: #007bff;">
-            Registration covers: <em>Tea/Coffee, Breakfast, Lunch, Basic Stationary Kit</em>
-        </p>
-        <p style="color: #007bff;">
-            Registration Fee: NRs. <s style='color:red;'>10,000.00</s>
-            <em><s>7,000.00</s></em>
-            <span style='color:red;font-weight:bold;'>SOLD OUT</span>
-        </p>
-        <p>
-            - Student discount available<br>
-            - Group enrollment discount available<br>
-            For discount related information contact:
-            <a href="mailto:info@pgconf.org.np">
-                info@pgconf.org.np
-            </a>
-        </p>
+        <div class="alert alert-warning">Details will be published soon.</div>
     </div>
 
     <div class="alert">
@@ -108,7 +88,6 @@
 
     <div>
         <h2>Schedule</h2>
-        <img src='/static/agenda-training.png' style="width:80%" /><br>
-        <em>Note: Trainers can change the schedule and session order</em>
+        <div class="alert alert-warning">Details will be published soon.</div>
     </div>
 {% endblock %}

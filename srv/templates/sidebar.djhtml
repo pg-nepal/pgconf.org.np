@@ -17,5 +17,8 @@
 </div>
 <div class="sidebar">
     <h3>🐘 Glimpse of PostgreSQL Conference Nepal 2025</h3>
+    <a href="https://2025.pgconf.org.np" class="button">View</a>
+
+    <h3>🐘 Glimpse of PostgreSQL Conference Nepal 2023</h3>
     <a href="/pages/previous-conference" class="button">View</a>
 </div>

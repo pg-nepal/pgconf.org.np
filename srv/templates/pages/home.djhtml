@@ -35,8 +35,10 @@
     <div class="banner-container">
         <div class="overlay"></div>
         <div class="text">
-            <h1><span style="color: #007bff; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal</h1>
-            <p>Thank You All For Participating ❤️</p>
+            <h1><span style="color: #007bff; text-shadow: 0px 0px 5px black;">PostgreSQL</span> Conference Nepal, 2026</h1>
+            <h2>18-21 Nov 2026</h2>
+            <p>Pre-Conference Training &nbsp;&nbsp;|&nbsp;&nbsp; Main Conference (Workshop , Talk)</p>
+
         </div>
     </div>
 
@@ -45,15 +47,14 @@
             <div class="left-content">
                 <section>
                     <h2><span style="color: #007bff;">PostgreSQL</span> Conference Nepal</h2>
-
                     <p>
-                        We are thrilled to invite you to the third PostgreSQL Conference, taking place on 5-6 May 2025 in Nepal.
-                        Building on the success of the inaugural PostgreSQL Conference Nepal held on 11-12 May 2023 and 4-5 May
+                        We are thrilled to invite you to the third PostgreSQL Conference, taking place on <b>18-21 Nov 2026</b> in Nepal.
+                        Building on the success of the inaugural PostgreSQL Conference Nepal held on 5-6 May 2025, 11-12 May 2023 and 4-5 May
                         2018, this year’s event promises to be even more engaging and inspiring.
                     </p>
 
                     <p>
-                        The 2023 conference featured captivating talks and hands on training by internationally renowned
+                        The 2025, 2023, 2018 conference featured captivating talks and hands on training by internationally renowned
                         PostgreSQL experts alongside insightful contributions from talented local speakers. This year, we aim
                         to uphold this tradition, bringing together the global PostgreSQL community and local enthusiasts for
                         two days of knowledge sharing, networking, and collaboration.
@@ -62,9 +63,6 @@
                     <h4 style="font-style: italic">
                         Join us in celebrating and advancing the PostgreSQL ecosystem!
                     </h4>
-
-                    <h2> Selected Talks</h2>
-                    {% include "/parts/talks.djhtml" %}
                 </section>
 
                 <section id="sponsors" class="alert home-content mt-1">
@@ -88,44 +86,15 @@
                     </h2>
 
                     <p>
-                        <a href="https://uba-solutions.com" target="_blank">
-                            <img style="width: 250px; mix-blend-mode:multiply;" src="/static/uba-logo.png" alt="Uba Solutions">
-                        </a>
-
-                        <a href="https://nchl.com.np" target="_blank">
-                            <img style="width: 230px;" src="/static/clearing-house.jpeg" alt="NCHL">
-                        </a>
+                        For sponsorship contact: info@pgconf.org.np
                     </p>
                 </section>
-
-                <section id="hospitality-partner" class="alert">
-                    <h2 class="section-header">
-                        Hospitality Partner
-                    </h2>
-
-                    <p>
-                        <a href="https://www.himalayadrishyaresort.com/" target = "_blank">
-                            <img src="/static/hospitality_drisya.jpg" style="width:150px; right-margin:1rem">
-                        </a>
-                    </p>
-                </section>
-
                 <section id="sponsors" class="alert home-content mt-1">
                     <h2 class="section-header">
                         Supported By
                     </h2>
 
-                    <div class="sponsors-logos">
-                        <a href="https://beta-analytics.com" target="_blank">
-                            <img src="https://beta-analytics.com/img/logo-medium-comp.png" alt="Beta Analytics">
-                        </a>
-                        <a href="https://uxlsoft.com" target="_blank">
-                            <img src="/static/sponsors/uxl-soft.png" alt="Uniaxial Softwares">
-                        </a>
-                        <a href="https://outlines-rnd.com" target="_blank">
-                            <img style="width: 200px; mix-blend-mode:multiply;" src="/static/outlines.jpeg" alt="Outlines RND">
-                        </a>
-                    </div>
+                    <p>To support us contact: info@pgconf.org.np</p>
                 </section>
             </div>
 

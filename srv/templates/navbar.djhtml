@@ -13,19 +13,19 @@
             <ul class="nav-list">
                 <li class="nav-item"><a href="/">Home</a></li>
                 <li class="nav-item"><a href="/pages/registration">Registration</a></li>
-                <li class="nav-item"><a href="/programs/speakers">Speakers</a></li>
                 <li class="nav-item"><a href="/pages/schedule">Schedule</a></li>
                 <li class="nav-item"><a href="/pages/training">Training</a></li>
                 <li class="nav-item"><a href="/pages/venue">Venue</a></li>
+                <li class="nav-item"><a href="/pages/call-for-proposal">Call for Proposal</a></li>
 
-                <ul class="dropdown" id="dropdown">
+                {#<ul class="dropdown" id="dropdown">
                     <a class="dropbtn">Call</a>
                     <div class="dropdown-content">
                         <a href="/pages/call-for-proposal">Call for Proposal</a>
                         <a href="/pages/call-for-volunteer">Call for Volunteer</a>
                         <a href="/pages/sponsors">Call for Sponsor</a>
                     </div>
-                </ul>
+                </ul>#}
                 <li class="nav-item"><a href="/pages/about">About</a></li>
 
             </ul>
