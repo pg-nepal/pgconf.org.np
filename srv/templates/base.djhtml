@@ -9,7 +9,7 @@
         <link rel="stylesheet" href="/static/main.css">
         <link rel="stylesheet" href="/static/navbar.css">
         <link rel="stylesheet" href="/static/css/footer.css">
-        <title>PgConf Nepal 2025 {{pageTitle}}</title>
+        <title>PgConf Nepal 2026 {{pageTitle}}</title>
 
         {% block head %}{% endblock %}
     </head>
